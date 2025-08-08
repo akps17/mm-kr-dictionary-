@@ -13,6 +13,7 @@ import {
   ScrollView,
   Linking,
   Pressable,
+  Image,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useFonts as useMyanmarFonts, NotoSansMyanmar_400Regular, NotoSansMyanmar_700Bold } from '@expo-google-fonts/noto-sans-myanmar';
@@ -248,6 +249,7 @@ function AboutScreen() {
     <SafeAreaView style={[styles.safeArea, { backgroundColor: C.background }] }>
       <ScrollView contentContainerStyle={{ padding: 16 }}>
         <Text style={[styles.aboutTitle, { color: C.textPrimary, fontFamily: 'NotoSansMyanmar_700Bold' }]}>About</Text>
+        <Image source={require('./assets/dictionary_icon.png')} style={styles.aboutLogo} />
 
         <View style={[styles.card, { backgroundColor: C.surface, borderColor: C.border }]}>
           <Text allowFontScaling={false} style={[styles.aboutParagraph, { color: C.textPrimary, fontFamily: 'NotoSansMyanmar_400Regular' }]}>{intro}</Text>
@@ -596,6 +598,13 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: '700',
     marginBottom: 8,
+  },
+  aboutLogo: {
+    width: 96,
+    height: 96,
+    borderRadius: 20,
+    alignSelf: 'center',
+    marginBottom: 12,
   },
   aboutParagraph: {
     fontSize: 15,
