@@ -3,9 +3,12 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 export type AppLanguage = 'korean' | 'myanmar' | 'english';
 export type SortPriority = 'korean' | 'myanmar' | 'english';
 
+export type FontSize = 'small' | 'default' | 'large';
+
 export type AppSettings = {
   uiLanguage: AppLanguage;
   sortBy: SortPriority;
+  fontSize: FontSize;
 };
 
 const SETTINGS_KEY = 'mmkr.settings.v1';
@@ -15,7 +18,7 @@ export async function loadSettings(): Promise<AppSettings> {
     const raw = await AsyncStorage.getItem(SETTINGS_KEY);
     if (raw) return JSON.parse(raw) as AppSettings;
   } catch {}
-  return { uiLanguage: 'myanmar', sortBy: 'korean' };
+  return { uiLanguage: 'myanmar', sortBy: 'korean', fontSize: 'default' };
 }
 
 export async function saveSettings(settings: AppSettings): Promise<void> {

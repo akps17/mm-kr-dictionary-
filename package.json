@@ -9,6 +9,7 @@
     "android": "yarn --cwd app android"
   },
   "dependencies": {
+    "expo-dev-client": "^5.2.4",
     "react-native": "0.80.2"
   }
 }

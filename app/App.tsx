@@ -12,12 +12,13 @@ import {
   View,
   ScrollView,
   Linking,
+  Pressable,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useFonts as useMyanmarFonts, NotoSansMyanmar_400Regular, NotoSansMyanmar_700Bold } from '@expo-google-fonts/noto-sans-myanmar';
 import { dictionaryEntries } from './data/dictionary';
 import { useThemedColors } from './components/Theme';
-import { AppLanguage, SortPriority, AppSettings, i18nLabels, NATIVE_LANGUAGE_NAME } from './data/settings';
+import { AppLanguage, SortPriority, AppSettings, i18nLabels, NATIVE_LANGUAGE_NAME, FontSize } from './data/settings';
 import { SettingsProvider, useSettings } from './data/SettingsContext';
 import { LibraryProvider, useLibrary } from './data/LibraryContext';
 import { SearchBox } from './components/SearchBox';
@@ -82,6 +83,17 @@ function HomeSearchScreen() {
     return sorted;
   }, [queryText, settings.sortBy]);
 
+  const fontScale = React.useMemo(() => {
+    switch (settings.fontSize) {
+      case 'small':
+        return 0.9;
+      case 'large':
+        return 1.1;
+      default:
+        return 1.0;
+    }
+  }, [settings.fontSize]);
+
   const labels = i18nLabels[settings.uiLanguage];
 
   return (
@@ -105,15 +117,15 @@ function HomeSearchScreen() {
               <View style={[styles.row, isTabletLike && styles.rowTablet, { backgroundColor: C.surface }]}> 
                 <View style={styles.rowTextGroup}>
                   <View style={styles.rowHeader}>
-                    <Text style={[styles.korean, isTabletLike && styles.koreanTablet, { color: C.textPrimary, fontFamily: 'NotoSansMyanmar_700Bold' }]}>{item.korean}</Text>
+                    <Text style={[styles.korean, isTabletLike && styles.koreanTablet, { color: C.textPrimary, fontFamily: 'NotoSansMyanmar_700Bold', fontSize: styles.korean.fontSize * fontScale }]}>{item.korean}</Text>
                     {item.pos && (
                       <View style={[styles.posChip] }>
                         <Text style={[styles.posText]}>{item.pos}</Text>
                       </View>
                     )}
                   </View>
-                  <Text style={[styles.myanmar, isTabletLike && styles.myanmarTablet, { color: C.textSecondary, fontFamily: 'NotoSansMyanmar_400Regular' }]}>{item.myanmar}</Text>
-                  {!!item.english && <Text style={[styles.englishGloss, { color: C.textTertiary }]}>{item.english}</Text>}
+                  <Text allowFontScaling={false} style={[styles.myanmar, isTabletLike && styles.myanmarTablet, { color: C.textSecondary, fontFamily: 'NotoSansMyanmar_400Regular', fontSize: styles.myanmar.fontSize * fontScale }]}>{item.myanmar}</Text>
+                  {!!item.english && <Text style={[styles.englishGloss, { color: C.textTertiary, fontSize: styles.englishGloss.fontSize * fontScale }]}>{item.english}</Text>}
                 </View>
                 <FavoriteButton entryId={item.id} />
               </View>
@@ -238,22 +250,22 @@ function AboutScreen() {
         <Text style={[styles.aboutTitle, { color: C.textPrimary, fontFamily: 'NotoSansMyanmar_700Bold' }]}>About</Text>
 
         <View style={[styles.card, { backgroundColor: C.surface, borderColor: C.border }]}>
-          <Text style={[styles.aboutParagraph, { color: C.textPrimary, fontFamily: 'NotoSansMyanmar_400Regular' }]}>{intro}</Text>
-          <Text style={[styles.aboutParagraph, { color: C.textPrimary, fontFamily: 'NotoSansMyanmar_400Regular' }]}>{reason}</Text>
-          <Text style={[styles.aboutParagraph, { color: C.textPrimary, fontFamily: 'NotoSansMyanmar_400Regular' }]}>{audience}</Text>
+          <Text allowFontScaling={false} style={[styles.aboutParagraph, { color: C.textPrimary, fontFamily: 'NotoSansMyanmar_400Regular' }]}>{intro}</Text>
+          <Text allowFontScaling={false} style={[styles.aboutParagraph, { color: C.textPrimary, fontFamily: 'NotoSansMyanmar_400Regular' }]}>{reason}</Text>
+          <Text allowFontScaling={false} style={[styles.aboutParagraph, { color: C.textPrimary, fontFamily: 'NotoSansMyanmar_400Regular' }]}>{audience}</Text>
 
           <Text style={[styles.sectionTitle, { marginTop: 8, color: C.textSecondary }]}>{featuresTitle}</Text>
           {bullets.map((b, idx) => (
             <View key={idx} style={styles.bulletRow}>
               <Ionicons name="checkmark-circle" size={18} color="#10B981" style={{ marginTop: 2 }} />
-              <Text style={[styles.bulletText, { color: C.textPrimary, fontFamily: 'NotoSansMyanmar_400Regular' }]}>{b}</Text>
+              <Text allowFontScaling={false} style={[styles.bulletText, { color: C.textPrimary, fontFamily: 'NotoSansMyanmar_400Regular' }]}>{b}</Text>
             </View>
           ))}
         </View>
 
         <View style={[styles.card, { marginTop: 16, backgroundColor: C.surface, borderColor: C.border }]}>
           <Text style={[styles.sectionTitle, { color: C.textSecondary }]}>{contactTitle}</Text>
-          <Text style={[styles.aboutParagraph, { color: C.textPrimary, fontFamily: 'NotoSansMyanmar_400Regular' }]}>
+          <Text allowFontScaling={false} style={[styles.aboutParagraph, { color: C.textPrimary, fontFamily: 'NotoSansMyanmar_400Regular' }]}>
             {contactText} <Text style={{ color: '#2563EB' }} onPress={() => Linking.openURL(`mailto:${email}`)}>{email}</Text>
           </Text>
         </View>
@@ -264,38 +276,89 @@ function AboutScreen() {
 
 function SettingsScreen() {
   const { settings, updateSetting } = useSettings();
-
   const C = useThemedColors();
-  const Check = ({ checked }: { checked: boolean }) => (
-    <View style={[styles.checkbox, { borderColor: C.border, backgroundColor: checked ? C.brand : 'transparent' }]} />
+
+  const Radio = ({ selected }: { selected: boolean }) => (
+    <Ionicons
+      name={selected ? 'radio-button-on' : 'radio-button-off'}
+      size={20}
+      color={selected ? '#2563EB' : C.textTertiary}
+      style={styles.optionIcon}
+    />
+  );
+
+  const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
+    <View style={[styles.card, { borderColor: C.border, backgroundColor: C.surface, marginBottom: 12 }] }>
+      <Text style={[styles.sectionHeader, { color: C.textSecondary }]}>{title}</Text>
+      {children}
+    </View>
+  );
+
+  const LanguageOptions = (
+    <Section title="Language">
+      {(['myanmar','korean','english'] as AppLanguage[]).map((lang, idx) => {
+        const selected = settings.uiLanguage === lang;
+        return (
+          <Pressable
+            key={lang}
+            onPress={() => updateSetting('uiLanguage', lang)}
+            style={[styles.optionRow, selected && styles.optionRowSelected]}
+            android_ripple={{ color: '#E5E7EB' }}
+          >
+            <Text style={[styles.optionLabel, { color: C.textPrimary }]}>{NATIVE_LANGUAGE_NAME[lang]}</Text>
+            <Radio selected={selected} />
+          </Pressable>
+        );
+      })}
+    </Section>
+  );
+
+  const SortOptions = (
+    <Section title="Sort priority">
+      {(['korean','myanmar','english'] as SortPriority[]).map((sort) => {
+        const selected = settings.sortBy === sort;
+        return (
+          <Pressable
+            key={sort}
+            onPress={() => updateSetting('sortBy', sort)}
+            style={[styles.optionRow, selected && styles.optionRowSelected]}
+            android_ripple={{ color: '#E5E7EB' }}
+          >
+            <Text style={[styles.optionLabel, { color: C.textPrimary }]}>{sort}</Text>
+            <Radio selected={selected} />
+          </Pressable>
+        );
+      })}
+    </Section>
+  );
+
+  const FontSizeOptions = (
+    <Section title="Font size">
+      {(['small','default','large'] as FontSize[]).map((size) => {
+        const selected = settings.fontSize === size;
+        return (
+          <Pressable
+            key={size}
+            onPress={() => updateSetting('fontSize', size)}
+            style={[styles.optionRow, selected && styles.optionRowSelected]}
+            android_ripple={{ color: '#E5E7EB' }}
+          >
+            <Text style={[styles.optionLabel, { color: C.textPrimary }]}>{size}</Text>
+            <Radio selected={selected} />
+          </Pressable>
+        );
+      })}
+    </Section>
   );
 
   return (
-    <SafeAreaView style={[styles.safeArea, { backgroundColor: C.background }] }>
+    <SafeAreaView style={[styles.safeArea, { backgroundColor: C.background }]}>
       <View style={[styles.container, { paddingHorizontal: 16 }]}>        
         <Text style={[styles.title, { color: C.textPrimary }]}>Settings</Text>
-        <View style={[styles.card, { borderColor: C.border, backgroundColor: C.surface }]}>
-          <Text style={[styles.sectionTitle, { color: C.textSecondary }]}>Language</Text>
-          {(['myanmar','korean','english'] as AppLanguage[]).map((lang) => (
-            <View key={lang} style={styles.optionRow}>
-              <Text style={[styles.optionLabel, { color: C.textPrimary }]}>{NATIVE_LANGUAGE_NAME[lang]}</Text>
-              <Text onPress={() => updateSetting('uiLanguage', lang)}>
-                <Check checked={settings.uiLanguage === lang} />
-              </Text>
-            </View>
-          ))}
-          <View style={[styles.divider, { backgroundColor: C.border }]} />
-          <Text style={[styles.sectionTitle, { color: C.textSecondary }]}>Sort priority</Text>
-          {(['korean','myanmar','english'] as SortPriority[]).map((sort) => (
-            <View key={sort} style={styles.optionRow}>
-              <Text style={[styles.optionLabel, { color: C.textPrimary }]}>{sort}</Text>
-              <Text onPress={() => updateSetting('sortBy', sort)}>
-                <Check checked={settings.sortBy === sort} />
-              </Text>
-            </View>
-          ))}
-        </View>
-    </View>
+        {LanguageOptions}
+        {SortOptions}
+        {FontSizeOptions}
+      </View>
     </SafeAreaView>
   );
 }
@@ -311,6 +374,17 @@ function FavoriteButton({ entryId }: { entryId: string }) {
 }
 
 function FavoritesScreen() {
+  const { settings } = useSettings();
+  const fontScale = React.useMemo(() => {
+    switch (settings.fontSize) {
+      case 'small':
+        return 0.9;
+      case 'large':
+        return 1.1;
+      default:
+        return 1.0;
+    }
+  }, [settings.fontSize]);
   const { favoriteIds } = useLibrary();
   const items = dictionaryEntries.filter((d) => favoriteIds.has(d.id));
   const itemsSorted = [...items].sort((a, b) => a.korean.localeCompare(b.korean, 'ko', { sensitivity: 'base' }));
@@ -323,9 +397,9 @@ function FavoritesScreen() {
         renderItem={({ item }) => (
           <View style={[styles.row, styles.rowTablet]}>
             <View style={styles.rowTextGroup}>
-              <Text style={styles.korean}>{item.korean}</Text>
-              <Text style={styles.myanmar}>{item.myanmar}</Text>
-              {!!item.english && <Text style={styles.englishGloss}>{item.english}</Text>}
+              <Text style={[styles.korean, { fontSize: styles.korean.fontSize * fontScale }]}>{item.korean}</Text>
+              <Text allowFontScaling={false} style={[styles.myanmar, { fontSize: styles.myanmar.fontSize * fontScale }]}>{item.myanmar}</Text>
+              {!!item.english && <Text style={[styles.englishGloss, { fontSize: styles.englishGloss.fontSize * fontScale }]}>{item.english}</Text>}
             </View>
             <FavoriteButton entryId={item.id} />
           </View>
@@ -337,6 +411,17 @@ function FavoritesScreen() {
 }
 
 function HistoryScreen() {
+  const { settings } = useSettings();
+  const fontScale = React.useMemo(() => {
+    switch (settings.fontSize) {
+      case 'small':
+        return 0.9;
+      case 'large':
+        return 1.1;
+      default:
+        return 1.0;
+    }
+  }, [settings.fontSize]);
   const { history, clearHistory } = useLibrary();
   const items = history
     .map((h) => dictionaryEntries.find((d) => d.id === h.id))
@@ -351,9 +436,9 @@ function HistoryScreen() {
         renderItem={({ item }) => (
           <View style={[styles.row, styles.rowTablet]}>
             <View style={styles.rowTextGroup}>
-              <Text style={styles.korean}>{item.korean}</Text>
-              <Text style={styles.myanmar}>{item.myanmar}</Text>
-              {!!item.english && <Text style={styles.englishGloss}>{item.english}</Text>}
+              <Text style={[styles.korean, { fontSize: styles.korean.fontSize * fontScale }]}>{item.korean}</Text>
+              <Text allowFontScaling={false} style={[styles.myanmar, { fontSize: styles.myanmar.fontSize * fontScale }]}>{item.myanmar}</Text>
+              {!!item.english && <Text style={[styles.englishGloss, { fontSize: styles.englishGloss.fontSize * fontScale }]}>{item.english}</Text>}
             </View>
             <FavoriteButton entryId={item.id} />
           </View>
@@ -412,6 +497,8 @@ const styles = StyleSheet.create({
   rowTextGroup: {
     flex: 1,
   },
+
+  //font sizes for different languages
   korean: {
     fontSize: 16,
     color: '#111827',
@@ -422,15 +509,16 @@ const styles = StyleSheet.create({
   },
   myanmar: {
     marginTop: 2,
-    fontSize: 15,
+    fontSize: 13,
     color: '#374151',
+    lineHeight: 30,
   },
   myanmarTablet: {
-    fontSize: 17,
+    fontSize: 12,
   },
   englishGloss: {
     marginTop: 2,
-    fontSize: 13,
+    fontSize: 12,
     color: '#6B7280',
   },
   rowHeader: {
@@ -486,11 +574,23 @@ const styles = StyleSheet.create({
   optionLabel: {
     fontSize: 16,
   },
+  optionIcon: {
+    marginLeft: 8,
+  },
   checkbox: {
     width: 22,
     height: 22,
     borderRadius: 6,
     borderWidth: 2,
+  },
+  sectionHeader: {
+    fontWeight: '700',
+    marginBottom: 8,
+    opacity: 0.9,
+  },
+  optionRowSelected: {
+    backgroundColor: '#F3F4F6',
+    borderRadius: 8,
   },
   aboutTitle: {
     fontSize: 22,
@@ -498,8 +598,8 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   aboutParagraph: {
-    fontSize: 16,
-    lineHeight: 24,
+    fontSize: 15,
+    lineHeight: 28,
     marginBottom: 6,
   },
   bulletRow: {
@@ -510,7 +610,7 @@ const styles = StyleSheet.create({
   },
   bulletText: {
     flex: 1,
-    fontSize: 16,
-    lineHeight: 24,
+    fontSize: 15,
+    lineHeight: 28,
   },
 });
