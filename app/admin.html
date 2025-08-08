@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Myanmar Korean Dictionary - Admin Panel</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .word-item { border: 1px solid #ddd; margin: 10px 0; padding: 15px; border-radius: 5px; }
+        .word-item.pending { border-left: 5px solid orange; }
+        .word-item.approved { border-left: 5px solid green; }
+        button { margin: 5px; padding: 8px 15px; cursor: pointer; }
+        .approve { background: #4CAF50; color: white; border: none; }
+        .reject { background: #f44336; color: white; border: none; }
+        .refresh { background: #2196F3; color: white; border: none; }
+        .edit { background: #FF9800; color: white; border: none; }
+        .save { background: #4CAF50; color: white; border: none; }
+        .cancel { background: #757575; color: white; border: none; }
+        .edit-form { margin-top: 10px; padding: 10px; border: 1px solid #ddd; border-radius: 5px; background: #f9f9f9; }
+        .edit-input { width: 100%; margin: 5px 0; padding: 8px; border: 1px solid #ddd; border-radius: 3px; }
+        .edit-select { width: 100%; margin: 5px 0; padding: 8px; border: 1px solid #ddd; border-radius: 3px; }
+        .login-form { max-width: 400px; margin: 50px auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px; background: #f9f9f9; }
+        .login-input { width: 100%; margin: 10px 0; padding: 10px; border: 1px solid #ddd; border-radius: 5px; }
+        .login-button { width: 100%; padding: 12px; background: #2196F3; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        .hidden { display: none; }
+        .stats { background: #e3f2fd; padding: 15px; margin: 10px 0; border-radius: 5px; }
+        .logout-btn { background: #757575; color: white; border: none; padding: 8px 15px; border-radius: 3px; cursor: pointer; float: right; }
+    </style>
+</head>
+<body>
+    <!-- Login Form -->
+    <div id="login-section">
+        <div class="login-form">
+            <h2>Admin Login</h2>
+            <input type="email" id="admin-email" placeholder="Admin Email" class="login-input">
+            <input type="password" id="admin-password" placeholder="Admin Password" class="login-input">
+            <button class="login-button" onclick="adminLogin()">Login</button>
+            <p style="color: #666; font-size: 12px; margin-top: 10px;">
+                Demo: admin@example.com / admin123
+            </p>
+        </div>
+    </div>
+
+    <!-- Admin Panel -->
+    <div id="admin-panel" class="hidden">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <h1>Myanmar Korean Dictionary - Admin Panel</h1>
+            <button class="logout-btn" onclick="adminLogout()">Logout</button>
+        </div>
+        
+        <div class="stats">
+            <h3>Dashboard</h3>
+            <p><strong>Admin:</strong> <span id="admin-email-display"></span></p>
+            <p><strong>Total Submissions:</strong> <span id="total-submissions">-</span></p>
+            <p><strong>Pending:</strong> <span id="pending-count">-</span></p>
+            <p><strong>Approved:</strong> <span id="approved-count">-</span></p>
+            <p><strong>Dictionary Words:</strong> <span id="dictionary-count">-</span></p>
+        </div>
+        
+        <!-- Admin Direct Input -->
+        <div class="edit-form" style="margin: 20px 0;">
+            <h3>Add Word Directly to Dictionary</h3>
+            <input type="text" id="direct-korean" placeholder="Korean" class="edit-input">
+            <input type="text" id="direct-myanmar" placeholder="Myanmar" class="edit-input">
+            <input type="text" id="direct-english" placeholder="English (optional)" class="edit-input">
+            <select id="direct-pos" class="edit-select">
+                <option value="noun">Noun</option>
+                <option value="verb">Verb</option>
+                <option value="adjective">Adjective</option>
+                <option value="adverb">Adverb</option>
+                <option value="pronoun">Pronoun</option>
+                <option value="preposition">Preposition</option>
+                <option value="conjunction">Conjunction</option>
+                <option value="interjection">Interjection</option>
+                <option value="particle">Particle</option>
+                <option value="other">Other</option>
+            </select>
+            <button class="save" onclick="addDirectWord()">Add to Dictionary</button>
+        </div>
+        
+        <div style="margin: 20px 0;">
+            <button class="refresh" onclick="loadWords()">Refresh Submissions</button>
+            <button class="refresh" onclick="loadDictionary()" style="margin-left: 10px;">View Dictionary</button>
+        </div>
+        <div id="words-container"></div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js';
+        import { getFirestore, collection, getDocs, doc, updateDoc, deleteDoc, query, orderBy, addDoc, serverTimestamp, getDoc } from 'https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js';
+
+        // Your Firebase config (same as in app.json)
+        const firebaseConfig = {
+            apiKey: "AIzaSyDOT1jC27f26f3BIW-yFcgHTLGdEWeiopQ",
+            authDomain: "mm-kr-expo.firebaseapp.com",
+            projectId: "mm-kr-expo",
+            storageBucket: "mm-kr-expo.firebasestorage.app",
+            messagingSenderId: "974504645463",
+            appId: "1:974504645463:web:0cd68a7b52ea2bcddb6412"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Simple admin authentication (in production, use proper Firebase Auth)
+        const ADMIN_CREDENTIALS = {
+            'admin@example.com': 'admin123',
+            'admin@mmkr.com': 'mmkr2025'
+        };
+
+        // Check if admin is already logged in
+        window.onload = function() {
+            const adminEmail = localStorage.getItem('admin_email');
+            if (adminEmail && ADMIN_CREDENTIALS[adminEmail]) {
+                showAdminPanel(adminEmail);
+            }
+        };
+
+        window.adminLogin = function() {
+            const email = document.getElementById('admin-email').value.trim();
+            const password = document.getElementById('admin-password').value.trim();
+
+            if (ADMIN_CREDENTIALS[email] && ADMIN_CREDENTIALS[email] === password) {
+                localStorage.setItem('admin_email', email);
+                showAdminPanel(email);
+            } else {
+                alert('Invalid admin credentials!');
+            }
+        };
+
+        window.adminLogout = function() {
+            localStorage.removeItem('admin_email');
+            document.getElementById('admin-panel').classList.add('hidden');
+            document.getElementById('login-section').classList.remove('hidden');
+        };
+
+        function showAdminPanel(email) {
+            document.getElementById('login-section').classList.add('hidden');
+            document.getElementById('admin-panel').classList.remove('hidden');
+            document.getElementById('admin-email-display').textContent = email;
+            loadWords();
+        }
+
+        window.loadWords = async function() {
+            const container = document.getElementById('words-container');
+            container.innerHTML = '<p>Loading...</p>';
+
+            try {
+                const q = query(collection(db, 'pending_words'), orderBy('submittedAt', 'desc'));
+                const snapshot = await getDocs(q);
+                
+                            if (snapshot.empty) {
+                container.innerHTML = '<p>No submitted words yet. Submit some words in the app first!</p>';
+                const dictionaryCount = await loadDictionaryCount();
+                updateDashboardStats(0, 0, 0, dictionaryCount);
+                return;
+            }
+
+                let html = '';
+                let totalCount = 0;
+                let pendingCount = 0;
+                let approvedCount = 0;
+                
+                snapshot.forEach(doc => {
+                    totalCount++;
+                    const data = doc.data();
+                    const status = data.status || 'pending';
+                    
+                    if (status === 'pending') pendingCount++;
+                    else if (status === 'approved') approvedCount++;
+                    html += `
+                        <div class="word-item ${status}" id="word-${doc.id}">
+                            <div id="display-${doc.id}">
+                                <h3>${data.korean} → ${data.myanmar}</h3>
+                                <p><strong>English:</strong> ${data.english || 'N/A'}</p>
+                                <p><strong>Part of Speech:</strong> ${data.pos || 'N/A'}</p>
+                                <p><strong>Status:</strong> ${status}</p>
+                                <p><strong>Submitted by:</strong> ${data.submittedBy || 'Anonymous'}</p>
+                                <p><strong>Submitted:</strong> ${data.submittedAt?.toDate?.()?.toLocaleString() || 'Unknown'}</p>
+                                ${status === 'pending' ? `
+                                    <button class="edit" onclick="editWord('${doc.id}', '${data.korean}', '${data.myanmar}', '${data.english || ''}', '${data.pos || 'noun'}')">Edit</button>
+                                    <button class="approve" onclick="approveWord('${doc.id}')">Approve</button>
+                                    <button class="reject" onclick="rejectWord('${doc.id}')">Reject</button>
+                                ` : ''}
+                            </div>
+                            <div id="edit-${doc.id}" class="edit-form" style="display: none;">
+                                <h4>Edit Word</h4>
+                                <input type="text" id="edit-korean-${doc.id}" placeholder="Korean" class="edit-input">
+                                <input type="text" id="edit-myanmar-${doc.id}" placeholder="Myanmar" class="edit-input">
+                                <input type="text" id="edit-english-${doc.id}" placeholder="English (optional)" class="edit-input">
+                                <select id="edit-pos-${doc.id}" class="edit-select">
+                                    <option value="noun">Noun</option>
+                                    <option value="verb">Verb</option>
+                                    <option value="adjective">Adjective</option>
+                                    <option value="adverb">Adverb</option>
+                                    <option value="pronoun">Pronoun</option>
+                                    <option value="preposition">Preposition</option>
+                                    <option value="conjunction">Conjunction</option>
+                                    <option value="interjection">Interjection</option>
+                                    <option value="particle">Particle</option>
+                                    <option value="other">Other</option>
+                                </select>
+                                <button class="save" onclick="saveEdit('${doc.id}')">Save Changes</button>
+                                <button class="cancel" onclick="cancelEdit('${doc.id}')">Cancel</button>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                container.innerHTML = html;
+                const dictionaryCount = await loadDictionaryCount();
+                updateDashboardStats(totalCount, pendingCount, approvedCount, dictionaryCount);
+            } catch (error) {
+                container.innerHTML = '<p>Error loading words: ' + error.message + '</p>';
+                console.error('Error:', error);
+            }
+        };
+
+        function updateDashboardStats(total, pending, approved, dictionaryCount = 0) {
+            document.getElementById('total-submissions').textContent = total;
+            document.getElementById('pending-count').textContent = pending;
+            document.getElementById('approved-count').textContent = approved;
+            document.getElementById('dictionary-count').textContent = dictionaryCount;
+        }
+
+        // Load dictionary count
+        async function loadDictionaryCount() {
+            try {
+                const snapshot = await getDocs(collection(db, 'dictionary'));
+                return snapshot.size;
+            } catch (error) {
+                console.error('Error loading dictionary count:', error);
+                return 0;
+            }
+        }
+
+        // Add word directly to dictionary
+        window.addDirectWord = async function() {
+            const korean = document.getElementById('direct-korean').value.trim();
+            const myanmar = document.getElementById('direct-myanmar').value.trim();
+            const english = document.getElementById('direct-english').value.trim();
+            const pos = document.getElementById('direct-pos').value;
+
+            if (!korean || !myanmar) {
+                alert('Korean and Myanmar fields are required!');
+                return;
+            }
+
+            try {
+                const adminEmail = localStorage.getItem('admin_email');
+                
+                // Ensure proper UTF-8 encoding for Myanmar text
+                const cleanMyanmar = myanmar.normalize('NFC');
+                const cleanKorean = korean.normalize('NFC');
+                
+                // Add to main dictionary collection
+                await addDoc(collection(db, 'dictionary'), {
+                    korean: cleanKorean,
+                    myanmar: cleanMyanmar,
+                    english: english || '',
+                    pos: pos,
+                    addedBy: adminEmail || 'admin',
+                    addedAt: serverTimestamp(),
+                    source: 'admin_direct'
+                });
+
+                // Clear form
+                document.getElementById('direct-korean').value = '';
+                document.getElementById('direct-myanmar').value = '';
+                document.getElementById('direct-english').value = '';
+                document.getElementById('direct-pos').value = 'noun';
+
+                alert('Word added to dictionary successfully!');
+                
+                // Refresh stats
+                const dictionaryCount = await loadDictionaryCount();
+                const currentStats = {
+                    total: parseInt(document.getElementById('total-submissions').textContent) || 0,
+                    pending: parseInt(document.getElementById('pending-count').textContent) || 0,
+                    approved: parseInt(document.getElementById('approved-count').textContent) || 0
+                };
+                updateDashboardStats(currentStats.total, currentStats.pending, currentStats.approved, dictionaryCount);
+                
+            } catch (error) {
+                alert('Error adding word: ' + error.message);
+                console.error('Error:', error);
+            }
+        };
+
+        // Load and display dictionary words
+        window.loadDictionary = async function() {
+            const container = document.getElementById('words-container');
+            container.innerHTML = '<p>Loading dictionary...</p>';
+
+            try {
+                const q = query(collection(db, 'dictionary'), orderBy('korean'));
+                const snapshot = await getDocs(q);
+                
+                if (snapshot.empty) {
+                    container.innerHTML = '<p>No dictionary words yet.</p>';
+                    return;
+                }
+
+                let html = '<h3>Dictionary Words</h3>';
+                snapshot.forEach(doc => {
+                    const data = doc.data();
+                    const source = data.source === 'admin_direct' ? '👨‍💼 Admin' : '✅ Approved';
+                    html += `
+                        <div class="word-item approved" id="dict-${doc.id}">
+                            <h3>${data.korean} → ${data.myanmar}</h3>
+                            <p><strong>English:</strong> ${data.english || 'N/A'}</p>
+                            <p><strong>Part of Speech:</strong> ${data.pos || 'N/A'}</p>
+                            <p><strong>Source:</strong> ${source}</p>
+                            <p><strong>Added by:</strong> ${data.addedBy || 'Unknown'}</p>
+                            <p><strong>Added:</strong> ${data.addedAt?.toDate?.()?.toLocaleString() || 'Unknown'}</p>
+                            <button class="reject" onclick="deleteDictionaryWord('${doc.id}')">Delete</button>
+                        </div>
+                    `;
+                });
+                
+                container.innerHTML = html;
+                
+            } catch (error) {
+                container.innerHTML = '<p>Error loading dictionary: ' + error.message + '</p>';
+                console.error('Error:', error);
+            }
+        };
+
+        // Delete dictionary word
+        window.deleteDictionaryWord = async function(docId) {
+            if (!confirm('Are you sure you want to delete this dictionary word?')) {
+                return;
+            }
+            
+            try {
+                await deleteDoc(doc(db, 'dictionary', docId));
+                loadDictionary(); // Refresh
+                alert('Dictionary word deleted!');
+                
+                // Update count
+                const dictionaryCount = await loadDictionaryCount();
+                const currentStats = {
+                    total: parseInt(document.getElementById('total-submissions').textContent) || 0,
+                    pending: parseInt(document.getElementById('pending-count').textContent) || 0,
+                    approved: parseInt(document.getElementById('approved-count').textContent) || 0
+                };
+                updateDashboardStats(currentStats.total, currentStats.pending, currentStats.approved, dictionaryCount);
+                
+            } catch (error) {
+                alert('Error deleting word: ' + error.message);
+            }
+        };
+
+        window.approveWord = async function(docId) {
+            try {
+                const adminEmail = localStorage.getItem('admin_email');
+                
+                // Get the pending word data
+                const pendingDocRef = doc(db, 'pending_words', docId);
+                const pendingDocSnap = await getDoc(pendingDocRef);
+                if (!pendingDocSnap.exists()) {
+                    alert('Word not found!');
+                    return;
+                }
+                
+                const wordData = pendingDocSnap.data();
+                
+                // Ensure proper UTF-8 encoding
+                const cleanMyanmar = (wordData.myanmar || '').normalize('NFC');
+                const cleanKorean = (wordData.korean || '').normalize('NFC');
+                
+                // Add to main dictionary collection
+                await addDoc(collection(db, 'dictionary'), {
+                    korean: cleanKorean,
+                    myanmar: cleanMyanmar,
+                    english: wordData.english || '',
+                    pos: wordData.pos || 'noun',
+                    addedBy: adminEmail || 'admin',
+                    addedAt: serverTimestamp(),
+                    source: 'user_approved',
+                    originalSubmitter: wordData.submittedBy
+                });
+                
+                // Update pending word status
+                await updateDoc(doc(db, 'pending_words', docId), { 
+                    status: 'approved',
+                    approvedAt: new Date(),
+                    approvedBy: adminEmail || 'admin'
+                });
+                
+                loadWords(); // Refresh
+                alert('Word approved and added to dictionary!');
+            } catch (error) {
+                alert('Error approving word: ' + error.message);
+                console.error('Error:', error);
+            }
+        };
+
+        window.rejectWord = async function(docId) {
+            try {
+                await deleteDoc(doc(db, 'pending_words', docId));
+                loadWords(); // Refresh
+                alert('Word rejected and deleted!');
+            } catch (error) {
+                alert('Error rejecting word: ' + error.message);
+            }
+        };
+
+        window.editWord = function(docId, korean, myanmar, english, pos) {
+            // Hide display and show edit form
+            document.getElementById(`display-${docId}`).style.display = 'none';
+            document.getElementById(`edit-${docId}`).style.display = 'block';
+            
+            // Populate edit form with current values
+            document.getElementById(`edit-korean-${docId}`).value = korean;
+            document.getElementById(`edit-myanmar-${docId}`).value = myanmar;
+            document.getElementById(`edit-english-${docId}`).value = english;
+            document.getElementById(`edit-pos-${docId}`).value = pos;
+        };
+
+        window.cancelEdit = function(docId) {
+            // Hide edit form and show display
+            document.getElementById(`edit-${docId}`).style.display = 'none';
+            document.getElementById(`display-${docId}`).style.display = 'block';
+        };
+
+        window.saveEdit = async function(docId) {
+            try {
+                const korean = document.getElementById(`edit-korean-${docId}`).value.trim();
+                const myanmar = document.getElementById(`edit-myanmar-${docId}`).value.trim();
+                const english = document.getElementById(`edit-english-${docId}`).value.trim();
+                const pos = document.getElementById(`edit-pos-${docId}`).value;
+
+                if (!korean || !myanmar) {
+                    alert('Korean and Myanmar fields are required!');
+                    return;
+                }
+
+                await updateDoc(doc(db, 'pending_words', docId), {
+                    korean: korean,
+                    myanmar: myanmar,
+                    english: english || '',
+                    pos: pos,
+                    editedAt: new Date(),
+                    editedBy: 'admin'
+                });
+
+                loadWords(); // Refresh
+                alert('Word updated successfully!');
+            } catch (error) {
+                alert('Error updating word: ' + error.message);
+                console.error('Error:', error);
+            }
+        };
+
+        // Load words on page load
+        loadWords();
+    </script>
+</body>
+</html>

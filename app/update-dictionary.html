@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dictionary Update Tool</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 20px; 
+            background: #f5f5f5; 
+        }
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            background: white; 
+            padding: 20px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+        }
+        h1 { 
+            color: #1f2937; 
+            text-align: center; 
+            margin-bottom: 30px; 
+        }
+        .step {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+        }
+        .step h3 {
+            color: #2563eb;
+            margin-top: 0;
+        }
+        button { 
+            padding: 12px 24px; 
+            margin: 10px; 
+            background: #2563eb; 
+            color: white; 
+            border: none; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            font-size: 14px;
+            font-weight: 600;
+        }
+        button:hover { background: #1d4ed8; }
+        button:disabled { background: #9ca3af; cursor: not-allowed; }
+        .success { background: #10b981; }
+        .success:hover { background: #059669; }
+        .danger { background: #ef4444; }
+        .danger:hover { background: #dc2626; }
+        textarea { 
+            width: 100%; 
+            height: 400px; 
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace; 
+            font-size: 12px;
+            padding: 16px; 
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            background: #f9fafb;
+            resize: vertical;
+        }
+        .log { 
+            background: #f3f4f6; 
+            padding: 16px; 
+            margin: 16px 0; 
+            border-radius: 8px; 
+            white-space: pre-wrap; 
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .status {
+            padding: 12px;
+            border-radius: 8px;
+            margin: 16px 0;
+            font-weight: 600;
+        }
+        .status.success { background: #d1fae5; color: #065f46; border: 1px solid #a7f3d0; }
+        .status.error { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+        .status.info { background: #dbeafe; color: #1e40af; border: 1px solid #93c5fd; }
+        .code-block {
+            background: #1f2937;
+            color: #f9fafb;
+            padding: 16px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 12px;
+            overflow-x: auto;
+            margin: 12px 0;
+        }
+        .highlight { background-color: #fef3c7; padding: 2px 4px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 Dictionary Update Tool</h1>
+        <p>This tool helps you update your local dictionary file with approved words from Firebase.</p>
+
+        <div class="step">
+            <h3>Step 1: Fetch Updates from Firebase</h3>
+            <p>Click to fetch approved words from your Firebase database.</p>
+            <button onclick="fetchUpdates()">Fetch Updates from Firebase</button>
+            <div id="fetch-status"></div>
+        </div>
+
+        <div class="step">
+            <h3>Step 2: Generate Updated Dictionary File</h3>
+            <p>Review the fetched updates and generate the new dictionary file content.</p>
+            <button onclick="generateDictionaryFile()" id="generate-btn" disabled>Generate Dictionary File</button>
+            <div id="updates-preview"></div>
+        </div>
+
+        <div class="step">
+            <h3>Step 3: Copy & Apply Updates</h3>
+            <p>Copy the generated content and replace your <span class="highlight">dictionary.ts</span> file.</p>
+            <textarea id="dictionary-output" placeholder="Generated dictionary file content will appear here..." readonly></textarea>
+            <div style="text-align: center; margin-top: 16px;">
+                <button onclick="copyToClipboard()" class="success" id="copy-btn" disabled>📋 Copy to Clipboard</button>
+                <button onclick="downloadFile()" class="success" id="download-btn" disabled>💾 Download File</button>
+            </div>
+        </div>
+
+        <div class="step">
+            <h3>Step 4: Manual File Update</h3>
+            <div class="code-block">
+# Navigate to your app directory
+cd /Users/aungkoko/mm_kr/app/data
+
+# Backup your current dictionary (optional)
+cp dictionary.ts dictionary.ts.backup
+
+# Replace the content of dictionary.ts with the generated content
+# You can use any text editor (VS Code, nano, vim, etc.)
+code dictionary.ts
+            </div>
+            <p><strong>After updating the file:</strong></p>
+            <ul>
+                <li>Save the file</li>
+                <li>Restart your React Native app</li>
+                <li>New words should appear in search results</li>
+            </ul>
+        </div>
+
+        <div id="log" class="log" style="display: none;"></div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js';
+        import { getFirestore, collection, getDocs, query, orderBy } from 'https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js';
+
+        // Firebase config
+        const firebaseConfig = {
+            apiKey: "AIzaSyDOT1jC27f26f3BIW-yFcgHTLGdEWeiopQ",
+            authDomain: "mm-kr-expo.firebaseapp.com",
+            projectId: "mm-kr-expo",
+            storageBucket: "mm-kr-expo.firebasestorage.app",
+            messagingSenderId: "974504645463",
+            appId: "1:974504645463:web:0cd68a7b52ea2bcddb6412"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Static dictionary entries (current local data)
+        const staticDictionary = [
+            { id: '1', korean: '안녕하세요', myanmar: 'မင်္ဂလာပါ', english: 'Hello', pos: 'interjection' },
+            { id: '2', korean: '감사합니다', myanmar: 'ကျေးဇူးတင်ပါတယ်', english: 'Thank you', pos: 'interjection' },
+            { id: '3', korean: '네', myanmar: 'ဟုတ်ကဲ့', english: 'Yes', pos: 'interjection' },
+            { id: '4', korean: '아니요', myanmar: 'မဟုတ်ဘူး', english: 'No', pos: 'interjection' },
+            { id: '5', korean: '음식', myanmar: 'အစားအသောက်', english: 'Food', pos: 'noun' },
+            { id: '6', korean: '물', myanmar: 'ရေ', english: 'Water', pos: 'noun' },
+            { id: '7', korean: '학교', myanmar: 'ကျောင်း', english: 'School', pos: 'noun' },
+            { id: '8', korean: '친구', myanmar: 'သူငယ်ချင်း', english: 'Friend', pos: 'noun' },
+            { id: '9', korean: '사랑', myanmar: 'ချစ်ခြင်း', english: 'Love', pos: 'noun' },
+            { id: '10', korean: '가족', myanmar: 'မိသားစု', english: 'Family', pos: 'noun' },
+        ];
+
+        let firebaseUpdates = [];
+
+        function showStatus(message, type = 'info') {
+            const statusDiv = document.getElementById('fetch-status');
+            statusDiv.innerHTML = `<div class="status ${type}">${message}</div>`;
+        }
+
+        function log(message) {
+            const logDiv = document.getElementById('log');
+            const timestamp = new Date().toLocaleTimeString();
+            logDiv.textContent += `[${timestamp}] ${message}\n`;
+            logDiv.style.display = 'block';
+            logDiv.scrollTop = logDiv.scrollHeight;
+        }
+
+        window.fetchUpdates = async function() {
+            showStatus('🔄 Fetching updates from Firebase...', 'info');
+            log('Starting to fetch updates from Firebase...');
+
+            try {
+                const q = query(collection(db, 'dictionary'), orderBy('addedAt', 'desc'));
+                const snapshot = await getDocs(q);
+
+                if (snapshot.empty) {
+                    showStatus('ℹ️ No words found in Firebase dictionary', 'info');
+                    log('No words found in Firebase dictionary collection');
+                    return;
+                }
+
+                firebaseUpdates = [];
+                const existingKoreanWords = new Set(staticDictionary.map(entry => entry.korean));
+
+                snapshot.forEach(doc => {
+                    const data = doc.data();
+                    const update = {
+                        id: doc.id,
+                        korean: data.korean || '',
+                        myanmar: data.myanmar || '',
+                        english: data.english || '',
+                        pos: data.pos || 'noun',
+                        addedBy: data.addedBy || 'admin',
+                        addedAt: data.addedAt?.toDate() || new Date(),
+                        source: data.source || 'unknown',
+                        isNew: !existingKoreanWords.has(data.korean)
+                    };
+                    firebaseUpdates.push(update);
+                });
+
+                const newWords = firebaseUpdates.filter(u => u.isNew).length;
+                showStatus(`✅ Found ${firebaseUpdates.length} words (${newWords} new)`, 'success');
+                log(`Successfully fetched ${firebaseUpdates.length} words from Firebase`);
+                log(`${newWords} words are new (not in local dictionary)`);
+
+                // Show preview
+                showUpdatesPreview();
+                document.getElementById('generate-btn').disabled = false;
+
+            } catch (error) {
+                showStatus(`❌ Error fetching updates: ${error.message}`, 'error');
+                log(`Error: ${error.message}`);
+                console.error('Fetch error:', error);
+            }
+        };
+
+        function showUpdatesPreview() {
+            const previewDiv = document.getElementById('updates-preview');
+            const newWords = firebaseUpdates.filter(u => u.isNew);
+            
+            if (newWords.length === 0) {
+                previewDiv.innerHTML = '<div class="status info">ℹ️ All Firebase words already exist in local dictionary</div>';
+                return;
+            }
+
+            let html = `<div class="status success">📝 Found ${newWords.length} new words to add:</div>`;
+            html += '<div style="max-height: 200px; overflow-y: auto; border: 1px solid #d1d5db; border-radius: 8px; padding: 12px; background: #f9fafb;">';
+            
+            newWords.slice(0, 10).forEach(word => {
+                html += `<div style="margin-bottom: 8px; padding: 8px; background: white; border-radius: 4px;">`;
+                html += `<strong>${word.korean}</strong> → <span style="font-family: 'NotoSansMyanmar', serif;">${word.myanmar}</span>`;
+                if (word.english) html += ` (${word.english})`;
+                html += ` <span style="color: #6b7280; font-size: 12px;">[${word.pos}]</span>`;
+                html += `</div>`;
+            });
+            
+            if (newWords.length > 10) {
+                html += `<div style="text-align: center; color: #6b7280; font-style: italic;">... and ${newWords.length - 10} more words</div>`;
+            }
+            
+            html += '</div>';
+            previewDiv.innerHTML = html;
+        }
+
+        window.generateDictionaryFile = function() {
+            if (firebaseUpdates.length === 0) {
+                showStatus('❌ No updates to generate. Fetch updates first.', 'error');
+                return;
+            }
+
+            log('Generating updated dictionary file...');
+
+            // Combine static + new Firebase words
+            const newWords = firebaseUpdates.filter(u => u.isNew);
+            const allEntries = [...staticDictionary];
+            
+            // Add new words with incremental IDs
+            let nextId = Math.max(...staticDictionary.map(e => parseInt(e.id) || 0)) + 1;
+            newWords.forEach(word => {
+                allEntries.push({
+                    id: nextId.toString(),
+                    korean: word.korean,
+                    myanmar: word.myanmar,
+                    english: word.english || undefined,
+                    pos: word.pos
+                });
+                nextId++;
+            });
+
+            // Sort alphabetically by Korean
+            allEntries.sort((a, b) => a.korean.localeCompare(b.korean));
+
+            // Generate TypeScript file content
+            const fileContent = `import type { DictionaryEntry } from '../App';
+
+// Dictionary entries - includes both initial data and approved user submissions
+// Last updated: ${new Date().toLocaleString()}
+// Total entries: ${allEntries.length} (${newWords.length} new from Firebase)
+export const dictionaryEntries: DictionaryEntry[] = [
+${allEntries.map(entry => {
+    const english = entry.english ? `'${entry.english}'` : 'undefined';
+    const pos = entry.pos ? `'${entry.pos}'` : 'undefined';
+    return `  { id: '${entry.id}', korean: '${entry.korean}', myanmar: '${entry.myanmar}', english: ${english}, pos: ${pos} },`;
+}).join('\n')}
+];
+`;
+
+            document.getElementById('dictionary-output').value = fileContent;
+            document.getElementById('copy-btn').disabled = false;
+            document.getElementById('download-btn').disabled = false;
+
+            showStatus(`✅ Generated dictionary file with ${allEntries.length} total entries (${newWords.length} new)`, 'success');
+            log(`Generated dictionary file with ${allEntries.length} entries`);
+            log(`Added ${newWords.length} new words from Firebase`);
+        };
+
+        window.copyToClipboard = function() {
+            const textarea = document.getElementById('dictionary-output');
+            textarea.select();
+            document.execCommand('copy');
+            
+            const btn = document.getElementById('copy-btn');
+            const originalText = btn.textContent;
+            btn.textContent = '✅ Copied!';
+            setTimeout(() => {
+                btn.textContent = originalText;
+            }, 2000);
+            
+            log('Dictionary content copied to clipboard');
+        };
+
+        window.downloadFile = function() {
+            const content = document.getElementById('dictionary-output').value;
+            const blob = new Blob([content], { type: 'text/typescript' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'dictionary.ts';
+            a.click();
+            
+            URL.revokeObjectURL(url);
+            log('Dictionary file downloaded');
+        };
+    </script>
+</body>
+</html>

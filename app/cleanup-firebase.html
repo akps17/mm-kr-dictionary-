@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Firebase Data Cleanup Tool</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .container { max-width: 800px; margin: 0 auto; }
+        button { padding: 10px 20px; margin: 10px; background: #2196F3; color: white; border: none; cursor: pointer; }
+        .danger { background: #f44336; }
+        .log { background: #f5f5f5; padding: 15px; margin: 10px 0; border-radius: 5px; white-space: pre-wrap; }
+        .success { background: #e8f5e8; }
+        .error { background: #ffe8e8; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Firebase Data Cleanup Tool</h1>
+        <p>This tool will clean up corrupted Myanmar text in Firebase and re-add properly encoded data.</p>
+        
+        <button onclick="checkCorruptedData()">Check Corrupted Data</button>
+        <button onclick="cleanupAndRemigrate()" class="danger">Delete All & Re-migrate</button>
+        
+        <div id="log" class="log"></div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js';
+        import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js';
+
+        // Your Firebase config
+        const firebaseConfig = {
+            apiKey: "AIzaSyDOT1jC27f26f3BIW-yFcgHTLGdEWeiopQ",
+            authDomain: "mm-kr-expo.firebaseapp.com",
+            projectId: "mm-kr-expo",
+            storageBucket: "mm-kr-expo.firebasestorage.app",
+            messagingSenderId: "974504645463",
+            appId: "1:974504645463:web:0cd68a7b52ea2bcddb6412"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Clean dictionary data with proper Myanmar fonts
+        const cleanDictionaryEntries = [
+            { korean: '안녕하세요', myanmar: 'မင်္ဂလာပါ', english: 'Hello', pos: 'interjection' },
+            { korean: '감사합니다', myanmar: 'ကျေးဇူးတင်ပါတယ်', english: 'Thank you', pos: 'interjection' },
+            { korean: '네', myanmar: 'ဟုတ်ကဲ့', english: 'Yes', pos: 'interjection' },
+            { korean: '아니요', myanmar: 'မဟုတ်ဘူး', english: 'No', pos: 'interjection' },
+            { korean: '음식', myanmar: 'အစားအသောက်', english: 'Food', pos: 'noun' },
+            { korean: '물', myanmar: 'ရေ', english: 'Water', pos: 'noun' },
+            { korean: '학교', myanmar: 'ကျောင်း', english: 'School', pos: 'noun' },
+            { korean: '친구', myanmar: 'သူငယ်ချင်း', english: 'Friend', pos: 'noun' },
+            { korean: '사랑', myanmar: 'ချစ်ခြင်း', english: 'Love', pos: 'noun' },
+            { korean: '가족', myanmar: 'မိသားစု', english: 'Family', pos: 'noun' },
+        ];
+
+        function log(message, type = 'info') {
+            const logDiv = document.getElementById('log');
+            const timestamp = new Date().toLocaleTimeString();
+            logDiv.textContent += `[${timestamp}] ${message}\n`;
+            logDiv.className = `log ${type}`;
+            logDiv.scrollTop = logDiv.scrollHeight;
+        }
+
+        window.checkCorruptedData = async function() {
+            log('Checking for corrupted data...');
+            
+            try {
+                const snapshot = await getDocs(collection(db, 'dictionary'));
+                
+                if (snapshot.empty) {
+                    log('No dictionary words found.', 'info');
+                    return;
+                }
+
+                log(`Found ${snapshot.size} words. Checking for corruption...`);
+                
+                let corruptedCount = 0;
+                snapshot.forEach(doc => {
+                    const data = doc.data();
+                    const myanmar = data.myanmar || '';
+                    
+                    // Check if Myanmar text contains garbled characters
+                    if (myanmar.includes('â€') || myanmar.includes('Ã¡') || myanmar.length === 0) {
+                        corruptedCount++;
+                        log(`❌ Corrupted: ${data.korean} → "${myanmar}" (garbled)`, 'error');
+                    } else {
+                        log(`✅ Clean: ${data.korean} → ${myanmar}`);
+                    }
+                });
+                
+                if (corruptedCount > 0) {
+                    log(`\n⚠️  Found ${corruptedCount} corrupted entries. Use "Delete All & Re-migrate" to fix.`, 'error');
+                } else {
+                    log('\n✅ All data looks clean!', 'success');
+                }
+                
+            } catch (error) {
+                log(`Error checking data: ${error.message}`, 'error');
+            }
+        };
+
+        window.cleanupAndRemigrate = async function() {
+            if (!confirm('This will delete ALL dictionary data and re-add clean data. Continue?')) {
+                return;
+            }
+            
+            log('Starting cleanup and re-migration...');
+            
+            try {
+                // Step 1: Delete all existing dictionary data
+                log('Deleting existing dictionary data...');
+                const snapshot = await getDocs(collection(db, 'dictionary'));
+                
+                for (const docSnapshot of snapshot.docs) {
+                    await deleteDoc(doc(db, 'dictionary', docSnapshot.id));
+                    log(`🗑️  Deleted: ${docSnapshot.id}`);
+                }
+                
+                log(`Deleted ${snapshot.size} existing entries.`);
+                
+                // Step 2: Add clean data with proper encoding
+                log('Adding clean data with proper encoding...');
+                let successCount = 0;
+                
+                for (const entry of cleanDictionaryEntries) {
+                    try {
+                        // Ensure proper UTF-8 encoding
+                        const cleanKorean = entry.korean.normalize('NFC');
+                        const cleanMyanmar = entry.myanmar.normalize('NFC');
+                        
+                        await addDoc(collection(db, 'dictionary'), {
+                            korean: cleanKorean,
+                            myanmar: cleanMyanmar,
+                            english: entry.english || '',
+                            pos: entry.pos || 'noun',
+                            addedBy: 'cleanup_migration',
+                            addedAt: serverTimestamp(),
+                            source: 'clean_migration'
+                        });
+                        
+                        successCount++;
+                        log(`✅ Added: ${cleanKorean} → ${cleanMyanmar}`);
+                        
+                    } catch (error) {
+                        log(`❌ Failed to add: ${entry.korean} - ${error.message}`, 'error');
+                    }
+                }
+
+                log(`\n🎉 Cleanup completed!`, 'success');
+                log(`✅ Successfully added: ${successCount} clean entries`);
+                log(`\n💡 Now test your app - Myanmar text should display correctly!`);
+
+            } catch (error) {
+                log(`Cleanup failed: ${error.message}`, 'error');
+            }
+        };
+    </script>
+</body>
+</html>

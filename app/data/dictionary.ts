@@ -12,5 +12,7 @@ export const dictionaryEntries: DictionaryEntry[] = [
   { id: '8', korean: '친구', myanmar: 'သူငယ်ချင်း', english: 'Friend', pos: 'noun' },
   { id: '9', korean: '사랑', myanmar: 'ချစ်ခြင်း', english: 'Love', pos: 'noun' },
   { id: '10', korean: '가족', myanmar: 'မိသားစု', english: 'Family', pos: 'noun' },
+  { id: '11', korean: '먹다', myanmar: 'စားသည်', english: 'Eat', pos: 'verb' },
+  { id: '12', korean: '오다', myanmar: 'လာသည်', english: 'Come', pos: 'verb' },
 ];
 

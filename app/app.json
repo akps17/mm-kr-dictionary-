@@ -39,8 +39,18 @@
       ]
     ],
     "extra": {
-      "OPENAI_API_KEY": "",
-      "GOOGLE_TRANSLATE_API_KEY": "AIzaSyBEOcv1nZxwXm5PEkh8PkxTRPV1m_p1tD0",
+      "OPENAI_API_KEY": "_________------______", 
+      "GOOGLE_TRANSLATE_API_KEY": "AIzaSyBZYWC_9-m7eUqJsJnIvFrMfJMWR0wAQxA",
+
+      
+      "FIREBASE": {
+        "apiKey": "AIzaSyDOT1jC27f26f3BIW-yFcgHTLGdEWeiopQ",
+        "authDomain": "mm-kr-expo.firebaseapp.com",
+        "projectId": "mm-kr-expo",
+        "storageBucket": "mm-kr-expo.firebasestorage.app",
+        "messagingSenderId": "974504645463",
+        "appId": "1:974504645463:web:0cd68a7b52ea2bcddb6412"
+      },
       "eas": {
         "projectId": "9184fd51-6a68-43a4-a43f-8665d8c37adf"
       }

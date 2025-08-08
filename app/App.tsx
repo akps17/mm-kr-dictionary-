@@ -24,9 +24,16 @@ import { useThemedColors } from './components/Theme';
 import { AppLanguage, SortPriority, AppSettings, i18nLabels, NATIVE_LANGUAGE_NAME, FontSize } from './data/settings';
 import { SettingsProvider, useSettings } from './data/SettingsContext';
 import { LibraryProvider, useLibrary } from './data/LibraryContext';
+import { SubmissionsProvider, useSubmissions } from './data/SubmissionsContext';
+import { AuthProvider, useAuth } from './data/AuthContext';
+import { AuthScreen } from './screens/AuthScreen';
+import { DictionarySyncProvider, useDictionarySync, mergeApprovedWords } from './data/DictionarySync';
+import { UpdatesProvider, useUpdates } from './data/UpdatesContext';
 import { SearchBox } from './components/SearchBox';
-import { transcribeWithOpenAI } from './data/stt'; //text to speech
-import { generateMCQ, generateTF, generateFlashcards } from './data/quiz'; //quiz
+import { NotificationContainer } from './components/NotificationBanner';
+import { db } from './data/firebase';
+import { transcribeWithOpenAI } from './data/stt';
+import { generateMCQ, generateTF, generateFlashcards } from './data/quiz';
 import { GoogleTranslateProvider, OpenAIChatProvider, type ChatMessage } from './data/ai';
 
 export type DictionaryEntry = {
@@ -52,6 +59,7 @@ function HomeSearchScreen() {
   const C = useThemedColors();
   const [queryText, setQueryText] = useState<string>('');
   const { settings } = useSettings();
+  const { approvedWords } = useDictionarySync();
   // Allow external screens (VoiceToText) to populate query via a temp global
   React.useEffect(() => {
     (global as any).setSearchQuery = (text: string) => setQueryText(text);
@@ -60,10 +68,18 @@ function HomeSearchScreen() {
   const { isTabletLike, horizontalPadding, contentMaxWidth } = useResponsiveLayout();
 
   const filteredAndSortedEntries = useMemo<DictionaryEntry[]>(() => {
+    // Merge static dictionary with approved words
+    const mergedDictionary = mergeApprovedWords(dictionaryEntries, approvedWords);
+    
+    // Debug logging
+    console.log('Static dictionary entries:', dictionaryEntries.length);
+    console.log('Firebase approved words:', approvedWords.length);
+    console.log('Merged dictionary total:', mergedDictionary.length);
+    
     const normalizedQuery = queryText.trim().toLowerCase();
     const filtered = normalizedQuery.length === 0
-      ? dictionaryEntries
-      : dictionaryEntries.filter((entry) => {
+      ? mergedDictionary
+      : mergedDictionary.filter((entry) => {
           const korean = entry.korean.toLowerCase();
           const myanmar = entry.myanmar.toLowerCase();
           const english = (entry.english ?? '').toLowerCase();
@@ -92,7 +108,7 @@ function HomeSearchScreen() {
       return getValue(a, key).localeCompare(getValue(b, key), locale, { sensitivity: 'base' });
     });
     return sorted;
-  }, [queryText, settings.sortBy]);
+  }, [queryText, settings.sortBy, approvedWords]);
 
   const fontScale = React.useMemo(() => {
     switch (settings.fontSize) {
@@ -258,6 +274,99 @@ function TranslateScreen() {
           <Text style={{ color: C.textPrimary, marginTop: 4 }}>{result}</Text>
         </View>
       </View>
+    </SafeAreaView>
+  );
+}
+
+function SubmitWordScreen() {
+  const C = useThemedColors();
+  const { submitEntry, pendingEntries } = useSubmissions();
+  const { user, logOut, loading } = useAuth();
+  const [korean, setKorean] = React.useState('');
+  const [myanmar, setMyanmar] = React.useState('');
+  const [english, setEnglish] = React.useState('');
+  const [pos, setPos] = React.useState<DictionaryEntry['pos']>('noun');
+  const [msg, setMsg] = React.useState('');
+
+  // Show auth screen if not logged in
+  if (loading) {
+    return (
+      <SafeAreaView style={[styles.safeArea, { backgroundColor: C.background }]}>
+        <View style={[styles.container, { justifyContent: 'center', alignItems: 'center' }]}>
+          <Text style={{ color: C.textSecondary }}>Loading...</Text>
+        </View>
+      </SafeAreaView>
+    );
+  }
+
+  if (!user) {
+    return <AuthScreen />;
+  }
+
+  async function onSubmit() {
+    if (!korean.trim() || !myanmar.trim()) {
+      setMsg('Please fill Korean and Myanmar');
+      return;
+    }
+    await submitEntry({ 
+      korean: korean.trim(), 
+      myanmar: myanmar.trim(), 
+      english: english.trim() || undefined, 
+      pos,
+      userEmail: user?.email || 'anonymous' 
+    });
+    setKorean(''); setMyanmar(''); setEnglish(''); setMsg('Submitted for review.');
+  }
+
+  return (
+    <SafeAreaView style={[styles.safeArea, { backgroundColor: C.background }]}> 
+      <ScrollView contentContainerStyle={{ padding: 16 }}>
+        <Text style={[styles.title, { color: C.textPrimary }]}>Input New Words</Text>
+        
+        {/* User Info */}
+        <View style={[styles.card, { backgroundColor: C.surface, borderColor: C.border, marginBottom: 16 }]}>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+            <View>
+              <Text style={{ color: C.textSecondary, fontSize: 12 }}>Logged in as:</Text>
+              <Text style={{ color: C.textPrimary, fontWeight: '600' }}>{user.email}</Text>
+            </View>
+            <Pressable onPress={logOut} style={[styles.pill, { backgroundColor: C.border }]}>
+              <Ionicons name="log-out-outline" size={16} color={C.textSecondary} />
+              <Text style={{ color: C.textSecondary, fontSize: 12 }}>Logout</Text>
+            </Pressable>
+          </View>
+        </View>
+        <View style={[styles.card, { backgroundColor: C.surface, borderColor: C.border, gap: 8 }]}>
+          <TextInput value={korean} onChangeText={setKorean} placeholder="Korean" style={{ borderWidth: 1, borderColor: C.border, borderRadius: 8, padding: 10 }} />
+          <TextInput value={myanmar} onChangeText={setMyanmar} placeholder="Myanmar" style={{ borderWidth: 1, borderColor: C.border, borderRadius: 8, padding: 10 }} />
+          <TextInput value={english} onChangeText={setEnglish} placeholder="English (optional)" style={{ borderWidth: 1, borderColor: C.border, borderRadius: 8, padding: 10 }} />
+          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 6 }}>
+            {(['noun','verb','adjective','adverb','pronoun','preposition','conjunction','interjection','particle','other'] as NonNullable<DictionaryEntry['pos']>[]).map(p => (
+              <Pressable key={p} onPress={() => setPos(p)} style={[styles.pill, pos === p && styles.pillActive] as any}>
+                <Text style={{ textTransform: 'capitalize' }}>{p}</Text>
+              </Pressable>
+            ))}
+          </View>
+          <Pressable onPress={onSubmit} style={[styles.primaryBtn, { backgroundColor: '#2563EB' }]}>
+            <Ionicons name="save-outline" size={18} color="#fff" />
+            <Text style={styles.primaryBtnText}>Submit</Text>
+          </Pressable>
+          {!!msg && <Text style={{ color: C.textSecondary }}>{msg}</Text>}
+        </View>
+
+        <View style={[styles.card, { marginTop: 16, backgroundColor: C.surface, borderColor: C.border }]}>
+          <Text style={{ fontWeight: '700', color: C.textSecondary, marginBottom: 8 }}>Pending (Local)</Text>
+          {pendingEntries.length === 0 ? (
+            <Text style={{ color: C.textTertiary }}>No submissions yet</Text>
+          ) : (
+            pendingEntries.map((entry) => (
+              <View key={entry.id} style={{ paddingVertical: 6 }}>
+                <Text style={{ color: C.textPrimary }}>{entry.korean} → {entry.myanmar} {entry.english ? `(${entry.english})` : ''} [{entry.pos}]</Text>
+              </View>
+            ))
+          )}
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -700,8 +809,8 @@ function AppNavigator() {
       <Drawer.Screen name="Settings" children={() => <SettingsScreen />} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="settings-outline" size={size} color={color} />) }} />
       <Drawer.Screen name="AI Chat" component={AIChatScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="chatbubble-ellipses-outline" size={size} color={color} />) }} />
       <Drawer.Screen name="Translate" component={TranslateScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="swap-horizontal-outline" size={size} color={color} />) }} />
-      <Drawer.Screen name="Check Updates" children={() => <PlaceholderScreen title="Check Updates" />} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="sync-outline" size={size} color={color} />) }} />
-      <Drawer.Screen name="Input New Words" children={() => <PlaceholderScreen title="Input New Words" />} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="add-circle-outline" size={size} color={color} />) }} />
+      <Drawer.Screen name="Check Updates" component={CheckUpdatesScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="sync-outline" size={size} color={color} />) }} />
+      <Drawer.Screen name="Input New Words" component={SubmitWordScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="add-circle-outline" size={size} color={color} />) }} />
       <Drawer.Screen name="About" component={AboutScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="information-circle-outline" size={size} color={color} />) }} />
     </Drawer.Navigator>
   );
@@ -709,17 +818,213 @@ function AppNavigator() {
 
 export default function App() {
   const [fontsLoaded] = useMyanmarFonts({ NotoSansMyanmar_400Regular, NotoSansMyanmar_700Bold });
+  
+  // Test Firebase connection on app start
+  React.useEffect(() => {
+    try {
+      console.log('Firebase initialized successfully:', db.app.name);
+      console.log('Ready to test word submissions!');
+    } catch (error) {
+      console.error('Firebase initialization error:', error);
+    }
+  }, []);
+  
   if (!fontsLoaded) {
     return null;
   }
   return (
-    <SettingsProvider>
-      <LibraryProvider>
-        <NavigationContainer>
-          <AppNavigator />
-        </NavigationContainer>
-      </LibraryProvider>
-    </SettingsProvider>
+    <AuthProvider>
+      <SettingsProvider>
+        <LibraryProvider>
+          <DictionarySyncProvider>
+            <UpdatesProvider>
+              <SubmissionsProvider>
+                <NavigationContainer>
+                  <AppNavigator />
+                  <NotificationContainer />
+                </NavigationContainer>
+              </SubmissionsProvider>
+            </UpdatesProvider>
+          </DictionarySyncProvider>
+        </LibraryProvider>
+      </SettingsProvider>
+    </AuthProvider>
+  );
+}
+
+function CheckUpdatesScreen() {
+  const C = useThemedColors();
+  const { settings } = useSettings();
+  const labels = i18nLabels[settings.uiLanguage];
+  const { 
+    availableUpdates, 
+    isCheckingUpdates, 
+    lastUpdateCheck, 
+    checkForUpdates, 
+    syncUpdatesToLocal, 
+    markUpdatesAsApplied, 
+    getUpdatesSummary 
+  } = useUpdates();
+  
+  const [isSyncing, setIsSyncing] = useState(false);
+  const [syncResult, setSyncResult] = useState<string>('');
+  
+  const summary = getUpdatesSummary();
+  
+  const handleCheckUpdates = async () => {
+    try {
+      await checkForUpdates();
+    } catch (error) {
+      console.error('Failed to check updates:', error);
+    }
+  };
+  
+  const handleSyncUpdates = async () => {
+    if (availableUpdates.length === 0) return;
+    
+    setIsSyncing(true);
+    setSyncResult('');
+    
+    try {
+      const result = await syncUpdatesToLocal(availableUpdates);
+      setSyncResult(result);
+      
+      // Mark updates as applied
+      await markUpdatesAsApplied();
+      
+    } catch (error) {
+      setSyncResult(`Error: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    } finally {
+      setIsSyncing(false);
+    }
+  };
+  
+  return (
+    <SafeAreaView style={[styles.safeArea, { backgroundColor: C.background }]}>
+      <ScrollView style={{ flex: 1 }} contentContainerStyle={{ padding: 16 }}>
+        <Text style={[styles.screenTitle, { color: C.textPrimary }]}>
+          {labels.navCheckUpdates}
+        </Text>
+        
+        {/* Status Card */}
+        <View style={[styles.card, { backgroundColor: C.surface, borderColor: C.border }]}>
+          <View style={styles.updateStatusRow}>
+            <Ionicons name="sync-outline" size={24} color={C.brand} />
+            <Text style={[styles.updateStatusTitle, { color: C.textPrimary }]}>
+              Update Status
+            </Text>
+          </View>
+          
+          <View style={styles.statusGrid}>
+            <View style={styles.statusItem}>
+              <Text style={[styles.statusNumber, { color: C.brand }]}>{summary.totalUpdates}</Text>
+              <Text style={[styles.statusLabel, { color: C.textSecondary }]}>Available Updates</Text>
+            </View>
+            <View style={styles.statusItem}>
+              <Text style={[styles.statusNumber, { color: '#10B981' }]}>{summary.newWords}</Text>
+              <Text style={[styles.statusLabel, { color: C.textSecondary }]}>New Words</Text>
+            </View>
+          </View>
+          
+          {lastUpdateCheck && (
+            <Text style={[styles.lastCheckText, { color: C.textSecondary }]}>
+              Last checked: {lastUpdateCheck.toLocaleString()}
+            </Text>
+          )}
+        </View>
+        
+        {/* Action Buttons */}
+        <View style={styles.buttonContainer}>
+          <Pressable
+            style={[styles.updateButton, { backgroundColor: C.brand }]}
+            onPress={handleCheckUpdates}
+            disabled={isCheckingUpdates}
+          >
+            <Ionicons 
+              name={isCheckingUpdates ? "hourglass-outline" : "refresh-outline"} 
+              size={20} 
+              color="white" 
+            />
+            <Text style={styles.buttonText}>
+              {isCheckingUpdates ? 'Checking...' : 'Check for Updates'}
+            </Text>
+          </Pressable>
+          
+          {availableUpdates.length > 0 && (
+            <Pressable
+              style={[styles.updateButton, { backgroundColor: '#10B981' }]}
+              onPress={handleSyncUpdates}
+              disabled={isSyncing}
+            >
+              <Ionicons 
+                name={isSyncing ? "hourglass-outline" : "download-outline"} 
+                size={20} 
+                color="white" 
+              />
+              <Text style={styles.buttonText}>
+                {isSyncing ? 'Syncing...' : `Sync ${availableUpdates.length} Updates`}
+              </Text>
+            </Pressable>
+          )}
+        </View>
+        
+        {/* Sync Result */}
+        {syncResult && (
+          <View style={[styles.card, { backgroundColor: C.surface, borderColor: C.border, marginTop: 16 }]}>
+            <Text style={[styles.sectionTitle, { color: C.textPrimary }]}>Sync Result</Text>
+            <Text style={[styles.syncResultText, { color: C.textSecondary }]}>{syncResult}</Text>
+          </View>
+        )}
+        
+        {/* Available Updates List */}
+        {availableUpdates.length > 0 && (
+          <View style={[styles.card, { backgroundColor: C.surface, borderColor: C.border, marginTop: 16 }]}>
+            <Text style={[styles.sectionTitle, { color: C.textPrimary }]}>
+              Available Updates ({availableUpdates.length})
+            </Text>
+            
+            {availableUpdates.slice(0, 10).map((update, index) => (
+              <View key={update.id} style={[styles.updateItem, { borderBottomColor: C.border }]}>
+                <View style={styles.updateItemHeader}>
+                  <Text style={[styles.updateKorean, { color: C.textPrimary }]}>{update.korean}</Text>
+                  {update.isNew && (
+                    <View style={[styles.newBadge, { backgroundColor: '#10B981' }]}>
+                      <Text style={styles.newBadgeText}>NEW</Text>
+                    </View>
+                  )}
+                </View>
+                <Text style={[styles.updateMyanmar, { color: C.textSecondary, fontFamily: 'NotoSansMyanmar_400Regular' }]}>
+                  {update.myanmar}
+                </Text>
+                {update.english && (
+                  <Text style={[styles.updateEnglish, { color: C.textSecondary }]}>{update.english}</Text>
+                )}
+                <Text style={[styles.updateMeta, { color: C.textSecondary }]}>
+                  Added by {update.approvedBy} • {update.approvedAt.toLocaleDateString()}
+                </Text>
+              </View>
+            ))}
+            
+            {availableUpdates.length > 10 && (
+              <Text style={[styles.moreUpdatesText, { color: C.textSecondary }]}>
+                ... and {availableUpdates.length - 10} more updates
+              </Text>
+            )}
+          </View>
+        )}
+        
+        {/* Help Text */}
+        <View style={[styles.card, { backgroundColor: C.surface, borderColor: C.border, marginTop: 16 }]}>
+          <Text style={[styles.sectionTitle, { color: C.textPrimary }]}>How Updates Work</Text>
+          <Text style={[styles.helpText, { color: C.textSecondary }]}>
+            • Check for Updates: Fetches new words approved by admin from Firebase{'\n'}
+            • Sync Updates: Generates updated dictionary file content{'\n'}
+            • Copy the generated content to your local dictionary.ts file{'\n'}
+            • Restart the app to see new words in search results
+          </Text>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
@@ -1194,5 +1499,110 @@ const styles = StyleSheet.create({
     shadowRadius: 8,
     shadowOffset: { width: 0, height: 2 },
     elevation: 1,
+  },
+  // Check Updates Screen Styles
+  screenTitle: {
+    fontSize: 24,
+    fontWeight: '700',
+    marginBottom: 16,
+    textAlign: 'center',
+  },
+  updateStatusRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+    marginBottom: 16,
+  },
+  updateStatusTitle: {
+    fontSize: 18,
+    fontWeight: '600',
+  },
+  statusGrid: {
+    flexDirection: 'row',
+    gap: 16,
+    marginBottom: 8,
+  },
+  statusItem: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  statusNumber: {
+    fontSize: 28,
+    fontWeight: '700',
+  },
+  statusLabel: {
+    fontSize: 12,
+    textAlign: 'center',
+    marginTop: 4,
+  },
+  lastCheckText: {
+    fontSize: 12,
+    textAlign: 'center',
+  },
+  buttonContainer: {
+    gap: 12,
+    marginTop: 16,
+  },
+  updateButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 8,
+    paddingVertical: 14,
+    borderRadius: 12,
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: '600',
+  },
+  syncResultText: {
+    fontSize: 14,
+    lineHeight: 20,
+  },
+  updateItem: {
+    paddingVertical: 12,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+  },
+  updateItemHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 4,
+  },
+  updateKorean: {
+    fontSize: 16,
+    fontWeight: '600',
+  },
+  updateMyanmar: {
+    fontSize: 14,
+    marginBottom: 2,
+    lineHeight: 22,
+  },
+  updateEnglish: {
+    fontSize: 12,
+    marginBottom: 2,
+  },
+  updateMeta: {
+    fontSize: 11,
+  },
+  newBadge: {
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+    borderRadius: 4,
+  },
+  newBadgeText: {
+    color: 'white',
+    fontSize: 10,
+    fontWeight: '600',
+  },
+  moreUpdatesText: {
+    textAlign: 'center',
+    fontSize: 12,
+    marginTop: 8,
+  },
+  helpText: {
+    fontSize: 14,
+    lineHeight: 20,
   },
 });

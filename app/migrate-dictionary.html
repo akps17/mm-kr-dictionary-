@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dictionary Migration Tool</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .container { max-width: 800px; margin: 0 auto; }
+        button { padding: 10px 20px; margin: 10px; background: #2196F3; color: white; border: none; cursor: pointer; }
+        .log { background: #f5f5f5; padding: 15px; margin: 10px 0; border-radius: 5px; white-space: pre-wrap; }
+        .success { background: #e8f5e8; }
+        .error { background: #ffe8e8; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Dictionary Migration Tool</h1>
+        <p>This tool will migrate your existing dictionary data to Firebase.</p>
+        
+        <button onclick="migrateDictionary()">Migrate Dictionary to Firebase</button>
+        <button onclick="checkDictionary()">Check Current Dictionary</button>
+        
+        <div id="log" class="log"></div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js';
+        import { getFirestore, collection, addDoc, getDocs, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js';
+
+        // Your Firebase config
+        const firebaseConfig = {
+            apiKey: "AIzaSyDOT1jC27f26f3BIW-yFcgHTLGdEWeiopQ",
+            authDomain: "mm-kr-expo.firebaseapp.com",
+            projectId: "mm-kr-expo",
+            storageBucket: "mm-kr-expo.firebasestorage.app",
+            messagingSenderId: "974504645463",
+            appId: "1:974504645463:web:0cd68a7b52ea2bcddb6412"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Your existing dictionary data
+        const dictionaryEntries = [
+            { id: '1', korean: '안녕하세요', myanmar: 'မင်္ဂလာပါ', english: 'Hello', pos: 'interjection' },
+            { id: '2', korean: '감사합니다', myanmar: 'ကျေးဇူးတင်ပါတယ်', english: 'Thank you', pos: 'interjection' },
+            { id: '3', korean: '네', myanmar: 'ဟုတ်ကဲ့', english: 'Yes', pos: 'interjection' },
+            { id: '4', korean: '아니요', myanmar: 'မဟုတ်ဘူး', english: 'No', pos: 'interjection' },
+            { id: '5', korean: '음식', myanmar: 'အစားအသောက်', english: 'Food', pos: 'noun' },
+            { id: '6', korean: '물', myanmar: 'ရေ', english: 'Water', pos: 'noun' },
+            { id: '7', korean: '학교', myanmar: 'ကျောင်း', english: 'School', pos: 'noun' },
+            { id: '8', korean: '친구', myanmar: 'သူငယ်ချင်း', english: 'Friend', pos: 'noun' },
+            { id: '9', korean: '사랑', myanmar: 'ချစ်ခြင်း', english: 'Love', pos: 'noun' },
+            { id: '10', korean: '가족', myanmar: 'မိသားစု', english: 'Family', pos: 'noun' },
+        ];
+
+        function log(message, type = 'info') {
+            const logDiv = document.getElementById('log');
+            const timestamp = new Date().toLocaleTimeString();
+            logDiv.textContent += `[${timestamp}] ${message}\n`;
+            logDiv.className = `log ${type}`;
+            logDiv.scrollTop = logDiv.scrollHeight;
+        }
+
+        window.migrateDictionary = async function() {
+            log('Starting dictionary migration...');
+            
+            try {
+                let successCount = 0;
+                let errorCount = 0;
+
+                for (const entry of dictionaryEntries) {
+                    try {
+                        // Ensure proper UTF-8 encoding for Myanmar and Korean text
+                        const cleanKorean = entry.korean.normalize('NFC');
+                        const cleanMyanmar = entry.myanmar.normalize('NFC');
+                        
+                        await addDoc(collection(db, 'dictionary'), {
+                            korean: cleanKorean,
+                            myanmar: cleanMyanmar,
+                            english: entry.english || '',
+                            pos: entry.pos || 'noun',
+                            addedBy: 'system_migration',
+                            addedAt: serverTimestamp(),
+                            source: 'initial_data',
+                            originalId: entry.id
+                        });
+                        
+                        successCount++;
+                        log(`✅ Migrated: ${entry.korean} → ${entry.myanmar}`);
+                        
+                    } catch (error) {
+                        errorCount++;
+                        log(`❌ Failed to migrate: ${entry.korean} - ${error.message}`, 'error');
+                    }
+                }
+
+                log(`\nMigration completed!`, 'success');
+                log(`✅ Successfully migrated: ${successCount} words`);
+                if (errorCount > 0) {
+                    log(`❌ Failed: ${errorCount} words`);
+                }
+
+            } catch (error) {
+                log(`Migration failed: ${error.message}`, 'error');
+            }
+        };
+
+        window.checkDictionary = async function() {
+            log('Checking current dictionary...');
+            
+            try {
+                const snapshot = await getDocs(collection(db, 'dictionary'));
+                
+                if (snapshot.empty) {
+                    log('No dictionary words found in Firebase.', 'info');
+                } else {
+                    log(`Found ${snapshot.size} words in Firebase dictionary:`, 'success');
+                    
+                    snapshot.forEach(doc => {
+                        const data = doc.data();
+                        log(`- ${data.korean} → ${data.myanmar} (${data.source || 'unknown source'})`);
+                    });
+                }
+                
+            } catch (error) {
+                log(`Error checking dictionary: ${error.message}`, 'error');
+            }
+        };
+    </script>
+</body>
+</html>
