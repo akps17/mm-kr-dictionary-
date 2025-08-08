@@ -44,6 +44,10 @@ export const i18nLabels: Record<AppLanguage, Record<string, string>> = {
     navCheckUpdates: '업데이트 확인',
     navInputNewWords: '새 단어 추가',
     navAbout: '정보',
+    quizMCQHelp: '정답을 선택하세요. 각 문제는 60초 제한이 있습니다.',
+    quizTFHelp: '문장이 맞으면 True, 틀리면 False를 선택하세요. 각 문제는 45초 제한이 있습니다.',
+    flashHelp: '카드를 탭하여 앞/뒤를 전환하세요. Prev/Next로 이동합니다.',
+    voiceHelp: 'Expo Go에서는 음성 인식이 제한됩니다. 개발 빌드 또는 클라우드 STT 연결이 필요합니다.',
   },
   myanmar: {
     title: 'မြန်မာ–ကိုရီးယား–အင်္ဂလိပ်ရှာဖွေရန်',
@@ -63,6 +67,10 @@ export const i18nLabels: Record<AppLanguage, Record<string, string>> = {
     navCheckUpdates: 'အသစ်များ စစ်ဆေးရန်',
     navInputNewWords: 'စကားလုံးအသစ် ထည့်သွင်းရန်',
     navAbout: 'အကြောင်း',
+    quizMCQHelp: 'အောက်ပါ စကားလုံးများထဲမှ မှန်ကန့်သတ်ထားသော အဓိပ္ပာယ်ကို ရွေးချယ်ပါ။ မေးခွန်းတစ်ခုစီအတွက် ၆၀ စက္ကန့်ကန့်သတ်ချိန်ရှိပါသည်။',
+    quizTFHelp: 'ဝေါဟာရကို မှန်ပါက True ကို မမှန်ပါက False ကို ရွေးချယ်ပါ။ မေးခွန်းတစ်ခုစီအတွက် ၄၅ စက္ကန့်ကန့်သတ်ချိန်ရှိပါသည်။',
+    flashHelp: 'ကဒ်ကိုနှိပ်ပြီး အရှေ့/အနောက်ကို ပြောင်းကြည့်နိုင်သည်။ Prev/Next ဖြင့် နောက်ထပ်ကဒ်များသို့ သွားပါ။',
+    voiceHelp: 'Expo Go တွင် အသံမှစာတန်းထိုးမှု မပြည့်စုံသေးပါ။ Dev build သို့မဟုတ် Cloud STT API ချိတ်ဆက်ရန်လိုအပ်ပါတယ်။',
   },
   english: {
     title: 'Myanmar–Korean–English Dictionary',
@@ -82,6 +90,10 @@ export const i18nLabels: Record<AppLanguage, Record<string, string>> = {
     navCheckUpdates: 'Check Updates',
     navInputNewWords: 'Input New Words',
     navAbout: 'About',
+    quizMCQHelp: 'Choose the correct Myanmar meaning. Each question has a 60s timer.',
+    quizTFHelp: 'If the pairing is correct choose True, otherwise False. Each question has a 45s timer.',
+    flashHelp: 'Tap to flip the card. Use Prev/Next to navigate.',
+    voiceHelp: 'On-device STT is limited in Expo Go. Use a dev build or connect a cloud STT API.',
   },
 };
 

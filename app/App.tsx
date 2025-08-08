@@ -16,6 +16,7 @@ import {
   Image,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { Audio } from 'expo-av';
 import { useFonts as useMyanmarFonts, NotoSansMyanmar_400Regular, NotoSansMyanmar_700Bold } from '@expo-google-fonts/noto-sans-myanmar';
 import { dictionaryEntries } from './data/dictionary';
 import { useThemedColors } from './components/Theme';
@@ -23,6 +24,8 @@ import { AppLanguage, SortPriority, AppSettings, i18nLabels, NATIVE_LANGUAGE_NAM
 import { SettingsProvider, useSettings } from './data/SettingsContext';
 import { LibraryProvider, useLibrary } from './data/LibraryContext';
 import { SearchBox } from './components/SearchBox';
+import { transcribeWithOpenAI } from './data/stt'; //text to speech
+import { generateMCQ, generateTF, generateFlashcards } from './data/quiz'; //quiz
 
 export type DictionaryEntry = {
   id: string;
@@ -47,6 +50,11 @@ function HomeSearchScreen() {
   const C = useThemedColors();
   const [queryText, setQueryText] = useState<string>('');
   const { settings } = useSettings();
+  // Allow external screens (VoiceToText) to populate query via a temp global
+  React.useEffect(() => {
+    (global as any).setSearchQuery = (text: string) => setQueryText(text);
+    return () => { delete (global as any).setSearchQuery; };
+  }, []);
   const { isTabletLike, horizontalPadding, contentMaxWidth } = useResponsiveLayout();
 
   const filteredAndSortedEntries = useMemo<DictionaryEntry[]>(() => {
@@ -143,6 +151,277 @@ function HomeSearchScreen() {
   );
 }
 
+
+//motivation for quiz
+function getMotivation(score: number, total: number, uiLang: 'english' | 'myanmar' | 'korean'): string {
+  const pct = (score / Math.max(1, total)) * 100;
+  const en = [
+    'Amazing! You are on fire! Keep the momentum.',
+    'Great job! A little more practice and you’ll master it.',
+    'Good effort! Review and try again — consistency wins.',
+    'Every step counts. Keep practicing — you’ve got this!',
+  ];
+  const mm = [
+    'အရမ်းအားကြီးပါတယ်! စိတ်အားထက်သန်နေပြီ — ဆက်လက်လုပ်နိုင်ပါတယ်။',
+    'ကောင်းမွန်ပါတယ်! နည်းနည်းပဲ ထပ်လေ့ကျင့်ရင် လက်ကျဆုံးမယ်။',
+    'ကြိုးစားမှုကောင်းပါတယ်! ပြန်လေ့လာပြီး ထပ်စမ်းကြည့်ပါ — တည်ငြိမ်မှုက အရေးကြီးပါတယ်။',
+    'တစ်လှမ်းချင်းတိုးတက်နေပြီ။ ဆက်လက်လေ့ကျင့်ရင် အောင်မြင်မယ်!',
+  ];
+  const ko = en; // fallback to English for now
+  const pick = (arr: string[]) => (pct >= 90 ? arr[0] : pct >= 70 ? arr[1] : pct >= 50 ? arr[2] : arr[3]);
+  if (uiLang === 'myanmar') return pick(mm);
+  if (uiLang === 'korean') return pick(ko);
+  return pick(en);
+}
+
+function MultipleChoiceQuizScreen() {
+  const C = useThemedColors();
+  const [questions, setQuestions] = React.useState(() => generateMCQ(20));
+  const [index, setIndex] = React.useState(0);
+  const [selected, setSelected] = React.useState<number | null>(null);
+  const [score, setScore] = React.useState(0);
+  const [timeLeft, setTimeLeft] = React.useState(60);
+
+  React.useEffect(() => {
+    const t = setInterval(() => setTimeLeft((s) => (s > 0 ? s - 1 : 0)), 1000);
+    return () => clearInterval(t);
+  }, [index]);
+
+  const q = questions[index];
+  const done = index >= questions.length || timeLeft === 0;
+
+  function submit(choice: number) {
+    if (selected !== null) return;
+    setSelected(choice);
+    if (choice === q.answerIndex) setScore((s) => s + 1);
+    setTimeout(() => {
+      setSelected(null);
+      setIndex((i) => i + 1);
+      setTimeLeft(60);
+    }, 700);
+  }
+
+  if (done) {
+    return (
+      <SafeAreaView style={[styles.safeArea, { backgroundColor: C.background }]}>
+        <View style={{ flex: 1, padding: 16, alignItems: 'center', justifyContent: 'center' }}>
+          <Ionicons name="trophy" size={64} color="#F59E0B" />
+          <Text style={[styles.title, { color: C.textPrimary, marginTop: 8 }]}>Score: {score}/{questions.length}</Text>
+          <Text style={{ color: C.textSecondary, textAlign: 'center', marginTop: 6 }}>{getMotivation(score, questions.length, useSettings().settings.uiLanguage)}</Text>
+          <View style={{ flexDirection: 'row', gap: 12, marginTop: 16 }}>
+            <Pressable
+              onPress={() => { setQuestions(generateMCQ(20)); setIndex(0); setScore(0); setSelected(null); setTimeLeft(60); }}
+              style={[styles.primaryBtn, { backgroundColor: '#2563EB' }]}
+            >
+              <Ionicons name="refresh" size={18} color="#fff" />
+              <Text style={styles.primaryBtnText}>Restart</Text>
+            </Pressable>
+          </View>
+        </View>
+      </SafeAreaView>
+    );
+  }
+//view for practice tabs multiple choice quiz
+  const { settings } = useSettings();
+  const labels = i18nLabels[settings.uiLanguage];
+  return (
+    <SafeAreaView style={[styles.safeArea, { backgroundColor: C.background }]}> 
+      <View style={{ padding: 16, position: 'relative' }}>
+        <View style={styles.timerChip}>
+          <Ionicons name="time-outline" size={16} color="#111827" />
+          <Text style={{ color: '#111827', fontWeight: '700' }}>{timeLeft}s</Text>
+        </View>
+        <Text style={{ color: C.textTertiary, textAlign: 'center', marginBottom: 6 }}>{labels.quizMCQHelp}</Text>
+        <Text
+          style={{
+            color: C.textPrimary,
+            textAlign: 'center',
+            fontWeight: '700',
+            fontSize: 22,
+            marginBottom: 16,
+          }}
+        >
+          {q.prompt}
+        </Text>
+        {q.choices.map((c, i) => {
+          const isCorrect = selected !== null && i === q.answerIndex;
+          const isWrong = selected !== null && i === selected && selected !== q.answerIndex;
+          return (
+            <Pressable
+              key={i}
+              onPress={() => submit(i)}
+              hitSlop={8}
+              style={[
+                styles.optionItem,
+                { backgroundColor: C.surface },
+                isCorrect && styles.optionItemCorrect,
+                isWrong && styles.optionItemWrong,
+              ]}
+              accessibilityRole="button"
+            >
+              <Text style={{ color: C.textPrimary, fontSize: 16 }}>{c}</Text>
+            </Pressable>
+          );
+        })}
+        <Text style={{ color: C.textTertiary, marginTop: 8 }}>{index + 1} / {questions.length}</Text>
+      </View>
+    </SafeAreaView>
+  );
+}
+
+function TrueFalseQuizScreen() {
+  const C = useThemedColors();
+  const [questions, setQuestions] = React.useState(() => generateTF(20));
+  const [index, setIndex] = React.useState(0);
+  const [selected, setSelected] = React.useState<boolean | null>(null);
+  const [score, setScore] = React.useState(0);
+  const [timeLeft, setTimeLeft] = React.useState(45);
+  const q = questions[index];
+  const done = index >= questions.length || timeLeft === 0;
+
+  React.useEffect(() => {
+    const t = setInterval(() => setTimeLeft((s) => (s > 0 ? s - 1 : 0)), 1000);
+    return () => clearInterval(t);
+  }, [index]);
+
+  function submit(val: boolean) {
+    if (selected !== null) return;
+    setSelected(val);
+    if (val === q.isTrue) setScore((s) => s + 1);
+    setTimeout(() => {
+      setSelected(null);
+      setIndex((i) => i + 1);
+      setTimeLeft(45);
+    }, 700);
+  }
+
+  if (done) {
+    return (
+      <SafeAreaView style={[styles.safeArea, { backgroundColor: C.background }]}>
+        <View style={{ flex: 1, padding: 16, alignItems: 'center', justifyContent: 'center' }}>
+          <Ionicons name="medal-outline" size={64} color="#10B981" />
+          <Text style={[styles.title, { color: C.textPrimary, marginTop: 8 }]}>Score: {score}/{questions.length}</Text>
+          <Text style={{ color: C.textSecondary, textAlign: 'center', marginTop: 6 }}>{getMotivation(score, questions.length, useSettings().settings.uiLanguage)}</Text>
+          <View style={{ flexDirection: 'row', gap: 12, marginTop: 16 }}>
+            <Pressable
+              onPress={() => { setQuestions(generateTF(20)); setIndex(0); setScore(0); setSelected(null); setTimeLeft(45); }}
+              style={[styles.primaryBtn, { backgroundColor: '#2563EB' }]}
+            >
+              <Ionicons name="refresh" size={18} color="#fff" />
+              <Text style={styles.primaryBtnText}>Restart</Text>
+            </Pressable>
+          </View>
+        </View>
+      </SafeAreaView>
+    );
+  }
+
+
+//view for practice tabs true false quiz
+  const { settings: s2 } = useSettings();
+  const labels2 = i18nLabels[s2.uiLanguage];
+  return (
+    <SafeAreaView style={[styles.safeArea, { backgroundColor: C.background }]}> 
+      <View style={{ flex: 1, padding: 16 }}>
+        <View style={[styles.timerChip, { position: 'absolute', right: 16, top: 16 }]}>
+          <Ionicons name="time-outline" size={16} color="#111827" />
+          <Text style={{ color: '#111827', fontWeight: '700' }}>{timeLeft}s</Text>
+        </View>
+        <Text style={{ color: C.textTertiary, textAlign: 'center', marginBottom: 6 }}>{labels2.quizTFHelp}</Text>
+        <View style={{ flex: 1, justifyContent: 'center' }}>
+          <Text
+            style={{
+              color: C.textPrimary,
+              textAlign: 'center',
+              fontWeight: '700',
+              fontSize: 20,
+              marginBottom: 16,
+            }}
+          >
+            {q.statement}
+          </Text>
+          <View style={{ flexDirection: 'row', gap: 12 }}>
+            <Pressable onPress={() => submit(true)} style={[styles.primaryBtn, { backgroundColor: '#10B981', flex: 1 }]}>
+              <Ionicons name="checkmark-circle" size={18} color="#fff" />
+              <Text style={styles.primaryBtnText}>True</Text>
+            </Pressable>
+            <Pressable onPress={() => submit(false)} style={[styles.primaryBtn, { backgroundColor: '#EF4444', flex: 1 }]}>
+              <Ionicons name="close-circle" size={18} color="#fff" />
+              <Text style={styles.primaryBtnText}>False</Text>
+            </Pressable>
+          </View>
+          <Text style={{ color: C.textTertiary, marginTop: 8, textAlign: 'center' }}>{index + 1} / {questions.length}</Text>
+        </View>
+      </View>
+    </SafeAreaView>
+  );
+}
+
+function FlashcardsScreen() {
+  const C = useThemedColors();
+  const cards = React.useMemo(() => generateFlashcards(20), []);
+  const [index, setIndex] = React.useState(0);
+  const [flipped, setFlipped] = React.useState(false);
+  const card = cards[index];
+  const done = index >= cards.length;
+  if (done) {
+    return (
+      <SafeAreaView style={[styles.safeArea, { backgroundColor: C.background }]}>
+        <View style={{ flex: 1, padding: 16, alignItems: 'center', justifyContent: 'center' }}>
+          <Ionicons name="sparkles" size={64} color="#6366F1" />
+          <Text style={[styles.title, { color: C.textPrimary, marginTop: 8 }]}>Great job!</Text>
+          <Text style={{ color: C.textSecondary, textAlign: 'center', marginTop: 6 }}>Keep reviewing to build long-term memory.</Text>
+          <View style={{ flexDirection: 'row', gap: 12, marginTop: 16 }}>
+            <Pressable
+              onPress={() => { setFlipped(false); setIndex(0); }}
+              style={[styles.primaryBtn, { backgroundColor: '#2563EB' }]}
+            >
+              <Ionicons name="refresh" size={18} color="#fff" />
+              <Text style={styles.primaryBtnText}>Restart</Text>
+            </Pressable>
+          </View>
+        </View>
+      </SafeAreaView>
+    );
+  }
+  const { settings: s3 } = useSettings();
+  const labels3 = i18nLabels[s3.uiLanguage];
+  return (
+    <SafeAreaView style={[styles.safeArea, { backgroundColor: C.background }]}>
+      <View style={{ flex: 1, padding: 16 }}>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+          <Text style={{ color: C.textTertiary, textAlign: 'center', marginBottom: 6 }}>{labels3.flashHelp}</Text>
+          <Pressable
+            onPress={() => setFlipped((f) => !f)}
+            hitSlop={8}
+            style={styles.flashcard}
+            accessibilityRole="button"
+          >
+            <Text
+              style={{
+                color: C.textPrimary,
+                textAlign: 'center',
+                fontWeight: flipped ? '400' : '700',
+                fontSize: flipped ? 16 : 22,
+              }}
+            >
+              {flipped ? card.back : card.front}
+            </Text>
+          </Pressable>
+        </View>
+        <View style={{ flexDirection: 'row', gap: 12, marginTop: 12 }}>
+          <Pressable onPress={() => setIndex((i) => Math.max(0, i - 1))} style={[styles.primaryBtn, { backgroundColor: '#6B7280', flex: 1 }]}>
+            <Text style={styles.primaryBtnText}>Prev</Text>
+          </Pressable>
+          <Pressable onPress={() => { setFlipped(false); setIndex((i) => i + 1); }} style={[styles.primaryBtn, { backgroundColor: '#2563EB', flex: 1 }]}>
+            <Text style={styles.primaryBtnText}>Next</Text>
+          </Pressable>
+        </View>
+        <Text style={{ color: C.textTertiary, marginTop: 8 }}>{index + 1} / {cards.length}</Text>
+      </View>
+    </SafeAreaView>
+  );
+}
 function PlaceholderScreen({ title }: { title: string }) {
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -154,12 +433,16 @@ function PlaceholderScreen({ title }: { title: string }) {
   );
 }
 
+
+//practice tabs
 const Tab = createBottomTabNavigator();
 function PracticeTabs() {
   return (
     <Tab.Navigator screenOptions={{ headerShown: false }}>
-      <Tab.Screen name="Word Quiz" children={() => <PlaceholderScreen title="Word Quiz" />} />
-      <Tab.Screen name="Voice to Text" children={() => <PlaceholderScreen title="Voice to Text" />} />
+      <Tab.Screen name="Quiz (MCQ)" component={MultipleChoiceQuizScreen} />
+      <Tab.Screen name="Quiz (True/False)" component={TrueFalseQuizScreen} />
+      <Tab.Screen name="Flashcards" component={FlashcardsScreen} />
+      <Tab.Screen name="Voice to Text" component={VoiceToTextScreen} />
     </Tab.Navigator>
   );
 }
@@ -191,6 +474,103 @@ function AppDrawerContent(props: any) {
       <DrawerItem label={labels.navInputNewWords} onPress={() => props.navigation.navigate('Input New Words')} icon={({color, size}) => (<Ionicons name="add-circle-outline" size={size} color={color} />)} />
       <DrawerItem label={labels.navAbout} onPress={() => props.navigation.navigate('About')} icon={({color, size}) => (<Ionicons name="information-circle-outline" size={size} color={color} />)} />
     </DrawerContentScrollView>
+  );
+}
+
+function VoiceToTextScreen() {
+  const C = useThemedColors();
+  const [permission, requestPermission] = Audio.usePermissions();
+  const [recording, setRecording] = React.useState<Audio.Recording | null>(null);
+  const [statusText, setStatusText] = React.useState<string>('Tap record to start');
+  const [transcript, setTranscript] = React.useState<string>('');
+  const [busy, setBusy] = React.useState<boolean>(false);
+
+  async function startRecording() {
+    try {
+      if (!permission || permission.status !== 'granted') {
+        const res = await requestPermission();
+        if (!res.granted) return;
+      }
+      await Audio.setAudioModeAsync({ allowsRecordingIOS: true, playsInSilentModeIOS: true });
+      const rec = new Audio.Recording();
+      await rec.prepareToRecordAsync(Audio.RecordingOptionsPresets.HIGH_QUALITY);
+      await rec.startAsync();
+      setRecording(rec);
+      setTranscript('');
+      setStatusText('Recording…');
+    } catch (e) {
+      setStatusText('Failed to start recording');
+    }
+  }
+
+  async function stopRecording() {
+    try {
+      if (!recording) return;
+      await recording.stopAndUnloadAsync();
+      const uri = recording.getURI();
+      setRecording(null);
+      setStatusText('Processing audio…');
+      if (uri) {
+        try {
+          setBusy(true);
+          // Read API key from runtime env
+          const apiKey = (global as any).expo?.config?.extra?.OPENAI_API_KEY ?? '';
+          if (!apiKey) {
+            setTranscript('(Set OPENAI_API_KEY in app/app.json extra to enable transcription)');
+          } else {
+            const text = await transcribeWithOpenAI(uri, apiKey);
+            setTranscript(text);
+          }
+        } catch (e: any) {
+          setTranscript(`(Transcription failed: ${e?.message ?? 'unknown error'})`);
+        } finally {
+          setBusy(false);
+        }
+      }
+      setStatusText('Ready');
+    } catch (e) {
+      setStatusText('Failed to stop recording');
+    }
+  }
+
+
+  //text to speeh
+  return (
+    <SafeAreaView style={[styles.safeArea, { backgroundColor: C.background }] }>
+      <View style={[styles.container, { padding: 16 }]}>        
+        <Text style={[styles.title, { color: C.textPrimary }]}>Voice to Text</Text>
+        <View style={[styles.card, { backgroundColor: C.surface, borderColor: C.border }] }>
+          <Text style={{ color: C.textSecondary, marginBottom: 8 }}>{statusText}</Text>
+          {recording ? (
+            <Pressable onPress={stopRecording} style={[styles.primaryBtn, { backgroundColor: '#DC2626' }] }>
+              <Ionicons name="stop" size={18} color="#fff" />
+              <Text style={styles.primaryBtnText}>Stop</Text>
+            </Pressable>
+          ) : (
+            <Pressable onPress={startRecording} style={[styles.primaryBtn, { backgroundColor: '#2563EB' }] }>
+              <Ionicons name="mic" size={18} color="#fff" />
+              <Text style={styles.primaryBtnText}>Record</Text>
+            </Pressable>
+          )}
+          <View style={{ height: 8 }} />
+          <Text style={{ color: C.textPrimary }}>{busy ? 'Transcribing…' : transcript}</Text>
+          {!!transcript && (
+            <Pressable
+              onPress={() => {
+                try { (global as any).setSearchQuery?.(transcript); } catch {}
+              }}
+              style={[styles.primaryBtn, { backgroundColor: '#10B981', marginTop: 8 }]}
+            >
+              <Ionicons name="search" size={18} color="#fff" />
+              <Text style={styles.primaryBtnText}>Use in Search</Text>
+            </Pressable>
+          )}
+          <Text style={{ color: C.textTertiary, marginTop: 8 }}>
+            Note: On-device transcription isn’t available in Expo Go. Use a dev build or connect a cloud STT API.
+          </Text>
+        </View>
+      </View>
+    </SafeAreaView>
   );
 }
 
@@ -594,6 +974,20 @@ const styles = StyleSheet.create({
     backgroundColor: '#F3F4F6',
     borderRadius: 8,
   },
+
+  //about screen from voice to text screen
+  primaryBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 8,
+    paddingVertical: 10,
+    borderRadius: 10,
+  },
+  primaryBtnText: {
+    color: '#fff',
+    fontWeight: '700',
+  },
   aboutTitle: {
     fontSize: 22,
     fontWeight: '700',
@@ -621,5 +1015,54 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: 15,
     lineHeight: 28,
+  },
+  timerChip: {  //timer chip for quiz
+    position: 'absolute',
+    right: 16,
+    top: 16,
+    flexDirection: 'row',
+    gap: 6,
+    alignItems: 'center',
+    backgroundColor: '#F3F4F6',
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    borderRadius: 999,
+  },
+  optionItem: {
+    paddingVertical: 14,
+    paddingHorizontal: 14,
+    borderRadius: 12,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: '#E5E7EB',
+    marginBottom: 10,
+    shadowColor: '#000',
+    shadowOpacity: 0.05,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 2 },
+    elevation: 1,
+  },
+  optionItemCorrect: {
+    backgroundColor: '#DCFCE7',
+    borderColor: '#86EFAC',
+  },
+  optionItemWrong: {
+    backgroundColor: '#FEE2E2',
+    borderColor: '#FCA5A5',
+  },
+  flashcard: {
+    width: '100%',
+    minHeight: 260,
+    borderRadius: 16,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: '#D1FAE5',
+    backgroundColor: '#ECFDF5',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 24,
+    shadowColor: '#000',
+    shadowOpacity: 0.05,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 2 },
+    elevation: 1,
   },
 });

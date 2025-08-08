@@ -30,9 +30,16 @@
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      "expo-font"
+      "expo-font",
+      [
+        "expo-av",
+        {
+          "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone."
+        }
+      ]
     ],
     "extra": {
+      "OPENAI_API_KEY": "",
       "eas": {
         "projectId": "9184fd51-6a68-43a4-a43f-8665d8c37adf"
       }
