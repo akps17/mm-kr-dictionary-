@@ -82,3 +82,9 @@ export const i18nLabels: Record<AppLanguage, Record<string, string>> = {
   },
 };
 
+export const NATIVE_LANGUAGE_NAME: Record<AppLanguage, string> = {
+  myanmar: 'မြန်မာစာ',
+  korean: '한국어',
+  english: 'English',
+};
+

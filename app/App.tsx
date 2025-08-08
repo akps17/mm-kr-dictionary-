@@ -15,7 +15,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useFonts as useMyanmarFonts, NotoSansMyanmar_400Regular, NotoSansMyanmar_700Bold } from '@expo-google-fonts/noto-sans-myanmar';
 import { dictionaryEntries } from './data/dictionary';
 import { useThemedColors } from './components/Theme';
-import { AppLanguage, SortPriority, AppSettings, i18nLabels } from './data/settings';
+import { AppLanguage, SortPriority, AppSettings, i18nLabels, NATIVE_LANGUAGE_NAME } from './data/settings';
 import { SettingsProvider, useSettings } from './data/SettingsContext';
 import { SearchBox } from './components/SearchBox';
 
@@ -99,7 +99,7 @@ function HomeSearchScreen() {
             keyboardShouldPersistTaps="handled"
             contentContainerStyle={styles.listContent}
             renderItem={({ item }) => (
-              <View style={[styles.row, isTabletLike && styles.rowTablet, { backgroundColor: C.surface }]}>
+              <View style={[styles.row, isTabletLike && styles.rowTablet, { backgroundColor: C.surface }]}> 
                 <View style={styles.rowTextGroup}>
                   <View style={styles.rowHeader}>
                     <Text style={[styles.korean, isTabletLike && styles.koreanTablet, { color: C.textPrimary, fontFamily: 'NotoSansMyanmar_700Bold' }]}>{item.korean}</Text>
@@ -222,7 +222,7 @@ function SettingsScreen() {
           <Text style={[styles.sectionTitle, { color: C.textSecondary }]}>Language</Text>
           {(['myanmar','korean','english'] as AppLanguage[]).map((lang) => (
             <View key={lang} style={styles.optionRow}>
-              <Text style={[styles.optionLabel, { color: C.textPrimary }]}>{lang}</Text>
+              <Text style={[styles.optionLabel, { color: C.textPrimary }]}>{NATIVE_LANGUAGE_NAME[lang]}</Text>
               <Text onPress={() => updateSetting('uiLanguage', lang)}>
                 <Check checked={settings.uiLanguage === lang} />
               </Text>
@@ -239,7 +239,7 @@ function SettingsScreen() {
             </View>
           ))}
         </View>
-      </View>
+    </View>
     </SafeAreaView>
   );
 }
