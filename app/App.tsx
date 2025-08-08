@@ -1,5 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useMemo, useState } from 'react';
+import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {
   FlatList,
   SafeAreaView,
@@ -30,7 +33,7 @@ function useResponsiveLayout() {
   return { isTabletLike, horizontalPadding, contentMaxWidth };
 }
 
-export default function App() {
+function HomeSearchScreen() {
   const [queryText, setQueryText] = useState<string>('');
   const { isTabletLike, horizontalPadding, contentMaxWidth } = useResponsiveLayout();
 
@@ -61,14 +64,12 @@ export default function App() {
       <View style={[styles.container, { paddingHorizontal: horizontalPadding }]}>
         <View style={[styles.content, { maxWidth: contentMaxWidth }]}>
           <Text style={[styles.title, isTabletLike && styles.titleTablet]}>Myanmar–Korean–English Dictionary</Text>
-
           <SearchBox
             value={queryText}
             placeholder="Search by Korean, Myanmar, or English"
             onChangeText={setQueryText}
             onClear={() => setQueryText('')}
           />
-
           <FlatList
             data={filteredAndSortedEntries}
             keyExtractor={(item) => item.id}
@@ -86,9 +87,7 @@ export default function App() {
                     )}
                   </View>
                   <Text style={[styles.myanmar, isTabletLike && styles.myanmarTablet]}>{item.myanmar}</Text>
-                  {!!item.english && (
-                    <Text style={styles.englishGloss}>{item.english}</Text>
-                  )}
+                  {!!item.english && <Text style={styles.englishGloss}>{item.english}</Text>}
                 </View>
               </View>
             )}
@@ -101,6 +100,45 @@ export default function App() {
         </View>
       </View>
     </SafeAreaView>
+  );
+}
+
+function PlaceholderScreen({ title }: { title: string }) {
+  return (
+    <SafeAreaView style={styles.safeArea}>
+      <View style={[styles.container, { paddingHorizontal: 16 }]}>
+        <Text style={styles.title}>{title}</Text>
+        <Text style={{ color: '#6B7280' }}>Coming soon…</Text>
+      </View>
+    </SafeAreaView>
+  );
+}
+
+const Tab = createBottomTabNavigator();
+function PracticeTabs() {
+  return (
+    <Tab.Navigator screenOptions={{ headerShown: false }}>
+      <Tab.Screen name="Word Quiz" children={() => <PlaceholderScreen title="Word Quiz" />} />
+      <Tab.Screen name="Voice to Text" children={() => <PlaceholderScreen title="Voice to Text" />} />
+    </Tab.Navigator>
+  );
+}
+
+const Drawer = createDrawerNavigator();
+export default function App() {
+  return (
+    <NavigationContainer theme={DefaultTheme}>
+      <Drawer.Navigator>
+        <Drawer.Screen name="Home" component={HomeSearchScreen} />
+        <Drawer.Screen name="Practice" component={PracticeTabs} />
+        <Drawer.Screen name="Favorites" children={() => <PlaceholderScreen title="Favorites" />} />
+        <Drawer.Screen name="History" children={() => <PlaceholderScreen title="History" />} />
+        <Drawer.Screen name="Settings" children={() => <PlaceholderScreen title="Settings" />} />
+        <Drawer.Screen name="Check Updates" children={() => <PlaceholderScreen title="Check Updates" />} />
+        <Drawer.Screen name="Input New Words" children={() => <PlaceholderScreen title="Input New Words" />} />
+        <Drawer.Screen name="About" children={() => <PlaceholderScreen title="About" />} />
+      </Drawer.Navigator>
+    </NavigationContainer>
   );
 }
 
