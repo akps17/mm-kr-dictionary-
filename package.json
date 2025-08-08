@@ -1,0 +1,14 @@
+{
+  "name": "mm_kr",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "web": "yarn --cwd app web",
+    "ios": "yarn --cwd app ios",
+    "android": "yarn --cwd app android"
+  },
+  "dependencies": {
+    "react-native": "0.80.2"
+  }
+}
