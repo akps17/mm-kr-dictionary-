@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useMemo, useState } from 'react';
-import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { NavigationContainer } from '@react-navigation/native';
+import { createDrawerNavigator, DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {
   FlatList,
@@ -11,7 +11,12 @@ import {
   useWindowDimensions,
   View,
 } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+import { useFonts as useMyanmarFonts, NotoSansMyanmar_400Regular, NotoSansMyanmar_700Bold } from '@expo-google-fonts/noto-sans-myanmar';
 import { dictionaryEntries } from './data/dictionary';
+import { useThemedColors } from './components/Theme';
+import { AppLanguage, SortPriority, AppSettings, i18nLabels } from './data/settings';
+import { SettingsProvider, useSettings } from './data/SettingsContext';
 import { SearchBox } from './components/SearchBox';
 
 export type DictionaryEntry = {
@@ -34,7 +39,9 @@ function useResponsiveLayout() {
 }
 
 function HomeSearchScreen() {
+  const C = useThemedColors();
   const [queryText, setQueryText] = useState<string>('');
+  const { settings } = useSettings();
   const { isTabletLike, horizontalPadding, contentMaxWidth } = useResponsiveLayout();
 
   const filteredAndSortedEntries = useMemo<DictionaryEntry[]>(() => {
@@ -52,21 +59,37 @@ function HomeSearchScreen() {
           );
         });
 
-    const sorted = [...filtered].sort((a, b) =>
-      a.korean.localeCompare(b.korean, 'ko', { sensitivity: 'base' })
-    );
+    const getValue = (entry: DictionaryEntry, field: SortPriority): string => {
+      switch (field) {
+        case 'korean':
+          return entry.korean;
+        case 'myanmar':
+          return entry.myanmar;
+        case 'english':
+          return entry.english ?? '';
+        default:
+          return '';
+      }
+    };
+    const sorted = [...filtered].sort((a, b) => {
+      const key: SortPriority = settings.sortBy;
+      const locale = key === 'korean' ? 'ko' : undefined;
+      return getValue(a, key).localeCompare(getValue(b, key), locale, { sensitivity: 'base' });
+    });
     return sorted;
-  }, [queryText]);
+  }, [queryText, settings.sortBy]);
+
+  const labels = i18nLabels[settings.uiLanguage];
 
   return (
-    <SafeAreaView style={styles.safeArea}>
+    <SafeAreaView style={[styles.safeArea, { backgroundColor: C.background }]}>
       <StatusBar style="auto" />
       <View style={[styles.container, { paddingHorizontal: horizontalPadding }]}>
         <View style={[styles.content, { maxWidth: contentMaxWidth }]}>
-          <Text style={[styles.title, isTabletLike && styles.titleTablet]}>Myanmar–Korean–English Dictionary</Text>
+          <Text style={[styles.title, isTabletLike && styles.titleTablet, { color: C.textPrimary, fontFamily: 'NotoSansMyanmar_700Bold' }]}>{labels.title}</Text>
           <SearchBox
             value={queryText}
-            placeholder="Search by Korean, Myanmar, or English"
+            placeholder={labels.searchPlaceholder}
             onChangeText={setQueryText}
             onClear={() => setQueryText('')}
           />
@@ -76,24 +99,24 @@ function HomeSearchScreen() {
             keyboardShouldPersistTaps="handled"
             contentContainerStyle={styles.listContent}
             renderItem={({ item }) => (
-              <View style={[styles.row, isTabletLike && styles.rowTablet]}>
+              <View style={[styles.row, isTabletLike && styles.rowTablet, { backgroundColor: C.surface }]}>
                 <View style={styles.rowTextGroup}>
                   <View style={styles.rowHeader}>
-                    <Text style={[styles.korean, isTabletLike && styles.koreanTablet]}>{item.korean}</Text>
+                    <Text style={[styles.korean, isTabletLike && styles.koreanTablet, { color: C.textPrimary, fontFamily: 'NotoSansMyanmar_700Bold' }]}>{item.korean}</Text>
                     {item.pos && (
-                      <View style={styles.posChip}>
-                        <Text style={styles.posText}>{item.pos}</Text>
+                      <View style={[styles.posChip] }>
+                        <Text style={[styles.posText]}>{item.pos}</Text>
                       </View>
                     )}
                   </View>
-                  <Text style={[styles.myanmar, isTabletLike && styles.myanmarTablet]}>{item.myanmar}</Text>
-                  {!!item.english && <Text style={styles.englishGloss}>{item.english}</Text>}
+                  <Text style={[styles.myanmar, isTabletLike && styles.myanmarTablet, { color: C.textSecondary, fontFamily: 'NotoSansMyanmar_400Regular' }]}>{item.myanmar}</Text>
+                  {!!item.english && <Text style={[styles.englishGloss, { color: C.textTertiary }]}>{item.english}</Text>}
                 </View>
               </View>
             )}
             ListEmptyComponent={
               <View style={styles.emptyState}>
-                <Text style={styles.emptyStateText}>No results</Text>
+                <Text style={[styles.emptyStateText, { color: C.textTertiary }]}>{labels.noResults}</Text>
               </View>
             }
           />
@@ -124,21 +147,100 @@ function PracticeTabs() {
   );
 }
 
-const Drawer = createDrawerNavigator();
-export default function App() {
+type RootDrawerParamList = {
+  Home: undefined;
+  Practice: undefined;
+  Favorites: undefined;
+  History: undefined;
+  Settings: undefined;
+  'Check Updates': undefined;
+  'Input New Words': undefined;
+  About: undefined;
+};
+
+const Drawer = createDrawerNavigator<RootDrawerParamList>();
+
+function AppDrawerContent(props: any) {
+  const { settings } = useSettings();
+  const labels = i18nLabels[settings.uiLanguage];
   return (
-    <NavigationContainer theme={DefaultTheme}>
-      <Drawer.Navigator>
-        <Drawer.Screen name="Home" component={HomeSearchScreen} />
-        <Drawer.Screen name="Practice" component={PracticeTabs} />
-        <Drawer.Screen name="Favorites" children={() => <PlaceholderScreen title="Favorites" />} />
-        <Drawer.Screen name="History" children={() => <PlaceholderScreen title="History" />} />
-        <Drawer.Screen name="Settings" children={() => <PlaceholderScreen title="Settings" />} />
-        <Drawer.Screen name="Check Updates" children={() => <PlaceholderScreen title="Check Updates" />} />
-        <Drawer.Screen name="Input New Words" children={() => <PlaceholderScreen title="Input New Words" />} />
-        <Drawer.Screen name="About" children={() => <PlaceholderScreen title="About" />} />
-      </Drawer.Navigator>
-    </NavigationContainer>
+    <DrawerContentScrollView {...props}>
+      <DrawerItem label={labels.navHome} onPress={() => props.navigation.navigate('Home')} icon={({color, size}) => (<Ionicons name="home-outline" size={size} color={color} />)} />
+      <DrawerItem label={labels.navPractice} onPress={() => props.navigation.navigate('Practice')} icon={({color, size}) => (<Ionicons name="school-outline" size={size} color={color} />)} />
+      <DrawerItem label={labels.navFavorites} onPress={() => props.navigation.navigate('Favorites')} icon={({color, size}) => (<Ionicons name="heart-outline" size={size} color={color} />)} />
+      <DrawerItem label={labels.navHistory} onPress={() => props.navigation.navigate('History')} icon={({color, size}) => (<Ionicons name="time-outline" size={size} color={color} />)} />
+      <DrawerItem label={labels.navSettings} onPress={() => props.navigation.navigate('Settings')} icon={({color, size}) => (<Ionicons name="settings-outline" size={size} color={color} />)} />
+      <DrawerItem label={labels.navCheckUpdates} onPress={() => props.navigation.navigate('Check Updates')} icon={({color, size}) => (<Ionicons name="sync-outline" size={size} color={color} />)} />
+      <DrawerItem label={labels.navInputNewWords} onPress={() => props.navigation.navigate('Input New Words')} icon={({color, size}) => (<Ionicons name="add-circle-outline" size={size} color={color} />)} />
+      <DrawerItem label={labels.navAbout} onPress={() => props.navigation.navigate('About')} icon={({color, size}) => (<Ionicons name="information-circle-outline" size={size} color={color} />)} />
+    </DrawerContentScrollView>
+  );
+}
+
+function AppNavigator() {
+  return (
+    <Drawer.Navigator drawerContent={(props) => <AppDrawerContent {...props} />}>
+      <Drawer.Screen name="Home" component={HomeSearchScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="home-outline" size={size} color={color} />) }} />
+      <Drawer.Screen name="Practice" component={PracticeTabs} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="school-outline" size={size} color={color} />) }} />
+      <Drawer.Screen name="Favorites" children={() => <PlaceholderScreen title="Favorites" />} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="heart-outline" size={size} color={color} />) }} />
+      <Drawer.Screen name="History" children={() => <PlaceholderScreen title="History" />} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="time-outline" size={size} color={color} />) }} />
+      <Drawer.Screen name="Settings" children={() => <SettingsScreen />} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="settings-outline" size={size} color={color} />) }} />
+      <Drawer.Screen name="Check Updates" children={() => <PlaceholderScreen title="Check Updates" />} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="sync-outline" size={size} color={color} />) }} />
+      <Drawer.Screen name="Input New Words" children={() => <PlaceholderScreen title="Input New Words" />} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="add-circle-outline" size={size} color={color} />) }} />
+      <Drawer.Screen name="About" children={() => <PlaceholderScreen title="About" />} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="information-circle-outline" size={size} color={color} />) }} />
+    </Drawer.Navigator>
+  );
+}
+
+export default function App() {
+  const [fontsLoaded] = useMyanmarFonts({ NotoSansMyanmar_400Regular, NotoSansMyanmar_700Bold });
+  if (!fontsLoaded) {
+    return null;
+  }
+  return (
+    <SettingsProvider>
+      <NavigationContainer>
+        <AppNavigator />
+      </NavigationContainer>
+    </SettingsProvider>
+  );
+}
+
+function SettingsScreen() {
+  const { settings, updateSetting } = useSettings();
+
+  const C = useThemedColors();
+  const Check = ({ checked }: { checked: boolean }) => (
+    <View style={[styles.checkbox, { borderColor: C.border, backgroundColor: checked ? C.brand : 'transparent' }]} />
+  );
+
+  return (
+    <SafeAreaView style={[styles.safeArea, { backgroundColor: C.background }] }>
+      <View style={[styles.container, { paddingHorizontal: 16 }]}>        
+        <Text style={[styles.title, { color: C.textPrimary }]}>Settings</Text>
+        <View style={[styles.card, { borderColor: C.border, backgroundColor: C.surface }]}>
+          <Text style={[styles.sectionTitle, { color: C.textSecondary }]}>Language</Text>
+          {(['myanmar','korean','english'] as AppLanguage[]).map((lang) => (
+            <View key={lang} style={styles.optionRow}>
+              <Text style={[styles.optionLabel, { color: C.textPrimary }]}>{lang}</Text>
+              <Text onPress={() => updateSetting('uiLanguage', lang)}>
+                <Check checked={settings.uiLanguage === lang} />
+              </Text>
+            </View>
+          ))}
+          <View style={[styles.divider, { backgroundColor: C.border }]} />
+          <Text style={[styles.sectionTitle, { color: C.textSecondary }]}>Sort priority</Text>
+          {(['korean','myanmar','english'] as SortPriority[]).map((sort) => (
+            <View key={sort} style={styles.optionRow}>
+              <Text style={[styles.optionLabel, { color: C.textPrimary }]}>{sort}</Text>
+              <Text onPress={() => updateSetting('sortBy', sort)}>
+                <Check checked={settings.sortBy === sort} />
+              </Text>
+            </View>
+          ))}
+        </View>
+      </View>
+    </SafeAreaView>
   );
 }
 
@@ -231,5 +333,36 @@ const styles = StyleSheet.create({
   },
   emptyStateText: {
     color: '#6B7280',
+  },
+  card: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: 12,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: '#E5E7EB',
+    padding: 12,
+    gap: 12,
+  },
+  divider: {
+    height: StyleSheet.hairlineWidth,
+    backgroundColor: '#E5E7EB',
+  },
+  sectionTitle: {
+    fontWeight: '600',
+    opacity: 0.8,
+  },
+  optionRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 8,
+  },
+  optionLabel: {
+    fontSize: 16,
+  },
+  checkbox: {
+    width: 22,
+    height: 22,
+    borderRadius: 6,
+    borderWidth: 2,
   },
 });
