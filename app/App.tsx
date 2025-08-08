@@ -10,6 +10,8 @@ import {
   Text,
   useWindowDimensions,
   View,
+  ScrollView,
+  Linking,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useFonts as useMyanmarFonts, NotoSansMyanmar_400Regular, NotoSansMyanmar_700Bold } from '@expo-google-fonts/noto-sans-myanmar';
@@ -17,6 +19,7 @@ import { dictionaryEntries } from './data/dictionary';
 import { useThemedColors } from './components/Theme';
 import { AppLanguage, SortPriority, AppSettings, i18nLabels, NATIVE_LANGUAGE_NAME } from './data/settings';
 import { SettingsProvider, useSettings } from './data/SettingsContext';
+import { LibraryProvider, useLibrary } from './data/LibraryContext';
 import { SearchBox } from './components/SearchBox';
 
 export type DictionaryEntry = {
@@ -112,6 +115,7 @@ function HomeSearchScreen() {
                   <Text style={[styles.myanmar, isTabletLike && styles.myanmarTablet, { color: C.textSecondary, fontFamily: 'NotoSansMyanmar_400Regular' }]}>{item.myanmar}</Text>
                   {!!item.english && <Text style={[styles.englishGloss, { color: C.textTertiary }]}>{item.english}</Text>}
                 </View>
+                <FavoriteButton entryId={item.id} />
               </View>
             )}
             ListEmptyComponent={
@@ -182,12 +186,12 @@ function AppNavigator() {
     <Drawer.Navigator drawerContent={(props) => <AppDrawerContent {...props} />}>
       <Drawer.Screen name="Home" component={HomeSearchScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="home-outline" size={size} color={color} />) }} />
       <Drawer.Screen name="Practice" component={PracticeTabs} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="school-outline" size={size} color={color} />) }} />
-      <Drawer.Screen name="Favorites" children={() => <PlaceholderScreen title="Favorites" />} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="heart-outline" size={size} color={color} />) }} />
-      <Drawer.Screen name="History" children={() => <PlaceholderScreen title="History" />} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="time-outline" size={size} color={color} />) }} />
+      <Drawer.Screen name="Favorites" component={FavoritesScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="heart-outline" size={size} color={color} />) }} />
+      <Drawer.Screen name="History" component={HistoryScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="time-outline" size={size} color={color} />) }} />
       <Drawer.Screen name="Settings" children={() => <SettingsScreen />} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="settings-outline" size={size} color={color} />) }} />
       <Drawer.Screen name="Check Updates" children={() => <PlaceholderScreen title="Check Updates" />} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="sync-outline" size={size} color={color} />) }} />
       <Drawer.Screen name="Input New Words" children={() => <PlaceholderScreen title="Input New Words" />} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="add-circle-outline" size={size} color={color} />) }} />
-      <Drawer.Screen name="About" children={() => <PlaceholderScreen title="About" />} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="information-circle-outline" size={size} color={color} />) }} />
+      <Drawer.Screen name="About" component={AboutScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="information-circle-outline" size={size} color={color} />) }} />
     </Drawer.Navigator>
   );
 }
@@ -199,10 +203,62 @@ export default function App() {
   }
   return (
     <SettingsProvider>
-      <NavigationContainer>
-        <AppNavigator />
-      </NavigationContainer>
+      <LibraryProvider>
+        <NavigationContainer>
+          <AppNavigator />
+        </NavigationContainer>
+      </LibraryProvider>
     </SettingsProvider>
+  );
+}
+
+function AboutScreen() {
+  const C = useThemedColors();
+  const intro = 'ကျွန်တော်တို့ရဲ့ Korean-Burmese Dictionary App ကိုအသုံးပြုတဲ့သူတွေကို ကြိုဆိုပါတယ်။';
+  const reason = 'မြန်မာဘာသာစကားနဲ့ ကိုရီးယားဘာသာစကားကြား တိုက်ရိုက် ဘာသာပြန်ရာတွင် ပြည့်စုံကောင်းမွန်တဲ့အဘိဓာန်မရှိသေးတဲ့အတွက် ဒီအက်ပ်ကိုဖန်တီးခဲ့ပါတယ်။';
+  const audience = 'ဒီအက်ပ်ကို ကိုရီးယားနိုင်ငံမှာ နေထိုင်သူ မြန်မာနိုင်ငံသားများ၊ ပညာသင်ကြားနေသူများ နဲ့ ဘာသာစကားလေ့လာသူများအတွက် ရည်ရွယ်ထားပါတယ်။';
+  const featuresTitle = 'အက်ပ်ရဲ့ အဓိက Features များ';
+  const bullets = [
+    'App Interface ကို မြန်မာလို လွယ်ကူစွာ အသုံးပြုနိုင်ခြင်း',
+    'ကိုရီးယားစကားနှင့် မြန်မာစကားကို တိုက်ရိုက်ရှာဖွေရန်၊ ပြန်ဆိုရန် အလွယ်တကူ အသုံးပြုနိုင်ခြင်း',
+    'လေ့လာသူများအတွက် အသုံးဝင်သော အသံထွက်၊ ဥပမာဝေါဟာရများ ထည့်သွင်းထားခြင်း',
+    'စကားလုံးရှာဖွေမှု အရှိန်မြှင့်တင်ရန် သုံးသပ်ချက်များနှင့် စာရင်းများ ပံ့ပိုးပေးခြင်း',
+    'အသုံးပြုသူများအနေနဲ့ ကျွန်တော်တို့ရဲ့ အဖွဲ့အစည်းကို ပံ့ပိုးနိုင်ခြင်းနှင့် အသစ်သော စကားလုံးများ၊ ဗျည်းများ (slangs) များကို တိုက်ရိုက်ထည့်သွင်းနိုင်ခြင်း',
+    'Quiz များ၊ Practice ဌာနများဖြင့် ဘာသာစကားကျွမ်းကျင်မှု တိုးတက်စေရန် ကူညီပေးခြင်း',
+    'Speaking Test အစီအစဉ်များ ဖြင့် စကားပြောနိုင်စွမ်း တိုးတက်စေရန် အခွင့်အရေးပေးခြင်း',
+    'နေ့စဉ်အသုံးပြုမှုအတွက် လွယ်ကူသော UI နှင့် ပေါ့ပေါ့ပါးပါး ရုပ်သဏ္ဍာန်',
+  ];
+  const contactTitle = 'ဆက်သွယ်ရန်';
+  const contactText = 'မေးမြန်းစရာများ၊ အကြံပြုလိုသောအချက်များရှိပါက ကျွန်တော့်ကို အီးမေးလ်ပို့ပါ - (AUNG KO KO)';
+  const email = 'aungko17101999@gmail.com';
+
+  return (
+    <SafeAreaView style={[styles.safeArea, { backgroundColor: C.background }] }>
+      <ScrollView contentContainerStyle={{ padding: 16 }}>
+        <Text style={[styles.aboutTitle, { color: C.textPrimary, fontFamily: 'NotoSansMyanmar_700Bold' }]}>About</Text>
+
+        <View style={[styles.card, { backgroundColor: C.surface, borderColor: C.border }]}>
+          <Text style={[styles.aboutParagraph, { color: C.textPrimary, fontFamily: 'NotoSansMyanmar_400Regular' }]}>{intro}</Text>
+          <Text style={[styles.aboutParagraph, { color: C.textPrimary, fontFamily: 'NotoSansMyanmar_400Regular' }]}>{reason}</Text>
+          <Text style={[styles.aboutParagraph, { color: C.textPrimary, fontFamily: 'NotoSansMyanmar_400Regular' }]}>{audience}</Text>
+
+          <Text style={[styles.sectionTitle, { marginTop: 8, color: C.textSecondary }]}>{featuresTitle}</Text>
+          {bullets.map((b, idx) => (
+            <View key={idx} style={styles.bulletRow}>
+              <Ionicons name="checkmark-circle" size={18} color="#10B981" style={{ marginTop: 2 }} />
+              <Text style={[styles.bulletText, { color: C.textPrimary, fontFamily: 'NotoSansMyanmar_400Regular' }]}>{b}</Text>
+            </View>
+          ))}
+        </View>
+
+        <View style={[styles.card, { marginTop: 16, backgroundColor: C.surface, borderColor: C.border }]}>
+          <Text style={[styles.sectionTitle, { color: C.textSecondary }]}>{contactTitle}</Text>
+          <Text style={[styles.aboutParagraph, { color: C.textPrimary, fontFamily: 'NotoSansMyanmar_400Regular' }]}>
+            {contactText} <Text style={{ color: '#2563EB' }} onPress={() => Linking.openURL(`mailto:${email}`)}>{email}</Text>
+          </Text>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
@@ -240,6 +296,73 @@ function SettingsScreen() {
           ))}
         </View>
     </View>
+    </SafeAreaView>
+  );
+}
+
+function FavoriteButton({ entryId }: { entryId: string }) {
+  const { isFavorite, toggleFavorite } = useLibrary();
+  const fav = isFavorite(entryId);
+  return (
+    <Text onPress={() => toggleFavorite(entryId)} style={styles.favButton}>
+      <Ionicons name={fav ? 'heart' : 'heart-outline'} size={20} color={fav ? '#DC2626' : '#9CA3AF'} />
+    </Text>
+  );
+}
+
+function FavoritesScreen() {
+  const { favoriteIds } = useLibrary();
+  const items = dictionaryEntries.filter((d) => favoriteIds.has(d.id));
+  const itemsSorted = [...items].sort((a, b) => a.korean.localeCompare(b.korean, 'ko', { sensitivity: 'base' }));
+  return (
+    <SafeAreaView style={styles.safeArea}>
+      <FlatList
+        data={itemsSorted}
+        keyExtractor={(item) => item.id}
+        contentContainerStyle={styles.listContent}
+        renderItem={({ item }) => (
+          <View style={[styles.row, styles.rowTablet]}>
+            <View style={styles.rowTextGroup}>
+              <Text style={styles.korean}>{item.korean}</Text>
+              <Text style={styles.myanmar}>{item.myanmar}</Text>
+              {!!item.english && <Text style={styles.englishGloss}>{item.english}</Text>}
+            </View>
+            <FavoriteButton entryId={item.id} />
+          </View>
+        )}
+        ListEmptyComponent={<View style={styles.emptyState}><Text style={styles.emptyStateText}>No favorites yet</Text></View>}
+      />
+    </SafeAreaView>
+  );
+}
+
+function HistoryScreen() {
+  const { history, clearHistory } = useLibrary();
+  const items = history
+    .map((h) => dictionaryEntries.find((d) => d.id === h.id))
+    .filter((x): x is NonNullable<typeof x> => Boolean(x))
+    .sort((a, b) => a.korean.localeCompare(b.korean, 'ko', { sensitivity: 'base' }));
+  return (
+    <SafeAreaView style={styles.safeArea}>
+      <FlatList
+        data={items}
+        keyExtractor={(item) => item.id}
+        contentContainerStyle={styles.listContent}
+        renderItem={({ item }) => (
+          <View style={[styles.row, styles.rowTablet]}>
+            <View style={styles.rowTextGroup}>
+              <Text style={styles.korean}>{item.korean}</Text>
+              <Text style={styles.myanmar}>{item.myanmar}</Text>
+              {!!item.english && <Text style={styles.englishGloss}>{item.english}</Text>}
+            </View>
+            <FavoriteButton entryId={item.id} />
+          </View>
+        )}
+        ListEmptyComponent={<View style={styles.emptyState}><Text style={styles.emptyStateText}>No history yet</Text></View>}
+      />
+      <View style={{ alignItems: 'center', paddingBottom: 16 }}>
+        <Text onPress={clearHistory} style={{ color: '#DC2626' }}>Clear history</Text>
+      </View>
     </SafeAreaView>
   );
 }
@@ -334,6 +457,10 @@ const styles = StyleSheet.create({
   emptyStateText: {
     color: '#6B7280',
   },
+  favButton: {
+    paddingHorizontal: 8,
+    paddingVertical: 8,
+  },
   card: {
     backgroundColor: '#FFFFFF',
     borderRadius: 12,
@@ -364,5 +491,26 @@ const styles = StyleSheet.create({
     height: 22,
     borderRadius: 6,
     borderWidth: 2,
+  },
+  aboutTitle: {
+    fontSize: 22,
+    fontWeight: '700',
+    marginBottom: 8,
+  },
+  aboutParagraph: {
+    fontSize: 16,
+    lineHeight: 24,
+    marginBottom: 6,
+  },
+  bulletRow: {
+    flexDirection: 'row',
+    gap: 8,
+    marginBottom: 6,
+    alignItems: 'flex-start',
+  },
+  bulletText: {
+    flex: 1,
+    fontSize: 16,
+    lineHeight: 24,
   },
 });
