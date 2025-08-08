@@ -14,6 +14,7 @@ import {
   Linking,
   Pressable,
   Image,
+  TextInput,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Audio } from 'expo-av';
@@ -26,6 +27,7 @@ import { LibraryProvider, useLibrary } from './data/LibraryContext';
 import { SearchBox } from './components/SearchBox';
 import { transcribeWithOpenAI } from './data/stt'; //text to speech
 import { generateMCQ, generateTF, generateFlashcards } from './data/quiz'; //quiz
+import { GoogleTranslateProvider, OpenAIChatProvider, type ChatMessage } from './data/ai';
 
 export type DictionaryEntry = {
   id: string;
@@ -151,6 +153,114 @@ function HomeSearchScreen() {
   );
 }
 
+function AIChatScreen() {
+  const C = useThemedColors();
+  const [messages, setMessages] = React.useState<ChatMessage[]>([]);
+  const [input, setInput] = React.useState('');
+  const apiKey = (global as any).expo?.config?.extra?.OPENAI_API_KEY ?? '';
+  const provider = React.useMemo(() => (apiKey ? new OpenAIChatProvider(apiKey) : null), [apiKey]);
+
+  async function send() {
+    if (!input.trim()) return;
+    const next: ChatMessage[] = [...messages, { role: 'user', content: input.trim() }];
+    setMessages(next);
+    setInput('');
+    if (!provider) {
+      setMessages((m) => [...m, { role: 'assistant', content: '(Set OPENAI_API_KEY to enable chat)' }]);
+      return;
+    }
+    try {
+      const reply = await provider.send(next);
+      setMessages((m) => [...m, reply]);
+    } catch (e: any) {
+      setMessages((m) => [...m, { role: 'assistant', content: `Error: ${e?.message ?? 'unknown'}` }]);
+    }
+  }
+
+  return (
+    <SafeAreaView style={[styles.safeArea, { backgroundColor: C.background }]}> 
+      <View style={{ flex: 1, padding: 16 }}>
+        <Text style={[styles.title, { color: C.textPrimary }]}>AI Chat</Text>
+        <View style={[styles.card, { flex: 1, backgroundColor: C.surface, borderColor: C.border }] }>
+          <ScrollView contentContainerStyle={{ paddingBottom: 8 }}>
+            {messages.map((m, idx) => (
+              <View key={idx} style={{ marginBottom: 8 }}>
+                <Text style={{ fontWeight: '700', color: C.textSecondary }}>{m.role === 'user' ? 'You' : 'AI'}</Text>
+                <Text style={{ color: C.textPrimary }}>{m.content}</Text>
+              </View>
+            ))}
+          </ScrollView>
+          <View style={{ flexDirection: 'row', gap: 8 }}>
+            <TextInput
+              value={input}
+              onChangeText={setInput}
+              placeholder="Type a message"
+              style={{ flex: 1, borderWidth: 1, borderColor: C.border, borderRadius: 8, paddingHorizontal: 10, paddingVertical: 8 }}
+            />
+            <Pressable onPress={send} style={[styles.primaryBtn, { backgroundColor: '#2563EB' }] }>
+              <Ionicons name="send" size={16} color="#fff" />
+              <Text style={styles.primaryBtnText}>Send</Text>
+            </Pressable>
+          </View>
+        </View>
+      </View>
+    </SafeAreaView>
+  );
+}
+
+function TranslateScreen() {
+  const C = useThemedColors();
+  const key = (global as any).expo?.config?.extra?.GOOGLE_TRANSLATE_API_KEY ?? '';
+  const provider = React.useMemo(() => new GoogleTranslateProvider(key), [key]);
+  const [text, setText] = React.useState('');
+  const [result, setResult] = React.useState('');
+  const [src, setSrc] = React.useState<'ko' | 'my' | 'en'>('ko');
+  const [dst, setDst] = React.useState<'ko' | 'my' | 'en'>('my');
+  const [busy, setBusy] = React.useState(false);
+
+  async function run() {
+    try {
+      setBusy(true);
+      const translated = await provider.translate(text, src, dst);
+      setResult(translated);
+    } catch (e: any) {
+      setResult(`Error: ${e?.message ?? 'unknown'}`);
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  return (
+    <SafeAreaView style={[styles.safeArea, { backgroundColor: C.background }]}> 
+      <View style={{ flex: 1, padding: 16 }}>
+        <Text style={[styles.title, { color: C.textPrimary }]}>Translate</Text>
+        <View style={[styles.card, { backgroundColor: C.surface, borderColor: C.border, gap: 8 }] }>
+          <View style={{ flexDirection: 'row', gap: 8 }}>
+            <Pressable onPress={() => setSrc('ko')} style={[styles.pill, src === 'ko' && styles.pillActive] as any}><Text>KO</Text></Pressable>
+            <Pressable onPress={() => setSrc('my')} style={[styles.pill, src === 'my' && styles.pillActive] as any}><Text>MM</Text></Pressable>
+            <Pressable onPress={() => setSrc('en')} style={[styles.pill, src === 'en' && styles.pillActive] as any}><Text>EN</Text></Pressable>
+            <Ionicons name="swap-horizontal" size={20} color={C.textSecondary} style={{ marginHorizontal: 4 }} />
+            <Pressable onPress={() => setDst('ko')} style={[styles.pill, dst === 'ko' && styles.pillActive] as any}><Text>KO</Text></Pressable>
+            <Pressable onPress={() => setDst('my')} style={[styles.pill, dst === 'my' && styles.pillActive] as any}><Text>MM</Text></Pressable>
+            <Pressable onPress={() => setDst('en')} style={[styles.pill, dst === 'en' && styles.pillActive] as any}><Text>EN</Text></Pressable>
+          </View>
+          <TextInput
+            value={text}
+            onChangeText={setText}
+            placeholder="Enter text"
+            style={{ borderWidth: 1, borderColor: C.border, borderRadius: 8, padding: 10 }}
+            multiline
+          />
+          <Pressable onPress={run} style={[styles.primaryBtn, { backgroundColor: '#2563EB' }] }>
+            <Ionicons name="flash" size={16} color="#fff" />
+            <Text style={styles.primaryBtnText}>{busy ? 'Translating…' : 'Translate'}</Text>
+          </Pressable>
+          <Text style={{ color: C.textPrimary, marginTop: 4 }}>{result}</Text>
+        </View>
+      </View>
+    </SafeAreaView>
+  );
+}
 
 //motivation for quiz
 function getMotivation(score: number, total: number, uiLang: 'english' | 'myanmar' | 'korean'): string {
@@ -226,12 +336,12 @@ function MultipleChoiceQuizScreen() {
   const labels = i18nLabels[settings.uiLanguage];
   return (
     <SafeAreaView style={[styles.safeArea, { backgroundColor: C.background }]}> 
-      <View style={{ padding: 16, position: 'relative' }}>
+      <View style={{ padding: 16, position: 'relative', paddingTop: 56 }}>
         <View style={styles.timerChip}>
           <Ionicons name="time-outline" size={16} color="#111827" />
           <Text style={{ color: '#111827', fontWeight: '700' }}>{timeLeft}s</Text>
         </View>
-        <Text style={{ color: C.textTertiary, textAlign: 'center', marginBottom: 6 }}>{labels.quizMCQHelp}</Text>
+        <Text style={{ color: C.textTertiary, textAlign: 'center', marginTop: 6, marginBottom: 12, paddingRight: 72 }}>{labels.quizMCQHelp}</Text>
         <Text
           style={{
             color: C.textPrimary,
@@ -322,12 +432,12 @@ function TrueFalseQuizScreen() {
   const labels2 = i18nLabels[s2.uiLanguage];
   return (
     <SafeAreaView style={[styles.safeArea, { backgroundColor: C.background }]}> 
-      <View style={{ flex: 1, padding: 16 }}>
+      <View style={{ flex: 1, padding: 16, paddingTop: 56 }}>
         <View style={[styles.timerChip, { position: 'absolute', right: 16, top: 16 }]}>
           <Ionicons name="time-outline" size={16} color="#111827" />
           <Text style={{ color: '#111827', fontWeight: '700' }}>{timeLeft}s</Text>
         </View>
-        <Text style={{ color: C.textTertiary, textAlign: 'center', marginBottom: 6 }}>{labels2.quizTFHelp}</Text>
+        <Text style={{ color: C.textTertiary, textAlign: 'center', marginTop: 6, marginBottom: 12, paddingRight: 72 }}>{labels2.quizTFHelp}</Text>
         <View style={{ flex: 1, justifyContent: 'center' }}>
           <Text
             style={{
@@ -390,7 +500,7 @@ function FlashcardsScreen() {
     <SafeAreaView style={[styles.safeArea, { backgroundColor: C.background }]}>
       <View style={{ flex: 1, padding: 16 }}>
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <Text style={{ color: C.textTertiary, textAlign: 'center', marginBottom: 6 }}>{labels3.flashHelp}</Text>
+          <Text style={{ color: C.textTertiary, textAlign: 'center', marginBottom: 12 }}>{labels3.flashHelp}</Text>
           <Pressable
             onPress={() => setFlipped((f) => !f)}
             hitSlop={8}
@@ -453,11 +563,15 @@ type RootDrawerParamList = {
   Favorites: undefined;
   History: undefined;
   Settings: undefined;
+  'AI Chat': undefined;
+  Translate: undefined;
   'Check Updates': undefined;
   'Input New Words': undefined;
   About: undefined;
 };
 
+
+//drawer navigation and texts
 const Drawer = createDrawerNavigator<RootDrawerParamList>();
 
 function AppDrawerContent(props: any) {
@@ -470,6 +584,8 @@ function AppDrawerContent(props: any) {
       <DrawerItem label={labels.navFavorites} onPress={() => props.navigation.navigate('Favorites')} icon={({color, size}) => (<Ionicons name="heart-outline" size={size} color={color} />)} />
       <DrawerItem label={labels.navHistory} onPress={() => props.navigation.navigate('History')} icon={({color, size}) => (<Ionicons name="time-outline" size={size} color={color} />)} />
       <DrawerItem label={labels.navSettings} onPress={() => props.navigation.navigate('Settings')} icon={({color, size}) => (<Ionicons name="settings-outline" size={size} color={color} />)} />
+      <DrawerItem label={'AI Chat'} onPress={() => props.navigation.navigate('AI Chat')} icon={({color, size}) => (<Ionicons name="chatbubble-ellipses-outline" size={size} color={color} />)} />
+      <DrawerItem label={'Translate'} onPress={() => props.navigation.navigate('Translate')} icon={({color, size}) => (<Ionicons name="swap-horizontal-outline" size={size} color={color} />)} />
       <DrawerItem label={labels.navCheckUpdates} onPress={() => props.navigation.navigate('Check Updates')} icon={({color, size}) => (<Ionicons name="sync-outline" size={size} color={color} />)} />
       <DrawerItem label={labels.navInputNewWords} onPress={() => props.navigation.navigate('Input New Words')} icon={({color, size}) => (<Ionicons name="add-circle-outline" size={size} color={color} />)} />
       <DrawerItem label={labels.navAbout} onPress={() => props.navigation.navigate('About')} icon={({color, size}) => (<Ionicons name="information-circle-outline" size={size} color={color} />)} />
@@ -582,6 +698,8 @@ function AppNavigator() {
       <Drawer.Screen name="Favorites" component={FavoritesScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="heart-outline" size={size} color={color} />) }} />
       <Drawer.Screen name="History" component={HistoryScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="time-outline" size={size} color={color} />) }} />
       <Drawer.Screen name="Settings" children={() => <SettingsScreen />} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="settings-outline" size={size} color={color} />) }} />
+      <Drawer.Screen name="AI Chat" component={AIChatScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="chatbubble-ellipses-outline" size={size} color={color} />) }} />
+      <Drawer.Screen name="Translate" component={TranslateScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="swap-horizontal-outline" size={size} color={color} />) }} />
       <Drawer.Screen name="Check Updates" children={() => <PlaceholderScreen title="Check Updates" />} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="sync-outline" size={size} color={color} />) }} />
       <Drawer.Screen name="Input New Words" children={() => <PlaceholderScreen title="Input New Words" />} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="add-circle-outline" size={size} color={color} />) }} />
       <Drawer.Screen name="About" component={AboutScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="information-circle-outline" size={size} color={color} />) }} />
@@ -987,6 +1105,18 @@ const styles = StyleSheet.create({
   primaryBtnText: {
     color: '#fff',
     fontWeight: '700',
+  },
+  pill: {
+    paddingHorizontal: 10,
+    paddingVertical: 6,
+    borderRadius: 999,
+    backgroundColor: '#F3F4F6',
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: '#E5E7EB',
+  },
+  pillActive: {
+    backgroundColor: '#DBEAFE',
+    borderColor: '#93C5FD',
   },
   aboutTitle: {
     fontSize: 22,
