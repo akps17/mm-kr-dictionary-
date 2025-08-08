@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # mm-kr-dictionary
 
 Cross-platform Myanmar–Korean–English dictionary built with Expo + React Native.
@@ -23,3 +24,6 @@ Cross-platform Myanmar–Korean–English dictionary built with Expo + React Nat
 2. Run:
 
 
+=======
+# mm-kr-dictionary-
+>>>>>>> b3960d273e27a2e5d40fae530cd0919d2d7faf48
