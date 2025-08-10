@@ -72,7 +72,9 @@ export function WordInputForm({ onSubmit, initialValues }: WordInputFormProps) {
       english: english.trim(),
       pos,
       level: level || undefined,
-      examples: validExamples.length > 0 ? validExamples.map(text => ({ korean: text, myanmar: text, english: text })) : [],
+      examples: validExamples.length > 0
+        ? validExamples.map(text => ({ korean: text, myanmar: text, english: text }))
+        : [],
     });
 
     // Clear form

@@ -184,24 +184,36 @@ export function WordDetailScreen({ route, navigation }: WordDetailScreenProps) {
       {word.examples && word.examples.length > 0 && (
         <View style={[styles.section, { backgroundColor: C.surface }]}>
           <Text style={[styles.sectionTitle, { color: C.textSecondary }]}>Examples for this word</Text>
-          {word.examples.map((example, index) => (
-            <View key={index} style={styles.exampleItem}>
-              <Text style={[styles.exampleKorean, { color: C.textPrimary }]}>
-                {example.korean}
-              </Text>
-              <Text 
-                style={[styles.exampleMyanmar, { color: C.textSecondary }]}
-                allowFontScaling={false}
-              >
-                {example.myanmar}
-              </Text>
-              {example.english && (
-                <Text style={[styles.exampleEnglish, { color: C.textTertiary }]}>
-                  {example.english}
-                </Text>
-              )}
-            </View>
-          ))}
+          {word.examples.map((example, index) => {
+            const k = (example.korean || '').trim();
+            const m = (example.myanmar || '').trim();
+            const e = (example.english || '').trim();
+            const showK = !!k;
+            const showM = !!m && m !== k;
+            const showE = !!e && e !== k && e !== m;
+            return (
+              <View key={index} style={styles.exampleItem}>
+                {showK && (
+                  <Text style={[styles.exampleKorean, { color: C.textPrimary }]}>
+                    {k}
+                  </Text>
+                )}
+                {showM && (
+                  <Text
+                    style={[styles.exampleMyanmar, { color: C.textSecondary }]}
+                    allowFontScaling={false}
+                  >
+                    {m}
+                  </Text>
+                )}
+                {showE && (
+                  <Text style={[styles.exampleEnglish, { color: C.textTertiary }]}>
+                    {e}
+                  </Text>
+                )}
+              </View>
+            );
+          })}
         </View>
       )}
 

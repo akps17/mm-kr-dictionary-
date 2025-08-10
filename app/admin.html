@@ -1001,6 +1001,56 @@
               return examples;
         }
 
+        // Helpers for per-item edit examples sections
+        window.addExampleFieldFor = function(containerId, initial) {
+          const container = document.getElementById(containerId);
+          if (!container) return;
+          const exampleId = `${containerId}-${Date.now()}`;
+          const exK = initial?.korean || '';
+          const exM = initial?.myanmar || '';
+          const exE = initial?.english || '';
+          const div = document.createElement('div');
+          div.className = 'example-field';
+          div.id = exampleId;
+          div.innerHTML = `
+            <button type="button" class="remove-example" onclick="removeExampleById('${exampleId}')">✕ Remove</button>
+            <div class=\"form-group\">
+              <label>Korean Example</label>
+              <input type=\"text\" class=\"form-input example-korean\" placeholder=\"Enter example in Korean\" value="${exK}">
+            </div>
+            <div class=\"form-group\">
+              <label>Myanmar Translation</label>
+              <input type=\"text\" class=\"form-input example-myanmar\" placeholder=\"Enter example in Myanmar\" value="${exM}">
+            </div>
+            <div class=\"form-group\">
+              <label>English Translation (Optional)</label>
+              <input type=\"text\" class=\"form-input example-english\" placeholder=\"Enter example in English\" value="${exE}">
+            </div>
+          `;
+          container.appendChild(div);
+        }
+
+        window.removeExampleById = function(exampleDomId) {
+          const el = document.getElementById(exampleDomId);
+          if (el) el.remove();
+        }
+
+        function getExamplesFrom(containerId) {
+          const container = document.getElementById(containerId);
+          if (!container) return [];
+          const examples = [];
+          const fields = container.querySelectorAll('.example-field');
+          fields.forEach((field) => {
+            const korean = field.querySelector('.example-korean')?.value?.trim() || '';
+            const myanmar = field.querySelector('.example-myanmar')?.value?.trim() || '';
+            const english = field.querySelector('.example-english')?.value?.trim() || '';
+            if (korean && myanmar) {
+              examples.push({ korean: korean.normalize('NFC'), myanmar: myanmar.normalize('NFC'), english });
+            }
+          });
+          return examples;
+        }
+
         // Add word directly to dictionary
         window.addDirectWord = async function() {
 
@@ -1097,10 +1147,10 @@
                                 <p><strong>Source:</strong> ${source}</p>
                                 <p><strong>Added by:</strong> ${data.addedBy || 'Unknown'}</p>
                                 <p><strong>Added:</strong> ${data.addedAt?.toDate?.()?.toLocaleString() || 'Unknown'}</p>
-                                <div class="actions">
-                                    <button class="edit" onclick="editDictionaryWord('${doc.id}', '${data.korean}', '${data.myanmar}', '${data.english || ''}', '${data.pos || 'noun'}')">✏️ Edit</button>
-                                    <button class="reject" onclick="deleteDictionaryWord('${doc.id}', '${data.korean}', '${data.myanmar}')">🗑️ Delete</button>
-                                </div>
+                                 <div class="actions">
+                                     <button class="edit" onclick="editDictionaryWord('${doc.id}', '${data.korean}', '${data.myanmar}', '${data.english || ''}', '${data.pos || 'noun'}', '${data.level || ''}', ${JSON.stringify(data.examples || []).replace(/"/g, '&quot;')})">✏️ Edit</button>
+                                     <button class="reject" onclick="deleteDictionaryWord('${doc.id}', '${data.korean}', '${data.myanmar}')">🗑️ Delete</button>
+                                 </div>
                             </div>
                             
                             <!-- Edit Mode -->
@@ -1133,6 +1183,23 @@
                                         <option value="other" ${data.pos === 'other' ? 'selected' : ''}>Other</option>
                                     </select>
                                 </div>
+                                 <div class="form-group">
+                                     <label>Word Level:</label>
+                                     <select id="dict-edit-level-${doc.id}">
+                                         <option value="" ${!data.level ? 'selected' : ''}>No Level</option>
+                                         <option value="basic" ${data.level === 'basic' ? 'selected' : ''}>Basic</option>
+                                         <option value="pre-intermediate" ${data.level === 'pre-intermediate' ? 'selected' : ''}>Pre-Intermediate</option>
+                                         <option value="intermediate" ${data.level === 'intermediate' ? 'selected' : ''}>Intermediate</option>
+                                         <option value="advanced" ${data.level === 'advanced' ? 'selected' : ''}>Advanced</option>
+                                     </select>
+                                 </div>
+                                 <div class="form-group">
+                                     <label>Examples:</label>
+                                     <div class="examples-helper">Add example sentences for our community…</div>
+                                     <div class="examples-helper">Example sentences in Korean</div>
+                                     <div id="dict-edit-examples-${doc.id}"></div>
+                                     <button type="button" class="btn btn-secondary" onclick="addExampleFieldFor('dict-edit-examples-${doc.id}')"><span>➕</span> Add Example</button>
+                                 </div>
                                 <div class="actions">
                                     <button class="approve" onclick="saveDictionaryEdit('${doc.id}')">💾 Save</button>
                                     <button class="edit" onclick="cancelDictionaryEdit('${doc.id}')">❌ Cancel</button>
@@ -1178,7 +1245,7 @@
         };
 
         // Edit dictionary word
-        window.editDictionaryWord = function(docId, korean, myanmar, english, pos) {
+        window.editDictionaryWord = function(docId, korean, myanmar, english, pos, level = '', examples = []) {
             // Hide display and show edit form
             document.getElementById(`dict-display-${docId}`).style.display = 'none';
             document.getElementById(`dict-edit-${docId}`).style.display = 'block';
@@ -1188,6 +1255,21 @@
             document.getElementById(`dict-edit-myanmar-${docId}`).value = myanmar;
             document.getElementById(`dict-edit-english-${docId}`).value = english;
             document.getElementById(`dict-edit-pos-${docId}`).value = pos;
+            const levelEl = document.getElementById(`dict-edit-level-${docId}`);
+            if (levelEl) levelEl.value = level || '';
+
+            // Populate examples
+            const exContainerId = `dict-edit-examples-${docId}`;
+            const exContainer = document.getElementById(exContainerId);
+            if (exContainer) {
+              exContainer.innerHTML = '';
+              try {
+                const arr = Array.isArray(examples) ? examples : [];
+                arr.forEach((ex) => {
+                  addExampleFieldFor(exContainerId, ex);
+                });
+              } catch {}
+            }
         };
 
         // Cancel dictionary word edit
@@ -1204,6 +1286,8 @@
                 const myanmar = document.getElementById(`dict-edit-myanmar-${docId}`).value.trim();
                 const english = document.getElementById(`dict-edit-english-${docId}`).value.trim();
                 const pos = document.getElementById(`dict-edit-pos-${docId}`).value;
+                const level = document.getElementById(`dict-edit-level-${docId}`)?.value || '';
+                const examples = getExamplesFrom(`dict-edit-examples-${docId}`);
 
                 if (!korean || !myanmar) {
                     alert('Korean and Myanmar fields are required!');
@@ -1221,6 +1305,8 @@
                     myanmar: cleanMyanmar,
                     english: english || '',
                     pos: pos,
+                    level: level || null,
+                    examples: examples,
                     editedAt: serverTimestamp(),
                     editedBy: adminEmail || 'admin'
                 });
