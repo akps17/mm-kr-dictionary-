@@ -38,9 +38,10 @@
         }
       ]
     ],
-    "extra": {
-      "OPENAI_API_KEY": "_________------______", 
-      "GOOGLE_TRANSLATE_API_KEY": "AIzaSyBZYWC_9-m7eUqJsJnIvFrMfJMWR0wAQxA",
+          "extra": {
+        "OPENAI_API_KEY": "_________------______",
+        "GOOGLE_TRANSLATE_API_KEY": "AIzaSyBZYWC_9-m7eUqJsJnIvFrMfJMWR0wAQxA",
+        "GOOGLE_TTS_API_KEY": "......",  
 
       
       "FIREBASE": {

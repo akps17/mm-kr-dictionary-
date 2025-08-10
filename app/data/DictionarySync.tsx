@@ -97,29 +97,20 @@ export function DictionarySyncProvider({ children }: { children: React.ReactNode
         // Show notifications for newly added words
         if (newlyApprovedWords.length > 0) {
           newlyApprovedWords.forEach(word => {
-            notificationManager.show({
-              message: `📚 New word added: ${word.korean} → ${word.myanmar}`,
-              type: 'success',
-              duration: 5000,
-            });
-          });
-          
-          if (newlyApprovedWords.length > 1) {
-            notificationManager.show({
-              message: `🎉 ${newlyApprovedWords.length} new words added to dictionary!`,
-              type: 'info',
-              duration: 6000,
-            });
-          }
-          
-          // Show practice notification
-          setTimeout(() => {
-            notificationManager.show({
-              message: `🎯 New words are now available in Quiz & Practice sections!`,
-              type: 'info',
-              duration: 7000,
-            });
-          }, 3000);
+                                  notificationManager.show({
+                        message: `📚 New word added: ${word.korean} → ${word.myanmar}`,
+                        type: 'success',
+                        duration: 5000,
+                      });
+                    });
+
+                    if (newlyApprovedWords.length > 1) {
+                      notificationManager.show({
+                        message: `🎉 ${newlyApprovedWords.length} new words added to dictionary!`,
+                        type: 'info',
+                        duration: 6000,
+                      });
+                    }
         }
 
         setApprovedWords(newApprovedWords);

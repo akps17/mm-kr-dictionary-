@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useMemo, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {
   FlatList,
@@ -34,6 +35,7 @@ import { NotificationContainer } from './components/NotificationBanner';
 import { db } from './data/firebase';
 import { transcribeWithOpenAI } from './data/stt';
 import { generateMCQ, generateTF, generateFlashcards } from './data/quiz';
+import { WordDetailScreen } from './screens/WordDetailScreen';
 import { GoogleTranslateProvider, OpenAIChatProvider, type ChatMessage } from './data/ai';
 
 export type DictionaryEntry = {
@@ -53,6 +55,26 @@ function useResponsiveLayout() {
   const maxWidthCap = isWeb ? 1200 : 900;
   const contentMaxWidth = Math.min(width, maxWidthCap);
   return { isTabletLike, horizontalPadding, contentMaxWidth };
+}
+
+function HomeStack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen 
+        name="HomeSearch" 
+        component={HomeSearchScreen} 
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen 
+        name="WordDetail" 
+        component={WordDetailScreen}
+        options={{
+          headerTitle: '',
+          headerBackTitle: 'Back',
+        }}
+      />
+    </Stack.Navigator>
+  );
 }
 
 function HomeSearchScreen({ navigation }: { navigation: any }) {
@@ -142,7 +164,16 @@ function HomeSearchScreen({ navigation }: { navigation: any }) {
               keyboardShouldPersistTaps="handled"
               contentContainerStyle={styles.listContent}
               renderItem={({ item }) => (
-                <View style={[styles.row, isTabletLike && styles.rowTablet, { backgroundColor: C.surface }]}> 
+                <Pressable 
+                  onPress={() => navigation.navigate('WordDetail', { word: item })}
+                  style={({ pressed }) => [
+                    styles.row,
+                    isTabletLike && styles.rowTablet,
+                    { 
+                      backgroundColor: C.surface,
+                      opacity: pressed ? 0.7 : 1 
+                    }
+                  ]}>
                   <View style={styles.rowTextGroup}>
                     <View style={styles.rowHeader}>
                       <Text style={[styles.korean, isTabletLike && styles.koreanTablet, { color: C.textPrimary, fontFamily: 'NotoSansMyanmar_700Bold', fontSize: styles.korean.fontSize * fontScale }]}>{item.korean}</Text>
@@ -156,7 +187,7 @@ function HomeSearchScreen({ navigation }: { navigation: any }) {
                     {!!item.english && <Text style={[styles.englishGloss, { color: C.textTertiary, fontSize: styles.englishGloss.fontSize * fontScale }]}>{item.english}</Text>}
                   </View>
                   <FavoriteButton entryId={item.id} />
-                </View>
+                </Pressable>
               )}
               ListEmptyComponent={
                 <View style={styles.emptyState}>
@@ -418,8 +449,9 @@ function SubmitWordScreen() {
         </View>
 
         <View style={[styles.card, { marginTop: 16, backgroundColor: C.surface, borderColor: C.border }]}>
-          <Text style={{ fontWeight: '700', color: C.textSecondary, marginBottom: 8 }}>Pending (Local)</Text>
-          {pendingEntries.length === 0 ? (
+                                                          <Text style={{ fontWeight: '700', color: C.textSecondary, marginBottom: 4 }}>My Word Submissions</Text>
+                        <Text style={{ color: C.textTertiary, fontSize: 12, marginBottom: 12 }}>Track your submitted words and their approval status</Text>
+                        {pendingEntries.length === 0 ? (
             <Text style={{ color: C.textTertiary }}>No submissions yet</Text>
           ) : (
             pendingEntries.map((entry) => (
@@ -427,21 +459,37 @@ function SubmitWordScreen() {
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4 }}>
                   <Text style={{ color: C.textPrimary, fontWeight: '600' }}>{entry.korean}</Text>
                   {entry.status && (
-                    <View style={[
-                      styles.pill,
-                      entry.status === 'approved' && { backgroundColor: '#D1FAE5', borderColor: '#A7F3D0' },
-                      entry.status === 'rejected' && { backgroundColor: '#FEE2E2', borderColor: '#FCA5A5' },
-                      entry.status === 'pending' && { backgroundColor: '#FEF3C7', borderColor: '#FCD34D' }
-                    ]}>
-                      <Text style={[
-                        { fontSize: 12, textTransform: 'capitalize' },
-                        entry.status === 'approved' && { color: '#059669' },
-                        entry.status === 'rejected' && { color: '#DC2626' },
-                        entry.status === 'pending' && { color: '#D97706' }
-                      ]}>
-                        {entry.status}
-                      </Text>
-                    </View>
+                                                      <View style={[
+                                    styles.pill,
+                                    entry.status === 'approved' && { backgroundColor: '#D1FAE5', borderColor: '#A7F3D0' },
+                                    entry.status === 'rejected' && { backgroundColor: '#FEE2E2', borderColor: '#FCA5A5' },
+                                    entry.status === 'pending' && { backgroundColor: '#FEF3C7', borderColor: '#FCD34D' }
+                                  ]}>
+                                    <Ionicons 
+                                      name={
+                                        entry.status === 'approved' ? 'checkmark-circle-outline' :
+                                        entry.status === 'rejected' ? 'close-circle-outline' :
+                                        'time-outline'
+                                      } 
+                                      size={14} 
+                                      color={
+                                        entry.status === 'approved' ? '#059669' :
+                                        entry.status === 'rejected' ? '#DC2626' :
+                                        '#D97706'
+                                      }
+                                      style={{ marginRight: 4 }}
+                                    />
+                                    <Text style={[
+                                      { fontSize: 12 },
+                                      entry.status === 'approved' && { color: '#059669' },
+                                      entry.status === 'rejected' && { color: '#DC2626' },
+                                      entry.status === 'pending' && { color: '#D97706' }
+                                    ]}>
+                                      {entry.status === 'approved' ? 'Approved' :
+                                       entry.status === 'rejected' ? 'Not Approved' :
+                                       'Pending Review'}
+                                    </Text>
+                                  </View>
                   )}
                 </View>
                 <Text style={{ color: C.textPrimary, fontFamily: 'NotoSansMyanmar_400Regular' }}>{entry.myanmar}</Text>
@@ -539,30 +587,22 @@ function MultipleChoiceQuizScreen() {
 
   // Timer effect - only run when index changes or when quiz is reset
   React.useEffect(() => {
-    // Clear any existing timer
     if (timeLeft === 0) return;
     
-    console.log('Starting timer for question', index + 1);
     const timer = setInterval(() => {
       setTimeLeft(prev => {
         const next = prev > 0 ? prev - 1 : 0;
-        if (next === 0) {
-          console.log('Timer expired for question', index + 1);
+        if (next === 0 && index < questions.length - 1) {
           // Auto-advance to next question when time runs out
-          if (index < questions.length - 1) {
-            setIndex(i => i + 1);
-            setSelected(null);
-            setTimeLeft(60);
-          }
+          setIndex(i => i + 1);
+          setSelected(null);
+          setTimeLeft(60);
         }
         return next;
       });
     }, 1000);
 
-    return () => {
-      console.log('Cleaning up timer for question', index + 1);
-      clearInterval(timer);
-    };
+    return () => clearInterval(timer);
   }, [index, questions.length, timeLeft]);
 
   const q = questions[index];
@@ -856,6 +896,13 @@ function PracticeTabs() {
   );
 }
 
+type RootStackParamList = {
+  HomeSearch: undefined;
+  WordDetail: { word: DictionaryEntry };
+};
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
+
 type RootDrawerParamList = {
   Home: undefined;
   Practice: undefined;
@@ -992,7 +1039,7 @@ function VoiceToTextScreen() {
 function AppNavigator() {
   return (
     <Drawer.Navigator drawerContent={(props) => <AppDrawerContent {...props} />}>
-      <Drawer.Screen name="Home" component={HomeSearchScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="home-outline" size={size} color={color} />) }} />
+              <Drawer.Screen name="Home" component={HomeStack} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="home-outline" size={size} color={color} />) }} />
       <Drawer.Screen name="Practice" component={PracticeTabs} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="school-outline" size={size} color={color} />) }} />
       <Drawer.Screen name="Favorites" component={FavoritesScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="heart-outline" size={size} color={color} />) }} />
       <Drawer.Screen name="History" component={HistoryScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="time-outline" size={size} color={color} />) }} />

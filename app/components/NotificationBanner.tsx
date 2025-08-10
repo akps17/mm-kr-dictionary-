@@ -26,28 +26,33 @@ export function NotificationBanner({ message, type, duration = 4000, onDismiss }
     Animated.spring(slideAnim, {
       toValue: 0,
       useNativeDriver: true,
-      tension: 100,
-      friction: 8,
+      tension: 80,
+      friction: 10,
+      velocity: 1,
     }).start();
 
-    // Auto dismiss
+    // Auto dismiss after duration
     const timer = setTimeout(() => {
       dismiss();
     }, duration);
 
-    return () => clearTimeout(timer);
-  }, []);
+    // Cleanup
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [duration]); // Added duration to dependencies
 
-  const dismiss = () => {
+  const dismiss = React.useCallback(() => {
     Animated.spring(slideAnim, {
       toValue: -100,
       useNativeDriver: true,
-      tension: 100,
-      friction: 8,
+      tension: 80,
+      friction: 10,
+      velocity: 1,
     }).start(() => {
       onDismiss();
     });
-  };
+  }, [slideAnim, onDismiss]);
 
   const getBackgroundColor = () => {
     switch (type) {
@@ -115,7 +120,7 @@ const styles = StyleSheet.create({
     right: 0,
     zIndex: 1000,
     paddingTop: 50, // Account for status bar
-    paddingBottom: 12,
+    paddingBottom: 16,
     paddingHorizontal: 16,
     shadowColor: '#000',
     shadowOffset: {
@@ -125,24 +130,32 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
+    alignItems: 'center', // Center content horizontally
   },
   content: {
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'flex-start', // Changed from 'center' to 'flex-start'
+    justifyContent: 'space-between',
+    width: '100%',
+    maxWidth: 600, // Add max width for larger screens
+    alignSelf: 'center',
   },
   icon: {
     marginRight: 12,
+    marginTop: 2, // Align icon with first line of text
   },
   message: {
     flex: 1,
     color: 'white',
     fontSize: 14,
     fontWeight: '500',
-    lineHeight: 18,
+    lineHeight: 20, // Increased line height
+    paddingRight: 8, // Give some space from close button
   },
   closeButton: {
     padding: 4,
     marginLeft: 8,
+    marginTop: 2, // Align with first line of text
   },
 });
 
