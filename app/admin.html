@@ -10,8 +10,31 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Myanmar:wght@400;700&display=swap" rel="stylesheet">
     
-    <style>
-        body { 
+        <style>
+      /* Example field styles */
+      .example-field {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 16px;
+        margin-bottom: 12px;
+      }
+      .example-field .form-group {
+        margin-bottom: 8px;
+      }
+      .example-field .remove-example {
+        color: #ef4444;
+        background: #fee2e2;
+        border: none;
+        padding: 4px 8px;
+        border-radius: 4px;
+        cursor: pointer;
+        float: right;
+      }
+      .example-field .remove-example:hover {
+        background: #fecaca;
+      }
+      body { 
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; 
             margin: 0; 
             background: #f8fafc;
@@ -307,6 +330,25 @@
             transform: translateY(-1px);
         }
         
+        /* Success (green) button and larger size */
+        .btn-success {
+            background: #10B981;
+            color: white;
+        }
+        .btn-success:hover {
+            background: #059669;
+            transform: translateY(-1px);
+        }
+        .btn-lg {
+            padding: 16px 28px;
+            font-size: 18px;
+            border-radius: 12px;
+        }
+        .center-block {
+            display: block;
+            margin: 24px auto 0;
+        }
+        
         .form-section {
             background: white;
             padding: 24px;
@@ -463,6 +505,13 @@
             font-family: 'Noto Sans Myanmar', 'Myanmar Text', sans-serif;
             font-size: 14px;
         }
+
+        /* Examples helper text */
+        .examples-helper {
+            color: #6b7280;
+            font-size: 14px;
+            margin: 8px 0 12px 0;
+        }
     </style>
 </head>
 <body>
@@ -567,24 +616,49 @@
                         <input type="text" id="direct-english" placeholder="Enter English translation" class="form-input">
                     </div>
                     <div class="form-group">
-                        <label for="direct-pos">Part of Speech</label>
-                        <select id="direct-pos" class="form-select">
-                            <option value="noun">Noun</option>
-                            <option value="verb">Verb</option>
-                            <option value="adjective">Adjective</option>
-                            <option value="adverb">Adverb</option>
-                            <option value="pronoun">Pronoun</option>
-                            <option value="preposition">Preposition</option>
-                            <option value="conjunction">Conjunction</option>
-                            <option value="interjection">Interjection</option>
-                            <option value="particle">Particle</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-                </div>
-                <button class="btn btn-primary" onclick="addDirectWord()">
-                    <span>➕</span> Add to Dictionary
+                                        <label for="direct-pos">Part of Speech</label>
+                <select id="direct-pos" class="form-select">
+                  <option value="noun">Noun</option>
+                  <option value="verb">Verb</option>
+                  <option value="adjective">Adjective</option>
+                  <option value="adverb">Adverb</option>
+                  <option value="pronoun">Pronoun</option>
+                  <option value="preposition">Preposition</option>
+                  <option value="conjunction">Conjunction</option>
+                  <option value="interjection">Interjection</option>
+                  <option value="particle">Particle</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="direct-level">Word Level</label>
+                <select id="direct-level" class="form-select">
+                  <option value="">No Level</option>
+                  <option value="basic">Basic (TOPIK I - Level 1)</option>
+                  <option value="pre-intermediate">Pre-Intermediate (TOPIK I - Level 2)</option>
+                  <option value="intermediate">Intermediate (TOPIK II - Level 3-4)</option>
+                  <option value="advanced">Advanced (TOPIK II - Level 5-6)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Example Sentences -->
+            <div class="examples-section" style="margin-top: 20px;">
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                <button type="button" class="btn btn-secondary" onclick="addExampleField()">
+                  <span>➕</span> Add Example
                 </button>
+              </div>
+              <div class="examples-helper">Add example sentences for our community…</div>
+              <div class="examples-helper">Example sentences in Korean</div>
+              <div id="examples-container">
+                <!-- Examples will be added here -->
+              </div>
+            </div>
+
+            <button class="btn btn-success btn-lg center-block" onclick="addDirectWord()">
+              <span>✅</span> Add to Dictionary
+            </button>
             </div>
             
             <!-- Actions Section -->
@@ -869,12 +943,72 @@
             }
         }
 
+        // Example fields helpers (shared)
+        window.addExampleField = function() {
+              const container = document.getElementById('examples-container');
+              const exampleId = Date.now(); // Unique ID for the example field
+              
+              const exampleField = document.createElement('div');
+              exampleField.className = 'example-field';
+              exampleField.id = `example-${exampleId}`;
+              
+              exampleField.innerHTML = `
+                <button type="button" class="remove-example" onclick="removeExample('${exampleId}')">
+                  ✕ Remove
+                </button>
+                <div class="form-group">
+                  <label>Korean Example</label>
+                  <input type="text" class="form-input example-korean" placeholder="Enter example in Korean">
+                </div>
+                <div class="form-group">
+                  <label>Myanmar Translation</label>
+                  <input type="text" class="form-input example-myanmar" placeholder="Enter example in Myanmar">
+                </div>
+                <div class="form-group">
+                  <label>English Translation (Optional)</label>
+                  <input type="text" class="form-input example-english" placeholder="Enter example in English">
+                </div>
+              `;
+              
+              container.appendChild(exampleField);
+        }
+
+        window.removeExample = function(exampleId) {
+              const exampleField = document.getElementById(`example-${exampleId}`);
+              if (exampleField) {
+                exampleField.remove();
+              }
+        }
+
+        function getExamples() {
+              const examples = [];
+              const exampleFields = document.querySelectorAll('.example-field');
+              
+              exampleFields.forEach(field => {
+                const korean = field.querySelector('.example-korean').value.trim();
+                const myanmar = field.querySelector('.example-myanmar').value.trim();
+                const english = field.querySelector('.example-english').value.trim();
+                
+                if (korean && myanmar) { // Only add if Korean and Myanmar are provided
+                  examples.push({
+                    korean: korean.normalize('NFC'),
+                    myanmar: myanmar.normalize('NFC'),
+                    english: english || ''
+                  });
+                }
+              });
+              
+              return examples;
+        }
+
         // Add word directly to dictionary
         window.addDirectWord = async function() {
+
             const korean = document.getElementById('direct-korean').value.trim();
             const myanmar = document.getElementById('direct-myanmar').value.trim();
             const english = document.getElementById('direct-english').value.trim();
             const pos = document.getElementById('direct-pos').value;
+            const level = document.getElementById('direct-level').value;
 
             if (!korean || !myanmar) {
                 alert('Korean and Myanmar fields are required!');
@@ -888,12 +1022,17 @@
                 const cleanMyanmar = myanmar.normalize('NFC');
                 const cleanKorean = korean.normalize('NFC');
                 
+                // Get examples if any
+                const examples = getExamples();
+                
                 // Add to main dictionary collection
                 await addDoc(collection(db, 'dictionary'), {
                     korean: cleanKorean,
                     myanmar: cleanMyanmar,
                     english: english || '',
                     pos: pos,
+                    level: level || null,
+                    examples: examples.length > 0 ? examples : [],
                     addedBy: adminEmail || 'admin',
                     addedAt: serverTimestamp(),
                     source: 'admin_direct'
@@ -903,6 +1042,8 @@
                 document.getElementById('direct-korean').value = '';
                 document.getElementById('direct-myanmar').value = '';
                 document.getElementById('direct-english').value = '';
+                document.getElementById('direct-level').value = '';
+                document.getElementById('examples-container').innerHTML = '';
                 document.getElementById('direct-pos').value = 'noun';
 
                 alert('Word added to dictionary successfully!');
@@ -1310,6 +1451,8 @@
                     myanmar: cleanMyanmar,
                     english: wordData.english || '',
                     pos: wordData.pos || 'noun',
+                    level: wordData.level || null,
+                    examples: wordData.examples || [],
                     addedBy: adminEmail || 'admin',
                     addedAt: serverTimestamp(),
                     source: 'user_approved',

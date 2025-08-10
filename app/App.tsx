@@ -21,6 +21,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { Audio } from 'expo-av';
 import { useFonts as useMyanmarFonts, NotoSansMyanmar_400Regular, NotoSansMyanmar_700Bold } from '@expo-google-fonts/noto-sans-myanmar';
 import { dictionaryEntries } from './data/dictionary';
+import type { DictionaryEntry as SharedDictionaryEntry } from './types/dictionary';
 import { useThemedColors } from './components/Theme';
 import { AppLanguage, SortPriority, AppSettings, i18nLabels, NATIVE_LANGUAGE_NAME, FontSize } from './data/settings';
 import { SettingsProvider, useSettings } from './data/SettingsContext';
@@ -35,16 +36,11 @@ import { NotificationContainer } from './components/NotificationBanner';
 import { db } from './data/firebase';
 import { transcribeWithOpenAI } from './data/stt';
 import { generateMCQ, generateTF, generateFlashcards } from './data/quiz';
+import { WordInputForm } from './components/WordInputForm';
 import { WordDetailScreen } from './screens/WordDetailScreen';
 import { GoogleTranslateProvider, OpenAIChatProvider, type ChatMessage } from './data/ai';
 
-export type DictionaryEntry = {
-  id: string;
-  korean: string;
-  myanmar: string;
-  english?: string;
-  pos?: 'noun' | 'verb' | 'adjective' | 'adverb' | 'pronoun' | 'preposition' | 'conjunction' | 'interjection' | 'particle' | 'other';
-};
+export type DictionaryEntry = SharedDictionaryEntry;
 
 function useResponsiveLayout() {
   const { width } = useWindowDimensions();
@@ -372,10 +368,6 @@ function SubmitWordScreen() {
   const C = useThemedColors();
   const { submitEntry, pendingEntries } = useSubmissions();
   const { user, logOut, loading } = useAuth();
-  const [korean, setKorean] = React.useState('');
-  const [myanmar, setMyanmar] = React.useState('');
-  const [english, setEnglish] = React.useState('');
-  const [pos, setPos] = React.useState<DictionaryEntry['pos']>('noun');
   const [msg, setMsg] = React.useState('');
 
   // Show auth screen if not logged in
@@ -393,19 +385,16 @@ function SubmitWordScreen() {
     return <AuthScreen />;
   }
 
-  async function onSubmit() {
-    if (!korean.trim() || !myanmar.trim()) {
-      setMsg('Please fill Korean and Myanmar');
+  async function onSubmit(entry: any) {
+    if (!entry.korean.trim() || !entry.myanmar.trim() || !entry.english.trim()) {
+      setMsg('Please fill Korean, Myanmar, and English');
       return;
     }
     await submitEntry({ 
-      korean: korean.trim(), 
-      myanmar: myanmar.trim(), 
-      english: english.trim() || undefined, 
-      pos,
+      ...entry,
       userEmail: user?.email || 'anonymous' 
     });
-    setKorean(''); setMyanmar(''); setEnglish(''); setMsg('Submitted for review.');
+    setMsg('Submitted for review.');
   }
 
   return (
@@ -430,28 +419,22 @@ function SubmitWordScreen() {
             </Pressable>
           </View>
         </View>
-        <View style={[styles.card, { backgroundColor: C.surface, borderColor: C.border, gap: 8 }]}>
-          <TextInput value={korean} onChangeText={setKorean} placeholder="Korean" style={{ borderWidth: 1, borderColor: C.border, borderRadius: 8, padding: 10 }} />
-          <TextInput value={myanmar} onChangeText={setMyanmar} placeholder="Myanmar" style={{ borderWidth: 1, borderColor: C.border, borderRadius: 8, padding: 10 }} />
-          <TextInput value={english} onChangeText={setEnglish} placeholder="English (optional)" style={{ borderWidth: 1, borderColor: C.border, borderRadius: 8, padding: 10 }} />
-          <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: 6 }}>
-            {(['noun','verb','adjective','adverb','pronoun','preposition','conjunction','interjection','particle','other'] as NonNullable<DictionaryEntry['pos']>[]).map(p => (
-              <Pressable key={p} onPress={() => setPos(p)} style={[styles.pill, pos === p && styles.pillActive] as any}>
-                <Text style={{ textTransform: 'capitalize' }}>{p}</Text>
-              </Pressable>
-            ))}
-          </View>
-          <Pressable onPress={onSubmit} style={[styles.primaryBtn, { backgroundColor: '#2563EB' }]}>
-            <Ionicons name="save-outline" size={18} color="#fff" />
-            <Text style={styles.primaryBtnText}>Submit</Text>
-          </Pressable>
-          {!!msg && <Text style={{ color: C.textSecondary }}>{msg}</Text>}
-        </View>
 
+        {/* Enhanced Word Input Form */}
+        <WordInputForm onSubmit={onSubmit} />
+
+        {/* Success Message */}
+        {!!msg && (
+          <View style={[styles.card, { backgroundColor: C.surface, borderColor: C.border, marginTop: 16 }]}>
+            <Text style={{ color: C.textSecondary, textAlign: 'center' }}>{msg}</Text>
+          </View>
+        )}
+
+        {/* My Word Submissions */}
         <View style={[styles.card, { marginTop: 16, backgroundColor: C.surface, borderColor: C.border }]}>
-                                                          <Text style={{ fontWeight: '700', color: C.textSecondary, marginBottom: 4 }}>My Word Submissions</Text>
-                        <Text style={{ color: C.textTertiary, fontSize: 12, marginBottom: 12 }}>Track your submitted words and their approval status</Text>
-                        {pendingEntries.length === 0 ? (
+          <Text style={{ fontWeight: '700', color: C.textSecondary, marginBottom: 4 }}>My Word Submissions</Text>
+          <Text style={{ color: C.textTertiary, fontSize: 12, marginBottom: 12 }}>Track your submitted words and their approval status</Text>
+          {pendingEntries.length === 0 ? (
             <Text style={{ color: C.textTertiary }}>No submissions yet</Text>
           ) : (
             pendingEntries.map((entry) => (
@@ -459,37 +442,37 @@ function SubmitWordScreen() {
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4 }}>
                   <Text style={{ color: C.textPrimary, fontWeight: '600' }}>{entry.korean}</Text>
                   {entry.status && (
-                                                      <View style={[
-                                    styles.pill,
-                                    entry.status === 'approved' && { backgroundColor: '#D1FAE5', borderColor: '#A7F3D0' },
-                                    entry.status === 'rejected' && { backgroundColor: '#FEE2E2', borderColor: '#FCA5A5' },
-                                    entry.status === 'pending' && { backgroundColor: '#FEF3C7', borderColor: '#FCD34D' }
-                                  ]}>
-                                    <Ionicons 
-                                      name={
-                                        entry.status === 'approved' ? 'checkmark-circle-outline' :
-                                        entry.status === 'rejected' ? 'close-circle-outline' :
-                                        'time-outline'
-                                      } 
-                                      size={14} 
-                                      color={
-                                        entry.status === 'approved' ? '#059669' :
-                                        entry.status === 'rejected' ? '#DC2626' :
-                                        '#D97706'
-                                      }
-                                      style={{ marginRight: 4 }}
-                                    />
-                                    <Text style={[
-                                      { fontSize: 12 },
-                                      entry.status === 'approved' && { color: '#059669' },
-                                      entry.status === 'rejected' && { color: '#DC2626' },
-                                      entry.status === 'pending' && { color: '#D97706' }
-                                    ]}>
-                                      {entry.status === 'approved' ? 'Approved' :
-                                       entry.status === 'rejected' ? 'Not Approved' :
-                                       'Pending Review'}
-                                    </Text>
-                                  </View>
+                    <View style={[
+                      styles.pill,
+                      entry.status === 'approved' && { backgroundColor: '#D1FAE5', borderColor: '#A7F3D0' },
+                      entry.status === 'rejected' && { backgroundColor: '#FEE2E2', borderColor: '#FCA5A5' },
+                      entry.status === 'pending' && { backgroundColor: '#FEF3C7', borderColor: '#FCD34D' }
+                    ]}>
+                      <Ionicons 
+                        name={
+                          entry.status === 'approved' ? 'checkmark-circle-outline' :
+                          entry.status === 'rejected' ? 'close-circle-outline' :
+                          'time-outline'
+                        } 
+                        size={14} 
+                        color={
+                          entry.status === 'approved' ? '#059669' :
+                          entry.status === 'rejected' ? '#DC2626' :
+                          '#D97706'
+                        }
+                        style={{ marginRight: 4 }}
+                      />
+                      <Text style={[
+                        { fontSize: 12 },
+                        entry.status === 'approved' && { color: '#059669' },
+                        entry.status === 'rejected' && { color: '#DC2626' },
+                        entry.status === 'pending' && { color: '#D97706' }
+                      ]}>
+                        {entry.status === 'approved' ? 'Approved' :
+                         entry.status === 'rejected' ? 'Not Approved' :
+                         'Pending Review'}
+                      </Text>
+                    </View>
                   )}
                 </View>
                 <Text style={{ color: C.textPrimary, fontFamily: 'NotoSansMyanmar_400Regular' }}>{entry.myanmar}</Text>
@@ -513,9 +496,9 @@ function getMotivation(score: number, total: number, uiLang: 'english' | 'myanma
   const pct = (score / Math.max(1, total)) * 100;
   const en = [
     'Amazing! You are on fire! Keep the momentum.',
-    'Great job! A little more practice and you’ll master it.',
+    'Great job! A little more practice and you\'ll master it.',
     'Good effort! Review and try again — consistency wins.',
-    'Every step counts. Keep practicing — you’ve got this!',
+    'Every step counts. Keep practicing — you\'ve got this!',
   ];
   const mm = [
     'အရမ်းအားကြီးပါတယ်! စိတ်အားထက်သန်နေပြီ — ဆက်လက်လုပ်နိုင်ပါတယ်။',
@@ -1028,7 +1011,7 @@ function VoiceToTextScreen() {
             </Pressable>
           )}
           <Text style={{ color: C.textTertiary, marginTop: 8 }}>
-            Note: On-device transcription isn’t available in Expo Go. Use a dev build or connect a cloud STT API.
+            Note: On-device transcription isn't available in Expo Go. Use a dev build or connect a cloud STT API.
           </Text>
         </View>
       </View>

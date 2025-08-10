@@ -3,12 +3,16 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { collection, addDoc, serverTimestamp, query, where, onSnapshot } from 'firebase/firestore';
 import { db } from './firebase';
 
+import type { WordLevel, Example } from '../types/dictionary';
+
 export type PendingEntry = {
   id: string;
   korean: string;
   myanmar: string;
   english?: string;
   pos?: 'noun' | 'verb' | 'adjective' | 'adverb' | 'pronoun' | 'preposition' | 'conjunction' | 'interjection' | 'particle' | 'other';
+  level?: WordLevel;
+  examples?: Example[];
   createdAt: number;
   userEmail?: string;
   status?: 'pending' | 'approved' | 'rejected';
@@ -98,16 +102,22 @@ export function SubmissionsProvider({ children }: { children: React.ReactNode })
       const cleanKorean = (e.korean || '').normalize('NFC');
       const cleanMyanmar = (e.myanmar || '').normalize('NFC');
       
-      await addDoc(collection(db, 'pending_words'), {
-        korean: cleanKorean,
-        myanmar: cleanMyanmar,
-        english: e.english || '',
-        pos: e.pos || '',
-        status: 'pending',
-        submittedAt: serverTimestamp(),
-        submittedBy: e.userEmail || 'anonymous',
-        localId: id,
-      });
+                        await addDoc(collection(db, 'pending_words'), {
+                    korean: cleanKorean,
+                    myanmar: cleanMyanmar,
+                    english: e.english || '',
+                    pos: e.pos || null,
+                    level: e.level || null,
+                    examples: e.examples?.filter(ex => ex && ex.korean && ex.myanmar).map(ex => ({
+                      korean: ex.korean.normalize('NFC'),
+                      myanmar: ex.myanmar.normalize('NFC'),
+                      english: ex.english || ''
+                    })) || [],
+                    status: 'pending',
+                    submittedAt: serverTimestamp(),
+                    submittedBy: e.userEmail || 'anonymous',
+                    localId: id,
+                  });
       console.log('Word submitted to Firebase successfully');
     } catch (error) {
       console.error('Failed to submit to Firebase:', error);

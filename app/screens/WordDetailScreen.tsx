@@ -13,20 +13,14 @@ import { Ionicons } from '@expo/vector-icons';
 import { useThemedColors } from '../components/Theme';
 import { useLibrary } from '../data/LibraryContext';
 import { Audio } from 'expo-av';
+import { WORD_LEVELS } from '../types/dictionary';
+
+import type { DictionaryEntry, Example } from '../types/dictionary';
 
 type WordDetailScreenProps = {
   route: {
     params: {
-      word: {
-        id: string;
-        korean: string;
-        myanmar: string;
-        english?: string;
-        pos?: string;
-        examples?: string[];
-        synonyms?: string[];
-        antonyms?: string[];
-      };
+      word: DictionaryEntry;
     };
   };
   navigation: any;
@@ -140,13 +134,31 @@ export function WordDetailScreen({ route, navigation }: WordDetailScreenProps) {
             </Pressable>
           </View>
 
-          {word.pos && (
-            <View style={[styles.posChip, { backgroundColor: C.border }]}>
-              <Text style={[styles.posText, { color: C.textSecondary }]}>
-                {word.pos}
-              </Text>
-            </View>
-          )}
+          <View style={styles.chipContainer}>
+            {word.pos && (
+              <View style={[styles.posChip, { backgroundColor: C.border }]}>
+                <Text style={[styles.posText, { color: C.textSecondary }]}>
+                  {word.pos}
+                </Text>
+              </View>
+            )}
+            {word.level && (
+              <View style={[
+                styles.levelChip, 
+                { backgroundColor: WORD_LEVELS.find(l => l.value === word.level)?.color || C.border }
+              ]}>
+                <Ionicons 
+                  name="school" 
+                  size={14} 
+                  color="white" 
+                  style={{ marginRight: 4 }} 
+                />
+                <Text style={styles.levelText}>
+                  {WORD_LEVELS.find(l => l.value === word.level)?.label || word.level}
+                </Text>
+              </View>
+            )}
+          </View>
         </View>
       </View>
 
@@ -169,12 +181,29 @@ export function WordDetailScreen({ route, navigation }: WordDetailScreenProps) {
       </View>
 
       {/* Examples */}
-      <View style={[styles.section, { backgroundColor: C.surface }]}>
-        <Text style={[styles.sectionTitle, { color: C.textSecondary }]}>Examples</Text>
-        <Text style={[styles.placeholder, { color: C.textTertiary }]}>
-          Examples will be added soon
-        </Text>
-      </View>
+      {word.examples && word.examples.length > 0 && (
+        <View style={[styles.section, { backgroundColor: C.surface }]}>
+          <Text style={[styles.sectionTitle, { color: C.textSecondary }]}>Examples for this word</Text>
+          {word.examples.map((example, index) => (
+            <View key={index} style={styles.exampleItem}>
+              <Text style={[styles.exampleKorean, { color: C.textPrimary }]}>
+                {example.korean}
+              </Text>
+              <Text 
+                style={[styles.exampleMyanmar, { color: C.textSecondary }]}
+                allowFontScaling={false}
+              >
+                {example.myanmar}
+              </Text>
+              {example.english && (
+                <Text style={[styles.exampleEnglish, { color: C.textTertiary }]}>
+                  {example.english}
+                </Text>
+              )}
+            </View>
+          ))}
+        </View>
+      )}
 
       {/* Synonyms & Antonyms */}
       <View style={[styles.section, { backgroundColor: C.surface }]}>
@@ -293,5 +322,44 @@ const styles = StyleSheet.create({
   divider: {
     width: 1,
     alignSelf: 'stretch',
+  },
+  chipContainer: {
+    flexDirection: 'column',
+    flexWrap: 'nowrap',
+    gap: 8,
+    marginTop: 12,
+  },
+  levelChip: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 12,
+    paddingVertical: 4,
+    borderRadius: 16,
+  },
+  levelText: {
+    fontSize: 12,
+    color: 'white',
+    fontWeight: '500',
+  },
+  exampleItem: {
+    marginBottom: 16,
+    paddingBottom: 16,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: '#e5e7eb',
+  },
+  exampleKorean: {
+    fontSize: 16,
+    fontWeight: '500',
+    marginBottom: 4,
+  },
+  exampleMyanmar: {
+    fontSize: 14,
+    fontFamily: 'NotoSansMyanmar_400Regular',
+    lineHeight: 24,
+    marginBottom: 2,
+  },
+  exampleEnglish: {
+    fontSize: 12,
+    fontStyle: 'italic',
   },
 });

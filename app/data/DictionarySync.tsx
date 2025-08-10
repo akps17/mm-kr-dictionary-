@@ -3,6 +3,7 @@ import { collection, query, onSnapshot, doc, updateDoc } from 'firebase/firestor
 import { db } from './firebase';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { notificationManager } from '../components/NotificationBanner';
+import type { WordLevel, Example } from '../types/dictionary';
 
 
 
@@ -13,6 +14,8 @@ export type ApprovedWord = {
   myanmar: string;
   english?: string;
   pos?: 'noun' | 'verb' | 'adjective' | 'adverb' | 'pronoun' | 'preposition' | 'conjunction' | 'interjection' | 'particle' | 'other';
+  level?: WordLevel;
+  examples?: Example[];
   approvedAt: Date;
   approvedBy: string;
 };
@@ -74,12 +77,14 @@ export function DictionarySyncProvider({ children }: { children: React.ReactNode
           const data = doc.data();
           console.log('Processing document:', doc.id, data);
           
-          const approvedWord = {
+          const approvedWord: ApprovedWord = {
             id: doc.id,
             korean: data.korean || '',
             myanmar: data.myanmar || '',
             english: data.english || '',
             pos: data.pos || 'noun',
+            level: data.level || undefined,
+            examples: Array.isArray(data.examples) ? data.examples : [],
             approvedAt: data.addedAt?.toDate() || new Date(),
             approvedBy: data.addedBy || 'admin',
           };
@@ -225,22 +230,36 @@ export function mergeApprovedWords(
   const merged = [...existingDictionary];
   
   approvedWords.forEach((approvedWord) => {
-    // Check if word already exists (avoid duplicates)
-    const exists = merged.some(
-      (entry) => 
-        entry.korean === approvedWord.korean && 
+    const existingIndex = merged.findIndex(
+      (entry) =>
+        entry.korean === approvedWord.korean &&
         entry.myanmar === approvedWord.myanmar
     );
-    
-    if (!exists) {
-      merged.push({
-        id: `approved_${approvedWord.id}`,
-        korean: approvedWord.korean,
-        myanmar: approvedWord.myanmar,
-        english: approvedWord.english,
-        pos: approvedWord.pos || 'noun',
-      });
+
+    if (existingIndex >= 0) {
+      // Merge extra fields into existing entry when missing
+      const current = merged[existingIndex];
+      merged[existingIndex] = {
+        ...current,
+        english: current.english || approvedWord.english,
+        pos: current.pos || approvedWord.pos || 'noun',
+        level: current.level || approvedWord.level,
+        examples: (current.examples && current.examples.length > 0)
+          ? current.examples
+          : (approvedWord.examples || []),
+      };
+      return;
     }
+
+    merged.push({
+      id: `approved_${approvedWord.id}`,
+      korean: approvedWord.korean,
+      myanmar: approvedWord.myanmar,
+      english: approvedWord.english,
+      pos: approvedWord.pos || 'noun',
+      level: approvedWord.level,
+      examples: approvedWord.examples || [],
+    });
   });
   
   return merged.sort((a, b) => a.korean.localeCompare(b.korean));

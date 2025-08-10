@@ -264,6 +264,8 @@ code dictionary.ts
                         myanmar: data.myanmar || '',
                         english: data.english || '',
                         pos: data.pos || 'noun',
+                        level: data.level || undefined,
+                        examples: Array.isArray(data.examples) ? data.examples : [],
                         addedBy: data.addedBy || 'admin',
                         addedAt: data.addedAt?.toDate() || new Date(),
                         source: data.source || 'unknown',
@@ -367,7 +369,9 @@ code dictionary.ts
                 korean: word.korean,
                 myanmar: word.myanmar,
                 english: word.english || undefined,
-                pos: word.pos
+                pos: word.pos,
+                level: word.level,
+                examples: word.examples || []
             }));
 
             // Filter out words that have been deleted from Firebase
@@ -393,7 +397,9 @@ code dictionary.ts
                         korean: word.korean,
                         myanmar: word.myanmar,
                         english: word.english || undefined,
-                        pos: word.pos
+                        pos: word.pos,
+                        level: word.level,
+                        examples: word.examples || []
                     });
                 }
             });
@@ -410,11 +416,13 @@ code dictionary.ts
                 korean: entry.korean,
                 myanmar: entry.myanmar,
                 english: entry.english,
-                pos: entry.pos
+                pos: entry.pos,
+                level: entry.level,
+                examples: entry.examples || []
             }));
 
             // Generate TypeScript file content
-            const fileContent = `import type { DictionaryEntry } from '../App';
+            const fileContent = `import type { DictionaryEntry } from '../types/dictionary';
 
 // Dictionary entries - includes both initial data and approved user submissions
 // Last updated: ${new Date().toLocaleString()}
@@ -423,7 +431,11 @@ export const dictionaryEntries: DictionaryEntry[] = [
 ${allEntries.map(entry => {
     const english = entry.english ? `'${entry.english}'` : 'undefined';
     const pos = entry.pos ? `'${entry.pos}'` : 'undefined';
-    return `  { id: '${entry.id}', korean: '${entry.korean}', myanmar: '${entry.myanmar}', english: ${english}, pos: ${pos} },`;
+    const level = entry.level ? `'${entry.level}'` : 'undefined';
+    const examples = (entry.examples && entry.examples.length > 0)
+      ? `[\n${entry.examples.map(ex => `    { korean: '${ex.korean}', myanmar: '${ex.myanmar}', english: ${ex.english ? `'${ex.english}'` : 'undefined'} }`).join(',\n')}\n  ]`
+      : '[]';
+    return `  { id: '${entry.id}', korean: '${entry.korean}', myanmar: '${entry.myanmar}', english: ${english}, pos: ${pos}, level: ${level}, examples: ${examples} },`;
 }).join('\n')}
 ];
 `;
