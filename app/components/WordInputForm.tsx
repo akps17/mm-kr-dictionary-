@@ -40,7 +40,7 @@ export function WordInputForm({ onSubmit, initialValues }: WordInputFormProps) {
   const [english, setEnglish] = useState(initialValues?.english || '');
   const [pos, setPos] = useState<string>(initialValues?.pos || 'noun');
   const [level, setLevel] = useState<WordLevel | ''>(initialValues?.level || '');
-  const [examples, setExamples] = useState<string[]>(initialValues?.examples?.map(ex => ex.korean) || []);
+  const [examples, setExamples] = useState<Example[]>(initialValues?.examples || []);
   
   // Dropdown state
   const [posDropdownVisible, setPosDropdownVisible] = useState(false);
@@ -48,23 +48,23 @@ export function WordInputForm({ onSubmit, initialValues }: WordInputFormProps) {
 
   // Example handlers
   const addExample = useCallback(() => {
-    setExamples(prev => [...prev, '']);
+    setExamples(prev => [...prev, { korean: '', myanmar: '', english: '' } as Example]);
   }, []);
 
   const removeExample = useCallback((index: number) => {
     setExamples(prev => prev.filter((_, i) => i !== index));
   }, []);
 
-  const updateExample = useCallback((index: number, value: string) => {
+  const updateExample = useCallback((index: number, field: keyof Example, value: string) => {
     setExamples(prev => prev.map((example, i) => 
-      i === index ? value : example
+      i === index ? { ...example, [field]: value } : example
     ));
   }, []);
 
   // Submit handler
   const handleSubmit = useCallback(() => {
-    // Filter out incomplete examples
-    const validExamples = examples.filter(ex => ex.trim());
+    // Filter out incomplete examples (require korean+myanmar like admin)
+    const validExamples = examples.filter(ex => (ex.korean || '').trim() && (ex.myanmar || '').trim());
     
     onSubmit({
       korean: korean.trim(),
@@ -72,9 +72,11 @@ export function WordInputForm({ onSubmit, initialValues }: WordInputFormProps) {
       english: english.trim(),
       pos,
       level: level || undefined,
-      examples: validExamples.length > 0
-        ? validExamples.map(text => ({ korean: text, myanmar: text, english: text }))
-        : [],
+      examples: validExamples.length > 0 ? validExamples.map(ex => ({
+        korean: ex.korean.trim(),
+        myanmar: (ex.myanmar || '').trim(),
+        english: (ex.english || '').trim() || undefined,
+      })) : [],
     });
 
     // Clear form
@@ -235,7 +237,7 @@ export function WordInputForm({ onSubmit, initialValues }: WordInputFormProps) {
 
 
         {examples.map((example, index) => (
-          <View key={index} style={[styles.exampleCard, { backgroundColor: C.background, borderColor: C.border }]}>
+          <View key={index} style={[styles.exampleCard, { backgroundColor: C.background, borderColor: C.border }]}> 
             <Pressable
               onPress={() => removeExample(index)}
               style={({ pressed }) => [
@@ -245,11 +247,26 @@ export function WordInputForm({ onSubmit, initialValues }: WordInputFormProps) {
             >
               <Ionicons name="close-circle" size={20} color={C.textTertiary} />
             </Pressable>
+            <Text style={[styles.label, { color: C.textSecondary, marginBottom: 6 }]}>Korean Example</Text>
             <TextInput
               style={[styles.input, styles.exampleInput, { borderColor: C.border }]}
-              placeholder="Example sentence in Korean"
-              value={example}
-              onChangeText={(text) => updateExample(index, text)}
+              placeholder="Enter example in Korean"
+              value={example.korean}
+              onChangeText={(text) => updateExample(index, 'korean', text)}
+            />
+            <Text style={[styles.label, { color: C.textSecondary, marginBottom: 6, marginTop: 10 }]}>Myanmar Translation</Text>
+            <TextInput
+              style={[styles.input, styles.exampleInput, { borderColor: C.border }]}
+              placeholder="Enter example in Myanmar"
+              value={example.myanmar || ''}
+              onChangeText={(text) => updateExample(index, 'myanmar', text)}
+            />
+            <Text style={[styles.label, { color: C.textSecondary, marginBottom: 6, marginTop: 10 }]}>English Translation (Optional)</Text>
+            <TextInput
+              style={[styles.input, styles.exampleInput, { borderColor: C.border }]}
+              placeholder="Enter example in English (optional)"
+              value={example.english || ''}
+              onChangeText={(text) => updateExample(index, 'english', text)}
             />
           </View>
         ))}
