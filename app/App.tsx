@@ -55,7 +55,7 @@ function useResponsiveLayout() {
   return { isTabletLike, horizontalPadding, contentMaxWidth };
 }
 
-function HomeSearchScreen() {
+function HomeSearchScreen({ navigation }: { navigation: any }) {
   const C = useThemedColors();
   const [queryText, setQueryText] = useState<string>('');
   const { settings } = useSettings();
@@ -135,34 +135,93 @@ function HomeSearchScreen() {
             onChangeText={setQueryText}
             onClear={() => setQueryText('')}
           />
-          <FlatList
-            data={filteredAndSortedEntries}
-            keyExtractor={(item) => item.id}
-            keyboardShouldPersistTaps="handled"
-            contentContainerStyle={styles.listContent}
-            renderItem={({ item }) => (
-              <View style={[styles.row, isTabletLike && styles.rowTablet, { backgroundColor: C.surface }]}> 
-                <View style={styles.rowTextGroup}>
-                  <View style={styles.rowHeader}>
-                    <Text style={[styles.korean, isTabletLike && styles.koreanTablet, { color: C.textPrimary, fontFamily: 'NotoSansMyanmar_700Bold', fontSize: styles.korean.fontSize * fontScale }]}>{item.korean}</Text>
-                    {item.pos && (
-                      <View style={[styles.posChip] }>
-                        <Text style={[styles.posText]}>{item.pos}</Text>
-                      </View>
-                    )}
+          {queryText.trim() ? (
+            <FlatList
+              data={filteredAndSortedEntries}
+              keyExtractor={(item) => item.id}
+              keyboardShouldPersistTaps="handled"
+              contentContainerStyle={styles.listContent}
+              renderItem={({ item }) => (
+                <View style={[styles.row, isTabletLike && styles.rowTablet, { backgroundColor: C.surface }]}> 
+                  <View style={styles.rowTextGroup}>
+                    <View style={styles.rowHeader}>
+                      <Text style={[styles.korean, isTabletLike && styles.koreanTablet, { color: C.textPrimary, fontFamily: 'NotoSansMyanmar_700Bold', fontSize: styles.korean.fontSize * fontScale }]}>{item.korean}</Text>
+                      {item.pos && (
+                        <View style={[styles.posChip] }>
+                          <Text style={[styles.posText]}>{item.pos}</Text>
+                        </View>
+                      )}
+                    </View>
+                    <Text allowFontScaling={false} style={[styles.myanmar, isTabletLike && styles.myanmarTablet, { color: C.textSecondary, fontFamily: 'NotoSansMyanmar_400Regular', fontSize: styles.myanmar.fontSize * fontScale }]}>{item.myanmar}</Text>
+                    {!!item.english && <Text style={[styles.englishGloss, { color: C.textTertiary, fontSize: styles.englishGloss.fontSize * fontScale }]}>{item.english}</Text>}
                   </View>
-                  <Text allowFontScaling={false} style={[styles.myanmar, isTabletLike && styles.myanmarTablet, { color: C.textSecondary, fontFamily: 'NotoSansMyanmar_400Regular', fontSize: styles.myanmar.fontSize * fontScale }]}>{item.myanmar}</Text>
-                  {!!item.english && <Text style={[styles.englishGloss, { color: C.textTertiary, fontSize: styles.englishGloss.fontSize * fontScale }]}>{item.english}</Text>}
+                  <FavoriteButton entryId={item.id} />
                 </View>
-                <FavoriteButton entryId={item.id} />
+              )}
+              ListEmptyComponent={
+                <View style={styles.emptyState}>
+                  <Text style={[styles.emptyStateText, { color: C.textTertiary }]}>{labels.noResults}</Text>
+                </View>
+              }
+            />
+          ) : (
+            <ScrollView 
+              contentContainerStyle={[styles.listContent, { alignItems: 'center', paddingTop: 20 }]}
+              keyboardShouldPersistTaps="handled"
+            >
+              <Image 
+                source={require('./assets/dictionary_icon.png')} 
+                style={[styles.aboutLogo, { marginBottom: 24 }]} 
+              />
+              
+              <Text style={[styles.welcomeTitle, { color: C.textPrimary, marginBottom: 8 }]}>
+                {labels.title}
+              </Text>
+              
+              <Text style={[styles.welcomeSubtitle, { color: C.textSecondary, marginBottom: 32, textAlign: 'center' }]}>
+                {settings.uiLanguage === 'myanmar' 
+                  ? 'စကားလုံးများကို ရှာဖွေရန် အပေါ်မှ search box တွင် ရိုက်ထည့်ပါ'
+                  : settings.uiLanguage === 'korean'
+                  ? '검색하려면 위의 검색창에 입력하세요'
+                  : 'Type in the search box above to find words'
+                }
+              </Text>
+
+              <View style={styles.quickActions}>
+                <Pressable
+                  onPress={() => navigation.navigate('Practice')}
+                  style={[styles.quickActionCard, { backgroundColor: C.surface }]}
+                >
+                  <Ionicons name="school-outline" size={24} color={C.brand} />
+                  <Text style={[styles.quickActionTitle, { color: C.textPrimary }]}>{labels.navPractice}</Text>
+                </Pressable>
+
+                <Pressable
+                  onPress={() => navigation.navigate('Favorites')}
+                  style={[styles.quickActionCard, { backgroundColor: C.surface }]}
+                >
+                  <Ionicons name="heart-outline" size={24} color="#ef4444" />
+                  <Text style={[styles.quickActionTitle, { color: C.textPrimary }]}>{labels.navFavorites}</Text>
+                </Pressable>
+
+                <Pressable
+                  onPress={() => navigation.navigate('Input New Words')}
+                  style={[styles.quickActionCard, { backgroundColor: C.surface }]}
+                >
+                  <Ionicons name="add-circle-outline" size={24} color="#10b981" />
+                  <Text style={[styles.quickActionTitle, { color: C.textPrimary }]}>{labels.navInputNewWords}</Text>
+                </Pressable>
+
+                <Pressable
+                  onPress={() => navigation.navigate('Check Updates')}
+                  style={[styles.quickActionCard, { backgroundColor: C.surface }]}
+                >
+                  <Ionicons name="sync-outline" size={24} color="#6366f1" />
+                  <Text style={[styles.quickActionTitle, { color: C.textPrimary }]}>{labels.navCheckUpdates}</Text>
+                </Pressable>
               </View>
-            )}
-            ListEmptyComponent={
-              <View style={styles.emptyState}>
-                <Text style={[styles.emptyStateText, { color: C.textTertiary }]}>{labels.noResults}</Text>
-              </View>
-            }
-          />
+            </ScrollView>
+          )}
         </View>
       </View>
     </SafeAreaView>
@@ -321,14 +380,18 @@ function SubmitWordScreen() {
   return (
     <SafeAreaView style={[styles.safeArea, { backgroundColor: C.background }]}> 
       <ScrollView contentContainerStyle={{ padding: 16 }}>
-        <Text style={[styles.title, { color: C.textPrimary }]}>Input New Words</Text>
+        <View style={{ alignItems: 'center', marginBottom: 24 }}>
+          <Image source={require('./assets/dictionary_icon.png')} style={styles.aboutLogo} />
+          <Text style={[styles.title, { color: C.textPrimary, marginTop: 12 }]}>Input New Words</Text>
+        </View>
         
         {/* User Info */}
         <View style={[styles.card, { backgroundColor: C.surface, borderColor: C.border, marginBottom: 16 }]}>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
             <View>
               <Text style={{ color: C.textSecondary, fontSize: 12 }}>Logged in as:</Text>
-              <Text style={{ color: C.textPrimary, fontWeight: '600' }}>{user.email}</Text>
+              <Text style={{ color: C.textPrimary, fontWeight: '600' }}>{user.displayName || 'User'}</Text>
+              <Text style={{ color: C.textSecondary, fontSize: 12 }}>{user.email}</Text>
             </View>
             <Pressable onPress={logOut} style={[styles.pill, { backgroundColor: C.border }]}>
               <Ionicons name="log-out-outline" size={16} color={C.textSecondary} />
@@ -360,8 +423,34 @@ function SubmitWordScreen() {
             <Text style={{ color: C.textTertiary }}>No submissions yet</Text>
           ) : (
             pendingEntries.map((entry) => (
-              <View key={entry.id} style={{ paddingVertical: 6 }}>
-                <Text style={{ color: C.textPrimary }}>{entry.korean} → {entry.myanmar} {entry.english ? `(${entry.english})` : ''} [{entry.pos}]</Text>
+              <View key={entry.id} style={{ paddingVertical: 8, borderBottomWidth: StyleSheet.hairlineWidth, borderBottomColor: C.border }}>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4 }}>
+                  <Text style={{ color: C.textPrimary, fontWeight: '600' }}>{entry.korean}</Text>
+                  {entry.status && (
+                    <View style={[
+                      styles.pill,
+                      entry.status === 'approved' && { backgroundColor: '#D1FAE5', borderColor: '#A7F3D0' },
+                      entry.status === 'rejected' && { backgroundColor: '#FEE2E2', borderColor: '#FCA5A5' },
+                      entry.status === 'pending' && { backgroundColor: '#FEF3C7', borderColor: '#FCD34D' }
+                    ]}>
+                      <Text style={[
+                        { fontSize: 12, textTransform: 'capitalize' },
+                        entry.status === 'approved' && { color: '#059669' },
+                        entry.status === 'rejected' && { color: '#DC2626' },
+                        entry.status === 'pending' && { color: '#D97706' }
+                      ]}>
+                        {entry.status}
+                      </Text>
+                    </View>
+                  )}
+                </View>
+                <Text style={{ color: C.textPrimary, fontFamily: 'NotoSansMyanmar_400Regular' }}>{entry.myanmar}</Text>
+                {entry.english && (
+                  <Text style={{ color: C.textSecondary, fontSize: 12, marginTop: 2 }}>{entry.english}</Text>
+                )}
+                <Text style={{ color: C.textSecondary, fontSize: 12, marginTop: 2 }}>
+                  [{entry.pos}] • {new Date(entry.createdAt).toLocaleDateString()}
+                </Text>
               </View>
             ))
           )}
@@ -395,16 +484,86 @@ function getMotivation(score: number, total: number, uiLang: 'english' | 'myanma
 
 function MultipleChoiceQuizScreen() {
   const C = useThemedColors();
-  const [questions, setQuestions] = React.useState(() => generateMCQ(20));
+  const { approvedWords } = useDictionarySync();
+  
+  // Create merged dictionary for quiz generation
+    const mergedDictionary = React.useMemo(() => {
+    console.log('Merging dictionary for MCQ...');
+    const merged = mergeApprovedWords(dictionaryEntries, approvedWords);
+    console.log(`Merged dictionary has ${merged.length} total words`);
+    return merged;
+  }, [approvedWords]);
+
+  // Prevent unnecessary resets when dictionary hasn't actually changed
+  const dictionaryKey = React.useMemo(() => 
+    mergedDictionary.map(w => w.korean + w.myanmar).join(','),
+    [mergedDictionary]
+  );
+
+  // Generate questions only once initially and when dictionary changes
+  const [questions, setQuestions] = React.useState(() => {
+    console.log('Initial MCQ question generation...');
+    return generateMCQ(20, mergedDictionary);
+  });
+
+  // Update questions when dictionary changes
+  React.useEffect(() => {
+    console.log('Updating MCQ questions due to dictionary change...');
+    setQuestions(generateMCQ(20, mergedDictionary));
+  }, [mergedDictionary]);
+
   const [index, setIndex] = React.useState(0);
   const [selected, setSelected] = React.useState<number | null>(null);
   const [score, setScore] = React.useState(0);
-  const [timeLeft, setTimeLeft] = React.useState(60);
+    const [timeLeft, setTimeLeft] = React.useState(60);
 
+  // Memoize the reset function
+  const handleReset = React.useCallback(() => {
+    console.log('Restarting MCQ quiz...');
+    // First stop the timer by setting it to 0
+    setTimeLeft(0);
+    // Then generate new questions and reset state
+    setQuestions(generateMCQ(20, mergedDictionary));
+    setIndex(0);
+    setScore(0);
+    setSelected(null);
+    // Finally start the new timer
+    setTimeout(() => setTimeLeft(60), 0);
+  }, [mergedDictionary]);
+
+  // Update questions when dictionary content actually changes
   React.useEffect(() => {
-    const t = setInterval(() => setTimeLeft((s) => (s > 0 ? s - 1 : 0)), 1000);
-    return () => clearInterval(t);
-  }, [index]);
+    console.log('Dictionary content changed, resetting quiz...');
+    handleReset();
+  }, [dictionaryKey]);
+
+  // Timer effect - only run when index changes or when quiz is reset
+  React.useEffect(() => {
+    // Clear any existing timer
+    if (timeLeft === 0) return;
+    
+    console.log('Starting timer for question', index + 1);
+    const timer = setInterval(() => {
+      setTimeLeft(prev => {
+        const next = prev > 0 ? prev - 1 : 0;
+        if (next === 0) {
+          console.log('Timer expired for question', index + 1);
+          // Auto-advance to next question when time runs out
+          if (index < questions.length - 1) {
+            setIndex(i => i + 1);
+            setSelected(null);
+            setTimeLeft(60);
+          }
+        }
+        return next;
+      });
+    }, 1000);
+
+    return () => {
+      console.log('Cleaning up timer for question', index + 1);
+      clearInterval(timer);
+    };
+  }, [index, questions.length, timeLeft]);
 
   const q = questions[index];
   const done = index >= questions.length || timeLeft === 0;
@@ -429,7 +588,7 @@ function MultipleChoiceQuizScreen() {
           <Text style={{ color: C.textSecondary, textAlign: 'center', marginTop: 6 }}>{getMotivation(score, questions.length, useSettings().settings.uiLanguage)}</Text>
           <View style={{ flexDirection: 'row', gap: 12, marginTop: 16 }}>
             <Pressable
-              onPress={() => { setQuestions(generateMCQ(20)); setIndex(0); setScore(0); setSelected(null); setTimeLeft(60); }}
+                              onPress={handleReset}
               style={[styles.primaryBtn, { backgroundColor: '#2563EB' }]}
             >
               <Ionicons name="refresh" size={18} color="#fff" />
@@ -490,11 +649,28 @@ function MultipleChoiceQuizScreen() {
 
 function TrueFalseQuizScreen() {
   const C = useThemedColors();
-  const [questions, setQuestions] = React.useState(() => generateTF(20));
+  const { approvedWords } = useDictionarySync();
+  
+  // Create merged dictionary for quiz generation
+  const mergedDictionary = React.useMemo(() => {
+    return mergeApprovedWords(dictionaryEntries, approvedWords);
+  }, [approvedWords]);
+  
+  const [questions, setQuestions] = React.useState(() => generateTF(20, mergedDictionary));
   const [index, setIndex] = React.useState(0);
   const [selected, setSelected] = React.useState<boolean | null>(null);
   const [score, setScore] = React.useState(0);
   const [timeLeft, setTimeLeft] = React.useState(45);
+  
+  // Update questions when dictionary changes
+  React.useEffect(() => {
+    setQuestions(generateTF(20, mergedDictionary));
+    setIndex(0);
+    setScore(0);
+    setSelected(null);
+    setTimeLeft(45);
+  }, [mergedDictionary]);
+  
   const q = questions[index];
   const done = index >= questions.length || timeLeft === 0;
 
@@ -523,7 +699,7 @@ function TrueFalseQuizScreen() {
           <Text style={{ color: C.textSecondary, textAlign: 'center', marginTop: 6 }}>{getMotivation(score, questions.length, useSettings().settings.uiLanguage)}</Text>
           <View style={{ flexDirection: 'row', gap: 12, marginTop: 16 }}>
             <Pressable
-              onPress={() => { setQuestions(generateTF(20)); setIndex(0); setScore(0); setSelected(null); setTimeLeft(45); }}
+              onPress={() => { setQuestions(generateTF(20, mergedDictionary)); setIndex(0); setScore(0); setSelected(null); setTimeLeft(45); }}
               style={[styles.primaryBtn, { backgroundColor: '#2563EB' }]}
             >
               <Ionicons name="refresh" size={18} color="#fff" />
@@ -578,9 +754,23 @@ function TrueFalseQuizScreen() {
 
 function FlashcardsScreen() {
   const C = useThemedColors();
-  const cards = React.useMemo(() => generateFlashcards(20), []);
+  const { approvedWords } = useDictionarySync();
+  
+  // Create merged dictionary for flashcard generation
+  const mergedDictionary = React.useMemo(() => {
+    return mergeApprovedWords(dictionaryEntries, approvedWords);
+  }, [approvedWords]);
+  
+  const cards = React.useMemo(() => generateFlashcards(20, mergedDictionary), [mergedDictionary]);
   const [index, setIndex] = React.useState(0);
   const [flipped, setFlipped] = React.useState(false);
+  
+  // Reset flashcards when dictionary changes
+  React.useEffect(() => {
+    setIndex(0);
+    setFlipped(false);
+  }, [mergedDictionary]);
+  
   const card = cards[index];
   const done = index >= cards.length;
   if (done) {
@@ -1180,6 +1370,10 @@ function FavoriteButton({ entryId }: { entryId: string }) {
 
 function FavoritesScreen() {
   const { settings } = useSettings();
+  const { approvedWords } = useDictionarySync();
+  const C = useThemedColors();
+  const labels = i18nLabels[settings.uiLanguage];
+  
   const fontScale = React.useMemo(() => {
     switch (settings.fontSize) {
       case 'small':
@@ -1190,26 +1384,92 @@ function FavoritesScreen() {
         return 1.0;
     }
   }, [settings.fontSize]);
+
   const { favoriteIds } = useLibrary();
-  const items = dictionaryEntries.filter((d) => favoriteIds.has(d.id));
+
+  // Merge local dictionary with approved words
+  const mergedDictionary = React.useMemo(() => {
+    return mergeApprovedWords(dictionaryEntries, approvedWords);
+  }, [approvedWords]);
+
+  // Filter favorites from merged dictionary
+  const items = mergedDictionary.filter((d) => favoriteIds.has(d.id));
   const itemsSorted = [...items].sort((a, b) => a.korean.localeCompare(b.korean, 'ko', { sensitivity: 'base' }));
+
+  // Search functionality
+  const [searchQuery, setSearchQuery] = React.useState('');
+
+  // Filter items based on search query
+  const filteredItems = React.useMemo(() => {
+    if (!searchQuery.trim()) return itemsSorted;
+    
+    const query = searchQuery.toLowerCase().trim();
+    return itemsSorted.filter(item => 
+      item.korean.toLowerCase().includes(query) ||
+      item.myanmar.toLowerCase().includes(query) ||
+      (item.english?.toLowerCase() || '').includes(query)
+    );
+  }, [itemsSorted, searchQuery]);
+
   return (
-    <SafeAreaView style={styles.safeArea}>
+    <SafeAreaView style={[styles.safeArea, { backgroundColor: C.background }]}>
+      <View style={{ padding: 16, paddingBottom: 0 }}>
+        <Text style={[styles.title, { color: C.textPrimary, marginBottom: 12 }]}>{labels.navFavorites}</Text>
+        <SearchBox
+          value={searchQuery}
+          placeholder={labels.searchPlaceholder}
+          onChangeText={setSearchQuery}
+          onClear={() => setSearchQuery('')}
+        />
+      </View>
       <FlatList
-        data={itemsSorted}
+        data={filteredItems}
         keyExtractor={(item) => item.id}
-        contentContainerStyle={styles.listContent}
+        contentContainerStyle={[styles.listContent, { paddingHorizontal: 16 }]}
         renderItem={({ item }) => (
-          <View style={[styles.row, styles.rowTablet]}>
+          <View style={[styles.row, styles.rowTablet, { backgroundColor: C.surface }]}>
             <View style={styles.rowTextGroup}>
-              <Text style={[styles.korean, { fontSize: styles.korean.fontSize * fontScale }]}>{item.korean}</Text>
-              <Text allowFontScaling={false} style={[styles.myanmar, { fontSize: styles.myanmar.fontSize * fontScale }]}>{item.myanmar}</Text>
-              {!!item.english && <Text style={[styles.englishGloss, { fontSize: styles.englishGloss.fontSize * fontScale }]}>{item.english}</Text>}
+              <View style={styles.rowHeader}>
+                <Text style={[styles.korean, { fontSize: styles.korean.fontSize * fontScale, color: C.textPrimary, fontFamily: 'NotoSansMyanmar_700Bold' }]}>
+                  {item.korean}
+                </Text>
+                {item.pos && (
+                  <View style={styles.posChip}>
+                    <Text style={styles.posText}>{item.pos}</Text>
+                  </View>
+                )}
+              </View>
+              <Text 
+                allowFontScaling={false} 
+                style={[
+                  styles.myanmar, 
+                  { 
+                    fontSize: styles.myanmar.fontSize * fontScale,
+                    color: C.textSecondary,
+                    fontFamily: 'NotoSansMyanmar_400Regular'
+                  }
+                ]}
+              >
+                {item.myanmar}
+              </Text>
+              {!!item.english && (
+                <Text style={[styles.englishGloss, { fontSize: styles.englishGloss.fontSize * fontScale, color: C.textTertiary }]}>
+                  {item.english}
+                </Text>
+              )}
             </View>
             <FavoriteButton entryId={item.id} />
           </View>
         )}
-        ListEmptyComponent={<View style={styles.emptyState}><Text style={styles.emptyStateText}>No favorites yet</Text></View>}
+        ListEmptyComponent={
+          <View style={styles.emptyState}>
+            <Text style={[styles.emptyStateText, { color: C.textTertiary }]}>
+              {searchQuery.trim() 
+                ? `No favorites matching "${searchQuery}"`
+                : "No favorites yet"}
+            </Text>
+          </View>
+        }
       />
     </SafeAreaView>
   );
@@ -1217,6 +1477,9 @@ function FavoritesScreen() {
 
 function HistoryScreen() {
   const { settings } = useSettings();
+  const { approvedWords } = useDictionarySync();
+  const C = useThemedColors();
+  
   const fontScale = React.useMemo(() => {
     switch (settings.fontSize) {
       case 'small':
@@ -1227,37 +1490,127 @@ function HistoryScreen() {
         return 1.0;
     }
   }, [settings.fontSize]);
+
   const { history, clearHistory } = useLibrary();
+
+  // Merge local dictionary with approved words
+  const mergedDictionary = React.useMemo(() => {
+    return mergeApprovedWords(dictionaryEntries, approvedWords);
+  }, [approvedWords]);
+
+  // Find history items in merged dictionary
   const items = history
-    .map((h) => dictionaryEntries.find((d) => d.id === h.id))
+    .map((h) => mergedDictionary.find((d) => d.id === h.id))
     .filter((x): x is NonNullable<typeof x> => Boolean(x))
-    .sort((a, b) => a.korean.localeCompare(b.korean, 'ko', { sensitivity: 'base' }));
+    // Sort by history timestamp instead of Korean text
+    .sort((a, b) => {
+      const aTime = history.find(h => h.id === a.id)?.ts || 0;
+      const bTime = history.find(h => h.id === b.id)?.ts || 0;
+      return bTime - aTime; // Most recent first
+    });
+
   return (
-    <SafeAreaView style={styles.safeArea}>
+    <SafeAreaView style={[styles.safeArea, { backgroundColor: C.background }]}>
       <FlatList
         data={items}
         keyExtractor={(item) => item.id}
         contentContainerStyle={styles.listContent}
         renderItem={({ item }) => (
-          <View style={[styles.row, styles.rowTablet]}>
+          <View style={[styles.row, styles.rowTablet, { backgroundColor: C.surface }]}>
             <View style={styles.rowTextGroup}>
-              <Text style={[styles.korean, { fontSize: styles.korean.fontSize * fontScale }]}>{item.korean}</Text>
-              <Text allowFontScaling={false} style={[styles.myanmar, { fontSize: styles.myanmar.fontSize * fontScale }]}>{item.myanmar}</Text>
-              {!!item.english && <Text style={[styles.englishGloss, { fontSize: styles.englishGloss.fontSize * fontScale }]}>{item.english}</Text>}
+              <View style={styles.rowHeader}>
+                <Text style={[styles.korean, { fontSize: styles.korean.fontSize * fontScale, color: C.textPrimary, fontFamily: 'NotoSansMyanmar_700Bold' }]}>
+                  {item.korean}
+                </Text>
+                {item.pos && (
+                  <View style={styles.posChip}>
+                    <Text style={styles.posText}>{item.pos}</Text>
+                  </View>
+                )}
+              </View>
+              <Text 
+                allowFontScaling={false} 
+                style={[
+                  styles.myanmar, 
+                  { 
+                    fontSize: styles.myanmar.fontSize * fontScale,
+                    color: C.textSecondary,
+                    fontFamily: 'NotoSansMyanmar_400Regular'
+                  }
+                ]}
+              >
+                {item.myanmar}
+              </Text>
+              {!!item.english && (
+                <Text style={[styles.englishGloss, { fontSize: styles.englishGloss.fontSize * fontScale, color: C.textTertiary }]}>
+                  {item.english}
+                </Text>
+              )}
+              <Text style={{ fontSize: 12, color: C.textTertiary, marginTop: 2 }}>
+                {new Date(history.find(h => h.id === item.id)?.ts || 0).toLocaleString()}
+              </Text>
             </View>
             <FavoriteButton entryId={item.id} />
           </View>
         )}
-        ListEmptyComponent={<View style={styles.emptyState}><Text style={styles.emptyStateText}>No history yet</Text></View>}
+        ListEmptyComponent={
+          <View style={styles.emptyState}>
+            <Text style={[styles.emptyStateText, { color: C.textTertiary }]}>No history yet</Text>
+          </View>
+        }
       />
       <View style={{ alignItems: 'center', paddingBottom: 16 }}>
-        <Text onPress={clearHistory} style={{ color: '#DC2626' }}>Clear history</Text>
+        <Pressable 
+          onPress={clearHistory}
+          style={({ pressed }) => [
+            styles.pill,
+            { backgroundColor: pressed ? '#FEE2E2' : '#DC2626', paddingHorizontal: 16 }
+          ]}
+        >
+          <Ionicons name="trash-outline" size={16} color="white" />
+          <Text style={{ color: 'white', marginLeft: 4 }}>Clear History</Text>
+        </Pressable>
       </View>
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
+  welcomeTitle: {
+    fontSize: 24,
+    fontWeight: '700',
+    textAlign: 'center',
+  },
+  welcomeSubtitle: {
+    fontSize: 16,
+    paddingHorizontal: 32,
+  },
+  quickActions: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    gap: 16,
+    paddingHorizontal: 16,
+  },
+  quickActionCard: {
+    width: 140,
+    height: 140,
+    borderRadius: 16,
+    padding: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 12,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.05,
+    shadowRadius: 8,
+    elevation: 2,
+  },
+  quickActionTitle: {
+    fontSize: 14,
+    fontWeight: '600',
+    textAlign: 'center',
+  },
   safeArea: {
     flex: 1,
     backgroundColor: '#ffffff',

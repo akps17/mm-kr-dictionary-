@@ -18,6 +18,7 @@ import { i18nLabels } from '../data/settings';
 
 export function AuthScreen() {
   const [isLogin, setIsLogin] = useState(true);
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -36,6 +37,10 @@ export function AuthScreen() {
     }
 
     if (!isLogin) {
+      if (!name.trim()) {
+        Alert.alert('Error', 'Please enter your name');
+        return;
+      }
       if (password !== confirmPassword) {
         Alert.alert('Error', 'Passwords do not match');
         return;
@@ -51,7 +56,7 @@ export function AuthScreen() {
       if (isLogin) {
         await signIn(email.trim(), password);
       } else {
-        await signUp(email.trim(), password);
+        await signUp(email.trim(), password, name.trim());
       }
     } catch (error: any) {
       let message = 'Something went wrong';
@@ -89,6 +94,24 @@ export function AuthScreen() {
 
         {/* Form */}
         <View style={styles.form}>
+          {/* Name Input (Sign Up only) */}
+          {!isLogin && (
+            <View style={styles.inputContainer}>
+              <Text style={[styles.label, { color: C.textPrimary }]}>Name</Text>
+              <View style={[styles.inputWrapper, { borderColor: C.border, backgroundColor: C.surface }]}>
+                <Ionicons name="person-outline" size={20} color={C.textSecondary} style={styles.inputIcon} />
+                <TextInput
+                  style={[styles.input, { color: C.textPrimary }]}
+                  value={name}
+                  onChangeText={setName}
+                  placeholder="Enter your name"
+                  placeholderTextColor={C.textSecondary}
+                  autoCapitalize="words"
+                />
+              </View>
+            </View>
+          )}
+
           {/* Email Input */}
           <View style={styles.inputContainer}>
             <Text style={[styles.label, { color: C.textPrimary }]}>Email</Text>

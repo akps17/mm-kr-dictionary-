@@ -4,6 +4,9 @@ import { db } from './firebase';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { notificationManager } from '../components/NotificationBanner';
 
+
+
+//approved words section(update word feature)
 export type ApprovedWord = {
   id: string;
   korean: string;
@@ -42,19 +45,30 @@ export function DictionarySyncProvider({ children }: { children: React.ReactNode
     loadCachedWords();
   }, []);
 
-  // Set up real-time listener for dictionary words
+    // Set up real-time listener for dictionary words
   useEffect(() => {
+    let mounted = true;
     console.log('Setting up Firebase dictionary listener...');
-    
+
     const q = query(
       collection(db, 'dictionary')
     );
 
-    const unsubscribe = onSnapshot(q, 
+    // Add debounce to prevent rapid updates
+    let debounceTimeout: NodeJS.Timeout;
+
+    const unsubscribe = onSnapshot(q,
       (snapshot) => {
-        console.log('Firebase snapshot received, processing...', snapshot.size, 'documents');
-        const newApprovedWords: ApprovedWord[] = [];
-        const newlyApprovedWords: ApprovedWord[] = [];
+        // Clear any pending debounce
+        if (debounceTimeout) clearTimeout(debounceTimeout);
+
+        // Debounce the update
+        debounceTimeout = setTimeout(() => {
+          if (!mounted) return;
+          
+          console.log('Firebase snapshot received, processing...', snapshot.size, 'documents');
+          const newApprovedWords: ApprovedWord[] = [];
+          const newlyApprovedWords: ApprovedWord[] = [];
         
         snapshot.forEach((doc) => {
           const data = doc.data();
@@ -97,6 +111,15 @@ export function DictionarySyncProvider({ children }: { children: React.ReactNode
               duration: 6000,
             });
           }
+          
+          // Show practice notification
+          setTimeout(() => {
+            notificationManager.show({
+              message: `🎯 New words are now available in Quiz & Practice sections!`,
+              type: 'info',
+              duration: 7000,
+            });
+          }, 3000);
         }
 
         setApprovedWords(newApprovedWords);
@@ -105,15 +128,30 @@ export function DictionarySyncProvider({ children }: { children: React.ReactNode
         setIsLoading(false);
 
         // Cache the approved words
-        cacheApprovedWords(newApprovedWords);
-        
-        console.log(`Synced ${newApprovedWords.length} dictionary words from Firebase`);
-        console.log('Dictionary words:', newApprovedWords.map(w => `${w.korean} → ${w.myanmar}`));
-      },
-      (error) => {
-        console.error('Firebase listener error:', error);
-        console.error('Error code:', error.code);
-        console.error('Error message:', error.message);
+                    // Only update if words have actually changed
+            const hasChanges = newApprovedWords.length !== approvedWords.length ||
+              newApprovedWords.some((word, idx) => 
+                word.korean !== approvedWords[idx]?.korean ||
+                word.myanmar !== approvedWords[idx]?.myanmar
+              );
+
+            if (hasChanges) {
+              console.log('Dictionary changes detected, updating...');
+              cacheApprovedWords(newApprovedWords);
+              setApprovedWords(newApprovedWords);
+              setSyncCount(newApprovedWords.length);
+              setLastSync(new Date());
+              console.log(`Synced ${newApprovedWords.length} dictionary words from Firebase`);
+              console.log('Dictionary words:', newApprovedWords.map(w => `${w.korean} → ${w.myanmar}`));
+            } else {
+              console.log('No dictionary changes detected, skipping update');
+            }
+          }, 500); // 500ms debounce
+        },
+        (error) => {
+          console.error('Firebase listener error:', error);
+          console.error('Error code:', error.code);
+          console.error('Error message:', error.message);
         
         notificationManager.show({
           message: `Failed to sync dictionary: ${error.message}`,
@@ -125,8 +163,14 @@ export function DictionarySyncProvider({ children }: { children: React.ReactNode
     );
 
     console.log('Firebase listener setup complete');
-    return unsubscribe;
-  }, [approvedWords, isLoading]);
+    
+    return () => {
+      console.log('Cleaning up Firebase listener...');
+      mounted = false;
+      if (debounceTimeout) clearTimeout(debounceTimeout);
+      unsubscribe();
+    };
+  }, []); // Empty dependency array since we want this to run only once
 
   const loadCachedWords = async () => {
     try {

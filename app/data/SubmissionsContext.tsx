@@ -1,6 +1,6 @@
 import React from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { collection, addDoc, serverTimestamp, query, where, onSnapshot } from 'firebase/firestore';
 import { db } from './firebase';
 
 export type PendingEntry = {
@@ -11,6 +11,8 @@ export type PendingEntry = {
   pos?: 'noun' | 'verb' | 'adjective' | 'adverb' | 'pronoun' | 'preposition' | 'conjunction' | 'interjection' | 'particle' | 'other';
   createdAt: number;
   userEmail?: string;
+  status?: 'pending' | 'approved' | 'rejected';
+  firebaseId?: string;
 };
 
 const KEY = 'mmkr.submissions.v1';
@@ -33,6 +35,7 @@ export function SubmissionsProvider({ children }: { children: React.ReactNode })
   const [pendingEntries, setPendingEntries] = React.useState<PendingEntry[]>([]);
   const [ready, setReady] = React.useState(false);
 
+  // Load local submissions
   React.useEffect(() => {
     (async () => {
       try {
@@ -44,6 +47,39 @@ export function SubmissionsProvider({ children }: { children: React.ReactNode })
     })();
   }, []);
 
+  // Listen for status updates from Firebase
+  React.useEffect(() => {
+    // Create a query for all pending words that match our local IDs
+    const localIds = pendingEntries.map(e => e.id);
+    if (localIds.length === 0) return;
+
+    const q = query(
+      collection(db, 'pending_words'),
+      where('localId', 'in', localIds)
+    );
+
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      let hasUpdates = false;
+      const updates = [...pendingEntries];
+
+      snapshot.forEach(doc => {
+        const data = doc.data();
+        const localEntry = updates.find(e => e.id === data.localId);
+        if (localEntry && (localEntry.status !== data.status || !localEntry.firebaseId)) {
+          hasUpdates = true;
+          localEntry.status = data.status;
+          localEntry.firebaseId = doc.id;
+        }
+      });
+
+      if (hasUpdates) {
+        persist(updates);
+      }
+    });
+
+    return () => unsubscribe();
+  }, [pendingEntries]);
+
   const persist = React.useCallback(async (next: PendingEntry[]) => {
     setPendingEntries(next);
     await AsyncStorage.setItem(KEY, JSON.stringify(next));
@@ -51,7 +87,7 @@ export function SubmissionsProvider({ children }: { children: React.ReactNode })
 
   const submitEntry = React.useCallback<Ctx['submitEntry']>(async (e) => {
     const id = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
-    const entry: PendingEntry = { id, createdAt: Date.now(), ...e };
+    const entry: PendingEntry = { id, createdAt: Date.now(), status: 'pending', ...e };
     
     // Save locally first
     await persist([entry, ...pendingEntries]);

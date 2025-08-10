@@ -1,4 +1,5 @@
 import { dictionaryEntries } from './dictionary';
+import type { DictionaryEntry } from '../App';
 
 export type MCQQuestion = {
   id: string;
@@ -29,11 +30,11 @@ function sample<T>(arr: T[], count: number): T[] {
   return out;
 }
 
-export function generateMCQ(count = 20): MCQQuestion[] {
-  const base = sample(dictionaryEntries, count);
+export function generateMCQ(count = 20, dictionary: DictionaryEntry[] = dictionaryEntries): MCQQuestion[] {
+  const base = sample(dictionary, count);
   return base.map((entry) => {
     const distractors = sample(
-      dictionaryEntries.filter((e) => e.id !== entry.id),
+      dictionary.filter((e) => e.id !== entry.id),
       3
     ).map((e) => e.myanmar);
     const correct = entry.myanmar;
@@ -53,14 +54,14 @@ export function generateMCQ(count = 20): MCQQuestion[] {
   });
 }
 
-export function generateTF(count = 20): TFQuestion[] {
-  const base = sample(dictionaryEntries, count);
+export function generateTF(count = 20, dictionary: DictionaryEntry[] = dictionaryEntries): TFQuestion[] {
+  const base = sample(dictionary, count);
   return base.map((entry, idx) => {
     const truth = Math.random() > 0.5;
     let shown = entry.myanmar;
     if (!truth) {
       const other = sample(
-        dictionaryEntries.filter((e) => e.id !== entry.id),
+        dictionary.filter((e) => e.id !== entry.id),
         1
       )[0];
       shown = other.myanmar;
@@ -73,8 +74,8 @@ export function generateTF(count = 20): TFQuestion[] {
   });
 }
 
-export function generateFlashcards(count = 20): Flashcard[] {
-  const base = sample(dictionaryEntries, count);
+export function generateFlashcards(count = 20, dictionary: DictionaryEntry[] = dictionaryEntries): Flashcard[] {
+  const base = sample(dictionary, count);
   return base.map((e) => ({ id: e.id, front: e.korean, back: `${e.myanmar}${e.english ? `\n(${e.english})` : ''}` }));
 }
 

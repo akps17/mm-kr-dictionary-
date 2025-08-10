@@ -1,12 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dictionary Update Tool</title>
+    
+    <!-- Google Fonts for Myanmar support -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Myanmar:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
         body { 
-            font-family: Arial, sans-serif; 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; 
             margin: 20px; 
-            background: #f5f5f5; 
+            background: #f5f5f5;
+            color: #1f2937;
+            line-height: 1.6;
         }
         .container { 
             max-width: 1200px; 
@@ -91,11 +101,48 @@
             margin: 12px 0;
         }
         .highlight { background-color: #fef3c7; padding: 2px 4px; border-radius: 4px; }
+        
+        /* Myanmar font support */
+        .myanmar-text {
+            font-family: 'Noto Sans Myanmar', 'Myanmar Text', sans-serif;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+        
+        /* Word preview styling */
+        .word-preview {
+            font-family: 'Noto Sans Myanmar', 'Myanmar Text', 'Inter', sans-serif;
+            line-height: 1.6;
+        }
+        
+        /* Better typography */
+        h1 { 
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            color: #111827;
+        }
+        
+        h3 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            color: #1f2937;
+        }
+        
+        /* Improve button fonts */
+        button {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+        }
+        
+        /* Fix emoji rendering */
+        .emoji {
+            font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>📚 Dictionary Update Tool</h1>
+        <h1><span class="emoji">📚</span> Dictionary Update Tool</h1>
         <p>This tool helps you update your local dictionary file with approved words from Firebase.</p>
 
         <div class="step">
@@ -117,8 +164,8 @@
             <p>Copy the generated content and replace your <span class="highlight">dictionary.ts</span> file.</p>
             <textarea id="dictionary-output" placeholder="Generated dictionary file content will appear here..." readonly></textarea>
             <div style="text-align: center; margin-top: 16px;">
-                <button onclick="copyToClipboard()" class="success" id="copy-btn" disabled>📋 Copy to Clipboard</button>
-                <button onclick="downloadFile()" class="success" id="download-btn" disabled>💾 Download File</button>
+                <button onclick="copyToClipboard()" class="success" id="copy-btn" disabled><span class="emoji">📋</span> Copy to Clipboard</button>
+                <button onclick="downloadFile()" class="success" id="download-btn" disabled><span class="emoji">💾</span> Download File</button>
             </div>
         </div>
 
@@ -193,7 +240,7 @@ code dictionary.ts
         }
 
         window.fetchUpdates = async function() {
-            showStatus('🔄 Fetching updates from Firebase...', 'info');
+            showStatus('<span class="emoji">🔄</span> Fetching updates from Firebase...', 'info');
             log('Starting to fetch updates from Firebase...');
 
             try {
@@ -201,7 +248,7 @@ code dictionary.ts
                 const snapshot = await getDocs(q);
 
                 if (snapshot.empty) {
-                    showStatus('ℹ️ No words found in Firebase dictionary', 'info');
+                    showStatus('<span class="emoji">ℹ️</span> No words found in Firebase dictionary', 'info');
                     log('No words found in Firebase dictionary collection');
                     return;
                 }
@@ -226,7 +273,7 @@ code dictionary.ts
                 });
 
                 const newWords = firebaseUpdates.filter(u => u.isNew).length;
-                showStatus(`✅ Found ${firebaseUpdates.length} words (${newWords} new)`, 'success');
+                showStatus(`<span class="emoji">✅</span> Found ${firebaseUpdates.length} words (${newWords} new)`, 'success');
                 log(`Successfully fetched ${firebaseUpdates.length} words from Firebase`);
                 log(`${newWords} words are new (not in local dictionary)`);
 
@@ -235,7 +282,7 @@ code dictionary.ts
                 document.getElementById('generate-btn').disabled = false;
 
             } catch (error) {
-                showStatus(`❌ Error fetching updates: ${error.message}`, 'error');
+                showStatus(`<span class="emoji">❌</span> Error fetching updates: ${error.message}`, 'error');
                 log(`Error: ${error.message}`);
                 console.error('Fetch error:', error);
             }
@@ -245,57 +292,126 @@ code dictionary.ts
             const previewDiv = document.getElementById('updates-preview');
             const newWords = firebaseUpdates.filter(u => u.isNew);
             
-            if (newWords.length === 0) {
-                previewDiv.innerHTML = '<div class="status info">ℹ️ All Firebase words already exist in local dictionary</div>';
+            // Find deleted words
+            const currentFirebaseWords = firebaseUpdates.map(word => ({
+                korean: word.korean,
+                myanmar: word.myanmar
+            }));
+            
+            const deletedWords = staticDictionary.filter(staticWord => {
+                return !currentFirebaseWords.some(firebaseWord => 
+                    firebaseWord.korean === staticWord.korean && 
+                    firebaseWord.myanmar === staticWord.myanmar
+                );
+            });
+            
+            if (newWords.length === 0 && deletedWords.length === 0) {
+                previewDiv.innerHTML = '<div class="status info"><span class="emoji">ℹ️</span> No changes detected in dictionary</div>';
                 return;
             }
 
-            let html = `<div class="status success">📝 Found ${newWords.length} new words to add:</div>`;
-            html += '<div style="max-height: 200px; overflow-y: auto; border: 1px solid #d1d5db; border-radius: 8px; padding: 12px; background: #f9fafb;">';
+            let html = '';
             
-            newWords.slice(0, 10).forEach(word => {
-                html += `<div style="margin-bottom: 8px; padding: 8px; background: white; border-radius: 4px;">`;
-                html += `<strong>${word.korean}</strong> → <span style="font-family: 'NotoSansMyanmar', serif;">${word.myanmar}</span>`;
-                if (word.english) html += ` (${word.english})`;
-                html += ` <span style="color: #6b7280; font-size: 12px;">[${word.pos}]</span>`;
-                html += `</div>`;
-            });
-            
-            if (newWords.length > 10) {
-                html += `<div style="text-align: center; color: #6b7280; font-style: italic;">... and ${newWords.length - 10} more words</div>`;
+            // Show new words
+            if (newWords.length > 0) {
+                html += `<div class="status success"><span class="emoji">📝</span> Found ${newWords.length} new words to add:</div>`;
+                html += '<div style="max-height: 200px; overflow-y: auto; border: 1px solid #d1d5db; border-radius: 8px; padding: 12px; background: #f9fafb; margin-bottom: 16px;">';
+                
+                newWords.slice(0, 10).forEach(word => {
+                    html += `<div style="margin-bottom: 8px; padding: 8px; background: white; border-radius: 4px;" class="word-preview">`;
+                    html += `<strong>${word.korean}</strong> → <span class="myanmar-text">${word.myanmar}</span>`;
+                    if (word.english) html += ` (${word.english})`;
+                    html += ` <span style="color: #6b7280; font-size: 12px;">[${word.pos}]</span>`;
+                    html += `</div>`;
+                });
+                
+                if (newWords.length > 10) {
+                    html += `<div style="text-align: center; color: #6b7280; font-style: italic;">... and ${newWords.length - 10} more new words</div>`;
+                }
+                
+                html += '</div>';
             }
             
-            html += '</div>';
+            // Show deleted words
+            if (deletedWords.length > 0) {
+                html += `<div class="status error"><span class="emoji">🗑️</span> Found ${deletedWords.length} words to remove:</div>`;
+                html += '<div style="max-height: 200px; overflow-y: auto; border: 1px solid #d1d5db; border-radius: 8px; padding: 12px; background: #f9fafb;">';
+                
+                deletedWords.slice(0, 10).forEach(word => {
+                    html += `<div style="margin-bottom: 8px; padding: 8px; background: #fee2e2; border-radius: 4px;" class="word-preview">`;
+                    html += `<strong>${word.korean}</strong> → <span class="myanmar-text">${word.myanmar}</span>`;
+                    if (word.english) html += ` (${word.english})`;
+                    html += ` <span style="color: #991b1b; font-size: 12px;">[${word.pos}]</span>`;
+                    html += `</div>`;
+                });
+                
+                if (deletedWords.length > 10) {
+                    html += `<div style="text-align: center; color: #6b7280; font-style: italic;">... and ${deletedWords.length - 10} more deleted words</div>`;
+                }
+                
+                html += '</div>';
+            }
             previewDiv.innerHTML = html;
         }
 
         window.generateDictionaryFile = function() {
             if (firebaseUpdates.length === 0) {
-                showStatus('❌ No updates to generate. Fetch updates first.', 'error');
+                showStatus('<span class="emoji">❌</span> No updates to generate. Fetch updates first.', 'error');
                 return;
             }
 
             log('Generating updated dictionary file...');
 
-            // Combine static + new Firebase words
-            const newWords = firebaseUpdates.filter(u => u.isNew);
-            const allEntries = [...staticDictionary];
-            
-            // Add new words with incremental IDs
-            let nextId = Math.max(...staticDictionary.map(e => parseInt(e.id) || 0)) + 1;
-            newWords.forEach(word => {
-                allEntries.push({
-                    id: nextId.toString(),
-                    korean: word.korean,
-                    myanmar: word.myanmar,
-                    english: word.english || undefined,
-                    pos: word.pos
-                });
-                nextId++;
+            // Get all current Firebase words
+            const currentFirebaseWords = firebaseUpdates.map(word => ({
+                korean: word.korean,
+                myanmar: word.myanmar,
+                english: word.english || undefined,
+                pos: word.pos
+            }));
+
+            // Filter out words that have been deleted from Firebase
+            const activeStaticWords = staticDictionary.filter(staticWord => {
+                // Keep word if it exists in Firebase
+                return currentFirebaseWords.some(firebaseWord => 
+                    firebaseWord.korean === staticWord.korean && 
+                    firebaseWord.myanmar === staticWord.myanmar
+                );
             });
 
-            // Sort alphabetically by Korean
-            allEntries.sort((a, b) => a.korean.localeCompare(b.korean));
+            // Add new words from Firebase
+            const newWords = firebaseUpdates.filter(u => u.isNew);
+            const newEntries = [];
+            newWords.forEach(word => {
+                // Double-check to avoid duplicates
+                const exists = activeStaticWords.some(entry =>
+                    entry.korean === word.korean && entry.myanmar === word.myanmar
+                );
+
+                if (!exists) {
+                    newEntries.push({
+                        korean: word.korean,
+                        myanmar: word.myanmar,
+                        english: word.english || undefined,
+                        pos: word.pos
+                    });
+                }
+            });
+
+            // Combine active static words with new entries
+            const combinedEntries = [...activeStaticWords, ...newEntries];
+            
+            // Sort alphabetically by Korean first
+            combinedEntries.sort((a, b) => a.korean.localeCompare(b.korean));
+            
+            // Re-assign sequential IDs after sorting
+            const allEntries = combinedEntries.map((entry, index) => ({
+                id: (index + 1).toString(),
+                korean: entry.korean,
+                myanmar: entry.myanmar,
+                english: entry.english,
+                pos: entry.pos
+            }));
 
             // Generate TypeScript file content
             const fileContent = `import type { DictionaryEntry } from '../App';
@@ -316,9 +432,12 @@ ${allEntries.map(entry => {
             document.getElementById('copy-btn').disabled = false;
             document.getElementById('download-btn').disabled = false;
 
-            showStatus(`✅ Generated dictionary file with ${allEntries.length} total entries (${newWords.length} new)`, 'success');
+            const deletedWords = staticDictionary.length - activeStaticWords.length;
+            showStatus(`<span class="emoji">✅</span> Generated dictionary file with ${allEntries.length} total entries (${newEntries.length} new, ${deletedWords} removed)`, 'success');
             log(`Generated dictionary file with ${allEntries.length} entries`);
-            log(`Added ${newWords.length} new words from Firebase`);
+            log(`Added ${newEntries.length} new words from Firebase`);
+            log(`Removed ${deletedWords} words that were deleted from Firebase`);
+            log(`All entries are now sorted alphabetically with sequential IDs (1-${allEntries.length})`);
         };
 
         window.copyToClipboard = function() {
@@ -328,7 +447,7 @@ ${allEntries.map(entry => {
             
             const btn = document.getElementById('copy-btn');
             const originalText = btn.textContent;
-            btn.textContent = '✅ Copied!';
+            btn.innerHTML = '<span class="emoji">✅</span> Copied!';
             setTimeout(() => {
                 btn.textContent = originalText;
             }, 2000);

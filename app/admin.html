@@ -1,9 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Myanmar Korean Dictionary - Admin Panel</title>
+    
+    <!-- Google Fonts for Myanmar support -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Myanmar:wght@400;700&display=swap" rel="stylesheet">
+    
     <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
+        body { 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; 
+            margin: 0; 
+            background: #f8fafc;
+            color: #1f2937;
+            line-height: 1.6;
+        }
         .word-item { border: 1px solid #ddd; margin: 10px 0; padding: 15px; border-radius: 5px; }
         .word-item.pending { border-left: 5px solid orange; }
         .word-item.approved { border-left: 5px solid green; }
@@ -17,70 +31,603 @@
         .edit-form { margin-top: 10px; padding: 10px; border: 1px solid #ddd; border-radius: 5px; background: #f9f9f9; }
         .edit-input { width: 100%; margin: 5px 0; padding: 8px; border: 1px solid #ddd; border-radius: 3px; }
         .edit-select { width: 100%; margin: 5px 0; padding: 8px; border: 1px solid #ddd; border-radius: 3px; }
-        .login-form { max-width: 400px; margin: 50px auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px; background: #f9f9f9; }
-        .login-input { width: 100%; margin: 10px 0; padding: 10px; border: 1px solid #ddd; border-radius: 5px; }
-        .login-button { width: 100%; padding: 12px; background: #2196F3; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            padding: 20px;
+        }
+        
+        .login-form { 
+            max-width: 420px; 
+            width: 100%;
+            padding: 40px; 
+            background: white; 
+            border-radius: 20px; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .login-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
+            margin: 0 auto 20px;
+            display: block;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+        
+        .login-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 8px;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .login-subtitle {
+            font-size: 16px;
+            color: #6b7280;
+            margin-bottom: 32px;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .login-input { 
+            width: 100%; 
+            margin: 12px 0; 
+            padding: 16px 20px; 
+            border: 2px solid #e5e7eb; 
+            border-radius: 12px;
+            font-size: 16px;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+        
+        .login-input:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        
+        .login-button { 
+            width: 100%; 
+            padding: 16px; 
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            color: white; 
+            border: none; 
+            border-radius: 12px; 
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+            margin-top: 8px;
+        }
+        
+        .login-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+        }
+        
+        .login-demo {
+            margin-top: 24px;
+            padding: 16px;
+            background: #f8fafc;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .login-demo-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 8px;
+        }
+        
+        .login-demo-creds {
+            font-size: 13px;
+            color: #6b7280;
+            font-family: 'Monaco', monospace;
+            line-height: 1.5;
+        }
         .hidden { display: none; }
-        .stats { background: #e3f2fd; padding: 15px; margin: 10px 0; border-radius: 5px; }
-        .logout-btn { background: #757575; color: white; border: none; padding: 8px 15px; border-radius: 3px; cursor: pointer; float: right; }
+        
+        /* Add fade-in animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Admin panel transition */
+        #admin-panel {
+            transition: opacity 0.3s ease;
+        }
+        /* Admin Dashboard Styles */
+        .admin-header {
+            background: white;
+            padding: 20px 0;
+            border-bottom: 1px solid #e5e7eb;
+            margin-bottom: 30px;
+        }
+        
+        .admin-header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .admin-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1f2937;
+            margin: 0;
+        }
+        
+        .admin-subtitle {
+            font-size: 14px;
+            color: #6b7280;
+            margin-top: 4px;
+        }
+        
+        .logout-btn { 
+            background: #ef4444; 
+            color: white; 
+            border: none; 
+            padding: 10px 20px; 
+            border-radius: 8px; 
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        
+        .logout-btn:hover {
+            background: #dc2626;
+            transform: translateY(-1px);
+        }
+        
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            transition: all 0.2s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .stat-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        
+        .stat-icon.submissions { background: #dbeafe; color: #2563eb; }
+        .stat-icon.pending { background: #fef3c7; color: #d97706; }
+        .stat-icon.approved { background: #d1fae5; color: #059669; }
+        .stat-icon.dictionary { background: #e0e7ff; color: #7c3aed; }
+        
+        .stat-title {
+            font-size: 14px;
+            font-weight: 500;
+            color: #6b7280;
+            margin: 0;
+        }
+        
+        .stat-number {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1f2937;
+            margin: 0;
+        }
+        
+        .action-section {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1f2937;
+            margin: 0 0 20px 0;
+        }
+        
+        .action-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        
+        .btn {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+        }
+        
+        .btn-secondary {
+            background: #6b7280;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #4b5563;
+            transform: translateY(-1px);
+        }
+        
+        .form-section {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+            margin-bottom: 30px;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 6px;
+        }
+        
+        .form-input, .form-select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.2s ease;
+            box-sizing: border-box;
+        }
+        
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+        
+        .content-section {
+            background: white;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+            overflow: hidden;
+        }
+        
+        .content-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid #e5e7eb;
+            background: #f9fafb;
+        }
+        
+        .content-body {
+            padding: 24px;
+        }
+        
+        /* Dictionary management styles */
+        .actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+        
+        .actions button {
+            font-size: 14px;
+            padding: 8px 12px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .form-group {
+            margin-bottom: 12px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 4px;
+            color: #333;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+        }
+        
+        /* Dictionary word display improvements */
+        .word-item h3 {
+            margin: 0 0 8px 0;
+            color: #2c3e50;
+            font-size: 18px;
+        }
+        
+        .word-item p {
+            margin: 4px 0;
+            font-size: 14px;
+            color: #555;
+        }
+        
+        .word-item p strong {
+            color: #333;
+        }
+        
+        /* Status indicators */
+        .word-item .status-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-left: 8px;
+        }
+        
+        .status-admin {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+        
+        .status-approved {
+            background: #e8f5e9;
+            color: #388e3c;
+        }
+        
+        /* Myanmar font support */
+        .myanmar-text {
+            font-family: 'Noto Sans Myanmar', 'Myanmar Text', sans-serif;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        /* Apply Myanmar font to word titles and Myanmar content */
+        .word-item h3 {
+            font-family: 'Noto Sans Myanmar', 'Myanmar Text', Arial, sans-serif;
+            line-height: 1.5;
+        }
+        
+        /* Myanmar input fields */
+        input[placeholder*="Myanmar"], 
+        input[id*="myanmar"],
+        input[id*="Myanmar"] {
+            font-family: 'Noto Sans Myanmar', 'Myanmar Text', sans-serif;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
     <!-- Login Form -->
-    <div id="login-section">
+    <div id="login-section" class="login-container">
         <div class="login-form">
-            <h2>Admin Login</h2>
-            <input type="email" id="admin-email" placeholder="Admin Email" class="login-input">
-            <input type="password" id="admin-password" placeholder="Admin Password" class="login-input">
-            <button class="login-button" onclick="adminLogin()">Login</button>
-            <p style="color: #666; font-size: 12px; margin-top: 10px;">
-                Demo: admin@example.com / admin123
-            </p>
+            <img src="./assets/dictionary_icon.png" alt="Dictionary Icon" class="login-logo">
+            <h1 class="login-title">Welcome Back</h1>
+            <p class="login-subtitle">Sign in to Myanmar Korean Dictionary Admin Panel</p>
+            
+            <input type="email" id="admin-email" placeholder="Email address" class="login-input" onkeypress="handleLoginKeyPress(event)">
+            <input type="password" id="admin-password" placeholder="Password" class="login-input" onkeypress="handleLoginKeyPress(event)">
+            <button class="login-button" onclick="adminLogin()">
+                <span id="login-text">Sign In</span>
+                <span id="login-loading" style="display: none;">Signing in...</span>
+            </button>
+            
+            <div class="login-demo">
+                <div class="login-demo-title">Demo Credentials</div>
+                <div class="login-demo-creds">
+                    admin@example.com / admin123<br>
+                    admin@mmkr.com / mmkr2025
+                </div>
+            </div>
         </div>
     </div>
 
     <!-- Admin Panel -->
     <div id="admin-panel" class="hidden">
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-            <h1>Myanmar Korean Dictionary - Admin Panel</h1>
-            <button class="logout-btn" onclick="adminLogout()">Logout</button>
+        <!-- Header -->
+        <div class="admin-header">
+            <div class="admin-header-content">
+                <div>
+                    <h1 class="admin-title">Dictionary Admin Panel</h1>
+                    <p class="admin-subtitle">Welcome back, <span id="admin-email-display">Admin</span></p>
+                </div>
+                <button class="logout-btn" onclick="adminLogout()">
+                    <span>🚪</span> Logout
+                </button>
+            </div>
         </div>
         
-        <div class="stats">
-            <h3>Dashboard</h3>
-            <p><strong>Admin:</strong> <span id="admin-email-display"></span></p>
-            <p><strong>Total Submissions:</strong> <span id="total-submissions">-</span></p>
-            <p><strong>Pending:</strong> <span id="pending-count">-</span></p>
-            <p><strong>Approved:</strong> <span id="approved-count">-</span></p>
-            <p><strong>Dictionary Words:</strong> <span id="dictionary-count">-</span></p>
+        <!-- Dashboard Container -->
+        <div class="dashboard-container">
+            <!-- Stats Grid -->
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon submissions">📊</div>
+                        <div>
+                            <p class="stat-title">Total Submissions</p>
+                        </div>
+                    </div>
+                    <p class="stat-number" id="total-submissions">-</p>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon pending">⏳</div>
+                        <div>
+                            <p class="stat-title">Pending Review</p>
+                        </div>
+                    </div>
+                    <p class="stat-number" id="pending-count">-</p>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon approved">✅</div>
+                        <div>
+                            <p class="stat-title">Approved</p>
+                        </div>
+                    </div>
+                    <p class="stat-number" id="approved-count">-</p>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon dictionary">📚</div>
+                        <div>
+                            <p class="stat-title">Dictionary Words</p>
+                        </div>
+                    </div>
+                    <p class="stat-number" id="dictionary-count">-</p>
+                </div>
+            </div>
+            
+            <!-- Admin Direct Input -->
+            <div class="form-section">
+                <h2 class="section-title">Add Word Directly to Dictionary</h2>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="direct-korean">Korean</label>
+                        <input type="text" id="direct-korean" placeholder="Enter Korean word" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="direct-myanmar">Myanmar</label>
+                        <input type="text" id="direct-myanmar" placeholder="Enter Myanmar translation" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="direct-english">English (Optional)</label>
+                        <input type="text" id="direct-english" placeholder="Enter English translation" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="direct-pos">Part of Speech</label>
+                        <select id="direct-pos" class="form-select">
+                            <option value="noun">Noun</option>
+                            <option value="verb">Verb</option>
+                            <option value="adjective">Adjective</option>
+                            <option value="adverb">Adverb</option>
+                            <option value="pronoun">Pronoun</option>
+                            <option value="preposition">Preposition</option>
+                            <option value="conjunction">Conjunction</option>
+                            <option value="interjection">Interjection</option>
+                            <option value="particle">Particle</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="btn btn-primary" onclick="addDirectWord()">
+                    <span>➕</span> Add to Dictionary
+                </button>
+            </div>
+            
+            <!-- Actions Section -->
+            <div class="action-section">
+                <h2 class="section-title">Manage Content</h2>
+                <div class="action-buttons">
+                    <button class="btn btn-primary" onclick="loadWords()">
+                        <span>📝</span> View Submissions
+                    </button>
+                    <button class="btn btn-secondary" onclick="loadDictionary()">
+                        <span>📚</span> View Dictionary
+                    </button>
+                </div>
+                
+                <!-- Dictionary Search -->
+                <div id="dictionary-search" style="display: none; margin-top: 20px;">
+                    <div style="display: flex; gap: 12px; align-items: center;">
+                        <input type="text" id="dict-search-input" placeholder="Search dictionary words..." class="form-input" style="flex: 1; max-width: 400px;">
+                        <button class="btn btn-primary" onclick="searchDictionary()">
+                            <span>🔍</span> Search
+                        </button>
+                        <button class="btn btn-secondary" onclick="clearDictionarySearch()">
+                            Clear
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Content Section -->
+            <div class="content-section">
+                <div class="content-header">
+                    <h2 class="section-title" style="margin: 0;">Content Management</h2>
+                </div>
+                <div class="content-body">
+                    <div id="words-container">
+                        <p style="text-align: center; color: #6b7280; padding: 40px;">
+                            Click "View Submissions" or "View Dictionary" to manage content
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-        
-        <!-- Admin Direct Input -->
-        <div class="edit-form" style="margin: 20px 0;">
-            <h3>Add Word Directly to Dictionary</h3>
-            <input type="text" id="direct-korean" placeholder="Korean" class="edit-input">
-            <input type="text" id="direct-myanmar" placeholder="Myanmar" class="edit-input">
-            <input type="text" id="direct-english" placeholder="English (optional)" class="edit-input">
-            <select id="direct-pos" class="edit-select">
-                <option value="noun">Noun</option>
-                <option value="verb">Verb</option>
-                <option value="adjective">Adjective</option>
-                <option value="adverb">Adverb</option>
-                <option value="pronoun">Pronoun</option>
-                <option value="preposition">Preposition</option>
-                <option value="conjunction">Conjunction</option>
-                <option value="interjection">Interjection</option>
-                <option value="particle">Particle</option>
-                <option value="other">Other</option>
-            </select>
-            <button class="save" onclick="addDirectWord()">Add to Dictionary</button>
-        </div>
-        
-        <div style="margin: 20px 0;">
-            <button class="refresh" onclick="loadWords()">Refresh Submissions</button>
-            <button class="refresh" onclick="loadDictionary()" style="margin-left: 10px;">View Dictionary</button>
-        </div>
-        <div id="words-container"></div>
+    </div>
     </div>
 
     <script type="module">
@@ -114,15 +661,105 @@
             }
         };
 
-        window.adminLogin = function() {
+        window.adminLogin = async function() {
             const email = document.getElementById('admin-email').value.trim();
             const password = document.getElementById('admin-password').value.trim();
+            
+            if (!email || !password) {
+                showLoginError('Please enter both email and password');
+                return;
+            }
+            
+            // Show loading state
+            showLoginLoading(true);
+            
+            // Simulate API call delay for better UX
+            await new Promise(resolve => setTimeout(resolve, 800));
 
             if (ADMIN_CREDENTIALS[email] && ADMIN_CREDENTIALS[email] === password) {
                 localStorage.setItem('admin_email', email);
-                showAdminPanel(email);
+                
+                // Smooth transition
+                const loginSection = document.getElementById('login-section');
+                loginSection.style.transition = 'opacity 0.3s ease';
+                loginSection.style.opacity = '0';
+                
+                setTimeout(() => {
+                    showAdminPanel(email);
+                    const adminPanel = document.getElementById('admin-panel');
+                    adminPanel.style.opacity = '0';
+                    adminPanel.style.transition = 'opacity 0.3s ease';
+                    setTimeout(() => {
+                        adminPanel.style.opacity = '1';
+                    }, 50);
+                }, 300);
             } else {
-                alert('Invalid admin credentials!');
+                showLoginError('Invalid email or password. Please check your credentials.');
+            }
+            
+            showLoginLoading(false);
+        };
+        
+        function showLoginLoading(loading) {
+            const loginText = document.getElementById('login-text');
+            const loginLoading = document.getElementById('login-loading');
+            const loginButton = document.querySelector('.login-button');
+            
+            if (loading) {
+                loginText.style.display = 'none';
+                loginLoading.style.display = 'inline';
+                loginButton.disabled = true;
+                loginButton.style.opacity = '0.7';
+                loginButton.style.cursor = 'not-allowed';
+            } else {
+                loginText.style.display = 'inline';
+                loginLoading.style.display = 'none';
+                loginButton.disabled = false;
+                loginButton.style.opacity = '1';
+                loginButton.style.cursor = 'pointer';
+            }
+        }
+        
+        function showLoginError(message) {
+            // Remove any existing error
+            const existingError = document.querySelector('.login-error');
+            if (existingError) {
+                existingError.remove();
+            }
+            
+            // Create error element
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'login-error';
+            errorDiv.style.cssText = `
+                color: #dc2626;
+                background: #fef2f2;
+                border: 1px solid #fecaca;
+                padding: 12px 16px;
+                border-radius: 8px;
+                margin-top: 16px;
+                font-size: 14px;
+                text-align: center;
+                animation: fadeIn 0.3s ease;
+            `;
+            errorDiv.textContent = message;
+            
+            // Insert after login button
+            const loginButton = document.querySelector('.login-button');
+            loginButton.parentNode.insertBefore(errorDiv, loginButton.nextSibling);
+            
+            // Auto remove after 5 seconds
+            setTimeout(() => {
+                if (errorDiv.parentNode) {
+                    errorDiv.style.opacity = '0';
+                    setTimeout(() => errorDiv.remove(), 300);
+                }
+            }, 5000);
+        }
+        
+        // Handle Enter key press for login
+        window.handleLoginKeyPress = function(event) {
+            if (event.key === 'Enter') {
+                adminLogin();
             }
         };
 
@@ -288,6 +925,11 @@
         // Load and display dictionary words
         window.loadDictionary = async function() {
             const container = document.getElementById('words-container');
+            const searchDiv = document.getElementById('dictionary-search');
+            
+            // Show search interface
+            searchDiv.style.display = 'block';
+            
             container.innerHTML = '<p>Loading dictionary...</p>';
 
             try {
@@ -299,19 +941,62 @@
                     return;
                 }
 
-                let html = '<h3>Dictionary Words</h3>';
+                let html = '<h3>Dictionary Words <span style="color: #666; font-size: 14px;">(' + snapshot.size + ' total)</span></h3>';
+                html += '<p style="color: #666; font-size: 12px; margin-bottom: 16px;">💡 Use the search box above to find specific words. Click Edit to modify or Delete to remove words.</p>';
                 snapshot.forEach(doc => {
                     const data = doc.data();
                     const source = data.source === 'admin_direct' ? '👨‍💼 Admin' : '✅ Approved';
                     html += `
                         <div class="word-item approved" id="dict-${doc.id}">
-                            <h3>${data.korean} → ${data.myanmar}</h3>
-                            <p><strong>English:</strong> ${data.english || 'N/A'}</p>
-                            <p><strong>Part of Speech:</strong> ${data.pos || 'N/A'}</p>
-                            <p><strong>Source:</strong> ${source}</p>
-                            <p><strong>Added by:</strong> ${data.addedBy || 'Unknown'}</p>
-                            <p><strong>Added:</strong> ${data.addedAt?.toDate?.()?.toLocaleString() || 'Unknown'}</p>
-                            <button class="reject" onclick="deleteDictionaryWord('${doc.id}')">Delete</button>
+                            <!-- Display Mode -->
+                            <div id="dict-display-${doc.id}">
+                                <h3>${data.korean} → ${data.myanmar}</h3>
+                                <p><strong>English:</strong> ${data.english || 'N/A'}</p>
+                                <p><strong>Part of Speech:</strong> ${data.pos || 'N/A'}</p>
+                                <p><strong>Source:</strong> ${source}</p>
+                                <p><strong>Added by:</strong> ${data.addedBy || 'Unknown'}</p>
+                                <p><strong>Added:</strong> ${data.addedAt?.toDate?.()?.toLocaleString() || 'Unknown'}</p>
+                                <div class="actions">
+                                    <button class="edit" onclick="editDictionaryWord('${doc.id}', '${data.korean}', '${data.myanmar}', '${data.english || ''}', '${data.pos || 'noun'}')">✏️ Edit</button>
+                                    <button class="reject" onclick="deleteDictionaryWord('${doc.id}', '${data.korean}', '${data.myanmar}')">🗑️ Delete</button>
+                                </div>
+                            </div>
+                            
+                            <!-- Edit Mode -->
+                            <div id="dict-edit-${doc.id}" style="display: none;">
+                                <h3>Edit Dictionary Word</h3>
+                                <div class="form-group">
+                                    <label>Korean:</label>
+                                    <input type="text" id="dict-edit-korean-${doc.id}" value="${data.korean}">
+                                </div>
+                                <div class="form-group">
+                                    <label>Myanmar:</label>
+                                    <input type="text" id="dict-edit-myanmar-${doc.id}" value="${data.myanmar}">
+                                </div>
+                                <div class="form-group">
+                                    <label>English:</label>
+                                    <input type="text" id="dict-edit-english-${doc.id}" value="${data.english || ''}">
+                                </div>
+                                <div class="form-group">
+                                    <label>Part of Speech:</label>
+                                    <select id="dict-edit-pos-${doc.id}">
+                                        <option value="noun" ${data.pos === 'noun' ? 'selected' : ''}>Noun</option>
+                                        <option value="verb" ${data.pos === 'verb' ? 'selected' : ''}>Verb</option>
+                                        <option value="adjective" ${data.pos === 'adjective' ? 'selected' : ''}>Adjective</option>
+                                        <option value="adverb" ${data.pos === 'adverb' ? 'selected' : ''}>Adverb</option>
+                                        <option value="pronoun" ${data.pos === 'pronoun' ? 'selected' : ''}>Pronoun</option>
+                                        <option value="preposition" ${data.pos === 'preposition' ? 'selected' : ''}>Preposition</option>
+                                        <option value="conjunction" ${data.pos === 'conjunction' ? 'selected' : ''}>Conjunction</option>
+                                        <option value="interjection" ${data.pos === 'interjection' ? 'selected' : ''}>Interjection</option>
+                                        <option value="particle" ${data.pos === 'particle' ? 'selected' : ''}>Particle</option>
+                                        <option value="other" ${data.pos === 'other' ? 'selected' : ''}>Other</option>
+                                    </select>
+                                </div>
+                                <div class="actions">
+                                    <button class="approve" onclick="saveDictionaryEdit('${doc.id}')">💾 Save</button>
+                                    <button class="edit" onclick="cancelDictionaryEdit('${doc.id}')">❌ Cancel</button>
+                                </div>
+                            </div>
                         </div>
                     `;
                 });
@@ -325,15 +1010,16 @@
         };
 
         // Delete dictionary word
-        window.deleteDictionaryWord = async function(docId) {
-            if (!confirm('Are you sure you want to delete this dictionary word?')) {
+        window.deleteDictionaryWord = async function(docId, korean, myanmar) {
+            const confirmMessage = `Are you sure you want to delete this dictionary word?\n\n"${korean} → ${myanmar}"\n\nThis action cannot be undone!`;
+            if (!confirm(confirmMessage)) {
                 return;
             }
             
             try {
                 await deleteDoc(doc(db, 'dictionary', docId));
                 loadDictionary(); // Refresh
-                alert('Dictionary word deleted!');
+                alert('Dictionary word deleted successfully!');
                 
                 // Update count
                 const dictionaryCount = await loadDictionaryCount();
@@ -346,6 +1032,257 @@
                 
             } catch (error) {
                 alert('Error deleting word: ' + error.message);
+                console.error('Delete error:', error);
+            }
+        };
+
+        // Edit dictionary word
+        window.editDictionaryWord = function(docId, korean, myanmar, english, pos) {
+            // Hide display and show edit form
+            document.getElementById(`dict-display-${docId}`).style.display = 'none';
+            document.getElementById(`dict-edit-${docId}`).style.display = 'block';
+            
+            // Populate edit form with current values
+            document.getElementById(`dict-edit-korean-${docId}`).value = korean;
+            document.getElementById(`dict-edit-myanmar-${docId}`).value = myanmar;
+            document.getElementById(`dict-edit-english-${docId}`).value = english;
+            document.getElementById(`dict-edit-pos-${docId}`).value = pos;
+        };
+
+        // Cancel dictionary word edit
+        window.cancelDictionaryEdit = function(docId) {
+            // Hide edit form and show display
+            document.getElementById(`dict-edit-${docId}`).style.display = 'none';
+            document.getElementById(`dict-display-${docId}`).style.display = 'block';
+        };
+
+        // Save dictionary word edit
+        window.saveDictionaryEdit = async function(docId) {
+            try {
+                const korean = document.getElementById(`dict-edit-korean-${docId}`).value.trim();
+                const myanmar = document.getElementById(`dict-edit-myanmar-${docId}`).value.trim();
+                const english = document.getElementById(`dict-edit-english-${docId}`).value.trim();
+                const pos = document.getElementById(`dict-edit-pos-${docId}`).value;
+
+                if (!korean || !myanmar) {
+                    alert('Korean and Myanmar fields are required!');
+                    return;
+                }
+
+                // Ensure proper UTF-8 encoding
+                const cleanMyanmar = myanmar.normalize('NFC');
+                const cleanKorean = korean.normalize('NFC');
+
+                const adminEmail = localStorage.getItem('admin_email');
+                
+                await updateDoc(doc(db, 'dictionary', docId), {
+                    korean: cleanKorean,
+                    myanmar: cleanMyanmar,
+                    english: english || '',
+                    pos: pos,
+                    editedAt: serverTimestamp(),
+                    editedBy: adminEmail || 'admin'
+                });
+
+                loadDictionary(); // Refresh
+                alert('Dictionary word updated successfully!');
+                
+            } catch (error) {
+                alert('Error updating dictionary word: ' + error.message);
+                console.error('Update error:', error);
+            }
+        };
+
+        // Search dictionary words
+        window.searchDictionary = async function() {
+            const searchTerm = document.getElementById('dict-search-input').value.trim().toLowerCase();
+            if (!searchTerm) {
+                alert('Please enter a search term');
+                return;
+            }
+            
+            const container = document.getElementById('words-container');
+            container.innerHTML = '<p>Searching dictionary...</p>';
+
+            try {
+                const q = query(collection(db, 'dictionary'), orderBy('korean'));
+                const snapshot = await getDocs(q);
+                
+                if (snapshot.empty) {
+                    container.innerHTML = '<p>No dictionary words found.</p>';
+                    return;
+                }
+
+                const filteredDocs = [];
+                snapshot.forEach(doc => {
+                    const data = doc.data();
+                    const korean = (data.korean || '').toLowerCase();
+                    const myanmar = (data.myanmar || '').toLowerCase();
+                    const english = (data.english || '').toLowerCase();
+                    
+                    if (korean.includes(searchTerm) || myanmar.includes(searchTerm) || english.includes(searchTerm)) {
+                        filteredDocs.push({ id: doc.id, data: data });
+                    }
+                });
+
+                if (filteredDocs.length === 0) {
+                    container.innerHTML = `<p>No dictionary words found for "${searchTerm}"</p>`;
+                    return;
+                }
+
+                let html = `<h3>Dictionary Search Results <span style="color: #666; font-size: 14px;">(${filteredDocs.length} found for "${searchTerm}")</span></h3>`;
+                
+                filteredDocs.forEach(item => {
+                    const doc = { id: item.id };
+                    const data = item.data;
+                    const source = data.source === 'admin_direct' ? '👨‍💼 Admin' : '✅ Approved';
+                    html += `
+                        <div class="word-item approved" id="dict-${doc.id}">
+                            <!-- Display Mode -->
+                            <div id="dict-display-${doc.id}">
+                                <h3>${data.korean} → ${data.myanmar}</h3>
+                                <p><strong>English:</strong> ${data.english || 'N/A'}</p>
+                                <p><strong>Part of Speech:</strong> ${data.pos || 'N/A'}</p>
+                                <p><strong>Source:</strong> ${source}</p>
+                                <p><strong>Added by:</strong> ${data.addedBy || 'Unknown'}</p>
+                                <p><strong>Added:</strong> ${data.addedAt?.toDate?.()?.toLocaleString() || 'Unknown'}</p>
+                                <div class="actions">
+                                    <button class="edit" onclick="editDictionaryWord('${doc.id}', '${data.korean}', '${data.myanmar}', '${data.english || ''}', '${data.pos || 'noun'}')">✏️ Edit</button>
+                                    <button class="reject" onclick="deleteDictionaryWord('${doc.id}', '${data.korean}', '${data.myanmar}')">🗑️ Delete</button>
+                                </div>
+                            </div>
+                            
+                            <!-- Edit Mode -->
+                            <div id="dict-edit-${doc.id}" style="display: none;">
+                                <h3>Edit Dictionary Word</h3>
+                                <div class="form-group">
+                                    <label>Korean:</label>
+                                    <input type="text" id="dict-edit-korean-${doc.id}" value="${data.korean}">
+                                </div>
+                                <div class="form-group">
+                                    <label>Myanmar:</label>
+                                    <input type="text" id="dict-edit-myanmar-${doc.id}" value="${data.myanmar}">
+                                </div>
+                                <div class="form-group">
+                                    <label>English:</label>
+                                    <input type="text" id="dict-edit-english-${doc.id}" value="${data.english || ''}">
+                                </div>
+                                <div class="form-group">
+                                    <label>Part of Speech:</label>
+                                    <select id="dict-edit-pos-${doc.id}">
+                                        <option value="noun" ${data.pos === 'noun' ? 'selected' : ''}>Noun</option>
+                                        <option value="verb" ${data.pos === 'verb' ? 'selected' : ''}>Verb</option>
+                                        <option value="adjective" ${data.pos === 'adjective' ? 'selected' : ''}>Adjective</option>
+                                        <option value="adverb" ${data.pos === 'adverb' ? 'selected' : ''}>Adverb</option>
+                                        <option value="pronoun" ${data.pos === 'pronoun' ? 'selected' : ''}>Pronoun</option>
+                                        <option value="preposition" ${data.pos === 'preposition' ? 'selected' : ''}>Preposition</option>
+                                        <option value="conjunction" ${data.pos === 'conjunction' ? 'selected' : ''}>Conjunction</option>
+                                        <option value="interjection" ${data.pos === 'interjection' ? 'selected' : ''}>Interjection</option>
+                                        <option value="particle" ${data.pos === 'particle' ? 'selected' : ''}>Particle</option>
+                                        <option value="other" ${data.pos === 'other' ? 'selected' : ''}>Other</option>
+                                    </select>
+                                </div>
+                                <div class="actions">
+                                    <button class="approve" onclick="saveDictionaryEdit('${doc.id}')">💾 Save</button>
+                                    <button class="edit" onclick="cancelDictionaryEdit('${doc.id}')">❌ Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                container.innerHTML = html;
+                
+            } catch (error) {
+                container.innerHTML = '<p>Error searching dictionary: ' + error.message + '</p>';
+                console.error('Search error:', error);
+            }
+        };
+
+        // Clear dictionary search
+        window.clearDictionarySearch = function() {
+            document.getElementById('dict-search-input').value = '';
+            loadDictionary(); // Reload all dictionary words
+        };
+
+        // Hide search when viewing submissions
+        window.loadWords = async function() {
+            const searchDiv = document.getElementById('dictionary-search');
+            searchDiv.style.display = 'none';
+            
+            const container = document.getElementById('words-container');
+            container.innerHTML = '<p>Loading submissions...</p>';
+
+            try {
+                const q = query(collection(db, 'pending_words'), orderBy('submittedAt', 'desc'));
+                const snapshot = await getDocs(q);
+                
+                if (snapshot.empty) {
+                    container.innerHTML = '<p>No pending submissions.</p>';
+                    return;
+                }
+
+                let html = '<h3>Pending Word Submissions</h3>';
+                snapshot.forEach(doc => {
+                    const data = doc.data();
+                    const status = data.status || 'pending';
+                    const statusClass = status === 'approved' ? 'approved' : 'pending';
+                    
+                    html += `
+                        <div class="word-item ${statusClass}" id="${doc.id}">
+                            <!-- Display mode -->
+                            <div id="display-${doc.id}">
+                                <h3>${data.korean} → ${data.myanmar}</h3>
+                                <p><strong>English:</strong> ${data.english || 'N/A'}</p>
+                                <p><strong>Part of Speech:</strong> ${data.pos || 'N/A'}</p>
+                                <p><strong>Status:</strong> ${status}</p>
+                                <p><strong>Submitted by:</strong> ${data.submittedBy || 'Anonymous'}</p>
+                                <p><strong>Submitted:</strong> ${data.submittedAt?.toDate?.()?.toLocaleString() || 'Unknown'}</p>
+                                
+                                ${status === 'pending' ? `
+                                    <button class="edit" onclick="editWord('${doc.id}', '${data.korean}', '${data.myanmar}', '${data.english || ''}', '${data.pos || 'noun'}')">Edit</button>
+                                    <button class="approve" onclick="approveWord('${doc.id}')">Approve</button>
+                                    <button class="reject" onclick="rejectWord('${doc.id}')">Reject</button>
+                                ` : ''}
+                            </div>
+                            
+                            <!-- Edit mode -->
+                            <div id="edit-${doc.id}" style="display: none;" class="edit-form">
+                                <h4>Edit Word</h4>
+                                <input type="text" id="edit-korean-${doc.id}" placeholder="Korean" class="edit-input">
+                                <input type="text" id="edit-myanmar-${doc.id}" placeholder="Myanmar" class="edit-input">
+                                <input type="text" id="edit-english-${doc.id}" placeholder="English (optional)" class="edit-input">
+                                <select id="edit-pos-${doc.id}" class="edit-select">
+                                    <option value="noun">Noun</option>
+                                    <option value="verb">Verb</option>
+                                    <option value="adjective">Adjective</option>
+                                    <option value="adverb">Adverb</option>
+                                    <option value="pronoun">Pronoun</option>
+                                    <option value="preposition">Preposition</option>
+                                    <option value="conjunction">Conjunction</option>
+                                    <option value="interjection">Interjection</option>
+                                    <option value="particle">Particle</option>
+                                    <option value="other">Other</option>
+                                </select>
+                                <button class="save" onclick="saveEdit('${doc.id}')">Save</button>
+                                <button class="cancel" onclick="cancelEdit('${doc.id}')">Cancel</button>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                container.innerHTML = html;
+                
+                // Update dashboard stats
+                const totalSubmissions = snapshot.size;
+                const pendingCount = snapshot.docs.filter(doc => (doc.data().status || 'pending') === 'pending').length;
+                const approvedCount = snapshot.docs.filter(doc => doc.data().status === 'approved').length;
+                const dictionaryCount = await loadDictionaryCount();
+                updateDashboardStats(totalSubmissions, pendingCount, approvedCount, dictionaryCount);
+                
+            } catch (error) {
+                container.innerHTML = '<p>Error loading submissions: ' + error.message + '</p>';
+                console.error('Error:', error);
             }
         };
 

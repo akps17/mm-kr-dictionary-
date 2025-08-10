@@ -4,6 +4,7 @@ import {
   signInWithEmailAndPassword, 
   signOut, 
   onAuthStateChanged,
+  updateProfile,
   User 
 } from 'firebase/auth';
 import { auth } from './firebase';
@@ -11,7 +12,7 @@ import { auth } from './firebase';
 type AuthContextType = {
   user: User | null;
   loading: boolean;
-  signUp: (email: string, password: string) => Promise<void>;
+  signUp: (email: string, password: string, name: string) => Promise<void>;
   signIn: (email: string, password: string) => Promise<void>;
   logOut: () => Promise<void>;
   isAuthenticated: boolean;
@@ -40,10 +41,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return unsubscribe;
   }, []);
 
-  const signUp = async (email: string, password: string) => {
+  const signUp = async (email: string, password: string, name: string) => {
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
-      console.log('User signed up successfully');
+      const result = await createUserWithEmailAndPassword(auth, email, password);
+      // Update the user's profile with their name
+      if (result.user) {
+        await updateProfile(result.user, {
+          displayName: name
+        });
+        // Force refresh the user object to get the updated profile
+        setUser({ ...result.user });
+      }
+      console.log('User signed up successfully with name:', name);
     } catch (error: any) {
       console.error('Sign up error:', error.message);
       throw error;
