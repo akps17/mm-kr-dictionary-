@@ -3,7 +3,7 @@ import type { DictionaryEntry } from '../types/dictionary';
 // Dictionary entries - includes both initial data and approved user submissions
 // Last updated: 8/11/2025, 6:08:29 AM
 // Total entries: 1164 (1000 basic level ㄱ consonant words + existing entries)
-export const dictionaryEntries: DictionaryEntry[] = [
+export const dictionaryEntries = [
   { id: '1', korean: '가족', myanmar: 'မိသားစု', english: 'Family', pos: 'noun', level: undefined, examples: [] },
   { id: '2', korean: '감사합니다', myanmar: 'ကျေးဇူးတင်ပါတယ်', english: 'Thank you', pos: 'interjection', level: undefined, examples: [] },
   { id: '3', korean: '네', myanmar: 'ဟုတ်ကဲ့', english: 'Yes', pos: 'interjection', level: undefined, examples: [] },
@@ -1932,8 +1932,8 @@ export const dictionaryEntries: DictionaryEntry[] = [
   { id: '637', korean: '개점', myanmar: 'ဆိုင်ဖွင့်ခြင်း', english: 'Store opening', pos: 'noun', level: 'basic', examples: [
     { korean: '개점 시간이에요.', myanmar: 'ဆိုင်ဖွင့်ချိန်ပါ။', english: 'It\'s opening time.' }
   ]},
-  { id: '638', korean: '거스름돈', myanmar: 'အကြွေး', english: 'Change (money)', pos: 'noun', level: 'basic', examples: [
-    { korean: '거스름돈을 받았어요.', myanmar: 'အကြွေး ရခဲ့တယ်။', english: 'I received change.' }
+  { id: '638', korean: '거스름돈', myanmar: 'အကြွေ', english: 'Change (money)', pos: 'noun', level: 'basic', examples: [
+    { korean: '름돈을 받았어요.', myanmar: 'အကြွေ ရခဲ့တယ်။', english: 'I received change.' }
   ]},
   { id: '639', korean: '계산서', myanmar: 'ငွေတောင်းလွှာ', english: 'Bill/Receipt', pos: 'noun', level: 'basic', examples: [
     { korean: '계산서를 달라고 했어요.', myanmar: 'ငွေတောင်းလွှာ တောင်းခဲ့တယ်။', english: 'I asked for the bill.' }
@@ -3036,7 +3036,465 @@ export const dictionaryEntries: DictionaryEntry[] = [
   ]},
   { id: '1000', korean: '계속해서', myanmar: 'ဆက်လက်၍', english: 'Continuously', pos: 'adverb', level: 'basic', examples: [
     { korean: '계속해서 공부해요.', myanmar: 'ဆက်လက်၍ စာသင်တယ်။', english: 'I study continuously.' }
-  ]}
+  ]},
+
+  // ===== PRE-INTERMEDIATE LEVEL ㄱ CONSONANT WORDS =====
+  // ===== CATEGORY 1: ADVANCED ACADEMIC & PROFESSIONAL TERMS (1001-1050) =====
+  { id: '1001', korean: '가설', myanmar: 'ယူဆချက်', english: 'Hypothesis', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '가설을 세웠습니다.', myanmar: 'ယူဆချက် တင်ခဲ့ပါတယ်။', english: 'I established a hypothesis.' }
+  ]},
+  { id: '1002', korean: '가속도', myanmar: 'အရှိန်တိုးနှုန်း / အရှိန်', english: 'Acceleration', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '가속도가 증가했습니다.', myanmar: 'အရှိန်တိုးနှုန်း တိုးလာခဲ့တယ်။', english: 'The acceleration increased.' }
+  ]},
+  { id: '1003', korean: '가시성', myanmar: 'မြင်နိုင်မှု', english: 'Visibility', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '가시성이 좋지 않습니다.', myanmar: 'မြင်နိုင်မှု မကောင်းဘူး။', english: 'The visibility is not good.' }
+  ]},
+  { id: '1004', korean: '가용성', myanmar: 'အသုံးပြုနိုင်မှု', english: 'Availability', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '자원의 가용성을 확인했습니다.', myanmar: 'အရင်းအမြစ်၏ အသုံးပြုနိုင်မှုကို စစ်ဆေးခဲ့တယ်။', english: 'I checked the availability of resources.' }
+  ]},
+  { id: '1005', korean: '가치관', myanmar: 'တန်ဖိုးထားမှုများ /တန်ဖိုး', english: 'Values/Value system', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '가치관이 다릅니다.', myanmar: 'တန်ဖိုးထားမှုများ ကွဲပြားတယ်။', english: 'Our values are different.' }
+  ]},
+  { id: '1006', korean: '간접적', myanmar: 'သွယ်ဝိုက်', english: 'Indirect', pos: 'adjective', level: 'pre-intermediate', examples: [
+    { korean: '간접적인 영향을 받았습니다.', myanmar: 'သွယ်ဝိုက် သက်ရောက်မှု ခံခဲ့ရတယ်။', english: 'I received indirect influence.' }
+  ]},
+  { id: '1007', korean: '갈등', myanmar: 'ပဋိပက္ခ', english: 'Conflict', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '갈등을 해결해야 합니다.', myanmar: 'ပဋိပက္ခကို ဖြေရှင်းရမယ်။', english: 'We need to resolve the conflict.' }
+  ]},
+  { id: '1008', korean: '감각', myanmar: 'အာရုံခံစား / အရုံ', english: 'Sense/Sensation', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '감각이 예민합니다.', myanmar: 'အာရုံခံစား ထက်မြက်တယ်။', english: 'The senses are sharp.' }
+  ]},
+  { id: '1009', korean: '감시', myanmar: 'စောင့်ကြည့်ခြင်း', english: 'Surveillance/Monitoring', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '감시 시스템을 설치했습니다.', myanmar: 'စောင့်ကြည့်ခြင်း စနစ် တပ်ဆင်ခဲ့တယ်။', english: 'I installed a surveillance system.' }
+  ]},
+  { id: '1010', korean: '강도', myanmar: 'ပြင်းထန်မှု', english: 'Intensity/Strength', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '운동 강도를 높였습니다.', myanmar: 'လေ့ကျင့်ခန်း ပြင်းထန်မှုကို တိုးခဲ့တယ်။', english: 'I increased the exercise intensity.' }
+  ]},
+  { id: '1011', korean: '강령', myanmar: 'မူဝါဒ', english: 'Platform/Doctrine', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '정당의 강령을 발표했습니다.', myanmar: 'နိုင်ငံရေးပါတီ၏ မူဝါဒကို ကြေညာခဲ့တယ်။', english: 'The party announced its platform.' }
+  ]},
+  { id: '1012', korean: '강압적', myanmar: 'အတင်းအကျပ်', english: 'Coercive', pos: 'adjective', level: 'pre-intermediate', examples: [
+    { korean: '강압적인 방법은 좋지 않습니다.', myanmar: 'အတင်းအကျပ် နည်းလမ်း မကောင်းဘူး။', english: 'Coercive methods are not good.' }
+  ]},
+  { id: '1013', korean: '강연', myanmar: 'ဟောပြောပွဲ', english: 'Lecture', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '교수님의 강연을 들었습니다.', myanmar: 'ပါမောက္ခရဲ့ ဟောပြောပွဲကို နားထောင်ခဲ့တယ်။', english: 'I listened to the professor\'s lecture.' }
+  ]},
+  { id: '1014', korean: '강요', myanmar: 'အတင်းအကျပ်လုပ်ခြင်း', english: 'Coercion/Force', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '강요하지 마세요.', myanmar: 'အတင်းအကျပ် မလုပ်ပါနဲ့။', english: 'Don\'t force me.' }
+  ]},
+  { id: '1015', korean: '강의실', myanmar: 'ဟောပြောခန်း', english: 'Lecture hall', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '강의실이 넓습니다.', myanmar: 'ဟောပြောခန်း ကျယ်တယ်။', english: 'The lecture hall is spacious.' }
+  ]},
+  { id: '1016', korean: '강조', myanmar: 'အလေးပေးခြင်း', english: 'Emphasis', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '중요성을 강조했습니다.', myanmar: 'အရေးကြီးမှုကို အလေးပေးခဲ့တယ်။', english: 'I emphasized the importance.' }
+  ]},
+  { id: '1017', korean: '개념', myanmar: 'အယူအဆ', english: 'Concept', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '새로운 개념을 배웠습니다.', myanmar: 'အယူအဆ အသစ်ကို သင်ခဲ့တယ်။', english: 'I learned a new concept.' }
+  ]},
+  { id: '1018', korean: '개발자', myanmar: 'ဖွံ့ဖြိုးတိုးတက်စေသူ', english: 'Developer', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '소프트웨어 개발자입니다.', myanmar: 'ဆော့ဖ်ဝဲ ဖွံ့ဖြိုးတိုးတက်စေသူ ဖြစ်ပါတယ်။', english: 'I am a software developer.' }
+  ]},
+  { id: '1019', korean: '개방', myanmar: 'ဖွင့်လှစ်ခြင်း', english: 'Opening/Openness', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '시장 개방을 논의했습니다.', myanmar: 'စျေးကွက် ဖွင့်လှစ်ခြင်းကို ဆွေးနွေးခဲ့တယ်။', english: 'We discussed market opening.' }
+  ]},
+  { id: '1020', korean: '개선', myanmar: 'တိုးတက်စေခြင်း', english: 'Improvement', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '시스템을 개선했습니다.', myanmar: 'စနစ်ကို တိုးတက်စေခဲ့တယ်။', english: 'I improved the system.' }
+  ]},
+  { id: '1021', korean: '개요', myanmar: 'အကျဉ်းချုပ်', english: 'Overview/Outline', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '프로젝트 개요를 설명했습니다.', myanmar: 'ပရောဂျက် အကျဉ်းချုပ်ကို ရှင်းပြခဲ့တယ်။', english: 'I explained the project overview.' }
+  ]},
+  { id: '1022', korean: '개인적', myanmar: 'ကိုယ်ပိုင်', english: 'Personal', pos: 'adjective', level: 'pre-intermediate', examples: [
+    { korean: '개인적인 의견입니다.', myanmar: 'ကိုယ်ပိုင် အမြင်ပါ။', english: 'This is my personal opinion.' }
+  ]},
+  { id: '1023', korean: '거부', myanmar: 'ငြင်းပယ်ခြင်း', english: 'Rejection/Refusal', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '제안을 거부했습니다.', myanmar: 'အဆိုပြုချက်ကို ငြင်းပယ်ခဲ့တယ်။', english: 'I rejected the proposal.' }
+  ]},
+  { id: '1024', korean: '거주', myanmar: 'နေထိုင်ခြင်း', english: 'Residence', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '서울에 거주합니다.', myanmar: 'ဆိုးလ်မှာ နေထိုင်ပါတယ်။', english: 'I reside in Seoul.' }
+  ]},
+  { id: '1025', korean: '건설', myanmar: 'တည်ဆောက်ခြင်း', english: 'Construction', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '건물 건설이 시작되었습니다.', myanmar: 'အဆောက်အအုံ တည်ဆောက်ခြင်း စတင်ခဲ့တယ်။', english: 'Building construction has started.' }
+  ]},
+  { id: '1026', korean: '검사', myanmar: 'စစ်ဆေးခြင်း', english: 'Inspection/Examination', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '정기 검사를 받았습니다.', myanmar: 'ပုံမှန် စစ်ဆေးခြင်း ခံခဲ့တယ်။', english: 'I received a regular inspection.' }
+  ]},
+  { id: '1027', korean: '검토', myanmar: 'ပြန်လည်စိစစ်ခြင်း', english: 'Review/Examination', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '계획을 검토했습니다.', myanmar: 'အစီအစဉ်ကို ပြန်လည်စိစစ်ခဲ့တယ်။', english: 'I reviewed the plan.' }
+  ]},
+  { id: '1028', korean: '겸손', myanmar: 'နှိမ့်ချမှု', english: 'Humility/Modesty', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '겸손한 태도가 중요합니다.', myanmar: 'နှိမ့်ချတဲ့ သဘောထား အရေးကြီးတယ်။', english: 'A humble attitude is important.' }
+  ]},
+  { id: '1029', korean: '경계', myanmar: 'နယ်နိမိတ်', english: 'Boundary/Border', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '국경을 넘었습니다.', myanmar: 'နိုင်ငံနယ်နိမိတ် ကျော်ခဲ့တယ်။', english: 'I crossed the border.' }
+  ]},
+  { id: '1030', korean: '경고', myanmar: 'သတိပေးခြင်း', english: 'Warning', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '경고를 무시했습니다.', myanmar: 'သတိပေးခြင်းကို လျစ်လျူရှုခဲ့တယ်။', english: 'I ignored the warning.' }
+  ]},
+  { id: '1031', korean: '경기', myanmar: 'စီးပွားရေးအခြေအနေ', english: 'Economy/Game', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '경기가 좋아졌습니다.', myanmar: 'စီးပွားရေးအခြေအနေ ကောင်းလာတယ်။', english: 'The economy has improved.' }
+  ]},
+  { id: '1032', korean: '경력', myanmar: 'အလုပ်အကိုင်အတွေ့အကြုံ', english: 'Career/Experience', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '10년 경력이 있습니다.', myanmar: '၁၀ နှစ် အလုပ်အကိုင်အတွေ့အကြုံ ရှိပါတယ်။', english: 'I have 10 years of experience.' }
+  ]},
+  { id: '1033', korean: '경영', myanmar: 'စီမံခန့်ခွဲမှု', english: 'Management', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '회사 경영이 어렵습니다.', myanmar: 'ကုမ္ပဏီ စီမံခန့်ခွဲမှု ခက်ခဲတယ်။', english: 'Company management is difficult.' }
+  ]},
+  { id: '1034', korean: '경우', myanmar: 'အခြေအနေ', english: 'Case/Situation', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '이런 경우에는 어떻게 해야 할까요?', myanmar: 'ဒီလို အခြေအနေမှာ ဘယ်လို လုပ်ရမလဲ။', english: 'What should we do in this case?' }
+  ]},
+  { id: '1035', korean: '경쟁', myanmar: 'ယှဉ်ပြိုင်မှု', english: 'Competition', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '경쟁이 치열합니다.', myanmar: 'ယှဉ်ပြိုင်မှု ပြင်းထန်တယ်။', english: 'The competition is fierce.' }
+  ]},
+  { id: '1036', korean: '계획', myanmar: 'အစီအစဉ်', english: 'Plan', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '여행 계획을 세웠습니다.', myanmar: 'ခရီးသွား အစီအစဉ် ရေးဆွဲခဲ့တယ်။', english: 'I made travel plans.' }
+  ]},
+  { id: '1037', korean: '고객', myanmar: 'ဖောက်သည်', english: 'Customer/Client', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '고객 서비스가 중요합니다.', myanmar: 'ဖောက်သည် ဝန်ဆောင်မှု အရေးကြီးတယ်။', english: 'Customer service is important.' }
+  ]},
+  { id: '1038', korean: '고려', myanmar: 'စဉ်းစားခြင်း', english: 'Consideration', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '모든 것을 고려했습니다.', myanmar: 'အားလုံးကို စဉ်းစားခဲ့တယ်။', english: 'I considered everything.' }
+  ]},
+  { id: '1039', korean: '고민', myanmar: 'စိုးရိမ်ပူပန်မှု', english: 'Worry/Concern', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '고민이 많습니다.', myanmar: 'စိုးရိမ်ပူပန်မှု များတယ်။', english: 'I have many worries.' }
+  ]},
+  { id: '1040', korean: '고용', myanmar: 'အလုပ်ခန့်အပ်ခြင်း', english: 'Employment', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '고용 기회가 늘었습니다.', myanmar: 'အလုပ်အကိုင် အခွင့်အလမ်း တိုးလာတယ်။', english: 'Employment opportunities have increased.' }
+  ]},
+  { id: '1041', korean: '공급', myanmar: 'ထောက်ပံ့ခြင်း', english: 'Supply', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '전력 공급이 중단되었습니다.', myanmar: 'လျှပ်စစ် ထောက်ပံ့ခြင်း ရပ်တန့်ခဲ့တယ်။', english: 'Power supply was interrupted.' }
+  ]},
+  { id: '1042', korean: '공동', myanmar: 'အတူတကွ', english: 'Joint/Common', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '공동 작업을 했습니다.', myanmar: 'အတူတကွ အလုပ်လုပ်ခဲ့တယ်။', english: 'We did joint work.' }
+  ]},
+  { id: '1043', korean: '공식', myanmar: 'တရားဝင်', english: 'Official/Formula', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '공식 발표가 있었습니다.', myanmar: 'တရားဝင် ကြေညာချက် ရှိခဲ့တယ်။', english: 'There was an official announcement.' }
+  ]},
+  { id: '1044', korean: '공정', myanmar: 'တရားမျှတ', english: 'Fair/Process', pos: 'adjective', level: 'pre-intermediate', examples: [
+    { korean: '공정한 평가를 받았습니다.', myanmar: 'တရားမျှတတဲ့ အကဲဖြတ်ခံရတယ်။', english: 'I received a fair evaluation.' }
+  ]},
+  { id: '1045', korean: '과정', myanmar: 'လုပ်ငန်းစဉ်', english: 'Process/Course', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '학습 과정이 중요합니다.', myanmar: 'သင်ယူမှု လုပ်ငန်းစဉ် အရေးကြီးတယ်။', english: 'The learning process is important.' }
+  ]},
+  { id: '1046', korean: '관계', myanmar: 'ဆက်နွယ်မှု', english: 'Relationship', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '좋은 관계를 유지합니다.', myanmar: 'ကောင်းတဲ့ ဆက်နွယ်မှု ထိန်းသိမ်းတယ်။', english: 'I maintain good relationships.' }
+  ]},
+  { id: '1047', korean: '관련', myanmar: 'ဆက်စပ်မှု', english: 'Relation/Connection', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '이 문제와 관련이 있습니다.', myanmar: 'ဒီ ပြဿနာနဲ့ ဆက်စပ်မှု ရှိတယ်။', english: 'It is related to this problem.' }
+  ]},
+  { id: '1048', korean: '관리', myanmar: 'စီမံခန့်ခွဲမှု', english: 'Management', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '시간 관리가 어렵습니다.', myanmar: 'အချိန် စီမံခန့်ခွဲမှု ခက်ခဲတယ်။', english: 'Time management is difficult.' }
+  ]},
+  { id: '1049', korean: '관심', myanmar: 'စိတ်ဝင်စားမှု', english: 'Interest/Concern', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '관심을 가져주세요.', myanmar: 'စိတ်ဝင်စားမှု ရှိပါ။', english: 'Please show interest.' }
+  ]},
+  { id: '1050', korean: '광고', myanmar: 'ကြော်ငြာ', english: 'Advertisement', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '광고를 만들었습니다.', myanmar: 'ကြော်ငြာ လုပ်ခဲ့တယ်။', english: 'I made an advertisement.' }
+  ]},
+
+  // ===== CATEGORY 2: COMPLEX SOCIAL & CULTURAL CONCEPTS (1051-1100) =====
+  { id: '1051', korean: '교류', myanmar: 'ဖလှယ်မှု', english: 'Exchange/Interaction', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '문화 교류가 중요합니다.', myanmar: 'ယဉ်ကျေးမှု ဖလှယ်မှု အရေးကြီးတယ်။', english: 'Cultural exchange is important.' }
+  ]},
+  { id: '1052', korean: '교육과정', myanmar: 'ပညာရေးသင်ရိုးညွှန်းတမ်း', english: 'Curriculum', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '새로운 교육과정을 도입했습니다.', myanmar: 'ပညာရေးသင်ရိုးညွှန်းတမ်း အသစ်ကို ကျင့်သုံးခဲ့တယ်။', english: 'We introduced a new curriculum.' }
+  ]},
+  { id: '1053', korean: '구조', myanmar: 'ဖွဲ့စည်းပုံ', english: 'Structure', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '건물의 구조가 복잡합니다.', myanmar: 'အဆောက်အအုံရဲ့ ဖွဲ့စည်းပုံ ရှုပ်ထွေးတယ်။', english: 'The building\'s structure is complex.' }
+  ]},
+  { id: '1054', korean: '국제적', myanmar: 'နိုင်ငံတကာ', english: 'International', pos: 'adjective', level: 'pre-intermediate', examples: [
+    { korean: '국제적인 회의에 참석했습니다.', myanmar: 'နိုင်ငံတကာ အစည်းအဝေးမှာ တက်ရောက်ခဲ့တယ်။', english: 'I attended an international conference.' }
+  ]},
+  { id: '1055', korean: '권리', myanmar: 'အခွင့်အရေး', english: 'Rights', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '인권을 보호해야 합니다.', myanmar: 'လူ့အခွင့်အရေးကို ကာကွယ်ရမယ်။', english: 'We must protect human rights.' }
+  ]},
+  { id: '1056', korean: '규정', myanmar: 'စည်းမျဉ်း', english: 'Regulation/Rule', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '새로운 규정이 생겼습니다.', myanmar: 'စည်းမျဉ်း အသစ် ရှိလာတယ်။', english: 'New regulations have been created.' }
+  ]},
+  { id: '1057', korean: '규모', myanmar: 'အတိုင်းအတာ', english: 'Scale/Size', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '대규모 프로젝트입니다.', myanmar: 'အတိုင်းအတာ ကြီးမားတဲ့ ပရောဂျက်ပါ။', english: 'It\'s a large-scale project.' }
+  ]},
+  { id: '1058', korean: '근거', myanmar: 'အခြေခံ', english: 'Basis/Evidence', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '확실한 근거가 필요합니다.', myanmar: 'သေချာတဲ့ အခြေခံ လိုအပ်တယ်။', english: 'Solid evidence is needed.' }
+  ]},
+  { id: '1059', korean: '기능', myanmar: 'လုပ်ဆောင်ချက်', english: 'Function', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '이 기능이 유용합니다.', myanmar: 'ဒီ လုပ်ဆောင်ချက် အသုံးဝင်တယ်။', english: 'This function is useful.' }
+  ]},
+  { id: '1060', korean: '기대', myanmar: 'မျှော်လင့်ချက်', english: 'Expectation', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '기대가 큽니다.', myanmar: 'မျှော်လင့်ချက် ကြီးတယ်။', english: 'My expectations are high.' }
+  ]},
+  { id: '1061', korean: '기록', myanmar: 'မှတ်တမ်း', english: 'Record', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '기록을 남겼습니다.', myanmar: 'မှတ်တမ်း ကျန်ရစ်ခဲ့တယ်။', english: 'I left a record.' }
+  ]},
+  { id: '1062', korean: '기술', myanmar: 'နည်းပညာ', english: 'Technology/Skill', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '최신 기술을 사용합니다.', myanmar: 'နောက်ဆုံး နည်းပညာကို သုံးတယ်။', english: 'We use the latest technology.' }
+  ]},
+  { id: '1063', korean: '기여', myanmar: 'ပံ့ပိုးကူညီမှု', english: 'Contribution', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '사회에 기여하고 싶습니다.', myanmar: 'လူ့အဖွဲ့အစည်းကို ပံ့ပိုးကူညီချင်တယ်။', english: 'I want to contribute to society.' }
+  ]},
+  { id: '1064', korean: '기준', myanmar: 'စံနှုန်း', english: 'Standard/Criteria', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '엄격한 기준을 적용했습니다.', myanmar: 'တင်းကြပ်တဲ့ စံနှုန်းကို သုံးခဲ့တယ်။', english: 'We applied strict standards.' }
+  ]},
+  { id: '1065', korean: '긴급', myanmar: 'အရေးပေါ်', english: 'Emergency/Urgent', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '긴급 상황이 발생했습니다.', myanmar: 'အရေးပေါ် အခြေအနေ ဖြစ်ပေါ်ခဲ့တယ်။', english: 'An emergency situation occurred.' }
+  ]},
+  { id: '1066', korean: '깊이', myanmar: 'နက်ရှိုင်းမှု', english: 'Depth', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '물의 깊이를 측정했습니다.', myanmar: 'ရေရဲ့ နက်ရှိုင်းမှုကို တိုင်းတာခဲ့တယ်။', english: 'I measured the depth of the water.' }
+  ]},
+  { id: '1067', korean: '나타나다', myanmar: 'ပေါ်လာသည်', english: 'To appear/emerge', pos: 'verb', level: 'pre-intermediate', examples: [
+    { korean: '문제가 나타났습니다.', myanmar: 'ပြဿနာ ပေါ်လာခဲ့တယ်။', english: 'A problem appeared.' }
+  ]},
+  { id: '1068', korean: '내용', myanmar: 'အကြောင်းအရာ', english: 'Content', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '책의 내용이 흥미롭습니다.', myanmar: 'စာအုပ်ရဲ့ အကြောင်းအရာ စိတ်ဝင်စားဖွယ်ရာ ဖြစ်တယ်။', english: 'The book\'s content is interesting.' }
+  ]},
+  { id: '1069', korean: '능력', myanmar: 'စွမ်းရည်', english: 'Ability/Capability', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '뛰어난 능력을 보였습니다.', myanmar: 'ထူးခြားတဲ့ စွမ်းရည် ပြခဲ့တယ်။', english: 'He showed outstanding ability.' }
+  ]},
+  { id: '1070', korean: '다양성', myanmar: 'မတူကွဲပြားမှု', english: 'Diversity', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '문화의 다양성을 존중합니다.', myanmar: 'ယဉ်ကျေးမှုရဲ့ မတူကွဲပြားမှုကို လေးစားတယ်။', english: 'We respect cultural diversity.' }
+  ]},
+  { id: '1071', korean: '단계', myanmar: 'အဆင့်', english: 'Stage/Phase', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '첫 번째 단계를 완료했습니다.', myanmar: 'ပထမ အဆင့်ကို ပြီးစီးခဲ့တယ်။', english: 'We completed the first stage.' }
+  ]},
+  { id: '1072', korean: '대상', myanmar: 'ပစ်မှတ်', english: 'Target/Object', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '연구 대상을 선정했습니다.', myanmar: 'သုတေသန ပစ်မှတ်ကို ရွေးချယ်ခဲ့တယ်။', english: 'We selected research targets.' }
+  ]},
+  { id: '1073', korean: '대안', myanmar: 'အခြားရွေးချယ်စရာ', english: 'Alternative', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '다른 대안을 찾았습니다.', myanmar: 'အခြား အခြားရွေးချယ်စရာ ရှာတွေ့ခဲ့တယ်။', english: 'We found another alternative.' }
+  ]},
+  { id: '1074', korean: '대화', myanmar: 'စကားပြောဆိုမှု', english: 'Conversation/Dialogue', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '진지한 대화를 나눴습니다.', myanmar: 'လေးနက်တဲ့ စကားပြောဆိုမှု လုပ်ခဲ့တယ်။', english: 'We had a serious conversation.' }
+  ]},
+  { id: '1075', korean: '도전', myanmar: 'စိန်ခေါ်မှု', english: 'Challenge', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '새로운 도전을 받아들였습니다.', myanmar: 'စိန်ခေါ်မှု အသစ်ကို လက်ခံခဲ့တယ်။', english: 'I accepted a new challenge.' }
+  ]},
+  { id: '1076', korean: '독립', myanmar: 'လွတ်လပ်ခြင်း', english: 'Independence', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '경제적 독립을 이뤘습니다.', myanmar: 'စီးပွားရေး လွတ်လပ်ခြင်း ရရှိခဲ့တယ်။', english: 'I achieved economic independence.' }
+  ]},
+  { id: '1077', korean: '동기', myanmar: 'လှုံ့ဆော်ချက်', english: 'Motivation', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '강한 동기가 있습니다.', myanmar: 'ပြင်းထန်တဲ့ လှုံ့ဆော်ချက် ရှိတယ်။', english: 'I have strong motivation.' }
+  ]},
+  { id: '1078', korean: '동의', myanmar: 'သဘောတူညီမှု', english: 'Agreement/Consent', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '모든 사람의 동의를 얻었습니다.', myanmar: 'လူအားလုံးရဲ့ သဘောတူညီမှု ရခဲ့တယ်။', english: 'We got everyone\'s consent.' }
+  ]},
+  { id: '1079', korean: '등장', myanmar: 'ပေါ်ထွက်လာခြင်း', english: 'Appearance/Emergence', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '새로운 기술의 등장입니다.', myanmar: 'နည်းပညာ အသစ်ရဲ့ ပေါ်ထွက်လာခြင်းပါ။', english: 'It\'s the emergence of new technology.' }
+  ]},
+  { id: '1080', korean: '따라서', myanmar: 'ထို့ကြောင့်', english: 'Therefore', pos: 'conjunction', level: 'pre-intermediate', examples: [
+    { korean: '따라서 결정했습니다.', myanmar: 'ထို့ကြောင့် ဆုံးဖြတ်ခဲ့တယ်။', english: 'Therefore, I decided.' }
+  ]},
+  { id: '1081', korean: '또한', myanmar: 'ထို့အပြင်', english: 'Also/Furthermore', pos: 'conjunction', level: 'pre-intermediate', examples: [
+    { korean: '또한 중요한 점이 있습니다.', myanmar: 'ထို့အပြင် အရေးကြီးတဲ့ အချက် ရှိတယ်။', english: 'Furthermore, there is an important point.' }
+  ]},
+  { id: '1082', korean: '마찬가지', myanmar: 'အတူတူပင်', english: 'Likewise/Same', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '마찬가지로 생각합니다.', myanmar: 'အတူတူပင် ထင်တယ်။', english: 'I think likewise.' }
+  ]},
+  { id: '1083', korean: '만족', myanmar: 'ကျေနပ်မှု', english: 'Satisfaction', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '큰 만족을 느꼈습니다.', myanmar: 'ကြီးမားတဲ့ ကျေနပ်မှု ခံစားခဲ့တယ်။', english: 'I felt great satisfaction.' }
+  ]},
+  { id: '1084', korean: '목표', myanmar: 'ရည်မှန်းချက်', english: 'Goal/Target', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '목표를 달성했습니다.', myanmar: 'ရည်မှန်းချက် အောင်မြင်ခဲ့တယ်။', english: 'I achieved the goal.' }
+  ]},
+  { id: '1085', korean: '문제', myanmar: 'ပြဿနာ', english: 'Problem/Issue', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '심각한 문제입니다.', myanmar: 'လေးနက်တဲ့ ပြဿနာပါ။', english: 'It\'s a serious problem.' }
+  ]},
+  { id: '1086', korean: '발전', myanmar: 'တိုးတက်မှု', english: 'Development/Progress', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '기술 발전이 빠릅니다.', myanmar: 'နည်းပညာ တိုးတက်မှု မြန်တယ်။', english: 'Technological development is fast.' }
+  ]},
+  { id: '1087', korean: '방법', myanmar: 'နည်းလမ်း', english: 'Method/Way', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '좋은 방법을 찾았습니다.', myanmar: 'ကောင်းတဲ့ နည်းလမ်း ရှာတွေ့ခဲ့တယ်။', english: 'I found a good method.' }
+  ]},
+  { id: '1088', korean: '방향', myanmar: 'ဦးတည်ရာ', english: 'Direction', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '올바른 방향입니다.', myanmar: 'မှန်ကန်တဲ့ ဦးတည်ရာပါ။', english: 'It\'s the right direction.' }
+  ]},
+  { id: '1089', korean: '변화', myanmar: 'ပြောင်းလဲမှု', english: 'Change', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '큰 변화가 있었습니다.', myanmar: 'ကြီးမားတဲ့ ပြောင်းလဲမှု ရှိခဲ့တယ်။', english: 'There was a big change.' }
+  ]},
+  { id: '1090', korean: '보장', myanmar: 'အာမခံချက်', english: 'Guarantee/Assurance', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '안전을 보장합니다.', myanmar: 'လုံခြုံမှုကို အာမခံတယ်။', english: 'We guarantee safety.' }
+  ]},
+  { id: '1091', korean: '분석', myanmar: 'ခွဲခြမ်းစိတ်ဖြာခြင်း', english: 'Analysis', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '자세한 분석이 필요합니다.', myanmar: 'အသေးစိတ် ခွဲခြမ်းစိတ်ဖြာခြင်း လိုအပ်တယ်။', english: 'Detailed analysis is needed.' }
+  ]},
+  { id: '1092', korean: '비교', myanmar: 'နှိုင်းယှဉ်ခြင်း', english: 'Comparison', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '두 제품을 비교했습니다.', myanmar: 'ကုန်ပစ္စည်း နှစ်ခုကို နှိုင်းယှဉ်ခဲ့တယ်။', english: 'I compared two products.' }
+  ]},
+  { id: '1093', korean: '사실', myanmar: 'အမှန်တရား', english: 'Fact/Truth', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '중요한 사실을 알았습니다.', myanmar: 'အရေးကြီးတဲ့ အမှန်တရား သိခဲ့တယ်။', english: 'I learned an important fact.' }
+  ]},
+  { id: '1094', korean: '상황', myanmar: 'အခြေအနေ', english: 'Situation/Circumstance', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '복잡한 상황입니다.', myanmar: 'ရှုပ်ထွေးတဲ့ အခြေအနေပါ။', english: 'It\'s a complex situation.' }
+  ]},
+  { id: '1095', korean: '성과', myanmar: 'အောင်မြင်မှု', english: 'Achievement/Result', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '좋은 성과를 얻었습니다.', myanmar: 'ကောင်းတဲ့ အောင်မြင်မှု ရခဲ့တယ်။', english: 'We achieved good results.' }
+  ]},
+  { id: '1096', korean: '성공', myanmar: 'အောင်မြင်မှု', english: 'Success', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '프로젝트가 성공했습니다.', myanmar: 'ပရောဂျက် အောင်မြင်ခဲ့တယ်။', english: 'The project was successful.' }
+  ]},
+  { id: '1097', korean: '소통', myanmar: 'ဆက်သွယ်မှု', english: 'Communication', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '원활한 소통이 중요합니다.', myanmar: 'ချောမွေ့တဲ့ ဆက်သွယ်မှု အရေးကြီးတယ်။', english: 'Smooth communication is important.' }
+  ]},
+  { id: '1098', korean: '시도', myanmar: 'ကြိုးစားမှု', english: 'Attempt/Try', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '여러 번 시도했습니다.', myanmar: 'အကြိမ်များစွာ ကြိုးစားခဲ့တယ်။', english: 'I tried several times.' }
+  ]},
+  { id: '1099', korean: '실제', myanmar: 'အမှန်တကယ်', english: 'Reality/Actual', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '실제로 일어났습니다.', myanmar: 'အမှန်တကယ် ဖြစ်ပျက်ခဲ့တယ်။', english: 'It actually happened.' }
+  ]},
+  { id: '1100', korean: '안전', myanmar: 'လုံခြုံမှု', english: 'Safety/Security', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '안전이 최우선입니다.', myanmar: 'လုံခြုံမှုက အဦးဆုံးပါ။', english: 'Safety is the top priority.' }
+  ]},
+
+  // ===== CATEGORY 3: ADVANCED TECHNOLOGY & SCIENCE TERMS (1101-1150) =====
+  { id: '1101', korean: '알고리즘', myanmar: 'အယ်လဂိုရီသမ်', english: 'Algorithm', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '새로운 알고리즘을 개발했습니다.', myanmar: 'အယ်လဂိုရီသမ် အသစ် တီထွင်ခဲ့တယ်။', english: 'We developed a new algorithm.' }
+  ]},
+  { id: '1102', korean: '업그레이드', myanmar: 'အဆင့်မြှင့်တင်ခြင်း', english: 'Upgrade', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '시스템을 업그레이드했습니다.', myanmar: 'စနစ်ကို အဆင့်မြှင့်တင်ခဲ့တယ်။', english: 'We upgraded the system.' }
+  ]},
+  { id: '1103', korean: '연결성', myanmar: 'ဆက်သွယ်နိုင်မှု', english: 'Connectivity', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '인터넷 연결성이 중요합니다.', myanmar: 'အင်တာနက် ဆက်သွယ်နိုင်မှု အရေးကြီးတယ်။', english: 'Internet connectivity is important.' }
+  ]},
+  { id: '1104', korean: '자동화', myanmar: 'အလိုအလျောက်ပြုလုပ်ခြင်း', english: 'Automation', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '공장 자동화가 진행됩니다.', myanmar: 'စက်ရုံ အလိုအလျောက်ပြုလုပ်ခြင်း လုပ်ဆောင်တယ်။', english: 'Factory automation is proceeding.' }
+  ]},
+  { id: '1105', korean: '데이터베이스', myanmar: 'ဒေတာသိုလှောင်ခန်း', english: 'Database', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '데이터베이스를 구축했습니다.', myanmar: 'ဒေတာသိုလှောင်ခန်း တည်ဆောက်ခဲ့တယ်။', english: 'We built a database.' }
+  ]},
+  { id: '1106', korean: '가상현실', myanmar: 'ယာယီအဖြစ်တရား', english: 'Virtual reality', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '가상현실 기술이 발전했습니다.', myanmar: 'ယာယီအဖြစ်တရား နည်းပညာ တိုးတက်ခဲ့တယ်။', english: 'Virtual reality technology has advanced.' }
+  ]},
+  { id: '1107', korean: '인공지능', myanmar: 'အတုဉာဏ်', english: 'Artificial intelligence', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '인공지능이 발달하고 있습니다.', myanmar: 'အတုဉာဏ် ဖွံ့ဖြိုးနေတယ်။', english: 'Artificial intelligence is developing.' }
+  ]},
+  { id: '1108', korean: '클라우드', myanmar: 'တိမ်တိုက်သိုလှောင်မှု', english: 'Cloud', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '클라우드에 저장했습니다.', myanmar: 'တိမ်တိုက်သိုလှောင်မှုမှာ သိမ်းဆည်းခဲ့တယ်။', english: 'We stored it in the cloud.' }
+  ]},
+  { id: '1109', korean: '보안', myanmar: 'လုံခြုံရေး', english: 'Security', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '보안 시스템을 강화했습니다.', myanmar: 'လုံခြုံရေး စနစ်ကို အားကောင်းအောင် လုပ်ခဲ့တယ်။', english: 'We strengthened the security system.' }
+  ]},
+  { id: '1110', korean: '네트워크', myanmar: 'ကွန်ယက်', english: 'Network', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '네트워크가 연결되었습니다.', myanmar: 'ကွန်ယက် ချိတ်ဆက်ခဲ့တယ်။', english: 'The network is connected.' }
+  ]},
+  { id: '1111', korean: '소프트웨어', myanmar: 'ဆော့ဖ်ဝဲ', english: 'Software', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '새로운 소프트웨어를 설치했습니다.', myanmar: 'ဆော့ဖ်ဝဲ အသစ် တပ်ဆင်ခဲ့တယ်။', english: 'We installed new software.' }
+  ]},
+  { id: '1112', korean: '하드웨어', myanmar: 'ဟာ့ဒ်ဝဲ', english: 'Hardware', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '하드웨어를 교체했습니다.', myanmar: 'ဟာ့ဒ်ဝဲကို အစားထိုးခဲ့တယ်။', english: 'We replaced the hardware.' }
+  ]},
+  { id: '1113', korean: '프로그래밍', myanmar: 'ပရိုဂရမ်ရေးသားခြင်း', english: 'Programming', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '프로그래밍을 배우고 있습니다.', myanmar: 'ပရိုဂရမ်ရေးသားခြင်း သင်နေတယ်။', english: 'I am learning programming.' }
+  ]},
+  { id: '1114', korean: '인터페이스', myanmar: 'ချိတ်ဆက်မျက်နှာ', english: 'Interface', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '사용자 인터페이스가 개선되었습니다.', myanmar: 'အသုံးပြုသူ ချိတ်ဆက်မျက်နှာ တိုးတက်ခဲ့တယ်။', english: 'The user interface has been improved.' }
+  ]},
+  { id: '1115', korean: '플랫폼', myanmar: 'ပလပ်ဖောင်း', english: 'Platform', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '새로운 플랫폼을 출시했습니다.', myanmar: 'ပလပ်ဖောင်း အသစ် ထုတ်လွှတ်ခဲ့တယ်။', english: 'We launched a new platform.' }
+  ]},
+  { id: '1116', korean: '애플리케이션', myanmar: 'အပလီကေးရှင်း', english: 'Application', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '모바일 애플리케이션을 개발했습니다.', myanmar: 'မိုဘိုင်း အပလီကေးရှင်း တီထွင်ခဲ့တယ်။', english: 'We developed a mobile application.' }
+  ]},
+  { id: '1117', korean: '디지털', myanmar: 'ဒီဂျစ်တယ်', english: 'Digital', pos: 'adjective', level: 'pre-intermediate', examples: [
+    { korean: '디지털 시대입니다.', myanmar: 'ဒီဂျစ်တယ် ခေတ်ပါ။', english: 'It\'s the digital age.' }
+  ]},
+  { id: '1118', korean: '온라인', myanmar: 'အွန်လိုင်း', english: 'Online', pos: 'adjective', level: 'pre-intermediate', examples: [
+    { korean: '온라인 쇼핑을 했습니다.', myanmar: 'အွန်လိုင်း စျေးဝယ်ခဲ့တယ်။', english: 'I did online shopping.' }
+  ]},
+  { id: '1119', korean: '오프라인', myanmar: 'အော့ဖ်လိုင်း', english: 'Offline', pos: 'adjective', level: 'pre-intermediate', examples: [
+    { korean: '오프라인 모드로 작업했습니다.', myanmar: 'အော့ဖ်လိုင်း မုဒ်နဲ့ အလုပ်လုပ်ခဲ့တယ်။', english: 'I worked in offline mode.' }
+  ]},
+  { id: '1120', korean: '업데이트', myanmar: 'မွမ်းမံခြင်း', english: 'Update', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '소프트웨어 업데이트가 필요합니다.', myanmar: 'ဆော့ဖ်ဝဲ မွမ်းမံခြင်း လိုအပ်တယ်။', english: 'Software update is needed.' }
+  ]},
+  { id: '1121', korean: '다운로드', myanmar: 'ဒေါင်းလုဒ်', english: 'Download', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '파일을 다운로드했습니다.', myanmar: 'ဖိုင်ကို ဒေါင်းလုဒ် လုပ်ခဲ့တယ်။', english: 'I downloaded the file.' }
+  ]},
+  { id: '1122', korean: '업로드', myanmar: 'အပ်လုဒ်', english: 'Upload', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '사진을 업로드했습니다.', myanmar: 'ဓာတ်ပုံကို အပ်လုဒ် လုပ်ခဲ့တယ်။', english: 'I uploaded the photo.' }
+  ]},
+  { id: '1123', korean: '백업', myanmar: 'အရန်သိမ်းဆည်းခြင်း', english: 'Backup', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '데이터 백업을 했습니다.', myanmar: 'ဒေတာ အရန်သိမ်းဆည်းခြင်း လုပ်ခဲ့တယ်။', english: 'I backed up the data.' }
+  ]},
+  { id: '1124', korean: '복구', myanmar: 'ပြန်လည်ရယူခြင်း', english: 'Recovery', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '시스템 복구가 완료되었습니다.', myanmar: 'စနစ် ပြန်လည်ရယူခြင်း ပြီးစီးခဲ့တယ်။', english: 'System recovery is completed.' }
+  ]},
+  { id: '1125', korean: '설정', myanmar: 'ချိန်ညှိခြင်း', english: 'Settings/Configuration', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '설정을 변경했습니다.', myanmar: 'ချိန်ညှိခြင်းကို ပြောင်းလဲခဲ့တယ်။', english: 'I changed the settings.' }
+  ]},
+  { id: '1126', korean: '암호화', myanmar: 'လျှို့ဝှက်ကုဒ်ပြုလုပ်ခြင်း', english: 'Encryption', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '데이터를 암호화했습니다.', myanmar: 'ဒေတာကို လျှို့ဝှက်ကုဒ်ပြုလုပ်ခဲ့တယ်။', english: 'We encrypted the data.' }
+  ]},
+  { id: '1127', korean: '해독', myanmar: 'ကုဒ်ဖြေခြင်း', english: 'Decryption', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '파일을 해독했습니다.', myanmar: 'ဖိုင်ကို ကုဒ်ဖြေခဲ့တယ်။', english: 'We decrypted the file.' }
+  ]},
+  { id: '1128', korean: '압축', myanmar: 'ဖိအားပေးခြင်း', english: 'Compression', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '파일을 압축했습니다.', myanmar: 'ဖိုင်ကို ဖိအားပေးခဲ့တယ်။', english: 'I compressed the file.' }
+  ]},
+  { id: '1129', korean: '해제', myanmar: 'ဖြေရှင်းခြင်း', english: 'Release/Decompression', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '압축을 해제했습니다.', myanmar: 'ဖိအားပေးခြင်းကို ဖြေရှင်းခဲ့တယ်။', english: 'I decompressed it.' }
+  ]},
+  { id: '1130', korean: '저장소', myanmar: 'သိုလှောင်ရုံ', english: 'Storage', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '클라우드 저장소를 사용합니다.', myanmar: 'တိမ်တိုက် သိုလှောင်ရုံ သုံးတယ်။', english: 'We use cloud storage.' }
+  ]},
+  { id: '1131', korean: '서버', myanmar: 'ဆာဗာ', english: 'Server', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '서버가 다운되었습니다.', myanmar: 'ဆာဗာ ပျက်စီးခဲ့တယ်။', english: 'The server went down.' }
+  ]},
+  { id: '1132', korean: '클라이언트', myanmar: 'ကလိုင်းယင့်', english: 'Client', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '클라이언트가 연결되었습니다.', myanmar: 'ကလိုင်းယင့် ချိတ်ဆက်ခဲ့တယ်။', english: 'The client is connected.' }
+  ]},
+  { id: '1133', korean: '프로토콜', myanmar: 'စည်းမျဉ်းစနစ်', english: 'Protocol', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '새로운 프로토콜을 적용했습니다.', myanmar: 'စည်းမျဉ်းစနစ် အသစ် အသုံးပြုခဲ့တယ်။', english: 'We applied a new protocol.' }
+  ]},
+  { id: '1134', korean: '방화벽', myanmar: 'မီးနံရံ', english: 'Firewall', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '방화벽을 설치했습니다.', myanmar: 'မီးနံရံ တပ်ဆင်ခဲ့တယ်။', english: 'We installed a firewall.' }
+  ]},
+  { id: '1135', korean: '바이러스', myanmar: 'ဗိုင်းရပ်စ်', english: 'Virus', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '컴퓨터에 바이러스가 있습니다.', myanmar: 'ကွန်ပျူတာမှာ ဗိုင်းရပ်စ် ရှိတယ်။', english: 'There\'s a virus in the computer.' }
+  ]},
+  { id: '1136', korean: '백신', myanmar: 'ကာကွယ်ဆေး', english: 'Antivirus', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '백신 프로그램을 실행했습니다.', myanmar: 'ကာကွယ်ဆေး ပရိုဂရမ် လုပ်ဆောင်ခဲ့တယ်။', english: 'I ran the antivirus program.' }
+  ]},
+  { id: '1137', korean: '해킹', myanmar: 'ဟက်ကင်', english: 'Hacking', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '해킹 공격이 있었습니다.', myanmar: 'ဟက်ကင် တိုက်ခိုက်မှု ရှိခဲ့တယ်။', english: 'There was a hacking attack.' }
+  ]},
+  { id: '1138', korean: '사이버', myanmar: 'ဆိုင်ဘာ', english: 'Cyber', pos: 'adjective', level: 'pre-intermediate', examples: [
+    { korean: '사이버 보안이 중요합니다.', myanmar: 'ဆိုင်ဘာ လုံခြုံရေး အရေးကြီးတယ်။', english: 'Cyber security is important.' }
+  ]},
+  { id: '1139', korean: '가상', myanmar: 'ယာယီ', english: 'Virtual', pos: 'adjective', level: 'pre-intermediate', examples: [
+    { korean: '가상 회의를 했습니다.', myanmar: 'ယာယီ အစည်းအဝေး လုပ်ခဲ့တယ်။', english: 'We had a virtual meeting.' }
+  ]},
+  { id: '1140', korean: '실시간', myanmar: 'အချိန်နှင့်တပြေးညီ', english: 'Real-time', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '실시간으로 업데이트됩니다.', myanmar: 'အချိန်နှင့်တပြေးညီ မွမ်းမံတယ်။', english: 'It updates in real-time.' }
+  ]},
+  { id: '1141', korean: '스마트', myanmar: 'စမတ်', english: 'Smart', pos: 'adjective', level: 'pre-intermediate', examples: [
+    { korean: '스마트폰을 사용합니다.', myanmar: 'စမတ်ဖုန်း သုံးတယ်။', english: 'I use a smartphone.' }
+  ]},
+  { id: '1142', korean: '자동', myanmar: 'အလိုအလျောက်', english: 'Automatic', pos: 'adjective', level: 'pre-intermediate', examples: [
+    { korean: '자동으로 저장됩니다.', myanmar: 'အလိုအလျောက် သိမ်းဆည်းတယ်။', english: 'It saves automatically.' }
+  ]},
+  { id: '1143', korean: '수동', myanmar: 'လက်ဖြင့်လုပ်သော', english: 'Manual', pos: 'adjective', level: 'pre-intermediate', examples: [
+    { korean: '수동으로 설정해야 합니다.', myanmar: 'လက်ဖြင့်လုပ်သော ချိန်ညှိရမယ်။', english: 'It needs to be set manually.' }
+  ]},
+  { id: '1144', korean: '무선', myanmar: 'ကြိုးမဲ့', english: 'Wireless', pos: 'adjective', level: 'pre-intermediate', examples: [
+    { korean: '무선 인터넷을 사용합니다.', myanmar: 'ကြိုးမဲ့ အင်တာနက် သုံးတယ်။', english: 'We use wireless internet.' }
+  ]},
+  { id: '1145', korean: '유선', myanmar: 'ကြိုးပါ / ကြိုးချိတ်ဆက်မှ', english: 'Wired', pos: 'adjective', level: 'pre-intermediate', examples: [
+    { korean: '유선 연결이 더 안정적입니다.', myanmar: 'ကြိုး ချိတ်ဆက်မှု ပိုတည်ငြိမ်တယ်။', english: 'Wired connection is more stable.' }
+  ]},
+  { id: '1146', korean: '호환성', myanmar: 'လိုက်ဖက်နိုင်မှု', english: 'Compatibility', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '호환성을 확인했습니다.', myanmar: 'လိုက်ဖက်နိုင်မှု စစ်ဆေးခဲ့တယ်။', english: 'We checked the compatibility.' }
+  ]},
+  { id: '1147', korean: '성능', myanmar: 'စွမ်းဆောင်ရည်', english: 'Performance', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '성능이 향상되었습니다.', myanmar: 'စွမ်းဆောင်ရည် တိုးတက်ခဲ့တယ်။', english: 'Performance has improved.' }
+  ]},
+  { id: '1148', korean: '효율성', myanmar: 'ထိရောက်မှု', english: 'Efficiency', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '효율성을 높였습니다.', myanmar: 'ထိရောက်မှုကို တိုးမြှင့်ခဲ့တယ်။', english: 'We increased efficiency.' }
+  ]},
+  { id: '1149', korean: '안정성', myanmar: 'တည်ငြိမ်မှု', english: 'Stability', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '시스템의 안정성이 좋습니다.', myanmar: 'စနစ်ရဲ့ တည်ငြိမ်မှု ကောင်းတယ်။', english: 'The system\'s stability is good.' }
+  ]},
+  { id: '1150', korean: '확장성', myanmar: 'ချဲ့ထွင်နိုင်မှု', english: 'Scalability', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '확장성을 고려했습니다.', myanmar: 'ချဲ့ထွင်နိုင်မှုကို စဉ်းစားခဲ့တယ်။', english: 'We considered scalability.' }
+  ]},
+  
 ];
 
 /*
