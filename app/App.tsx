@@ -98,8 +98,9 @@ function HomeSearchScreen({ navigation }: { navigation: any }) {
     const filtered = normalizedQuery.length === 0
       ? mergedDictionary
       : mergedDictionary.filter((entry) => {
-          const korean = entry.korean.toLowerCase();
-          const myanmar = entry.myanmar.toLowerCase();
+          // Safely handle potentially undefined properties
+          const korean = entry.korean?.toLowerCase() || '';
+          const myanmar = entry.myanmar?.toLowerCase() || '';
           const english = (entry.english ?? '').toLowerCase();
           return (
             korean.includes(normalizedQuery) ||
@@ -174,7 +175,7 @@ function HomeSearchScreen({ navigation }: { navigation: any }) {
                     <View style={styles.rowHeader}>
                       <Text style={[styles.korean, isTabletLike && styles.koreanTablet, { color: C.textPrimary, fontFamily: 'NotoSansMyanmar_700Bold', fontSize: styles.korean.fontSize * fontScale }]}>{item.korean}</Text>
                       {item.pos && (
-                        <View style={[styles.posChip] }>
+                        <View style={[styles.posChip]}>
                           <Text style={[styles.posText]}>{item.pos}</Text>
                         </View>
                       )}
