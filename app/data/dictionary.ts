@@ -12354,6 +12354,1393 @@ export const dictionaryEntries = [
     { id: '4096', korean: '레귤러 멤버', myanmar: 'ပုံမှန် အဖွဲ့ဝင်', english: 'Regular member', pos: 'noun phrase', level: 'basic', examples: [
     { korean: '그는 우리 동호회의 레귤러 멤버예요.', myanmar: 'သူက ကျွန်တော်တို့ အသင်းရဲ့ ပုံမှန် အဖွဲ့ဝင်ပါ။', english: 'He is a regular member of our club.' }
     ]},
+
+
+
+
+
+// ㅁ Start from here
+//
+
+
+    // ===== ㅁ CONSONANT BASIC WORDS - CATEGORY 1: FOOD & DRINKS (4097-4196) =====
+
+    // ===== ㅁ CONSONANT BASIC WORDS - CATEGORY 1: FOOD & DRINKS (4097-4196) =====
+
+{ id: '4097', korean: '만두', myanmar: 'ဖက်ထုပ်', english: 'Dumpling', pos: 'noun', level: 'basic', examples: [
+  { korean: '만두를 맛있게 먹었어요.', myanmar: 'ဖက်ထုပ်ကို အရသာရှိရှိ စားခဲ့တယ်။', english: 'I ate the dumplings deliciously.' }
+]},
+{ id: '4098', korean: '물', myanmar: 'ရေ', english: 'Water', pos: 'noun', level: 'basic', examples: [
+  { korean: '물 한 잔 주세요.', myanmar: 'ရေတစ်ခွက် ပေးပါ။', english: 'Please give me a glass of water.' }
+]},
+{ id: '4099', korean: '맥주', myanmar: 'ဘီယာ', english: 'Beer', pos: 'noun', level: 'basic', examples: [
+  { korean: '시원한 맥주가 마시고 싶어요.', myanmar: 'အေးတဲ့ဘီယာ သောက်ချင်တယ်။', english: 'I want to drink cold beer.' }
+]},
+{ id: '4100', korean: '막걸리', myanmar: 'ဆန်အရက်', english: 'Makgeolli (Korean rice wine)', pos: 'noun', level: 'basic', examples: [
+  { korean: '막걸리는 한국 전통 술이에요.', myanmar: 'ဆန်အရက်က ကိုရီးယားရိုးရာအရက်ပါ။', english: 'Makgeolli is a traditional Korean alcoholic beverage.' }
+]},
+{ id: '4101', korean: '망고', myanmar: 'သရက်သီး', english: 'Mango', pos: 'noun', level: 'basic', examples: [
+  { korean: '망고는 달고 맛있어요.', myanmar: 'သရက်သီးက ချိုပြီး အရသာရှိတယ်။', english: 'Mangoes are sweet and delicious.' }
+]},
+{ id: '4102', korean: '메밀', myanmar: 'ဘက်ဝှေ့', english: 'Buckwheat', pos: 'noun', level: 'basic', examples: [
+  { korean: '메밀국수는 건강에 좋아요.', myanmar: 'ဘက်ဝှေ့ခေါက်ဆွဲက ကျန်းမာရေးအတွက် ကောင်းတယ်။', english: 'Buckwheat noodles are good for health.' }
+]},
+{ id: '4103', korean: '미역국', myanmar: 'ပင်လယ်ရေညှိဟင်းချို', english: 'Seaweed soup', pos: 'noun', level: 'basic', examples: [
+  { korean: '생일에 미역국을 먹어요.', myanmar: 'မွေးနေ့မှာ ပင်လယ်ရေညှိဟင်းချို သောက်တယ်။', english: 'I eat seaweed soup on my birthday.' }
+]},
+{ id: '4104', korean: '멸치', myanmar: 'ငါးသေး', english: 'Anchovy', pos: 'noun', level: 'basic', examples: [
+  { korean: '멸치볶음은 인기 있는 반찬이에요.', myanmar: 'ငါးသေးကြော်က လူကြိုက်များတဲ့ ဘေးပန်းဟင်းတစ်မျိုးပါ။', english: 'Stir-fried anchovies are a popular side dish.' }
+]},
+{ id: '4105', korean: '무', myanmar: 'မုန်လာဥဖြူ', english: 'Radish', pos: 'noun', level: 'basic', examples: [
+  { korean: '김치에 무가 들어가요.', myanmar: 'ကင်မ်ချီထဲမှာ မုန်လာဥဖြူ ထည့်တယ်။', english: 'Radish goes into kimchi.' }
+]},
+{ id: '4106', korean: '미역', myanmar: 'ပင်လယ်ရေညှိ', english: 'Seaweed', pos: 'noun', level: 'basic', examples: [
+  { korean: '미역은 영양가가 높아요.', myanmar: 'ပင်လယ်ရေညှိက အာဟာရဓာတ် မြင့်မားတယ်။', english: 'Seaweed is highly nutritious.' }
+]},
+{ id: '4107', korean: '마늘', myanmar: 'ကြက်သွန်ဖြူ', english: 'Garlic', pos: 'noun', level: 'basic', examples: [
+  { korean: '한국 음식에는 마늘이 많이 들어가요.', myanmar: 'ကိုရီးယားအစားအစာတွေမှာ ကြက်သွန်ဖြူ အများကြီးထည့်တယ်။', english: 'Korean food uses a lot of garlic.' }
+]},
+{ id: '4108', korean: '밀가루', myanmar: 'ဂျုံမှုန့်', english: 'Flour', pos: 'noun', level: 'basic', examples: [
+  { korean: '빵을 만들 때 밀가루가 필요해요.', myanmar: 'ပေါင်မုန့်လုပ်တဲ့အခါ ဂျုံမှုန့်လိုတယ်။', english: 'Flour is needed to make bread.' }
+]},
+{ id: '4109', korean: '면', myanmar: 'ခေါက်ဆွဲ', english: 'Noodles', pos: 'noun', level: 'basic', examples: [
+  { korean: '라면은 면 요리예요.', myanmar: 'ရာမန်က ခေါက်ဆွဲဟင်းပါ။', english: 'Ramen is a noodle dish.' }
+]},
+{ id: '4110', korean: '맛', myanmar: 'အရသာ', english: 'Taste', pos: 'noun', level: 'basic', examples: [
+  { korean: '이 음식은 맛이 좋아요.', myanmar: 'ဒီအစားအစာက အရသာကောင်းတယ်။', english: 'This food tastes good.' }
+]},
+{ id: '4111', korean: '만들다', myanmar: 'ပြုလုပ်သည်', english: 'To make/prepare (food)', pos: 'verb', level: 'basic', examples: [
+  { korean: '저녁 식사를 만들어요.', myanmar: 'ညစာပြင်ဆင်တယ်။', english: 'I prepare dinner.' }
+]},
+{ id: '4112', korean: '먹다', myanmar: 'စားသည်', english: 'To eat', pos: 'verb', level: 'basic', examples: [
+  { korean: '나는 매일 밥을 먹어요.', myanmar: 'ကျွန်တော် နေ့တိုင်း ထမင်းစားတယ်။', english: 'I eat rice every day.' }
+]},
+{ id: '4113', korean: '마시다', myanmar: 'သောက်သည်', english: 'To drink', pos: 'verb', level: 'basic', examples: [
+  { korean: '커피를 마시고 있어요.', myanmar: 'ကော်ဖီသောက်နေတယ်။', english: 'I am drinking coffee.' }
+]},
+{ id: '4114', korean: '메추리알', myanmar: 'ငုံးဥ', english: 'Quail egg', pos: 'noun', level: 'basic', examples: [
+  { korean: '메추리알 장조림은 맛있는 반찬이에요.', myanmar: 'ငုံးဥပေါင်းက အရသာရှိတဲ့ ဘေးပန်းဟင်းပါ။', english: 'Braised quail eggs are a delicious side dish.' }
+]},
+{ id: '4115', korean: '모과', myanmar: 'မာကွာ (ဂျပန်သစ်တော်)', english: 'Chinese Quince', pos: 'noun', level: 'basic', examples: [
+  { korean: '모과차는 감기에 좋아요.', myanmar: 'မာကွာလက်ဖက်ရည်က အအေးမိတာအတွက် ကောင်းတယ်။', english: 'Chinese quince tea is good for colds.' }
+]},
+{ id: '4116', korean: '묵', myanmar: 'မုခ် (ဂျယ်လီ)', english: 'Jelly (made from grains/acorns)', pos: 'noun', level: 'basic', examples: [
+  { korean: '도토리묵은 건강한 음식이에요.', myanmar: 'ဒိုတိုရီမုခ်က ကျန်းမာရေးအတွက် ကောင်းတဲ့အစားအစာပါ။', english: 'Acorn jelly is a healthy food.' }
+]},
+{ id: '4117', korean: '모시조개', myanmar: 'ပုစွန်ဆိတ်', english: 'Manila clam', pos: 'noun', level: 'basic', examples: [
+  { korean: '모시조개는 국물 요리에 많이 사용돼요.', myanmar: 'ပုစွန်ဆိတ်ကို ဟင်းရည်တွေမှာ အများဆုံးသုံးကြတယ်။', english: 'Manila clams are often used in soup dishes.' }
+]},
+{ id: '4118', korean: '물고기', myanmar: 'ငါး', english: 'Fish', pos: 'noun', level: 'basic', examples: [
+  { korean: '오늘 저녁은 물고기 요리예요.', myanmar: 'ဒီညစာက ငါးဟင်းပါ။', english: 'Tonight\'s dinner is fish.' }
+]},
+{ id: '4119', korean: '무청', myanmar: 'မုန်လာဥရွက်', english: 'Radish greens', pos: 'noun', level: 'basic', examples: [
+  { korean: '무청 시래기는 건강에 좋아요.', myanmar: 'မုန်လာဥရွက်ခြောက်က ကျန်းမာရေးအတွက် ကောင်းတယ်။', english: 'Dried radish greens are good for health.' }
+]},
+{ id: '4120', korean: '모자반', myanmar: 'ပင်လယ်မှို', english: 'Sargassum (seaweed)', pos: 'noun', level: 'basic', examples: [
+  { korean: '모자반은 바다에서 자라는 해조류예요.', myanmar: 'ပင်လယ်မှိုက ပင်လယ်ထဲမှာ ပေါက်တဲ့ရေညှိမျိုးစိတ်ပါ။', english: 'Sargassum is a type of seaweed that grows in the sea.' }
+]},
+{ id: '4121', korean: '미숫가루', myanmar: 'ဆန်မှုန့်ဖျော်ရည်', english: 'Misutgaru (roasted grain powder drink)', pos: 'noun', level: 'basic', examples: [
+  { korean: '여름에 미숫가루를 시원하게 마셔요.', myanmar: 'နွေရာသီမှာ ဆန်မှုန့်ဖျော်ရည်ကို အေးအေးလေးသောက်တယ်။', english: 'I drink misutgaru cool in the summer.' }
+]},
+{ id: '4122', korean: '매실', myanmar: 'ဇီးဖြူသီး', english: 'Plum (Maesil)', pos: 'noun', level: 'basic', examples: [
+  { korean: '매실청은 소화에 도움이 돼요.', myanmar: 'ဇီးဖြူသီးရည်က အစာကြေဖို့ ကူညီတယ်။', english: 'Maesil (plum) extract helps with digestion.' }
+]},
+{ id: '4123', korean: '망개떡', myanmar: 'မန်ဂဲတောက် (ထမင်းကိတ်)', english: 'Manggae-tteok (rice cake wrapped in smilax leaves)', pos: 'noun', level: 'basic', examples: [
+  { korean: '망개떡은 잎에 싸서 만드는 떡이에요.', myanmar: 'မန်ဂဲတောက်က အရွက်နဲ့ထုပ်ပြီးလုပ်တဲ့ ထမင်းကိတ်ပါ။', english: 'Manggae-tteok is a rice cake made by wrapping it in leaves.' }
+]},
+{ id: '4124', korean: '미나리', myanmar: 'ရေကန်စွန်း', english: 'Water dropwort', pos: 'noun', level: 'basic', examples: [
+  { korean: '미나리는 해산물 요리에 잘 어울려요.', myanmar: 'ရေကန်စွန်းက ပင်လယ်စာဟင်းတွေနဲ့ လိုက်ဖက်တယ်။', english: 'Water dropwort goes well with seafood dishes.' }
+]},
+{ id: '4125', korean: '말린 오징어', myanmar: 'ငါးခြောက်', english: 'Dried squid', pos: 'noun', level: 'basic', examples: [
+  { korean: '맥주 안주로 말린 오징어를 좋아해요.', myanmar: 'ဘီယာနဲ့တွဲစားဖို့ ငါးခြောက်ကို ကြိုက်တယ်။', english: 'I like dried squid as a snack with beer.' }
+]},
+{ id: '4126', korean: '모과차', myanmar: 'မာကွာလက်ဖက်ရည်', english: 'Chinese Quince Tea', pos: 'noun', level: 'basic', examples: [
+  { korean: '몸이 으슬으슬할 때 모과차를 마셔요.', myanmar: 'ကိုယ်လက်မအီမသာဖြစ်တဲ့အခါ မာကွာလက်ဖက်ရည် သောက်တယ်။', english: 'I drink Chinese quince tea when I feel chilly.' }
+]},
+{ id: '4127', korean: '물김치', myanmar: 'ရေကင်မ်ချီ', english: 'Water Kimchi', pos: 'noun', level: 'basic', examples: [
+  { korean: '시원한 물김치는 여름에 최고예요.', myanmar: 'အေးတဲ့ရေကင်မ်ချီက နွေရာသီမှာ အကောင်းဆုံးပဲ။', english: 'Cool water kimchi is the best in summer.' }
+]},
+{ id: '4128', korean: '모시잎', myanmar: 'မိုရှိရွက်', english: 'Ramie leaf', pos: 'noun', level: 'basic', examples: [
+  { korean: '모시잎 송편은 고유의 향이 있어요.', myanmar: 'မိုရှိရွက်စွပ်ပြုတ်က သူ့ရဲ့ကိုယ်ပိုင်ရနံ့ရှိတယ်။', english: 'Songpyeon (rice cakes) made with ramie leaves have a unique aroma.' }
+]},
+{ id: '4129', korean: '말린 표고버섯', myanmar: 'မှိုခြောက်', english: 'Dried shiitake mushroom', pos: 'noun', level: 'basic', examples: [
+  { korean: '국물 요리에 말린 표고버섯을 넣으면 맛있어요.', myanmar: 'ဟင်းရည်ထဲကို မှိုခြောက်ထည့်ရင် အရသာရှိတယ်။', english: 'Dried shiitake mushrooms taste good when added to soup dishes.' }
+]},
+{ id: '4130', korean: '무말랭이', myanmar: 'မုန်လာဥခြောက်', english: 'Dried radish strips', pos: 'noun', level: 'basic', examples: [
+  { korean: '무말랭이 무침은 밥반찬으로 좋아요.', myanmar: 'မုန်လာဥခြောက်သုပ်က ထမင်းနဲ့တွဲစားဖို့ ကောင်းတယ်။', english: 'Seasoned dried radish strips are good as a side dish for rice.' }
+]},
+{ id: '4131', korean: '매운탕', myanmar: 'အစပ်ဟင်းချို', english: 'Spicy fish stew', pos: 'noun', level: 'basic', examples: [
+  { korean: '칼칼한 매운탕이 생각나요.', myanmar: 'စပ်တဲ့အစပ်ဟင်းချို သတိရတယ်။', english: 'I\'m craving a hearty spicy fish stew.' }
+]},
+{ id: '4132', korean: '모듬전', myanmar: 'အမျိုးမျိုးသော ပန်ကိတ်များ', english: 'Assorted Korean pancakes (Jeon)', pos: 'noun', level: 'basic', examples: [
+  { korean: '명절에는 모듬전을 먹어요.', myanmar: 'အားလပ်ရက်မှာ အမျိုးမျိုးသော ပန်ကိတ်တွေ စားတယ်။', english: 'We eat assorted Korean pancakes during holidays.' }
+]},
+{ id: '4133', korean: '미역줄기', myanmar: 'ပင်လယ်ရေညှိပင်', english: 'Seaweed stems', pos: 'noun', level: 'basic', examples: [
+  { korean: '미역줄기 볶음은 쫄깃한 식감이 좋아요.', myanmar: 'ပင်လယ်ရေညှိပင်ကြော်က ဝါးရတာကောင်းတဲ့ အသားဓာတ်ရှိတယ်။', english: 'Stir-fried seaweed stems have a nice chewy texture.' }
+]},
+{ id: '4134', korean: '무생채', myanmar: 'မုန်လာဥဖြူအစိမ်းသုပ်', english: 'Seasoned fresh radish salad', pos: 'noun', level: 'basic', examples: [
+  { korean: '비빔밥에 무생채를 넣어 먹어요.', myanmar: 'ဗီဘင်ဘက်ထဲကို မုန်လာဥဖြူအစိမ်းသုပ် ထည့်စားတယ်။', english: 'I eat bibimbap with seasoned fresh radish salad.' }
+]},
+{ id: '4135', korean: '묵은지', myanmar: 'အဟောင်းကင်မ်ချီ', english: 'Aged kimchi', pos: 'noun', level: 'basic', examples: [
+  { korean: '묵은지 김치찌개는 정말 맛있어요.', myanmar: 'အဟောင်းကင်မ်ချီ ကင်မ်ချီစွပ်ပြုတ်က တကယ်အရသာရှိတယ်။', english: 'Aged kimchi stew is really delicious.' }
+]},
+{ id: '4136', korean: '막국수', myanmar: 'မန်ကုခ်စွဲ့ (ဘက်ဝှေ့ခေါက်ဆွဲ)', english: 'Memil Makguksu (buckwheat noodles with cold broth)', pos: 'noun', level: 'basic', examples: [
+  { korean: '여름에는 시원한 막국수가 최고예요.', myanmar: 'နွေရာသီမှာ အေးတဲ့မန်ကုခ်စွဲ့က အကောင်းဆုံးပဲ။', english: 'Cold buckwheat noodles are the best in summer.' }
+]},
+{ id: '4137', korean: '메밀전병', myanmar: 'ဘက်ဝှေ့ပန်ကိတ်လိပ်', english: 'Buckwheat pancake roll', pos: 'noun', level: 'basic', examples: [
+  { korean: '메밀전병은 강원도 향토 음식이에요.', myanmar: 'ဘက်ဝှေ့ပန်ကိတ်လိပ်က ကန်ဝန်ဒိုဒေသခံအစားအစာပါ။', english: 'Buckwheat pancake roll is a local food of Gangwon-do.' }
+]},
+{ id: '4138', korean: '물냉면', myanmar: 'ရေနန်မြန် (အေးခဲခေါက်ဆွဲ)', english: 'Mul-naengmyeon (cold buckwheat noodles in chilled broth)', pos: 'noun', level: 'basic', examples: [
+  { korean: '더운 날에는 물냉면이 딱이에요.', myanmar: 'ပူတဲ့နေ့တွေမှာ ရေနန်မြန်က အသင့်တော်ဆုံးပဲ။', english: 'Mul-naengmyeon is perfect on hot days.' }
+]},
+{ id: '4139', korean: '맘모스빵', myanmar: 'မန်မိုးစ်ပေါင်မုန့်', english: 'Mammoth Bread (large Korean pastry)', pos: 'noun', level: 'basic', examples: [
+  { korean: '맘모스빵은 크고 속이 꽉 차 있어요.', myanmar: 'မန်မိုးစ်ပေါင်မုန့်က ကြီးပြီး အထဲမှာ ပြည့်နေတယ်။', english: 'Mammoth bread is large and full of filling.' }
+]},
+{ id: '4140', korean: '미음', myanmar: 'ဆန်ပြုတ်ပျစ်', english: 'Gruel (thin rice porridge)', pos: 'noun', level: 'basic', examples: [
+  { korean: '아플 때는 미음을 먹는 것이 좋아요.', myanmar: 'ဖျားတဲ့အခါ ဆန်ပြုတ်ပျစ်သောက်တာ ကောင်းတယ်။', english: 'It\'s good to eat gruel when you\'re sick.' }
+]},
+{ id: '4141', korean: '모시떡', myanmar: 'မိုရှိတောက် (မိုရှိရွက် ထမင်းကိတ်)', english: 'Ramie leaf rice cake', pos: 'noun', level: 'basic', examples: [
+  { korean: '모시떡은 향긋하고 쫄깃해요.', myanmar: 'မိုရှိတောက်က မွှေးပြီး ဝါးရတာကောင်းတယ်။', english: 'Ramie leaf rice cake is fragrant and chewy.' }
+]},
+{ id: '4142', korean: '만들어진 음식', myanmar: 'ပြုလုပ်ထားသော အစားအစာ', english: 'Prepared food', pos: 'noun', level: 'basic', examples: [
+  { korean: '오늘은 만들어진 음식을 먹었어요.', myanmar: 'ဒီနေ့ကတော့ ပြုလုပ်ထားသော အစားအစာ စားခဲ့တယ်။', english: 'I ate prepared food today.' }
+]},
+{ id: '4143', korean: '맘마', myanmar: 'မန်မာ (ကလေးစာ)', english: 'Baby food/Meal (child\'s word)', pos: 'noun', level: 'basic', examples: [
+  { korean: '아기가 맘마를 잘 먹어요.', myanmar: 'ကလေးက မန်မာကို ကောင်းကောင်းစားတယ်။', english: 'The baby eats its meal well.' }
+]},
+{ id: '4144', korean: '무즙', myanmar: 'မုန်လာဥရည်', english: 'Radish juice', pos: 'noun', level: 'basic', examples: [
+  { korean: '기침에 무즙이 좋다고 해요.', myanmar: 'ချောင်းဆိုးတာကို မုန်လာဥရည်က ကောင်းတယ်လို့ပြောတယ်။', english: 'They say radish juice is good for coughs.' }
+]},
+{ id: '4145', korean: '멸치액젓', myanmar: 'ငါးငံပြာရည်', english: 'Anchovy fish sauce', pos: 'noun', level: 'basic', examples: [
+  { korean: '김치 담글 때 멸치액젓을 사용해요.', myanmar: 'ကင်မ်ချီလုပ်တဲ့အခါ ငါးငံပြာရည်ကို သုံးတယ်။', english: 'I use anchovy fish sauce when making kimchi.' }
+]},
+{ id: '4146', korean: '모과차', myanmar: 'မာကွာလက်ဖက်ရည်', english: 'Chinese quince tea', pos: 'noun', level: 'basic', examples: [
+  { korean: '따뜻한 모과차 한 잔 주세요.', myanmar: 'နွေးထွေးတဲ့ မာကွာလက်ဖက်ရည်တစ်ခွက် ပေးပါ။', english: 'Please give me a cup of warm Chinese quince tea.' }
+]},
+{ id: '4147', korean: '물엿', myanmar: 'ပြောင်းဖူးရည်', english: 'Corn syrup', pos: 'noun', level: 'basic', examples: [
+  { korean: '요리에 단맛을 낼 때 물엿을 넣어요.', myanmar: 'ဟင်းချက်တဲ့အခါ အချိုဓာတ်ရဖို့ ပြောင်းဖူးရည်ထည့်တယ်။', english: 'I add corn syrup to dishes for sweetness.' }
+]},
+{ id: '4148', korean: '매실액', myanmar: 'ဇီးဖြူသီးရည်', english: 'Plum extract', pos: 'noun', level: 'basic', examples: [
+  { korean: '여름에 매실액을 물에 타서 마셔요.', myanmar: 'နွေရာသီမှာ ဇီးဖြူသီးရည်ကို ရေနဲ့ရောပြီး သောက်တယ်။', english: 'I mix plum extract with water and drink it in the summer.' }
+]},
+{ id: '4149', korean: '맛있게', myanmar: 'အရသာရှိရှိ', english: 'Deliciously', pos: 'adverb', level: 'basic', examples: [
+  { korean: '음식을 맛있게 먹었어요.', myanmar: 'အစားအစာကို အရသာရှိရှိ စားခဲ့တယ်။', english: 'I ate the food deliciously.' }
+]},
+{ id: '4150', korean: '맵다', myanmar: 'စပ်သည်', english: 'To be spicy', pos: 'adjective', level: 'basic', examples: [
+  { korean: '이 김치는 아주 매워요.', myanmar: 'ဒီကင်မ်ချီက အရမ်းစပ်တယ်။', english: 'This kimchi is very spicy.' }
+]},
+{ id: '4151', korean: '무치다', myanmar: 'နယ်သည်/သုပ်သည်', english: 'To mix (with seasoning)', pos: 'verb', level: 'basic', examples: [
+  { korean: '나물을 무쳐서 반찬을 만들었어요.', myanmar: 'ဟင်းသီးဟင်းရွက်ကို နယ်ပြီး ဘေးပန်းဟင်းလုပ်ခဲ့တယ်။', english: 'I made a side dish by mixing vegetables with seasoning.' }
+]},
+{ id: '4152', korean: '말리다', myanmar: 'လှန်းသည်/အခြောက်ခံသည်', english: 'To dry', pos: 'verb', level: 'basic', examples: [
+  { korean: '고추를 햇볕에 말려요.', myanmar: 'ငရုတ်သီးကို နေပူလှန်းတယ်။', english: 'I dry chili peppers in the sun.' }
+]},
+{ id: '4153', korean: '막', myanmar: 'ရုတ်တရက်/ခုမှ', english: 'Just now/Roughly/Recklessly', pos: 'adverb', level: 'basic', examples: [
+  { korean: '지금 막 도착했어요.', myanmar: 'ခုမှ ရောက်တယ်။', english: 'I just arrived.' }
+]},
+{ id: '4154', korean: '맑다', myanmar: 'ကြည်လင်သည်', english: 'To be clear (soup/weather)', pos: 'adjective', level: 'basic', examples: [
+  { korean: '국물이 맑고 시원해요.', myanmar: 'ဟင်းရည်က ကြည်လင်ပြီးအေးတယ်။', english: 'The soup is clear and refreshing.' }
+]},
+{ id: '4155', korean: '미지근하다', myanmar: 'နွေးဆွေးသည်', english: 'To be lukewarm', pos: 'adjective', level: 'basic', examples: [
+  { korean: '물이 미지근해서 마시기 좋아요.', myanmar: 'ရေက နွေးဆွေးတော့ သောက်လို့ကောင်းတယ်။', english: 'The water is lukewarm, good for drinking.' }
+]},
+{ id: '4156', korean: '물컹거리다', myanmar: 'ပျော့အိသည်', english: 'To be soft/mushy', pos: 'verb', level: 'basic', examples: [
+  { korean: '삶은 감자가 물컹거려요.', myanmar: 'ပြုတ်ထားတဲ့ အာလူးက ပျော့အိနေတယ်။', english: 'The boiled potato is mushy.' }
+]},
+{ id: '4157', korean: '묻다', myanmar: 'မြှုပ်သည်/စွန်းထင်းသည်', english: 'To bury/To get stained', pos: 'verb', level: 'basic', examples: [
+  { korean: '옷에 음식이 묻었어요.', myanmar: 'အဝတ်မှာ အစားအစာစွန်းတယ်။', english: 'Food got on my clothes.' }
+]},
+{ id: '4158', korean: '맛보다', myanmar: 'အရသာမြည်းစမ်းသည်', english: 'To taste', pos: 'verb', level: 'basic', examples: [
+  { korean: '만든 음식을 맛보세요.', myanmar: 'လုပ်ထားတဲ့ အစားအစာကို အရသာမြည်းစမ်းကြည့်ပါ။', english: 'Please taste the food you made.' }
+]},
+{ id: '4159', korean: '미리', myanmar: 'ကြိုတင်၍', english: 'In advance', pos: 'adverb', level: 'basic', examples: [
+  { korean: '식사 전에 미리 손을 씻어요.', myanmar: 'မစားခင် ကြိုတင်ပြီး လက်ဆေးပါ။', english: 'Wash your hands in advance before eating.' }
+]},
+{ id: '4160', korean: '모양', myanmar: 'ပုံသဏ္ဌာန်', english: 'Shape/Form', pos: 'noun', level: 'basic', examples: [
+  { korean: '빵을 예쁜 모양으로 만들었어요.', myanmar: 'ပေါင်မုန့်ကို လှပတဲ့ပုံသဏ္ဌာန်နဲ့ လုပ်ခဲ့တယ်။', english: 'I made the bread into a pretty shape.' }
+]},
+{ id: '4161', korean: '무료', myanmar: 'အခမဲ့', english: 'Free (of charge)', pos: 'noun', level: 'basic', examples: [
+  { korean: '이 식수는 무료예요.', myanmar: 'ဒီသောက်ရေက အခမဲ့ပါ။', english: 'This drinking water is free.' }
+]},
+{ id: '4162', korean: '맛있다', myanmar: 'အရသာရှိသည်', english: 'To be delicious', pos: 'adjective', level: 'basic', examples: [
+  { korean: '이 음식은 정말 맛있어요.', myanmar: 'ဒီအစားအစာက တကယ်အရသာရှိတယ်။', english: 'This food is really delicious.' }
+]},
+{ id: '4163', korean: '만들어진', myanmar: 'ပြုလုပ်ထားသော', english: 'Made/Prepared', pos: 'adjective', level: 'basic', examples: [
+  { korean: '이미 만들어진 음식을 샀어요.', myanmar: 'အသင့်ပြုလုပ်ထားသော အစားအစာကို ဝယ်ခဲ့တယ်။', english: 'I bought already prepared food.' }
+]},
+{ id: '4164', korean: '맵게', myanmar: 'စပ်စပ်', english: 'Spicily', pos: 'adverb', level: 'basic', examples: [
+  { korean: '김치를 맵게 만들었어요.', myanmar: 'ကင်မ်ချီကို စပ်စပ်လေး လုပ်ခဲ့တယ်။', english: 'I made the kimchi spicy.' }
+]},
+{ id: '4165', korean: '무엇', myanmar: 'ဘာ', english: 'What', pos: 'pronoun', level: 'basic', examples: [
+  { korean: '무엇을 드시겠어요?', myanmar: 'ဘာစားမလဲ။', english: 'What would you like to eat?' }
+]},
+{ id: '4166', korean: '물에', myanmar: 'ရေထဲသို့', english: 'In/Into water', pos: 'adverb', level: 'basic', examples: [
+  { korean: '설탕을 물에 녹여요.', myanmar: 'သကြားကို ရေထဲမှာ ပျော်ဝင်စေတယ်။', english: 'Dissolve sugar in water.' }
+]},
+{ id: '4167', korean: '맛없는', myanmar: 'အရသာမရှိသော', english: 'Not delicious', pos: 'adjective', level: 'basic', examples: [
+  { korean: '이 음식은 맛없어요.', myanmar: 'ဒီအစားအစာက အရသာမရှိဘူး။', english: 'This food is not delicious.' }
+]},
+{ id: '4168', korean: '마르다', myanmar: 'ခြောက်သွေ့သည်', english: 'To dry up/To be thin', pos: 'verb', level: 'basic', examples: [
+  { korean: '빨래가 다 말랐어요.', myanmar: 'အဝတ်တွေ အကုန်ခြောက်သွေ့သွားပြီ။', english: 'The laundry is all dry.' }
+]},
+{ id: '4169', korean: '만지다', myanmar: 'ထိတွေ့သည်', english: 'To touch (food/ingredient)', pos: 'verb', level: 'basic', examples: [
+  { korean: '뜨거운 냄비를 만지지 마세요.', myanmar: 'ပူတဲ့အိုးကို မထိနဲ့။', english: 'Don\'t touch the hot pot.' }
+]},
+{ id: '4170', korean: '모두', myanmar: 'အားလုံး', english: 'All/Everyone', pos: 'pronoun/adverb', level: 'basic', examples: [
+  { korean: '모두 맛있게 드세요.', myanmar: 'အားလုံး အရသာရှိရှိ စားကြပါ။', english: 'Everyone, please eat deliciously.' }
+]},
+{ id: '4171', korean: '미끄럽다', myanmar: 'ချောသည်', english: 'To be slippery (related to food texture like slimy)', pos: 'adjective', level: 'basic', examples: [
+  { korean: '생선이 미끄러워서 잡기 어려워요.', myanmar: 'ငါးက ချောလို့ ဖမ်းရခက်တယ်။', english: 'The fish is slippery, so it\'s hard to catch.' }
+]},
+{ id: '4172', korean: '묻히다', myanmar: 'စွန်းထင်းစေသည်', english: 'To get something stained with', pos: 'verb', level: 'basic', examples: [
+  { korean: '옷에 김치를 묻혔어요.', myanmar: 'အဝတ်မှာ ကင်မ်ချီစွန်းထင်းစေတယ်။', english: 'I got kimchi on my clothes.' }
+]},
+{ id: '4173', korean: '무르다', myanmar: 'ပျော့သည် (အသီးအနှံ)', english: 'To be soft/ripe (fruit/vegetable)', pos: 'adjective', level: 'basic', examples: [
+  { korean: '이 복숭아는 너무 물렀어요.', myanmar: 'ဒီမက်မန်းသီးက အရမ်းပျော့နေပြီ။', english: 'This peach is too soft.' }
+]},
+{ id: '4174', korean: '미식가', myanmar: 'အစားကောင်းကြိုက်သူ', english: 'Gourmet/Foodie', pos: 'noun', level: 'basic', examples: [
+  { korean: '그는 소문난 미식가예요.', myanmar: 'သူက နာမည်ကြီးအစားကောင်းကြိုက်သူပါ။', english: 'He is a well-known foodie.' }
+]},
+{ id: '4175', korean: '만약', myanmar: 'အကယ်၍', english: 'If (hypothetical, can relate to recipes)', pos: 'adverb', level: 'basic', examples: [
+  { korean: '만약 재료가 없다면 다른 것으로 대체하세요.', myanmar: 'အကယ်၍ ပါဝင်ပစ္စည်းမရှိရင် တခြားဟာနဲ့ အစားထိုးပါ။', english: 'If you don\'t have the ingredients, substitute with something else.' }
+]},
+{ id: '4176', korean: '모으다', myanmar: 'စုဆောင်းသည်', english: 'To gather/collect (ingredients)', pos: 'verb', level: 'basic', examples: [
+  { korean: '요리 재료를 모았어요.', myanmar: 'ဟင်းချက်ပစ္စည်းတွေ စုဆောင်းခဲ့တယ်။', english: 'I gathered the cooking ingredients.' }
+]},
+{ id: '4177', korean: '묻다', myanmar: 'မေးသည်', english: 'To ask (about food/recipe)', pos: 'verb', level: 'basic', examples: [
+  { korean: '이 음식 만드는 방법을 물었어요.', myanmar: 'ဒီအစားအစာ လုပ်နည်းကို မေးခဲ့တယ်။', english: 'I asked how to make this food.' }
+]},
+{ id: '4178', korean: '몸에 좋다', myanmar: 'ကိုယ်ခံအားကောင်းသည်/ကျန်းမာရေးအတွက် ကောင်းသည်', english: 'Good for health', pos: 'phrase', level: 'basic', examples: [
+  { korean: '야채는 몸에 좋아요.', myanmar: 'ဟင်းသီးဟင်းရွက်တွေက ကျန်းမာရေးအတွက် ကောင်းတယ်။', english: 'Vegetables are good for your health.' }
+]},
+{ id: '4179', korean: '모자라다', myanmar: 'မလုံလောက်သည်', english: 'To be insufficient (e.g., ingredients)', pos: 'verb', level: 'basic', examples: [
+  { korean: '재료가 모자라요.', myanmar: 'ပါဝင်ပစ္စည်း မလုံလောက်ဘူး။', english: 'The ingredients are insufficient.' }
+]},
+{ id: '4180', korean: '무겁다', myanmar: 'လေးလံသည်', english: 'To be heavy (e.g., a dish, a bottle)', pos: 'adjective', level: 'basic', examples: [
+  { korean: '이 상자는 좀 무거워요.', myanmar: 'ဒီသေတ္တာက နည်းနည်းလေးတယ်။', english: 'This box is a bit heavy.' }
+]},
+{ id: '4181', korean: '맑게', myanmar: 'ကြည်လင်စွာ', english: 'Clearly', pos: 'adverb', level: 'basic', examples: [
+  { korean: '국물을 맑게 끓였어요.', myanmar: 'ဟင်းရည်ကို ကြည်လင်စွာ ဆူအောင် တည်ခဲ့တယ်။', english: 'I boiled the soup until it was clear.' }
+]},
+{ id: '4182', korean: '미끄럽게', myanmar: 'ချောချောမွေ့မွေ့', english: 'Slippery', pos: 'adverb', level: 'basic', examples: [
+  { korean: '면이 미끄럽게 잘 넘어가요.', myanmar: 'ခေါက်ဆွဲက ချောချောမွေ့မွေ့ လည်ချောင်းထဲဝင်သွားတယ်။', english: 'The noodles slide down smoothly.' }
+]},
+{ id: '4183', korean: '물다', myanmar: 'ကိုက်သည်', english: 'To bite', pos: 'verb', level: 'basic', examples: [
+  { korean: '과일을 한 입 물었어요.', myanmar: 'သစ်သီးကို တစ်ကိုက်ကိုက်တယ်။', english: 'I took a bite of the fruit.' }
+]},
+{ id: '4184', korean: '맛이 없다', myanmar: 'အရသာမရှိ', english: 'To not taste good', pos: 'phrase', level: 'basic', examples: [
+  { korean: '이 음식은 맛이 없어요.', myanmar: 'ဒီအစားအစာက အရသာမရှိဘူး။', english: 'This food does not taste good.' }
+]},
+{ id: '4185', korean: '목마르다', myanmar: 'ရေငတ်သည်', english: 'To be thirsty', pos: 'adjective', level: 'basic', examples: [
+  { korean: '운동 후에는 목마르지.', myanmar: 'လေ့ကျင့်ခန်းလုပ်ပြီးရင် ရေငတ်တယ်။', english: 'You get thirsty after exercise.' }
+]},
+{ id: '4186', korean: '물러지다', myanmar: 'ပျော့သွားသည်/အိသွားသည်', english: 'To become soft/mushy', pos: 'verb', level: 'basic', examples: [
+  { korean: '오래 삶으니 고기가 물러졌어요.', myanmar: 'ကြာကြာပြုတ်တော့ အသားတွေ ပျော့သွားတယ်။', english: 'The meat became tender after boiling for a long time.' }
+]},
+{ id: '4187', korean: '말하다', myanmar: 'ပြောသည် (음식 주문 등)', english: 'To speak/tell (e.g., ordering food)', pos: 'verb', level: 'basic', examples: [
+  { korean: '주문할 것을 말해주세요.', myanmar: 'မှာချင်တာပြောပေးပါ။', english: 'Please tell me what you\'d like to order.' }
+]},
+{ id: '4188', korean: '맛있는 것', myanmar: 'အရသာရှိသော အရာ', english: 'Something delicious', pos: 'noun phrase', level: 'basic', examples: [
+  { korean: '오늘 맛있는 것을 먹고 싶어요.', myanmar: 'ဒီနေ့ အရသာရှိတဲ့အရာ စားချင်တယ်။', english: 'I want to eat something delicious today.' }
+]},
+{ id: '4189', korean: '모금', myanmar: 'တစ်ငုံ', english: 'Sip/Mouthful', pos: 'noun', level: 'basic', examples: [
+  { korean: '물 한 모금을 마셨어요.', myanmar: 'ရေတစ်ငုံ သောက်ခဲ့တယ်။', english: 'I took a sip of water.' }
+]},
+{ id: '4190', korean: '물컵', myanmar: 'ရေခွက်', english: 'Water cup', pos: 'noun', level: 'basic', examples: [
+  { korean: '물컵에 물을 따라주세요.', myanmar: 'ရေခွက်ထဲကို ရေထည့်ပေးပါ။', english: 'Please pour water into the water cup.' }
+]},
+{ id: '4191', korean: '무엇보다', myanmar: 'ဘာထက်မဆို/အထူးသဖြင့်', english: 'More than anything/Above all', pos: 'adverb', level: 'basic', examples: [
+  { korean: '무엇보다 건강이 중요해요.', myanmar: 'ဘာထက်မဆို ကျန်းမာရေးက အရေးကြီးတယ်။', english: 'Above all, health is important.' }
+]},
+{ id: '4192', korean: '미식', myanmar: 'အစားကောင်းသောက်ဖွယ်ရာ', english: 'Gourmet food/Fine dining', pos: 'noun', level: 'basic', examples: [
+  { korean: '그는 미식을 즐기는 사람이에요.', myanmar: 'သူက နာမည်ကြီးအစားကောင်းကြိုက်သူပါ။', english: 'He is a well-known foodie.' }
+]},
+{ id: '4193', korean: '만들어진 음식', myanmar: 'ပြုလုပ်ပြီးသား အစားအစာ', english: 'Pre-made food', pos: 'noun', level: 'basic', examples: [
+  { korean: '바쁠 때는 만들어진 음식을 사 먹어요.', myanmar: 'အလုပ်များတဲ့အခါ ပြုလုပ်ပြီးသား အစားအစာကို ဝယ်စားတယ်။', english: 'When busy, I buy and eat pre-made food.' }
+]},
+{ id: '4194', korean: '모락모락', myanmar: 'ငွေ့ငွေ့', english: 'Steaming/Wafting (of steam from food)', pos: 'adverb', level: 'basic', examples: [
+  { korean: '밥에서 김이 모락모락 나요.', myanmar: 'ထမင်းကနေ ငွေ့ငွေ့ထွက်နေတယ်။', english: 'Steam is wafting from the rice.' }
+]},
+{ id: '4195', korean: '무엇인가', myanmar: 'တစ်ခုခု', english: 'Something', pos: 'pronoun', level: 'basic', examples: [
+  { korean: '맛있는 무엇인가를 먹고 싶어요.', myanmar: 'အရသာရှိတဲ့တစ်ခုခု စားချင်တယ်။', english: 'I want to eat something delicious.' }
+]},
+{ id: '4196', korean: '물에 불리다', myanmar: 'ရေစိမ်သည်', english: 'To soak in water', pos: 'verb phrase', level: 'basic', examples: [
+  { korean: '콩을 물에 불려서 요리했어요.', myanmar: 'ပဲကို ရေစိမ်ပြီး ချက်ပြုတ်ခဲ့တယ်။', english: 'I soaked the beans in water and cooked them.' }
+]},
+
+
+// ===== ㅁ CONSONANT BASIC WORDS - CATEGORY 2: DAILY LIFE & OBJECTS (4197-4296) =====
+{ id: '4197', korean: '모자', myanmar: 'ဦးထုပ်', english: 'Hat/Cap', pos: 'noun', level: 'basic', examples: [
+  { korean: '예쁜 모자를 썼어요.', myanmar: 'လှတဲ့ဦးထုပ်ကို ဆောင်းတယ်။', english: 'I wore a pretty hat.' }
+]},
+{ id: '4198', korean: '문', myanmar: 'တံခါး', english: 'Door', pos: 'noun', level: 'basic', examples: [
+  { korean: '문을 열어주세요.', myanmar: 'တံခါးဖွင့်ပေးပါ။', english: 'Please open the door.' }
+]},
+{ id: '4199', korean: '몸', myanmar: 'ခန္ဓာကိုယ်', english: 'Body', pos: 'noun', level: 'basic', examples: [
+  { korean: '운동으로 몸을 건강하게 만들어요.', myanmar: 'လေ့ကျင့်ခန်းလုပ်ပြီး ခန္ဓာကိုယ်ကို ကျန်းမာအောင် လုပ်တယ်။', english: 'I make my body healthy through exercise.' }
+]},
+{ id: '4200', korean: '머리', myanmar: 'ခေါင်း/ဆံပင်', english: 'Head/Hair', pos: 'noun', level: 'basic', examples: [
+  { korean: '머리를 감았어요.', myanmar: 'ဆံပင်လျှော်ခဲ့တယ်။', english: 'I washed my hair.' }
+]},
+{ id: '4201', korean: '목', myanmar: 'လည်ပင်း', english: 'Neck/Throat', pos: 'noun', level: 'basic', examples: [
+  { korean: '목이 아파요.', myanmar: 'လည်ပင်းနာတယ်။', english: 'My throat hurts.' }
+]},
+{ id: '4202', korean: '마음', myanmar: 'စိတ်', english: 'Heart/Mind', pos: 'noun', level: 'basic', examples: [
+  { korean: '걱정하지 마세요. 마음 편히 가지세요.', myanmar: 'စိတ်မပူပါနဲ့။ စိတ်အေးအေးထားပါ။', english: 'Don\'t worry. Take it easy.' }
+]},
+{ id: '4203', korean: '물건', myanmar: 'ပစ္စည်း', english: 'Thing/Object', pos: 'noun', level: 'basic', examples: [
+  { korean: '필요한 물건을 샀어요.', myanmar: 'လိုအပ်တဲ့ပစ္စည်းကို ဝယ်ခဲ့တယ်။', english: 'I bought the necessary items.' }
+]},
+{ id: '4204', korean: '명함', myanmar: 'နာမည်ကတ်ပြား', english: 'Business card', pos: 'noun', level: 'basic', examples: [
+  { korean: '명함을 교환했어요.', myanmar: 'နာမည်ကတ်ပြား ဖလှယ်ခဲ့တယ်။', english: 'We exchanged business cards.' }
+]},
+{ id: '4205', korean: '문자', myanmar: 'စာတို', english: 'Text message', pos: 'noun', level: 'basic', examples: [
+  { korean: '친구에게 문자를 보냈어요.', myanmar: 'သူငယ်ချင်းဆီကို စာတိုပို့ခဲ့တယ်။', english: 'I sent a text message to my friend.' }
+]},
+{ id: '4206', korean: '미용실', myanmar: 'ဆံပင်ညှပ်ဆိုင်', english: 'Hair salon', pos: 'noun', level: 'basic', examples: [
+  { korean: '미용실에 가서 머리를 잘랐어요.', myanmar: 'ဆံပင်ညှပ်ဆိုင်သွားပြီး ဆံပင်ညှပ်ခဲ့တယ်။', english: 'I went to the hair salon and got a haircut.' }
+]},
+{ id: '4207', korean: '목요일', myanmar: 'ကြာသပတေးနေ့', english: 'Thursday', pos: 'noun', level: 'basic', examples: [
+  { korean: '다음 목요일에 만나요.', myanmar: 'နောက်ကြာသပတေးနေ့ တွေ့မယ်။', english: 'Let\'s meet next Thursday.' }
+]},
+{ id: '4208', korean: '미래', myanmar: 'အနာဂတ်', english: 'Future', pos: 'noun', level: 'basic', examples: [
+  { korean: '미래에 대한 계획을 세웠어요.', myanmar: 'အနာဂတ်အတွက် အစီအစဉ်ချခဲ့တယ်။', english: 'I made plans for the future.' }
+]},
+{ id: '4209', korean: '모든', myanmar: 'အားလုံးသော', english: 'All/Every', pos: 'determiner', level: 'basic', examples: [
+  { korean: '모든 사람이 동의했어요.', myanmar: 'လူတိုင်း သဘောတူခဲ့တယ်။', english: 'Everyone agreed.' }
+]},
+{ id: '4210', korean: '매일', myanmar: 'နေ့တိုင်း', english: 'Every day', pos: 'adverb', level: 'basic', examples: [
+  { korean: '매일 한국어를 공부해요.', myanmar: 'နေ့တိုင်း ကိုရီးယားစာ လေ့လာတယ်။', english: 'I study Korean every day.' }
+]},
+{ id: '4211', korean: '멀리', myanmar: 'ဝေးဝေး', english: 'Far', pos: 'adverb', level: 'basic', examples: [
+  { korean: '멀리 여행하고 싶어요.', myanmar: 'ဝေးဝေးခရီးသွားချင်တယ်။', english: 'I want to travel far.' }
+]},
+{ id: '4212', korean: '먼저', myanmar: 'အရင်ဆုံး', english: 'First', pos: 'adverb', level: 'basic', examples: [
+  { korean: '제가 먼저 할게요.', myanmar: 'ကျွန်တော် အရင်လုပ်မယ်။', english: 'I\'ll do it first.' }
+]},
+{ id: '4213', korean: '모르다', myanmar: 'မသိသည်', english: 'To not know', pos: 'verb', level: 'basic', examples: [
+  { korean: '답을 몰라요.', myanmar: 'အဖြေကို မသိဘူး။', english: 'I don\'t know the answer.' }
+]},
+{ id: '4214', korean: '맞다', myanmar: 'မှန်ကန်သည်/ကိုက်ညီသည်', english: 'To be correct/To fit', pos: 'verb', level: 'basic', examples: [
+  { korean: '그 말이 맞아요.', myanmar: 'အဲဒီစကား မှန်တယ်။', english: 'That\'s correct.' }
+]},
+{ id: '4215', korean: '만나다', myanmar: 'တွေ့ဆုံသည်', english: 'To meet', pos: 'verb', level: 'basic', examples: [
+  { korean: '친구를 만났어요.', myanmar: 'သူငယ်ချင်းကို တွေ့ဆုံခဲ့တယ်။', english: 'I met a friend.' }
+]},
+{ id: '4216', korean: '말하다', myanmar: 'ပြောသည်', english: 'To speak/To say', pos: 'verb', level: 'basic', examples: [
+  { korean: '한국어로 말할 수 있어요.', myanmar: 'ကိုရီးယားလို ပြောတတ်တယ်။', english: 'I can speak Korean.' }
+]},
+{ id: '4217', korean: '만들다', myanmar: 'လုပ်သည်/ဖန်တီးသည်', english: 'To make/To create', pos: 'verb', level: 'basic', examples: [
+  { korean: '케이크를 만들었어요.', myanmar: 'ကိတ်မုန့်လုပ်ခဲ့တယ်။', english: 'I made a cake.' }
+]},
+{ id: '4218', korean: '묵다', myanmar: 'ဟောင်းနွမ်းသည်/တည်းခိုသည်', english: 'To stay (overnight)/To be old (e.g., aged kimchi)', pos: 'verb', level: 'basic', examples: [
+  { korean: '호텔에서 묵었어요.', myanmar: 'ဟိုတယ်မှာ တည်းခိုခဲ့တယ်။', english: 'I stayed at a hotel.' }
+]},
+{ id: '4219', korean: '믿다', myanmar: 'ယုံကြည်သည်', english: 'To believe/To trust', pos: 'verb', level: 'basic', examples: [
+  { korean: '친구를 믿어요.', myanmar: 'သူငယ်ချင်းကို ယုံကြည်တယ်။', english: 'I trust my friend.' }
+]},
+{ id: '4220', korean: '만지다', myanmar: 'ထိတွေ့သည်', english: 'To touch', pos: 'verb', level: 'basic', examples: [
+  { korean: '손으로 만지지 마세요.', myanmar: 'လက်နဲ့ မထိပါနဲ့။', english: 'Please don\'t touch with your hands.' }
+]},
+{ id: '4221', korean: '막다', myanmar: 'ပိတ်ဆို့သည်/တားဆီးသည်', english: 'To block/To stop', pos: 'verb', level: 'basic', examples: [
+  { korean: '길을 막지 마세요.', myanmar: 'လမ်းကို မပိတ်ဆို့ပါနဲ့။', english: 'Please don\'t block the road.' }
+]},
+{ id: '4222', korean: '모으다', myanmar: 'စုဆောင်းသည်', english: 'To collect/To gather', pos: 'verb', level: 'basic', examples: [
+  { korean: '동전을 모으고 있어요.', myanmar: 'အကြွေစေ့တွေ စုဆောင်းနေတယ်။', english: 'I\'m collecting coins.' }
+]},
+{ id: '4223', korean: '몰래', myanmar: 'လျှို့ဝှက်စွာ/တိတ်တဆိတ်', english: 'Secretly/Stealthily', pos: 'adverb', level: 'basic', examples: [
+  { korean: '몰래 선물을 준비했어요.', myanmar: 'လျှို့ဝှက်စွာ လက်ဆောင်ပြင်ဆင်ခဲ့တယ်။', english: 'I secretly prepared a gift.' }
+]},
+{ id: '4224', korean: '매다', myanmar: 'ချည်နှောင်သည်/ပတ်သည်', english: 'To tie/To wear (e.g., a tie, a belt)', pos: 'verb', level: 'basic', examples: [
+  { korean: '넥타이를 맸어요.', myanmar: 'လည်စည်းချည်ခဲ့တယ်။', english: 'I tied my necktie.' }
+]},
+{ id: '4225', korean: '묻다', myanmar: 'မေးသည်', english: 'To ask', pos: 'verb', level: 'basic', examples: [
+  { korean: '선생님께 질문을 물었어요.', myanmar: 'ဆရာမကို မေးခွန်းမေးခဲ့တယ်။', english: 'I asked the teacher a question.' }
+]},
+{ id: '4226', korean: '미루다', myanmar: 'ရွှေ့ဆိုင်းသည်/နှောင့်နှေးစေသည်', english: 'To postpone/To delay', pos: 'verb', level: 'basic', examples: [
+  { korean: '회의를 다음 주로 미뤘어요.', myanmar: 'အစည်းအဝေးကို နောက်အပတ်ရွှေ့ခဲ့တယ်။', english: 'I postponed the meeting until next week.' }
+]},
+{ id: '4227', korean: '만나뵙다', myanmar: 'တွေ့ဆုံဖူးသည် (ရိုသေစွာ)', english: 'To meet (honorific)', pos: 'verb', level: 'basic', examples: [
+  { korean: '사장님을 만나뵙고 싶어요.', myanmar: 'မန်နေဂျာနဲ့ တွေ့ဆုံချင်တယ်။', english: 'I\'d like to meet the CEO.' }
+]},
+{ id: '4228', korean: '맡기다', myanmar: 'အပ်နှံသည်/တာဝန်ပေးသည်', english: 'To entrust/To deposit', pos: 'verb', level: 'basic', examples: [
+  { korean: '은행에 돈을 맡겼어요.', myanmar: 'ဘဏ်မှာ ပိုက်ဆံအပ်ခဲ့တယ်။', english: 'I deposited money at the bank.' }
+]},
+{ id: '4229', korean: '모시다', myanmar: 'ခေါ်ဆောင်သည်/စောင့်ရှောက်သည် (ရိုသေစွာ)', english: 'To escort/To attend to (honorific)', pos: 'verb', level: 'basic', examples: [
+  { korean: '어머니를 병원에 모시고 갔어요.', myanmar: 'အမေကို ဆေးရုံသို့ ခေါ်ဆောင်သွားခဲ့တယ်။', english: 'I escorted my mother to the hospital.' }
+]},
+{ id: '4230', korean: '물어보다', myanmar: 'မေးမြန်းကြည့်သည်', english: 'To ask (to try asking)', pos: 'verb', level: 'basic', examples: [
+  { korean: '친구에게 한번 물어볼게요.', myanmar: 'သူငယ်ချင်းကို တစ်ခါလောက် မေးကြည့်မယ်။', english: 'I\'ll ask my friend.' }
+]},
+{ id: '4231', korean: '미안하다', myanmar: 'စိတ်မကောင်းပါဘူး', english: 'To be sorry', pos: 'adjective', level: 'basic', examples: [
+  { korean: '늦어서 미안해요.', myanmar: 'နောက်ကျလို့ စိတ်မကောင်းပါဘူး။', english: 'I\'m sorry for being late.' }
+]},
+{ id: '4232', korean: '맞추다', myanmar: 'တူအောင်လုပ်သည်/ချိန်ညှိသည်', english: 'To match/To adjust', pos: 'verb', level: 'basic', examples: [
+  { korean: '정답을 맞췄어요.', myanmar: 'မှန်ကန်တဲ့အဖြေကို ချိန်ညှိခဲ့တယ်။', english: 'I got the correct answer.' }
+]},
+{ id: '4233', korean: '말리다', myanmar: 'အခြောက်ခံသည်', english: 'To dry', pos: 'verb', level: 'basic', examples: [
+  { korean: '빨래를 햇볕에 말려요.', myanmar: 'အဝတ်တွေကို နေပူလှန်းတယ်။', english: 'I dry the laundry in the sun.' }
+]},
+{ id: '4234', korean: '매우', myanmar: 'အလွန်', english: 'Very', pos: 'adverb', level: 'basic', examples: [
+  { korean: '매우 기뻐요.', myanmar: 'အရမ်းပျော်တယ်။', english: 'I am very happy.' }
+]},
+{ id: '4235', korean: '미리', myanmar: 'ကြိုတင်၍', english: 'In advance', pos: 'adverb', level: 'basic', examples: [
+  { korean: '미리 준비해 주세요.', myanmar: 'ကြိုတင်ပြင်ဆင်ပေးပါ။', english: 'Please prepare in advance.' }
+]},
+{ id: '4236', korean: '마치', myanmar: 'まるで', english: 'As if/Like', pos: 'adverb', level: 'basic', examples: [
+  { korean: '마치 꿈 같아요.', myanmar: 'အိပ်မက်လိုပါပဲ။', english: 'It\'s like a dream.' }
+]},
+{ id: '4237', korean: '만약', myanmar: 'အကယ်၍', english: 'If (hypothetical)', pos: 'adverb', level: 'basic', examples: [
+  { korean: '만약 비가 오면 취소할 거예요.', myanmar: 'အကယ်၍ မိုးရွာရင် ဖျက်သိမ်းမယ်။', english: 'If it rains, I\'ll cancel.' }
+]},
+{ id: '4238', korean: '맨날', myanmar: 'နေ့တိုင်း', english: 'Every single day (colloquial)', pos: 'adverb', level: 'basic', examples: [
+  { korean: '맨날 늦잠을 자요.', myanmar: 'နေ့တိုင်း အိပ်ရာထနောက်ကျတယ်။', english: 'I oversleep every single day.' }
+]},
+{ id: '4239', korean: '목적', myanmar: 'ရည်ရွယ်ချက်', english: 'Purpose/Goal', pos: 'noun', level: 'basic', examples: [
+  { korean: '이번 여행의 목적은 휴식이에요.', myanmar: 'ဒီခရီးစဉ်ရဲ့ ရည်ရွယ်ချက်က အနားယူဖို့ပါ။', english: 'The purpose of this trip is rest.' }
+]},
+{ id: '4240', korean: '미소', myanmar: 'အပြုံး', english: 'Smile', pos: 'noun', level: 'basic', examples: [
+  { korean: '아름다운 미소를 지었어요.', myanmar: 'လှပတဲ့အပြုံးကို ပြုံးခဲ့တယ်။', english: 'She gave a beautiful smile.' }
+]},
+{ id: '4241', korean: '마지막', myanmar: 'နောက်ဆုံး', english: 'Last/Final', pos: 'noun/adjective', level: 'basic', examples: [
+  { korean: '이것이 마지막 기회예요.', myanmar: 'ဒါက နောက်ဆုံးအခွင့်အရေးပါ။', english: 'This is the last chance.' }
+]},
+{ id: '4242', korean: '맞은편', myanmar: 'မျက်နှာချင်းဆိုင်', english: 'Opposite side', pos: 'noun', level: 'basic', examples: [
+  { korean: '카페 맞은편에 서점이 있어요.', myanmar: 'ကော်ဖီဆိုင်မျက်နှာချင်းဆိုင်မှာ စာအုပ်ဆိုင်ရှိတယ်။', english: 'There\'s a bookstore across from the cafe.' }
+]},
+{ id: '4243', korean: '만큼', myanmar: '만큼/အတိုင်း', english: 'As much as/As...as', pos: 'postposition/suffix', level: 'basic', examples: [
+  { korean: '키가 나만큼 커요.', myanmar: 'အရပ်က ငါ့လောက်မြင့်တယ်။', english: 'He\'s as tall as me.' }
+]},
+{ id: '4244', korean: '모습', myanmar: 'ပုံသဏ္ဌာန်/အသွင်အပြင်', english: 'Appearance/Figure', pos: 'noun', level: 'basic', examples: [
+  { korean: '그의 뒷모습이 멋있어요.', myanmar: 'သူ့ရဲ့ကျောဘက်အသွင်အပြင်က လှတယ်။', english: 'His back figure is cool.' }
+]},
+{ id: '4245', korean: '모임', myanmar: 'စုဝေးပွဲ/အစည်းအဝေး', english: 'Gathering/Meeting', pos: 'noun', level: 'basic', examples: [
+  { korean: '친구들과 모임을 가졌어요.', myanmar: 'သူငယ်ချင်းတွေနဲ့ စုဝေးပွဲကျင်းပခဲ့တယ်။', english: 'I had a gathering with friends.' }
+]},
+{ id: '4246', korean: '무척', myanmar: 'အလွန်', english: 'Very much/Extremely', pos: 'adverb', level: 'basic', examples: [
+  { korean: '무척 행복해요.', myanmar: 'အရမ်းပျော်တယ်။', english: 'I am extremely happy.' }
+]},
+{ id: '4247', korean: '물론', myanmar: 'ဟုတ်ကဲ့/ကျိန်းသေ', english: 'Of course', pos: 'adverb', level: 'basic', examples: [
+  { korean: '물론이죠!', myanmar: 'ကျိန်းသေပေါ့!', english: 'Of course!' }
+]},
+{ id: '4248', korean: '매번', myanmar: 'အကြိမ်တိုင်း', english: 'Every time', pos: 'adverb', level: 'basic', examples: [
+  { korean: '매번 같은 실수를 해요.', myanmar: 'အကြိမ်တိုင်း တူညီတဲ့အမှားကို လုပ်တယ်။', english: 'I make the same mistake every time.' }
+]},
+{ id: '4249', korean: '미터', myanmar: 'မီတာ', english: 'Meter', pos: 'noun', level: 'basic', examples: [
+  { korean: '50미터 떨어진 곳에 있어요.', myanmar: 'မီတာ ၅၀ အကွာအဝေးမှာ ရှိတယ်။', english: 'It\'s 50 meters away.' }
+]},
+{ id: '4250', korean: '명절', myanmar: 'အားလပ်ရက်/ပွဲတော်', english: 'Holiday (traditional)', pos: 'noun', level: 'basic', examples: [
+  { korean: '설날은 한국의 큰 명절이에요.', myanmar: 'ဆိုးလ်နားလ်က ကိုရီးယားရဲ့ကြီးမားတဲ့ ပွဲတော်ပါ။', english: 'Seollal is a big Korean traditional holiday.' }
+]},
+{ id: '4251', korean: '모기', myanmar: 'ခြင်', english: 'Mosquito', pos: 'noun', level: 'basic', examples: [
+  { korean: '모기에 물렸어요.', myanmar: 'ခြင်ကိုက်ခံရတယ်။', english: 'I was bitten by a mosquito.' }
+]},
+{ id: '4252', korean: '모래', myanmar: 'သဲ', english: 'Sand', pos: 'noun', level: 'basic', examples: [
+  { korean: '해변에 모래가 많아요.', myanmar: 'ပင်လယ်ကမ်းခြေမှာ သဲတွေအများကြီးရှိတယ်။', english: 'There\'s a lot of sand on the beach.' }
+]},
+{ id: '4253', korean: '문구', myanmar: 'စာရေးကိရိယာ', english: 'Stationery', pos: 'noun', level: 'basic', examples: [
+  { korean: '문구점에서 연필을 샀어요.', myanmar: 'စာရေးကိရိယာဆိုင်မှာ ခဲတံဝယ်ခဲ့တယ်။', english: 'I bought a pencil at the stationery store.' }
+]},
+{ id: '4254', korean: '물감', myanmar: 'ဆေးရောင်', english: 'Paint/Pigment', pos: 'noun', level: 'basic', examples: [
+  { korean: '그림을 물감으로 그렸어요.', myanmar: 'ပန်းချီကို ဆေးရောင်နဲ့ ဆွဲခဲ့တယ်။', english: 'I painted the picture with paints.' }
+]},
+{ id: '4255', korean: '문화', myanmar: 'ယဉ်ကျေးမှု', english: 'Culture', pos: 'noun', level: 'basic', examples: [
+  { korean: '한국 문화를 좋아해요.', myanmar: 'ကိုရီးယားယဉ်ကျေးမှုကို ကြိုက်တယ်။', english: 'I like Korean culture.' }
+]},
+{ id: '4256', korean: '문제', myanmar: 'ပြဿနာ/မေးခွန်း', english: 'Problem/Question', pos: 'noun', level: 'basic', examples: [
+  { korean: '수학 문제를 풀었어요.', myanmar: 'သင်္ချာပြဿနာကို ဖြေရှင်းခဲ့တယ်။', english: 'I solved a math problem.' }
+]},
+{ id: '4257', korean: '미술', myanmar: 'အနုပညာ (ပန်းချီ)', english: 'Art (fine art)', pos: 'noun', level: 'basic', examples: [
+  { korean: '미술관에 가서 그림을 감상했어요.', myanmar: 'အနုပညာပြခန်းသွားပြီး ပန်းချီကားတွေ ကြည့်ခဲ့တယ်။', english: 'I went to the art museum and admired the paintings.' }
+]},
+{ id: '4258', korean: '명령', myanmar: 'အမိန့်', english: 'Order/Command', pos: 'noun', level: 'basic', examples: [
+  { korean: '군인들이 명령을 따랐어요.', myanmar: 'စစ်သားတွေက အမိန့်ကို လိုက်နာခဲ့တယ်။', english: 'The soldiers followed the command.' }
+]},
+{ id: '4259', korean: '목소리', myanmar: 'အသံ', english: 'Voice', pos: 'noun', level: 'basic', examples: [
+  { korean: '그녀의 목소리가 아름다워요.', myanmar: 'သူမရဲ့အသံက လှတယ်။', english: 'Her voice is beautiful.' }
+]},
+{ id: '4260', korean: '무늬', myanmar: 'ပုံစံ/ဒီဇိုင်း', english: 'Pattern/Design', pos: 'noun', level: 'basic', examples: [
+  { korean: '예쁜 무늬의 옷을 샀어요.', myanmar: 'လှတဲ့ပုံစံရှိတဲ့ အဝတ်ကို ဝယ်ခဲ့တယ်။', english: 'I bought clothes with a pretty pattern.' }
+]},
+{ id: '4261', korean: '미소녀', myanmar: 'လှပသော မိန်းကလေး', english: 'Beautiful girl (often used in anime/manga context)', pos: 'noun', level: 'basic', examples: [
+  { korean: '미소녀 캐릭터가 인기가 많아요.', myanmar: 'လှပသော မိန်းကလေး ဇာတ်ကောင်က လူကြိုက်များတယ်။', english: 'Beautiful girl characters are popular.' }
+]},
+{ id: '4262', korean: '미소년', myanmar: 'ချောမောသော ကောင်လေး', english: 'Handsome boy (often used in anime/manga context)', pos: 'noun', level: 'basic', examples: [
+  { korean: '그는 만화 속 미소년 같아요.', myanmar: 'သူက ကာတွန်းထဲက ချောမောသော ကောင်လေးလိုပဲ။', english: 'He looks like a handsome boy from a comic book.' }
+]},
+{ id: '4263', korean: '물품', myanmar: 'ကုန်ပစ္စည်း', english: 'Goods/Articles', pos: 'noun', level: 'basic', examples: [
+  { korean: '새로운 물품이 입고되었어요.', myanmar: 'ကုန်ပစ္စည်းအသစ်တွေ ရောက်ပြီ။', english: 'New goods have arrived.' }
+]},
+{ id: '4264', korean: '모양', myanmar: 'ပုံသဏ္ဌာန်', english: 'Shape/Form', pos: 'noun', level: 'basic', examples: [
+  { korean: '하트 모양 풍선이에요.', myanmar: 'နှလုံးပုံစံ မီးပုံးပါ။', english: 'It\'s a heart-shaped balloon.' }
+]},
+{ id: '4265', korean: '무게', myanmar: 'အလေးချိန်', english: 'Weight', pos: 'noun', level: 'basic', examples: [
+  { korean: '이 가방은 무게가 가벼워요.', myanmar: 'ဒီအိတ်က အလေးချိန်ပေါ့တယ်။', english: 'This bag is light in weight.' }
+]},
+{ id: '4266', korean: '민속', myanmar: 'ရိုးရာ', english: 'Folk', pos: 'noun', level: 'basic', examples: [
+  { korean: '민속촌에 가서 전통 문화를 체험했어요.', myanmar: 'ရိုးရာရွာသွားပြီး ရိုးရာယဉ်ကျေးမှုကို ခံစားခဲ့တယ်။', english: 'I went to the folk village and experienced traditional culture.' }
+]},
+{ id: '4267', korean: '명사', myanmar: 'နာမ်', english: 'Noun', pos: 'noun', level: 'basic', examples: [
+  { korean: '사과는 명사예요.', myanmar: 'ပန်းသီးက နာမ်ပါ။', english: 'Apple is a noun.' }
+]},
+{ id: '4268', korean: '모음', myanmar: 'သရ', english: 'Vowel', pos: 'noun', level: 'basic', examples: [
+  { korean: '한국어에는 10개의 기본 모음이 있어요.', myanmar: 'ကိုရီးယားဘာသာမှာ အခြေခံသရ ၁၀ လုံးရှိတယ်။', english: 'There are 10 basic vowels in Korean.' }
+]},
+{ id: '4269', korean: '몸살', myanmar: 'ကိုယ်လက်ကိုက်ခဲခြင်း', english: 'Body ache/Muscle soreness (from overwork/flu)', pos: 'noun', level: 'basic', examples: [
+  { korean: '감기 몸살에 걸렸어요.', myanmar: 'တုပ်ကွေးကြောင့် ကိုယ်လက်ကိုက်ခဲတယ်။', english: 'I caught a cold with body aches.' }
+]},
+{ id: '4270', korean: '묵념', myanmar: 'တိတ်ဆိတ်စွာ ဆုတောင်းခြင်း', english: 'Silent tribute', pos: 'noun', level: 'basic', examples: [
+  { korean: '희생자들을 위해 묵념했어요.', myanmar: 'သားကောင်တွေအတွက် တိတ်ဆိတ်စွာ ဆုတောင်းခဲ့တယ်။', english: 'We paid a silent tribute to the victims.' }
+]},
+{ id: '4271', korean: '물품 보관함', myanmar: 'ပစ္စည်းထားသိုခန်း', english: 'Locker/Storage box', pos: 'noun', level: 'basic', examples: [
+  { korean: '공항에서 물품 보관함을 이용했어요.', myanmar: 'လေဆိပ်မှာ ပစ္စည်းထားသိုခန်းကို အသုံးပြုခဲ့တယ်။', english: 'I used a locker at the airport.' }
+]},
+{ id: '4272', korean: '명품', myanmar: 'အဆင့်မြင့်ကုန်ပစ္စည်း', english: 'Luxury brand item', pos: 'noun', level: 'basic', examples: [
+  { korean: '명품 가방을 사고 싶어요.', myanmar: 'အဆင့်မြင့် ကုန်ပစ္စည်းအိတ် ဝယ်ချင်တယ်။', english: 'I want to buy a luxury brand bag.' }
+]},
+{ id: '4273', korean: '목격자', myanmar: 'မျက်မြင်သက်သေ', english: 'Eyewitness', pos: 'noun', level: 'basic', examples: [
+  { korean: '경찰이 목격자를 찾고 있어요.', myanmar: 'ရဲက မျက်မြင်သက်သေကို ရှာနေတယ်။', english: 'The police are looking for eyewitnesses.' }
+]},
+{ id: '4274', korean: '목도리', myanmar: 'လည်ပင်းပတ်ပုဝါ', english: 'Scarf', pos: 'noun', level: 'basic', examples: [
+  { korean: '추워서 목도리를 맸어요.', myanmar: 'အေးလို့ လည်ပင်းပတ်ပုဝါကို ပတ်ခဲ့တယ်။', english: 'It was cold, so I wore a scarf.' }
+]},
+{ id: '4275', korean: '모래시계', myanmar: 'သဲနာရီ', english: 'Hourglass', pos: 'noun', level: 'basic', examples: [
+  { korean: '모래시계는 시간을 재는 도구예요.', myanmar: 'သဲနာရီက အချိန်တိုင်းတဲ့ ကိရိယာပါ။', english: 'An hourglass is a tool for measuring time.' }
+]},
+{ id: '4276', korean: '무대', myanmar: 'စင်မြင့်', english: 'Stage', pos: 'noun', level: 'basic', examples: [
+  { korean: '가수가 무대 위에서 노래했어요.', myanmar: 'အဆိုတော်က စင်မြင့်ပေါ်မှာ သီချင်းဆိုခဲ့တယ်။', english: 'The singer sang on the stage.' }
+]},
+{ id: '4277', korean: '무료 와이파이', myanmar: 'အခမဲ့ဝိုင်ဖိုင်', english: 'Free Wi-Fi', pos: 'noun', level: 'basic', examples: [
+  { korean: '이 카페는 무료 와이파이가 돼요.', myanmar: 'ဒီကော်ဖီဆိုင်မှာ အခမဲ့ဝိုင်ဖိုင် ရတယ်။', english: 'This cafe has free Wi-Fi.' }
+]},
+{ id: '4278', korean: '미아', myanmar: 'ပျောက်ဆုံးကလေး', english: 'Missing child', pos: 'noun', level: 'basic', examples: [
+  { korean: '놀이공원에서 미아를 찾고 있어요.', myanmar: 'ပျော်ပွဲရွှင်ပွဲမှာ ပျောက်ဆုံးကလေးကို ရှာနေတယ်။', english: 'They\'re looking for a missing child at the amusement park.' }
+]},
+{ id: '4279', korean: '미로', myanmar: 'ပဟေဠိလမ်း', english: 'Maze/Labyrinth', pos: 'noun', level: 'basic', examples: [
+  { korean: '미로 탈출 게임을 했어요.', myanmar: 'ပဟေဠိလမ်းကနေ ထွက်တဲ့ ဂိမ်းကစားခဲ့တယ်။', english: 'I played a maze escape game.' }
+]},
+{ id: '4280', korean: '민트', myanmar: 'ပူဒီနာ', english: 'Mint', pos: 'noun', level: 'basic', examples: [
+  { korean: '민트 초콜릿을 좋아해요.', myanmar: 'ပူဒီနာ ချောကလက်ကို ကြိုက်တယ်။', english: 'I like mint chocolate.' }
+]},
+{ id: '4281', korean: '마스크', myanmar: 'မျက်နှာဖုံး', english: 'Mask', pos: 'noun', level: 'basic', examples: [
+  { korean: '외출할 때 마스크를 착용하세요.', myanmar: 'အပြင်သွားတဲ့အခါ မျက်နှာဖုံးတပ်ပါ။', english: 'Wear a mask when going out.' }
+]},
+{ id: '4282', korean: '명함', myanmar: 'နာမည်ကတ်ပြား', english: 'Name card', pos: 'noun', level: 'basic', examples: [
+  { korean: '명함을 받으세요.', myanmar: 'နာမည်ကတ်ပြားကို ယူပါ။', english: 'Please take a name card.' }
+]},
+{ id: '4283', korean: '목걸이', myanmar: 'လည်ဆွဲ', english: 'Necklace', pos: 'noun', level: 'basic', examples: [
+  { korean: '예쁜 목걸이를 선물했어요.', myanmar: 'လှတဲ့လည်ဆွဲကို လက်ဆောင်ပေးခဲ့တယ်။', english: 'I gave a beautiful necklace as a gift.' }
+]},
+{ id: '4284', korean: '무료', myanmar: 'အခမဲ့', english: 'Free (of charge)', pos: 'adjective', level: 'basic', examples: [
+  { korean: '이 앱은 무료예요.', myanmar: 'ဒီအက်ပ်က အခမဲ့ပါ။', english: 'This app is free.' }
+]},
+{ id: '4285', korean: '미소', myanmar: 'အပြုံး', english: 'Smile', pos: 'noun', level: 'basic', examples: [
+  { korean: '그녀의 미소가 아름다워요.', myanmar: 'သူမရဲ့အပြုံးက လှတယ်။', english: 'Her smile is beautiful.' }
+]},
+{ id: '4286', korean: '물가', myanmar: 'ဈေးနှုန်း', english: 'Prices (of goods)', pos: 'noun', level: 'basic', examples: [
+  { korean: '요즘 물가가 많이 올랐어요.', myanmar: 'ဒီရက်ပိုင်း ဈေးနှုန်းတွေ တော်တော်တက်လာတယ်။', english: 'Prices have risen a lot lately.' }
+]},
+{ id: '4287', korean: '모든 것', myanmar: 'အားလုံးသော အရာများ', english: 'Everything', pos: 'noun phrase', level: 'basic', examples: [
+  { korean: '모든 것을 다 준비했어요.', myanmar: 'အားလုံးသော အရာတွေကို ပြင်ဆင်ပြီးပြီ။', english: 'I prepared everything.' }
+]},
+{ id: '4288', korean: '무료 주차', myanmar: 'အခမဲ့ကားပါကင်', english: 'Free parking', pos: 'noun', level: 'basic', examples: [
+  { korean: '이곳은 무료 주차예요.', myanmar: 'ဒီနေရာက အခမဲ့ကားပါကင်ပါ။', english: 'Parking here is free.' }
+]},
+{ id: '4289', korean: '묵음', myanmar: 'အသံမထွက်သောစာလုံး', english: 'Silent letter (in phonetics)', pos: 'noun', level: 'basic', examples: [
+  { korean: '영어에는 묵음이 많아요.', myanmar: 'အင်္ဂလိပ်ဘာသာမှာ အသံမထွက်သောစာလုံးတွေ အများကြီးရှိတယ်။', english: 'There are many silent letters in English.' }
+]},
+{ id: '4290', korean: '매직', myanmar: 'မှော်', english: 'Magic', pos: 'noun', level: 'basic', examples: [
+  { korean: '마술사가 매직 쇼를 보여줬어요.', myanmar: 'မှော်ဆရာက မှော်ပြပွဲ ပြသခဲ့တယ်။', english: 'The magician showed a magic show.' }
+]},
+{ id: '4291', korean: '몸무게', myanmar: 'ကိုယ်အလေးချိန်', english: 'Body weight', pos: 'noun', level: 'basic', examples: [
+  { korean: '몸무게가 많이 늘었어요.', myanmar: 'ကိုယ်အလေးချိန် တော်တော်တက်လာတယ်။', english: 'I gained a lot of body weight.' }
+]},
+{ id: '4292', korean: '문법', myanmar: 'သဒ္ဒါ', english: 'Grammar', pos: 'noun', level: 'basic', examples: [
+  { korean: '한국어 문법은 어려워요.', myanmar: 'ကိုရီးယားသဒ္ဒါက ခက်တယ်။', english: 'Korean grammar is difficult.' }
+]},
+{ id: '4293', korean: '미션', myanmar: 'တာဝန်', english: 'Mission', pos: 'noun', level: 'basic', examples: [
+  { korean: '미션을 성공적으로 완료했어요.', myanmar: 'တာဝန်ကို အောင်မြင်စွာ ပြီးစီးခဲ့တယ်။', english: 'I successfully completed the mission.' }
+]},
+{ id: '4294', korean: '명단', myanmar: 'စာရင်း', english: 'List/Roster', pos: 'noun', level: 'basic', examples: [
+  { korean: '참석자 명단을 확인하세요.', myanmar: 'တက်ရောက်သူစာရင်းကို စစ်ဆေးပါ။', english: 'Please check the attendee list.' }
+]},
+{ id: '4295', korean: '목표', myanmar: 'ပန်းတိုင်', english: 'Goal/Target', pos: 'noun', level: 'basic', examples: [
+  { korean: '새로운 목표를 세웠어요.', myanmar: 'ပန်းတိုင်အသစ်ချမှတ်ခဲ့တယ်။', english: 'I set a new goal.' }
+]},
+{ id: '4296', korean: '문명', myanmar: 'ယဉ်ကျေးမှု/လူ့ယဉ်ကျေးမှု', english: 'Civilization', pos: 'noun', level: 'basic', examples: [
+  { korean: '고대 문명의 흔적을 찾았어요.', myanmar: 'ရှေးဟောင်းယဉ်ကျေးမှုရဲ့ သဲလွန်စတွေကို ရှာဖွေတွေ့ရှိခဲ့တယ်။', english: 'I found traces of an ancient civilization.' }
+]},
+
+// ===== ㅁ CONSONANT BASIC WORDS - CATEGORY 3: ACTIONS & VERBS (4297-4396) =====
+
+{ id: '4297', korean: '말하다', myanmar: 'ပြောသည်', english: 'To speak/To say', pos: 'verb', level: 'basic', examples: [
+  { korean: '천천히 말해주세요.', myanmar: 'ဖြည်းဖြည်းပြောပေးပါ။', english: 'Please speak slowly.' }
+]},
+{ id: '4298', korean: '만들다', myanmar: 'လုပ်သည်/ဖန်တီးသည်', english: 'To make/To create', pos: 'verb', level: 'basic', examples: [
+  { korean: '음식을 만들었어요.', myanmar: 'အစားအစာလုပ်ခဲ့တယ်။', english: 'I made food.' }
+]},
+{ id: '4299', korean: '먹다', myanmar: 'စားသည်', english: 'To eat', pos: 'verb', level: 'basic', examples: [
+  { korean: '아침을 먹었어요.', myanmar: 'မနက်စာစားခဲ့တယ်။', english: 'I ate breakfast.' }
+]},
+{ id: '4300', korean: '마시다', myanmar: 'သောက်သည်', english: 'To drink', pos: 'verb', level: 'basic', examples: [
+  { korean: '물을 마셨어요.', myanmar: 'ရေသောက်ခဲ့တယ်။', english: 'I drank water.' }
+]},
+{ id: '4301', korean: '만나다', myanmar: 'တွေ့ဆုံသည်', english: 'To meet', pos: 'verb', level: 'basic', examples: [
+  { korean: '친구를 만나요.', myanmar: 'သူငယ်ချင်းကို တွေ့တယ်။', english: 'I meet my friend.' }
+]},
+{ id: '4302', korean: '묻다', myanmar: 'မေးသည်', english: 'To ask', pos: 'verb', level: 'basic', examples: [
+  { korean: '질문을 묻다.', myanmar: 'မေးခွန်းမေးတယ်။', english: 'To ask a question.' }
+]},
+{ id: '4303', korean: '믿다', myanmar: 'ယုံကြည်သည်', english: 'To believe/To trust', pos: 'verb', level: 'basic', examples: [
+  { korean: '나는 너를 믿어.', myanmar: 'ငါ နင့်ကို ယုံကြည်တယ်။', english: 'I believe you.' }
+]},
+{ id: '4304', korean: '막다', myanmar: 'ပိတ်ဆို့သည်/တားဆီးသည်', english: 'To block/To stop', pos: 'verb', level: 'basic', examples: [
+  { korean: '입을 막다.', myanmar: 'ပါးစပ်ကို ပိတ်တယ်။', english: 'To cover one\'s mouth.' }
+]},
+{ id: '4305', korean: '모으다', myanmar: 'စုဆောင်းသည်', english: 'To gather/To collect', pos: 'verb', level: 'basic', examples: [
+  { korean: '돈을 모으다.', myanmar: 'ပိုက်ဆံစုတယ်။', english: 'To save money.' }
+]},
+{ id: '4306', korean: '만지다', myanmar: 'ထိတွေ့သည်', english: 'To touch', pos: 'verb', level: 'basic', examples: [
+  { korean: '얼굴을 만지다.', myanmar: 'မျက်နှာကို ထိတယ်။', english: 'To touch one\'s face.' }
+]},
+{ id: '4307', korean: '미루다', myanmar: 'ရွှေ့ဆိုင်းသည်', english: 'To postpone/To delay', pos: 'verb', level: 'basic', examples: [
+  { korean: '숙제를 미루다.', myanmar: 'အိမ်စာကို ရွှေ့ဆိုင်းတယ်။', english: 'To postpone homework.' }
+]},
+{ id: '4308', korean: '맞추다', myanmar: 'တူအောင်လုပ်သည်/ချိန်ညှိသည်', english: 'To match/To adjust', pos: 'verb', level: 'basic', examples: [
+  { korean: '시계를 맞추다.', myanmar: 'နာရီကို ချိန်ညှိတယ်။', english: 'To set a watch.' }
+]},
+{ id: '4309', korean: '말리다', myanmar: 'အခြောက်ခံသည်/ခြောက်သွေ့စေသည်', english: 'To dry', pos: 'verb', level: 'basic', examples: [
+  { korean: '머리를 말리다.', myanmar: 'ဆံပင်ကို အခြောက်ခံတယ်။', english: 'To dry one\'s hair.' }
+]},
+{ id: '4310', korean: '모르다', myanmar: 'မသိသည်', english: 'To not know', pos: 'verb', level: 'basic', examples: [
+  { korean: '이름을 모르다.', myanmar: 'နာမည်ကို မသိဘူး။', english: 'To not know a name.' }
+]},
+{ id: '4311', korean: '멈추다', myanmar: 'ရပ်တန့်သည်', english: 'To stop', pos: 'verb', level: 'basic', examples: [
+  { korean: '차가 멈췄어요.', myanmar: 'ကားရပ်သွားတယ်။', english: 'The car stopped.' }
+]},
+{ id: '4312', korean: '묶다', myanmar: 'ချည်နှောင်သည်', english: 'To tie/To bind', pos: 'verb', level: 'basic', examples: [
+  { korean: '머리를 묶다.', myanmar: 'ဆံပင်ချည်တယ်။', english: 'To tie one\'s hair.' }
+]},
+{ id: '4313', korean: '물다', myanmar: 'ကိုက်သည်', english: 'To bite', pos: 'verb', level: 'basic', examples: [
+  { korean: '개가 물었어요.', myanmar: 'ခွေးကိုက်တယ်။', english: 'The dog bit me.' }
+]},
+{ id: '4314', korean: '매다', myanmar: 'ချည်သည်/ပတ်သည်', english: 'To tie/To wear (e.g., a tie, a belt)', pos: 'verb', level: 'basic', examples: [
+  { korean: '신발 끈을 매다.', myanmar: 'ဖိနပ်ကြိုးချည်တယ်။', english: 'To tie shoelaces.' }
+]},
+{ id: '4315', korean: '물어보다', myanmar: 'မေးမြန်းကြည့်သည်', english: 'To ask (to inquire)', pos: 'verb', level: 'basic', examples: [
+  { korean: '길을 물어보다.', myanmar: 'လမ်းမေးကြည့်တယ်။', english: 'To ask for directions.' }
+]},
+{ id: '4316', korean: '미워하다', myanmar: 'မုန်းတီးသည်', english: 'To hate', pos: 'verb', level: 'basic', examples: [
+  { korean: '거짓말을 미워해요.', myanmar: 'ညာတာကို မုန်းတယ်။', english: 'I hate lies.' }
+]},
+{ id: '4317', korean: '밀다', myanmar: 'တွန်းသည်', english: 'To push', pos: 'verb', level: 'basic', examples: [
+  { korean: '문을 밀다.', myanmar: 'တံခါးတွန်းတယ်။', english: 'To push the door.' }
+]},
+{ id: '4318', korean: '머무르다', myanmar: 'နေထိုင်သည်/ရပ်နားသည်', english: 'To stay/To remain', pos: 'verb', level: 'basic', examples: [
+  { korean: '집에 머물러요.', myanmar: 'အိမ်မှာနေတယ်။', english: 'I stay at home.' }
+]},
+{ id: '4319', korean: '마치다', myanmar: 'ပြီးဆုံးသည်', english: 'To finish/To complete', pos: 'verb', level: 'basic', examples: [
+  { korean: '일을 마쳤어요.', myanmar: 'အလုပ်ပြီးခဲ့တယ်။', english: 'I finished the work.' }
+]},
+{ id: '4320', korean: '모으다', myanmar: 'စုဆောင်းသည်', english: 'To save (money)/To collect', pos: 'verb', level: 'basic', examples: [
+  { korean: '돈을 모으다.', myanmar: 'ပိုက်ဆံစုတယ်။', english: 'To save money.' }
+]},
+{ id: '4321', korean: '무시하다', myanmar: 'လျစ်လျူရှုသည်', english: 'To ignore/To disregard', pos: 'verb', level: 'basic', examples: [
+  { korean: '남의 말을 무시하지 마세요.', myanmar: 'တခြားသူရဲ့စကားကို လျစ်လျူမရှုပါနဲ့။', english: 'Don\'t ignore others\' words.' }
+]},
+{ id: '4322', korean: '미끄러지다', myanmar: 'ချောကျသည်', english: 'To slip/To slide', pos: 'verb', level: 'basic', examples: [
+  { korean: '길에서 미끄러졌어요.', myanmar: 'လမ်းပေါ်မှာ ချောကျခဲ့တယ်။', english: 'I slipped on the road.' }
+]},
+{ id: '4323', korean: '물러나다', myanmar: 'ဆုတ်ခွာသည်', english: 'To retreat/To step back', pos: 'verb', level: 'basic', examples: [
+  { korean: '뒤로 물러나세요.', myanmar: 'နောက်ဆုတ်ပါ။', english: 'Please step back.' }
+]},
+{ id: '4324', korean: '막히다', myanmar: 'ပိတ်ဆို့နေသည်', english: 'To be blocked/To be clogged', pos: 'verb', level: 'basic', examples: [
+  { korean: '길이 막혔어요.', myanmar: 'လမ်းပိတ်နေတယ်။', english: 'The road is blocked.' }
+]},
+{ id: '4325', korean: '묻히다', myanmar: 'စွန်းထင်းစေသည်/မြှုပ်နှံသည်', english: 'To get something stained with/To bury', pos: 'verb', level: 'basic', examples: [
+  { korean: '옷에 흙을 묻혔어요.', myanmar: 'အဝတ်မှာ မြေကြီးစွန်းထင်းစေတယ်။', english: 'I got dirt on my clothes.' }
+]},
+{ id: '4326', korean: '모으다', myanmar: 'စုဆောင်းသည်', english: 'To gather/To assemble', pos: 'verb', level: 'basic', examples: [
+  { korean: '친구들을 모았어요.', myanmar: 'သူငယ်ချင်းတွေကို စုဆောင်းခဲ့တယ်။', english: 'I gathered my friends.' }
+]},
+{ id: '4327', korean: '미치다', myanmar: 'အရူးဖြစ်သည်/ထိရောက်သည်', english: 'To go crazy/To reach', pos: 'verb', level: 'basic', examples: [
+  { korean: '목표에 미치다.', myanmar: 'ပန်းတိုင်သို့ ရောက်ရှိတယ်။', english: 'To reach a goal.' }
+]},
+{ id: '4328', korean: '미안해하다', myanmar: 'စိတ်မကောင်းဖြစ်သည်', english: 'To feel sorry', pos: 'verb', level: 'basic', examples: [
+  { korean: '실수해서 미안해했어요.', myanmar: 'မှားသွားလို့ စိတ်မကောင်းဖြစ်ခဲ့တယ်။', english: 'He felt sorry for his mistake.' }
+]},
+{ id: '4329', korean: '밀리다', myanmar: 'တွန်းပို့ခံရသည်/နောက်ကျသည်', english: 'To be pushed/To be delayed', pos: 'verb', level: 'basic', examples: [
+  { korean: '일이 많이 밀렸어요.', myanmar: 'အလုပ်တွေ အများကြီး နောက်ကျနေတယ်။', english: 'I have a lot of work piled up (delayed).' }
+]},
+{ id: '4330', korean: '메다', myanmar: 'လွယ်သည်/ပခုံးထမ်းသည်', english: 'To carry (on shoulder)/To fill', pos: 'verb', level: 'basic', examples: [
+  { korean: '가방을 메다.', myanmar: 'အိတ်လွယ်တယ်။', english: 'To carry a bag on one\'s shoulder.' }
+]},
+{ id: '4331', korean: '무너지다', myanmar: 'ပြိုလဲသည်', english: 'To collapse/To fall apart', pos: 'verb', level: 'basic', examples: [
+  { korean: '건물이 무너졌어요.', myanmar: 'အဆောက်အအုံ ပြိုလဲသွားတယ်။', english: 'The building collapsed.' }
+]},
+{ id: '4332', korean: '미치게 하다', myanmar: 'အရူးလုပ်သည်/စိတ်ပျက်စေသည်', english: 'To drive crazy/To frustrate', pos: 'verb phrase', level: 'basic', examples: [
+  { korean: '그 소음이 나를 미치게 해요.', myanmar: 'အဲဒီဆူညံသံက ငါ့ကို အရူးလုပ်တယ်။', english: 'That noise drives me crazy.' }
+]},
+{ id: '4333', korean: '막히다', myanmar: 'ပိတ်ဆို့သည် (စိတ်/လမ်း)', english: 'To be blocked (mind/road)', pos: 'verb', level: 'basic', examples: [
+  { korean: '숨이 막혀요.', myanmar: 'အသက်ရှူကျပ်တယ်။', english: 'I\'m suffocating.' }
+]},
+{ id: '4334', korean: '물러서다', myanmar: 'နောက်ဆုတ်သည်', english: 'To step back/To withdraw', pos: 'verb', level: 'basic', examples: [
+  { korean: '위험하니 물러서세요.', myanmar: 'အန္တရာယ်ရှိလို့ နောက်ဆုတ်ပါ။', english: 'It\'s dangerous, so step back.' }
+]},
+{ id: '4335', korean: '모색하다', myanmar: 'ရှာဖွေသည်/စဉ်းစားသည်', english: 'To seek/To explore (a solution)', pos: 'verb', level: 'basic', examples: [
+  { korean: '해결책을 모색하고 있어요.', myanmar: 'ဖြေရှင်းနည်းကို ရှာဖွေနေတယ်။', english: 'I\'m exploring solutions.' }
+]},
+{ id: '4336', korean: '맡다', myanmar: 'တာဝန်ယူသည်/အနံ့ခံသည်', english: 'To take charge of/To smell', pos: 'verb', level: 'basic', examples: [
+  { korean: '냄새를 맡다.', myanmar: 'အနံ့ခံတယ်။', english: 'To smell something.' }
+]},
+{ id: '4337', korean: '만들다', myanmar: 'တည်ဆောက်သည်', english: 'To build/To construct', pos: 'verb', level: 'basic', examples: [
+  { korean: '집을 만들다.', myanmar: 'အိမ်ဆောက်တယ်။', english: 'To build a house.' }
+]},
+{ id: '4338', korean: '미루다', myanmar: 'နှောင့်နှေးစေသည်', english: 'To defer/To procrastinate', pos: 'verb', level: 'basic', examples: [
+  { korean: '결정을 미루다.', myanmar: 'ဆုံးဖြတ်ချက်ကို နှောင့်နှေးစေတယ်။', english: 'To defer a decision.' }
+]},
+{ id: '4339', korean: '물들다', myanmar: 'အရောင်ဆိုးသည်/စွဲလမ်းသည်', english: 'To be dyed/To be influenced', pos: 'verb', level: 'basic', examples: [
+  { korean: '가을 단풍으로 산이 물들었어요.', myanmar: 'ဆောင်းဦးရွက်တွေနဲ့ တောင်တွေ အရောင်ဆိုးနေတယ်။', english: 'The mountains are dyed with autumn foliage.' }
+]},
+{ id: '4340', korean: '미치다', myanmar: 'ထိခိုက်သည်/သက်ရောက်သည်', english: 'To affect/To have an impact', pos: 'verb', level: 'basic', examples: [
+  { korean: '경제에 큰 영향을 미쳤어요.', myanmar: 'စီးပွားရေးအပေါ် ကြီးမားတဲ့ သက်ရောက်မှုရှိခဲ့တယ်။', english: 'It had a big impact on the economy.' }
+]},
+{ id: '4341', korean: '마주보다', myanmar: 'မျက်နှာချင်းဆိုင်သည်', english: 'To face each other', pos: 'verb', level: 'basic', examples: [
+  { korean: '그들은 서로 마주봤어요.', myanmar: 'သူတို့တစ်ယောက်နဲ့တစ်ယောက် မျက်နှာချင်းဆိုင်တယ်။', english: 'They faced each other.' }
+]},
+{ id: '4342', korean: '모방하다', myanmar: 'တုပသည်', english: 'To imitate/To mimic', pos: 'verb', level: 'basic', examples: [
+  { korean: '아이들은 부모를 모방해요.', myanmar: 'ကလေးတွေက မိဘတွေကို တုပတယ်။', english: 'Children imitate their parents.' }
+]},
+{ id: '4343', korean: '멈추어 서다', myanmar: 'ရပ်နားသည်', english: 'To stand still/To come to a halt', pos: 'verb phrase', level: 'basic', examples: [
+  { korean: '버스 정류장에 멈추어 섰어요.', myanmar: 'ဘတ်စ်ကားမှတ်တိုင်မှာ ရပ်နားခဲ့တယ်။', english: 'I stopped at the bus stop.' }
+]},
+{ id: '4344', korean: '밀어붙이다', myanmar: 'အတင်းအကြပ်တွန်းအားပေးသည်', english: 'To push through/To force', pos: 'verb', level: 'basic', examples: [
+  { korean: '계획을 밀어붙였어요.', myanmar: 'အစီအစဉ်ကို အတင်းအကြပ်တွန်းအားပေးခဲ့တယ်။', english: 'I pushed through the plan.' }
+]},
+{ id: '4345', korean: '물다', myanmar: 'ကိုက်သည်/မြုပ်သည်', english: 'To bite/To pay (a fine)', pos: 'verb', level: 'basic', examples: [
+  { korean: '벌금을 물다.', myanmar: 'ဒဏ်ကြေးဆောင်တယ်။', english: 'To pay a fine.' }
+]},
+{ id: '4346', korean: '마련하다', myanmar: 'စီစဉ်သည်/ပြင်ဆင်သည်', english: 'To prepare/To arrange', pos: 'verb', level: 'basic', examples: [
+  { korean: '저녁 식사를 마련했어요.', myanmar: 'ညစာကို စီစဉ်ခဲ့တယ်။', english: 'I prepared dinner.' }
+]},
+{ id: '4347', korean: '모험하다', myanmar: 'စွန့်စားသည်', english: 'To adventure/To take a risk', pos: 'verb', level: 'basic', examples: [
+  { korean: '새로운 것에 모험하고 싶어요.', myanmar: 'အသစ်အဆန်းကို စွန့်စားချင်တယ်။', english: 'I want to adventure into new things.' }
+]},
+{ id: '4348', korean: '묵상하다', myanmar: 'ဆင်ခြင်သုံးသပ်သည်', english: 'To meditate/To contemplate', pos: 'verb', level: 'basic', examples: [
+  { korean: '조용히 묵상하는 시간을 가졌어요.', myanmar: 'တိတ်ဆိတ်စွာ ဆင်ခြင်သုံးသပ်တဲ့အချိန်ကို ရခဲ့တယ်။', english: 'I had a quiet time of contemplation.' }
+]},
+{ id: '4349', korean: '미루어 짐작하다', myanmar: 'ခန့်မှန်းသည်', english: 'To infer/To guess', pos: 'verb phrase', level: 'basic', examples: [
+  { korean: '상황을 미루어 짐작할 수 있었어요.', myanmar: 'အခြေအနေကို ခန့်မှန်းနိုင်ခဲ့တယ်။', english: 'I could infer the situation.' }
+]},
+{ id: '4350', korean: '묻히다', myanmar: 'ဖုံးကွယ်သည်/မြှုပ်နှံသည်', english: 'To hide/To bury', pos: 'verb', level: 'basic', examples: [
+  { korean: '비밀을 묻히다.', myanmar: 'လျှို့ဝှက်ချက်ကို ဖုံးကွယ်တယ်။', english: 'To bury a secret.' }
+]},
+{ id: '4351', korean: '만끽하다', myanmar: 'ပြည့်ပြည့်ဝဝခံစားသည်', english: 'To fully enjoy', pos: 'verb', level: 'basic', examples: [
+  { korean: '휴가를 만끽했어요.', myanmar: 'အားလပ်ရက်ကို ပြည့်ပြည့်ဝဝခံစားခဲ့တယ်။', english: 'I fully enjoyed my vacation.' }
+]},
+{ id: '4352', korean: '매혹하다', myanmar: 'ညှို့ယူသည်', english: 'To fascinate/To enchant', pos: 'verb', level: 'basic', examples: [
+  { korean: '그녀의 아름다움이 모두를 매혹했어요.', myanmar: 'သူမရဲ့အလှက လူတိုင်းကို ညှို့ယူခဲ့တယ်။', english: 'Her beauty enchanted everyone.' }
+]},
+{ id: '4353', korean: '모순되다', myanmar: 'ဆန့်ကျင်ဘက်ဖြစ်သည်', english: 'To be contradictory', pos: 'verb', level: 'basic', examples: [
+  { korean: '두 의견이 모순돼요.', myanmar: 'အမြင်နှစ်ခုက ဆန့်ကျင်ဘက်ဖြစ်တယ်။', english: 'The two opinions are contradictory.' }
+]},
+{ id: '4354', korean: '미화하다', myanmar: 'လှပအောင်လုပ်သည်', english: 'To beautify/To embellish', pos: 'verb', level: 'basic', examples: [
+  { korean: '사실을 미화하지 마세요.', myanmar: 'အမှန်တရားကို လှပအောင် မလုပ်ပါနဲ့။', english: 'Don\'t embellish the truth.' }
+]},
+{ id: '4355', korean: '명시하다', myanmar: 'ရှင်းလင်းစွာဖော်ပြသည်', english: 'To specify/To state clearly', pos: 'verb', level: 'basic', examples: [
+  { korean: '규칙을 명시했어요.', myanmar: 'စည်းမျဉ်းကို ရှင်းလင်းစွာဖော်ပြခဲ့တယ်။', english: 'I specified the rules.' }
+]},
+{ id: '4356', korean: '묵인하다', myanmar: 'မျက်နှာသာပေးသည်/ခွင့်ပြုသည်', english: 'To tacitly approve/To condone', pos: 'verb', level: 'basic', examples: [
+  { korean: '그의 행동을 묵인했어요.', myanmar: 'သူ့ရဲ့လုပ်ရပ်ကို မျက်နှာသာပေးခဲ့တယ်။', english: 'I condoned his actions.' }
+]},
+{ id: '4357', korean: '만발하다', myanmar: 'ပွင့်လန်းသည် (ပန်း)', english: 'To be in full bloom', pos: 'verb', level: 'basic', examples: [
+  { korean: '벚꽃이 만발했어요.', myanmar: 'ချယ်ရီပန်းတွေ ပွင့်လန်းနေတယ်။', english: 'The cherry blossoms are in full bloom.' }
+]},
+{ id: '4358', korean: '물고 늘어지다', myanmar: 'အတင်းဖက်တွယ်သည်', english: 'To cling to/To persist in', pos: 'verb phrase', level: 'basic', examples: [
+  { korean: '그는 자기 주장을 물고 늘어졌어요.', myanmar: 'သူက သူ့ရဲ့အဆိုကို အတင်းဖက်တွယ်ခဲ့တယ်။', english: 'He clung to his assertion.' }
+]},
+{ id: '4359', korean: '명심하다', myanmar: 'စိတ်ထဲစွဲမှတ်ထားသည်', english: 'To keep in mind/To bear in mind', pos: 'verb', level: 'basic', examples: [
+  { korean: '이 말을 명심하세요.', myanmar: 'ဒီစကားကို စိတ်ထဲစွဲမှတ်ထားပါ။', english: 'Please bear this in mind.' }
+]},
+{ id: '4360', korean: '미혹하다', myanmar: 'လှည့်ဖြားသည်/သွေးဆောင်သည်', english: 'To mislead/To entice', pos: 'verb', level: 'basic', examples: [
+  { korean: '나쁜 길로 미혹하지 마세요.', myanmar: 'မကောင်းတဲ့လမ်းကို မလှည့်ဖြားပါနဲ့။', english: 'Don\'t mislead me down the wrong path.' }
+]},
+{ id: '4361', korean: '무마하다', myanmar: 'ဖျောက်ဖျက်သည်/ငြိမ်သက်စေသည်', english: 'To appease/To smooth over', pos: 'verb', level: 'basic', examples: [
+  { korean: '문제를 무마하려고 노력했어요.', myanmar: 'ပြဿနာကို ဖျောက်ဖျက်ဖို့ ကြိုးစားခဲ့တယ်။', english: 'I tried to smooth over the problem.' }
+]},
+{ id: '4362', korean: '모색하다', myanmar: 'ရှာဖွေသည်', english: 'To seek/To search for', pos: 'verb', level: 'basic', examples: [
+  { korean: '새로운 기회를 모색하다.', myanmar: 'အခွင့်အလမ်းအသစ် ရှာဖွေတယ်။', english: 'To seek new opportunities.' }
+]},
+{ id: '4363', korean: '매장하다', myanmar: 'မြှုပ်နှံသည်', english: 'To bury (a body)', pos: 'verb', level: 'basic', examples: [
+  { korean: '시신을 매장했어요.', myanmar: 'အလောင်းကို မြှုပ်နှံခဲ့တယ်။', english: 'They buried the body.' }
+]},
+{ id: '4364', korean: '물어뜯다', myanmar: 'ကိုက်ဖြတ်သည်', english: 'To bite off/To gnaw', pos: 'verb', level: 'basic', examples: [
+  { korean: '손톱을 물어뜯지 마세요.', myanmar: 'လက်သည်းကို မကိုက်ဖြတ်ပါနဲ့။', english: 'Don\'t bite your nails.' }
+]},
+{ id: '4365', korean: '만개하다', myanmar: 'ပွင့်လန်းသည် (အပြည့်အဝ)', english: 'To be in full bloom (flower)', pos: 'verb', level: 'basic', examples: [
+  { korean: '꽃들이 만개했어요.', myanmar: 'ပန်းတွေ အပြည့်အဝ ပွင့်လန်းတယ်။', english: 'The flowers are in full bloom.' }
+]},
+{ id: '4366', korean: '밀착하다', myanmar: 'ကပ်လျက်ရှိသည်', english: 'To be in close contact/To adhere closely', pos: 'verb', level: 'basic', examples: [
+  { korean: '벽에 밀착해서 서 있어요.', myanmar: 'နံရံနဲ့ ကပ်လျက်ရပ်နေတယ်။', english: 'I\'m standing close to the wall.' }
+]},
+{ id: '4367', korean: '명멸하다', myanmar: 'မှိတ်တုတ်မှိတ်တုတ်ဖြစ်သည်', english: 'To flicker/To wink in and out', pos: 'verb', level: 'basic', examples: [
+  { korean: '불빛이 명멸했어요.', myanmar: 'မီးရောင်က မှိတ်တုတ်မှိတ်တုတ်ဖြစ်တယ်။', english: 'The light flickered.' }
+]},
+{ id: '4368', korean: '무릅쓰다', myanmar: 'ရင်ဆိုင်သည်/စွန့်စားသည်', english: 'To brave/To risk', pos: 'verb', level: 'basic', examples: [
+  { korean: '위험을 무릅쓰고 도전했어요.', myanmar: 'အန္တရာယ်ကို ရင်ဆိုင်ပြီး စိန်ခေါ်ခဲ့တယ်။', english: 'I braved the danger and took on the challenge.' }
+]},
+{ id: '4369', korean: '몰입하다', myanmar: 'နှစ်မြှုပ်သည်/စိတ်ဝင်စားသည်', english: 'To immerse oneself/To be engrossed', pos: 'verb', level: 'basic', examples: [
+  { korean: '책에 몰입했어요.', myanmar: 'စာအုပ်ထဲမှာ စိတ်နှစ်မြှုပ်နေတယ်။', english: 'I was engrossed in the book.' }
+]},
+{ id: '4370', korean: '마지못하다', myanmar: 'မတတ်သာ၍', english: 'To be unwilling/To be unable to help', pos: 'adverb', level: 'basic', examples: [
+  { korean: '마지못해 동의했어요.', myanmar: 'မတတ်သာလို့ သဘောတူခဲ့တယ်။', english: 'I unwillingly agreed.' }
+]},
+{ id: '4371', korean: '물리치다', myanmar: 'နှိမ်နင်းသည်/တွန်းလှန်သည်', english: 'To defeat/To repel', pos: 'verb', level: 'basic', examples: [
+  { korean: '적을 물리쳤어요.', myanmar: 'ရန်သူကို နှိမ်နင်းခဲ့တယ်။', english: 'I defeated the enemy.' }
+]},
+{ id: '4372', korean: '망설이다', myanmar: 'တွေဝေသည်', english: 'To hesitate', pos: 'verb', level: 'basic', examples: [
+  { korean: '말하기를 망설였어요.', myanmar: 'ပြောဖို့ တွေဝေခဲ့တယ်။', english: 'I hesitated to speak.' }
+]},
+{ id: '4373', korean: '매진하다', myanmar: 'ကုန်ဆုံးသည်/ကြိုးစားသည်', english: 'To sell out/To devote oneself', pos: 'verb', level: 'basic', examples: [
+  { korean: '표가 매진되었어요.', myanmar: 'လက်မှတ်တွေ ကုန်ဆုံးသွားပြီ။', english: 'The tickets sold out.' }
+]},
+{ id: '4374', korean: '모방하다', myanmar: 'တုပသည်', english: 'To imitate', pos: 'verb', level: 'basic', examples: [
+  { korean: '다른 사람을 모방하지 마세요.', myanmar: 'တခြားလူကို မတုပပါနဲ့။', english: 'Don\'t imitate others.' }
+]},
+{ id: '4375', korean: '문득', myanmar: 'ရုတ်တရက်', english: 'Suddenly/Unexpectedly', pos: 'adverb', level: 'basic', examples: [
+  { korean: '문득 좋은 생각이 났어요.', myanmar: 'ရုတ်တရက် ကောင်းတဲ့အတွေး ပေါ်လာတယ်။', english: 'A good idea suddenly occurred to me.' }
+]},
+{ id: '4376', korean: '만회하다', myanmar: 'ပြန်လည်ရယူသည်', english: 'To recover/To make up for', pos: 'verb', level: 'basic', examples: [
+  { korean: '손실을 만회하려고 노력했어요.', myanmar: 'ဆုံးရှုံးမှုကို ပြန်လည်ရယူဖို့ ကြိုးစားခဲ့တယ်။', english: 'I tried to make up for the losses.' }
+]},
+{ id: '4377', korean: '밀려나다', myanmar: 'တွန်းပို့ခံရသည်/နေရာဖယ်ပေးသည်', english: 'To be pushed back/To be forced out', pos: 'verb', level: 'basic', examples: [
+  { korean: '경쟁에서 밀려났어요.', myanmar: 'ပြိုင်ဆိုင်မှုမှာ တွန်းပို့ခံရတယ်။', english: 'I was pushed out in the competition.' }
+]},
+{ id: '4378', korean: '묵묵하다', myanmar: 'တိတ်ဆိတ်သည်', english: 'To be silent/To be quiet', pos: 'adjective', level: 'basic', examples: [
+  { korean: '묵묵히 자기 할 일을 했어요.', myanmar: 'တိတ်ဆိတ်စွာ သူ့အလုပ်ကို လုပ်ခဲ့တယ်။', english: 'He silently did his work.' }
+]},
+{ id: '4379', korean: '모면하다', myanmar: 'ရှောင်လွှဲသည်', english: 'To avoid/To escape', pos: 'verb', level: 'basic', examples: [
+  { korean: '책임을 모면하려고 했어요.', myanmar: 'တာဝန်ကို ရှောင်လွှဲဖို့ ကြိုးစားခဲ့တယ်။', english: 'He tried to avoid responsibility.' }
+]},
+{ id: '4380', korean: '물들이다', myanmar: 'အရောင်ဆိုးသည်', english: 'To dye/To color', pos: 'verb', level: 'basic', examples: [
+  { korean: '옷을 빨간색으로 물들였어요.', myanmar: 'အဝတ်ကို အနီရောင်နဲ့ အရောင်ဆိုးခဲ့တယ်။', english: 'I dyed my clothes red.' }
+]},
+{ id: '4381', korean: '맞서다', myanmar: 'ရင်ဆိုင်သည်/တိုက်ခိုက်သည်', english: 'To confront/To stand against', pos: 'verb', level: 'basic', examples: [
+  { korean: '어려움에 맞섰어요.', myanmar: 'အခက်အခဲကို ရင်ဆိုင်ခဲ့တယ်။', english: 'I confronted the difficulties.' }
+]},
+{ id: '4382', korean: '미화하다', myanmar: 'လှပအောင်လုပ်သည်/အစွန်းအထင်းပျောက်စေသည်', english: 'To beautify/To gloss over', pos: 'verb', level: 'basic', examples: [
+  { korean: '낡은 건물을 미화했어요.', myanmar: 'ဟောင်းနွမ်းတဲ့အဆောက်အအုံကို လှပအောင်လုပ်ခဲ့တယ်။', english: 'I beautified the old building.' }
+]},
+{ id: '4383', korean: '모두다', myanmar: 'အားလုံးစုပေါင်းသည်', english: 'To gather all/To collect entirely', pos: 'verb', level: 'basic', examples: [
+  { korean: '힘을 모두 모아 성공했어요.', myanmar: 'အားလုံး စုပေါင်းပြီး အောင်မြင်ခဲ့တယ်။', english: 'We succeeded by gathering all our strength.' }
+]},
+{ id: '4384', korean: '물들다', myanmar: 'အရောင်စွဲသည်', english: 'To be stained/To be colored', pos: 'verb', level: 'basic', examples: [
+  { korean: '손에 잉크가 물들었어요.', myanmar: 'လက်မှာ မှင်စွဲတယ်။', english: 'My hand got stained with ink.' }
+]},
+{ id: '4385', korean: '망치다', myanmar: 'ဖျက်ဆီးသည်', english: 'To ruin/To spoil', pos: 'verb', level: 'basic', examples: [
+  { korean: '계획을 망쳤어요.', myanmar: 'အစီအစဉ်ကို ဖျက်ဆီးခဲ့တယ်။', english: 'I ruined the plan.' }
+]},
+{ id: '4386', korean: '명하다', myanmar: 'အမိန့်ပေးသည်', english: 'To order/To command', pos: 'verb', level: 'basic', examples: [
+  { korean: '군인들에게 공격을 명했어요.', myanmar: 'စစ်သားတွေကို တိုက်ခိုက်ဖို့ အမိန့်ပေးခဲ့တယ်။', english: 'I ordered the soldiers to attack.' }
+]},
+{ id: '4387', korean: '미소 짓다', myanmar: 'ပြုံးသည်', english: 'To smile', pos: 'verb phrase', level: 'basic', examples: [
+  { korean: '아름답게 미소 짓다.', myanmar: 'လှပစွာ ပြုံးတယ်။', english: 'To smile beautifully.' }
+]},
+{ id: '4388', korean: '모험하다', myanmar: 'စွန့်စားသည်', english: 'To take a risk/To venture', pos: 'verb', level: 'basic', examples: [
+  { korean: '새로운 사업에 모험했어요.', myanmar: 'စီးပွားရေးအသစ်မှာ စွန့်စားခဲ့တယ်။', english: 'I ventured into a new business.' }
+]},
+{ id: '4389', korean: '물고기 잡다', myanmar: 'ငါးဖမ်းသည်', english: 'To catch fish', pos: 'verb phrase', level: 'basic', examples: [
+  { korean: '강에서 물고기를 잡았어요.', myanmar: 'မြစ်ထဲမှာ ငါးဖမ်းခဲ့တယ်။', english: 'I caught fish in the river.' }
+]},
+{ id: '4390', korean: '민감하다', myanmar: 'ထိလွယ်ရှလွယ်ဖြစ်သည်', english: 'To be sensitive', pos: 'adjective', level: 'basic', examples: [
+  { korean: '피부가 민감해요.', myanmar: 'အသားအရေ ထိလွယ်ရှလွယ်ဖြစ်တယ်။', english: 'My skin is sensitive.' }
+]},
+{ id: '4391', korean: '맡겨두다', myanmar: 'အပ်နှံထားသည်', english: 'To leave something in one\'s care', pos: 'verb', level: 'basic', examples: [
+  { korean: '아이를 친구에게 맡겨뒀어요.', myanmar: 'ကလေးကို သူငယ်ချင်းဆီ အပ်နှံထားခဲ့တယ်။', english: 'I left my child with a friend.' }
+]},
+{ id: '4392', korean: '물다', myanmar: 'ကိုက်သည်', english: 'To bite', pos: 'verb', level: 'basic', examples: [
+  { korean: '뱀이 사람을 물었어요.', myanmar: 'မြွေက လူကို ကိုက်ခဲ့တယ်။', english: 'The snake bit a person.' }
+]},
+{ id: '4393', korean: '모으다', myanmar: 'စုဆောင်းသည်', english: 'To collect/To accumulate', pos: 'verb', level: 'basic', examples: [
+  { korean: '우표를 모으다.', myanmar: 'တံဆိပ်ခေါင်းစုတယ်။', english: 'To collect stamps.' }
+]},
+{ id: '4394', korean: '밀쳐내다', myanmar: 'တွန်းထုတ်သည်', english: 'To push aside/To shove away', pos: 'verb', level: 'basic', examples: [
+  { korean: '그를 밀쳐냈어요.', myanmar: 'သူ့ကို တွန်းထုတ်ခဲ့တယ်။', english: 'I pushed him away.' }
+]},
+{ id: '4395', korean: '무시당하다', myanmar: 'လျစ်လျူရှုခံရသည်', english: 'To be ignored/To be disregarded', pos: 'verb', level: 'basic', examples: [
+  { korean: '사람들에게 무시당했어요.', myanmar: 'လူတွေက လျစ်လျူရှုခံရတယ်။', english: 'I was ignored by people.' }
+]},
+{ id: '4396', korean: '마중하다', myanmar: 'ကြိုဆိုသည်', english: 'To greet/To go to meet (someone)', pos: 'verb', level: 'basic', examples: [
+  { korean: '공항에서 친구를 마중했어요.', myanmar: 'လေဆိပ်မှာ သူငယ်ချင်းကို ကြိုဆိုခဲ့တယ်။', english: 'I went to meet my friend at the airport.' }
+]},
+
+// ===== ㅁ CONSONANT BASIC WORDS - CATEGORY 4: ADJECTIVES & ADVERBS (4397-4496) =====
+
+{ id: '4397', korean: '많다', myanmar: 'များပြားသည်', english: 'To be many/much', pos: 'adjective', level: 'basic', examples: [
+  { korean: '사람이 많아요.', myanmar: 'လူတွေ များတယ်။', english: 'There are many people.' }
+]},
+{ id: '4398', korean: '맵다', myanmar: 'စပ်သည်', english: 'To be spicy', pos: 'adjective', level: 'basic', examples: [
+  { korean: '음식이 매워요.', myanmar: 'အစားအစာ စပ်တယ်။', english: 'The food is spicy.' }
+]},
+{ id: '4399', korean: '멀다', myanmar: 'ဝေးသည်', english: 'To be far', pos: 'adjective', level: 'basic', examples: [
+  { korean: '집이 멀어요.', myanmar: 'အိမ်ဝေးတယ်။', english: 'My home is far.' }
+]},
+{ id: '4400', korean: '맑다', myanmar: 'ကြည်လင်သည်', english: 'To be clear', pos: 'adjective', level: 'basic', examples: [
+  { korean: '하늘이 맑아요.', myanmar: 'ကောင်းကင် ကြည်လင်တယ်။', english: 'The sky is clear.' }
+]},
+{ id: '4401', korean: '멋있다', myanmar: 'လှပသည်/မိုက်သည်', english: 'To be cool/stylish', pos: 'adjective', level: 'basic', examples: [
+  { korean: '그는 정말 멋있어요.', myanmar: 'သူက တကယ်လှတယ်။', english: 'He is really cool.' }
+]},
+{ id: '4402', korean: '미끄럽다', myanmar: 'ချောသည်', english: 'To be slippery', pos: 'adjective', level: 'basic', examples: [
+  { korean: '바닥이 미끄러워요.', myanmar: 'ကြမ်းပြင်က ချောတယ်။', english: 'The floor is slippery.' }
+]},
+{ id: '4403', korean: '미안하다', myanmar: 'စိတ်မကောင်းပါဘူး', english: 'To be sorry', pos: 'adjective', level: 'basic', examples: [
+  { korean: '정말 미안해요.', myanmar: 'တကယ်စိတ်မကောင်းပါဘူး။', english: 'I\'m really sorry.' }
+]},
+{ id: '4404', korean: '미지근하다', myanmar: 'နွေးဆွေးသည်', english: 'To be lukewarm', pos: 'adjective', level: 'basic', examples: [
+  { korean: '커피가 미지근해요.', myanmar: 'ကော်ဖီက နွေးဆွေးတယ်။', english: 'The coffee is lukewarm.' }
+]},
+{ id: '4405', korean: '무겁다', myanmar: 'လေးလံသည်', english: 'To be heavy', pos: 'adjective', level: 'basic', examples: [
+  { korean: '가방이 무거워요.', myanmar: 'အိတ်လေးတယ်။', english: 'The bag is heavy.' }
+]},
+{ id: '4406', korean: '모자라다', myanmar: 'မလုံလောက်သည်', english: 'To be insufficient', pos: 'adjective', level: 'basic', examples: [
+  { korean: '시간이 모자라요.', myanmar: 'အချိန်မလုံလောက်ဘူး။', english: 'There isn\'t enough time.' }
+]},
+{ id: '4407', korean: '무료', myanmar: 'အခမဲ့', english: 'Free (of charge)', pos: 'adjective', level: 'basic', examples: [
+  { korean: '이 서비스는 무료예요.', myanmar: 'ဒီဝန်ဆောင်မှုက အခမဲ့ပါ။', english: 'This service is free.' }
+]},
+{ id: '4408', korean: '모두', myanmar: 'အားလုံး', english: 'All/Every', pos: 'adverb', level: 'basic', examples: [
+  { korean: '모두 함께 가요.', myanmar: 'အားလုံး အတူတူသွားကြမယ်။', english: 'Let\'s all go together.' }
+]},
+{ id: '4409', korean: '매일', myanmar: 'နေ့တိုင်း', english: 'Every day', pos: 'adverb', level: 'basic', examples: [
+  { korean: '매일 운동해요.', myanmar: 'နေ့တိုင်း လေ့ကျင့်ခန်းလုပ်တယ်။', english: 'I exercise every day.' }
+]},
+{ id: '4410', korean: '먼저', myanmar: 'အရင်ဆုံး', english: 'First', pos: 'adverb', level: 'basic', examples: [
+  { korean: '먼저 하세요.', myanmar: 'အရင်လုပ်ပါ။', english: 'Please go first.' }
+]},
+{ id: '4411', korean: '멀리', myanmar: 'ဝေးဝေး', english: 'Far (away)', pos: 'adverb', level: 'basic', examples: [
+  { korean: '멀리서 왔어요.', myanmar: 'ဝေးဝေးက လာခဲ့တယ်။', english: 'I came from far away.' }
+]},
+{ id: '4412', korean: '마침', myanmar: 'ကံအားလျော်စွာ', english: 'Just in time/Luckily', pos: 'adverb', level: 'basic', examples: [
+  { korean: '마침 잘 오셨어요.', myanmar: 'ကံအားလျော်စွာ ကောင်းကောင်းရောက်လာတယ်။', english: 'You came just in time.' }
+]},
+{ id: '4413', korean: '매우', myanmar: 'အလွန်', english: 'Very/Extremely', pos: 'adverb', level: 'basic', examples: [
+  { korean: '매우 중요해요.', myanmar: 'အလွန်အရေးကြီးတယ်။', english: 'It\'s very important.' }
+]},
+{ id: '4414', korean: '마다', myanmar: 'တိုင်း', english: 'Every (each)', pos: 'suffix', level: 'basic', examples: [
+  { korean: '주말마다 등산해요.', myanmar: 'အပတ်တိုင်း တောင်တက်တယ်။', english: 'I hike every weekend.' }
+]},
+{ id: '4415', korean: '막', myanmar: 'ခုမှ/ရုတ်တရက်', english: 'Just now/Roughly', pos: 'adverb', level: 'basic', examples: [
+  { korean: '지금 막 도착했어요.', myanmar: 'ခုမှ ရောက်တယ်။', english: 'I just arrived.' }
+]},
+{ id: '4416', korean: '무조건', myanmar: 'အခြေအနေမခွဲခြားဘဲ/မည်သည့်အခြေအနေမှာမဆို', english: 'Unconditionally/By all means', pos: 'adverb', level: 'basic', examples: [
+  { korean: '무조건 믿어요.', myanmar: 'အခြေအနေမခွဲခြားဘဲ ယုံကြည်တယ်။', english: 'I believe unconditionally.' }
+]},
+{ id: '4417', korean: '막상', myanmar: 'တကယ်တမ်း/လက်တွေ့မှာ', english: 'In reality/When it comes down to it', pos: 'adverb', level: 'basic', examples: [
+  { korean: '막상 해보니 어려웠어요.', myanmar: 'တကယ်တမ်းလုပ်ကြည့်တော့ ခက်ခဲတယ်။', english: 'It was difficult when I actually tried it.' }
+]},
+{ id: '4418', korean: '마찬가지', myanmar: 'အလားတူ/အတူတူ', english: 'The same/Alike', pos: 'adjective/adverb', level: 'basic', examples: [
+  { korean: '나도 마찬가지예요.', myanmar: 'ငါလည်း အလားတူပဲ။', english: 'Me too.' }
+]},
+{ id: '4419', korean: '마지막으로', myanmar: 'နောက်ဆုံးအနေဖြင့်', english: 'Lastly/Finally', pos: 'adverb', level: 'basic', examples: [
+  { korean: '마지막으로 질문 있어요.', myanmar: 'နောက်ဆုံးအနေဖြင့် မေးခွန်းရှိတယ်။', english: 'Finally, I have a question.' }
+]},
+{ id: '4420', korean: '마음껏', myanmar: 'စိတ်ကြိုက်', english: 'As much as one wants/To one\'s heart\'s content', pos: 'adverb', level: 'basic', examples: [
+  { korean: '마음껏 먹으세요.', myanmar: 'စိတ်ကြိုက်စားပါ။', english: 'Eat to your heart\'s content.' }
+]},
+{ id: '4421', korean: '마땅하다', myanmar: 'သင့်တော်သည်', english: 'To be proper/To be suitable', pos: 'adjective', level: 'basic', examples: [
+  { korean: '그것이 마땅한 일이에요.', myanmar: 'ဒါက သင့်တော်တဲ့အလုပ်ပါ။', english: 'That\'s the proper thing to do.' }
+]},
+{ id: '4422', korean: '명확하다', myanmar: 'ရှင်းလင်းသည်', english: 'To be clear/To be obvious', pos: 'adjective', level: 'basic', examples: [
+  { korean: '답이 명확해요.', myanmar: 'အဖြေက ရှင်းလင်းတယ်။', english: 'The answer is clear.' }
+]},
+{ id: '4423', korean: '무심코', myanmar: 'ပေါ့ပေါ့ဆဆ/မတော်တဆ', english: 'Carelessly/Unintentionally', pos: 'adverb', level: 'basic', examples: [
+  { korean: '무심코 말을 잘못했어요.', myanmar: 'ပေါ့ပေါ့ဆဆ စကားမှားပြောခဲ့တယ်။', english: 'I carelessly said the wrong thing.' }
+]},
+{ id: '4424', korean: '미리', myanmar: 'ကြိုတင်၍', english: 'In advance', pos: 'adverb', level: 'basic', examples: [
+  { korean: '미리 예약했어요.', myanmar: 'ကြိုတင်ပြီး ဘွတ်ကင်လုပ်ခဲ့တယ်။', english: 'I booked in advance.' }
+]},
+{ id: '4425', korean: '물론', myanmar: 'ဟုတ်ကဲ့/ကျိန်းသေ', english: 'Of course', pos: 'adverb', level: 'basic', examples: [
+  { korean: '물론 참석할게요.', myanmar: 'ကျိန်းသေ တက်ရောက်မယ်။', english: 'Of course I\'ll attend.' }
+]},
+{ id: '4426', korean: '못지않게', myanmar: 'မနိမ့်ကျစွာ', english: 'No less than/Just as much as', pos: 'adverb', level: 'basic', examples: [
+  { korean: '그녀도 그 못지않게 똑똑해요.', myanmar: 'သူမလည်း သူနဲ့ မနိမ့်ကျစွာ ဉာဏ်ကောင်းတယ်။', english: 'She is just as smart as him.' }
+]},
+{ id: '4427', korean: '매섭다', myanmar: 'ပြင်းထန်သည်/ခက်ထန်သည်', english: 'To be fierce/To be severe', pos: 'adjective', level: 'basic', examples: [
+  { korean: '바람이 매섭게 불어요.', myanmar: 'လေက ပြင်းထန်စွာ တိုက်ခတ်တယ်။', english: 'The wind blows fiercely.' }
+]},
+{ id: '4428', korean: '뭉툭하다', myanmar: 'တုံးသည် (ခဲတံ)/ထူသည်', english: 'To be blunt/To be thick', pos: 'adjective', level: 'basic', examples: [
+  { korean: '연필이 뭉툭해요.', myanmar: 'ခဲတံက တုံးတယ်။', english: 'The pencil is blunt.' }
+]},
+{ id: '4429', korean: '무궁무진하다', myanmar: 'အဆုံးအစမရှိသည်', english: 'To be endless/To be infinite', pos: 'adjective', level: 'basic', examples: [
+  { korean: '그의 재능은 무궁무진해요.', myanmar: 'သူ့ရဲ့အရည်အချင်းက အဆုံးအစမရှိဘူး။', english: 'His talent is endless.' }
+]},
+{ id: '4430', korean: '미덥다', myanmar: 'ယုံကြည်စိတ်ချရသည်', english: 'To be trustworthy/To be reliable', pos: 'adjective', level: 'basic', examples: [
+  { korean: '그는 미덥지 못한 사람이에요.', myanmar: 'သူက ယုံကြည်စိတ်ချရတဲ့လူ မဟုတ်ဘူး။', english: 'He is an untrustworthy person.' }
+]},
+{ id: '4431', korean: '말끔하다', myanmar: 'သန့်ရှင်းသပ်ရပ်သည်', english: 'To be clean/To be neat', pos: 'adjective', level: 'basic', examples: [
+  { korean: '옷차림이 말끔해요.', myanmar: 'ဝတ်စားဆင်ယင်မှုက သန့်ရှင်းသပ်ရပ်တယ်။', english: 'His attire is neat.' }
+]},
+{ id: '4432', korean: '모호하다', myanmar: 'ဝိုးတဝါးဖြစ်သည်/မရှင်းလင်း', english: 'To be vague/To be ambiguous', pos: 'adjective', level: 'basic', examples: [
+  { korean: '답변이 모호했어요.', myanmar: 'အဖြေက ဝိုးတဝါးဖြစ်တယ်။', english: 'The answer was vague.' }
+]},
+{ id: '4433', korean: '무지개색', myanmar: 'သက်တံရောင်', english: 'Rainbow colored', pos: 'adjective', level: 'basic', examples: [
+  { korean: '무지개색 옷을 입었어요.', myanmar: 'သက်တံရောင် အဝတ်ကို ဝတ်ခဲ့တယ်။', english: 'I wore rainbow colored clothes.' }
+]},
+{ id: '4434', korean: '면밀히', myanmar: 'သေချာစွာ', english: 'Closely/Carefully', pos: 'adverb', level: 'basic', examples: [
+  { korean: '상황을 면밀히 검토했어요.', myanmar: 'အခြေအနေကို သေချာစွာ စစ်ဆေးခဲ့တယ်။', english: 'I carefully reviewed the situation.' }
+]},
+{ id: '4435', korean: '몸소', myanmar: 'ကိုယ်တိုင်', english: 'Personally/In person', pos: 'adverb', level: 'basic', examples: [
+  { korean: '그는 몸소 와서 도와줬어요.', myanmar: 'သူက ကိုယ်တိုင်လာပြီး ကူညီခဲ့တယ်။', english: 'He came in person and helped.' }
+]},
+{ id: '4436', korean: '무려', myanmar: 'တကယ်ကို', english: 'As many as/No less than (surprisingly large amount)', pos: 'adverb', level: 'basic', examples: [
+  { korean: '무려 10시간이나 걸렸어요.', myanmar: 'တကယ်ကို ၁၀ နာရီတောင် ကြာခဲ့တယ်။', english: 'It took no less than 10 hours.' }
+]},
+{ id: '4437', korean: '미약하다', myanmar: 'အားနည်းသည်', english: 'To be weak/To be insignificant', pos: 'adjective', level: 'basic', examples: [
+  { korean: '그의 영향력은 미약했어요.', myanmar: 'သူ့ရဲ့ဩဇာအာဏာက အားနည်းတယ်။', english: 'His influence was insignificant.' }
+]},
+{ id: '4438', korean: '만연하다', myanmar: 'ပြန့်နှံ့သည်', english: 'To be rampant/To spread widely', pos: 'adjective', level: 'basic', examples: [
+  { korean: '질병이 만연했어요.', myanmar: 'ရောဂါပြန့်နှံ့တယ်။', english: 'The disease was rampant.' }
+]},
+{ id: '4439', korean: '명료하다', myanmar: 'ရှင်းလင်းပြတ်သားသည်', english: 'To be clear and concise', pos: 'adjective', level: 'basic', examples: [
+  { korean: '설명이 명료해요.', myanmar: 'ရှင်းပြချက်က ရှင်းလင်းပြတ်သားတယ်။', english: 'The explanation is clear and concise.' }
+]},
+{ id: '4440', korean: '모질다', myanmar: 'ရက်စက်သည်', english: 'To be cruel/To be harsh', pos: 'adjective', level: 'basic', examples: [
+  { korean: '모진 말을 하지 마세요.', myanmar: 'ရက်စက်တဲ့စကား မပြောပါနဲ့။', english: 'Don\'t say cruel words.' }
+]},
+{ id: '4441', korean: '무시무시하다', myanmar: 'ကြောက်မက်ဖွယ်ကောင်းသည်', english: 'To be terrifying/To be dreadful', pos: 'adjective', level: 'basic', examples: [
+  { korean: '무시무시한 꿈을 꾸었어요.', myanmar: 'ကြောက်မက်ဖွယ်ကောင်းတဲ့ အိပ်မက်မက်ခဲ့တယ်။', english: 'I had a terrifying dream.' }
+]},
+{ id: '4442', korean: '미흡하다', myanmar: 'မပြည့်စုံသေးသည်', english: 'To be inadequate/To be insufficient', pos: 'adjective', level: 'basic', examples: [
+  { korean: '준비가 미흡했어요.', myanmar: 'ပြင်ဆင်မှုက မပြည့်စုံသေးဘူး။', english: 'The preparation was inadequate.' }
+]},
+{ id: '4443', korean: '매끄럽다', myanmar: 'ချောမွေ့သည်', english: 'To be smooth/To be sleek', pos: 'adjective', level: 'basic', examples: [
+  { korean: '피부가 매끄러워요.', myanmar: 'အသားအရေက ချောမွေ့တယ်။', english: 'My skin is smooth.' }
+]},
+{ id: '4444', korean: '만만하다', myanmar: 'လွယ်ကူသည်/ပေါ့ပေါ့ပါးပါး', english: 'To be easy/To be manageable', pos: 'adjective', level: 'basic', examples: [
+  { korean: '그는 만만한 사람이 아니에요.', myanmar: 'သူက လွယ်ကူတဲ့လူ မဟုတ်ဘူး။', english: 'He\'s not an easy person to deal with.' }
+]},
+{ id: '4445', korean: '명심하다', myanmar: 'စိတ်ထဲစွဲမှတ်ထားသည်', english: 'To bear in mind', pos: 'adverb', level: 'basic', examples: [
+  { korean: '그의 조언을 명심하세요.', myanmar: 'သူ့ရဲ့အကြံဉာဏ်ကို စိတ်ထဲစွဲမှတ်ထားပါ။', english: 'Bear his advice in mind.' }
+]},
+{ id: '4446', korean: '무분별하다', myanmar: 'အသိအမြင်မရှိသည်', english: 'To be indiscriminate/To be thoughtless', pos: 'adjective', level: 'basic', examples: [
+  { korean: '무분별한 행동은 피해야 해요.', myanmar: 'အသိအမြင်မရှိတဲ့ လုပ်ရပ်တွေကို ရှောင်ရှားသင့်တယ်။', english: 'One should avoid indiscriminate actions.' }
+]},
+{ id: '4447', korean: '민감하다', myanmar: 'ထိလွယ်ရှလွယ်ဖြစ်သည်', english: 'To be sensitive', pos: 'adjective', level: 'basic', examples: [
+  { korean: '그는 감정에 민감해요.', myanmar: 'သူက ခံစားချက်ကို ထိလွယ်ရှလွယ်ဖြစ်တယ်။', english: 'He is sensitive to emotions.' }
+]},
+{ id: '4448', korean: '맞서다', myanmar: 'ရင်ဆိုင်သည်', english: 'To confront', pos: 'adverb', level: 'basic', examples: [
+  { korean: '두려움에 맞서다.', myanmar: 'ကြောက်စိတ်ကို ရင်ဆိုင်တယ်။', english: 'To confront one\'s fear.' }
+]},
+{ id: '4449', korean: '만족하다', myanmar: 'ကျေနပ်သည်', english: 'To be satisfied', pos: 'adjective', level: 'basic', examples: [
+  { korean: '결과에 만족해요.', myanmar: 'ရလဒ်ကို ကျေနပ်တယ်။', english: 'I\'m satisfied with the result.' }
+]},
+{ id: '4450', korean: '멀쩡하다', myanmar: 'ကောင်းမွန်သည်/အကောင်းပကတိ', english: 'To be fine/To be intact', pos: 'adjective', level: 'basic', examples: [
+  { korean: '다행히 차는 멀쩡했어요.', myanmar: 'ကံကောင်းစွာနဲ့ ကားက ကောင်းမွန်တယ်။', english: 'Fortunately, the car was fine.' }
+]},
+{ id: '4451', korean: '무모하다', myanmar: 'အဆုံးအဖြတ်မရှိသည်', english: 'To be reckless/To be rash', pos: 'adjective', level: 'basic', examples: [
+  { korean: '무모한 도전은 위험해요.', myanmar: 'အဆုံးအဖြတ်မရှိတဲ့ စိန်ခေါ်မှုက အန္တရာယ်ရှိတယ်။', english: 'Reckless challenges are dangerous.' }
+]},
+{ id: '4452', korean: '미련하다', myanmar: 'မိုက်မဲသည်', english: 'To be foolish/To be stupid', pos: 'adjective', level: 'basic', examples: [
+  { korean: '미련한 생각이에요.', myanmar: 'မိုက်မဲတဲ့အတွေးပါ။', english: 'It\'s a foolish thought.' }
+]},
+{ id: '4453', korean: '면밀히', myanmar: 'သေချာစွာ', english: 'Carefully', pos: 'adverb', level: 'basic', examples: [
+  { korean: '보고서를 면밀히 검토했어요.', myanmar: 'အစီရင်ခံစာကို သေချာစွာ စစ်ဆေးခဲ့တယ်။', english: 'I carefully reviewed the report.' }
+]},
+{ id: '4454', korean: '몸소', myanmar: 'ကိုယ်တိုင်', english: 'In person', pos: 'adverb', level: 'basic', examples: [
+  { korean: '그는 몸소 시범을 보였어요.', myanmar: 'သူက ကိုယ်တိုင် သရုပ်ပြခဲ့တယ်။', english: 'He demonstrated it in person.' }
+]},
+{ id: '4455', korean: '무척', myanmar: 'အလွန်', english: 'Very much', pos: 'adverb', level: 'basic', examples: [
+  { korean: '무척 보고 싶어요.', myanmar: 'အရမ်းတွေ့ချင်တယ်။', english: 'I miss you very much.' }
+]},
+{ id: '4456', korean: '묵묵히', myanmar: 'တိတ်ဆိတ်စွာ', english: 'Silently/Quietly', pos: 'adverb', level: 'basic', examples: [
+  { korean: '그는 묵묵히 일을 했어요.', myanmar: 'သူက တိတ်ဆိတ်စွာ အလုပ်လုပ်ခဲ့တယ်။', english: 'He worked silently.' }
+]},
+{ id: '4457', korean: '미심쩍다', myanmar: 'သံသယဖြစ်ဖွယ်ကောင်းသည်', english: 'To be doubtful/To be suspicious', pos: 'adjective', level: 'basic', examples: [
+  { korean: '그의 말이 미심쩍었어요.', myanmar: 'သူ့စကားက သံသယဖြစ်ဖွယ်ကောင်းတယ်။', english: 'His words were doubtful.' }
+]},
+{ id: '4458', korean: '마치', myanmar: 'まるで', english: 'As if', pos: 'adverb', level: 'basic', examples: [
+  { korean: '마치 눈앞에 있는 것 같아요.', myanmar: 'မျက်စိရှေ့မှာရှိနေသလိုပဲ။', english: 'It\'s as if it\'s right before my eyes.' }
+]},
+{ id: '4459', korean: '망측하다', myanmar: 'အရှက်ရဖွယ်ကောင်းသည်', english: 'To be shameful/To be outrageous', pos: 'adjective', level: 'basic', examples: [
+  { korean: '망측한 행동을 했어요.', myanmar: 'အရှက်ရဖွယ်ကောင်းတဲ့ လုပ်ရပ်ကို လုပ်ခဲ့တယ်။', english: 'He did something outrageous.' }
+]},
+{ id: '4460', korean: '무감각하다', myanmar: 'ခံစားချက်မရှိသည်', english: 'To be insensitive/To be numb', pos: 'adjective', level: 'basic', examples: [
+  { korean: '그는 감정에 무감각해요.', myanmar: 'သူက ခံစားချက်မရှိဘူး။', english: 'He is insensitive to emotions.' }
+]},
+{ id: '4461', korean: '미덥지 못하다', myanmar: 'ယုံကြည်စိတ်ချလို့မရ', english: 'To be unreliable', pos: 'adjective', level: 'basic', examples: [
+  { korean: '그는 미덥지 못한 사람이에요.', myanmar: 'သူက ယုံကြည်စိတ်ချလို့မရတဲ့ လူပါ။', english: 'He is an unreliable person.' }
+]},
+{ id: '4462', korean: '명료하게', myanmar: 'ရှင်းလင်းပြတ်သားစွာ', english: 'Clearly and concisely', pos: 'adverb', level: 'basic', examples: [
+  { korean: '명료하게 설명해 주세요.', myanmar: 'ရှင်းလင်းပြတ်သားစွာ ရှင်းပြပေးပါ။', english: 'Please explain clearly and concisely.' }
+]},
+{ id: '4463', korean: '무조건', myanmar: 'အခြေအနေမခွဲခြားဘဲ', english: 'Unconditionally', pos: 'adverb', level: 'basic', examples: [
+  { korean: '무조건적인 사랑.', myanmar: 'အခြေအနေမခွဲခြားတဲ့ ချစ်ခြင်းမေတ္တာ။', english: 'Unconditional love.' }
+]},
+{ id: '4464', korean: '묘하다', myanmar: 'ထူးဆန်းသည်', english: 'To be strange/To be peculiar', pos: 'adjective', level: 'basic', examples: [
+  { korean: '묘한 분위기예요.', myanmar: 'ထူးဆန်းတဲ့ အငွေ့အသက်ပါ။', english: 'It\'s a strange atmosphere.' }
+]},
+{ id: '4465', korean: '무궁무진하게', myanmar: 'အဆုံးအစမရှိစွာ', english: 'Endlessly/Infinitely', pos: 'adverb', level: 'basic', examples: [
+  { korean: '아이디어는 무궁무진하게 샘솟아요.', myanmar: 'စိတ်ကူးတွေက အဆုံးအစမရှိစွာ ပေါ်ပေါက်လာတယ်။', english: 'Ideas spring up endlessly.' }
+]},
+{ id: '4466', korean: '매섭게', myanmar: 'ပြင်းထန်စွာ', english: 'Fiercely/Severely', pos: 'adverb', level: 'basic', examples: [
+  { korean: '바람이 매섭게 불었어요.', myanmar: 'လေက ပြင်းထန်စွာ တိုက်ခတ်တယ်။', english: 'The wind blew fiercely.' }
+]},
+{ id: '4467', korean: '모호하게', myanmar: 'ဝိုးတဝါးဖြစ်အောင်', english: 'Vaguely/Ambiguously', pos: 'adverb', level: 'basic', examples: [
+  { korean: '질문에 모호하게 대답했어요.', myanmar: 'မေးခွန်းကို ဝိုးတဝါးဖြစ်အောင် ဖြေခဲ့တယ်။', english: 'He answered the question vaguely.' }
+]},
+{ id: '4468', korean: '미약하게', myanmar: 'အားနည်းစွာ', english: 'Weakly/Insignificantly', pos: 'adverb', level: 'basic', examples: [
+  { korean: '그의 목소리가 미약하게 들렸어요.', myanmar: 'သူ့ရဲ့အသံက အားနည်းစွာ ကြားရတယ်။', english: 'His voice was faintly heard.' }
+]},
+{ id: '4469', korean: '만연하게', myanmar: 'ပြန့်နှံ့စွာ', english: 'Rampantly/Widely', pos: 'adverb', level: 'basic', examples: [
+  { korean: '소문이 만연하게 퍼졌어요.', myanmar: 'သတင်းက ပြန့်နှံ့စွာ ပျံ့နှံ့တယ်။', english: 'The rumor spread rampantly.' }
+]},
+{ id: '4470', korean: '모질게', myanmar: 'ရက်စက်စွာ', english: 'Cruelly/Harshly', pos: 'adverb', level: 'basic', examples: [
+  { korean: '그는 모질게 비난했어요.', myanmar: 'သူက ရက်စက်စွာ ပြစ်တင်ရှုတ်ချခဲ့တယ်။', english: 'He harshly criticized.' }
+]},
+{ id: '4471', korean: '무시무시하게', myanmar: 'ကြောက်မက်ဖွယ်ကောင်းစွာ', english: 'Terrifyingly/Dreadfully', pos: 'adverb', level: 'basic', examples: [
+  { korean: '그는 무시무시하게 화를 냈어요.', myanmar: 'သူက ကြောက်မက်ဖွယ်ကောင်းစွာ ဒေါသထွက်တယ်။', english: 'He got terrifyingly angry.' }
+]},
+{ id: '4472', korean: '미흡하게', myanmar: 'မပြည့်စုံစွာ', english: 'Inadequately/Insufficiently', pos: 'adverb', level: 'basic', examples: [
+  { korean: '일을 미흡하게 처리했어요.', myanmar: 'အလုပ်ကို မပြည့်စုံစွာ လုပ်ဆောင်ခဲ့တယ်။', english: 'I handled the work inadequately.' }
+]},
+{ id: '4473', korean: '매끄럽게', myanmar: 'ချောမွေ့စွာ', english: 'Smoothly/Sleekly', pos: 'adverb', level: 'basic', examples: [
+  { korean: '머리카락이 매끄럽게 흘러내려요.', myanmar: 'ဆံပင်တွေက ချောမွေ့စွာ စီးဆင်းတယ်။', english: 'Her hair flows down smoothly.' }
+]},
+{ id: '4474', korean: '만만하게', myanmar: 'လွယ်ကူစွာ/ပေါ့ပေါ့ပါးပါး', english: 'Easily/Lightly', pos: 'adverb', level: 'basic', examples: [
+  { korean: '그는 일을 만만하게 봤어요.', myanmar: 'သူက အလုပ်ကို လွယ်ကူစွာ မြင်တယ်။', english: 'He took the work lightly.' }
+]},
+{ id: '4475', korean: '무분별하게', myanmar: 'အသိအမြင်မရှိစွာ', english: 'Indiscriminately/Thoughtlessly', pos: 'adverb', level: 'basic', examples: [
+  { korean: '무분별하게 행동하지 마세요.', myanmar: 'အသိအမြင်မရှိစွာ မလုပ်ပါနဲ့။', english: 'Don\'t act thoughtlessly.' }
+]},
+{ id: '4476', korean: '민감하게', myanmar: 'ထိလွယ်ရှလွယ်စွာ', english: 'Sensitively', pos: 'adverb', level: 'basic', examples: [
+  { korean: '그는 비판에 민감하게 반응했어요.', myanmar: 'သူက ဝေဖန်မှုကို ထိလွယ်ရှလွယ်စွာ တုံ့ပြန်တယ်။', english: 'He reacted sensitively to criticism.' }
+]},
+{ id: '4477', korean: '만족스럽게', myanmar: 'ကျေနပ်ဖွယ်ရာ', english: 'Satisfactorily', pos: 'adverb', level: 'basic', examples: [
+  { korean: '결과가 만족스러웠어요.', myanmar: 'ရလဒ်က ကျေနပ်ဖွယ်ရာကောင်းတယ်။', english: 'The result was satisfactory.' }
+]},
+{ id: '4478', korean: '멀쩡하게', myanmar: 'ကောင်းမွန်စွာ/အကောင်းပကတိ', english: 'Fine/Intact', pos: 'adverb', level: 'basic', examples: [
+  { korean: '사고 후에도 멀쩡했어요.', myanmar: 'မတော်တဆဖြစ်ပြီးနောက်မှာတောင် ကောင်းမွန်တယ်။', english: 'He was fine even after the accident.' }
+]},
+{ id: '4479', korean: '무모하게', myanmar: 'အဆုံးအဖြတ်မရှိစွာ', english: 'Recklessly/Rashly', pos: 'adverb', level: 'basic', examples: [
+  { korean: '무모하게 행동했어요.', myanmar: 'အဆုံးအဖြတ်မရှိစွာ လုပ်ခဲ့တယ်။', english: 'He acted recklessly.' }
+]},
+{ id: '4480', korean: '미련하게', myanmar: 'မိုက်မဲစွာ', english: 'Foolishly/Stupidly', pos: 'adverb', level: 'basic', examples: [
+  { korean: '미련하게 시간을 낭비했어요.', myanmar: 'မိုက်မဲစွာ အချိန်ဖြုန်းခဲ့တယ်။', english: 'I foolishly wasted time.' }
+]},
+{ id: '4481', korean: '명확히', myanmar: 'ရှင်းလင်းစွာ', english: 'Clearly/Obviously', pos: 'adverb', level: 'basic', examples: [
+  { korean: '문제를 명확히 이해했어요.', myanmar: 'ပြဿနာကို ရှင်းလင်းစွာ နားလည်ခဲ့တယ်။', english: 'I clearly understood the problem.' }
+]},
+{ id: '4482', korean: '묘하게', myanmar: 'ထူးဆန်းစွာ', english: 'Strangely/Peculiarly', pos: 'adverb', level: 'basic', examples: [
+  { korean: '묘하게 끌려요.', myanmar: 'ထူးဆန်းစွာ ဆွဲဆောင်ခံရတယ်။', english: 'I\'m strangely attracted.' }
+]},
+{ id: '4483', korean: '무감각하게', myanmar: 'ခံစားချက်မရှိစွာ', english: 'Insensitively/Numbly', pos: 'adverb', level: 'basic', examples: [
+  { korean: '그는 무감각하게 반응했어요.', myanmar: 'သူက ခံစားချက်မရှိစွာ တုံ့ပြန်တယ်။', english: 'He reacted insensitively.' }
+]},
+{ id: '4484', korean: '만족할 만큼', myanmar: 'ကျေနပ်လောက်အောင်', english: 'To one\'s satisfaction', pos: 'adverb phrase', level: 'basic', examples: [
+  { korean: '만족할 만큼 노력했어요.', myanmar: 'ကျေနပ်လောက်အောင် ကြိုးစားခဲ့တယ်။', english: 'I tried to my satisfaction.' }
+]},
+{ id: '4485', korean: '모든 면에서', myanmar: 'မျက်နှာတိုင်းမှာ', english: 'In every aspect', pos: 'adverb phrase', level: 'basic', examples: [
+  { korean: '그는 모든 면에서 완벽해요.', myanmar: 'သူက မျက်နှာတိုင်းမှာ ပြည့်စုံတယ်။', english: 'He is perfect in every aspect.' }
+]},
+{ id: '4486', korean: '묵묵히', myanmar: 'တိတ်ဆိတ်စွာ', english: 'Quietly/In silence', pos: 'adverb', level: 'basic', examples: [
+  { korean: '묵묵히 기다렸어요.', myanmar: 'တိတ်ဆိတ်စွာ စောင့်ဆိုင်းခဲ့တယ်။', english: 'I waited in silence.' }
+]},
+{ id: '4487', korean: '미심쩍게', myanmar: 'သံသယဖြစ်ဖွယ်ကောင်းစွာ', english: 'Doubtfully/Suspiciously', pos: 'adverb', level: 'basic', examples: [
+  { korean: '미심쩍게 쳐다봤어요.', myanmar: 'သံသယဖြစ်ဖွယ်ကောင်းစွာ ကြည့်ခဲ့တယ်။', english: 'I looked at him doubtfully.' }
+]},
+{ id: '4488', korean: '마치다', myanmar: 'ပြီးဆုံးသည်', english: 'To finish', pos: 'verb', level: 'basic', examples: [
+  { korean: '공부를 마치다.', myanmar: 'စာကျက်ပြီးတယ်။', english: 'To finish studying.' }
+]},
+{ id: '4489', korean: '명심하다', myanmar: 'စိတ်ထဲစွဲမှတ်ထားသည်', english: 'To keep in mind', pos: 'verb', level: 'basic', examples: [
+  { korean: '그의 말을 명심했어요.', myanmar: 'သူ့စကားကို စိတ်ထဲစွဲမှတ်ထားခဲ့တယ်။', english: 'I kept his words in mind.' }
+]},
+{ id: '4490', korean: '무관하다', myanmar: 'မသက်ဆိုင်သည်', english: 'To be irrelevant/To be unrelated', pos: 'adjective', level: 'basic', examples: [
+  { korean: '그것은 이 문제와 무관해요.', myanmar: 'ဒါက ဒီပြဿနာနဲ့ မသက်ဆိုင်ဘူး။', english: 'That\'s irrelevant to this issue.' }
+]},
+{ id: '4491', korean: '미묘하다', myanmar: 'နူးညံ့သည်/သိမ်မွေ့သည်', english: 'To be subtle/To be delicate', pos: 'adjective', level: 'basic', examples: [
+  { korean: '미묘한 차이가 있어요.', myanmar: 'နူးညံ့တဲ့ခြားနားချက်ရှိတယ်။', english: 'There\'s a subtle difference.' }
+]},
+{ id: '4492', korean: '매섭게', myanmar: 'ပြင်းထန်စွာ', english: 'Fiercely', pos: 'adverb', level: 'basic', examples: [
+  { korean: '매섭게 추워요.', myanmar: 'ပြင်းထန်စွာ အေးတယ်။', english: 'It\'s fiercely cold.' }
+]},
+{ id: '4493', korean: '모질게', myanmar: 'ရက်စက်စွာ', english: 'Cruelly', pos: 'adverb', level: 'basic', examples: [
+  { korean: '모질게 대했어요.', myanmar: 'ရက်စက်စွာ ပြုမူခဲ့တယ်။', english: 'He treated me cruelly.' }
+]},
+{ id: '4494', korean: '무엇보다도', myanmar: 'ဘာထက်မဆို', english: 'Above all else', pos: 'adverb', level: 'basic', examples: [
+  { korean: '무엇보다도 건강이 최우선이에요.', myanmar: 'ဘာထက်မဆို ကျန်းမာရေးက အဓိကပဲ။', english: 'Above all else, health is paramount.' }
+]},
+{ id: '4495', korean: '미진하다', myanmar: 'မပြည့်စုံသေးသည်', english: 'To be incomplete/To be unfinished', pos: 'adjective', level: 'basic', examples: [
+  { korean: '보고서가 아직 미진해요.', myanmar: 'အစီရင်ခံစာက မပြည့်စုံသေးဘူး။', english: 'The report is still incomplete.' }
+]},
+{ id: '4496', korean: '말할 것도 없이', myanmar: 'ပြောစရာမလိုဘဲ', english: 'Needless to say/Of course', pos: 'adverb phrase', level: 'basic', examples: [
+  { korean: '말할 것도 없이 그는 최고의 선수예요.', myanmar: 'ပြောစရာမလိုဘဲ သူက အကောင်းဆုံးကစားသမားပါ။', english: 'Needless to say, he is the best player.' }
+]},
+
+// ===== ㅁ CONSONANT BASIC WORDS - CATEGORY 5: NATURE & ENVIRONMENT (4497-4596) =====
+
+{ id: '4497', korean: '물', myanmar: 'ရေ', english: 'Water', pos: 'noun', level: 'basic', examples: [
+  { korean: '깨끗한 물을 마시고 싶어요.', myanmar: 'သန့်ရှင်းတဲ့ရေ သောက်ချင်တယ်။', english: 'I want to drink clean water.' }
+]},
+{ id: '4498', korean: '모래', myanmar: 'သဲ', english: 'Sand', pos: 'noun', level: 'basic', examples: [
+  { korean: '바닷가 모래는 부드러워요.', myanmar: 'ပင်လယ်ကမ်းခြေသဲက နူးညံ့တယ်။', english: 'The beach sand is soft.' }
+]},
+{ id: '4499', korean: '뭍', myanmar: 'ကုန်းမြေ', english: 'Land (as opposed to sea)', pos: 'noun', level: 'basic', examples: [
+  { korean: '배가 뭍으로 올라왔어요.', myanmar: 'လှေက ကုန်းမြေပေါ် ရောက်လာတယ်။', english: 'The boat came ashore.' }
+]},
+{ id: '4500', korean: '메마르다', myanmar: 'ခြောက်သွေ့သည် (မြေ)', english: 'To be dry/Arid (land)', pos: 'adjective', level: 'basic', examples: [
+  { korean: '땅이 메말랐어요.', myanmar: 'မြေကြီး ခြောက်သွေ့နေတယ်။', english: 'The land is dry.' }
+]},
+{ id: '4501', korean: '모기', myanmar: 'ခြင်', english: 'Mosquito', pos: 'noun', level: 'basic', examples: [
+  { korean: '모기가 많아서 잠을 못 잤어요.', myanmar: 'ခြင်များလို့ အိပ်မရခဲ့ဘူး။', english: 'There were many mosquitoes, so I couldn\'t sleep.' }
+]},
+{ id: '4502', korean: '미세먼지', myanmar: 'အမှုန်အမွှား', english: 'Fine dust', pos: 'noun', level: 'basic', examples: [
+  { korean: '오늘은 미세먼지가 심해요.', myanmar: 'ဒီနေ့ အမှုန်အမွှားတွေ များတယ်။', english: 'Fine dust is severe today.' }
+]},
+{ id: '4503', korean: '무지개', myanmar: 'သက်တံ', english: 'Rainbow', pos: 'noun', level: 'basic', examples: [
+  { korean: '비 온 뒤 무지개가 떴어요.', myanmar: 'မိုးရွာပြီးနောက် သက်တံပေါ်လာတယ်။', english: 'A rainbow appeared after the rain.' }
+]},
+{ id: '4504', korean: '바다', myanmar: 'ပင်လယ်', english: 'Sea/Ocean', pos: 'noun', level: 'basic', examples: [
+  { korean: '푸른 바다가 아름다워요.', myanmar: 'ပြာလဲ့တဲ့ပင်လယ်က လှတယ်။', english: 'The blue sea is beautiful.' }
+]},
+{ id: '4505', korean: '산', myanmar: 'တောင်', english: 'Mountain', pos: 'noun', level: 'basic', examples: [
+  { korean: '높은 산에 올라갔어요.', myanmar: 'မြင့်တဲ့တောင်ပေါ် တက်ခဲ့တယ်။', english: 'I climbed a high mountain.' }
+]},
+{ id: '4506', korean: '강', myanmar: 'မြစ်', english: 'River', pos: 'noun', level: 'basic', examples: [
+  { korean: '강에서 낚시를 했어요.', myanmar: 'မြစ်ထဲမှာ ငါးဖမ်းခဲ့တယ်။', english: 'I fished in the river.' }
+]},
+{ id: '4507', korean: '숲', myanmar: 'သစ်တော', english: 'Forest/Woods', pos: 'noun', level: 'basic', examples: [
+  { korean: '숲 속을 산책했어요.', myanmar: 'သစ်တောထဲမှာ လမ်းလျှောက်ခဲ့တယ်။', english: 'I walked in the woods.' }
+]},
+{ id: '4508', korean: '하늘', myanmar: 'ကောင်းကင်', english: 'Sky', pos: 'noun', level: 'basic', examples: [
+  { korean: '푸른 하늘이 보여요.', myanmar: 'ပြာလဲ့တဲ့ကောင်းကင်ကို မြင်ရတယ်။', english: 'I can see the blue sky.' }
+]},
+{ id: '4509', korean: '구름', myanmar: 'တိမ်', english: 'Cloud', pos: 'noun', level: 'basic', examples: [
+  { korean: '하얀 구름이 떠다녀요.', myanmar: 'ဖြူဖွေးတဲ့တိမ်တွေ လွင့်မျောနေတယ်။', english: 'White clouds are floating.' }
+]},
+{ id: '4510', korean: '태양', myanmar: 'နေမင်း', english: 'Sun', pos: 'noun', level: 'basic', examples: [
+  { korean: '태양이 뜨거워요.', myanmar: 'နေမင်း ပူတယ်။', english: 'The sun is hot.' }
+]},
+{ id: '4511', korean: '달', myanmar: 'လ', english: 'Moon', pos: 'noun', level: 'basic', examples: [
+  { korean: '밤하늘에 달이 밝게 빛나요.', myanmar: 'ညကောင်းကင်မှာ လက တောက်ပစွာ လင်းနေတယ်။', english: 'The moon shines brightly in the night sky.' }
+]},
+{ id: '4512', korean: '별', myanmar: 'ကြယ်', english: 'Star', pos: 'noun', level: 'basic', examples: [
+  { korean: '밤에 별이 많이 보여요.', myanmar: 'ညဘက် ကြယ်တွေ အများကြီး မြင်ရတယ်။', english: 'Many stars are visible at night.' }
+]},
+{ id: '4513', korean: '꽃', myanmar: 'ပန်း', english: 'Flower', pos: 'noun', level: 'basic', examples: [
+  { korean: '예쁜 꽃을 보았어요.', myanmar: 'လှတဲ့ပန်းကို မြင်ခဲ့တယ်။', english: 'I saw a beautiful flower.' }
+]},
+{ id: '4514', korean: '나무', myanmar: 'သစ်ပင်', english: 'Tree', pos: 'noun', level: 'basic', examples: [
+  { korean: '나무가 많아서 시원해요.', myanmar: 'သစ်ပင်တွေ များလို့ အေးတယ်။', english: 'It\'s cool because there are many trees.' }
+]},
+{ id: '4515', korean: '풀', myanmar: 'မြက်', english: 'Grass', pos: 'noun', level: 'basic', examples: [
+  { korean: '잔디밭에 풀이 많아요.', myanmar: 'မြက်ခင်းပြင်မှာ မြက်တွေများတယ်။', english: 'There\'s a lot of grass on the lawn.' }
+]},
+{ id: '4516', korean: '돌', myanmar: 'ကျောက်တုံး', english: 'Stone/Rock', pos: 'noun', level: 'basic', examples: [
+  { korean: '큰 돌을 옮겼어요.', myanmar: 'ကြီးတဲ့ကျောက်တုံးကို ရွှေ့ခဲ့တယ်။', english: 'I moved a large stone.' }
+]},
+{ id: '4517', korean: '흙', myanmar: 'မြေကြီး', english: 'Soil/Dirt', pos: 'noun', level: 'basic', examples: [
+  { korean: '정원에 흙이 좋아요.', myanmar: 'ဥယျာဉ်မှာ မြေကြီးက ကောင်းတယ်။', english: 'The soil in the garden is good.' }
+]},
+{ id: '4518', korean: '바람', myanmar: 'လေ', english: 'Wind', pos: 'noun', level: 'basic', examples: [
+  { korean: '바람이 시원하게 불어요.', myanmar: 'လေက အေးအေးလေး တိုက်ခတ်တယ်။', english: 'The wind blows coolly.' }
+]},
+{ id: '4519', korean: '눈', myanmar: 'နှင်း', english: 'Snow', pos: 'noun', level: 'basic', examples: [
+  { korean: '눈이 많이 왔어요.', myanmar: 'နှင်းတွေ အများကြီးကျခဲ့တယ်။', english: 'It snowed a lot.' }
+]},
+{ id: '4520', korean: '비', myanmar: 'မိုး', english: 'Rain', pos: 'noun', level: 'basic', examples: [
+  { korean: '비가 내려요.', myanmar: 'မိုးရွာတယ်။', english: 'It\'s raining.' }
+]},
+{ id: '4521', korean: '해', myanmar: 'နေ', english: 'Sun', pos: 'noun', level: 'basic', examples: [
+  { korean: '해가 떴어요.', myanmar: 'နေထွက်ပြီ။', english: 'The sun has risen.' }
+]},
+{ id: '4522', korean: '구름', myanmar: 'တိမ်', english: 'Cloud', pos: 'noun', level: 'basic', examples: [
+  { korean: '하얀 구름이 하늘에 있어요.', myanmar: 'ကောင်းကင်မှာ ဖြူဖွေးတဲ့တိမ်တွေ ရှိတယ်။', english: 'White clouds are in the sky.' }
+]},
+{ id: '4523', korean: '땅', myanmar: 'မြေ', english: 'Ground/Land', pos: 'noun', level: 'basic', examples: [
+  { korean: '땅이 넓어요.', myanmar: 'မြေက ကျယ်တယ်။', english: 'The land is wide.' }
+]},
+{ id: '4524', korean: '물결', myanmar: 'လှိုင်း', english: 'Wave (of water)', pos: 'noun', level: 'basic', examples: [
+  { korean: '호수에 잔잔한 물결이 일어요.', myanmar: 'ရေကန်မှာ တိတ်ဆိတ်တဲ့လှိုင်းလေးတွေ ပေါ်လာတယ်။', english: 'Gentle ripples form on the lake.' }
+]},
+{ id: '4525', korean: '숲속', myanmar: 'သစ်တောထဲ', english: 'Inside the forest', pos: 'noun', level: 'basic', examples: [
+  { korean: '숲속 공기가 맑아요.', myanmar: 'သစ်တောထဲက လေက ကြည်လင်တယ်။', english: 'The air in the forest is clear.' }
+]},
+{ id: '4526', korean: '하천', myanmar: 'ချောင်း', english: 'Stream/Small river', pos: 'noun', level: 'basic', examples: [
+  { korean: '하천에서 물고기가 살아요.', myanmar: 'ချောင်းထဲမှာ ငါးတွေနေတယ်။', english: 'Fish live in the stream.' }
+]},
+{ id: '4527', korean: '메아리', myanmar: 'ပဲ့တင်သံ', english: 'Echo', pos: 'noun', level: 'basic', examples: [
+  { korean: '산에서 메아리가 들려요.', myanmar: 'တောင်ပေါ်က ပဲ့တင်သံ ကြားရတယ်။', english: 'I can hear an echo from the mountain.' }
+]},
+{ id: '4528', korean: '미세물질', myanmar: 'အမှုန်အမွှားဒြပ်', english: 'Microscopic substance', pos: 'noun', level: 'basic', examples: [
+  { korean: '공기 중에 미세물질이 떠다녀요.', myanmar: 'လေထဲမှာ အမှုန်အမွှားဒြပ်တွေ လွင့်မျောနေတယ်။', english: 'Microscopic substances are floating in the air.' }
+]},
+{ id: '4529', korean: '물안개', myanmar: 'ရေမြူ', english: 'Water mist/Fog', pos: 'noun', level: 'basic', examples: [
+  { korean: '새벽에 강가에 물안개가 꼈어요.', myanmar: 'မနက်အစောပိုင်း မြစ်ဘေးမှာ ရေမြူဆိုင်းတယ်။', english: 'Water mist hung over the riverside in the early morning.' }
+]},
+{ id: '4530', korean: '물웅덩이', myanmar: 'ရေကန်လေး', english: 'Puddle', pos: 'noun', level: 'basic', examples: [
+  { korean: '비 온 뒤 물웅덩이가 생겼어요.', myanmar: 'မိုးရွာပြီးနောက် ရေကန်လေးတွေ ဖြစ်ပေါ်လာတယ်။', english: 'Puddles formed after the rain.' }
+]},
+{ id: '4531', korean: '모래사장', myanmar: 'သဲသောင်ပြင်', english: 'Sandy beach', pos: 'noun', level: 'basic', examples: [
+  { korean: '모래사장에서 조개를 주웠어요.', myanmar: 'သဲသောင်ပြင်မှာ ခရုကောက်ခဲ့တယ်။', english: 'I picked up seashells on the sandy beach.' }
+]},
+{ id: '4532', korean: '맑은 날', myanmar: 'ကြည်လင်သောနေ့', english: 'Clear day', pos: 'noun', level: 'basic', examples: [
+  { korean: '맑은 날씨에 소풍을 갔어요.', myanmar: 'ကြည်လင်သောရာသီဥတုမှာ ပျော်ပွဲစားသွားခဲ့တယ်။', english: 'We went on a picnic on a clear day.' }
+]},
+{ id: '4533', korean: '물의 흐름', myanmar: 'ရေစီးကြောင်း', english: 'Water flow', pos: 'noun', level: 'basic', examples: [
+  { korean: '물의 흐름이 빨라요.', myanmar: 'ရေစီးကြောင်းက မြန်တယ်။', english: 'The water flow is fast.' }
+]},
+{ id: '4534', korean: '만년설', myanmar: 'အမြဲတမ်းနှင်း', english: 'Perpetual snow/Glacier', pos: 'noun', level: 'basic', examples: [
+  { korean: '산 정상에는 만년설이 쌓여 있어요.', myanmar: 'တောင်ထိပ်မှာ အမြဲတမ်းနှင်းတွေ ပုံနေတယ်။', english: 'Perpetual snow accumulates on the mountain peak.' }
+]},
+{ id: '4535', korean: '만조', myanmar: 'ဒီရေအတက်', english: 'High tide', pos: 'noun', level: 'basic', examples: [
+  { korean: '만조 때 바닷물이 많이 들어왔어요.', myanmar: 'ဒီရေအတက်မှာ ပင်လယ်ရေတွေ အများကြီးဝင်လာတယ်။', english: 'The tide came in a lot at high tide.' }
+]},
+{ id: '4536', korean: '모래 폭풍', myanmar: 'သဲမုန်တိုင်း', english: 'Sandstorm', pos: 'noun', level: 'basic', examples: [
+  { korean: '사막에서 모래 폭풍을 만났어요.', myanmar: 'သဲကန္တာရမှာ သဲမုန်တိုင်းနဲ့ ကြုံတွေ့ခဲ့တယ်။', english: 'I encountered a sandstorm in the desert.' }
+]},
+{ id: '4537', korean: '물방울', myanmar: 'ရေစက်', english: 'Water drop', pos: 'noun', level: 'basic', examples: [
+  { korean: '나뭇잎에 물방울이 맺혔어요.', myanmar: 'သစ်ရွက်ပေါ်မှာ ရေစက်တွေ ခိုတွယ်နေတယ်။', english: 'Water drops formed on the leaf.' }
+]},
+{ id: '4538', korean: '명당', myanmar: 'မြေကောင်း', english: 'Propitious site/Auspicious place (often in geomancy)', pos: 'noun', level: 'basic', examples: [
+  { korean: '이곳은 명당이라고 해요.', myanmar: 'ဒီနေရာက မြေကောင်းလို့ ပြောတယ်။', english: 'They say this is an auspicious place.' }
+]},
+{ id: '4539', korean: '물살', myanmar: 'ရေစီးနှုန်း', english: 'Current (of water)/Water flow speed', pos: 'noun', level: 'basic', examples: [
+  { korean: '강물살이 빨라요.', myanmar: 'မြစ်ရေစီးနှုန်းက မြန်တယ်။', english: 'The river current is fast.' }
+]},
+{ id: '4540', korean: '메마른 땅', myanmar: 'ခြောက်သွေ့သောမြေ', english: 'Arid land', pos: 'noun phrase', level: 'basic', examples: [
+  { korean: '메마른 땅에서는 농사가 어려워요.', myanmar: 'ခြောက်သွေ့သောမြေမှာ စိုက်ပျိုးရေးက ခက်တယ်။', english: 'Farming is difficult on arid land.' }
+]},
+{ id: '4541', korean: '맑은 공기', myanmar: 'ကြည်လင်သောလေ', english: 'Clear air', pos: 'noun phrase', level: 'basic', examples: [
+  { korean: '산에서는 맑은 공기를 마실 수 있어요.', myanmar: 'တောင်ပေါ်မှာ ကြည်လင်သောလေကို ရှူရှိုက်နိုင်တယ်။', english: 'You can breathe clear air in the mountains.' }
+]},
+{ id: '4542', korean: '물웅덩이', myanmar: 'ရေအိုင်', english: 'Pond/Pool', pos: 'noun', level: 'basic', examples: [
+  { korean: '아이들이 물웅덩이에서 놀아요.', myanmar: 'ကလေးတွေ ရေအိုင်ထဲမှာ ဆော့တယ်။', english: 'Children play in the puddle.' }
+]},
+{ id: '4543', korean: '모래성', myanmar: 'သဲရဲတိုက်', english: 'Sandcastle', pos: 'noun', level: 'basic', examples: [
+  { korean: '아이들이 모래사장에서 모래성을 쌓았어요.', myanmar: 'ကလေးတွေ သဲသောင်ပြင်မှာ သဲရဲတိုက် တည်ဆောက်ခဲ့တယ်။', english: 'The children built a sandcastle on the sandy beach.' }
+]},
+{ id: '4544', korean: '물의 신', myanmar: 'ရေနတ်ဘုရား', english: 'Water god', pos: 'noun', level: 'basic', examples: [
+  { korean: '옛날 사람들은 물의 신을 믿었어요.', myanmar: 'ရှေးခေတ်လူတွေက ရေနတ်ဘုရားကို ယုံကြည်ခဲ့တယ်။', english: 'Ancient people believed in the water god.' }
+]},
+{ id: '4545', korean: '미세입자', myanmar: 'အဏုမြူအမှုန်', english: 'Micro-particle', pos: 'noun', level: 'basic', examples: [
+  { korean: '대기 중에 미세입자가 떠다녀요.', myanmar: 'လေထုထဲမှာ အဏုမြူအမှုန်တွေ လွင့်မျောနေတယ်။', english: 'Micro-particles are floating in the atmosphere.' }
+]},
+{ id: '4546', korean: '맑아지다', myanmar: 'ကြည်လင်လာသည်', english: 'To become clear (weather/water)', pos: 'verb', level: 'basic', examples: [
+  { korean: '날씨가 맑아지고 있어요.', myanmar: 'ရာသီဥတု ကြည်လင်လာတယ်။', english: 'The weather is clearing up.' }
+]},
+{ id: '4547', korean: '물에 잠기다', myanmar: 'ရေလွှမ်းမိုးခံရသည်', english: 'To be submerged in water/To be flooded', pos: 'verb phrase', level: 'basic', examples: [
+  { korean: '태풍으로 마을이 물에 잠겼어요.', myanmar: 'မုန်တိုင်းကြောင့် ရွာ ရေလွှမ်းမိုးခံရတယ်။', english: 'The village was flooded due to the typhoon.' }
+]},
+{ id: '4548', korean: '뭍으로 나오다', myanmar: 'ကုန်းပေါ်တက်လာသည်', english: 'To come ashore/To come out onto land', pos: 'verb phrase', level: 'basic', examples: [
+  { korean: '거북이가 뭍으로 나와 알을 낳았어요.', myanmar: 'လိပ်က ကုန်းပေါ်တက်လာပြီး ဥ ဥခဲ့တယ်။', english: 'The turtle came ashore and laid its eggs.' }
+]},
+{ id: '4549', korean: '목마른', myanmar: 'ရေငတ်သော', english: 'Thirsty', pos: 'adjective', level: 'basic', examples: [
+  { korean: '목마른 사슴이 물을 찾아 헤매요.', myanmar: 'ရေငတ်နေတဲ့ သမင်က ရေရှာရင်း လှည့်လည်တယ်။', english: 'A thirsty deer wanders in search of water.' }
+]},
+
+
+
 ];
 
 
