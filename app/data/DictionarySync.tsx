@@ -262,5 +262,8 @@ export function mergeApprovedWords(
     });
   });
   
-  return merged.sort((a, b) => a.korean.localeCompare(b.korean));
+  // Filter out entries without korean property and sort safely
+  return merged
+    .filter(entry => entry.korean && typeof entry.korean === 'string')
+    .sort((a, b) => a.korean.localeCompare(b.korean));
 }
