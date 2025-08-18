@@ -270,9 +270,10 @@ export const dictionaryEntries = [
     { korean: '음악을 들어요.', myanmar: 'ဂီတကြားတယ်။', english: 'I listen to music.' }
   ]},
   // ㄹ words (rieul)
+  /*
   { id: '95', korean: '라면', myanmar: 'လမန်', english: 'Ramen', pos: 'noun', level: 'basic', examples: [
     { korean: '라면을 끓였어요.', myanmar: 'လမန် ချက်ခဲ့တယ်။', english: 'I cooked ramen.' }
-  ]},
+  ]},*/
   { id: '96', korean: '리듬', myanmar: 'စည်းချက်', english: 'Rhythm', pos: 'noun', level: 'intermediate', examples: [
     { korean: '음악의 리듬이 좋아요.', myanmar: 'ဂီတရဲ့ စည်းချက်က ကောင်းတယ်။', english: 'The rhythm of the music is good.' }
   ]},
@@ -11215,6 +11216,1144 @@ export const dictionaryEntries = [
   { id: '3720', korean: '들깨 드레싱', myanmar: 'နှမ်းနက်သုပ်ဆော့စ်', english: 'Perilla dressing', pos: 'noun', level: 'basic', examples: [
     { korean: '샐러드에 들깨 드레싱을 뿌리면 고소해요.', myanmar: 'သုပ်ထဲ နှမ်းနက်သုပ်ဆော့စ်လောင်းထည့်ရင် မွှေးတယ်။', english: 'It\'s savory when you put perilla dressing on salad.' }
   ]},
+ 
+
+//
+  //
+  //ㄹ Start from here
+ // ===================== ㄹ CONSONANT BASIC WORDS - CATEGORY 1: FOOD & DRINKS 
+  { id: '3721', korean: '라면', myanmar: 'ခေါက်ဆွဲပြုတ်', english: 'Ramen', pos: 'noun', level: 'basic', examples: [
+    { korean: '라면 한 그릇 주세요.', myanmar: 'ခေါက်ဆွဲပြုတ် တစ်ပွဲ ပေးပါ။', english: 'Please give me a bowl of ramen.' }
+    ]},
+    { id: '3722', korean: '레몬', myanmar: 'သံပရာသီး', english: 'Lemon', pos: 'noun', level: 'basic', examples: [
+    { korean: '레몬 한 개 주세요.', myanmar: 'သံပရာသီး တစ်လုံး ပေးပါ။', english: 'Please give me one lemon.' }
+    ]},
+    { id: '3723', korean: '로스트 치킨', myanmar: 'ကြက်ကင်', english: 'Roast chicken', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '로스트 치킨이 맛있어요.', myanmar: 'ကြက်ကင်က အရသာရှိတယ်။', english: 'The roast chicken is delicious.' }
+    ]},
+    { id: '3724', korean: '러시아 음식', myanmar: 'ရုရှားအစားအစာ', english: 'Russian food', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '러시아 음식을 좋아해요.', myanmar: 'ရုရှားအစားအစာကို ကြိုက်တယ်။', english: 'I like Russian food.' }
+    ]},
+    { id: '3725', korean: '라떼', myanmar: 'လက်ဖက်ရည်နို့', english: 'Latte', pos: 'noun', level: 'basic', examples: [
+    { korean: '따뜻한 라떼 한 잔 주세요.', myanmar: 'နွေးထွေးတဲ့ လက်ဖက်ရည်နို့ တစ်ခွက် ပေးပါ။', english: 'Please give me a warm latte.' }
+    ]},
+    { id: '3726', korean: '라임', myanmar: 'သံပရာစိမ်း', english: 'Lime', pos: 'noun', level: 'basic', examples: [
+    { korean: '라임 주스 한 잔 마시고 싶어요.', myanmar: 'သံပရာစိမ်းဖျော်ရည် တစ်ခွက် သောက်ချင်တယ်။', english: 'I want to drink a glass of lime juice.' }
+    ]},
+    { id: '3727', korean: '랍스터', myanmar: 'Lobster ပုစွန်', english: 'Lobster', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '랍스터가 비싸요.', myanmar: 'Lobster ပုစွန်က ဈေးကြီးတယ်။', english: 'Lobster is expensive.' }
+    ]},
+    { id: '3728', korean: '레드 와인', myanmar: 'ဝိုင်နီ', english: 'Red wine', pos: 'noun', level: 'basic', examples: [
+    { korean: '레드 와인을 좋아해요.', myanmar: 'ဝိုင်နီကို ကြိုက်တယ်။', english: 'I like red wine.' }
+    ]},
+    { id: '3729', korean: '리조또', myanmar: 'ဆန်ပြုတ်', english: 'Risotto', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '버섯 리조또를 주문했어요.', myanmar: 'မှိုဆန်ပြုတ်ကို မှာလိုက်တယ်။', english: 'I ordered mushroom risotto.' }
+    ]},
+    { id: '3730', korean: '로띠', myanmar: 'ရိုတီ', english: 'Roti (flatbread)', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '인도 로띠는 맛있어요.', myanmar: 'အိန္ဒိယ ရိုတီက အရသာရှိတယ်။', english: 'Indian roti is delicious.' }
+    ]},
+    { id: '3731', korean: '루콜라', myanmar: 'ရူကိုလာ', english: 'Arugula/Rucola', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '샐러드에 루콜라를 넣었어요.', myanmar: 'သုပ်ထဲမှာ ရူကိုလာကို ထည့်တယ်။', english: 'I put arugula in the salad.' }
+    ]},
+    { id: '3732', korean: '롤케이크', myanmar: 'လိပ်ကိတ်', english: 'Roll cake', pos: 'noun', level: 'basic', examples: [
+    { korean: '딸기 롤케이크를 먹고 싶어요.', myanmar: 'စတော်ဘယ်ရီ လိပ်ကိတ် စားချင်တယ်။', english: 'I want to eat strawberry roll cake.' }
+    ]},
+    { id: '3733', korean: '리치', myanmar: 'လိုင်ချီးသီး', english: 'Lychee', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '리치는 달고 맛있어요.', myanmar: 'လိုင်ချီးသီးက ချိုပြီး အရသာရှိတယ်။', english: 'Lychee is sweet and delicious.' }
+    ]},
+    { id: '3734', korean: '루바브', myanmar: 'ရူဘားဘ်', english: 'Rhubarb', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '루바브 파이를 만들었어요.', myanmar: 'ရူဘားဘ် ပိုင်ကို ပြုလုပ်လိုက်တယ်။', english: 'I made rhubarb pie.' }
+    ]},
+    { id: '3735', korean: '로즈마리', myanmar: 'ရောစမရီ', english: 'Rosemary', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '로즈마리 향이 좋아요.', myanmar: 'ရောစမရီ ရနံ့က ကောင်းတယ်။', english: 'Rosemary scent is good.' }
+    ]},
+    { id: '3736', korean: '레드향', myanmar: 'လိမ္မော်နီ (မျိုးစိတ်)', english: 'Red Hyang (citrus fruit)', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '레드향은 제주도 특산물이에요.', myanmar: 'လိမ္မော်နီ (မျိုးစိတ်) က ဂျယ်ဂျူကျွန်း ဒေသထွက် ပစ္စည်းပါ။', english: 'Red Hyang is a specialty of Jeju Island.' }
+    ]},
+    { id: '3737', korean: '리코타 치즈', myanmar: 'ရီကိုတာချိစ်', english: 'Ricotta cheese', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '리코타 치즈 샐러드를 먹었어요.', myanmar: 'ရီကိုတာချိစ် သုပ်ကို စားလိုက်တယ်။', english: 'I ate ricotta cheese salad.' }
+    ]},
+    { id: '3738', korean: '레몬즙', myanmar: 'သံပရာရည်', english: 'Lemon juice (extract)', pos: 'noun', level: 'basic', examples: [
+    { korean: '레몬즙을 짜서 넣으세요.', myanmar: 'သံပရာရည်ကို ညှစ်ပြီး ထည့်ပါ။', english: 'Squeeze and add lemon juice.' }
+    ]},
+    { id: '3739', korean: '로즈힙', myanmar: 'နှင်းဆီတင်ပါး', english: 'Rosehip', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '로즈힙 차는 몸에 좋아요.', myanmar: 'နှင်းဆီတင်ပါး လက်ဖက်ရည်က ကျန်းမာရေးအတွက် ကောင်းတယ်။', english: 'Rosehip tea is good for health.' }
+    ]},
+    { id: '3740', korean: '레드페퍼', myanmar: 'ငရုတ်ကောင်းနီ', english: 'Red pepper', pos: 'noun', level: 'basic', examples: [
+    { korean: '파스타에 레드페퍼를 뿌렸어요.', myanmar: 'ခေါက်ဆွဲပြုတ်မှာ ငရုတ်ကောင်းနီ ဖြူးလိုက်တယ်။', english: 'I sprinkled red pepper on the pasta.' }
+    ]},
+    { id: '3741', korean: '로메인 상추', myanmar: 'ရောမဆလပ်ရွက်', english: 'Romaine lettuce', pos: 'noun', level: 'basic', examples: [
+    { korean: '로메인 상추로 샐러드를 만들어요.', myanmar: 'ရောမဆလပ်ရွက်နဲ့ သုပ်လုပ်တယ်။', english: 'I make salad with romaine lettuce.' }
+    ]},
+    { id: '3742', korean: '랍스터 테일', myanmar: 'ဂဏန်းမဲ အမြီး', english: 'Lobster tail', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '랍스터 테일을 구웠어요.', myanmar: 'ဂဏန်းမဲ အမြီးကို ကင်လိုက်တယ်။', english: 'I grilled the lobster tail.' }
+    ]},
+    { id: '3743', korean: '레드 빈', myanmar: 'ပဲနီ', english: 'Red bean', pos: 'noun', level: 'basic', examples: [
+    { korean: '팥빙수에 레드 빈이 들어가요.', myanmar: 'ရေခဲသုပ်မှာ ပဲနီပါတယ်။', english: 'Red beans are in shaved ice dessert.' }
+    ]},
+    { id: '3744', korean: '로스팅 커피', myanmar: 'ကော်ဖီလှော်', english: 'Roasted coffee', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '로스팅 커피 향이 좋아요.', myanmar: 'ကော်ဖီလှော် ရနံ့က ကောင်းတယ်။', english: 'The aroma of roasted coffee is good.' }
+    ]},
+    { id: '3745', korean: '리코타 치즈 케이크', myanmar: 'ရီကိုတာချိစ်ကိတ်', english: 'Ricotta cheese cake', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '리코타 치즈 케이크는 부드러워요.', myanmar: 'ရီကိုတာချိစ်ကိတ်က နူးညံ့တယ်။', english: 'Ricotta cheese cake is soft.' }
+    ]},
+    { id: '3746', korean: '레드커리', myanmar: 'ဟင်းအနီ', english: 'Red curry', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '태국 레드커리가 매워요.', myanmar: 'ထိုင်းဟင်းအနီက စပ်တယ်။', english: 'Thai red curry is spicy.' }
+    ]},
+    { id: '3747', korean: '루바브 잼', myanmar: 'ရူဘားဘ် ယို', english: 'Rhubarb jam', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '루바브 잼을 빵에 발라 먹어요.', myanmar: 'ရူဘားဘ် ယိုကို ပေါင်မုန့်မှာ သုတ်စားတယ်။', english: 'I spread rhubarb jam on bread.' }
+    ]},
+    { id: '3748', korean: '리크', myanmar: 'လီခ် (ሽንကဲမျိုး)', english: 'Leek', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '수프에 리크를 넣었어요.', myanmar: 'ဟင်းချိုထဲမှာ လီခ် (ሽንကဲမျိုး) ထည့်တယ်။', english: 'I put leek in the soup.' }
+    ]},
+    { id: '3749', korean: '로켓', myanmar: 'ရိုကက် (အသီးအရွက်)', english: 'Rocket (arugula)', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '피자에 로켓을 올렸어요.', myanmar: 'ပီဇာမှာ ရိုကက် (အသီးအရွက်) တင်လိုက်တယ်။', english: 'I put rocket on the pizza.' }
+    ]},
+    { id: '3750', korean: '라코타 치즈', myanmar: 'ရီကိုတာချိစ် (အခြားနာမည်)', english: 'Ricotta cheese (another name)', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '라코타 치즈는 부드러운 맛이 나요.', myanmar: 'ရီကိုတာချိစ် (အခြားနာမည်) က နူးညံ့တဲ့ အရသာရှိတယ်။', english: 'Ricotta cheese has a soft taste.' }
+    ]},
+    { id: '3751', korean: '레몬그라스', myanmar: 'စပါးလင်', english: 'Lemongrass', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '태국 요리에 레몬그라스를 사용해요.', myanmar: 'ထိုင်းဟင်းလျာမှာ စပါးလင်ကို သုံးတယ်။', english: 'Lemongrass is used in Thai cuisine.' }
+    ]},
+    { id: '3752', korean: '리코타 샐러드', myanmar: 'ရီကိုတာသုပ်', english: 'Ricotta salad', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '가볍게 리코타 샐러드를 먹었어요.', myanmar: 'ပေါ့ပေါ့ပါးပါး ရီကိုတာသုပ်ကို စားလိုက်တယ်။', english: 'I had a light ricotta salad.' }
+    ]},
+    { id: '3753', korean: '레몬 머랭 파이', myanmar: 'သံပရာ မာရန်းပိုင်', english: 'Lemon meringue pie', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '레몬 머랭 파이는 달콤해요.', myanmar: 'သံပရာ မာရန်းပိုင်က ချိုတယ်။', english: 'Lemon meringue pie is sweet.' }
+    ]},
+    { id: '3754', korean: '로브스터 비스크', myanmar: 'ဂဏန်းမဲ ဟင်းရည်', english: 'Lobster bisque', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '따뜻한 로브스터 비스크를 마셨어요.', myanmar: 'နွေးထွေးတဲ့ ဂဏန်းမဲ ဟင်းရည်ကို သောက်လိုက်တယ်။', english: 'I drank warm lobster bisque.' }
+    ]},
+    { id: '3755', korean: '루바브 타르트', myanmar: 'ရူဘားဘ် တာ့ထ်', english: 'Rhubarb tart', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '새콤달콤한 루바브 타르트가 맛있어요.', myanmar: 'ချဉ်ပြုံးပြုံး ရူဘားဘ် တာ့ထ်က အရသာရှိတယ်။', english: 'The sweet and sour rhubarb tart is delicious.' }
+    ]},
+    { id: '3756', korean: '레드 와인 소스', myanmar: 'ဝိုင်နီ ဆော့စ်', english: 'Red wine sauce', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '스테이크에 레드 와인 소스를 곁들였어요.', myanmar: 'စတိတ်မှာ ဝိုင်နီ ဆော့စ်နဲ့ တွဲစားတယ်။', english: 'I served red wine sauce with steak.' }
+    ]},
+    { id: '3757', korean: '로즈메리 치킨', myanmar: 'ရောစမရီကြက်', english: 'Rosemary chicken', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '로즈메리 치킨을 집에서 만들었어요.', myanmar: 'ရောစမရီကြက်ကို အိမ်မှာ ပြုလုပ်လိုက်တယ်။', english: 'I made rosemary chicken at home.' }
+    ]},
+    { id: '3758', korean: '리코타 파스타', myanmar: 'ရီကိုတာခေါက်ဆွဲ', english: 'Ricotta pasta', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '크리미한 리코타 파스타를 좋아해요.', myanmar: 'ခရင်မ်ဆန်တဲ့ ရီကိုတာခေါက်ဆွဲကို ကြိုက်တယ်။', english: 'I like creamy ricotta pasta.' }
+    ]},
+    { id: '3759', korean: '레드벨벳 케이크', myanmar: 'ရေဒ်ဗယ်ဗက်ကိတ်', english: 'Red velvet cake', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '레드벨벳 케이크는 예쁘고 맛있어요.', myanmar: 'ရေဒ်ဗယ်ဗက်ကိတ်က လှပပြီး အရသာရှိတယ်။', english: 'Red velvet cake is beautiful and delicious.' }
+    ]},
+    { id: '3760', korean: '리코타 뇨끼', myanmar: 'ရီကိုတာ 뇨ကီ', english: 'Ricotta gnocchi', pos: 'noun', level: 'advanced', examples: [
+    { korean: '리코타 뇨끼는 부드러워요.', myanmar: 'ရီကိုတာ 뇨ကီက နူးညံ့တယ်။', english: 'Ricotta gnocchi is soft.' }
+    ]},
+    { id: '3761', korean: '루꼴라 피자', myanmar: 'ရူကိုလာ ပီဇာ', english: 'Arugula pizza', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '루꼴라 피자를 주문했어요.', myanmar: 'ရူကိုလာ ပီဇာကို မှာလိုက်တယ်။', english: 'I ordered arugula pizza.' }
+    ]},
+    { id: '3762', korean: '랍스터 샌드위치', myanmar: 'ဂဏန်းမဲ အသားညှပ်ပေါင်မုန့်', english: 'Lobster sandwich', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '랍스터 샌드위치는 비싸지만 맛있어요.', myanmar: 'ဂဏန်းမဲ အသားညှပ်ပေါင်မုန့်က ဈေးကြီးပေမယ့် အရသာရှိတယ်။', english: 'Lobster sandwich is expensive but delicious.' }
+    ]},
+    { id: '3763', korean: '레몬 소르베', myanmar: 'သံပရာ ဆော်ဘေး', english: 'Lemon sorbet', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '더운 날 레몬 소르베가 최고예요.', myanmar: 'ပူတဲ့နေ့မှာ သံပရာ ဆော်ဘေးက အကောင်းဆုံးပဲ။', english: 'Lemon sorbet is the best on a hot day.' }
+    ]},
+    { id: '3764', korean: '로스트 비프', myanmar: 'အမဲသားကင်', english: 'Roast beef', pos: 'noun', level: 'basic', examples: [
+    { korean: '로스트 비프 샌드위치를 만들었어요.', myanmar: 'အမဲသားကင် အသားညှပ်ပေါင်မုန့်ကို ပြုလုပ်လိုက်တယ်။', english: 'I made roast beef sandwich.' }
+    ]},
+    { id: '3765', korean: '리코타 토스트', myanmar: 'ရီကိုတာ တိုစ့်', english: 'Ricotta toast', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '아침 식사로 리코타 토스트를 먹었어요.', myanmar: 'မနက်စာအဖြစ် ရီကိုတာ တိုစ့်ကို စားလိုက်တယ်။', english: 'I ate ricotta toast for breakfast.' }
+    ]},
+    { id: '3766', korean: '레몬 스쿼시', myanmar: 'သံပရာဖျော်ရည်', english: 'Lemon squash', pos: 'noun', level: 'basic', examples: [
+    { korean: '시원한 레몬 스쿼시 한 잔 마셨어요.', myanmar: 'အေးတဲ့ သံပရာဖျော်ရည် တစ်ခွက် သောက်လိုက်တယ်။', english: 'I drank a glass of cold lemon squash.' }
+    ]},
+    { id: '3767', korean: '로즈마리 감자', myanmar: 'ရောစမရီ အာလူး', english: 'Rosemary potatoes', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '로즈마리 감자는 스테이크와 잘 어울려요.', myanmar: 'ရောစမရီ အာလူးက စတိတ်နဲ့ လိုက်ဖက်တယ်။', english: 'Rosemary potatoes go well with steak.' }
+    ]},
+    { id: '3768', korean: '리코타 핫케이크', myanmar: 'ရီကိုတာ ပန်ကိတ်', english: 'Ricotta hotcake', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '부드러운 리코타 핫케이크가 좋아요.', myanmar: 'နူးညံ့တဲ့ ရီကိုတာ ပန်ကိတ်ကို ကြိုက်တယ်။', english: 'I like soft ricotta hotcake.' }
+    ]},
+    { id: '3769', korean: '루비 자몽', myanmar: 'ပန်းရောင်ကျွဲကော်သီး', english: 'Ruby grapefruit', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '루비 자몽은 달콤 쌉쌀해요.', myanmar: 'ပန်းရောင်ကျွဲကော်သီးက ချိုခါးတယ်။', english: 'Ruby grapefruit is sweet and bitter.' }
+    ]},
+    { id: '3770', korean: '로스트 포크', myanmar: 'ဝက်သားကင်', english: 'Roast pork', pos: 'noun', level: 'basic', examples: [
+    { korean: '로스트 포크를 저녁으로 먹었어요.', myanmar: 'ဝက်သားကင်ကို ညစာအဖြစ် စားလိုက်တယ်။', english: 'I ate roast pork for dinner.' }
+    ]},
+    { id: '3771', korean: '리코타 피자', myanmar: 'ရီကိုတာ ပီဇာ', english: 'Ricotta pizza', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '리코타 피자는 가볍고 맛있어요.', myanmar: 'ရီကိုတာ ပီဇာက ပေါ့ပြီး အရသာရှိတယ်။', english: 'Ricotta pizza is light and delicious.' }
+    ]},
+    { id: '3772', korean: '레몬 아이스티', myanmar: 'သံပရာ ရေခဲလက်ဖက်ရည်', english: 'Lemon iced tea', pos: 'noun', level: 'basic', examples: [
+    { korean: '더워서 레몬 아이스티를 마셨어요.', myanmar: 'ပူလို့ သံပရာ ရေခဲလက်ဖက်ရည်ကို သောက်လိုက်တယ်။', english: 'It was hot so I drank lemon iced tea.' }
+    ]},
+    { id: '3773', korean: '로스트 덕', myanmar: 'ဘဲကင်', english: 'Roast duck', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '중국식 로스트 덕은 아주 맛있어요.', myanmar: 'တရုတ်ဘဲကင်က အရမ်းအရသာရှိတယ်။', english: 'Chinese roast duck is very delicious.' }
+    ]},
+    { id: '3774', korean: '리코타 라비올리', myanmar: 'ရီကိုတာ ရာဗီအိုလီ', english: 'Ricotta ravioli', pos: 'noun', level: 'advanced', examples: [
+    { korean: '리코타 라비올리를 직접 만들었어요.', myanmar: 'ရီကိုတာ ရာဗီအိုလီကို ကိုယ်တိုင် ပြုလုပ်လိုက်တယ်။', english: 'I made ricotta ravioli myself.' }
+    ]},
+    { id: '3775', korean: '레몬 파운드 케이크', myanmar: 'သံပရာ ပါဝင်ကိတ်', english: 'Lemon pound cake', pos: 'noun', level: 'basic', examples: [
+    { korean: '커피와 레몬 파운드 케이크를 먹었어요.', myanmar: 'ကော်ဖီနဲ့ သံပရာ ပါဝင်ကိတ်ကို စားလိုက်တယ်။', english: 'I ate coffee and lemon pound cake.' }
+    ]},
+    { id: '3776', korean: '로메인 샐러드', myanmar: 'ရောမဆလပ်သုပ်', english: 'Romaine salad', pos: 'noun', level: 'basic', examples: [
+    { korean: '닭가슴살을 넣은 로메인 샐러드가 건강에 좋아요.', myanmar: 'ကြက်ရင်ဘတ်သား ထည့်ထားတဲ့ ရောမဆလပ်သုပ်က ကျန်းမာရေးအတွက် ကောင်းတယ်။', english: 'Romaine salad with chicken breast is good for health.' }
+    ]},
+    { id: '3777', korean: '리코타 치즈볼', myanmar: 'ရီကိုတာချိစ်ဘောလုံး', english: 'Ricotta cheese ball', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '리코타 치즈볼은 간식으로 좋아요.', myanmar: 'ရီကိုတာချိစ်ဘောလုံးက သရေစာအတွက် ကောင်းတယ်။', english: 'Ricotta cheese balls are good for snacks.' }
+    ]},
+    { id: '3778', korean: '레드 스 내퍼', myanmar: 'ငါးနီကြင်း', english: 'Red snapper', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '레드 스 내퍼를 구워서 먹었어요.', myanmar: 'ငါးနီကြင်းကို ကင်ပြီး စားလိုက်တယ်။', english: 'I grilled and ate red snapper.' }
+    ]},
+    { id: '3779', korean: '로브스터 롤', myanmar: 'ဂဏန်းမဲ လိပ်မုန့်', english: 'Lobster roll', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '뉴욕에서 로브스터 롤을 먹었어요.', myanmar: 'နယူးယောက်မှာ ဂဏန်းမဲ လိပ်မုန့်ကို စားလိုက်တယ်။', english: 'I ate a lobster roll in New York.' }
+    ]},
+    { id: '3780', korean: '리코타 피자 빵', myanmar: 'ရီကိုတာ ပီဇာပေါင်မုန့်', english: 'Ricotta pizza bread', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '리코타 피자 빵은 아침에 간단히 먹기 좋아요.', myanmar: 'ရီကိုတာ ပီဇာပေါင်မုန့်က မနက်ခင်းမှာ ရိုးရိုးရှင်းရှင်း စားဖို့ ကောင်းတယ်။', english: 'Ricotta pizza bread is good for a simple breakfast.' }
+    ]},
+    { id: '3781', korean: '레몬 타르트', myanmar: 'သံပရာ တာ့ထ်', english: 'Lemon tart', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '상큼한 레몬 타르트를 좋아해요.', myanmar: 'လန်းဆန်းတဲ့ သံပရာ တာ့ထ်ကို ကြိုက်တယ်။', english: 'I like refreshing lemon tart.' }
+    ]},
+    { id: '3782', korean: '로스트 치킨 샐러드', myanmar: 'ကြက်ကင် သုပ်', english: 'Roast chicken salad', pos: 'noun', level: 'basic', examples: [
+    { korean: '로스트 치킨 샐러드를 점심으로 먹었어요.', myanmar: 'ကြက်ကင် သုပ်ကို နေ့လယ်စာအဖြစ် စားလိုက်တယ်။', english: 'I ate roast chicken salad for lunch.' }
+    ]},
+    { id: '3783', korean: '리코타 팬케이크', myanmar: 'ရီကိုတာ ပန်ကိတ်', english: 'Ricotta pancake', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '리코타 팬케이크는 시럽과 잘 어울려요.', myanmar: 'ရီကိုတာ ပန်ကိတ်က ရည်ချိုနဲ့ လိုက်ဖက်တယ်။', english: 'Ricotta pancake goes well with syrup.' }
+    ]},
+    { id: '3784', korean: '레몬 마들렌', myanmar: 'သံပရာ မာဒလင်း', english: 'Lemon madeleine', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '레몬 마들렌은 커피와 함께 먹으면 맛있어요.', myanmar: 'သံပရာ မာဒလင်းက ကော်ဖီနဲ့အတူ စားရင် အရသာရှိတယ်။', english: 'Lemon madeleine is delicious with coffee.' }
+    ]},
+    { id: '3785', korean: '로스트 콜리플라워', myanmar: 'ပန်းဂေါ်ဖီကင်', english: 'Roasted cauliflower', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '로스트 콜리플라워는 건강한 사이드 메뉴예요.', myanmar: 'ပန်းဂေါ်ဖီကင်က ကျန်းမာရေးနဲ့ညီညွတ်တဲ့ ဘေးထွက်ဟင်းလျာပါ။', english: 'Roasted cauliflower is a healthy side dish.' }
+    ]},
+    { id: '3786', korean: '리코타 스콘', myanmar: 'ရီကိုတာ စကုန်း', english: 'Ricotta scone', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '부드러운 리코타 스콘을 만들었어요.', myanmar: 'နူးညံ့တဲ့ ရီကိုတာ စကုန်းကို ပြုလုပ်လိုက်တယ်။', english: 'I made soft ricotta scones.' }
+    ]},
+    { id: '3787', korean: '레몬 젤리', myanmar: 'သံပရာ ဂျယ်လီ', english: 'Lemon jelly', pos: 'noun', level: 'basic', examples: [
+    { korean: '디저트로 레몬 젤리를 먹었어요.', myanmar: 'အချိုပွဲအဖြစ် သံပရာ ဂျယ်လီကို စားလိုက်တယ်။', english: 'I ate lemon jelly for dessert.' }
+    ]},
+    { id: '3788', korean: '로스트 야채', myanmar: 'ဟင်းသီးဟင်းရွက်ကင်', english: 'Roasted vegetables', pos: 'noun', level: 'basic', examples: [
+    { korean: '로스트 야채는 어떤 요리에도 잘 어울려요.', myanmar: 'ဟင်းသီးဟင်းရွက်ကင်က ဘယ်ဟင်းလျာနဲ့မဆို လိုက်ဖက်တယ်။', english: 'Roasted vegetables go well with any dish.' }
+    ]},
+    { id: '3789', korean: '리코타 팬케이크 믹스', myanmar: 'ရီကိုတာ ပန်ကိတ် အသင့်ဖျော်', english: 'Ricotta pancake mix', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '리코타 팬케이크 믹스로 쉽게 만들었어요.', myanmar: 'ရီကိုတာ ပန်ကိတ် အသင့်ဖျော်နဲ့ လွယ်လွယ်ကူကူ ပြုလုပ်လိုက်တယ်။', english: 'I made it easily with ricotta pancake mix.' }
+    ]},
+    { id: '3790', korean: '레드 카베츠', myanmar: 'ဂေါ်ဖီထုပ်နီ', english: 'Red cabbage', pos: 'noun', level: 'basic', examples: [
+    { korean: '레드 카베츠 샐러드는 색깔이 예뻐요.', myanmar: 'ဂေါ်ဖီထုပ်နီ သုပ်က အရောင်လှတယ်။', english: 'Red cabbage salad has a beautiful color.' }
+    ]},
+    { id: '3791', korean: '루바브 콤포트', myanmar: 'ရူဘားဘ် ကွန်ပို့', english: 'Rhubarb compote', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '요거트에 루바브 콤포트를 넣어 먹었어요.', myanmar: 'ဒိန်ချဉ်မှာ ရူဘားဘ် ကွန်ပို့ကို ထည့်စားလိုက်တယ်။', english: 'I ate yogurt with rhubarb compote.' }
+    ]},
+    { id: '3792', korean: '리코타 치즈볼 파스타', myanmar: 'ရီကိုတာချိစ်ဘောလုံး ခေါက်ဆွဲ', english: 'Ricotta cheese ball pasta', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '리코타 치즈볼 파스타는 아이들이 좋아해요.', myanmar: 'ရီကိုတာချိစ်ဘောလုံး ခေါက်ဆွဲက ကလေးတွေ ကြိုက်တယ်။', english: 'Ricotta cheese ball pasta is popular with children.' }
+    ]},
+    { id: '3793', korean: '레몬 페스토', myanmar: 'သံပရာ ပက်စတို', english: 'Lemon pesto', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '파스타에 레몬 페스토를 넣었어요.', myanmar: 'ခေါက်ဆွဲပြုတ်မှာ သံပရာ ပက်စတိုကို ထည့်တယ်။', english: 'I put lemon pesto in the pasta.' }
+    ]},
+    { id: '3794', korean: '로스트 브로콜리', myanmar: 'ဘရိုကိုလီကင်', english: 'Roasted broccoli', pos: 'noun', level: 'basic', examples: [
+    { korean: '로스트 브로콜리는 올리브 오일과 소금만으로도 맛있어요.', myanmar: 'ဘရိုကိုလီကင်က သံလွင်ဆီနဲ့ ဆားနဲ့ပဲ အရသာရှိတယ်။', english: 'Roasted broccoli is delicious with just olive oil and salt.' }
+    ]},
+    { id: '3795', korean: '리코타 케이크', myanmar: 'ရီကိုတာကိတ်', english: 'Ricotta cake', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '리코타 케이크는 아침에 커피와 함께 좋아요.', myanmar: 'ရီကိုတာကိတ်က မနက်ခင်းမှာ ကော်ဖီနဲ့အတူ ကောင်းတယ်။', english: 'Ricotta cake is good with coffee in the morning.' }
+    ]},
+    { id: '3796', korean: '레몬 오일', myanmar: 'သံပရာဆီ', english: 'Lemon oil', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '샐러드 드레싱에 레몬 오일을 사용해요.', myanmar: 'သုပ်ဖျော်ရည်မှာ သံပရာဆီကို သုံးတယ်။', english: 'I use lemon oil in salad dressing.' }
+    ]},
+    { id: '3797', korean: '로스트 채소', myanmar: 'ကင်ထားသော ဟင်းသီးဟင်းရွက်', english: 'Roasted vegetables', pos: 'noun', level: 'basic', examples: [
+    { korean: '로스트 채소는 건강하고 맛있어요.', myanmar: 'ကင်ထားသော ဟင်းသီးဟင်းရွက်က ကျန်းမာရေးနဲ့ညီညွတ်ပြီး အရသာရှိတယ်။', english: 'Roasted vegetables are healthy and delicious.' }
+    ]},
+    { id: '3798', korean: '리코타 크림', myanmar: 'ရီကိုတာ ခရင်မ်', english: 'Ricotta cream', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '리코타 크림을 디저트에 올렸어요.', myanmar: 'ရီကိုတာ ခရင်မ်ကို အချိုပွဲမှာ တင်လိုက်တယ်။', english: 'I put ricotta cream on the dessert.' }
+    ]},
+    { id: '3799', korean: '레몬 워터', myanmar: 'သံပရာရေ', english: 'Lemon water', pos: 'noun', level: 'basic', examples: [
+    { korean: '매일 아침 레몬 워터를 마셔요.', myanmar: 'နေ့တိုင်း မနက်ခင်းမှာ သံပရာရေကို သောက်တယ်။', english: 'I drink lemon water every morning.' }
+    ]},
+    { id: '3800', korean: '로스트 양파', myanmar: 'ကြက်သွန်နီကင်', english: 'Roasted onion', pos: 'noun', level: 'basic', examples: [
+    { korean: '로스트 양파는 단맛이 나요.', myanmar: 'ကြက်သွန်နီကင်က ချိုတယ်။', english: 'Roasted onion has a sweet taste.' }
+    ]},
+    { id: '3801', korean: '리코타 푸딩', myanmar: 'ရီကိုတာ ပူတင်း', english: 'Ricotta pudding', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '리코타 푸딩은 부드러운 식감이에요.', myanmar: 'ရီကိုတာ ပူတင်းက နူးညံ့တဲ့ အထိအတွေ့ရှိတယ်။', english: 'Ricotta pudding has a soft texture.' }
+    ]},
+    { id: '3802', korean: '레몬 비네그레트', myanmar: 'သံပရာ ဗီနီဂရက်', english: 'Lemon vinaigrette', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '샐러드에 레몬 비네그레트를 뿌렸어요.', myanmar: 'သုပ်မှာ သံပရာ ဗီနီဂရက်ကို ဖြူးလိုက်တယ်။', english: 'I sprinkled lemon vinaigrette on the salad.' }
+    ]},
+    { id: '3803', korean: '로스트 치즈', myanmar: 'ချိစ်ကင်', english: 'Roasted cheese', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '로스트 치즈는 와인과 잘 어울려요.', myanmar: 'ချိစ်ကင်က ဝိုင်နဲ့ လိုက်ဖက်တယ်။', english: 'Roasted cheese goes well with wine.' }
+    ]},
+    { id: '3804', korean: '리코타 과일 샐러드', myanmar: 'ရီကိုတာ အသီးသုပ်', english: 'Ricotta fruit salad', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '리코타 과일 샐러드는 상큼해요.', myanmar: 'ရီကိုတာ အသီးသုပ်က လန်းဆန်းတယ်။', english: 'Ricotta fruit salad is refreshing.' }
+    ]},
+    { id: '3805', korean: '레몬 파인애플 주스', myanmar: 'သံပရာနာနတ်သီးဖျော်ရည်', english: 'Lemon pineapple juice', pos: 'noun', level: 'basic', examples: [
+    { korean: '새콤달콤한 레몬 파인애플 주스를 마셨어요.', myanmar: 'ချဉ်ပြုံးပြုံး သံပရာနာနတ်သီးဖျော်ရည်ကို သောက်လိုက်တယ်။', english: 'I drank sweet and sour lemon pineapple juice.' }
+    ]},
+    { id: '3806', korean: '로스트 버섯', myanmar: 'မှိုကင်', english: 'Roasted mushrooms', pos: 'noun', level: 'basic', examples: [
+    { korean: '로스트 버섯은 스테이크와 환상의 궁합이에요.', myanmar: 'မှိုကင်က စတိတ်နဲ့ အစုံလိုက်ဖက်တယ်။', english: 'Roasted mushrooms are a perfect match with steak.' }
+    ]},
+    { id: '3807', korean: '리코타 샌드위치', myanmar: 'ရီကိုတာ အသားညှပ်ပေါင်မုန့်', english: 'Ricotta sandwich', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '간단한 점심으로 리코타 샌드위치를 먹었어요.', myanmar: 'ရိုးရိုးရှင်းရှင်း နေ့လယ်စာအဖြစ် ရီကိုတာ အသားညှပ်ပေါင်မုန့်ကို စားလိုက်တယ်။', english: 'I had a ricotta sandwich for a simple lunch.' }
+    ]},
+    { id: '3808', korean: '레몬 파슬리', myanmar: 'သံပရာ ပါစလီ', english: 'Lemon parsley', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '생선 요리에 레몬 파슬리를 뿌렸어요.', myanmar: 'ငါးဟင်းလျာမှာ သံပရာ ပါစလီကို ဖြူးလိုက်တယ်။', english: 'I sprinkled lemon parsley on the fish dish.' }
+    ]},
+    { id: '3809', korean: '로스트 애호박', myanmar: 'ဖရုံကင်', english: 'Roasted zucchini', pos: 'noun', level: 'basic', examples: [
+    { korean: '로스트 애호박은 올리브 오일과 함께 구웠어요.', myanmar: 'ဖရုံကင်ကို သံလွင်ဆီနဲ့အတူ ကင်လိုက်တယ်။', english: 'I roasted zucchini with olive oil.' }
+    ]},
+    { id: '3810', korean: '리코타 파운드 케이크', myanmar: 'ရီကိုတာ ပါဝင်ကိတ်', english: 'Ricotta pound cake', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '촉촉한 리코타 파운드 케이크를 만들었어요.', myanmar: 'စိုစွတ်တဲ့ ရီကိုတာ ပါဝင်ကိတ်ကို ပြုလုပ်လိုက်တယ်။', english: 'I made moist ricotta pound cake.' }
+    ]},
+    { id: '3811', korean: '레몬 소스', myanmar: 'သံပရာဆော့စ်', english: 'Lemon sauce', pos: 'noun', level: 'basic', examples: [
+    { korean: '치킨에 레몬 소스를 뿌려 먹었어요.', myanmar: 'ကြက်သားမှာ သံပရာဆော့စ်ကို ဖြူးစားလိုက်တယ်။', english: 'I poured lemon sauce on the chicken and ate it.' }
+    ]},
+    { id: '3812', korean: '로스트 단호박', myanmar: 'ဖရုံသီးကင်', english: 'Roasted pumpkin', pos: 'noun', level: 'basic', examples: [
+    { korean: '로스트 단호박은 달고 맛있어요.', myanmar: 'ဖရုံသီးကင်က ချိုပြီး အရသာရှိတယ်။', english: 'Roasted pumpkin is sweet and delicious.' }
+    ]},
+    { id: '3813', korean: '리코타 타르트', myanmar: 'ရီကိုတာ တာ့ထ်', english: 'Ricotta tart', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '리코타 타르트는 디저트로 좋아요.', myanmar: 'ရီကိုတာ တာ့ထ်က အချိုပွဲအဖြစ် ကောင်းတယ်။', english: 'Ricotta tart is good for dessert.' }
+    ]},
+    { id: '3814', korean: '레몬 비스킷', myanmar: 'သံပရာ ဘီစကစ်', english: 'Lemon biscuit', pos: 'noun', level: 'basic', examples: [
+    { korean: '차와 함께 레몬 비스킷을 먹었어요.', myanmar: 'လက်ဖက်ရည်နဲ့အတူ သံပရာ ဘီစကစ်ကို စားလိုက်တယ်။', english: 'I ate lemon biscuit with tea.' }
+    ]},
+    { id: '3815', korean: '로스트 포테이토', myanmar: 'အာလူးကင်', english: 'Roasted potato', pos: 'noun', level: 'basic', examples: [
+    { korean: '로스트 포테이토는 겉은 바삭하고 속은 부드러워요.', myanmar: 'အာလူးကင်က အပြင်ဘက်က ကြွပ်ပြီး အတွင်းဘက်က နူးညံ့တယ်။', english: 'Roasted potato is crispy outside and soft inside.' }
+    ]},
+    { id: '3816', korean: '리코타 크림치즈', myanmar: 'ရီကိုတာ ခရင်မ်ချိစ်', english: 'Ricotta cream cheese', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '베이글에 리코타 크림치즈를 발라 먹었어요.', myanmar: 'ဘေဂယ်လ်မှာ ရီကိုတာ ခရင်မ်ချိစ်ကို သုတ်စားလိုက်တယ်။', english: 'I spread ricotta cream cheese on a bagel and ate it.' }
+    ]},
+    { id: '3817', korean: '레몬 마멀레이드', myanmar: 'သံပရာ မာမလိတ်', english: 'Lemon marmalade', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '레몬 마멀레이드를 빵에 발라 먹었어요.', myanmar: 'သံပရာ မာမလိတ်ကို ပေါင်မုန့်မှာ သုတ်စားတယ်။', english: 'I spread lemon marmalade on bread and ate it.' }
+    ]},
+    { id: '3818', korean: '로스트 채소 샐러드', myanmar: 'ကင်ထားသော ဟင်းသီးဟင်းရွက်သုပ်', english: 'Roasted vegetable salad', pos: 'noun', level: 'basic', examples: [
+    { korean: '따뜻한 로스트 채소 샐러드가 맛있어요.', myanmar: 'နွေးထွေးတဲ့ ကင်ထားသော ဟင်းသီးဟင်းရွက်သုပ်က အရသာရှိတယ်။', english: 'Warm roasted vegetable salad is delicious.' }
+    ]},
+    { id: '3819', korean: '리코타 베이글', myanmar: 'ရီကိုတာ ဘေဂယ်လ်', english: 'Ricotta bagel', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '아침에 리코타 베이글과 커피를 마셨어요.', myanmar: 'မနက်ခင်းမှာ ရီကိုတာ ဘေဂယ်လ်နဲ့ ကော်ဖီကို သောက်လိုက်တယ်။', english: 'I had a ricotta bagel and coffee in the morning.' }
+    ]},
+    { id: '3820', korean: '레몬 소금', myanmar: 'သံပရာဆား', english: 'Lemon salt', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '생선에 레몬 소금을 뿌렸어요.', myanmar: 'ငါးမှာ သံပရာဆားကို ဖြူးလိုက်တယ်။', english: 'I sprinkled lemon salt on the fish.' }
+    ]},
+    
+    // ===== ㄹ CONSONANT WORDS - CATEGORY 2: DAILY LIFE & OBJECTS (3821-3920) =====
+    { id: '3821', korean: '라디오', myanmar: 'ရေဒီယို', english: 'Radio', pos: 'noun', level: 'basic', examples: [
+    { korean: '아침에 라디오를 들어요.', myanmar: 'မနက်ခင်းမှာ ရေဒီယို နားထောင်တယ်။', english: 'I listen to the radio in the morning.' }
+    ]},
+    { id: '3822', korean: '러닝머신', myanmar: 'ပြေးစက်', english: 'Treadmill', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '집에 러닝머신이 있어요.', myanmar: 'အိမ်မှာ ပြေးစက် ရှိတယ်။', english: 'I have a treadmill at home.' }
+    ]},
+    { id: '3823', korean: '리모컨', myanmar: 'အဝေးထိန်းခလုတ်', english: 'Remote control', pos: 'noun', level: 'basic', examples: [
+    { korean: '리모컨이 어디 있어요?', myanmar: 'အဝေးထိန်းခလုတ် ဘယ်မှာလဲ။', english: 'Where is the remote control?' }
+    ]},
+    { id: '3824', korean: '로봇', myanmar: 'စက်ရုပ်', english: 'Robot', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '로봇 청소기가 있어요.', myanmar: 'စက်ရုပ် ဖုန်စုပ်စက် ရှိတယ်။', english: 'I have a robot vacuum cleaner.' }
+    ]},
+    { id: '3825', korean: '라이터', myanmar: 'မီးခြစ်', english: 'Lighter', pos: 'noun', level: 'basic', examples: [
+    { korean: '담배 라이터 빌릴 수 있을까요?', myanmar: 'စီးကရက် မီးခြစ် ငှားလို့ရမလား။', english: 'Can I borrow a cigarette lighter?' }
+    ]},
+    { id: '3826', korean: '랩탑', myanmar: 'လက်တော့ပ်', english: 'Laptop', pos: 'noun', level: 'basic', examples: [
+    { korean: '새 랩탑을 샀어요.', myanmar: 'လက်တော့ပ်အသစ် ဝယ်လိုက်တယ်။', english: 'I bought a new laptop.' }
+    ]},
+    { id: '3827', korean: '렌즈', myanmar: 'မှန်ဘီလူး', english: 'Lens', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '카메라 렌즈가 비싸요.', myanmar: 'ကင်မရာ မှန်ဘီလူးက ဈေးကြီးတယ်။', english: 'Camera lenses are expensive.' }
+    ]},
+    { id: '3828', korean: '레스토랑', myanmar: 'စားသောက်ဆိုင်', english: 'Restaurant', pos: 'noun', level: 'basic', examples: [
+    { korean: '레스토랑에서 저녁을 먹었어요.', myanmar: 'စားသောက်ဆိုင်မှာ ညစာ စားလိုက်တယ်။', english: 'I ate dinner at the restaurant.' }
+    ]},
+    { id: '3829', korean: '러시아', myanmar: 'ရုရှား', english: 'Russia', pos: 'noun', level: 'basic', examples: [
+    { korean: '러시아는 큰 나라예요.', myanmar: 'ရုရှားက ကြီးမားတဲ့ နိုင်ငံပါ။', english: 'Russia is a big country.' }
+    ]},
+    { id: '3830', korean: '레슨', myanmar: 'သင်ခန်းစာ', english: 'Lesson', pos: 'noun', level: 'basic', examples: [
+    { korean: '오늘 피아노 레슨이 있어요.', myanmar: 'ဒီနေ့ စန္ဒရား သင်ခန်းစာ ရှိတယ်။', english: 'I have a piano lesson today.' }
+    ]},
+    { id: '3831', korean: '립스틱', myanmar: 'နှုတ်ခမ်းနီ', english: 'Lipstick', pos: 'noun', level: 'basic', examples: [
+    { korean: '빨간 립스틱을 발랐어요.', myanmar: 'အနီရောင် နှုတ်ခမ်းနီကို ဆိုးလိုက်တယ်။', english: 'I put on red lipstick.' }
+    ]},
+    { id: '3832', korean: '리스트', myanmar: 'စာရင်း', english: 'List', pos: 'noun', level: 'basic', examples: [
+    { korean: '쇼핑 리스트를 만들었어요.', myanmar: 'ဈေးဝယ်စာရင်းကို ပြုလုပ်လိုက်တယ်။', english: 'I made a shopping list.' }
+    ]},
+    { id: '3833', korean: '로비', myanmar: 'ဧည့်ခန်း', english: 'Lobby', pos: 'noun', level: 'basic', examples: [
+    { korean: '호텔 로비에서 만나요.', myanmar: 'ဟိုတယ် ဧည့်ခန်းမှာ တွေ့ကြမယ်။', english: 'Let\'s meet in the hotel lobby.' }
+    ]},
+    { id: '3834', korean: '로션', myanmar: 'လိမ်းဆေး', english: 'Lotion', pos: 'noun', level: 'basic', examples: [
+    { korean: '얼굴에 로션을 발랐어요.', myanmar: 'မျက်နှာမှာ လိမ်းဆေးကို လိမ်းလိုက်တယ်။', english: 'I applied lotion to my face.' }
+    ]},
+    { id: '3835', korean: '루트', myanmar: 'လမ်းကြောင်း', english: 'Route', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '최단 루트를 찾고 있어요.', myanmar: 'အတိုဆုံး လမ်းကြောင်းကို ရှာနေတယ်။', english: 'I\'m looking for the shortest route.' }
+    ]},
+    { id: '3836', korean: '리듬', myanmar: 'စည်းချက်', english: 'Rhythm', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '이 노래는 리듬이 좋아요.', myanmar: 'ဒီသီချင်းက စည်းချက် ကောင်းတယ်။', english: 'This song has a good rhythm.' }
+    ]},
+    { id: '3837', korean: '룸메이트', myanmar: 'အခန်းဖော်', english: 'Roommate', pos: 'noun', level: 'basic', examples: [
+    { korean: '룸메이트와 함께 살아요.', myanmar: 'အခန်းဖော်နဲ့အတူ နေတယ်။', english: 'I live with my roommate.' }
+    ]},
+    { id: '3838', korean: '리본', myanmar: 'ဖဲကြိုး', english: 'Ribbon', pos: 'noun', level: 'basic', examples: [
+    { korean: '선물에 리본을 묶었어요.', myanmar: 'လက်ဆောင်မှာ ဖဲကြိုး ချည်လိုက်တယ်။', english: 'I tied a ribbon on the gift.' }
+    ]},
+    { id: '3839', korean: '러시아어', myanmar: 'ရုရှားဘာသာ', english: 'Russian language', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '러시아어를 배우고 있어요.', myanmar: 'ရုရှားဘာသာကို သင်ယူနေတယ်။', english: 'I am learning Russian.' }
+    ]},
+    { id: '3840', korean: '라이프스타일', myanmar: 'နေထိုင်မှုပုံစံ', english: 'Lifestyle', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '건강한 라이프스타일을 유지하고 싶어요.', myanmar: 'ကျန်းမာတဲ့ နေထိုင်မှုပုံစံကို ထိန်းသိမ်းချင်တယ်။', english: 'I want to maintain a healthy lifestyle.' }
+    ]},
+    { id: '3841', korean: '랭킹', myanmar: 'အဆင့်', english: 'Ranking', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '우리 팀이 랭킹 1위예요.', myanmar: 'ကျွန်တော်တို့ အဖွဲ့က အဆင့် ၁ ပါ။', english: 'Our team is ranked number one.' }
+    ]},
+    { id: '3842', korean: '로맨스', myanmar: 'အချစ်ဇာတ်လမ်း', english: 'Romance', pos: 'noun', level: 'basic', examples: [
+    { korean: '로맨스 영화를 좋아해요.', myanmar: 'အချစ်ဇာတ်လမ်း ရုပ်ရှင်ကို ကြိုက်တယ်။', english: 'I like romance movies.' }
+    ]},
+    { id: '3843', korean: '리모델링', myanmar: 'ပြန်လည်ပြင်ဆင်ခြင်း', english: 'Remodeling', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '집을 리모델링하고 있어요.', myanmar: 'အိမ်ကို ပြန်လည်ပြင်ဆင်နေတယ်။', english: 'I am remodeling my house.' }
+    ]},
+    { id: '3844', korean: '리얼리티', myanmar: 'လက်တွေ့ဘဝ', english: 'Reality', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '리얼리티 쇼를 자주 봐요.', myanmar: 'လက်တွေ့ဘဝ ရှိုးတွေကို မကြာခဏ ကြည့်တယ်။', english: 'I often watch reality shows.' }
+    ]},
+    { id: '3845', korean: '룩', myanmar: 'ပုံစံ', english: 'Look (style)', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '오늘 룩이 멋져요.', myanmar: 'ဒီနေ့ ပုံစံက လှတယ်။', english: 'Your look today is great.' }
+    ]},
+    { id: '3846', korean: '레깅스', myanmar: 'ခြေအိတ် (ထူထူ)', english: 'Leggings', pos: 'noun', level: 'basic', examples: [
+    { korean: '운동할 때 레깅스를 입어요.', myanmar: 'လေ့ကျင့်ခန်းလုပ်တဲ့အခါ ခြေအိတ် (ထူထူ) ဝတ်တယ်။', english: 'I wear leggings when I exercise.' }
+    ]},
+    { id: '3847', korean: '레코드', myanmar: 'မှတ်တမ်း', english: 'Record', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '새로운 레코드를 세웠어요.', myanmar: 'မှတ်တမ်းအသစ်ကို တင်လိုက်တယ်။', english: 'I set a new record.' }
+    ]},
+    { id: '3848', korean: '라인', myanmar: 'မျဉ်း', english: 'Line', pos: 'noun', level: 'basic', examples: [
+    { korean: '줄을 서 주세요.', myanmar: 'တန်းစီပေးပါ။', english: 'Please stand in a line.' }
+    ]},
+    { id: '3849', korean: '리더', myanmar: 'ခေါင်းဆောင်', english: 'Leader', pos: 'noun', level: 'basic', examples: [
+    { korean: '우리 팀의 리더는 그 사람이에요.', myanmar: 'ကျွန်တော်တို့ အဖွဲ့ရဲ့ ခေါင်းဆောင်က သူပါ။', english: 'He is the leader of our team.' }
+    ]},
+    { id: '3850', korean: '리프트', myanmar: 'ဓာတ်လှေကား', english: 'Lift (elevator/ski lift)', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '리프트를 타고 위로 올라갔어요.', myanmar: 'ဓာတ်လှေကားစီးပြီး အပေါ် တက်သွားတယ်။', english: 'I took the lift up.' }
+    ]},
+    { id: '3851', korean: '로고', myanmar: 'တံဆိပ်', english: 'Logo', pos: 'noun', level: 'basic', examples: [
+    { korean: '회사의 새 로고가 멋있어요.', myanmar: 'ကုမ္ပဏီရဲ့ တံဆိပ်အသစ်က လှတယ်။', english: 'The company\'s new logo is cool.' }
+    ]},
+    { id: '3852', korean: '롱패딩', myanmar: 'အရှည်ဝတ်အင်္ကျီ', english: 'Long padded jacket', pos: 'noun', level: 'basic', examples: [
+    { korean: '겨울에 롱패딩을 입어요.', myanmar: 'ဆောင်းရာသီမှာ အရှည်ဝတ်အင်္ကျီ ဝတ်တယ်။', english: 'I wear a long padded jacket in winter.' }
+    ]},
+    { id: '3853', korean: '레벨', myanmar: 'အဆင့်', english: 'Level', pos: 'noun', level: 'basic', examples: [
+    { korean: '게임 레벨이 올랐어요.', myanmar: 'ဂိမ်းအဆင့် တက်လာတယ်။', english: 'My game level went up.' }
+    ]},
+    { id: '3854', korean: '리허설', myanmar: 'လေ့ကျင့်', english: 'Rehearsal', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '공연 전에 리허설을 했어요.', myanmar: 'ဖျော်ဖြေပွဲမတိုင်ခင် လေ့ကျင့်တယ်။', english: 'I had a rehearsal before the performance.' }
+    ]},
+    { id: '3855', korean: '리모트', myanmar: 'အဝေးထိန်း (အမျိုးအစား)', english: 'Remote (remote work/device)', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '요즘 리모트 워크가 많아요.', myanmar: 'ဒီရက်ပိုင်း အဝေးထိန်း (အမျိုးအစား) အလုပ်တွေ များတယ်။', english: 'There\'s a lot of remote work these days.' }
+    ]},
+    { id: '3856', korean: '로봇 청소기', myanmar: 'စက်ရုပ် ဖုန်စုပ်စက်', english: 'Robot vacuum cleaner', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '로봇 청소기가 편리해요.', myanmar: 'စက်ရုပ် ဖုန်စုပ်စက်က အဆင်ပြေတယ်။', english: 'Robot vacuum cleaner is convenient.' }
+    ]},
+    { id: '3857', korean: '룩북', myanmar: 'ဖက်ရှင်စာအုပ်', english: 'Lookbook', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '새 시즌 룩북이 나왔어요.', myanmar: 'ရာသီသစ် ဖက်ရှင်စာအုပ် ထွက်လာပြီ။', english: 'The new season\'s lookbook is out.' }
+    ]},
+    { id: '3858', korean: '런웨이', myanmar: 'ဖက်ရှင်ပြပွဲ လမ်းလျှောက်လမ်း', english: 'Runway', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '모델들이 런웨이를 걸었어요.', myanmar: 'မော်ဒယ်တွေ ဖက်ရှင်ပြပွဲ လမ်းလျှောက်လမ်းပေါ် လျှောက်တယ်။', english: 'Models walked on the runway.' }
+    ]},
+    { id: '3859', korean: '라이선스', myanmar: 'လိုင်စင်', english: 'License', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '운전면허 라이선스를 땄어요.', myanmar: 'ကားမောင်းလိုင်စင် လိုင်စင်ကို ရလိုက်တယ်။', english: 'I got a driver\'s license.' }
+    ]},
+    { id: '3860', korean: '리포터', myanmar: 'သတင်းထောက်', english: 'Reporter', pos: 'noun', level: 'basic', examples: [
+    { korean: '그 리포터는 유명해요.', myanmar: 'အဲဒီ သတင်းထောက်က နာမည်ကြီးတယ်။', english: 'That reporter is famous.' }
+    ]},
+    { id: '3861', korean: '랭귀지', myanmar: 'ဘာသာစကား', english: 'Language', pos: 'noun', level: 'basic', examples: [
+    { korean: '외국 랭귀지를 배우고 싶어요.', myanmar: 'နိုင်ငံခြား ဘာသာစကားကို သင်ယူချင်တယ်။', english: 'I want to learn a foreign language.' }
+    ]},
+    { id: '3862', korean: '리더십', myanmar: 'ခေါင်းဆောင်မှု', english: 'Leadership', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '그는 뛰어난 리더십을 가지고 있어요.', myanmar: 'သူက ထူးချွန်တဲ့ ခေါင်းဆောင်မှု ရှိတယ်။', english: 'He has excellent leadership.' }
+    ]},
+    { id: '3863', korean: '리서치', myanmar: 'သုတေသန', english: 'Research', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '새로운 기술에 대해 리서치 중이에요.', myanmar: 'နည်းပညာအသစ်နဲ့ ပတ်သက်ပြီး သုတေသန လုပ်နေတယ်။', english: 'I\'m doing research on new technology.' }
+    ]},
+    { id: '3864', korean: '룩앤필', myanmar: 'အသွင်အပြင်နှင့် ခံစားမှု', english: 'Look and feel', pos: 'noun', level: 'advanced', examples: [
+    { korean: '이 앱의 룩앤필이 좋아요.', myanmar: 'ဒီအက်ပ်ရဲ့ အသွင်အပြင်နှင့် ခံစားမှုက ကောင်းတယ်။', english: 'The look and feel of this app is good.' }
+    ]},
+    { id: '3865', korean: '렌터카', myanmar: 'ကားငှားခြင်း', english: 'Rental car', pos: 'noun', level: 'basic', examples: [
+    { korean: '여행을 위해 렌터카를 빌렸어요.', myanmar: 'ခရီးသွားဖို့ ကားငှားခြင်းကို ငှားလိုက်တယ်။', english: 'I rented a car for the trip.' }
+    ]},
+    { id: '3866', korean: '루머', myanmar: 'ကောလဟာလ', english: 'Rumor', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '그것은 사실이 아닌 루머예요.', myanmar: 'အဲဒါက တကယ်မဟုတ်တဲ့ ကောလဟာလပါ။', english: 'That is a false rumor.' }
+    ]},
+    { id: '3867', korean: '로드맵', myanmar: 'လမ်းပြမြေပုံ', english: 'Roadmap', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '새 프로젝트의 로드맵을 만들었어요.', myanmar: 'စီမံကိန်းအသစ်ရဲ့ လမ်းပြမြေပုံကို ပြုလုပ်လိုက်တယ်။', english: 'I created a roadmap for the new project.' }
+    ]},
+    { id: '3868', korean: '리얼타임', myanmar: 'အချိန်မှန်', english: 'Real-time', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '리얼타임으로 정보가 업데이트돼요.', myanmar: 'အချိန်မှန်အလိုက် အချက်အလက်တွေ အပ်ဒိတ်လုပ်တယ်။', english: 'Information is updated in real-time.' }
+    ]},
+    { id: '3869', korean: '런닝화', myanmar: 'ပြေးဖိနပ်', english: 'Running shoes', pos: 'noun', level: 'basic', examples: [
+    { korean: '새 런닝화를 샀어요.', myanmar: 'ပြေးဖိနပ်အသစ် ဝယ်လိုက်တယ်။', english: 'I bought new running shoes.' }
+    ]},
+    { id: '3870', korean: '리클라이너', myanmar: 'ပြန်လှန်ထိုင်ခုံ', english: 'Recliner', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '편안한 리클라이너에 앉아 쉬었어요.', myanmar: 'သက်သောင့်သက်သာရှိတဲ့ ပြန်လှန်ထိုင်ခုံမှာ ထိုင်ပြီး အနားယူတယ်။', english: 'I sat and rested in the comfortable recliner.' }
+    ]},
+    { id: '3871', korean: '라인업', myanmar: 'တန်းစီ', english: 'Lineup', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '콘서트 라인업이 발표되었어요.', myanmar: 'ဂီတပွဲ တန်းစီ ထုတ်ပြန်ပြီ။', english: 'The concert lineup has been announced.' }
+    ]},
+    { id: '3872', korean: '레퍼런스', myanmar: 'ကိုးကားချက်', english: 'Reference', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '이 책은 좋은 레퍼런스예요.', myanmar: 'ဒီစာအုပ်က ကောင်းတဲ့ ကိုးကားချက်ပါ။', english: 'This book is a good reference.' }
+    ]},
+    { id: '3873', korean: '로케이션', myanmar: 'တည်နေရာ', english: 'Location', pos: 'noun', level: 'basic', examples: [
+    { korean: '촬영 로케이션을 찾고 있어요.', myanmar: 'ရိုက်ကူးရေး တည်နေရာကို ရှာနေတယ်။', english: 'I\'m looking for a filming location.' }
+    ]},
+    { id: '3874', korean: '리얼돌', myanmar: 'လိင်အရုပ်', english: 'Realistic doll', pos: 'noun', level: 'advanced', examples: [
+    { korean: '리얼돌에 대한 논쟁이 많아요.', myanmar: 'လိင်အရုပ်နဲ့ ပတ်သက်ပြီး ငြင်းခုံမှုတွေ များတယ်။', english: 'There is much debate about realistic dolls.' }
+    ]},
+    { id: '3875', korean: '라이선스 플레이트', myanmar: 'လိုင်စင်နံပါတ်ပြား', english: 'License plate', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '차량 라이선스 플레이트를 확인했어요.', myanmar: 'ယာဉ် လိုင်စင်နံပါတ်ပြားကို စစ်ဆေးလိုက်တယ်။', english: 'I checked the vehicle license plate.' }
+    ]},
+    { id: '3876', korean: '로그인', myanmar: 'ဝင်ရောက်ခြင်း', english: 'Login', pos: 'noun', level: 'basic', examples: [
+    { korean: '먼저 로그인해주세요.', myanmar: 'အရင်ဆုံး ဝင်ရောက်ခြင်းလုပ်ပေးပါ။', english: 'Please log in first.' }
+    ]},
+    { id: '3877', korean: '리스트업', myanmar: 'စာရင်းပြုစုခြင်း', english: 'Listing/Making a list', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '필요한 물품을 리스트업 했어요.', myanmar: 'လိုအပ်တဲ့ ပစ္စည်းတွေကို စာရင်းပြုစုလိုက်တယ်။', english: 'I listed the necessary items.' }
+    ]},
+    { id: '3878', korean: '롱 드레스', myanmar: 'ရှည်လျားသော ဝတ်စုံ', english: 'Long dress', pos: 'noun', level: 'basic', examples: [
+    { korean: '파티에 롱 드레스를 입었어요.', myanmar: 'ပါတီမှာ ရှည်လျားသော ဝတ်စုံကို ဝတ်လိုက်တယ်။', english: 'I wore a long dress to the party.' }
+    ]},
+    { id: '3879', korean: '러기지', myanmar: 'ခရီးဆောင်အိတ်', english: 'Luggage', pos: 'noun', level: 'basic', examples: [
+    { korean: '러기지를 찾고 있어요.', myanmar: 'ခရီးဆောင်အိတ်ကို ရှာနေတယ်။', english: 'I\'m looking for my luggage.' }
+    ]},
+    { id: '3880', korean: '랜딩 페이지', myanmar: 'ဆင်းသက်စာမျက်နှာ', english: 'Landing page', pos: 'noun', level: 'advanced', examples: [
+    { korean: '새 캠페인 랜딩 페이지를 만들었어요.', myanmar: 'လှုံ့ဆော်မှုအသစ် ဆင်းသက်စာမျက်နှာကို ပြုလုပ်လိုက်တယ်။', english: 'I created a landing page for the new campaign.' }
+    ]},
+    { id: '3881', korean: '리더 보드', myanmar: 'ခေါင်းဆောင်ဘုတ်', english: 'Leaderboard', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '게임 리더 보드에 이름이 올랐어요.', myanmar: 'ဂိမ်း ခေါင်းဆောင်ဘုတ်မှာ နာမည် တက်လာတယ်။', english: 'My name is on the game leaderboard.' }
+    ]},
+    { id: '3882', korean: '라이브', myanmar: 'တိုက်ရိုက်', english: 'Live (broadcast/performance)', pos: 'noun/adj', level: 'basic', examples: [
+    { korean: '라이브 콘서트를 보고 싶어요.', myanmar: 'တိုက်ရိုက် ဂီတပွဲကို ကြည့်ချင်တယ်။', english: 'I want to watch a live concert.' }
+    ]},
+    { id: '3883', korean: '로스터', myanmar: 'လှော်စက်', english: 'Roaster', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '커피 로스터가 고장났어요.', myanmar: 'ကော်ဖီ လှော်စက် ပျက်သွားတယ်။', english: 'The coffee roaster is broken.' }
+    ]},
+    { id: '3884', korean: '루틴', myanmar: 'နေ့စဉ်လုပ်ငန်းစဉ်', english: 'Routine', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '아침 루틴이 중요해요.', myanmar: 'မနက်ခင်း နေ့စဉ်လုပ်ငန်းစဉ်က အရေးကြီးတယ်။', english: 'Morning routine is important.' }
+    ]},
+    { id: '3885', korean: '리플', myanmar: 'မှတ်ချက်', english: 'Reply (comment)', pos: 'noun', level: 'basic', examples: [
+    { korean: '댓글에 리플을 달았어요.', myanmar: 'မှတ်ချက်မှာ မှတ်ချက် ပြန်ပေးလိုက်တယ်။', english: 'I replied to the comment.' }
+    ]},
+    { id: '3886', korean: '랜덤', myanmar: 'ကျပန်း', english: 'Random', pos: 'noun/adj', level: 'basic', examples: [
+    { korean: '랜덤으로 숫자를 뽑았어요.', myanmar: 'ကျပန်းအလိုက် ကိန်းဂဏန်းကို ရွေးလိုက်တယ်။', english: 'I chose a random number.' }
+    ]},
+    { id: '3887', korean: '리사이클링', myanmar: 'ပြန်လည်အသုံးပြုခြင်း', english: 'Recycling', pos: 'noun', level: 'basic', examples: [
+    { korean: '리사이클링을 생활화해야 해요.', myanmar: 'ပြန်လည်အသုံးပြုခြင်းကို နေ့စဉ်ဘဝမှာ ကျင့်သုံးသင့်တယ်။', english: 'We should make recycling a part of our daily life.' }
+    ]},
+    { id: '3888', korean: '로드쇼', myanmar: 'ပြပွဲခရီးစဉ်', english: 'Roadshow', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '새 제품 로드쇼를 개최했어요.', myanmar: 'ထုတ်ကုန်အသစ် ပြပွဲခရီးစဉ်ကို ကျင်းပလိုက်တယ်။', english: 'We held a roadshow for the new product.' }
+    ]},
+    { id: '3889', korean: '리테일', myanmar: 'လက်လီ', english: 'Retail', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '리테일 시장이 커지고 있어요.', myanmar: 'လက်လီ ဈေးကွက်က ကြီးထွားလာတယ်။', english: 'The retail market is growing.' }
+    ]},
+    { id: '3890', korean: '리스크', myanmar: 'အန္တရာယ်', english: 'Risk', pos: 'noun', level: 'basic', examples: [
+    { korean: '리스크를 줄여야 해요.', myanmar: 'အန္တရာယ်ကို လျှော့ချသင့်တယ်။', english: 'We need to reduce the risk.' }
+    ]},
+    { id: '3891', korean: '렌트', myanmar: 'ငှားရမ်းခြင်း', english: 'Rent', pos: 'noun', level: 'basic', examples: [
+    { korean: '집 렌트 계약했어요.', myanmar: 'အိမ် ငှားရမ်းခြင်းကို စာချုပ်လိုက်တယ်။', english: 'I signed a house rent contract.' }
+    ]},
+    { id: '3892', korean: '리트윗', myanmar: 'ပြန်တင်ခြင်း (တွစ်တာ)', english: 'Retweet', pos: 'noun', level: 'basic', examples: [
+    { korean: '이 글을 리트윗해주세요.', myanmar: 'ဒီစာကို ပြန်တင်ခြင်း (တွစ်တာ) လုပ်ပေးပါ။', english: 'Please retweet this post.' }
+    ]},
+    { id: '3893', korean: '로켓배송', myanmar: 'အမြန်ပို့ဆောင်ခြင်း', english: 'Rocket delivery (fast delivery)', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '쿠팡 로켓배송은 정말 빨라요.', myanmar: 'ကူပန် အမြန်ပို့ဆောင်ခြင်းက တကယ်မြန်တယ်။', english: 'Coupang rocket delivery is very fast.' }
+    ]},
+    { id: '3894', korean: '리더보드 게임', myanmar: 'ခေါင်းဆောင်ဘုတ် ဂိမ်း', english: 'Leaderboard game', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '리더보드 게임에서 1등을 했어요.', myanmar: 'ခေါင်းဆောင်ဘုတ် ဂိမ်းမှာ နံပါတ် ၁ ရတယ်။', english: 'I came in first place in the leaderboard game.' }
+    ]},
+    { id: '3895', korean: '라인 댄스', myanmar: 'တန်းစီ ကခုန်ခြင်း', english: 'Line dance', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '라인 댄스 배우러 갔어요.', myanmar: 'တန်းစီ ကခုန်ခြင်း သင်ဖို့ သွားတယ်။', english: 'I went to learn line dance.' }
+    ]},
+    { id: '3896', korean: '라이프 재킷', myanmar: 'အသက်ကယ်အင်္ကျီ', english: 'Life jacket', pos: 'noun', level: 'basic', examples: [
+    { korean: '보트를 탈 때는 라이프 재킷을 입어야 해요.', myanmar: 'လှေစီးတဲ့အခါ အသက်ကယ်အင်္ကျီကို ဝတ်ရမယ်။', english: 'You must wear a life jacket when riding a boat.' }
+    ]},
+    { id: '3897', korean: '리모트 컨트롤', myanmar: 'အဝေးထိန်းခလုတ် (စက်)', english: 'Remote control (device)', pos: 'noun', level: 'basic', examples: [
+    { korean: '드론 리모트 컨트롤이 필요해요.', myanmar: 'ဒရုန်း အဝေးထိန်းခလုတ် (စက်) လိုတယ်။', english: 'I need a drone remote control.' }
+    ]},
+    { id: '3898', korean: '리더 미팅', myanmar: 'ခေါင်းဆောင် အစည်းအဝေး', english: 'Leader meeting', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '내일 리더 미팅에 참석해야 해요.', myanmar: 'မနက်ဖြန် ခေါင်းဆောင် အစည်းအဝေးကို တက်ရမယ်။', english: 'I have to attend the leader meeting tomorrow.' }
+    ]},
+    { id: '3899', korean: '로열티', myanmar: 'သစ္စာစောင့်သိမှု', english: 'Royalty (loyalty/royal family)', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '고객 로열티를 높여야 해요.', myanmar: 'ဖောက်သည် သစ္စာစောင့်သိမှုကို မြှင့်တင်သင့်တယ်။', english: 'We need to increase customer loyalty.' }
+    ]},
+    { id: '3900', korean: '러기지 태그', myanmar: 'ခရီးဆောင်အိတ် တံဆိပ်', english: 'Luggage tag', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '러기지 태그를 붙였어요.', myanmar: 'ခရီးဆောင်အိတ် တံဆိပ်ကို ကပ်လိုက်တယ်။', english: 'I attached a luggage tag.' }
+    ]},
+    { id: '3901', korean: '리사이징', myanmar: 'အရွယ်အစား ပြောင်းလဲခြင်း', english: 'Resizing', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '사진 리사이징이 필요해요.', myanmar: 'ဓာတ်ပုံ အရွယ်အစား ပြောင်းလဲခြင်း လိုတယ်။', english: 'Photo resizing is needed.' }
+    ]},
+    { id: '3902', korean: '로프', myanmar: 'ကြိုး', english: 'Rope', pos: 'noun', level: 'basic', examples: [
+    { korean: '로프를 묶었어요.', myanmar: 'ကြိုးကို ချည်လိုက်တယ်။', english: 'I tied the rope.' }
+    ]},
+    { id: '3903', korean: '리모콘 배터리', myanmar: 'အဝေးထိန်းခလုတ် ဘက်ထရီ', english: 'Remote control battery', pos: 'noun', level: 'basic', examples: [
+    { korean: '리모콘 배터리를 교체해야 해요.', myanmar: 'အဝေးထိန်းခလုတ် ဘက်ထရီကို လဲရမယ်။', english: 'I need to replace the remote control battery.' }
+    ]},
+    { id: '3904', korean: '런닝복', myanmar: 'ပြေးဝတ်စုံ', english: 'Running clothes', pos: 'noun', level: 'basic', examples: [
+    { korean: '편안한 런닝복을 입고 운동했어요.', myanmar: 'သက်သောင့်သက်သာရှိတဲ့ ပြေးဝတ်စုံကို ဝတ်ပြီး လေ့ကျင့်ခန်းလုပ်တယ်။', english: 'I exercised wearing comfortable running clothes.' }
+    ]},
+    { id: '3905', korean: '리듬 게임', myanmar: 'စည်းချက် ဂိမ်း', english: 'Rhythm game', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '리듬 게임을 즐겨 해요.', myanmar: 'စည်းချက် ဂိမ်းကို နှစ်သက်စွာ ကစားတယ်။', english: 'I enjoy playing rhythm games.' }
+    ]},
+    { id: '3906', korean: '로마', myanmar: 'ရောမ', english: 'Rome', pos: 'noun', level: 'basic', examples: [
+    { korean: '로마는 역사적인 도시예요.', myanmar: 'ရောမက သမိုင်းဝင် မြို့ပါ။', english: 'Rome is a historical city.' }
+    ]},
+    { id: '3907', korean: '러닝 크루', myanmar: 'ပြေးအဖွဲ့', english: 'Running crew', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '러닝 크루에 가입했어요.', myanmar: 'ပြေးအဖွဲ့မှာ ဝင်လိုက်တယ်။', english: 'I joined a running crew.' }
+    ]},
+    { id: '3908', korean: '리얼 드라마', myanmar: 'လက်တွေ့ ဒရာမာ', english: 'Real drama', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '그 영화는 리얼 드라마 같았어요.', myanmar: 'အဲဒီရုပ်ရှင်က လက်တွေ့ ဒရာမာလိုပဲ။', english: 'That movie was like a real drama.' }
+    ]},
+    { id: '3909', korean: '리뉴얼', myanmar: 'အသစ်ပြန်လုပ်ခြင်း', english: 'Renewal', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '건물 리뉴얼 공사가 진행 중이에요.', myanmar: 'အဆောက်အအုံ အသစ်ပြန်လုပ်ခြင်း လုပ်ငန်း ဆောင်ရွက်နေတယ်။', english: 'The building renewal construction is in progress.' }
+    ]},
+    { id: '3910', korean: '리콜', myanmar: 'ပြန်လည်သိမ်းဆည်းခြင်း', english: 'Recall (product)', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '제품 리콜이 발표되었어요.', myanmar: 'ထုတ်ကုန် ပြန်လည်သိမ်းဆည်းခြင်း ထုတ်ပြန်ပြီ။', english: 'A product recall has been announced.' }
+    ]},
+    { id: '3911', korean: '라벨', myanmar: 'တံဆိပ်', english: 'Label', pos: 'noun', level: 'basic', examples: [
+    { korean: '옷에 라벨이 붙어 있어요.', myanmar: 'အဝတ်အစားမှာ တံဆိပ် ကပ်ထားတယ်။', english: 'There is a label on the clothes.' }
+    ]},
+    { id: '3912', korean: '리본아트', myanmar: 'ဖဲကြိုးအနုပညာ', english: 'Ribbon art', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '리본아트를 배우고 있어요.', myanmar: 'ဖဲကြိုးအနုပညာကို သင်ယူနေတယ်။', english: 'I am learning ribbon art.' }
+    ]},
+    { id: '3913', korean: '러시아 국기', myanmar: 'ရုရှားအလံ', english: 'Russian flag', pos: 'noun', level: 'basic', examples: [
+    { korean: '러시아 국기는 흰색, 파란색, 빨간색이에요.', myanmar: 'ရုရှားအလံက အဖြူရောင်၊ အပြာရောင်၊ အနီရောင်ပါ။', english: 'The Russian flag is white, blue, and red.' }
+    ]},
+    { id: '3914', korean: '라이브러리', myanmar: 'စာကြည့်တိုက်', english: 'Library (programming/collection)', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '새로운 라이브러리를 사용해봤어요.', myanmar: 'စာကြည့်တိုက်အသစ်ကို သုံးကြည့်လိုက်တယ်။', english: 'I tried using a new library.' }
+    ]},
+    { id: '3915', korean: '리마인더', myanmar: 'သတိပေးချက်', english: 'Reminder', pos: 'noun', level: 'basic', examples: [
+    { korean: '회의 리마인더를 보냈어요.', myanmar: 'အစည်းအဝေး သတိပေးချက်ကို ပို့လိုက်တယ်။', english: 'I sent a meeting reminder.' }
+    ]},
+    { id: '3916', korean: '루프탑', myanmar: 'ခေါင်မိုးထပ်', english: 'Rooftop', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '루프탑 카페에서 커피를 마셨어요.', myanmar: 'ခေါင်မိုးထပ် ကော်ဖီဆိုင်မှာ ကော်ဖီ သောက်လိုက်တယ်။', english: 'I drank coffee at a rooftop cafe.' }
+    ]},
+    { id: '3917', korean: '레이저', myanmar: 'လေဆာ', english: 'Laser', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '레이저 프린터로 출력했어요.', myanmar: 'လေဆာ ပရင်တာနဲ့ ထုတ်လိုက်တယ်။', english: 'I printed with a laser printer.' }
+    ]},
+    { id: '3918', korean: '리스트 형식', myanmar: 'စာရင်းပုံစံ', english: 'List format', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '리스트 형식으로 정리해주세요.', myanmar: 'စာရင်းပုံစံနဲ့ စီစဉ်ပေးပါ။', english: 'Please organize it in list format.' }
+    ]},
+    { id: '3919', korean: '리듬악기', myanmar: 'စည်းချက်တူရိယာ', english: 'Rhythm instrument', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '드럼은 리듬악기예요.', myanmar: 'ဒရမ်က စည်းချက်တူရိယာပါ။', english: 'Drums are rhythm instruments.' }
+    ]},
+    { id: '3920', korean: '로열티 프로그램', myanmar: 'သစ္စာစောင့်သိမှု အစီအစဉ်', english: 'Loyalty program', pos: 'noun', level: 'advanced', examples: [
+    { korean: '고객 로열티 프로그램을 운영하고 있어요.', myanmar: 'ဖောက်သည် သစ္စာစောင့်သိမှု အစီအစဉ်ကို လုပ်ဆောင်နေတယ်။', english: 'We are running a customer loyalty program.' }
+    ]},
+    { id: '3921', korean: '레지던스', myanmar: 'နေထိုင်ရာ အဆောက်အအုံ', english: 'Residence', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '서울에 있는 레지던스에 살고 있어요.', myanmar: 'ဆိုးလ်မှာရှိတဲ့ နေထိုင်ရာ အဆောက်အအုံမှာ နေတယ်။', english: 'I live in a residence in Seoul.' }
+    ]},
+    { id: '3922', korean: '레이블', myanmar: 'တံဆိပ် (음반)', english: 'Label (music/record)', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '유명한 음악 레이블에 소속되어 있어요.', myanmar: 'နာမည်ကြီး ဂီတ တံဆိပ် (음반) မှာ ပါဝင်တယ်။', english: 'I belong to a famous music label.' }
+    ]},
+    { id: '3923', korean: '리뷰', myanmar: 'ပြန်လည်သုံးသပ်ချက်', english: 'Review', pos: 'noun', level: 'basic', examples: [
+    { korean: '상품 리뷰를 읽어봤어요.', myanmar: 'ကုန်ပစ္စည်း ပြန်လည်သုံးသပ်ချက်ကို ဖတ်ကြည့်လိုက်တယ်။', english: 'I read product reviews.' }
+    ]},
+    { id: '3924', korean: '럭셔리', myanmar: 'ဇိမ်ခံပစ္စည်း', english: 'Luxury', pos: 'noun/adj', level: 'basic', examples: [
+    { korean: '럭셔리 호텔에서 숙박했어요.', myanmar: 'ဇိမ်ခံပစ္စည်း ဟိုတယ်မှာ တည်းခိုလိုက်တယ်။', english: 'I stayed at a luxury hotel.' }
+    ]},
+    { id: '3925', korean: '레버', myanmar: 'လီဗာ', english: 'Lever', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '레버를 당기세요.', myanmar: 'လီဗာကို ဆွဲပါ။', english: 'Pull the lever.' }
+    ]},
+    { id: '3926', korean: '루트맵', myanmar: 'လမ်းကြောင်းမြေပုံ', english: 'Route map', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '여행 루트맵을 확인했어요.', myanmar: 'ခရီးသွား လမ်းကြောင်းမြေပုံကို စစ်ဆေးလိုက်တယ်။', english: 'I checked the travel route map.' }
+    ]},
+    { id: '3927', korean: '리콜 서비스', myanmar: 'ပြန်လည်သိမ်းဆည်းခြင်း ဝန်ဆောင်မှု', english: 'Recall service', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '자동차 리콜 서비스를 받았어요.', myanmar: 'ကား ပြန်လည်သိမ်းဆည်းခြင်း ဝန်ဆောင်မှုကို ရရှိတယ်။', english: 'I received car recall service.' }
+    ]},
+    { id: '3928', korean: '런던', myanmar: 'လန်ဒန်', english: 'London', pos: 'noun', level: 'basic', examples: [
+    { korean: '런던은 영국의 수도예요.', myanmar: 'လန်ဒန်က အင်္ဂလန်ရဲ့ မြို့တော်ပါ။', english: 'London is the capital of England.' }
+    ]},
+    { id: '3929', korean: '러버 덕', myanmar: 'ရော်ဘာ ဘဲ', english: 'Rubber duck', pos: 'noun', level: 'basic', examples: [
+    { korean: '아이에게 러버 덕을 선물했어요.', myanmar: 'ကလေးကို ရော်ဘာ ဘဲကို လက်ဆောင်ပေးလိုက်တယ်။', english: 'I gave a rubber duck to the child as a gift.' }
+    ]},
+    { id: '3930', korean: '리포지토리', myanmar: 'သိုလှောင်ရာနေရာ', english: 'Repository', pos: 'noun', level: 'advanced', examples: [
+    { korean: '깃허브 리포지토리에 코드를 올렸어요.', myanmar: 'ဂစ်ဟပ် သိုလှောင်ရာနေရာမှာ ကုဒ်ကို တင်လိုက်တယ်။', english: 'I uploaded the code to the GitHub repository.' }
+    ]},
+    { id: '3931', korean: '로스터리', myanmar: 'ကော်ဖီလှော်စက်ရုံ/ဆိုင်', english: 'Roastery', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '유명한 로스터리 카페에 방문했어요.', myanmar: 'နာမည်ကြီး ကော်ဖီလှော်စက်ရုံ/ဆိုင် ကော်ဖီဆိုင်ကို သွားရောက်လည်ပတ်ခဲ့တယ်။', english: 'I visited a famous roastery cafe.' }
+    ]},
+    { id: '3932', korean: '룩업 테이블', myanmar: 'ကြည့်ရှုစားပွဲ', english: 'Lookup table', pos: 'noun', level: 'advanced', examples: [
+    { korean: '데이터 처리 효율을 위해 룩업 테이블을 사용해요.', myanmar: 'ဒေတာ စီမံခန့်ခွဲမှု ထိရောက်မှုအတွက် ကြည့်ရှုစားပွဲကို သုံးတယ်။', english: 'I use a lookup table for data processing efficiency.' }
+    ]},
+    { id: '3933', korean: '레버리지', myanmar: 'အားသာချက်', english: 'Leverage', pos: 'noun', level: 'advanced', examples: [
+    { korean: '우리는 기술적 레버리지를 활용해야 해요.', myanmar: 'ကျွန်တော်တို့က နည်းပညာ အားသာချက်ကို အသုံးချသင့်တယ်။', english: 'We need to utilize technological leverage.' }
+    ]},
+    { id: '3934', korean: '라이딩', myanmar: 'စီးနင်းခြင်း', english: 'Riding', pos: 'noun', level: 'basic', examples: [
+    { korean: '주말에 자전거 라이딩을 즐겨요.', myanmar: 'တနင်္ဂနွေမှာ စက်ဘီး စီးနင်းခြင်းကို နှစ်သက်တယ်။', english: 'I enjoy bike riding on weekends.' }
+    ]},
+    { id: '3935', korean: '리드타임', myanmar: 'ဦးဆောင်ချိန်', english: 'Lead time', pos: 'noun', level: 'advanced', examples: [
+    { korean: '제품 생산 리드타임을 단축해야 해요.', myanmar: 'ထုတ်ကုန် ထုတ်လုပ်မှု ဦးဆောင်ချိန်ကို လျှော့ချသင့်တယ်။', english: 'We need to shorten the product lead time.' }
+    ]},
+    { id: '3936', korean: '로케트', myanmar: 'ဒုံးပျံ', english: 'Rocket', pos: 'noun', level: 'basic', examples: [
+    { korean: '하늘로 로케트가 발사되었어요.', myanmar: 'ကောင်းကင်ကို ဒုံးပျံ ပစ်လွှတ်လိုက်တယ်။', english: 'A rocket was launched into the sky.' }
+    ]},
+    { id: '3937', korean: '리플렉스', myanmar: 'တုံ့ပြန်မှု', english: 'Reflex', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '그의 반사 리플렉스가 빨라요.', myanmar: 'သူ့ရဲ့ တုံ့ပြန်မှုက မြန်တယ်။', english: 'His reflex is fast.' }
+    ]},
+    { id: '3938', korean: '러브레터', myanmar: 'အချစ်စာ', english: 'Love letter', pos: 'noun', level: 'basic', examples: [
+    { korean: '그에게 러브레터를 썼어요.', myanmar: 'သူ့ဆီကို အချစ်စာ ရေးလိုက်တယ်။', english: 'I wrote him a love letter.' }
+    ]},
+    { id: '3939', korean: '레드카펫', myanmar: 'အနီရောင် ကော်ဇော', english: 'Red carpet', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '영화제에 레드카펫을 깔았어요.', myanmar: 'ရုပ်ရှင်ပွဲတော်မှာ အနီရောင် ကော်ဇောကို ခင်းထားတယ်။', english: 'The red carpet was laid out for the film festival.' }
+    ]},
+    { id: '3940', korean: '리셋', myanmar: 'ပြန်လည်စတင်ခြင်း', english: 'Reset', pos: 'noun', level: 'basic', examples: [
+    { korean: '비밀번호를 리셋해야 해요.', myanmar: 'လျှို့ဝှက်နံပါတ်ကို ပြန်လည်စတင်ခြင်း လုပ်ရမယ်။', english: 'I need to reset my password.' }
+    ]},
+    { id: '3941', korean: '러시', myanmar: 'အလျင်စလို', english: 'Rush', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '출근 시간에 러시 아워예요.', myanmar: 'အလုပ်သွားတဲ့အချိန်မှာ အလျင်စလို အချိန်ပါ။', english: 'It\'s rush hour during commuting time.' }
+    ]},
+    { id: '3942', korean: '리트리버', myanmar: 'ရီထရီဗာ (ခွေးမျိုး)', english: 'Retriever (dog breed)', pos: 'noun', level: 'basic', examples: [
+    { korean: '골든 리트리버는 똑똑해요.', myanmar: 'ဂိုးလ်ဒင်း ရီထရီဗာ (ခွေးမျိုး) က ဉာဏ်ကောင်းတယ်။', english: 'Golden retrievers are smart.' }
+    ]},
+    { id: '3943', korean: '로스터기', myanmar: 'လှော်စက် (ကော်ဖီ)', english: 'Roaster (coffee machine)', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '새로운 로스터기를 구매했어요.', myanmar: 'လှော်စက် (ကော်ဖီ) အသစ်ကို ဝယ်လိုက်တယ်။', english: 'I bought a new coffee roaster.' }
+    ]},
+    { id: '3944', korean: '리프레쉬', myanmar: 'လန်းဆန်းစေခြင်း', english: 'Refresh', pos: 'noun', level: 'basic', examples: [
+    { korean: '잠시 쉬면서 리프레쉬해야겠어요.', myanmar: 'ခဏ နားပြီး လန်းဆန်းစေခြင်း လုပ်သင့်တယ်။', english: 'I need to take a break and refresh.' }
+    ]},
+    { id: '3945', korean: '러시안 룰렛', myanmar: 'ရုရှား ရူးလက်', english: 'Russian roulette', pos: 'noun', level: 'advanced', examples: [
+    { korean: '러시안 룰렛은 위험한 게임이에요.', myanmar: 'ရုရှား ရူးလက်က အန္တရာယ်ရှိတဲ့ ဂိမ်းပါ။', english: 'Russian roulette is a dangerous game.' }
+    ]},
+    { id: '3946', korean: '리본 케이블', myanmar: 'ဖဲကြိုးကြိုး', english: 'Ribbon cable', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '컴퓨터에 리본 케이블을 연결했어요.', myanmar: 'ကွန်ပျူတာမှာ ဖဲကြိုးကြိုးကို ချိတ်လိုက်တယ်။', english: 'I connected the ribbon cable to the computer.' }
+    ]},
+    { id: '3947', korean: '로열패밀리', myanmar: 'တော်ဝင်မိသားစု', english: 'Royal family', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '영국 로열패밀리에 관심이 많아요.', myanmar: 'အင်္ဂလန် တော်ဝင်မိသားစုကို စိတ်ဝင်စားတယ်။', english: 'I\'m very interested in the British royal family.' }
+    ]},
+    { id: '3948', korean: '레이어', myanmar: 'အလွှာ', english: 'Layer', pos: 'noun', level: 'basic', examples: [
+    { korean: '옷을 여러 레이어로 입었어요.', myanmar: 'အဝတ်အစားကို အလွှာများစွာ ဝတ်လိုက်တယ်။', english: 'I wore clothes in several layers.' }
+    ]},
+    { id: '3949', korean: '리얼 계좌', myanmar: 'တကယ့်အကောင့်', english: 'Real account', pos: 'noun', level: 'advanced', examples: [
+    { korean: '주식 거래를 위해 리얼 계좌를 개설했어요.', myanmar: 'စတော့ရှယ်ယာ အရောင်းအဝယ်အတွက် တကယ့်အကောင့်ကို ဖွင့်လိုက်တယ်။', english: 'I opened a real account for stock trading.' }
+    ]},
+    { id: '3950', korean: '레포츠', myanmar: 'အပန်းဖြေအားကစား', english: 'Leisure sports', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '수상 레포츠를 즐겨요.', myanmar: 'ရေပေါ် အပန်းဖြေအားကစားကို နှစ်သက်တယ်။', english: 'I enjoy water leisure sports.' }
+    ]},
+    { id: '3951', korean: '로봇 팔', myanmar: 'စက်ရုပ်လက်', english: 'Robot arm', pos: 'noun', level: 'advanced', examples: [
+    { korean: '공장에서 로봇 팔이 제품을 조립해요.', myanmar: 'စက်ရုံမှာ စက်ရုပ်လက်က ကုန်ပစ္စည်းတွေကို တပ်ဆင်တယ်။', english: 'Robot arms assemble products in the factory.' }
+    ]},
+    { id: '3952', korean: '리사이클링 센터', myanmar: 'ပြန်လည်အသုံးပြုရေး စင်တာ', english: 'Recycling center', pos: 'noun', level: 'basic', examples: [
+    { korean: '재활용품을 리사이클링 센터에 가져다줬어요.', myanmar: 'ပြန်လည်အသုံးပြုနိုင်တဲ့ပစ္စည်းတွေကို ပြန်လည်အသုံးပြုရေး စင်တာကို ယူသွားတယ်။', english: 'I took recyclables to the recycling center.' }
+    ]},
+    { id: '3953', korean: '러브 스토리', myanmar: 'အချစ်ဇာတ်လမ်း', english: 'Love story', pos: 'noun', level: 'basic', examples: [
+    { korean: '감동적인 러브 스토리를 읽었어요.', myanmar: 'စိတ်လှုပ်ရှားဖွယ် အချစ်ဇာတ်လမ်းကို ဖတ်လိုက်တယ်။', english: 'I read a touching love story.' }
+    ]},
+    { id: '3954', korean: '리테일 매장', myanmar: 'လက်လီဆိုင်', english: 'Retail store', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '새로운 리테일 매장이 문을 열었어요.', myanmar: 'လက်လီဆိုင်အသစ် ဖွင့်လိုက်တယ်။', english: 'A new retail store opened.' }
+    ]},
+    { id: '3955', korean: '루머 퍼뜨리다', myanmar: 'ကောလဟာလ ဖြန့်ခြင်း', english: 'Spread a rumor', pos: 'verb phrase', level: 'pre-intermediate', examples: [
+    { korean: '나쁜 루머를 퍼뜨리지 마세요.', myanmar: 'မကောင်းတဲ့ ကောလဟာလကို မဖြန့်ပါနဲ့။', english: 'Don\'t spread bad rumors.' }
+    ]},
+    { id: '3956', korean: '리허설실', myanmar: 'လေ့ကျင့်ခန်းခန်း', english: 'Rehearsal room', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '밴드 리허설실에서 연습했어요.', myanmar: 'တီးဝိုင်း လေ့ကျင့်ခန်းခန်းမှာ လေ့ကျင့်တယ်။', english: 'I practiced in the band rehearsal room.' }
+    ]},
+    { id: '3957', korean: '롱테일 키워드', myanmar: 'ရှည်လျားသော ဝေါဟာရ', english: 'Long-tail keyword', pos: 'noun', level: 'advanced', examples: [
+    { korean: '검색 엔진 최적화를 위해 롱테일 키워드를 사용해요.', myanmar: 'ရှာဖွေရေး အင်ဂျင်ကို အကောင်းဆုံးဖြစ်အောင်လုပ်ဖို့ ရှည်လျားသော ဝေါဟာရကို သုံးတယ်။', english: 'I use long-tail keywords for search engine optimization.' }
+    ]},
+    { id: '3958', korean: '레이아웃', myanmar: 'အဆင်အပြင်', english: 'Layout', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '웹사이트 레이아웃을 디자인했어요.', myanmar: 'ဝက်ဘ်ဆိုက် အဆင်အပြင်ကို ဒီဇိုင်းဆွဲလိုက်တယ်။', english: 'I designed the website layout.' }
+    ]},
+    { id: '3959', korean: '로드 자전거', myanmar: 'လမ်းစက်ဘီး', english: 'Road bike', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '로드 자전거를 타고 출퇴근해요.', myanmar: 'လမ်းစက်ဘီးစီးပြီး အလုပ်သွားအလုပ်ပြန်လုပ်တယ်။', english: 'I commute to work on a road bike.' }
+    ]},
+    { id: '3960', korean: '리프레시 버튼', myanmar: 'လန်းဆန်းခလုတ်', english: 'Refresh button', pos: 'noun', level: 'basic', examples: [
+    { korean: '페이지가 로드되지 않으면 리프레시 버튼을 누르세요.', myanmar: 'စာမျက်နှာ မတက်ရင် လန်းဆန်းခလုတ်ကို နှိပ်ပါ။', english: 'If the page doesn\'t load, press the refresh button.' }
+    ]},
+    { id: '3961', korean: '러기지 카트', myanmar: 'ခရီးဆောင်အိတ် တွန်းလှည်း', english: 'Luggage cart', pos: 'noun', level: 'basic', examples: [
+    { korean: '공항에서 러기지 카트를 빌렸어요.', myanmar: 'လေဆိပ်မှာ ခရီးဆောင်အိတ် တွန်းလှည်းကို ငှားလိုက်တယ်။', english: 'I rented a luggage cart at the airport.' }
+    ]},
+    { id: '3962', korean: '리모트 데스크톱', myanmar: 'အဝေးထိန်း ကွန်ပျူတာ', english: 'Remote desktop', pos: 'noun', level: 'advanced', examples: [
+    { korean: '집에서 리모트 데스크톱으로 회사 컴퓨터에 접속해요.', myanmar: 'အိမ်ကနေ အဝေးထိန်း ကွန်ပျူတာနဲ့ ကုမ္ပဏီကွန်ပျူတာကို ဝင်တယ်။', english: 'I access my work computer from home using remote desktop.' }
+    ]},
+    { id: '3963', korean: '레이어드 룩', myanmar: 'အလွှာလိုက် ဝတ်စုံ', english: 'Layered look', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '겨울에는 레이어드 룩이 따뜻해요.', myanmar: 'ဆောင်းရာသီမှာ အလွှာလိုက် ဝတ်စုံက နွေးတယ်။', english: 'A layered look is warm in winter.' }
+    ]},
+    { id: '3964', korean: '로열 젤리', myanmar: 'တော်ဝင်ဂျယ်လီ', english: 'Royal jelly', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '로열 젤리는 건강에 좋아요.', myanmar: 'တော်ဝင်ဂျယ်လီက ကျန်းမာရေးအတွက် ကောင်းတယ်။', english: 'Royal jelly is good for health.' }
+    ]},
+    { id: '3965', korean: '리프트권', myanmar: 'ဓာတ်လှေကား လက်မှတ်', english: 'Lift ticket', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '스키장에서 리프트권을 구매했어요.', myanmar: 'နှင်းလျှောစီးကွင်းမှာ ဓာတ်လှေကား လက်မှတ်ကို ဝယ်လိုက်တယ်။', english: 'I bought a lift ticket at the ski resort.' }
+    ]},
+    { id: '3966', korean: '런닝 타임', myanmar: 'ပြေးချိန်', english: 'Running time (of a film/show)', pos: 'noun', level: 'basic', examples: [
+    { korean: '영화 런닝 타임이 길어요.', myanmar: 'ရုပ်ရှင် ပြေးချိန်က ရှည်တယ်။', english: 'The movie\'s running time is long.' }
+    ]},
+    { id: '3967', korean: '리셀', myanmar: 'ပြန်လည်ရောင်းချခြင်း', english: 'Resell', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '희귀 아이템을 리셀했어요.', myanmar: 'ရှားပါး ပစ္စည်းကို ပြန်လည်ရောင်းချခြင်း လုပ်လိုက်တယ်။', english: 'I resold a rare item.' }
+    ]},
+    { id: '3968', korean: '로데오', myanmar: 'မြင်းစီးပြိုင်ပွဲ', english: 'Rodeo', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '미국에서 로데오를 봤어요.', myanmar: 'အမေရိကမှာ မြင်းစီးပြိုင်ပွဲကို ကြည့်လိုက်တယ်။', english: 'I watched a rodeo in the US.' }
+    ]},
+    { id: '3969', korean: '리모트 센싱', myanmar: 'အဝေးအာရုံခံ', english: 'Remote sensing', pos: 'noun', level: 'advanced', examples: [
+    { korean: '위성 사진에 리모트 센싱 기술이 사용돼요.', myanmar: 'ဂြိုလ်တုဓာတ်ပုံမှာ အဝေးအာရုံခံ နည်းပညာကို သုံးတယ်။', english: 'Remote sensing technology is used in satellite imagery.' }
+    ]},
+    { id: '3970', korean: '랜드마크', myanmar: 'အထင်ကရနေရာ', english: 'Landmark', pos: 'noun', level: 'basic', examples: [
+    { korean: '서울의 랜드마크는 남산타워예요.', myanmar: 'ဆိုးလ်ရဲ့ အထင်ကရနေရာက နမ်ဆန်တာဝါပါ။', english: 'Namsan Tower is a landmark of Seoul.' }
+    ]},
+    { id: '3971', korean: '러버 밴드', myanmar: 'ရော်ဘာကြိုး', english: 'Rubber band', pos: 'noun', level: 'basic', examples: [
+    { korean: '머리를 묶을 때 러버 밴드를 사용해요.', myanmar: 'ဆံပင်စည်းတဲ့အခါ ရော်ဘာကြိုးကို သုံးတယ်။', english: 'I use a rubber band to tie my hair.' }
+    ]},
+    { id: '3972', korean: '리얼타임 시스템', myanmar: 'အချိန်မှန် စနစ်', english: 'Real-time system', pos: 'noun', level: 'advanced', examples: [
+    { korean: '항공 관제는 리얼타임 시스템으로 운영돼요.', myanmar: 'လေကြောင်းထိန်းချုပ်မှုက အချိန်မှန် စနစ်နဲ့ လုပ်ဆောင်တယ်။', english: 'Air traffic control operates on a real-time system.' }
+    ]},
+    { id: '3973', korean: '리버티', myanmar: 'လွတ်လပ်မှု', english: 'Liberty', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '자유와 리버티를 추구해요.', myanmar: 'လွတ်လပ်ခြင်းနဲ့ လွတ်လပ်မှုကို ရှာဖွေတယ်။', english: 'I pursue freedom and liberty.' }
+    ]},
+    { id: '3974', korean: '로우컷', myanmar: 'အနိမ့်ဖြတ်', english: 'Low cut', pos: 'noun/adj', level: 'pre-intermediate', examples: [
+    { korean: '로우컷 신발을 신었어요.', myanmar: 'အနိမ့်ဖြတ် ဖိနပ်ကို စီးလိုက်တယ်။', english: 'I wore low-cut shoes.' }
+    ]},
+    { id: '3975', korean: '로드샵', myanmar: 'လမ်းဘေးဆိုင်', english: 'Road shop (street-side store)', pos: 'noun', level: 'basic', examples: [
+    { korean: '명동에 가면 로드샵이 많아요.', myanmar: 'မြောင်ဒုန်ကို သွားရင် လမ်းဘေးဆိုင်တွေ အများကြီး ရှိတယ်။', english: 'There are many road shops if you go to Myeongdong.' }
+    ]},
+    { id: '3976', korean: '리모트 워크', myanmar: 'အဝေးထိန်း အလုပ်', english: 'Remote work', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '코로나 때문에 리모트 워크가 늘었어요.', myanmar: 'ကိုရိုနာကြောင့် အဝေးထိန်း အလုပ်တွေ များလာတယ်။', english: 'Remote work increased due to Corona.' }
+    ]},
+    { id: '3977', korean: '로그아웃', myanmar: 'ထွက်ခြင်း', english: 'Logout', pos: 'noun', level: 'basic', examples: [
+    { korean: '작업이 끝나면 로그아웃해주세요.', myanmar: 'အလုပ်ပြီးရင် ထွက်ခြင်းလုပ်ပေးပါ။', english: 'Please log out when you are done.' }
+    ]},
+    { id: '3978', korean: '리사이클링 아트', myanmar: 'ပြန်လည်အသုံးပြု အနုပညာ', english: 'Recycling art', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '폐품으로 리사이클링 아트를 만들었어요.', myanmar: 'အမှိုက်ပစ္စည်းတွေနဲ့ ပြန်လည်အသုံးပြု အနုပညာကို ဖန်တီးလိုက်တယ်။', english: 'I made recycling art with waste materials.' }
+    ]},
+    { id: '3979', korean: '런닝 크루 모집', myanmar: 'ပြေးအဖွဲ့ ဖိတ်ခေါ်ခြင်း', english: 'Running crew recruitment', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '새로운 런닝 크루 모집 공고를 봤어요.', myanmar: 'ပြေးအဖွဲ့ ဖိတ်ခေါ်ခြင်း အသစ်ကို မြင်လိုက်တယ်။', english: 'I saw a new running crew recruitment announcement.' }
+    ]},
+    { id: '3980', korean: '리튬', myanmar: 'လီသီယမ်', english: 'Lithium', pos: 'noun', level: 'advanced', examples: [
+    { korean: '리튬 배터리는 스마트폰에 사용돼요.', myanmar: 'လီသီယမ် ဘက်ထရီက စမတ်ဖုန်းမှာ သုံးတယ်။', english: 'Lithium batteries are used in smartphones.' }
+    ]},
+    { id: '3981', korean: '러시안 블루', myanmar: 'ရုရှား ဘလူး (ကြောင်မျိုး)', english: 'Russian Blue (cat breed)', pos: 'noun', level: 'basic', examples: [
+    { korean: '러시안 블루 고양이를 키우고 있어요.', myanmar: 'ရုရှား ဘလူး (ကြောင်မျိုး) ကြောင်ကို မွေးထားတယ်။', english: 'I am raising a Russian Blue cat.' }
+    ]},
+    { id: '3982', korean: '리미티드 에디션', myanmar: 'ကန့်သတ်ထုတ်ဝေမှု', english: 'Limited edition', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '새로운 운동화 리미티드 에디션을 샀어요.', myanmar: 'အားကစားဖိနပ် ကန့်သတ်ထုတ်ဝေမှုကို ဝယ်လိုက်တယ်။', english: 'I bought a new limited edition sneaker.' }
+    ]},
+    { id: '3983', korean: '라이프 사이클', myanmar: 'သက်တမ်းစက်ဝန်း', english: 'Lifecycle', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '제품의 라이프 사이클을 분석했어요.', myanmar: 'ကုန်ပစ္စည်းရဲ့ သက်တမ်းစက်ဝန်းကို ခွဲခြမ်းစိတ်ဖြာလိုက်တယ်။', english: 'I analyzed the product\'s lifecycle.' }
+    ]},
+    { id: '3984', korean: '로그파일', myanmar: 'မှတ်တမ်းဖိုင်', english: 'Log file', pos: 'noun', level: 'advanced', examples: [
+    { korean: '서버 로그파일을 확인해야 해요.', myanmar: 'ဆာဗာ မှတ်တမ်းဖိုင်ကို စစ်ဆေးသင့်တယ်။', english: 'I need to check the server log file.' }
+    ]},
+    { id: '3985', korean: '리본 드레스', myanmar: 'ဖဲကြိုး ဝတ်စုံ', english: 'Ribbon dress', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '예쁜 리본 드레스를 입었어요.', myanmar: 'လှပတဲ့ ဖဲကြိုး ဝတ်စုံကို ဝတ်လိုက်တယ်။', english: 'I wore a beautiful ribbon dress.' }
+    ]},
+    { id: '3986', korean: '로봇 청소', myanmar: 'စက်ရုပ် သန့်ရှင်းရေး', english: 'Robot cleaning', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '매일 로봇 청소를 해요.', myanmar: 'နေ့တိုင်း စက်ရုပ် သန့်ရှင်းရေးလုပ်တယ်။', english: 'I do robot cleaning every day.' }
+    ]},
+    { id: '3987', korean: '리테일 테크', myanmar: 'လက်လီ နည်းပညာ', english: 'Retail tech', pos: 'noun', level: 'advanced', examples: [
+    { korean: '리테일 테크 시장이 빠르게 성장하고 있어요.', myanmar: 'လက်လီ နည်းပညာ ဈေးကွက်က လျင်မြန်စွာ ကြီးထွားနေတယ်။', english: 'The retail tech market is growing rapidly.' }
+    ]},
+    { id: '3988', korean: '로드 트립', myanmar: 'လမ်းခရီး', english: 'Road trip', pos: 'noun', level: 'basic', examples: [
+    { korean: '여름에 친구들과 로드 트립을 갈 거예요.', myanmar: 'နွေရာသီမှာ သူငယ်ချင်းတွေနဲ့ လမ်းခရီးကို သွားမယ်။', english: 'I\'m going on a road trip with friends this summer.' }
+    ]},
+    { id: '3989', korean: '리얼 계기판', myanmar: 'တကယ့် ညွှန်ပြစက်', english: 'Real dashboard', pos: 'noun', level: 'advanced', examples: [
+    { korean: '자동차의 리얼 계기판이 멋져요.', myanmar: 'ကားရဲ့ တကယ့် ညွှန်ပြစက်က လှတယ်။', english: 'The car\'s real dashboard is cool.' }
+    ]},
+    { id: '3990', korean: '리모트 컨트롤러', myanmar: 'အဝေးထိန်းချုပ်ကိရိယာ', english: 'Remote controller', pos: 'noun', level: 'basic', examples: [
+    { korean: '텔레비전 리모트 컨트롤러가 작동하지 않아요.', myanmar: 'တီဗီ အဝေးထိန်းချုပ်ကိရိယာက အလုပ်မလုပ်ဘူး။', english: 'The TV remote controller is not working.' }
+    ]},
+    { id: '3991', korean: '레버리지 효과', myanmar: 'အားသာချက် အကျိုးသက်ရောက်မှု', english: 'Leverage effect', pos: 'noun', level: 'advanced', examples: [
+    { korean: '투자에서 레버리지 효과를 잘 활용해야 해요.', myanmar: 'ရင်းနှီးမြှုပ်နှံမှုမှာ အားသာချက် အကျိုးသက်ရောက်မှုကို ကောင်းကောင်း အသုံးချသင့်တယ်။', english: 'You should utilize the leverage effect well in investments.' }
+    ]},
+    { id: '3992', korean: '리프팅', myanmar: 'ဆွဲတင်ခြင်း', english: 'Lifting', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '피부 리프팅 시술을 받았어요.', myanmar: 'အရေပြား ဆွဲတင်ခြင်း ကုသမှုကို ခံယူလိုက်တယ်။', english: 'I received skin lifting treatment.' }
+    ]},
+    { id: '3993', korean: '로마 시대', myanmar: 'ရောမခေတ်', english: 'Roman era', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '로마 시대의 유적을 탐방했어요.', myanmar: 'ရောမခေတ်ရဲ့ အပျက်အစီးတွေကို လေ့လာခဲ့တယ်။', english: 'I explored the ruins of the Roman era.' }
+    ]},
+    { id: '3994', korean: '리테일 마케팅', myanmar: 'လက်လီ စျေးကွက်ရှာဖွေရေး', english: 'Retail marketing', pos: 'noun', level: 'advanced', examples: [
+    { korean: '리테일 마케팅 전략을 수립했어요.', myanmar: 'လက်လီ စျေးကွက်ရှာဖွေရေး ဗျူဟာကို ချမှတ်လိုက်တယ်။', english: 'I established a retail marketing strategy.' }
+    ]},
+    { id: '3995', korean: '러닝 트랙', myanmar: 'ပြေးလမ်းကြောင်း', english: 'Running track', pos: 'noun', level: 'basic', examples: [
+    { korean: '공원에서 러닝 트랙을 달렸어요.', myanmar: 'ပန်းခြံမှာ ပြေးလမ်းကြောင်းကို ပြေးလိုက်တယ်။', english: 'I ran on the running track in the park.' }
+    ]},
+    { id: '3996', korean: '리스트 컴프리헨션', myanmar: 'စာရင်းနားလည်မှု', english: 'List comprehension (programming)', pos: 'noun', level: 'advanced', examples: [
+    { korean: '파이썬에서 리스트 컴프리헨션을 배웠어요.', myanmar: 'ပိုက်သွန်မှာ စာရင်းနားလည်မှုကို သင်ယူလိုက်တယ်။', english: 'I learned list comprehension in Python.' }
+    ]},
+    { id: '3997', korean: '로맨틱 코미디', myanmar: 'အချစ် ဟာသ', english: 'Romantic comedy', pos: 'noun', level: 'basic', examples: [
+    { korean: '로맨틱 코미디 영화를 좋아해요.', myanmar: 'အချစ် ဟာသ ရုပ်ရှင်ကို ကြိုက်တယ်။', english: 'I like romantic comedy movies.' }
+    ]},
+    { id: '3998', korean: '리콜 대상', myanmar: 'ပြန်လည်သိမ်းဆည်းရန် စာရင်း', english: 'Recall target', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '이 제품은 리콜 대상이에요.', myanmar: 'ဒီကုန်ပစ္စည်းက ပြန်လည်သိမ်းဆည်းရန် စာရင်းထဲမှာ ပါတယ်။', english: 'This product is subject to recall.' }
+    ]},
+    { id: '3999', korean: '리드미 파일', myanmar: 'ဖတ်ရန်ဖိုင်', english: 'Readme file', pos: 'noun', level: 'advanced', examples: [
+    { korean: '프로젝트 시작 전에 리드미 파일을 읽어보세요.', myanmar: 'ပရောဂျက် မစခင် ဖတ်ရန်ဖိုင်ကို ဖတ်ကြည့်ပါ။', english: 'Read the readme file before starting the project.' }
+    ]},
+    { id: '4000', korean: '로열층', myanmar: 'တော်ဝင်ထပ် (အမြင့်ဆုံးထပ်)', english: 'Royal floor (highest floor/premium floor)', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '호텔 로열층에 묵었어요.', myanmar: 'ဟိုတယ် တော်ဝင်ထပ် (အမြင့်ဆုံးထပ်) မှာ တည်းခိုလိုက်တယ်။', english: 'I stayed on the royal floor of the hotel.' }
+    ]},
+    { id: '4001', korean: '러시아 전쟁', myanmar: 'ရုရှားစစ်ပွဲ', english: 'Russian war', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '역사 수업에서 러시아 전쟁에 대해 배웠어요.', myanmar: 'သမိုင်းသင်ခန်းစာမှာ ရုရှားစစ်ပွဲအကြောင်း သင်ယူလိုက်တယ်။', english: 'I learned about the Russian war in history class.' }
+    ]},
+    { id: '4002', korean: '리사이클', myanmar: 'ပြန်လည်အသုံးပြုခြင်း (동사형)', english: 'Recycle (verb form)', pos: 'verb', level: 'basic', examples: [
+    { korean: '플라스틱 병을 리사이클해요.', myanmar: 'ပလတ်စတစ် ပုလင်းကို ပြန်လည်အသုံးပြုခြင်း လုပ်တယ်။', english: 'I recycle plastic bottles.' }
+    ]},
+    { id: '4003', korean: '로드 매니저', myanmar: 'လမ်းမန်နေဂျာ', english: 'Road manager', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '가수의 로드 매니저는 바빠요.', myanmar: 'အဆိုတော်ရဲ့ လမ်းမန်နေဂျာက အလုပ်ရှုပ်တယ်။', english: 'A singer\'s road manager is busy.' }
+    ]},
+    { id: '4004', korean: '리얼리티 방송', myanmar: 'လက်တွေ့ဘဝ အစီအစဉ်', english: 'Reality show broadcast', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '재미있는 리얼리티 방송을 시청했어요.', myanmar: 'စိတ်ဝင်စားစရာကောင်းတဲ့ လက်တွေ့ဘဝ အစီအစဉ်ကို ကြည့်လိုက်တယ်။', english: 'I watched an interesting reality show broadcast.' }
+    ]},
+    { id: '4005', korean: '라벨 프린터', myanmar: 'တံဆိပ် ပရင်တာ', english: 'Label printer', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '라벨 프린터로 제품 정보를 인쇄했어요.', myanmar: 'တံဆိပ် ပရင်တာနဲ့ ကုန်ပစ္စည်း အချက်အလက်တွေကို ပုံနှိပ်တယ်။', english: 'I printed product information with a label printer.' }
+    ]},
+    { id: '4006', korean: '리본 테이프', myanmar: 'ဖဲကြိုးတိပ်', english: 'Ribbon tape', pos: 'noun', level: 'basic', examples: [
+    { korean: '선물을 포장할 때 리본 테이프를 사용해요.', myanmar: 'လက်ဆောင်ကို ထုပ်ပိုးတဲ့အခါ ဖဲကြိုးတိပ်ကို သုံးတယ်။', english: 'I use ribbon tape when wrapping gifts.' }
+    ]},
+    { id: '4007', korean: '러시아 혁명', myanmar: 'ရုရှားတော်လှန်ရေး', english: 'Russian Revolution', pos: 'noun', level: 'advanced', examples: [
+    { korean: '러시아 혁명은 세계사에 큰 영향을 미쳤어요.', myanmar: 'ရုရှားတော်လှန်ရေးက ကမ္ဘာ့သမိုင်းမှာ ကြီးမားတဲ့ သက်ရောက်မှု ရှိခဲ့တယ်။', english: 'The Russian Revolution had a great impact on world history.' }
+    ]},
+    { id: '4008', korean: '리마커블', myanmar: 'ထူးခြားသော', english: 'Remarkable', pos: 'adjective', level: 'intermediate', examples: [
+    { korean: '그의 노력은 정말 리마커블해요.', myanmar: 'သူ့ရဲ့ ကြိုးစားမှုက တကယ်ကို ထူးခြားသော ပါ။', english: 'His effort is truly remarkable.' }
+    ]},
+    { id: '4009', korean: '로열 층', myanmar: 'တော်ဝင် အဆင့်', english: 'Royal tier/level', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '이 호텔은 로열 층 서비스가 있어요.', myanmar: 'ဒီဟိုတယ်က တော်ဝင် အဆင့် ဝန်ဆောင်မှု ရှိတယ်။', english: 'This hotel has royal tier service.' }
+    ]},
+    { id: '4010', korean: '리얼리티 프로그램', myanmar: 'လက်တွေ့ဘဝ အစီအစဉ်', english: 'Reality program', pos: 'noun', level: 'basic', examples: [
+    { korean: '인기 있는 리얼리티 프로그램이에요.', myanmar: 'လူကြိုက်များတဲ့ လက်တွေ့ဘဝ အစီအစဉ်ပါ။', english: 'It\'s a popular reality program.' }
+    ]},
+    { id: '4011', korean: '러기지 보관소', myanmar: 'ခရီးဆောင်အိတ် ထားသိုရာ', english: 'Luggage storage', pos: 'noun', level: 'basic', examples: [
+    { korean: '공항에 러기지 보관소가 있어요.', myanmar: 'လေဆိပ်မှာ ခရီးဆောင်အိတ် ထားသိုရာ ရှိတယ်။', english: 'There is luggage storage at the airport.' }
+    ]},
+    { id: '4012', korean: '리프팅 벨트', myanmar: 'ဆွဲတင် ခါးပတ်', english: 'Lifting belt', pos: 'noun', level: 'pre-intermediate', examples: [
+    { korean: '헬스장에서 리프팅 벨트를 착용했어요.', myanmar: 'အားကစားရုံမှာ ဆွဲတင် ခါးပတ်ကို ဝတ်လိုက်တယ်။', english: 'I wore a lifting belt at the gym.' }
+    ]},
+    { id: '4013', korean: '로마자', myanmar: 'ရောမအက္ခရာ', english: 'Roman alphabet', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '한국어를 로마자로 표기했어요.', myanmar: 'ကိုရီးယားဘာသာကို ရောမအက္ခရာနဲ့ ရေးလိုက်တယ်။', english: 'I transcribed Korean into the Roman alphabet.' }
+    ]},
+    { id: '4014', korean: '리테일 솔루션', myanmar: 'လက်လီ ဖြေရှင်းချက်', english: 'Retail solution', pos: 'noun', level: 'advanced', examples: [
+    { korean: '새로운 리테일 솔루션을 도입했어요.', myanmar: 'လက်လီ ဖြေရှင်းချက် အသစ်ကို မိတ်ဆက်လိုက်တယ်။', english: 'I introduced a new retail solution.' }
+    ]},
+    { id: '4015', korean: '런닝화 끈', myanmar: 'ပြေးဖိနပ်ကြိုး', english: 'Running shoe lace', pos: 'noun', level: 'basic', examples: [
+    { korean: '런닝화 끈이 풀렸어요.', myanmar: 'ပြေးဖိနပ်ကြိုး ပြေသွားတယ်။', english: 'My running shoe lace came untied.' }
+    ]},
+    { id: '4016', korean: '리스트 박스', myanmar: 'စာရင်း ဘောက်စ်', english: 'List box', pos: 'noun', level: 'advanced', examples: [
+    { korean: 'UI 디자인에서 리스트 박스를 사용했어요.', myanmar: 'UI ဒီဇိုင်းမှာ စာရင်း ဘောက်စ်ကို သုံးတယ်။', english: 'I used a list box in UI design.' }
+    ]},
+    { id: '4017', korean: '로맨스 소설', myanmar: 'အချစ်ဝတ္ထု', english: 'Romance novel', pos: 'noun', level: 'basic', examples: [
+    { korean: '감성적인 로맨스 소설을 읽고 있어요.', myanmar: 'ခံစားမှုပြင်းထန်တဲ့ အချစ်ဝတ္ထုကို ဖတ်နေတယ်။', english: 'I am reading a romantic novel.' }
+    ]},
+    { id: '4018', korean: '리콜 결정', myanmar: 'ပြန်လည်သိမ်းဆည်းရန် ဆုံးဖြတ်ချက်', english: 'Recall decision', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '정부에서 제품 리콜 결정을 내렸어요.', myanmar: 'အစိုးရက ကုန်ပစ္စည်း ပြန်လည်သိမ်းဆည်းရန် ဆုံးဖြတ်ချက်ကို ချလိုက်တယ်။', english: 'The government made a product recall decision.' }
+    ]},
+    { id: '4019', korean: '리드 개발자', myanmar: 'ခေါင်းဆောင် developer', english: 'Lead developer', pos: 'noun', level: 'advanced', examples: [
+    { korean: '그는 우리 팀의 리드 개발자예요.', myanmar: 'သူက ကျွန်တော်တို့ အဖွဲ့ရဲ့ ခေါင်းဆောင် developer ပါ။', english: 'He is the lead developer of our team.' }
+    ]},
+    { id: '4020', korean: '로열티 제도', myanmar: 'သစ္စာစောင့်သိမှု စနစ်', english: 'Loyalty system', pos: 'noun', level: 'advanced', examples: [
+    { korean: '항공사 마일리지 프로그램은 로열티 제도예요.', myanmar: 'လေကြောင်းလိုင်း မိုင်အကန့် အစီအစဉ်က သစ္စာစောင့်သိမှု စနစ်ပါ။', english: 'Airline mileage programs are loyalty systems.' }
+    ]},
+    
+    // ===== ㄹ CONSONANT WORDS - CATEGORY 3: ADJECTIVES & ADVERBS (4021-4120) =====
+    { id: '4021', korean: '라이브하다', myanmar: 'တိုက်ရိုက်ထုတ်လွှင့်သည်', english: 'To be live (broadcast)', pos: 'verb', level: 'basic', examples: [
+    { korean: '지금 공연을 라이브하고 있어요.', myanmar: 'အခု ဖျော်ဖြေပွဲကို တိုက်ရိုက်ထုတ်လွှင့်နေတယ်။', english: 'The performance is being broadcast live now.' }
+    ]},
+    { id: '4022', korean: '런하다', myanmar: 'ပြေးသည်', english: 'To run', pos: 'verb', level: 'basic', examples: [
+    { korean: '매일 아침 런해요.', myanmar: 'နေ့တိုင်း မနက်ခင်းမှာ ပြေးတယ်။', english: 'I run every morning.' }
+    ]},
+    { id: '4023', korean: '리얼하다', myanmar: 'လက်တွေ့ကျသည်', english: 'To be real/realistic', pos: 'adjective', level: 'pre-intermediate', examples: [
+    { korean: '그림이 정말 리얼해요.', myanmar: 'ပန်းချီက တကယ် လက်တွေ့ကျတယ်။', english: 'The painting is really realistic.' }
+    ]},
+    { id: '4024', korean: '럭셔리하다', myanmar: 'ဇိမ်ကျသည်', english: 'To be luxurious', pos: 'adjective', level: 'basic', examples: [
+    { korean: '이 호텔은 정말 럭셔리해요.', myanmar: 'ဒီဟိုတယ်က တကယ် ဇိမ်ကျတယ်။', english: 'This hotel is really luxurious.' }
+    ]},
+    { id: '4025', korean: '레어하다', myanmar: 'ရှားပါးသည်', english: 'To be rare', pos: 'adjective', level: 'intermediate', examples: [
+    { korean: '이 만화책은 레어해요.', myanmar: 'ဒီကာတွန်းစာအုပ်က ရှားပါးတယ်။', english: 'This comic book is rare.' }
+    ]},
+    { id: '4026', korean: '로컬하다', myanmar: 'ဒေသခံဖြစ်သည်', english: 'To be local', pos: 'adjective', level: 'pre-intermediate', examples: [
+    { korean: '로컬 맛집을 찾아갔어요.', myanmar: 'ဒေသခံဖြစ်တဲ့ စားသောက်ဆိုင်ကို ရှာသွားတယ်။', english: 'I visited a local맛집 (local eatery).' }
+    ]},
+    { id: '4027', korean: '레트로하다', myanmar: 'ရိုးရာဆန်သည်', english: 'To be retro', pos: 'adjective', level: 'intermediate', examples: [
+    { korean: '레트로 감성의 카페예요.', myanmar: 'ရိုးရာဆန်တဲ့ ခံစားမှုရှိတဲ့ ကော်ဖီဆိုင်ပါ။', english: 'It\'s a retro-themed cafe.' }
+    ]},
+    { id: '4028', korean: '랜덤하게', myanmar: 'ကျပန်းဖြစ်သည်', english: 'Randomly', pos: 'adverb', level: 'basic', examples: [
+    { korean: '랜덤하게 음악을 들었어요.', myanmar: 'ကျပန်းဖြစ်တဲ့ သီချင်းကို နားထောင်လိုက်တယ်။', english: 'I listened to music randomly.' }
+    ]},
+    { id: '4029', korean: '리얼하게', myanmar: 'လက်တွေ့ကျစွာ', english: 'Realistically', pos: 'adverb', level: 'pre-intermediate', examples: [
+    { korean: '상황을 리얼하게 설명해줬어요.', myanmar: 'အခြေအနေကို လက်တွေ့ကျစွာ ရှင်းပြတယ်။', english: 'He explained the situation realistically.' }
+    ]},
+    { id: '4030', korean: '로맨틱하다', myanmar: 'အချစ်ဆန်သည်', english: 'To be romantic', pos: 'adjective', level: 'basic', examples: [
+    { korean: '분위기가 로맨틱해요.', myanmar: 'ပတ်ဝန်းကျင်က အချစ်ဆန်တယ်။', english: 'The atmosphere is romantic.' }
+    ]},
+    { id: '4031', korean: '리치하다', myanmar: 'ကြွယ်ဝသည် (맛)', english: 'To be rich (taste)', pos: 'adjective', level: 'intermediate', examples: [
+    { korean: '이 초콜릿은 맛이 리치해요.', myanmar: 'ဒီချောကလက်က အရသာ ကြွယ်ဝတယ်။', english: 'This chocolate has a rich taste.' }
+    ]},
+    { id: '4032', korean: '러프하다', myanmar: 'ကြမ်းတမ်းသည်', english: 'To be rough', pos: 'adjective', level: 'pre-intermediate', examples: [
+    { korean: '표면이 러프해요.', myanmar: 'မျက်နှာပြင်က ကြမ်းတမ်းတယ်။', english: 'The surface is rough.' }
+    ]},
+    { id: '4033', korean: '리얼타임으로', myanmar: 'အချိန်မှန်စွာ', english: 'In real-time', pos: 'adverb', level: 'intermediate', examples: [
+    { korean: '상황이 리얼타임으로 바뀌고 있어요.', myanmar: 'အခြေအနေက အချိန်မှန်စွာ ပြောင်းလဲနေတယ်။', english: 'The situation is changing in real-time.' }
+    ]},
+    { id: '4034', korean: '럭키하다', myanmar: 'ကံကောင်းသည်', english: 'To be lucky', pos: 'adjective', level: 'basic', examples: [
+    { korean: '오늘은 정말 럭키한 날이에요.', myanmar: 'ဒီနေ့က တကယ် ကံကောင်းတဲ့ နေ့ပါ။', english: 'Today is a really lucky day.' }
+    ]},
+    { id: '4035', korean: '리드미컬하다', myanmar: 'စည်းချက်ညီသည်', english: 'To be rhythmical', pos: 'adjective', level: 'intermediate', examples: [
+    { korean: '음악이 리드미컬하고 좋아요.', myanmar: 'ဂီတက စည်းချက်ညီပြီး ကောင်းတယ်။', english: 'The music is rhythmical and good.' }
+    ]},
+    { id: '4036', korean: '레귤러하다', myanmar: 'ပုံမှန်ဖြစ်သည်', english: 'To be regular', pos: 'adjective', level: 'basic', examples: [
+    { korean: '레귤러 사이즈 커피로 주세요.', myanmar: 'ပုံမှန်ဖြစ်တဲ့ အရွယ်အစား ကော်ဖီ ပေးပါ။', english: 'Please give me a regular size coffee.' }
+    ]},
+    { id: '4037', korean: '리버럴하다', myanmar: 'လစ်ဘရယ်ဆန်သည်', english: 'To be liberal', pos: 'adjective', level: 'advanced', examples: [
+    { korean: '그의 생각은 매우 리버럴해요.', myanmar: 'သူ့ရဲ့ အတွေးက အရမ်း လစ်ဘရယ်ဆန်တယ်။', english: 'His ideas are very liberal.' }
+    ]},
+    { id: '4038', korean: '로우하다', myanmar: 'နိမ့်သည်', english: 'To be low', pos: 'adjective', level: 'basic', examples: [
+    { korean: '음악 소리가 너무 로우해요.', myanmar: 'ဂီတသံက အရမ်း နိမ့်တယ်။', english: 'The music volume is too low.' }
+    ]},
+    { id: '4039', korean: '리프레싱하다', myanmar: 'လန်းဆန်းစေသည်', english: 'To be refreshing', pos: 'adjective', level: 'pre-intermediate', examples: [
+    { korean: '이 음료는 정말 리프레싱해요.', myanmar: 'ဒီအချိုရည်က တကယ် လန်းဆန်းစေတယ်။', english: 'This drink is really refreshing.' }
+    ]},
+    { id: '4040', korean: '로얄하다', myanmar: 'တော်ဝင်ဖြစ်သည်', english: 'To be royal', pos: 'adjective', level: 'pre-intermediate', examples: [
+    { korean: '로얄 패밀리처럼 살아요.', myanmar: 'တော်ဝင်ဖြစ်တဲ့ မိသားစုလို နေတယ်။', english: 'I live like a royal family.' }
+    ]},
+    { id: '4041', korean: '라운드하다', myanmar: 'ဝိုင်းသည်', english: 'To be round', pos: 'adjective', level: 'basic', examples: [
+    { korean: '얼굴이 라운드해요.', myanmar: 'မျက်နှာက ဝိုင်းတယ်။', english: 'Her face is round.' }
+    ]},
+    { id: '4042', korean: '리사이클링된', myanmar: 'ပြန်လည်အသုံးပြုထားသော', english: 'Recycled', pos: 'adjective', level: 'pre-intermediate', examples: [
+    { korean: '리사이클링된 종이로 만들었어요.', myanmar: 'ပြန်လည်အသုံးပြုထားသော စက္ကူနဲ့ ပြုလုပ်လိုက်တယ်။', english: 'It was made with recycled paper.' }
+    ]},
+    { id: '4043', korean: '리스크가 큰', myanmar: 'အန္တရာယ်ကြီးသော', english: 'High-risk', pos: 'adjective', level: 'intermediate', examples: [
+    { korean: '리스크가 큰 투자는 피하세요.', myanmar: 'အန္တရာယ်ကြီးသော ရင်းနှီးမြှုပ်နှံမှုကို ရှောင်ပါ။', english: 'Avoid high-risk investments.' }
+    ]},
+    { id: '4044', korean: '리얼타임으로 작동하는', myanmar: 'အချိန်မှန် လုပ်ဆောင်သော', english: 'Real-time operating', pos: 'adjective', level: 'advanced', examples: [
+    { korean: '리얼타임으로 작동하는 시스템이에요.', myanmar: 'အချိန်မှန် လုပ်ဆောင်သော စနစ်ပါ။', english: 'It\'s a real-time operating system.' }
+    ]},
+    { id: '4045', korean: '로맨틱하게', myanmar: 'အချစ်ဆန်စွာ', english: 'Romantically', pos: 'adverb', level: 'pre-intermediate', examples: [
+    { korean: '로맨틱하게 고백했어요.', myanmar: 'အချစ်ဆန်စွာ ဖွင့်ပြောလိုက်တယ်။', english: 'He confessed romantically.' }
+    ]},
+    { id: '4046', korean: '리치하게', myanmar: 'ကြွယ်ဝစွာ (맛)', english: 'Richly (taste)', pos: 'adverb', level: 'intermediate', examples: [
+    { korean: '음식을 리치하게 만들었어요.', myanmar: 'အစားအစာကို ကြွယ်ဝစွာ ပြုလုပ်လိုက်တယ်။', english: 'I made the food richly.' }
+    ]},
+    { id: '4047', korean: '러프하게', myanmar: 'ကြမ်းတမ်းစွာ', english: 'Roughly', pos: 'adverb', level: 'pre-intermediate', examples: [
+    { korean: '러프하게 스케치했어요.', myanmar: 'ကြမ်းတမ်းစွာ ပုံကြမ်းဆွဲလိုက်တယ်။', english: 'I sketched roughly.' }
+    ]},
+    { id: '4048', korean: '레귤러하게', myanmar: 'ပုံမှန်ဖြစ်စွာ', english: 'Regularly', pos: 'adverb', level: 'basic', examples: [
+    { korean: '레귤러하게 운동해요.', myanmar: 'ပုံမှန်ဖြစ်စွာ လေ့ကျင့်ခန်းလုပ်တယ်။', english: 'I exercise regularly.' }
+    ]},
+    { id: '4049', korean: '리버럴하게', myanmar: 'လစ်ဘရယ်ဆန်စွာ', english: 'Liberally', pos: 'adverb', level: 'advanced', examples: [
+    { korean: '아이들을 리버럴하게 키웠어요.', myanmar: 'ကလေးတွေကို လစ်ဘရယ်ဆန်စွာ မွေးမြူတယ်။', english: 'I raised my children liberally.' }
+    ]},
+    { id: '4050', korean: '로우하게', myanmar: 'နိမ့်စွာ', english: 'Lowly', pos: 'adverb', level: 'basic', examples: [
+    { korean: '목소리를 로우하게 냈어요.', myanmar: 'အသံကို နိမ့်စွာ ထုတ်လိုက်တယ်။', english: 'I spoke in a lowly voice.' }
+    ]},
+    { id: '4051', korean: '리프레싱하게', myanmar: 'လန်းဆန်းစေရန်', english: 'Refreshingly', pos: 'adverb', level: 'pre-intermediate', examples: [
+    { korean: '공기가 리프레싱하게 느껴져요.', myanmar: 'လေက လန်းဆန်းစေရန် ခံစားရတယ်။', english: 'The air feels refreshingly good.' }
+    ]},
+    { id: '4052', korean: '로얄하게', myanmar: 'တော်ဝင်ပုံစံဖြင့်', english: 'Royally', pos: 'adverb', level: 'pre-intermediate', examples: [
+    { korean: '손님을 로얄하게 대접했어요.', myanmar: 'ဧည့်သည်ကို တော်ဝင်ပုံစံဖြင့် ဧည့်ခံတယ်။', english: 'I treated the guest royally.' }
+    ]},
+    { id: '4053', korean: '라운드하게', myanmar: 'ဝိုင်းဝိုင်းလေး', english: 'Roundly', pos: 'adverb', level: 'basic', examples: [
+    { korean: '모서리를 라운드하게 잘랐어요.', myanmar: 'ထောင့်ကို ဝိုင်းဝိုင်းလေး ဖြတ်လိုက်တယ်။', english: 'I cut the corners roundly.' }
+    ]},
+    { id: '4054', korean: '리사이클링 가능', myanmar: 'ပြန်လည်အသုံးပြုနိုင်သော', english: 'Recyclable', pos: 'adjective', level: 'basic', examples: [
+    { korean: '이 제품은 리사이클링 가능해요.', myanmar: 'ဒီကုန်ပစ္စည်းက ပြန်လည်အသုံးပြုနိုင်သော ပါ။', english: 'This product is recyclable.' }
+    ]},
+    { id: '4055', korean: '리스크가 적은', myanmar: 'အန္တရာယ်နည်းသော', english: 'Low-risk', pos: 'adjective', level: 'intermediate', examples: [
+    { korean: '리스크가 적은 투자 방법을 찾고 있어요.', myanmar: 'အန္တရာယ်နည်းသော ရင်းနှီးမြှုပ်နှံမှု နည်းလမ်းကို ရှာနေတယ်။', english: 'I\'m looking for a low-risk investment method.' }
+    ]},
+    { id: '4056', korean: '리얼타임으로 제어하는', myanmar: 'အချိန်မှန် ထိန်းချုပ်သော', english: 'Real-time controlling', pos: 'adjective', level: 'advanced', examples: [
+    { korean: '리얼타임으로 제어하는 시스템이에요.', myanmar: 'အချိန်မှန် ထိန်းချုပ်သော စနစ်ပါ။', english: 'It\'s a real-time controlling system.' }
+    ]},
+    { id: '4057', korean: '로맨틱한 분위기', myanmar: 'အချစ်ဆန်သော ပတ်ဝန်းကျင်', english: 'Romantic atmosphere', pos: 'noun phrase', level: 'basic', examples: [
+    { korean: '로맨틱한 분위기에서 데이트했어요.', myanmar: 'အချစ်ဆန်သော ပတ်ဝန်းကျင်မှာ ချိန်းတွေ့တယ်။', english: 'We had a date in a romantic atmosphere.' }
+    ]},
+    { id: '4058', korean: '리치한 향', myanmar: 'ကြွယ်ဝသော ရနံ့', english: 'Rich aroma', pos: 'noun phrase', level: 'intermediate', examples: [
+    { korean: '커피에서 리치한 향이 나요.', myanmar: 'ကော်ဖီကနေ ကြွယ်ဝသော ရနံ့ ထွက်တယ်။', english: 'The coffee has a rich aroma.' }
+    ]},
+    { id: '4059', korean: '러프한 질감', myanmar: 'ကြမ်းတမ်းသော အထိအတွေ့', english: 'Rough texture', pos: 'noun phrase', level: 'pre-intermediate', examples: [
+    { korean: '이 천은 러프한 질감을 가지고 있어요.', myanmar: 'ဒီအထည်က ကြမ်းတမ်းသော အထိအတွေ့ ရှိတယ်။', english: 'This fabric has a rough texture.' }
+    ]},
+    { id: '4060', korean: '레귤러 사이즈', myanmar: 'ပုံမှန် အရွယ်အစား', english: 'Regular size', pos: 'noun phrase', level: 'basic', examples: [
+    { korean: '레귤러 사이즈로 주세요.', myanmar: 'ပုံမှန် အရွယ်အစားနဲ့ ပေးပါ။', english: 'Please give me the regular size.' }
+    ]},
+    { id: '4061', korean: '리버럴한 생각', myanmar: 'လစ်ဘရယ်ဆန်သော အတွေး', english: 'Liberal thinking', pos: 'noun phrase', level: 'advanced', examples: [
+    { korean: '그는 리버럴한 생각을 가지고 있어요.', myanmar: 'သူက လစ်ဘရယ်ဆန်သော အတွေး ရှိတယ်။', english: 'He has liberal thinking.' }
+    ]},
+    { id: '4062', korean: '로우 프로파일', myanmar: 'နိမ့်သော ပုံစံ', english: 'Low profile', pos: 'noun phrase', level: 'intermediate', examples: [
+    { korean: '그는 로우 프로파일을 유지하고 싶어 해요.', myanmar: 'သူက နိမ့်သော ပုံစံကို ထိန်းသိမ်းချင်တယ်။', english: 'He wants to maintain a low profile.' }
+    ]},
+    { id: '4063', korean: '리프레싱 음료', myanmar: 'လန်းဆန်းစေသော အချိုရည်', english: 'Refreshing drink', pos: 'noun phrase', level: 'pre-intermediate', examples: [
+    { korean: '더울 때 리프레싱 음료가 최고예요.', myanmar: 'ပူတဲ့အခါ လန်းဆန်းစေသော အချိုရည်က အကောင်းဆုံးပဲ။', english: 'Refreshing drinks are the best when it\'s hot.' }
+    ]},
+    { id: '4064', korean: '로얄 블루', myanmar: 'တော်ဝင် အပြာရောင်', english: 'Royal blue', pos: 'noun phrase', level: 'basic', examples: [
+    { korean: '로얄 블루 색깔의 드레스를 입었어요.', myanmar: 'တော်ဝင် အပြာရောင် အရောင်ရှိတဲ့ ဝတ်စုံကို ဝတ်လိုက်တယ်။', english: 'I wore a royal blue dress.' }
+    ]},
+    { id: '4065', korean: '라운드 테이블', myanmar: 'ဝိုင်းဝိုင်း စားပွဲ', english: 'Round table', pos: 'noun phrase', level: 'basic', examples: [
+    { korean: '라운드 테이블에 앉아서 이야기했어요.', myanmar: 'ဝိုင်းဝိုင်း စားပွဲမှာ ထိုင်ပြီး စကားပြောတယ်။', english: 'We sat at a round table and talked.' }
+    ]},
+    { id: '4066', korean: '리사이클링된 제품', myanmar: 'ပြန်လည်အသုံးပြုထားသော ကုန်ပစ္စည်း', english: 'Recycled product', pos: 'noun phrase', level: 'pre-intermediate', examples: [
+    { korean: '리사이클링된 제품을 사용해야 환경을 보호할 수 있어요.', myanmar: 'ပြန်လည်အသုံးပြုထားသော ကုန်ပစ္စည်းကို သုံးမှ ပတ်ဝန်းကျင်ကို ကာကွယ်နိုင်တယ်။', english: 'We can protect the environment by using recycled products.' }
+    ]},
+    { id: '4067', korean: '리스크 관리', myanmar: 'အန္တရာယ် စီမံခန့်ခွဲမှု', english: 'Risk management', pos: 'noun phrase', level: 'advanced', examples: [
+    { korean: '기업에서 리스크 관리가 중요해요.', myanmar: 'ကုမ္ပဏီမှာ အန္တရာယ် စီမံခန့်ခွဲမှုက အရေးကြီးတယ်။', english: 'Risk management is important in business.' }
+    ]},
+    { id: '4068', korean: '리얼한 캐릭터', myanmar: 'လက်တွေ့ကျသော ဇာတ်ကောင်', english: 'Realistic character', pos: 'noun phrase', level: 'intermediate', examples: [
+    { korean: '이 소설의 리얼한 캐릭터들이 좋아요.', myanmar: 'ဒီဝတ္ထုရဲ့ လက်တွေ့ကျသော ဇာတ်ကောင်တွေကို ကြိုက်တယ်။', english: 'I like the realistic characters in this novel.' }
+    ]},
+    { id: '4069', korean: '로맨틱한 밤', myanmar: 'အချစ်ဆန်သော ည', english: 'Romantic night', pos: 'noun phrase', level: 'basic', examples: [
+    { korean: '로맨틱한 밤을 보냈어요.', myanmar: 'အချစ်ဆန်သော ညကို ကုန်ဆုံးလိုက်တယ်။', english: 'We spent a romantic night.' }
+    ]},
+    { id: '4070', korean: '리치한 맛', myanmar: 'ကြွယ်ဝသော အရသာ', english: 'Rich taste', pos: 'noun phrase', level: 'intermediate', examples: [
+    { korean: '이 와인은 리치한 맛이 나요.', myanmar: 'ဒီဝိုင်က ကြွယ်ဝသော အရသာ ရှိတယ်။', english: 'This wine has a rich taste.' }
+    ]},
+    { id: '4071', korean: '러프한 디자인', myanmar: 'ကြမ်းတမ်းသော ဒီဇိုင်း', english: 'Rough design', pos: 'noun phrase', level: 'pre-intermediate', examples: [
+    { korean: '러프한 디자인이 독특해요.', myanmar: 'ကြမ်းတမ်းသော ဒီဇိုင်းက ထူးခြားတယ်။', english: 'The rough design is unique.' }
+    ]},
+    { id: '4072', korean: '레귤러 요금', myanmar: 'ပုံမှန်အခကြေးငွေ', english: 'Regular fare', pos: 'noun phrase', level: 'basic', examples: [
+    { korean: '레귤러 요금으로 결제했어요.', myanmar: 'ပုံမှန်အခကြေးငွေနဲ့ ပေးချေလိုက်တယ်။', english: 'I paid with the regular fare.' }
+    ]},
+    { id: '4073', korean: '리버럴 아츠', myanmar: 'လစ်ဘရယ် အနုပညာ', english: 'Liberal arts', pos: 'noun phrase', level: 'advanced', examples: [
+    { korean: '리버럴 아츠 교육을 받았어요.', myanmar: 'လစ်ဘရယ် အနုပညာ ပညာရေးကို ရရှိတယ်။', english: 'I received a liberal arts education.' }
+    ]},
+    { id: '4074', korean: '로우 앵글', myanmar: 'အနိမ့်ထောင့်', english: 'Low angle', pos: 'noun phrase', level: 'intermediate', examples: [
+    { korean: '사진을 로우 앵글로 찍었어요.', myanmar: 'ဓာတ်ပုံကို အနိမ့်ထောင့်နဲ့ ရိုက်လိုက်တယ်။', english: 'I took the photo from a low angle.' }
+    ]},
+    { id: '4075', korean: '리프레싱 효과', myanmar: 'လန်းဆန်းစေသော အကျိုးသက်ရောက်မှု', english: 'Refreshing effect', pos: 'noun phrase', level: 'pre-intermediate', examples: [
+    { korean: '페퍼민트는 리프레싱 효과가 있어요.', myanmar: 'ပက်ပါမင်က လန်းဆန်းစေသော အကျိုးသက်ရောက်မှု ရှိတယ်။', english: 'Peppermint has a refreshing effect.' }
+    ]},
+    { id: '4076', korean: '로얄 에디션', myanmar: 'တော်ဝင် ထုတ်ဝေမှု', english: 'Royal edition', pos: 'noun phrase', level: 'intermediate', examples: [
+    { korean: '이 게임은 로얄 에디션이 나왔어요.', myanmar: 'ဒီဂိမ်းက တော်ဝင် ထုတ်ဝေမှု ထွက်လာတယ်။', english: 'This game has a royal edition out.' }
+    ]},
+    { id: '4077', korean: '라운드 숄더', myanmar: 'ပခုံးဝိုင်း', english: 'Round shoulder', pos: 'noun phrase', level: 'pre-intermediate', examples: [
+    { korean: '라운드 숄더 디자인의 옷이에요.', myanmar: 'ပခုံးဝိုင်း ဒီဇိုင်းရှိတဲ့ အဝတ်အစားပါ။', english: 'It\'s a round shoulder design dress.' }
+    ]},
+    { id: '4078', korean: '리사이클링 시스템', myanmar: 'ပြန်လည်အသုံးပြု စနစ်', english: 'Recycling system', pos: 'noun phrase', level: 'intermediate', examples: [
+    { korean: '환경을 위해 리사이클링 시스템을 구축했어요.', myanmar: 'ပတ်ဝန်းကျင်အတွက် ပြန်လည်အသုံးပြု စနစ်ကို တည်ဆောက်လိုက်တယ်။', english: 'I built a recycling system for the environment.' }
+    ]},
+    { id: '4079', korean: '리스크 평가', myanmar: 'အန္တရာယ် အကဲဖြတ်ခြင်း', english: 'Risk assessment', pos: 'noun phrase', level: 'advanced', examples: [
+    { korean: '프로젝트 시작 전에 리스크 평가를 해야 해요.', myanmar: 'ပရောဂျက် မစခင် အန္တရာယ် အကဲဖြတ်ခြင်း လုပ်ရမယ်။', english: 'We need to do a risk assessment before starting the project.' }
+    ]},
+    { id: '4080', korean: '리얼리즘', myanmar: 'လက်တွေ့ဆန်ခြင်း', english: 'Realism', pos: 'noun', level: 'advanced', examples: [
+    { korean: '그의 작품은 리얼리즘을 잘 보여줘요.', myanmar: 'သူ့ရဲ့ လက်ရာက လက်တွေ့ဆန်ခြင်းကို ကောင်းကောင်း ပြသတယ်။', english: 'His work shows realism well.' }
+    ]},
+    { id: '4081', korean: '로맨틱 코미디 영화', myanmar: 'အချစ် ဟာသ ရုပ်ရှင်', english: 'Romantic comedy film', pos: 'noun phrase', level: 'basic', examples: [
+    { korean: '주말에 로맨틱 코미디 영화를 볼 거예요.', myanmar: 'တနင်္ဂနွေမှာ အချစ် ဟာသ ရုပ်ရှင်ကို ကြည့်မယ်။', english: 'I\'m going to watch a romantic comedy film on the weekend.' }
+    ]},
+    { id: '4082', korean: '리치한 크림', myanmar: 'ကြွယ်ဝသော ခရင်မ်', english: 'Rich cream', pos: 'noun phrase', level: 'pre-intermediate', examples: [
+    { korean: '케이크에 리치한 크림을 올렸어요.', myanmar: 'ကိတ်မုန့်မှာ ကြွယ်ဝသော ခရင်မ်ကို တင်လိုက်တယ်။', english: 'I put rich cream on the cake.' }
+    ]},
+    { id: '4083', korean: '러프 스케치', myanmar: 'ကြမ်းတမ်းသော ပုံကြမ်း', english: 'Rough sketch', pos: 'noun phrase', level: 'pre-intermediate', examples: [
+    { korean: '아이디어를 러프 스케치로 표현했어요.', myanmar: 'စိတ်ကူးကို ကြမ်းတမ်းသော ပုံကြမ်းနဲ့ ဖော်ပြလိုက်တယ်။', english: 'I expressed the idea with a rough sketch.' }
+    ]},
+    { id: '4084', korean: '레귤러 시즌', myanmar: 'ပုံမှန် ရာသီ', english: 'Regular season', pos: 'noun phrase', level: 'intermediate', examples: [
+    { korean: '농구 레귤러 시즌이 시작되었어요.', myanmar: 'ဘတ်စကက်ဘော ပုံမှန် ရာသီ စတင်ပြီ။', english: 'The basketball regular season has started.' }
+    ]},
+    { id: '4085', korean: '리버럴 아트 교육', myanmar: 'လစ်ဘရယ် အနုပညာ ပညာရေး', english: 'Liberal arts education', pos: 'noun phrase', level: 'advanced', examples: [
+    { korean: '리버럴 아트 교육은 폭넓은 지식을 제공해요.', myanmar: 'လစ်ဘရယ် အနုပညာ ပညာရေးက ကျယ်ပြန့်တဲ့ အသိပညာကို ပေးတယ်။', english: 'Liberal arts education provides broad knowledge.' }
+    ]},
+    { id: '4086', korean: '로우 백', myanmar: 'ကျောအောက်ပိုင်း', english: 'Low back', pos: 'noun phrase', level: 'pre-intermediate', examples: [
+    { korean: '로우 백 드레스를 입었어요.', myanmar: 'ကျောအောက်ပိုင်း ဝတ်စုံကို ဝတ်လိုက်တယ်။', english: 'I wore a low back dress.' }
+    ]},
+    { id: '4087', korean: '리프레싱 효과가 있는', myanmar: 'လန်းဆန်းစေသော အကျိုးသက်ရောက်မှု ရှိသော', english: 'Having a refreshing effect', pos: 'adjective phrase', level: 'pre-intermediate', examples: [
+    { korean: '이 차는 리프레싱 효과가 있어요.', myanmar: 'ဒီလက်ဖက်ရည်က လန်းဆန်းစေသော အကျိုးသက်ရောက်မှု ရှိတယ်။', english: 'This tea has a refreshing effect.' }
+    ]},
+    { id: '4088', korean: '로얄티가 높은', myanmar: 'သစ္စာစောင့်သိမှု မြင့်မားသော', english: 'High loyalty', pos: 'adjective phrase', level: 'advanced', examples: [
+    { korean: '로얄티가 높은 고객들은 특별 관리를 받아요.', myanmar: 'သစ္စာစောင့်သိမှု မြင့်မားသော ဖောက်သည်တွေက အထူး ဂရုစိုက်ခံရတယ်။', english: 'Highly loyal customers receive special treatment.' }
+    ]},
+    { id: '4089', korean: '라운드 티셔츠', myanmar: 'လည်ပင်းဝိုင်း တီရှပ်', english: 'Round neck T-shirt', pos: 'noun phrase', level: 'basic', examples: [
+    { korean: '편안한 라운드 티셔츠를 입었어요.', myanmar: 'သက်သောင့်သက်သာရှိတဲ့ လည်ပင်းဝိုင်း တီရှပ်ကို ဝတ်လိုက်တယ်။', english: 'I wore a comfortable round neck T-shirt.' }
+    ]},
+    { id: '4090', korean: '리사이클링 활동', myanmar: 'ပြန်လည်အသုံးပြုခြင်း လှုပ်ရှားမှု', english: 'Recycling activity', pos: 'noun phrase', level: 'basic', examples: [
+    { korean: '환경 보호를 위해 리사이클링 활동에 참여했어요.', myanmar: 'ပတ်ဝန်းကျင် ကာကွယ်ဖို့ ပြန်လည်အသုံးပြုခြင်း လှုပ်ရှားမှုမှာ ပါဝင်လိုက်တယ်။', english: 'I participated in recycling activities to protect the environment.' }
+    ]},
+    { id: '4091', korean: '리스크 분석', myanmar: 'အန္တရာယ် ခွဲခြမ်းစိတ်ဖြာခြင်း', english: 'Risk analysis', pos: 'noun phrase', level: 'advanced', examples: [
+    { korean: '사업 계획 전에 리스크 분석을 실시했어요.', myanmar: 'စီးပွားရေး အစီအစဉ် မစခင် အန္တရာယ် ခွဲခြမ်းစိတ်ဖြာခြင်းကို လုပ်ဆောင်လိုက်တယ်။', english: 'I conducted a risk analysis before the business plan.' }
+    ]},
+    { id: '4092', korean: '리얼리티 방송 출연', myanmar: 'လက်တွေ့ဘဝ အစီအစဉ် ပါဝင်ခြင်း', english: 'Reality show appearance', pos: 'noun phrase', level: 'pre-intermediate', examples: [
+    { korean: '그는 인기 리얼리티 방송에 출연했어요.', myanmar: 'သူက လူကြိုက်များတဲ့ လက်တွေ့ဘဝ အစီအစဉ်မှာ ပါဝင်တယ်။', english: 'He appeared on a popular reality show.' }
+    ]},
+    { id: '4093', korean: '로맨틱 코미디 드라마', myanmar: 'အချစ် ဟာသ ဒရာမာ', english: 'Romantic comedy drama', pos: 'noun phrase', level: 'basic', examples: [
+    { korean: '요즘 로맨틱 코미디 드라마에 빠져 있어요.', myanmar: 'ဒီရက်ပိုင်း အချစ် ဟာသ ဒရာမာကို စွဲလမ်းနေတယ်။', english: 'I\'m into romantic comedy dramas these days.' }
+    ]},
+    { id: '4094', korean: '리치한 경험', myanmar: 'ကြွယ်ဝသော အတွေ့အကြုံ', english: 'Rich experience', pos: 'noun phrase', level: 'intermediate', examples: [
+    { korean: '다양한 리치한 경험을 쌓았어요.', myanmar: 'မျိုးစုံသော ကြွယ်ဝသော အတွေ့အကြုံတွေကို စုဆောင်းလိုက်တယ်။', english: 'I gained various rich experiences.' }
+    ]},
+    { id: '4095', korean: '러프한 아이디어', myanmar: 'ကြမ်းတမ်းသော စိတ်ကူး', english: 'Rough idea', pos: 'noun phrase', level: 'pre-intermediate', examples: [
+    { korean: '회의에서 러프한 아이디어를 공유했어요.', myanmar: 'အစည်းအဝေးမှာ ကြမ်းတမ်းသော စိတ်ကူးကို ဝေမျှလိုက်တယ်။', english: 'I shared a rough idea at the meeting.' }
+    ]},
+    { id: '4096', korean: '레귤러 멤버', myanmar: 'ပုံမှန် အဖွဲ့ဝင်', english: 'Regular member', pos: 'noun phrase', level: 'basic', examples: [
+    { korean: '그는 우리 동호회의 레귤러 멤버예요.', myanmar: 'သူက ကျွန်တော်တို့ အသင်းရဲ့ ပုံမှန် အဖွဲ့ဝင်ပါ။', english: 'He is a regular member of our club.' }
+    ]},
 ];
 
 
