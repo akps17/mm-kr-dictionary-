@@ -296,9 +296,10 @@ export const dictionaryEntries = [
   { id: '102', korean: '멀다', myanmar: 'ဝေးသည်', english: 'To be far', pos: 'adjective', level: 'basic', examples: [
     { korean: '학교가 멀어요.', myanmar: 'ကျောင်းက ဝေးတယ်။', english: 'The school is far.' }
   ]},
+  /*
   { id: '103', korean: '모르다', myanmar: 'မသိသည်', english: 'To not know', pos: 'verb', level: 'basic', examples: [
     { korean: '답을 몰라요.', myanmar: 'အဖြေကို မသိဘူး။', english: 'I don\'t know the answer.' }
-  ]},
+  ]},*/
   { id: '104', korean: '목요일', myanmar: 'ကြာသပတေးနေ့', english: 'Thursday', pos: 'noun', level: 'basic', examples: [
     { korean: '목요일에 시험이 있어요.', myanmar: 'ကြာသပတေးနေ့မှာ စာမေးပွဲ ရှိတယ်။', english: 'There is an exam on Thursday.' }
   ]},
@@ -1472,8 +1473,8 @@ export const dictionaryEntries = [
   { id: '486', korean: '결혼', myanmar: 'လက်ထပ်ခြင်း', english: 'Marriage', pos: 'noun', level: 'basic', examples: [
     { korean: '결혼을 했어요.', myanmar: 'လက်ထပ်ခဲ့တယ်။', english: 'I got married.' }
   ]},
-  { id: '487', korean: '고모', myanmar: 'အဖေရဲ့နှမ', english: 'Father\'s sister', pos: 'noun', level: 'basic', examples: [
-    { korean: '고모를 만났어요.', myanmar: 'အဖေရဲ့နှမကို တွေ့ခဲ့တယ်။', english: 'I met my aunt (father\'s sister).' }
+  { id: '487', korean: '고모', myanmar: 'အဖေရဲ့နှမ/ အဒေါ်', english: 'Father\'s sister', pos: 'noun', level: 'basic', examples: [
+    { korean: '고모를 만났어요.', myanmar: 'အဒေါ်ကို တွေ့ခဲ့တယ်။', english: 'I met my aunt (father\'s sister).' }
   ]},
   { id: '488', korean: '관계', myanmar: 'ဆက်သွယ်မှု', english: 'Relationship', pos: 'noun', level: 'basic', examples: [
     { korean: '좋은 관계예요.', myanmar: 'ကောင်းတဲ့ ဆက်သွယ်မှုပါ။', english: 'It\'s a good relationship.' }
@@ -12711,13 +12712,14 @@ export const dictionaryEntries = [
 ]},
 { id: '4210', korean: '매일', myanmar: 'နေ့တိုင်း', english: 'Every day', pos: 'adverb', level: 'basic', examples: [
   { korean: '매일 한국어를 공부해요.', myanmar: 'နေ့တိုင်း ကိုရီးယားစာ လေ့လာတယ်။', english: 'I study Korean every day.' }
-]},
+]},/*
 { id: '4211', korean: '멀리', myanmar: 'ဝေးဝေး', english: 'Far', pos: 'adverb', level: 'basic', examples: [
   { korean: '멀리 여행하고 싶어요.', myanmar: 'ဝေးဝေးခရီးသွားချင်တယ်။', english: 'I want to travel far.' }
-]},
+]}, 
+
 { id: '4212', korean: '먼저', myanmar: 'အရင်ဆုံး', english: 'First', pos: 'adverb', level: 'basic', examples: [
   { korean: '제가 먼저 할게요.', myanmar: 'ကျွန်တော် အရင်လုပ်မယ်။', english: 'I\'ll do it first.' }
-]},
+]},*/
 { id: '4213', korean: '모르다', myanmar: 'မသိသည်', english: 'To not know', pos: 'verb', level: 'basic', examples: [
   { korean: '답을 몰라요.', myanmar: 'အဖြေကို မသိဘူး။', english: 'I don\'t know the answer.' }
 ]},
@@ -13011,10 +13013,10 @@ export const dictionaryEntries = [
 ]},
 { id: '4309', korean: '말리다', myanmar: 'အခြောက်ခံသည်/ခြောက်သွေ့စေသည်', english: 'To dry', pos: 'verb', level: 'basic', examples: [
   { korean: '머리를 말리다.', myanmar: 'ဆံပင်ကို အခြောက်ခံတယ်။', english: 'To dry one\'s hair.' }
-]},
+]}, /*
 { id: '4310', korean: '모르다', myanmar: 'မသိသည်', english: 'To not know', pos: 'verb', level: 'basic', examples: [
   { korean: '이름을 모르다.', myanmar: 'နာမည်ကို မသိဘူး။', english: 'To not know a name.' }
-]},
+]},*/
 { id: '4311', korean: '멈추다', myanmar: 'ရပ်တန့်သည်', english: 'To stop', pos: 'verb', level: 'basic', examples: [
   { korean: '차가 멈췄어요.', myanmar: 'ကားရပ်သွားတယ်။', english: 'The car stopped.' }
 ]},
@@ -13315,9 +13317,10 @@ export const dictionaryEntries = [
 { id: '4409', korean: '매일', myanmar: 'နေ့တိုင်း', english: 'Every day', pos: 'adverb', level: 'basic', examples: [
   { korean: '매일 운동해요.', myanmar: 'နေ့တိုင်း လေ့ကျင့်ခန်းလုပ်တယ်။', english: 'I exercise every day.' }
 ]},
+/*
 { id: '4410', korean: '먼저', myanmar: 'အရင်ဆုံး', english: 'First', pos: 'adverb', level: 'basic', examples: [
   { korean: '먼저 하세요.', myanmar: 'အရင်လုပ်ပါ။', english: 'Please go first.' }
-]},
+]},*/
 { id: '4411', korean: '멀리', myanmar: 'ဝေးဝေး', english: 'Far (away)', pos: 'adverb', level: 'basic', examples: [
   { korean: '멀리서 왔어요.', myanmar: 'ဝေးဝေးက လာခဲ့တယ်။', english: 'I came from far away.' }
 ]},
@@ -13739,6 +13742,315 @@ export const dictionaryEntries = [
   { korean: '목마른 사슴이 물을 찾아 헤매요.', myanmar: 'ရေငတ်နေတဲ့ သမင်က ရေရှာရင်း လှည့်လည်တယ်။', english: 'A thirsty deer wanders in search of water.' }
 ]},
 
+
+// ===== ㅁ CONSONANT INTERMEDIATE WORDS - CATEGORY 2: SOCIAL & ABSTRACT CONCEPTS (4550-4599) =====
+
+  { id: '4550', korean: '마음', myanmar: 'စိတ်/နှလုံး', english: 'Heart/Mind', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '그녀의 따뜻한 마음에 감동받았어요.', myanmar: 'သူမရဲ့နွေးထွေးတဲ့စိတ်ထားကို ခံစားမိတယ်။', english: 'I was touched by her warm heart.' }
+  ]},
+  { id: '4551', korean: '만남', myanmar: 'တွေ့ဆုံခြင်း', english: 'Meeting/Encounter', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '새로운 만남은 항상 설레요.', myanmar: 'တွေ့ဆုံခြင်းအသစ်တွေက အမြဲစိတ်လှုပ်ရှားစရာပါ။', english: 'New encounters are always exciting.' }
+  ]},
+  { id: '4552', korean: '문화', myanmar: 'ယဉ်ကျေးမှု', english: 'Culture', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '한국 문화에 관심이 많아요.', myanmar: 'ကိုရီးယားယဉ်ကျေးမှုကို စိတ်ဝင်စားတယ်။', english: 'I\'m very interested in Korean culture.' }
+  ]},
+  { id: '4553', korean: '미래', myanmar: 'အနာဂတ်', english: 'Future', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '밝은 미래를 꿈꿔요.', myanmar: 'တောက်ပတဲ့အနာဂတ်ကို အိပ်မက်မက်တယ်။', english: 'I dream of a bright future.' }
+  ]},
+  { id: '4554', korean: '목표', myanmar: 'ပန်းတိုင်', english: 'Goal/Target', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '올해의 목표를 세웠어요.', myanmar: 'ဒီနှစ်ရဲ့ပန်းတိုင်ကို သတ်မှတ်ခဲ့တယ်။', english: 'I set this year\'s goal.' }
+  ]},
+  { id: '4555', korean: '문제', myanmar: 'ပြဿနာ', english: 'Problem/Question', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '어려운 문제를 해결했어요.', myanmar: 'ခက်ခဲတဲ့ပြဿနာကို ဖြေရှင်းခဲ့တယ်။', english: 'I solved a difficult problem.' }
+  ]},
+  { id: '4556', korean: '말씀', myanmar: 'စကား/မိန့်ခွန်း (လူကြီးစကား)', english: 'Speech/Words (honorific)', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '선생님의 말씀을 잘 들었어요.', myanmar: 'ဆရာရဲ့စကားကို ကောင်းကောင်းနားထောင်ခဲ့တယ်။', english: 'I listened carefully to the teacher\'s words.' }
+  ]},
+  { id: '4557', korean: '모임', myanmar: 'စုဝေးပွဲ/အစည်းအဝေး', english: 'Gathering/Meeting', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '친구들과 즐거운 모임을 가졌어요.', myanmar: 'သူငယ်ချင်းတွေနဲ့ ပျော်ရွှင်တဲ့စုဝေးပွဲကျင်းပခဲ့တယ်။', english: 'I had a fun gathering with friends.' }
+  ]},
+  { id: '4558', korean: '미소', myanmar: 'ပြုံးခြင်း', english: 'Smile', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '아름다운 미소를 지었어요.', myanmar: 'လှပတဲ့အပြုံးကို ပြုံးလိုက်တယ်။', english: 'She gave a beautiful smile.' }
+  ]},
+  { id: '4559', korean: '모습', myanmar: 'ပုံသဏ္ဌာန်/အသွင်အပြင်', english: 'Appearance/Figure', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '그의 뒷모습이 인상적이었어요.', myanmar: 'သူ့ရဲ့နောက်ကျောပုံစံက စွဲမက်စရာကောင်းတယ်။', english: 'His back view was impressive.' }
+  ]},
+  { id: '4560', korean: '명령', myanmar: 'အမိန့်', english: 'Order/Command', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '상사의 명령을 따랐어요.', myanmar: 'အထက်လူကြီးရဲ့အမိန့်ကို လိုက်နာခဲ့တယ်။', english: 'I followed my boss\'s command.' }
+  ]},
+  { id: '4561', korean: '묘사', myanmar: 'ဖော်ပြချက်', english: 'Description', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '상세한 묘사가 필요해요.', myanmar: 'အသေးစိတ်ဖော်ပြချက်လိုတယ်။', english: 'A detailed description is needed.' }
+  ]},
+  { id: '4562', korean: '만족', myanmar: 'ကျေနပ်မှု', english: 'Satisfaction', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '결과에 큰 만족을 느꼈어요.', myanmar: 'ရလဒ်ကို အများကြီးကျေနပ်တယ်။', english: 'I felt great satisfaction with the result.' }
+  ]},
+  { id: '4563', korean: '망설임', myanmar: 'တုံ့ဆိုင်းမှု', english: 'Hesitation', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '망설임 없이 결정을 내렸어요.', myanmar: 'တုံ့ဆိုင်းမှုမရှိဘဲ ဆုံးဖြတ်ချက်ချခဲ့တယ်။', english: 'I made a decision without hesitation.' }
+  ]},
+  { id: '4564', korean: '명백하다', myanmar: 'ရှင်းလင်းသည်/ထင်ရှားသည်', english: 'To be clear/obvious', pos: 'adjective', level: 'intermediate', examples: [
+    { korean: '그 사실은 명백해요.', myanmar: 'အဲဒီအမှန်တရားက ရှင်းလင်းတယ်။', english: 'That fact is obvious.' }
+  ]},
+  { id: '4565', korean: '몰두하다', myanmar: 'နှစ်မြှုပ်သည်/စိတ်ဝင်တစားလုပ်သည်', english: 'To be absorbed in/devoted to', pos: 'verb', level: 'intermediate', examples: [
+    { korean: '공부에 몰두하고 있어요.', myanmar: 'စာကျက်ရာမှာ စိတ်ဝင်တစားလုပ်နေတယ်။', english: 'I am absorbed in studying.' }
+  ]},
+  { id: '4566', korean: '무시하다', myanmar: 'လျစ်လျူရှုသည်/ပစ်ပယ်သည်', english: 'To ignore/disregard', pos: 'verb', level: 'intermediate', examples: [
+    { korean: '다른 사람의 의견을 무시하지 마세요.', myanmar: 'တခြားသူရဲ့အမြင်ကို လျစ်လျူမရှုပါနဲ့။', english: 'Don\'t ignore others\' opinions.' }
+  ]},
+  { id: '4567', korean: '믿음', myanmar: 'ယုံကြည်မှု', english: 'Faith/Trust', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '친구와의 믿음이 중요해요.', myanmar: 'သူငယ်ချင်းနဲ့ယုံကြည်မှုက အရေးကြီးတယ်။', english: 'Trust with friends is important.' }
+  ]},
+  { id: '4568', korean: '마련하다', myanmar: 'ပြင်ဆင်သည်/စီစဉ်သည်', english: 'To prepare/arrange', pos: 'verb', level: 'intermediate', examples: [
+    { korean: '파티를 위해 선물을 마련했어요.', myanmar: 'ပါတီအတွက် လက်ဆောင်ပြင်ဆင်ခဲ့တယ်။', english: 'I prepared a gift for the party.' }
+  ]},
+  { id: '4569', korean: '매력', myanmar: 'ဆွဲဆောင်မှု', english: 'Charm/Attraction', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '그는 독특한 매력이 있어요.', myanmar: 'သူက ထူးခြားတဲ့ဆွဲဆောင်မှုရှိတယ်။', english: 'He has a unique charm.' }
+  ]},
+  { id: '4570', korean: '모범', myanmar: 'စံပြ/နမူနာ', english: 'Model/Example', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '학생들에게 모범이 되어야 해요.', myanmar: 'ကျောင်းသားတွေကို စံပြဖြစ်ရမယ်။', english: 'You should be a role model for students.' }
+  ]},
+  { id: '4571', korean: '모험', myanmar: 'စွန့်စားမှု', english: 'Adventure', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '새로운 모험을 시작하고 싶어요.', myanmar: 'စွန့်စားမှုအသစ်စတင်ချင်တယ်။', english: 'I want to start a new adventure.' }
+  ]},
+  { id: '4572', korean: '물질', myanmar: 'ပစ္စည်း/ဓာတ်', english: 'Matter/Material', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '정신적인 가치보다 물질적인 가치를 추구해요.', myanmar: 'စိတ်ပိုင်းဆိုင်ရာတန်ဖိုးထက် ပစ္စည်းပိုင်းဆိုင်ရာတန်ဖိုးကို လိုက်စားတယ်။', english: 'They pursue material values more than spiritual values.' }
+  ]},
+  { id: '4573', korean: '미덕', myanmar: 'သီလ/ကောင်းမြတ်မှု', english: 'Virtue', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '정직은 중요한 미덕이에요.', myanmar: 'ရိုးသားခြင်းက အရေးကြီးတဲ့သီလပါ။', english: 'Honesty is an important virtue.' }
+  ]},
+  { id: '4574', korean: '명성', myanmar: 'ကျော်ကြားမှု/ဂုဏ်သတင်း', english: 'Fame/Reputation', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '그는 학문적 명성이 높아요.', myanmar: 'သူ့မှာ ပညာရပ်ဆိုင်ရာကျော်ကြားမှု မြင့်မားတယ်။', english: 'He has a high academic reputation.' }
+  ]},
+  { id: '4575', korean: '묘미', myanmar: 'ထူးခြားတဲ့ဆွဲဆောင်မှု/အရသာ', english: 'Charm/Attraction (unique/subtle)', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '새벽 공원의 묘미를 느꼈어요.', myanmar: 'မနက်အစောပိုင်းပန်းခြံရဲ့ ထူးခြားတဲ့ဆွဲဆောင်မှုကို ခံစားခဲ့တယ်။', english: 'I felt the unique charm of the park at dawn.' }
+  ]},
+  { id: '4576', korean: '막상', myanmar: 'တကယ်တမ်း/လက်တွေ့မှာ', english: 'Actually/In the end (when it comes to it)', pos: 'adverb', level: 'intermediate', examples: [
+    { korean: '막상 시험을 보니 생각보다 쉬웠어요.', myanmar: 'တကယ်တမ်းစာမေးပွဲဖြေကြည့်တော့ ထင်ထားတာထက် လွယ်တယ်။', english: 'When I actually took the exam, it was easier than I thought.' }
+  ]},
+  { id: '4577', korean: '마지못해', myanmar: 'မတတ်သာ၍/မလိုလားဘဲ', english: 'Unwillingly/Reluctantly', pos: 'adverb', level: 'intermediate', examples: [
+    { korean: '마지못해 그의 제안을 수락했어요.', myanmar: 'မတတ်သာ၍ သူ့ရဲ့အဆိုပြုချက်ကို လက်ခံခဲ့တယ်။', english: 'I reluctantly accepted his offer.' }
+  ]},
+  { id: '4578', korean: '만끽하다', myanmar: 'အပြည့်အဝခံစားသည်/ပျော်ရွှင်သည်', english: 'To fully enjoy/savor', pos: 'verb', level: 'intermediate', examples: [
+    { korean: '휴가를 마음껏 만끽했어요.', myanmar: 'အားလပ်ရက်ကို စိတ်ကြိုက်အပြည့်အဝခံစားခဲ့တယ်။', english: 'I fully enjoyed my vacation.' }
+  ]},
+  { id: '4579', korean: '매료되다', myanmar: 'စွဲမက်သည်/ဖမ်းစားခံရသည်', english: 'To be fascinated/charmed', pos: 'verb', level: 'intermediate', examples: [
+    { korean: '그녀의 아름다움에 매료되었어요.', myanmar: 'သူမရဲ့အလှအပကို စွဲမက်ခဲ့တယ်။', english: 'I was fascinated by her beauty.' }
+  ]},
+  { id: '4580', korean: '명료하다', myanmar: 'ရှင်းလင်းပြတ်သားသည်', english: 'To be clear/lucid', pos: 'adjective', level: 'intermediate', examples: [
+    { korean: '그의 설명은 명료해서 이해하기 쉬웠어요.', myanmar: 'သူ့ရဲ့ရှင်းပြချက်က ရှင်းလင်းပြတ်သားလို့ နားလည်ရလွယ်တယ်။', english: 'His explanation was clear, so it was easy to understand.' }
+  ]},
+  { id: '4581', korean: '몰리다', myanmar: 'စုဝေးသည်/ပိတ်မိသည်', english: 'To flock/gather/be cornered', pos: 'verb', level: 'intermediate', examples: [
+    { korean: '사람들이 한꺼번에 몰렸어요.', myanmar: 'လူတွေက တစ်ခါတည်း စုဝေးခဲ့တယ်။', english: 'People flocked all at once.' }
+  ]},
+  { id: '4582', korean: '무의미하다', myanmar: 'အဓိပ္ပာယ်မရှိသည်', english: 'To be meaningless/pointless', pos: 'adjective', level: 'intermediate', examples: [
+    { korean: '그런 논쟁은 무의미해요.', myanmar: 'အဲဒီလိုငြင်းခုံတာက အဓိပ္ပာယ်မရှိဘူး။', english: 'Such an argument is meaningless.' }
+  ]},
+  { id: '4583', korean: '미화', myanmar: 'အလှဆင်ခြင်း/အလှပြုပြင်ခြင်း', english: 'Beautification/Embellishment', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '도시 미화 작업을 하고 있어요.', myanmar: 'မြို့အလှဆင်တဲ့လုပ်ငန်း လုပ်နေတယ်။', english: 'They are doing city beautification work.' }
+  ]},
+  { id: '4584', korean: '밀접하다', myanmar: 'နီးကပ်သည်/ဆက်စပ်သည်', english: 'To be close/intimate/closely related', pos: 'adjective', level: 'intermediate', examples: [
+    { korean: '그 두 사건은 밀접한 관계가 있어요.', myanmar: 'အဲဒီဖြစ်ရပ်နှစ်ခုက နီးကပ်စွာဆက်စပ်မှုရှိတယ်။', english: 'Those two incidents are closely related.' }
+  ]},
+  { id: '4585', korean: '민감하다', myanmar: 'ထိခိုက်လွယ်သည်/နူးညံ့သည်', english: 'To be sensitive/delicate', pos: 'adjective', level: 'intermediate', examples: [
+    { korean: '피부가 민감해서 조심해야 해요.', myanmar: 'အသားအရေက ထိခိုက်လွယ်တော့ သတိထားရမယ်။', english: 'My skin is sensitive, so I need to be careful.' }
+  ]},
+  { id: '4586', korean: '막중하다', myanmar: 'အလွန်အရေးကြီးသည်/ဝန်လေးသည်', english: 'To be important/grave/onerous', pos: 'adjective', level: 'intermediate', examples: [
+    { korean: '그에게 막중한 임무가 주어졌어요.', myanmar: 'သူ့ကို အလွန်အရေးကြီးတဲ့တာဝန်ပေးအပ်ခဲ့တယ်။', english: 'A grave mission was given to him.' }
+  ]},
+  { id: '4587', korean: '말끔하다', myanmar: 'သပ်ရပ်သည်/ပြောင်ရှင်းသည်', english: 'To be neat/tidy/clean', pos: 'adjective', level: 'intermediate', examples: [
+    { korean: '그는 항상 옷을 말끔하게 입어요.', myanmar: 'သူက အမြဲအဝတ်အစားကို သပ်ရပ်စွာဝတ်တယ်။', english: 'He always dresses neatly.' }
+  ]},
+  { id: '4588', korean: '맹세', myanmar: 'ကတိသစ္စာ', english: 'Oath/Vow', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '나는 평생 사랑할 것을 맹세했어요.', myanmar: 'ကျွန်တော် တစ်သက်လုံးချစ်သွားမယ်လို့ ကတိသစ္စာပြုခဲ့တယ်။', english: 'I vowed to love for life.' }
+  ]},
+  { id: '4589', korean: '무모하다', myanmar: 'ဆင်ခြင်တုံတရားမဲ့သည်/မဆင်မခြင်လုပ်သည်', english: 'To be reckless/foolish', pos: 'adjective', level: 'intermediate', examples: [
+    { korean: '그의 결정은 너무 무모했어요.', myanmar: 'သူ့ရဲ့ဆုံးဖြတ်ချက်က အရမ်းမဆင်မခြင်လုပ်ခဲ့တာ။', english: 'His decision was too reckless.' }
+  ]},
+  { id: '4590', korean: '무관심', myanmar: 'လျစ်လျူရှုမှု/စိတ်မဝင်စားမှု', english: 'Indifference/Lack of interest', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '정치에 대한 무관심이 문제예요.', myanmar: 'နိုင်ငံရေးအပေါ် စိတ်မဝင်စားမှုက ပြဿနာပါ။', english: 'Indifference to politics is a problem.' }
+  ]},
+  { id: '4591', korean: '미련', myanmar: 'တွယ်တာစိတ်/ကျန်ရစ်သောစိတ်', english: 'Lingering attachment/Regret', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '옛 연인에게 미련이 남았어요.', myanmar: 'ချစ်သူဟောင်းကို တွယ်တာစိတ်ကျန်ရစ်ခဲ့တယ်။', english: 'I still have lingering feelings for my ex.' }
+  ]},
+  { id: '4592', korean: '밀어붙이다', myanmar: 'အတင်းတွန်းပို့သည်/ဇွတ်လုပ်သည်', english: 'To push through/force forward', pos: 'verb', level: 'intermediate', examples: [
+    { korean: '그는 자신의 주장을 끝까지 밀어붙였어요.', myanmar: 'သူက သူ့ရဲ့အဆိုကို အဆုံးအထိ အတင်းတွန်းပို့ခဲ့တယ်။', english: 'He pushed his argument to the end.' }
+  ]},
+  { id: '4593', korean: '마찰', myanmar: 'ပွတ်တိုက်မှု/ပဋိပက္ခ', english: 'Friction/Conflict', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '의견 차이로 마찰이 생겼어요.', myanmar: 'အမြင်မတူညီမှုကြောင့် ပဋိပက္ခဖြစ်ခဲ့တယ်။', english: 'Conflict arose due to differences in opinion.' }
+  ]},
+  { id: '4594', korean: '명료성', myanmar: 'ရှင်းလင်းပြတ်သားမှု', english: 'Clarity/Lucidity', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '보고서의 명료성이 중요해요.', myanmar: 'အစီရင်ခံစာရဲ့ရှင်းလင်းပြတ်သားမှုက အရေးကြီးတယ်။', english: 'The clarity of the report is important.' }
+  ]},
+  { id: '4595', korean: '모순', myanmar: 'ဆန့်ကျင်ဘက်/မကိုက်ညီမှု', english: 'Contradiction/Irony', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '그의 말에는 모순이 있어요.', myanmar: 'သူ့စကားတွေမှာ ဆန့်ကျင်ဘက်တွေရှိတယ်။', english: 'There\'s a contradiction in his words.' }
+  ]},
+  { id: '4596', korean: '묘안', myanmar: 'လိမ္မာပါးနပ်သောအတွေး/ဉာဏ်ကောင်းသောနည်းလမ်း', english: 'Clever idea/Excellent plan', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '그 문제를 해결할 묘안이 떠올랐어요.', myanmar: 'အဲဒီပြဿနာကို ဖြေရှင်းမယ့် လိမ္မာပါးနပ်သောအတွေးပေါ်လာတယ်။', english: 'A clever idea came to mind to solve that problem.' }
+  ]},
+  { id: '4597', korean: '미적', myanmar: 'အနုပညာဆန်သော/အလှအပရေးရာ', english: 'Aesthetic/Artistic', pos: 'adjective', level: 'intermediate', examples: [
+    { korean: '그림의 미적 가치를 평가했어요.', myanmar: 'ပန်းချီကားရဲ့အနုပညာဆန်သောတန်ဖိုးကို အကဲဖြတ်ခဲ့တယ်။', english: 'I evaluated the aesthetic value of the painting.' }
+  ]},
+  { id: '4598', korean: '무한', myanmar: 'အနန္တ/အဆုံးမဲ့', english: 'Infinity/Boundlessness', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '우주는 무한한 공간이에요.', myanmar: 'စကြာဝဠာက အဆုံးမဲ့နေရာပါ။', english: 'The universe is an infinite space.' }
+  ]},
+  { id: '4599', korean: '민족', myanmar: 'တိုင်းရင်းသားလူမျိုး/လူမျိုး', english: 'Ethnic group/Nation', pos: 'noun', level: 'intermediate', examples: [
+    { korean: '한국 민족은 단일 민족이에요.', myanmar: 'ကိုရီးယားလူမျိုးက တိုင်းရင်းသားလူမျိုးတစ်မျိုးပါ။', english: 'The Korean people are a homogeneous nation.' }
+  ]},
+  
+  
+  // ===== ㅁ CONSONANT ADVANCED WORDS - CATEGORY 3: FORMAL & COMPLEX TERMS (4600-4649) =====
+  
+  { id: '4600', korean: '말미암아', myanmar: 'ကြောင့်/အားဖြင့်', english: 'Due to/Owing to', pos: 'adverb', level: 'advanced', examples: [
+    { korean: '부주의로 말미암아 사고가 발생했어요.', myanmar: 'ပေါ့ဆမှုကြောင့် မတော်တဆဖြစ်ခဲ့တယ်။', english: 'An accident occurred due to carelessness.' }
+  ]},
+  { id: '4601', korean: '명시하다', myanmar: 'သတ်မှတ်ဖော်ပြသည်/ရှင်းလင်းစွာပြသည်', english: 'To specify/state clearly', pos: 'verb', level: 'advanced', examples: [
+    { korean: '계약서에 조건을 명시해야 해요.', myanmar: 'စာချုပ်မှာ စည်းကမ်းချက်တွေကို ရှင်းလင်းစွာဖော်ပြရမယ်။', english: 'The conditions must be specified in the contract.' }
+  ]},
+  { id: '4602', korean: '모색하다', myanmar: 'ရှာဖွေသည်/နည်းလမ်းရှာသည်', english: 'To seek/devise/explore', pos: 'verb', level: 'advanced', examples: [
+    { korean: '문제 해결 방안을 모색하고 있어요.', myanmar: 'ပြဿနာဖြေရှင်းမယ့်နည်းလမ်းကို ရှာဖွေနေတယ်။', english: 'I am exploring solutions to the problem.' }
+  ]},
+  { id: '4603', korean: '무마하다', myanmar: 'ဖြေရှင်းသည်/ချောမွေ့အောင်လုပ်သည်', english: 'To smooth over/placate/settle', pos: 'verb', level: 'advanced', examples: [
+    { korean: '갈등을 무마하기 위해 노력했어요.', myanmar: 'ပဋိပက္ခကို ဖြေရှင်းဖို့ ကြိုးစားခဲ့တယ်။', english: 'I tried to smooth over the conflict.' }
+  ]},
+  { id: '4604', korean: '물꼬를 트다', myanmar: 'ရေစီးကြောင်းဖွင့်သည်/အစပြုသည်', english: 'To open the floodgates/start something new', pos: 'idiom', level: 'advanced', examples: [
+    { korean: '새로운 사업의 물꼬를 텄어요.', myanmar: 'စီးပွားရေးအသစ်ရဲ့ ရေစီးကြောင်းကို ဖွင့်ခဲ့တယ်။', english: 'We started a new business venture.' }
+  ]},
+  { id: '4605', korean: '미진하다', myanmar: 'မပြည့်စုံသေးသည်/ကျန်ရှိသည်', english: 'To be incomplete/unsatisfactory/unresolved', pos: 'adjective', level: 'advanced', examples: [
+    { korean: '아직 미진한 부분이 많아요.', myanmar: 'မပြည့်စုံသေးတဲ့အစိတ်အပိုင်းတွေ အများကြီးရှိသေးတယ်။', english: 'There are still many incomplete parts.' }
+  ]},
+  { id: '4606', korean: '민간', myanmar: 'ပုဂ္ဂလိကကဏ္ဍ', english: 'Private sector/Civilian', pos: 'noun', level: 'advanced', examples: [
+    { korean: '민간 단체의 협력이 중요해요.', myanmar: 'ပုဂ္ဂလိကအဖွဲ့အစည်းရဲ့ ပူးပေါင်းဆောင်ရွက်မှုက အရေးကြီးတယ်။', english: 'Cooperation from private organizations is important.' }
+  ]},
+  { id: '4607', korean: '만연하다', myanmar: 'ပျံ့နှံ့နေသည်/ကျယ်ပြန့်သည်', english: 'To be rampant/widespread', pos: 'adjective', level: 'advanced', examples: [
+    { korean: '사회에 부패가 만연해 있어요.', myanmar: 'လူ့အဖွဲ့အစည်းမှာ အဂတိလိုက်စားမှုပျံ့နှံ့နေတယ်။', english: 'Corruption is rampant in society.' }
+  ]},
+  { id: '4608', korean: '망라하다', myanmar: 'ဖုံးအုပ်သည်/အားလုံးပါဝင်သည်', english: 'To cover/include comprehensively', pos: 'verb', level: 'advanced', examples: [
+    { korean: '그 책은 모든 내용을 망라하고 있어요.', myanmar: 'ဒီစာအုပ်က အကြောင်းအရာအားလုံးကို ဖုံးအုပ်ထားတယ်။', english: 'That book covers all the content comprehensively.' }
+  ]},
+  { id: '4609', korean: '면모', myanmar: 'ပုံပန်းသဏ္ဌာန်/မျက်နှာစာ', english: 'Aspect/Feature/Phase', pos: 'noun', level: 'advanced', examples: [
+    { korean: '새로운 도시의 면모를 보여주고 있어요.', myanmar: 'မြို့သစ်ရဲ့ပုံပန်းသဏ္ဌာန်ကို ပြသနေတယ်။', english: 'It is showing the new aspect of the city.' }
+  ]},
+  { id: '4610', korean: '묵인하다', myanmar: 'ခွင့်ပြုသည်/သိသိကြီးနဲ့ငြိမ်နေသည်', english: 'To condone/tacitly approve', pos: 'verb', level: 'advanced', examples: [
+    { korean: '그의 잘못을 묵인할 수 없어요.', myanmar: 'သူ့ရဲ့အမှားကို ခွင့်မပြုနိုင်ဘူး။', english: 'I cannot condone his mistake.' }
+  ]},
+  { id: '4611', korean: '문건', myanmar: 'စာရွက်စာတမ်း', english: 'Document/Paperwork', pos: 'noun', level: 'advanced', examples: [
+    { korean: '중요한 문건을 검토했어요.', myanmar: 'အရေးကြီးတဲ့စာရွက်စာတမ်းကို စစ်ဆေးခဲ့တယ်။', english: 'I reviewed an important document.' }
+  ]},
+  { id: '4612', korean: '묘연하다', myanmar: 'မသိရှိရ/သဲလွန်စမရှိ', english: 'To be unknown/untraceable/mysterious', pos: 'adjective', level: 'advanced', examples: [
+    { korean: '사고 원인이 아직 묘연해요.', myanmar: 'မတော်တဆမှုရဲ့အကြောင်းရင်းက မသိရှိရသေးဘူး။', english: 'The cause of the accident is still unknown.' }
+  ]},
+  { id: '4613', korean: '물리적', myanmar: 'ရုပ်ပိုင်းဆိုင်ရာ/ကာယပိုင်းဆိုင်ရာ', english: 'Physical', pos: 'adjective', level: 'advanced', examples: [
+    { korean: '물리적 힘을 가했어요.', myanmar: 'ရုပ်ပိုင်းဆိုင်ရာအား ထည့်ခဲ့တယ်။', english: 'I applied physical force.' }
+  ]},
+  { id: '4614', korean: '미시적', myanmar: 'အသေးစား/အဏုမြူ', english: 'Microscopic/Micro-level', pos: 'adjective', level: 'advanced', examples: [
+    { korean: '미시적 관점에서 분석했어요.', myanmar: 'အသေးစားရှုထောင့်ကနေ ခွဲခြမ်းစိတ်ဖြာခဲ့တယ်။', english: 'I analyzed it from a microscopic perspective.' }
+  ]},
+  { id: '4615', korean: '미비하다', myanmar: 'မပြည့်စုံသည်/အားနည်းသည်', english: 'To be insufficient/deficient/inadequate', pos: 'adjective', level: 'advanced', examples: [
+    { korean: '준비가 미비해서 실패했어요.', myanmar: 'ပြင်ဆင်မှုမပြည့်စုံလို့ ကျရှုံးခဲ့တယ်။', english: 'I failed because the preparations were insufficient.' }
+  ]},
+  { id: '4616', korean: '명분', myanmar: 'တရားမျှတမှု/အကြောင်းပြချက်', english: 'Justification/Pretext/Cause', pos: 'noun', level: 'advanced', examples: [
+    { korean: '그들은 전쟁의 명분을 내세웠어요.', myanmar: 'သူတို့က စစ်ပွဲရဲ့အကြောင်းပြချက်ကို ရှေ့တန်းတင်ခဲ့တယ်။', english: 'They put forward the justification for the war.' }
+  ]},
+  { id: '4617', korean: '모의', myanmar: 'အတုအယောင်/ပုံစံတူ', english: 'Simulation/Mock (as in mock exam)', pos: 'noun', level: 'advanced', examples: [
+    { korean: '모의 훈련을 실시했어요.', myanmar: 'ပုံစံတူလေ့ကျင့်ခန်းလုပ်ဆောင်ခဲ့တယ်။', english: 'We conducted a mock drill.' }
+  ]},
+  { id: '4618', korean: '묵상', myanmar: 'တရားထိုင်ခြင်း/ဆင်ခြင်ခြင်း', english: 'Meditation/Contemplation', pos: 'noun', level: 'advanced', examples: [
+    { korean: '아침마다 묵상을 해요.', myanmar: 'မနက်တိုင်း တရားထိုင်တယ်။', english: 'I meditate every morning.' }
+  ]},
+  { id: '4619', korean: '물색하다', myanmar: 'ရှာဖွေသည်/ရွေးချယ်သည်', english: 'To look for/scout/select', pos: 'verb', level: 'advanced', examples: [
+    { korean: '새로운 인재를 물색하고 있어요.', myanmar: 'လူတော်အသစ်ကို ရှာဖွေနေတယ်။', english: 'I am looking for new talent.' }
+  ]},
+  { id: '4620', korean: '민주화', myanmar: 'ဒီမိုကရေစီစနစ်ပြောင်းလဲရေး', english: 'Democratization', pos: 'noun', level: 'advanced', examples: [
+    { korean: '우리나라는 민주화를 이루었어요.', myanmar: 'ကျွန်ုပ်တို့နိုင်ငံက ဒီမိုကရေစီစနစ်ပြောင်းလဲရေးကို အောင်မြင်ခဲ့တယ်။', english: 'Our country achieved democratization.' }
+  ]},
+  { id: '4621', korean: '만장일치', myanmar: 'တစ်ညီတစ်ညွတ်တည်း', english: 'Unanimity', pos: 'noun', level: 'advanced', examples: [
+    { korean: '그 안건은 만장일치로 통과되었어요.', myanmar: 'အဲဒီအဆိုပြုချက်က တစ်ညီတစ်ညွတ်တည်းအတည်ပြုခံရတယ်။', english: 'That agenda item was passed unanimously.' }
+  ]},
+  { id: '4622', korean: '망각하다', myanmar: 'မေ့လျော့သည်/မမှတ်မိတော့သည်', english: 'To forget/fall into oblivion', pos: 'verb', level: 'advanced', examples: [
+    { korean: '과거의 아픔을 망각하고 싶어요.', myanmar: 'အတိတ်ရဲ့နာကျင်မှုကို မေ့လျော့ချင်တယ်။', english: 'I want to forget the pain of the past.' }
+  ]},
+  { id: '4623', korean: '멸실되다', myanmar: 'ပျက်စီးဆုံးရှုံးသည်', english: 'To be lost/destroyed/extinct', pos: 'verb', level: 'advanced', examples: [
+    { korean: '귀중한 자료가 멸실되었어요.', myanmar: 'အဖိုးတန်တဲ့အချက်အလက်တွေ ပျက်စီးဆုံးရှုံးခဲ့တယ်။', english: 'Valuable data was lost.' }
+  ]},
+  { id: '4624', korean: '모략', myanmar: 'ပရိယာယ်/အကြံအစည်မကောင်း', english: 'Plot/Scheme/Stratagem', pos: 'noun', level: 'advanced', examples: [
+    { korean: '그는 정치적 모략에 휘말렸어요.', myanmar: 'သူက နိုင်ငံရေးပရိယာယ်ထဲမှာ ပါဝင်ပတ်သက်ခဲ့တယ်။', english: 'He got caught up in a political plot.' }
+  ]},
+  { id: '4625', korean: '무궁무진하다', myanmar: 'အဆုံးအစမရှိသည်/အလွန်များပြားသည်', english: 'To be endless/inexhaustible', pos: 'adjective', level: 'advanced', examples: [
+    { korean: '인간의 잠재력은 무궁무진해요.', myanmar: 'လူသားရဲ့စွမ်းရည်က အဆုံးအစမရှိဘူး။', english: 'Human potential is endless.' }
+  ]},
+  { id: '4626', korean: '미흡하다', myanmar: 'မပြည့်စုံသည်/အားနည်းသည်', english: 'To be inadequate/unsatisfactory', pos: 'adjective', level: 'advanced', examples: [
+    { korean: '아직 미흡한 점이 많아요.', myanmar: 'မပြည့်စုံတဲ့အချက်တွေ အများကြီးရှိသေးတယ်။', english: 'There are still many inadequate points.' }
+  ]},
+  { id: '4627', korean: '모호하다', myanmar: 'မရှင်းလင်းသည်/ဝေဝါးသည်', english: 'To be ambiguous/vague', pos: 'adjective', level: 'advanced', examples: [
+    { korean: '그의 답변은 모호했어요.', myanmar: 'သူ့ရဲ့အဖြေက မရှင်းလင်းဘူး။', english: 'His answer was ambiguous.' }
+  ]},
+  { id: '4628', korean: '물러나다', myanmar: 'နုတ်ထွက်သည်/နောက်ဆုတ်သည်', english: 'To resign/retreat/step down', pos: 'verb', level: 'advanced', examples: [
+    { korean: '그는 자리에서 물러났어요.', myanmar: 'သူက ရာထူးကနေ နုတ်ထွက်ခဲ့တယ်။', english: 'He resigned from his position.' }
+  ]},
+  { id: '4629', korean: '밀약', myanmar: 'လျှို့ဝှက်သဘောတူညီချက်', english: 'Secret agreement/Pact', pos: 'noun', level: 'advanced', examples: [
+    { korean: '두 나라는 비밀리에 밀약을 맺었어요.', myanmar: 'နိုင်ငံနှစ်ခုက လျှို့ဝှက်စွာ သဘောတူညီချက်ချုပ်ဆိုခဲ့တယ်။', english: 'The two countries made a secret agreement.' }
+  ]},
+  { id: '4630', korean: '만방', myanmar: 'နေရာတိုင်း/နိုင်ငံတိုင်း', english: 'All directions/All nations', pos: 'noun', level: 'advanced', examples: [
+    { korean: '만방에 소식이 전해졌어요.', myanmar: 'နေရာတိုင်းကို သတင်းရောက်သွားတယ်။', english: 'The news spread to all nations.' }
+  ]},
+  { id: '4631', korean: '명색', myanmar: 'အမည်ခံ/ပုံစံအရ', english: 'Name/Nominal title/Pretense', pos: 'noun', level: 'advanced', examples: [
+    { korean: '명색뿐인 회장이었어요.', myanmar: 'အမည်ခံဥက္ကဌသာ ဖြစ်ခဲ့တယ်။', english: 'He was a chairman in name only.' }
+  ]},
+  { id: '4632', korean: '명료화', myanmar: 'ရှင်းလင်းပြတ်သားအောင်လုပ်ခြင်း', english: 'Clarification', pos: 'noun', level: 'advanced', examples: [
+    { korean: '논점의 명료화가 필요해요.', myanmar: 'အချက်အလက်တွေ ရှင်းလင်းပြတ်သားအောင်လုပ်ဖို့လိုတယ်။', english: 'Clarification of the points is needed.' }
+  ]},
+  { id: '4633', korean: '모호성', myanmar: 'မရှင်းလင်းမှု/ဝေဝါးမှု', english: 'Ambiguity/Vagueness', pos: 'noun', level: 'advanced', examples: [
+    { korean: '그 문장의 모호성 때문에 오해가 생겼어요.', myanmar: 'အဲဒီစာကြောင်းရဲ့မရှင်းလင်းမှုကြောင့် နားလည်မှုလွဲခဲ့တယ်။', english: 'Misunderstanding arose due to the ambiguity of that sentence.' }
+  ]},
+  { id: '4634', korean: '무기력', myanmar: 'အားအင်မရှိခြင်း/စိတ်ဓာတ်ကျခြင်း', english: 'Lethargy/Apathy/Powerlessness', pos: 'noun', level: 'advanced', examples: [
+    { korean: '그는 무기력에 빠져 있었어요.', myanmar: 'သူက အားအင်မရှိခြင်းထဲ ရောက်နေတယ်။', english: 'He was in a state of lethargy.' }
+  ]},
+  { id: '4635', korean: '미봉', myanmar: 'ယာယီအားဖြင့်ဖြေရှင်းခြင်း', english: 'Temporary measure/Patch-up', pos: 'noun', level: 'advanced', examples: [
+    { korean: '미봉책으로는 문제를 해결할 수 없어요.', myanmar: 'ယာယီအားဖြင့်ဖြေရှင်းခြင်းဖြင့် ပြဿနာကို ဖြေရှင်းလို့မရဘူး။', english: 'A temporary measure cannot solve the problem.' }
+  ]},
+  { id: '4636', korean: '민생', myanmar: 'ပြည်သူ့အသက်မွေးဝမ်းကျောင်း', english: 'People\'s livelihood/Welfare', pos: 'noun', level: 'advanced', examples: [
+    { korean: '정부는 민생 안정을 위해 노력하고 있어요.', myanmar: 'အစိုးရက ပြည်သူ့အသက်မွေးဝမ်းကျောင်းတည်ငြိမ်ဖို့ ကြိုးစားနေတယ်။', english: 'The government is striving for the stability of people\'s livelihoods.' }
+  ]},
+  { id: '4637', korean: '만감', myanmar: 'မျိုးစုံသောခံစားချက်များ', english: 'Mixed feelings/Myriad emotions', pos: 'noun', level: 'advanced', examples: [
+    { korean: '그 소식을 듣고 만감이 교차했어요.', myanmar: 'အဲဒီသတင်းကိုကြားပြီး မျိုးစုံသောခံစားချက်များ ရောထွေးခဲ့တယ်။', english: 'I had mixed feelings upon hearing that news.' }
+  ]},
+  { id: '4638', korean: '맹점', myanmar: 'အားနည်းချက်/မမြင်နိုင်သောနေရာ', english: 'Blind spot/Weak point', pos: 'noun', level: 'advanced', examples: [
+    { korean: '그의 분석에는 맹점이 있었어요.', myanmar: 'သူ့ရဲ့ခွဲခြမ်းစိတ်ဖြာမှုမှာ အားနည်းချက်ရှိတယ်။', english: 'There was a blind spot in his analysis.' }
+  ]},
+  { id: '4639', korean: '무력화', myanmar: 'အာဏာမဲ့အောင်လုပ်ခြင်း/ထိရောက်မှုမရှိစေခြင်း', english: 'Invalidation/Neutralization/Disarmament', pos: 'noun', level: 'advanced', examples: [
+    { korean: '테러 조직의 무력화를 목표로 했어요.', myanmar: 'အကြမ်းဖက်အဖွဲ့အစည်းရဲ့အာဏာမဲ့အောင်လုပ်ခြင်းကို ပန်းတိုင်ထားတယ်။', english: 'The goal was the neutralization of the terrorist organization.' }
+  ]},
+  { id: '4640', korean: '미연에', myanmar: 'ကြိုတင်၍/မဖြစ်မီကပင်', english: 'In advance/Beforehand (preventatively)', pos: 'adverb', level: 'advanced', examples: [
+    { korean: '사고를 미연에 방지해야 해요.', myanmar: 'မတော်တဆမှုကို ကြိုတင်၍ ကာကွယ်ရမယ်။', english: 'We must prevent accidents beforehand.' }
+  ]},
+  { id: '4641', korean: '만개하다', myanmar: 'အပြည့်အဝပွင့်သည်/ဖွံ့ဖြိုးသည်', english: 'To be in full bloom/fully developed', pos: 'verb', level: 'advanced', examples: [
+    { korean: '벚꽃이 만개했어요.', myanmar: 'ချယ်ရီပန်းတွေ အပြည့်အဝပွင့်ခဲ့တယ်။', english: 'The cherry blossoms are in full bloom.' }
+  ]},
+  { id: '4642', korean: '면밀하다', myanmar: 'သေချာသည်/အသေးစိတ်သည်', english: 'To be careful/close/thorough', pos: 'adjective', level: 'advanced', examples: [
+    { korean: '면밀한 조사가 필요해요.', myanmar: 'သေချာတဲ့စုံစမ်းစစ်ဆေးမှုလိုတယ်။', english: 'A thorough investigation is needed.' }
+  ]},
+  { id: '4643', korean: '모종', myanmar: 'တစ်မျိုးမျိုးသော/တစ်စုံတစ်ရာသော', english: 'Certain/Some kind of', pos: 'determiner', level: 'advanced', examples: [
+    { korean: '모종의 이유로 회의가 취소되었어요.', myanmar: 'တစ်မျိုးမျိုးသော အကြောင်းကြောင့် အစည်းအဝေးဖျက်သိမ်းခဲ့တယ်။', english: 'The meeting was canceled for some reason.' }
+  ]},
+  { id: '4644', korean: '무지몽매', myanmar: 'အသိပညာမရှိခြင်း/မိုက်မဲခြင်း', english: 'Ignorance/Unenlightenment', pos: 'noun', level: 'advanced', examples: [
+    { korean: '무지몽매한 사람들을 계몽해야 해요.', myanmar: 'အသိပညာမရှိတဲ့လူတွေကို အလင်းပြရမယ်။', english: 'We must enlighten the ignorant.' }
+  ]},
+  { id: '4645', korean: '미증유', myanmar: 'မကြုံဖူးသေးသော/ unprecedented', english: 'Unprecedented/Never-before-seen', pos: 'adjective', level: 'advanced', examples: [
+    { korean: '미증유의 위기에 직면했어요.', myanmar: 'မကြုံဖူးသေးတဲ့ အကျပ်အတဲကို ရင်ဆိုင်ခဲ့တယ်။', english: 'We faced an unprecedented crisis.' }
+  ]},
+  { id: '4646', korean: '만전', myanmar: 'ပြည့်စုံမှု/အစုံအလင်', english: 'Completeness/Perfection (in preparation)', pos: 'noun', level: 'advanced', examples: [
+    { korean: '여행 준비에 만전을 기했어요.', myanmar: 'ခရီးသွားဖို့ ပြင်ဆင်ရာမှာ အစုံအလင်လုပ်ခဲ့တယ်။', english: 'I took every precaution for the trip.' }
+  ]},
+  { id: '4647', korean: '모태', myanmar: 'မူလအစ/အမြစ်', english: 'Mother body/Origin/Source', pos: 'noun', level: 'advanced', examples: [
+    { korean: '그 기업은 작은 가게를 모태로 성장했어요.', myanmar: 'အဲဒီလုပ်ငန်းက ဆိုင်သေးသေးလေးကို မူလအစပြုပြီး ကြီးထွားခဲ့တယ်။', english: 'That company grew from a small shop as its origin.' }
+  ]},
+  { id: '4648', korean: '밀착하다', myanmar: 'နီးကပ်စွာကပ်သည်/ကပ်လျက်ရှိသည်', english: 'To adhere closely/Stick closely', pos: 'verb', level: 'advanced', examples: [
+    { korean: '서로 밀착하여 움직였어요.', myanmar: 'တစ်ယောက်နဲ့တစ်ယောက် နီးကပ်စွာကပ်ပြီး လှုပ်ရှားခဲ့တယ်။', english: 'They moved in close proximity to each other.' }
+  ]},
+  { id: '4649', korean: '망라적', myanmar: 'ပြည့်စုံသော/အားလုံးပါဝင်သော', english: 'Comprehensive/All-encompassing', pos: 'adjective', level: 'advanced', examples: [
+    { korean: '망라적인 보고서를 작성했어요.', myanmar: 'ပြည့်စုံသော အစီရင်ခံစာကို ရေးဆွဲခဲ့တယ်။', english: 'I prepared a comprehensive report.' }
+  ]}
+  
+  
 
 
 ];
