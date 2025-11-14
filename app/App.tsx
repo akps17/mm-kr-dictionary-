@@ -907,20 +907,95 @@ const Drawer = createDrawerNavigator<RootDrawerParamList>();
 
 function AppDrawerContent(props: any) {
   const { settings } = useSettings();
+  const { user, isAuthenticated, logOut } = useAuth();
+  const C = useThemedColors();
   const labels = i18nLabels[settings.uiLanguage];
+  
   return (
-    <DrawerContentScrollView {...props}>
-      <DrawerItem label={labels.navHome} onPress={() => props.navigation.navigate('Home')} icon={({color, size}) => (<Ionicons name="home-outline" size={size} color={color} />)} />
-      <DrawerItem label={labels.navPractice} onPress={() => props.navigation.navigate('Practice')} icon={({color, size}) => (<Ionicons name="school-outline" size={size} color={color} />)} />
-      <DrawerItem label={labels.navFavorites} onPress={() => props.navigation.navigate('Favorites')} icon={({color, size}) => (<Ionicons name="heart-outline" size={size} color={color} />)} />
-      <DrawerItem label={labels.navHistory} onPress={() => props.navigation.navigate('History')} icon={({color, size}) => (<Ionicons name="time-outline" size={size} color={color} />)} />
-      <DrawerItem label={labels.navSettings} onPress={() => props.navigation.navigate('Settings')} icon={({color, size}) => (<Ionicons name="settings-outline" size={size} color={color} />)} />
-      <DrawerItem label={'AI Chat'} onPress={() => props.navigation.navigate('AI Chat')} icon={({color, size}) => (<Ionicons name="chatbubble-ellipses-outline" size={size} color={color} />)} />
-      <DrawerItem label={'Translate'} onPress={() => props.navigation.navigate('Translate')} icon={({color, size}) => (<Ionicons name="swap-horizontal-outline" size={size} color={color} />)} />
-      <DrawerItem label={labels.navCheckUpdates} onPress={() => props.navigation.navigate('Check Updates')} icon={({color, size}) => (<Ionicons name="sync-outline" size={size} color={color} />)} />
-      <DrawerItem label={labels.navInputNewWords} onPress={() => props.navigation.navigate('Input New Words')} icon={({color, size}) => (<Ionicons name="add-circle-outline" size={size} color={color} />)} />
-      <DrawerItem label={labels.navTheme} onPress={() => props.navigation.navigate('Theme')} icon={({color, size}) => (<Ionicons name="color-palette-outline" size={size} color={color} />)} />
-      <DrawerItem label={labels.navAbout} onPress={() => props.navigation.navigate('About')} icon={({color, size}) => (<Ionicons name="information-circle-outline" size={size} color={color} />)} />
+    <DrawerContentScrollView {...props} contentContainerStyle={{ flex: 1 }}>
+      {/* User Profile Header */}
+      {isAuthenticated && user && (
+        <View style={{
+          padding: 20,
+          backgroundColor: C.surface,
+          borderBottomWidth: 1,
+          borderBottomColor: C.border,
+          marginBottom: 8,
+        }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 12 }}>
+            {/* User Avatar */}
+            <View style={{
+              width: 56,
+              height: 56,
+              borderRadius: 28,
+              backgroundColor: C.brand,
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginRight: 12,
+            }}>
+              <Ionicons name="person" size={28} color="#FFFFFF" />
+            </View>
+            
+            {/* User Info */}
+            <View style={{ flex: 1 }}>
+              <Text style={{
+                fontSize: 16,
+                fontWeight: '700',
+                color: C.textPrimary,
+                marginBottom: 2,
+              }}>
+                {user.displayName || 'User'}
+              </Text>
+              <Text style={{
+                fontSize: 12,
+                color: C.textSecondary,
+              }} numberOfLines={1}>
+                {user.email}
+              </Text>
+            </View>
+          </View>
+          
+          {/* Logout Button */}
+          <Pressable
+            onPress={async () => {
+              await logOut();
+              props.navigation.closeDrawer();
+            }}
+            style={({ pressed }) => ({
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: 6,
+              paddingVertical: 8,
+              paddingHorizontal: 12,
+              borderRadius: 8,
+              backgroundColor: pressed ? C.border : 'transparent',
+              borderWidth: 1,
+              borderColor: C.border,
+            })}
+          >
+            <Ionicons name="log-out-outline" size={16} color={C.textSecondary} />
+            <Text style={{ color: C.textSecondary, fontSize: 13, fontWeight: '500' }}>
+              {settings.uiLanguage === 'myanmar' ? 'ထွက်မည်' : settings.uiLanguage === 'korean' ? '로그아웃' : 'Logout'}
+            </Text>
+          </Pressable>
+        </View>
+      )}
+      
+      {/* Menu Items */}
+      <View style={{ flex: 1 }}>
+        <DrawerItem label={labels.navHome} onPress={() => props.navigation.navigate('Home')} icon={({color, size}) => (<Ionicons name="home-outline" size={size} color={color} />)} />
+        <DrawerItem label={labels.navPractice} onPress={() => props.navigation.navigate('Practice')} icon={({color, size}) => (<Ionicons name="school-outline" size={size} color={color} />)} />
+        <DrawerItem label={labels.navFavorites} onPress={() => props.navigation.navigate('Favorites')} icon={({color, size}) => (<Ionicons name="heart-outline" size={size} color={color} />)} />
+        <DrawerItem label={labels.navHistory} onPress={() => props.navigation.navigate('History')} icon={({color, size}) => (<Ionicons name="time-outline" size={size} color={color} />)} />
+        <DrawerItem label={labels.navSettings} onPress={() => props.navigation.navigate('Settings')} icon={({color, size}) => (<Ionicons name="settings-outline" size={size} color={color} />)} />
+        <DrawerItem label={'AI Chat'} onPress={() => props.navigation.navigate('AI Chat')} icon={({color, size}) => (<Ionicons name="chatbubble-ellipses-outline" size={size} color={color} />)} />
+        <DrawerItem label={'Translate'} onPress={() => props.navigation.navigate('Translate')} icon={({color, size}) => (<Ionicons name="swap-horizontal-outline" size={size} color={color} />)} />
+        <DrawerItem label={labels.navCheckUpdates} onPress={() => props.navigation.navigate('Check Updates')} icon={({color, size}) => (<Ionicons name="sync-outline" size={size} color={color} />)} />
+        <DrawerItem label={labels.navInputNewWords} onPress={() => props.navigation.navigate('Input New Words')} icon={({color, size}) => (<Ionicons name="add-circle-outline" size={size} color={color} />)} />
+        <DrawerItem label={labels.navTheme} onPress={() => props.navigation.navigate('Theme')} icon={({color, size}) => (<Ionicons name="color-palette-outline" size={size} color={color} />)} />
+        <DrawerItem label={labels.navAbout} onPress={() => props.navigation.navigate('About')} icon={({color, size}) => (<Ionicons name="information-circle-outline" size={size} color={color} />)} />
+      </View>
     </DrawerContentScrollView>
   );
 }
