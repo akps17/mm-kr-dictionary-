@@ -3,8 +3,15 @@
 Cross-platform Myanmar–Korean–English dictionary built with Expo + React Native.
 
 ## Scripts
+- yarn install # 1st
+- yarn start  # 2nd
+- npx expo start
+## Error Occuor , run yarn web directly
 - yarn ios / yarn android / yarn web
 - From repo root: yarn ios / yarn android / yarn web (proxies to app)
+
+## Build  IOS App
+- npx expo run:ios
 
 ## Features
 - Responsive UI for phones/tablets
