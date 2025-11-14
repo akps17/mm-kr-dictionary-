@@ -897,6 +897,7 @@ type RootDrawerParamList = {
   Translate: undefined;
   'Check Updates': undefined;
   'Input New Words': undefined;
+  Theme: undefined;
   About: undefined;
 };
 
@@ -918,6 +919,7 @@ function AppDrawerContent(props: any) {
       <DrawerItem label={'Translate'} onPress={() => props.navigation.navigate('Translate')} icon={({color, size}) => (<Ionicons name="swap-horizontal-outline" size={size} color={color} />)} />
       <DrawerItem label={labels.navCheckUpdates} onPress={() => props.navigation.navigate('Check Updates')} icon={({color, size}) => (<Ionicons name="sync-outline" size={size} color={color} />)} />
       <DrawerItem label={labels.navInputNewWords} onPress={() => props.navigation.navigate('Input New Words')} icon={({color, size}) => (<Ionicons name="add-circle-outline" size={size} color={color} />)} />
+      <DrawerItem label={labels.navTheme} onPress={() => props.navigation.navigate('Theme')} icon={({color, size}) => (<Ionicons name="color-palette-outline" size={size} color={color} />)} />
       <DrawerItem label={labels.navAbout} onPress={() => props.navigation.navigate('About')} icon={({color, size}) => (<Ionicons name="information-circle-outline" size={size} color={color} />)} />
     </DrawerContentScrollView>
   );
@@ -1032,6 +1034,7 @@ function AppNavigator() {
       <Drawer.Screen name="Translate" component={TranslateScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="swap-horizontal-outline" size={size} color={color} />) }} />
       <Drawer.Screen name="Check Updates" component={CheckUpdatesScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="sync-outline" size={size} color={color} />) }} />
       <Drawer.Screen name="Input New Words" component={SubmitWordScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="add-circle-outline" size={size} color={color} />) }} />
+      <Drawer.Screen name="Theme" component={ThemeScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="color-palette-outline" size={size} color={color} />) }} />
       <Drawer.Screen name="About" component={AboutScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="information-circle-outline" size={size} color={color} />) }} />
     </Drawer.Navigator>
   );
@@ -1242,6 +1245,97 @@ function CheckUpdatesScreen() {
             • Sync Updates: Generates updated dictionary file content{'\n'}
             • Copy the generated content to your local dictionary.ts file{'\n'}
             • Restart the app to see new words in search results
+          </Text>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+  );
+}
+
+function ThemeScreen() {
+  const C = useThemedColors();
+  const { settings, updateSetting } = useSettings();
+  const labels = i18nLabels[settings.uiLanguage];
+  
+  const Radio = ({ selected }: { selected: boolean }) => (
+    <Ionicons
+      name={selected ? 'radio-button-on' : 'radio-button-off'}
+      size={20}
+      color={selected ? '#2563EB' : C.textTertiary}
+      style={styles.optionIcon}
+    />
+  );
+  
+  return (
+    <SafeAreaView style={[styles.safeArea, { backgroundColor: C.background }]}>
+      <ScrollView contentContainerStyle={{ padding: 16 }}>
+        <View style={{ alignItems: 'center', marginBottom: 24 }}>
+          <View style={{ width: 80, height: 80, borderRadius: 16, marginBottom: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: C.surface }}>
+            <Ionicons name="color-palette-outline" size={40} color={C.brand} />
+          </View>
+          <Text style={[styles.title, { color: C.textPrimary, marginTop: 12 }]}>{labels.navTheme}</Text>
+        </View>
+        
+        <View style={[styles.card, { borderColor: C.border, backgroundColor: C.surface, marginBottom: 12 }]}>
+          <Text style={[styles.sectionHeader, { color: C.textSecondary }]}>{labels.themeLabel}</Text>
+          
+          {/* Light Theme */}
+          <Pressable
+            onPress={() => updateSetting('theme', 'light')}
+            style={[styles.optionRow, settings.theme === 'light' && styles.optionRowSelected]}
+            android_ripple={{ color: '#E5E7EB' }}
+          >
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+              <Ionicons name="sunny" size={24} color="#F59E0B" />
+              <Text style={[styles.optionLabel, { color: C.textPrimary }]}>
+                {settings.uiLanguage === 'myanmar' ? 'အလင်းရောင်' : settings.uiLanguage === 'korean' ? '라이트' : 'Light'}
+              </Text>
+            </View>
+            <Radio selected={settings.theme === 'light'} />
+          </Pressable>
+          
+          {/* Dark Theme */}
+          <Pressable
+            onPress={() => updateSetting('theme', 'dark')}
+            style={[styles.optionRow, settings.theme === 'dark' && styles.optionRowSelected]}
+            android_ripple={{ color: '#E5E7EB' }}
+          >
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+              <Ionicons name="moon" size={24} color="#6366F1" />
+              <Text style={[styles.optionLabel, { color: C.textPrimary }]}>
+                {settings.uiLanguage === 'myanmar' ? 'အမှောင်ရောင်' : settings.uiLanguage === 'korean' ? '다크' : 'Dark'}
+              </Text>
+            </View>
+            <Radio selected={settings.theme === 'dark'} />
+          </Pressable>
+          
+          {/* System Default */}
+          <Pressable
+            onPress={() => updateSetting('theme', 'system')}
+            style={[styles.optionRow, settings.theme === 'system' && styles.optionRowSelected]}
+            android_ripple={{ color: '#E5E7EB' }}
+          >
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+              <Ionicons name="phone-portrait-outline" size={24} color="#10B981" />
+              <Text style={[styles.optionLabel, { color: C.textPrimary }]}>
+                {settings.uiLanguage === 'myanmar' ? 'စနစ်အတိုင်း' : settings.uiLanguage === 'korean' ? '시스템' : 'System'}
+              </Text>
+            </View>
+            <Radio selected={settings.theme === 'system'} />
+          </Pressable>
+        </View>
+        
+        {/* Info Card */}
+        <View style={[styles.card, { marginTop: 16, backgroundColor: C.surface, borderColor: C.border }]}>
+          <Text style={[styles.sectionTitle, { color: C.textSecondary }]}>
+            {settings.uiLanguage === 'myanmar' ? 'အချက်အလက်' : settings.uiLanguage === 'korean' ? '정보' : 'Info'}
+          </Text>
+          <Text style={[styles.aboutParagraph, { color: C.textPrimary, fontFamily: 'NotoSansMyanmar_400Regular' }]}>
+            {settings.uiLanguage === 'myanmar' 
+              ? '• အလင်းရောင်: အလင်းပုံစံကို အမြဲတမ်းသုံးမည်\n• အမှောင်ရောင်: အမှောင်ပုံစံကို အမြဲတမ်းသုံးမည်\n• စနစ်အတိုင်း: သင့်ဖုန်း၏ အရောင်အသွေးကို လိုက်နာမည်'
+              : settings.uiLanguage === 'korean'
+              ? '• 라이트: 밝은 테마를 항상 사용\n• 다크: 어두운 테마를 항상 사용\n• 시스템: 기기 설정을 따름'
+              : '• Light: Always use light theme\n• Dark: Always use dark theme\n• System: Follow device settings'}
           </Text>
         </View>
       </ScrollView>

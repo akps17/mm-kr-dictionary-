@@ -1,4 +1,5 @@
 import { useColorScheme } from 'react-native';
+import { useSettings } from '../data/SettingsContext';
 
 export const LightColors = {
   background: '#FFFFFF',
@@ -29,8 +30,22 @@ export const DarkColors = {
 export type AppColors = typeof LightColors;
 
 export function useThemedColors(): AppColors {
-  const scheme = useColorScheme();
-  return scheme === 'dark' ? DarkColors : LightColors;
+  const systemScheme = useColorScheme();
+  const { settings } = useSettings();
+  
+  // Determine actual theme based on user preference
+  let actualTheme: 'light' | 'dark' = 'light';
+  
+  if (settings.theme === 'dark') {
+    actualTheme = 'dark';
+  } else if (settings.theme === 'light') {
+    actualTheme = 'light';
+  } else {
+    // 'system' - follow system preference
+    actualTheme = systemScheme === 'dark' ? 'dark' : 'light';
+  }
+  
+  return actualTheme === 'dark' ? DarkColors : LightColors;
 }
 
 export const Spacing = {

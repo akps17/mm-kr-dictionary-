@@ -2,13 +2,15 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export type AppLanguage = 'korean' | 'myanmar' | 'english';
 export type SortPriority = 'korean' | 'myanmar' | 'english';
+export type ThemeMode = 'light' | 'dark' | 'system';
 
-export type FontSize = 'small' | 'default' | 'large';
+export type FontSize = 'Small' | 'Mefault' | 'Large';
 
 export type AppSettings = {
   uiLanguage: AppLanguage;
   sortBy: SortPriority;
   fontSize: FontSize;
+  theme: ThemeMode;
 };
 
 const SETTINGS_KEY = 'mmkr.settings.v1';
@@ -18,7 +20,7 @@ export async function loadSettings(): Promise<AppSettings> {
     const raw = await AsyncStorage.getItem(SETTINGS_KEY);
     if (raw) return JSON.parse(raw) as AppSettings;
   } catch {}
-  return { uiLanguage: 'myanmar', sortBy: 'korean', fontSize: 'default' };
+  return { uiLanguage: 'myanmar', sortBy: 'korean', fontSize: 'default', theme: 'system' };
 }
 
 export async function saveSettings(settings: AppSettings): Promise<void> {
@@ -35,12 +37,15 @@ export const i18nLabels: Record<AppLanguage, Record<string, string>> = {
     sortByLabel: '정렬 기준',
     language: '언어',
     languageLabel: '언어',
+    theme: '테마',
+    themeLabel: '테마',
     noResults: '결과 없음',
     navHome: '홈',
     navPractice: '연습',
     navFavorites: '즐겨찾기',
     navHistory: '기록',
     navSettings: '설정',
+    navTheme: '테마',
     navCheckUpdates: '업데이트 확인',
     navInputNewWords: '새 단어 추가',
     navAbout: '정보',
@@ -58,13 +63,16 @@ export const i18nLabels: Record<AppLanguage, Record<string, string>> = {
     sortByLabel: 'စီစဉ်ပေးရန်',
     language: 'ဘာသာစကား',
     languageLabel: 'ဘာသာစကား',
+    theme: 'အရောင်',
+    themeLabel: 'အရောင်',
     noResults: 'ရလဒ်မရှိပါ',
     navHome: 'မူလ',
     navPractice: 'လေ့ကျင့်ခန်း',
     navFavorites: 'ကြိုက်နှစ်သက်သောစကားလုံးများ',
     navHistory: 'မှတ်တမ်း',
     navSettings: 'ဆက်တင်',
-    navCheckUpdates: 'စကားလုံးသစ်များ စစ်ဆေးရန်',
+    navTheme: 'အရောင်',
+    navCheckUpdates: 'စကားလုံးအသစ်များ စစ်ဆေးရန်',
     navInputNewWords: 'စကားလုံးအသစ် ထည့်သွင်းရန်',
     navAbout: 'အကြောင်း',
     quizMCQHelp: 'အောက်ပါ စကားလုံးများထဲမှ မှန်ကန့်သတ်ထားသော အဓိပ္ပာယ်ကို ရွေးချယ်ပါ။ မေးခွန်းတစ်ခုစီအတွက် ၆၀ စက္ကန့်ကန့်သတ်ချိန်ရှိပါသည်။',
@@ -81,12 +89,15 @@ export const i18nLabels: Record<AppLanguage, Record<string, string>> = {
     sortByLabel: 'Sort by',
     language: 'Language',
     languageLabel: 'Language',
+    theme: 'Theme',
+    themeLabel: 'Theme',
     noResults: 'No results',
     navHome: 'Home',
     navPractice: 'Practice',
     navFavorites: 'Favorites',
     navHistory: 'History',
     navSettings: 'Settings',
+    navTheme: 'Theme',
     navCheckUpdates: 'Check Updates',
     navInputNewWords: 'Input New Words',
     navAbout: 'About',
