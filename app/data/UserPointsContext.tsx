@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { AppState } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useAuth } from './AuthContext';
 import { db } from './firebase';
@@ -9,6 +10,7 @@ type UserPointsContextType = {
   totalSubmissions: number;
   addPoints: (amount: number) => Promise<void>;
   resetPoints: () => Promise<void>;
+  refreshPoints: () => Promise<void>;
   loading: boolean;
 };
 
@@ -20,6 +22,7 @@ const UserPointsContext = createContext<UserPointsContextType>({
   totalSubmissions: 0,
   addPoints: async () => {},
   resetPoints: async () => {},
+  refreshPoints: async () => {},
   loading: true,
 });
 
@@ -39,6 +42,21 @@ export function UserPointsProvider({ children }: { children: React.ReactNode }) 
       setTotalSubmissions(0);
       setLoading(false);
     }
+  }, [user]);
+
+  // Reload points when app comes to foreground
+  useEffect(() => {
+    const subscription = AppState.addEventListener('change', (nextAppState) => {
+      if (nextAppState === 'active' && user) {
+        // App has come to the foreground, reload points
+        console.log('App is active, reloading user points...');
+        loadUserData(user.uid);
+      }
+    });
+
+    return () => {
+      subscription.remove();
+    };
   }, [user]);
 
   const loadUserData = async (userId: string) => {
@@ -137,8 +155,14 @@ export function UserPointsProvider({ children }: { children: React.ReactNode }) 
     }
   };
 
+  const refreshPoints = async () => {
+    if (!user) return;
+    console.log('Manual refresh points triggered');
+    await loadUserData(user.uid);
+  };
+
   return (
-    <UserPointsContext.Provider value={{ points, totalSubmissions, addPoints, resetPoints, loading }}>
+    <UserPointsContext.Provider value={{ points, totalSubmissions, addPoints, resetPoints, refreshPoints, loading }}>
       {children}
     </UserPointsContext.Provider>
   );

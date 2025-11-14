@@ -11,8 +11,9 @@ export function ProfileScreen({ navigation }: { navigation: any }) {
   const C = useThemedColors();
   const { settings } = useSettings();
   const { user, logOut } = useAuth();
-  const { points, totalSubmissions } = useUserPoints();
+  const { points, totalSubmissions, refreshPoints } = useUserPoints();
   const labels = i18nLabels[settings.uiLanguage];
+  const [isRefreshing, setIsRefreshing] = React.useState(false);
   
   if (!user) {
     return (
@@ -38,6 +39,12 @@ export function ProfileScreen({ navigation }: { navigation: any }) {
   const level = Math.floor(points / 50) + 1;
   const pointsToNextLevel = (level * 50) - points;
   const levelProgress = ((points % 50) / 50) * 100;
+  
+  const handleRefresh = async () => {
+    setIsRefreshing(true);
+    await refreshPoints();
+    setTimeout(() => setIsRefreshing(false), 500);
+  };
   
   return (
     <SafeAreaView style={[styles.safeArea, { backgroundColor: C.background }]}>
@@ -80,6 +87,38 @@ export function ProfileScreen({ navigation }: { navigation: any }) {
               {settings.uiLanguage === 'myanmar' ? `အဆင့် ${level}` : settings.uiLanguage === 'korean' ? `레벨 ${level}` : `Level ${level}`}
             </Text>
           </View>
+          
+          {/* Refresh Button */}
+          <Pressable
+            onPress={handleRefresh}
+            disabled={isRefreshing}
+            style={({ pressed }) => ({
+              flexDirection: 'row',
+              alignItems: 'center',
+              gap: 6,
+              marginTop: 12,
+              paddingHorizontal: 16,
+              paddingVertical: 8,
+              borderRadius: 20,
+              backgroundColor: pressed ? C.border : 'transparent',
+              borderWidth: 1,
+              borderColor: C.border,
+              opacity: isRefreshing ? 0.5 : 1,
+            })}
+          >
+            <Ionicons 
+              name="refresh" 
+              size={16} 
+              color={C.textSecondary} 
+              style={{ transform: [{ rotate: isRefreshing ? '360deg' : '0deg' }] }}
+            />
+            <Text style={{ color: C.textSecondary, fontSize: 13, fontWeight: '500' }}>
+              {isRefreshing 
+                ? (settings.uiLanguage === 'myanmar' ? 'စောင့်ပါ...' : settings.uiLanguage === 'korean' ? '새로고침 중...' : 'Refreshing...')
+                : (settings.uiLanguage === 'myanmar' ? 'ရမှတ်ပြန်စစ်ရန်' : settings.uiLanguage === 'korean' ? '포인트 새로고침' : 'Refresh Points')
+              }
+            </Text>
+          </Pressable>
         </View>
         
         {/* Points Card */}
