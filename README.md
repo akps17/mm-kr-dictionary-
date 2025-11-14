@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # mm-kr-dictionary
 
 Cross-platform Myanmar–Korean–English dictionary built with Expo + React Native.
@@ -19,11 +18,6 @@ Cross-platform Myanmar–Korean–English dictionary built with Expo + React Nat
 - app/components/SearchBox.tsx – search input
 - app/data/dictionary.ts – sample data
 
-## Create GitHub repo
-1. Create a new GitHub repo named mm-kr-dictionary.
-2. Run:
-
-
-=======
-# mm-kr-dictionary-
->>>>>>> b3960d273e27a2e5d40fae530cd0919d2d7faf48
+## Admin Panel
+- Open `app/admin.html` in browser to manage dictionary words and approve submissions
+- Login with: admin@mmkr.com / mmkr2025
