@@ -1,6 +1,8 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useAuth } from './AuthContext';
+import { db } from './firebase';
+import { doc, setDoc, getDoc } from 'firebase/firestore';
 
 type UserPointsContextType = {
   points: number;
@@ -41,6 +43,34 @@ export function UserPointsProvider({ children }: { children: React.ReactNode }) 
 
   const loadUserData = async (userId: string) => {
     try {
+      // First, try to load from Firestore (source of truth for admin-managed points)
+      if (user?.email) {
+        try {
+          const userDocRef = doc(db, 'user_points', user.email);
+          const userDoc = await getDoc(userDocRef);
+          
+          if (userDoc.exists()) {
+            const data = userDoc.data();
+            const firestorePoints = data.points || 0;
+            const firestoreSubmissions = data.totalSubmissions || 0;
+            
+            // Update local storage with Firestore data
+            await Promise.all([
+              AsyncStorage.setItem(`${POINTS_KEY_PREFIX}${userId}`, firestorePoints.toString()),
+              AsyncStorage.setItem(`${SUBMISSIONS_KEY_PREFIX}${userId}`, firestoreSubmissions.toString())
+            ]);
+            
+            setPoints(firestorePoints);
+            setTotalSubmissions(firestoreSubmissions);
+            setLoading(false);
+            return;
+          }
+        } catch (firestoreError) {
+          console.log('Firestore not available, using local storage:', firestoreError);
+        }
+      }
+      
+      // Fallback to AsyncStorage if Firestore fails or no data exists
       const [pointsStr, submissionsStr] = await Promise.all([
         AsyncStorage.getItem(`${POINTS_KEY_PREFIX}${userId}`),
         AsyncStorage.getItem(`${SUBMISSIONS_KEY_PREFIX}${userId}`)
@@ -62,10 +92,27 @@ export function UserPointsProvider({ children }: { children: React.ReactNode }) 
       const newPoints = points + amount;
       const newSubmissions = totalSubmissions + 1;
       
+      // Save to AsyncStorage
       await Promise.all([
         AsyncStorage.setItem(`${POINTS_KEY_PREFIX}${user.uid}`, newPoints.toString()),
         AsyncStorage.setItem(`${SUBMISSIONS_KEY_PREFIX}${user.uid}`, newSubmissions.toString())
       ]);
+      
+      // Also sync to Firestore for admin visibility
+      if (user.email) {
+        try {
+          const userDocRef = doc(db, 'user_points', user.email);
+          await setDoc(userDocRef, {
+            userEmail: user.email,
+            points: newPoints,
+            totalSubmissions: newSubmissions,
+            lastUpdated: new Date().toISOString()
+          }, { merge: true });
+        } catch (firestoreError) {
+          console.log('Failed to sync to Firestore:', firestoreError);
+          // Continue even if Firestore sync fails
+        }
+      }
       
       setPoints(newPoints);
       setTotalSubmissions(newSubmissions);

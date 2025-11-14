@@ -530,9 +530,9 @@
             </button>
             
             <div class="login-demo">
-                <div class="login-demo-title">Demo Credentials</div>
+                <div class="login-demo-title">Admin Credentials</div>
                 <div class="login-demo-creds">
-                    admin@example.com / admin123<br>
+                    edu.mmkr@gmail.com / mmkr2025<br>
                     admin@mmkr.com / mmkr2025
                 </div>
             </div>
@@ -687,6 +687,30 @@
                 </div>
             </div>
             
+            <!-- User Management Section -->
+            <div class="action-section" style="margin-top: 32px;">
+                <h2 class="section-title">Manage Users</h2>
+                <div class="action-buttons">
+                    <button class="btn btn-primary" onclick="loadUsers()">
+                        <span>👥</span> View All Users
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Users List Section -->
+            <div class="content-section" id="users-section" style="display: none; margin-top: 20px;">
+                <div class="content-header">
+                    <h2 class="section-title" style="margin: 0;">User Management</h2>
+                </div>
+                <div class="content-body">
+                    <div id="users-container">
+                        <p style="text-align: center; color: #6b7280; padding: 40px;">
+                            Loading users...
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
             <!-- Content Section -->
             <div class="content-section">
                 <div class="content-header">
@@ -707,6 +731,7 @@
     <script type="module">
         import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js';
         import { getFirestore, collection, getDocs, doc, updateDoc, deleteDoc, query, orderBy, addDoc, serverTimestamp, getDoc } from 'https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js';
+        import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js';
 
         // Your Firebase config (same as in app.json)
         const firebaseConfig = {
@@ -720,20 +745,31 @@
 
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
+        const auth = getAuth(app);
 
-        // Simple admin authentication (in production, use proper Firebase Auth)
+        // Admin credentials for validation
         const ADMIN_CREDENTIALS = {
-            'admin@example.com': 'admin123',
+            'edu.mmkr@gmail.com': 'mmkr2025',
             'admin@mmkr.com': 'mmkr2025'
         };
 
-        // Check if admin is already logged in
-        window.onload = function() {
-            const adminEmail = localStorage.getItem('admin_email');
-            if (adminEmail && ADMIN_CREDENTIALS[adminEmail]) {
-                showAdminPanel(adminEmail);
+        // Check if admin is already authenticated with Firebase
+        onAuthStateChanged(auth, (user) => {
+            if (user && ADMIN_CREDENTIALS[user.email]) {
+                // User is signed in and is an admin
+                showAdminPanel(user.email);
+            } else if (user) {
+                // User is signed in but not an admin
+                signOut(auth);
+                alert('Access denied. Admin credentials required.');
+                document.getElementById('login-section').classList.remove('hidden');
+                document.getElementById('admin-panel').classList.add('hidden');
+            } else {
+                // User is not signed in
+                document.getElementById('login-section').classList.remove('hidden');
+                document.getElementById('admin-panel').classList.add('hidden');
             }
-        };
+        });
 
         window.adminLogin = async function() {
             const email = document.getElementById('admin-email').value.trim();
@@ -744,22 +780,25 @@
                 return;
             }
             
+            // Check if email is in admin credentials
+            if (!ADMIN_CREDENTIALS[email]) {
+                showLoginError('This email is not authorized as an admin.');
+                return;
+            }
+            
             // Show loading state
             showLoginLoading(true);
             
-            // Simulate API call delay for better UX
-            await new Promise(resolve => setTimeout(resolve, 800));
-
-            if (ADMIN_CREDENTIALS[email] && ADMIN_CREDENTIALS[email] === password) {
-                localStorage.setItem('admin_email', email);
+            try {
+                // Sign in with Firebase Auth
+                await signInWithEmailAndPassword(auth, email, password);
                 
-                // Smooth transition
+                // Smooth transition (onAuthStateChanged will handle the rest)
                 const loginSection = document.getElementById('login-section');
                 loginSection.style.transition = 'opacity 0.3s ease';
                 loginSection.style.opacity = '0';
                 
                 setTimeout(() => {
-                    showAdminPanel(email);
                     const adminPanel = document.getElementById('admin-panel');
                     adminPanel.style.opacity = '0';
                     adminPanel.style.transition = 'opacity 0.3s ease';
@@ -767,11 +806,25 @@
                         adminPanel.style.opacity = '1';
                     }, 50);
                 }, 300);
-            } else {
-                showLoginError('Invalid email or password. Please check your credentials.');
+                
+            } catch (error) {
+                console.error('Login error:', error);
+                let errorMessage = 'Login failed. Please check your credentials.';
+                
+                // Handle specific Firebase Auth errors
+                if (error.code === 'auth/invalid-credential' || error.code === 'auth/wrong-password') {
+                    errorMessage = 'Invalid email or password.';
+                } else if (error.code === 'auth/user-not-found') {
+                    errorMessage = 'No user found with this email. Please create an account in Firebase Console.';
+                } else if (error.code === 'auth/too-many-requests') {
+                    errorMessage = 'Too many failed attempts. Please try again later.';
+                } else if (error.code === 'auth/network-request-failed') {
+                    errorMessage = 'Network error. Please check your internet connection.';
+                }
+                
+                showLoginError(errorMessage);
+                showLoginLoading(false);
             }
-            
-            showLoginLoading(false);
         };
         
         function showLoginLoading(loading) {
@@ -837,10 +890,14 @@
             }
         };
 
-        window.adminLogout = function() {
-            localStorage.removeItem('admin_email');
-            document.getElementById('admin-panel').classList.add('hidden');
-            document.getElementById('login-section').classList.remove('hidden');
+        window.adminLogout = async function() {
+            try {
+                await signOut(auth);
+                // onAuthStateChanged will handle showing login screen
+            } catch (error) {
+                console.error('Logout error:', error);
+                alert('Error logging out: ' + error.message);
+            }
         };
 
         function showAdminPanel(email) {
@@ -1645,6 +1702,245 @@
             } catch (error) {
                 alert('Error updating word: ' + error.message);
                 console.error('Error:', error);
+            }
+        };
+
+        // User Management Functions
+        window.loadUsers = async function() {
+            const usersSection = document.getElementById('users-section');
+            const container = document.getElementById('users-container');
+            usersSection.style.display = 'block';
+            container.innerHTML = '<p style="text-align: center; padding: 20px;">Loading users...</p>';
+
+            try {
+                // Get all submissions to extract unique users
+                const submissionsQuery = query(collection(db, 'pending_words'), orderBy('submittedAt', 'desc'));
+                const submissionsSnapshot = await getDocs(submissionsQuery);
+                
+                // Get user points from Firestore (we'll create this collection)
+                const userPointsQuery = query(collection(db, 'user_points'));
+                const userPointsSnapshot = await getDocs(userPointsQuery);
+                
+                // Build user points map
+                const userPointsMap = {};
+                userPointsSnapshot.forEach(doc => {
+                    const data = doc.data();
+                    userPointsMap[doc.id] = {
+                        points: data.points || 0,
+                        totalSubmissions: data.totalSubmissions || 0
+                    };
+                });
+                
+                // Extract unique users from submissions
+                const usersMap = {};
+                submissionsSnapshot.forEach(doc => {
+                    const data = doc.data();
+                    const email = data.userEmail;
+                    if (email && email !== 'anonymous') {
+                        if (!usersMap[email]) {
+                            usersMap[email] = {
+                                email: email,
+                                submissions: 0,
+                                firstSubmission: data.submittedAt?.toDate() || new Date()
+                            };
+                        }
+                        usersMap[email].submissions++;
+                    }
+                });
+
+                const users = Object.values(usersMap);
+                
+                if (users.length === 0) {
+                    container.innerHTML = '<p style="text-align: center; color: #6b7280; padding: 40px;">No users found. Users will appear here after they submit words.</p>';
+                    return;
+                }
+
+                // Sort by submissions (most active first)
+                users.sort((a, b) => b.submissions - a.submissions);
+
+                let html = `
+                    <div style="margin-bottom: 16px; padding: 16px; background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 8px;">
+                        <p style="margin: 0; color: #075985; font-weight: 600;">
+                            👥 Total Users: ${users.length}
+                        </p>
+                    </div>
+                `;
+
+                users.forEach(user => {
+                    const userPoints = userPointsMap[user.email] || { points: 0, totalSubmissions: 0 };
+                    const level = Math.floor(userPoints.points / 50) + 1;
+                    
+                    html += `
+                        <div class="word-item" style="background: white; border-left: 4px solid #3b82f6;">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 16px;">
+                                <div style="flex: 1;">
+                                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                                        <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #3b82f6, #8b5cf6); display: flex; align-items: center; justify-content: center; color: white; font-size: 20px; font-weight: 700;">
+                                            ${user.email.charAt(0).toUpperCase()}
+                                        </div>
+                                        <div>
+                                            <div style="font-size: 16px; font-weight: 600; color: #1f2937;">${user.email}</div>
+                                            <div style="font-size: 13px; color: #6b7280;">
+                                                Level ${level} • ${userPoints.points} points
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="display: flex; gap: 8px;">
+                                    <button onclick="adjustUserPoints('${user.email}', 5)" class="btn" style="background: #10b981; color: white; padding: 6px 12px; font-size: 13px;">
+                                        +5 pts
+                                    </button>
+                                    <button onclick="adjustUserPoints('${user.email}', -5)" class="btn" style="background: #ef4444; color: white; padding: 6px 12px; font-size: 13px;">
+                                        -5 pts
+                                    </button>
+                                    <button onclick="showPointsEditor('${user.email}')" class="btn" style="background: #f59e0b; color: white; padding: 6px 12px; font-size: 13px;">
+                                        ✏️ Edit
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Stats Grid -->
+                            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 12px; padding-top: 12px; border-top: 1px solid #e5e7eb;">
+                                <div style="text-align: center;">
+                                    <div style="font-size: 24px; font-weight: 700; color: #3b82f6;">${userPoints.points}</div>
+                                    <div style="font-size: 12px; color: #6b7280;">Total Points</div>
+                                </div>
+                                <div style="text-align: center;">
+                                    <div style="font-size: 24px; font-weight: 700; color: #10b981;">${user.submissions}</div>
+                                    <div style="font-size: 12px; color: #6b7280;">Submissions</div>
+                                </div>
+                                <div style="text-align: center;">
+                                    <div style="font-size: 24px; font-weight: 700; color: #f59e0b;">${level}</div>
+                                    <div style="font-size: 12px; color: #6b7280;">Level</div>
+                                </div>
+                            </div>
+                            
+                            <!-- Points Editor (hidden by default) -->
+                            <div id="points-editor-${user.email.replace(/[@.]/g, '-')}" style="display: none; margin-top: 16px; padding: 16px; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px;">
+                                <div style="margin-bottom: 12px;">
+                                    <label style="display: block; font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 4px;">
+                                        Set Points:
+                                    </label>
+                                    <input type="number" id="points-input-${user.email.replace(/[@.]/g, '-')}" value="${userPoints.points}" 
+                                           style="width: 100%; padding: 8px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px;">
+                                </div>
+                                <div style="display: flex; gap: 8px;">
+                                    <button onclick="saveUserPoints('${user.email}')" class="btn" style="flex: 1; background: #10b981; color: white;">
+                                        💾 Save
+                                    </button>
+                                    <button onclick="hidePointsEditor('${user.email}')" class="btn" style="flex: 1; background: #6b7280; color: white;">
+                                        Cancel
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                container.innerHTML = html;
+
+            } catch (error) {
+                console.error('Error loading users:', error);
+                container.innerHTML = `
+                    <div style="text-align: center; padding: 40px;">
+                        <p style="color: #ef4444; font-weight: 600; margin-bottom: 8px;">❌ Error loading users</p>
+                        <p style="color: #6b7280; font-size: 14px;">${error.message}</p>
+                        <button onclick="loadUsers()" class="btn btn-primary" style="margin-top: 16px;">
+                            🔄 Try Again
+                        </button>
+                    </div>
+                `;
+            }
+        };
+
+        window.adjustUserPoints = async function(userEmail, pointsChange) {
+            try {
+                const userDocRef = doc(db, 'user_points', userEmail);
+                const userDoc = await getDoc(userDocRef);
+                
+                let currentPoints = 0;
+                let currentSubmissions = 0;
+                
+                if (userDoc.exists()) {
+                    const data = userDoc.data();
+                    currentPoints = data.points || 0;
+                    currentSubmissions = data.totalSubmissions || 0;
+                }
+                
+                const newPoints = Math.max(0, currentPoints + pointsChange);
+                
+                await updateDoc(userDocRef, {
+                    points: newPoints,
+                    totalSubmissions: currentSubmissions,
+                    lastUpdated: serverTimestamp()
+                }).catch(async () => {
+                    // Document doesn't exist, create it
+                    await addDoc(collection(db, 'user_points'), {
+                        userEmail: userEmail,
+                        points: newPoints,
+                        totalSubmissions: currentSubmissions,
+                        lastUpdated: serverTimestamp()
+                    });
+                });
+                
+                loadUsers(); // Refresh the list
+                alert(`✅ ${pointsChange > 0 ? 'Added' : 'Removed'} ${Math.abs(pointsChange)} points for ${userEmail}`);
+                
+            } catch (error) {
+                console.error('Error adjusting points:', error);
+                alert('❌ Error adjusting points: ' + error.message);
+            }
+        };
+
+        window.showPointsEditor = function(userEmail) {
+            const editorId = `points-editor-${userEmail.replace(/[@.]/g, '-')}`;
+            document.getElementById(editorId).style.display = 'block';
+        };
+
+        window.hidePointsEditor = function(userEmail) {
+            const editorId = `points-editor-${userEmail.replace(/[@.]/g, '-')}`;
+            document.getElementById(editorId).style.display = 'none';
+        };
+
+        window.saveUserPoints = async function(userEmail) {
+            try {
+                const inputId = `points-input-${userEmail.replace(/[@.]/g, '-')}`;
+                const newPoints = parseInt(document.getElementById(inputId).value) || 0;
+                
+                if (newPoints < 0) {
+                    alert('❌ Points cannot be negative!');
+                    return;
+                }
+                
+                const userDocRef = doc(db, 'user_points', userEmail);
+                const userDoc = await getDoc(userDocRef);
+                
+                let currentSubmissions = 0;
+                if (userDoc.exists()) {
+                    currentSubmissions = userDoc.data().totalSubmissions || 0;
+                }
+                
+                await updateDoc(userDocRef, {
+                    points: newPoints,
+                    totalSubmissions: currentSubmissions,
+                    lastUpdated: serverTimestamp()
+                }).catch(async () => {
+                    // Document doesn't exist, create it
+                    await addDoc(collection(db, 'user_points'), {
+                        userEmail: userEmail,
+                        points: newPoints,
+                        totalSubmissions: currentSubmissions,
+                        lastUpdated: serverTimestamp()
+                    });
+                });
+                
+                hidePointsEditor(userEmail);
+                loadUsers(); // Refresh the list
+                alert(`✅ Points updated successfully for ${userEmail}`);
+                
+            } catch (error) {
+                console.error('Error saving points:', error);
+                alert('❌ Error saving points: ' + error.message);
             }
         };
 
