@@ -10,8 +10,18 @@ Cross-platform Myanmar–Korean–English dictionary built with Expo + React Nat
 - yarn ios / yarn android / yarn web
 - From repo root: yarn ios / yarn android / yarn web (proxies to app)
 
-## Build  IOS App
-- npx expo run:ios
+## Build  IOS App (On Simulator)
+- npx expo run:ios                                 ##(on Simulator Mode)
+
+## Build on Device With XCode
+- npx expo run:ios --device                        ##(check device lists)
+- xcrun xctrace list devices
+- xcrun xctrace list devices 2>&1 | grep -i iphone  ##(verify connection with  usb)
+- xcrun xctrace list devices 2>&1 | grep -v Simulator | grep -v "==" | 
+grep -v "MacBook"                                   ##(Detect Devive on Mac)
+-  npx expo run:ios --device                        ##(build app on Device)
+- open /Users/aungkoko/Desktop/git/mm-kr-dictionary-/app/ios/MyanmarKoreanDictionary.xcworkspace                 ##(Open XCode)
+
 
 ## Features
 - Responsive UI for phones/tablets
