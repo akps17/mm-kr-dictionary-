@@ -730,7 +730,7 @@
 
     <script type="module">
         import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js';
-        import { getFirestore, collection, getDocs, doc, updateDoc, deleteDoc, query, orderBy, addDoc, serverTimestamp, getDoc } from 'https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js';
+        import { getFirestore, collection, getDocs, doc, updateDoc, deleteDoc, query, orderBy, addDoc, serverTimestamp, getDoc, setDoc } from 'https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js';
         import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js';
 
         // Your Firebase config (same as in app.json)
@@ -1710,29 +1710,34 @@
             const usersSection = document.getElementById('users-section');
             const container = document.getElementById('users-container');
             usersSection.style.display = 'block';
-            container.innerHTML = '<p style="text-align: center; padding: 20px;">Loading users...</p>';
+            container.innerHTML = '<p style="text-align: center; padding: 20px;">Loading all users...</p>';
 
             try {
-                // Get all submissions to extract unique users
-                const submissionsQuery = query(collection(db, 'pending_words'), orderBy('submittedAt', 'desc'));
-                const submissionsSnapshot = await getDocs(submissionsQuery);
-                
-                // Get user points from Firestore (we'll create this collection)
+                // Get user points from Firestore
                 const userPointsQuery = query(collection(db, 'user_points'));
                 const userPointsSnapshot = await getDocs(userPointsQuery);
                 
-                // Build user points map
-                const userPointsMap = {};
+                // Get all submissions to count submissions per user
+                const submissionsQuery = query(collection(db, 'pending_words'), orderBy('submittedAt', 'desc'));
+                const submissionsSnapshot = await getDocs(submissionsQuery);
+                
+                // Build comprehensive user map from BOTH sources
+                const usersMap = {};
+                
+                // First, add all users from user_points collection
                 userPointsSnapshot.forEach(doc => {
                     const data = doc.data();
-                    userPointsMap[doc.id] = {
+                    const email = doc.id; // Document ID is the email
+                    usersMap[email] = {
+                        email: email,
                         points: data.points || 0,
-                        totalSubmissions: data.totalSubmissions || 0
+                        totalSubmissions: data.totalSubmissions || 0,
+                        submissions: 0,
+                        hasPointsRecord: true
                     };
                 });
                 
-                // Extract unique users from submissions
-                const usersMap = {};
+                // Then, add/update users from submissions
                 submissionsSnapshot.forEach(doc => {
                     const data = doc.data();
                     const email = data.userEmail;
@@ -1740,35 +1745,47 @@
                         if (!usersMap[email]) {
                             usersMap[email] = {
                                 email: email,
+                                points: 0,
+                                totalSubmissions: 0,
                                 submissions: 0,
-                                firstSubmission: data.submittedAt?.toDate() || new Date()
+                                hasPointsRecord: false
                             };
                         }
                         usersMap[email].submissions++;
+                        usersMap[email].firstSubmission = data.submittedAt?.toDate() || new Date();
                     }
                 });
 
                 const users = Object.values(usersMap);
                 
                 if (users.length === 0) {
-                    container.innerHTML = '<p style="text-align: center; color: #6b7280; padding: 40px;">No users found. Users will appear here after they submit words.</p>';
+                    container.innerHTML = `
+                        <div style="text-align: center; padding: 40px;">
+                            <p style="color: #6b7280; margin-bottom: 16px;">No users found yet.</p>
+                            <button onclick="showAddUserModal()" class="btn btn-primary">
+                                ➕ Add User Manually
+                            </button>
+                        </div>
+                    `;
                     return;
                 }
 
-                // Sort by submissions (most active first)
-                users.sort((a, b) => b.submissions - a.submissions);
+                // Sort by points (highest first)
+                users.sort((a, b) => b.points - a.points);
 
                 let html = `
-                    <div style="margin-bottom: 16px; padding: 16px; background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 8px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; padding: 16px; background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 8px;">
                         <p style="margin: 0; color: #075985; font-weight: 600;">
                             👥 Total Users: ${users.length}
                         </p>
+                        <button onclick="showAddUserModal()" class="btn btn-primary" style="padding: 8px 16px;">
+                            ➕ Add User
+                        </button>
                     </div>
                 `;
 
                 users.forEach(user => {
-                    const userPoints = userPointsMap[user.email] || { points: 0, totalSubmissions: 0 };
-                    const level = Math.floor(userPoints.points / 50) + 1;
+                    const level = Math.floor(user.points / 50) + 1;
                     
                     html += `
                         <div class="word-item" style="background: white; border-left: 4px solid #3b82f6;">
@@ -1781,12 +1798,15 @@
                                         <div>
                                             <div style="font-size: 16px; font-weight: 600; color: #1f2937;">${user.email}</div>
                                             <div style="font-size: 13px; color: #6b7280;">
-                                                Level ${level} • ${userPoints.points} points
+                                                Level ${level} • ${user.points} points
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div style="display: flex; gap: 8px;">
+                                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                                    <button onclick="adjustUserPoints('${user.email}', 10)" class="btn" style="background: #059669; color: white; padding: 6px 12px; font-size: 13px;">
+                                        +10 pts
+                                    </button>
                                     <button onclick="adjustUserPoints('${user.email}', 5)" class="btn" style="background: #10b981; color: white; padding: 6px 12px; font-size: 13px;">
                                         +5 pts
                                     </button>
@@ -1796,13 +1816,16 @@
                                     <button onclick="showPointsEditor('${user.email}')" class="btn" style="background: #f59e0b; color: white; padding: 6px 12px; font-size: 13px;">
                                         ✏️ Edit
                                     </button>
+                                    <button onclick="deleteUser('${user.email}')" class="btn" style="background: #dc2626; color: white; padding: 6px 12px; font-size: 13px;">
+                                        🗑️ Delete
+                                    </button>
                                 </div>
                             </div>
                             
                             <!-- Stats Grid -->
                             <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 12px; padding-top: 12px; border-top: 1px solid #e5e7eb;">
                                 <div style="text-align: center;">
-                                    <div style="font-size: 24px; font-weight: 700; color: #3b82f6;">${userPoints.points}</div>
+                                    <div style="font-size: 24px; font-weight: 700; color: #3b82f6;">${user.points}</div>
                                     <div style="font-size: 12px; color: #6b7280;">Total Points</div>
                                 </div>
                                 <div style="text-align: center;">
@@ -1821,7 +1844,7 @@
                                     <label style="display: block; font-size: 13px; font-weight: 600; color: #374151; margin-bottom: 4px;">
                                         Set Points:
                                     </label>
-                                    <input type="number" id="points-input-${user.email.replace(/[@.]/g, '-')}" value="${userPoints.points}" 
+                                    <input type="number" id="points-input-${user.email.replace(/[@.]/g, '-')}" value="${user.points}" 
                                            style="width: 100%; padding: 8px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px;">
                                 </div>
                                 <div style="display: flex; gap: 8px;">
@@ -1869,19 +1892,12 @@
                 
                 const newPoints = Math.max(0, currentPoints + pointsChange);
                 
-                await updateDoc(userDocRef, {
+                await setDoc(userDocRef, {
+                    userEmail: userEmail,
                     points: newPoints,
                     totalSubmissions: currentSubmissions,
                     lastUpdated: serverTimestamp()
-                }).catch(async () => {
-                    // Document doesn't exist, create it
-                    await addDoc(collection(db, 'user_points'), {
-                        userEmail: userEmail,
-                        points: newPoints,
-                        totalSubmissions: currentSubmissions,
-                        lastUpdated: serverTimestamp()
-                    });
-                });
+                }, { merge: true });
                 
                 loadUsers(); // Refresh the list
                 alert(`✅ ${pointsChange > 0 ? 'Added' : 'Removed'} ${Math.abs(pointsChange)} points for ${userEmail}`);
@@ -1920,19 +1936,12 @@
                     currentSubmissions = userDoc.data().totalSubmissions || 0;
                 }
                 
-                await updateDoc(userDocRef, {
+                await setDoc(userDocRef, {
+                    userEmail: userEmail,
                     points: newPoints,
                     totalSubmissions: currentSubmissions,
                     lastUpdated: serverTimestamp()
-                }).catch(async () => {
-                    // Document doesn't exist, create it
-                    await addDoc(collection(db, 'user_points'), {
-                        userEmail: userEmail,
-                        points: newPoints,
-                        totalSubmissions: currentSubmissions,
-                        lastUpdated: serverTimestamp()
-                    });
-                });
+                }, { merge: true });
                 
                 hidePointsEditor(userEmail);
                 loadUsers(); // Refresh the list
@@ -1941,6 +1950,79 @@
             } catch (error) {
                 console.error('Error saving points:', error);
                 alert('❌ Error saving points: ' + error.message);
+            }
+        };
+
+        // Add User Modal Functions
+        window.showAddUserModal = function() {
+            const email = prompt('Enter user email to add:');
+            if (!email || !email.trim()) {
+                return;
+            }
+            
+            const validEmail = email.trim().toLowerCase();
+            if (!validEmail.includes('@')) {
+                alert('❌ Invalid email format!');
+                return;
+            }
+            
+            const pointsInput = prompt(`Enter initial points for ${validEmail}:`, '0');
+            if (pointsInput === null) {
+                return;
+            }
+            
+            const points = parseInt(pointsInput) || 0;
+            if (points < 0) {
+                alert('❌ Points cannot be negative!');
+                return;
+            }
+            
+            addUser(validEmail, points);
+        };
+
+        async function addUser(userEmail, points) {
+            try {
+                const userDocRef = doc(db, 'user_points', userEmail);
+                const userDoc = await getDoc(userDocRef);
+                
+                if (userDoc.exists()) {
+                    alert(`⚠️ User ${userEmail} already exists! Use Edit to modify their points.`);
+                    loadUsers();
+                    return;
+                }
+                
+                await setDoc(userDocRef, {
+                    userEmail: userEmail,
+                    points: points,
+                    totalSubmissions: 0,
+                    lastUpdated: serverTimestamp()
+                });
+                
+                alert(`✅ User ${userEmail} added successfully with ${points} points!`);
+                loadUsers(); // Refresh the list
+                
+            } catch (error) {
+                console.error('Error adding user:', error);
+                alert('❌ Error adding user: ' + error.message);
+            }
+        }
+
+        // Delete User Function
+        window.deleteUser = async function(userEmail) {
+            if (!confirm(`⚠️ Are you sure you want to delete user ${userEmail}?\n\nThis will remove their points record. This action cannot be undone.`)) {
+                return;
+            }
+            
+            try {
+                const userDocRef = doc(db, 'user_points', userEmail);
+                await deleteDoc(userDocRef);
+                
+                alert(`✅ User ${userEmail} deleted successfully!`);
+                loadUsers(); // Refresh the list
+                
+            } catch (error) {
+                console.error('Error deleting user:', error);
+                alert('❌ Error deleting user: ' + error.message);
             }
         };
 
