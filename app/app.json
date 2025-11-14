@@ -28,7 +28,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png",
-      "bundler": "metro"
+      "bundler": "metro",
+      "meta": {
+        "description": "Myanmar Korean English Dictionary - Search and learn Korean words with Myanmar and English translations",
+        "keywords": "Myanmar, Korean, English, Dictionary, Translation, Language Learning, မြန်မာ, 한국어, 영어, 사전",
+        "theme-color": "#ffffff"
+      }
     },
     "plugins": [
       "expo-font",
