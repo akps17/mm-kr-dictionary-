@@ -11,7 +11,7 @@ export function ProfileScreen({ navigation }: { navigation: any }) {
   const C = useThemedColors();
   const { settings } = useSettings();
   const { user, logOut } = useAuth();
-  const { points, totalSubmissions, isPro, refreshPoints } = useUserPoints();
+  const { points, totalSubmissions, approvedSubmissions, isPro, refreshPoints } = useUserPoints();
   const labels = i18nLabels[settings.uiLanguage];
   const [isRefreshing, setIsRefreshing] = React.useState(false);
   
@@ -88,6 +88,28 @@ export function ProfileScreen({ navigation }: { navigation: any }) {
           }
         }
       ]
+    );
+  };
+  
+  const showSubmissionDetails = () => {
+    const pending = totalSubmissions - approvedSubmissions;
+    
+    const titles = {
+      myanmar: 'တင်သွင်းမှုများ',
+      korean: '제출 내역',
+      english: 'Submissions'
+    };
+    
+    const messages = {
+      myanmar: `✅ အတည်ပြုပြီး: ${approvedSubmissions}\n⏳ စောင့်ဆိုင်းဆဲ: ${pending}\n📝 စုစုပေါင်း: ${totalSubmissions}`,
+      korean: `✅ 승인됨: ${approvedSubmissions}\n⏳ 대기 중: ${pending}\n📝 총 제출: ${totalSubmissions}`,
+      english: `✅ Approved: ${approvedSubmissions}\n⏳ Pending: ${pending}\n📝 Total: ${totalSubmissions}`
+    };
+    
+    Alert.alert(
+      titles[settings.uiLanguage],
+      messages[settings.uiLanguage],
+      [{ text: 'OK', style: 'default' }]
     );
   };
   
@@ -214,13 +236,31 @@ export function ProfileScreen({ navigation }: { navigation: any }) {
         
         {/* Stats Grid */}
         <View style={{ flexDirection: 'row', gap: 12, marginBottom: 16 }}>
-          <View style={[styles.card, { flex: 1, backgroundColor: C.surface, borderColor: C.border, alignItems: 'center' }]}>
+          <Pressable 
+            onPress={showSubmissionDetails}
+            style={({ pressed }) => [
+              styles.card, 
+              { 
+                flex: 1, 
+                backgroundColor: C.surface, 
+                borderColor: C.border, 
+                alignItems: 'center',
+                opacity: pressed ? 0.7 : 1,
+                transform: [{ scale: pressed ? 0.98 : 1 }]
+              }
+            ]}
+          >
             <Ionicons name="document-text" size={32} color="#10B981" style={{ marginBottom: 8 }} />
             <Text style={{ fontSize: 24, fontWeight: '700', color: C.textPrimary }}>{totalSubmissions}</Text>
             <Text style={{ fontSize: 12, color: C.textSecondary, textAlign: 'center' }}>
               {settings.uiLanguage === 'myanmar' ? 'တင်သွင်းမှုများ' : settings.uiLanguage === 'korean' ? '제출' : 'Submissions'}
             </Text>
-          </View>
+            {approvedSubmissions > 0 && (
+              <Text style={{ fontSize: 10, color: '#10B981', marginTop: 4, fontWeight: '600' }}>
+                ✓ {approvedSubmissions} {settings.uiLanguage === 'myanmar' ? 'အတည်ပြုပြီး' : settings.uiLanguage === 'korean' ? '승인됨' : 'approved'}
+              </Text>
+            )}
+          </Pressable>
           
           <View style={[styles.card, { flex: 1, backgroundColor: C.surface, borderColor: C.border, alignItems: 'center' }]}>
             <Ionicons name="flame" size={32} color="#EF4444" style={{ marginBottom: 8 }} />

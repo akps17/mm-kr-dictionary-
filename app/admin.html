@@ -1615,12 +1615,17 @@
                 
                 const wordData = pendingDocSnap.data();
                 
+                console.log('Approving word with data:', {
+                    userEmail: wordData.userEmail,
+                    submittedBy: wordData.submittedBy
+                });
+                
                 // Ensure proper UTF-8 encoding
                 const cleanMyanmar = (wordData.myanmar || '').normalize('NFC');
                 const cleanKorean = (wordData.korean || '').normalize('NFC');
                 
                 // Add to main dictionary collection
-                await addDoc(collection(db, 'dictionary'), {
+                const newDictEntry = {
                     korean: cleanKorean,
                     myanmar: cleanMyanmar,
                     english: wordData.english || '',
@@ -1630,8 +1635,13 @@
                     addedBy: adminEmail || 'admin',
                     addedAt: serverTimestamp(),
                     source: 'user_approved',
-                    originalSubmitter: wordData.submittedBy
-                });
+                    originalSubmitter: wordData.submittedBy,
+                    userEmail: wordData.userEmail || wordData.submittedBy || 'anonymous'
+                };
+                
+                console.log('Adding to dictionary with userEmail:', newDictEntry.userEmail);
+                
+                await addDoc(collection(db, 'dictionary'), newDictEntry);
                 
                 // Update pending word status
                 await updateDoc(doc(db, 'pending_words', docId), { 

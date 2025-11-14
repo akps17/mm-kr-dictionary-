@@ -3,11 +3,12 @@ import { AppState } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useAuth } from './AuthContext';
 import { db } from './firebase';
-import { doc, setDoc, getDoc } from 'firebase/firestore';
+import { doc, setDoc, getDoc, collection, query, where, getDocs } from 'firebase/firestore';
 
 type UserPointsContextType = {
   points: number;
   totalSubmissions: number;
+  approvedSubmissions: number;
   isPro: boolean;
   addPoints: (amount: number) => Promise<void>;
   resetPoints: () => Promise<void>;
@@ -21,6 +22,7 @@ const SUBMISSIONS_KEY_PREFIX = 'user_submissions_';
 const UserPointsContext = createContext<UserPointsContextType>({
   points: 0,
   totalSubmissions: 0,
+  approvedSubmissions: 0,
   isPro: false,
   addPoints: async () => {},
   resetPoints: async () => {},
@@ -31,6 +33,7 @@ const UserPointsContext = createContext<UserPointsContextType>({
 export function UserPointsProvider({ children }: { children: React.ReactNode }) {
   const [points, setPoints] = useState(0);
   const [totalSubmissions, setTotalSubmissions] = useState(0);
+  const [approvedSubmissions, setApprovedSubmissions] = useState(0);
   const [isPro, setIsPro] = useState(false);
   const [loading, setLoading] = useState(true);
   const { user } = useAuth();
@@ -43,6 +46,7 @@ export function UserPointsProvider({ children }: { children: React.ReactNode }) 
       // Clear points when user logs out
       setPoints(0);
       setTotalSubmissions(0);
+      setApprovedSubmissions(0);
       setIsPro(false);
       setLoading(false);
     }
@@ -71,6 +75,22 @@ export function UserPointsProvider({ children }: { children: React.ReactNode }) 
           const userDocRef = doc(db, 'user_points', user.email);
           const userDoc = await getDoc(userDocRef);
           
+          // Fetch approved submissions from dictionary collection
+          let approvedCount = 0;
+          try {
+            // Try to fetch by userEmail (new format)
+            const dictQuery = query(
+              collection(db, 'dictionary'),
+              where('userEmail', '==', user.email)
+            );
+            const dictSnapshot = await getDocs(dictQuery);
+            approvedCount = dictSnapshot.size;
+            
+            console.log(`Found ${approvedCount} approved submissions for ${user.email}`);
+          } catch (dictError) {
+            console.log('Could not fetch approved submissions:', dictError);
+          }
+          
           if (userDoc.exists()) {
             const data = userDoc.data();
             const firestorePoints = data.points || 0;
@@ -85,9 +105,13 @@ export function UserPointsProvider({ children }: { children: React.ReactNode }) 
             
             setPoints(firestorePoints);
             setTotalSubmissions(firestoreSubmissions);
+            setApprovedSubmissions(approvedCount);
             setIsPro(firestorePro);
             setLoading(false);
             return;
+          } else {
+            // User doc doesn't exist yet, but we can still show approved count
+            setApprovedSubmissions(approvedCount);
           }
         } catch (firestoreError) {
           console.log('Firestore not available, using local storage:', firestoreError);
@@ -168,7 +192,7 @@ export function UserPointsProvider({ children }: { children: React.ReactNode }) 
   };
 
   return (
-    <UserPointsContext.Provider value={{ points, totalSubmissions, isPro, addPoints, resetPoints, refreshPoints, loading }}>
+    <UserPointsContext.Provider value={{ points, totalSubmissions, approvedSubmissions, isPro, addPoints, resetPoints, refreshPoints, loading }}>
       {children}
     </UserPointsContext.Provider>
   );
