@@ -1,7 +1,6 @@
 import { initializeApp } from 'firebase/app';
-import { initializeAuth, getReactNativePersistence } from 'firebase/auth';
+import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDOT1jC27f26f3BIW-yFcgHTLGdEWeiopQ",
@@ -16,10 +15,9 @@ console.log('Firebase initializing with config:', firebaseConfig.projectId);
 
 export const app = initializeApp(firebaseConfig);
 
-// Initialize Auth with React Native persistence (keeps user logged in)
-export const auth = initializeAuth(app, {
-  persistence: getReactNativePersistence(AsyncStorage)
-});
+// Initialize Auth with default persistence (works on both web and React Native)
+export const auth = getAuth(app);
+console.log('Firebase Auth initialized');
 
 export const db = getFirestore(app);
 
