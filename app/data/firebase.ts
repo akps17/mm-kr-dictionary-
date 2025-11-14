@@ -15,9 +15,9 @@ console.log('Firebase initializing with config:', firebaseConfig.projectId);
 
 export const app = initializeApp(firebaseConfig);
 
-// Initialize Auth with default persistence (works on both web and React Native)
+// Initialize Auth (Firebase v12 handles persistence automatically)
 export const auth = getAuth(app);
-console.log('Firebase Auth initialized');
+console.log('Firebase Auth initialized with automatic persistence');
 
 export const db = getFirestore(app);
 

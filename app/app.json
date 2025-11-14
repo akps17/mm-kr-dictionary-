@@ -20,6 +20,7 @@
       }
     },
     "android": {
+      "package": "com.aksp17.app",
       "adaptiveIcon": {
         "foregroundImage": "./assets/dictionary_icon.png",
         "backgroundColor": "#ffffff"
