@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, ScrollView, SafeAreaView, Pressable, StyleSheet, Image } from 'react-native';
+import { View, Text, ScrollView, SafeAreaView, Pressable, StyleSheet, Image, Alert } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useThemedColors } from '../components/Theme';
 import { useSettings } from '../data/SettingsContext';
@@ -11,7 +11,7 @@ export function ProfileScreen({ navigation }: { navigation: any }) {
   const C = useThemedColors();
   const { settings } = useSettings();
   const { user, logOut } = useAuth();
-  const { points, totalSubmissions, refreshPoints } = useUserPoints();
+  const { points, totalSubmissions, isPro, refreshPoints } = useUserPoints();
   const labels = i18nLabels[settings.uiLanguage];
   const [isRefreshing, setIsRefreshing] = React.useState(false);
   
@@ -46,6 +46,51 @@ export function ProfileScreen({ navigation }: { navigation: any }) {
     setTimeout(() => setIsRefreshing(false), 500);
   };
   
+  const handleLogout = () => {
+    const titles = {
+      myanmar: 'ထွက်မည်လား?',
+      korean: '로그아웃하시겠습니까?',
+      english: 'Logout?'
+    };
+    
+    const messages = {
+      myanmar: 'သင့်အကောင့်မှ ထွက်ရန် သေချာပါသလား?',
+      korean: '정말로 로그아웃 하시겠습니까?',
+      english: 'Are you sure you want to logout?'
+    };
+    
+    const cancelText = {
+      myanmar: 'မထွက်ပါ',
+      korean: '취소',
+      english: 'Cancel'
+    };
+    
+    const confirmText = {
+      myanmar: 'ထွက်မည်',
+      korean: '로그아웃',
+      english: 'Logout'
+    };
+    
+    Alert.alert(
+      titles[settings.uiLanguage],
+      messages[settings.uiLanguage],
+      [
+        {
+          text: cancelText[settings.uiLanguage],
+          style: 'cancel'
+        },
+        {
+          text: confirmText[settings.uiLanguage],
+          style: 'destructive',
+          onPress: async () => {
+            await logOut();
+            navigation.navigate('Home');
+          }
+        }
+      ]
+    );
+  };
+  
   return (
     <SafeAreaView style={[styles.safeArea, { backgroundColor: C.background }]}>
       <ScrollView contentContainerStyle={{ padding: 20 }}>
@@ -65,9 +110,27 @@ export function ProfileScreen({ navigation }: { navigation: any }) {
             <Ionicons name="person" size={50} color="#FFFFFF" />
           </View>
           
-          <Text style={[styles.title, { color: C.textPrimary, marginBottom: 4 }]}>
-            {user.displayName || 'User'}
-          </Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8, marginBottom: 4 }}>
+            <Text style={[styles.title, { color: C.textPrimary, marginBottom: 0 }]}>
+              {user.displayName || 'User'}
+            </Text>
+            {isPro && (
+              <View style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                backgroundColor: '#fbbf24',
+                paddingHorizontal: 8,
+                paddingVertical: 2,
+                borderRadius: 12,
+                gap: 4,
+              }}>
+                <Ionicons name="star" size={12} color="#FFFFFF" />
+                <Text style={{ color: '#FFFFFF', fontSize: 11, fontWeight: '700' }}>
+                  {settings.uiLanguage === 'myanmar' ? 'PRO' : settings.uiLanguage === 'korean' ? 'PRO' : 'PRO'}
+                </Text>
+              </View>
+            )}
+          </View>
           <Text style={{ color: C.textSecondary, fontSize: 14, marginBottom: 8 }}>
             {user.email}
           </Text>
@@ -193,10 +256,7 @@ export function ProfileScreen({ navigation }: { navigation: any }) {
         
         {/* Logout Button */}
         <Pressable
-          onPress={async () => {
-            await logOut();
-            navigation.navigate('Home');
-          }}
+          onPress={handleLogout}
           style={({ pressed }) => ([
             styles.primaryBtn,
             {

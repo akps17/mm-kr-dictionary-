@@ -8,6 +8,7 @@ import { doc, setDoc, getDoc } from 'firebase/firestore';
 type UserPointsContextType = {
   points: number;
   totalSubmissions: number;
+  isPro: boolean;
   addPoints: (amount: number) => Promise<void>;
   resetPoints: () => Promise<void>;
   refreshPoints: () => Promise<void>;
@@ -20,6 +21,7 @@ const SUBMISSIONS_KEY_PREFIX = 'user_submissions_';
 const UserPointsContext = createContext<UserPointsContextType>({
   points: 0,
   totalSubmissions: 0,
+  isPro: false,
   addPoints: async () => {},
   resetPoints: async () => {},
   refreshPoints: async () => {},
@@ -29,6 +31,7 @@ const UserPointsContext = createContext<UserPointsContextType>({
 export function UserPointsProvider({ children }: { children: React.ReactNode }) {
   const [points, setPoints] = useState(0);
   const [totalSubmissions, setTotalSubmissions] = useState(0);
+  const [isPro, setIsPro] = useState(false);
   const [loading, setLoading] = useState(true);
   const { user } = useAuth();
 
@@ -40,6 +43,7 @@ export function UserPointsProvider({ children }: { children: React.ReactNode }) 
       // Clear points when user logs out
       setPoints(0);
       setTotalSubmissions(0);
+      setIsPro(false);
       setLoading(false);
     }
   }, [user]);
@@ -71,6 +75,7 @@ export function UserPointsProvider({ children }: { children: React.ReactNode }) 
             const data = userDoc.data();
             const firestorePoints = data.points || 0;
             const firestoreSubmissions = data.totalSubmissions || 0;
+            const firestorePro = data.isPro || false;
             
             // Update local storage with Firestore data
             await Promise.all([
@@ -80,6 +85,7 @@ export function UserPointsProvider({ children }: { children: React.ReactNode }) 
             
             setPoints(firestorePoints);
             setTotalSubmissions(firestoreSubmissions);
+            setIsPro(firestorePro);
             setLoading(false);
             return;
           }
@@ -162,7 +168,7 @@ export function UserPointsProvider({ children }: { children: React.ReactNode }) 
   };
 
   return (
-    <UserPointsContext.Provider value={{ points, totalSubmissions, addPoints, resetPoints, refreshPoints, loading }}>
+    <UserPointsContext.Provider value={{ points, totalSubmissions, isPro, addPoints, resetPoints, refreshPoints, loading }}>
       {children}
     </UserPointsContext.Provider>
   );
