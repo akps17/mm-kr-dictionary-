@@ -8,7 +8,7 @@ type SettingsContextType = {
   updateSetting: <K extends keyof AppSettings>(key: K, value: AppSettings[K]) => void;
 };
 
-const defaultSettings: AppSettings = { uiLanguage: 'myanmar', sortBy: 'korean', fontSize: 'default' };
+const defaultSettings: AppSettings = { uiLanguage: 'myanmar', sortBy: 'korean', fontSize: 'default', theme: 'system' };
 
 const SettingsContext = React.createContext<SettingsContextType>({
   settings: defaultSettings,

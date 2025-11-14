@@ -22,12 +22,13 @@ import { Audio } from 'expo-av';
 import { useFonts as useMyanmarFonts, NotoSansMyanmar_400Regular, NotoSansMyanmar_700Bold } from '@expo-google-fonts/noto-sans-myanmar';
 import { dictionaryEntries } from './data/dictionary';
 import type { DictionaryEntry as SharedDictionaryEntry } from './types/dictionary';
-import { useThemedColors } from './components/Theme';
+import { useThemedColors, ThemeProvider } from './components/Theme';
 import { AppLanguage, SortPriority, AppSettings, i18nLabels, NATIVE_LANGUAGE_NAME, FontSize } from './data/settings';
 import { SettingsProvider, useSettings } from './data/SettingsContext';
 import { LibraryProvider, useLibrary } from './data/LibraryContext';
 import { SubmissionsProvider, useSubmissions } from './data/SubmissionsContext';
 import { AuthProvider, useAuth } from './data/AuthContext';
+import { UserPointsProvider, useUserPoints } from './data/UserPointsContext';
 import { AuthScreen } from './screens/AuthScreen';
 import { DictionarySyncProvider, useDictionarySync, mergeApprovedWords } from './data/DictionarySync';
 import { UpdatesProvider, useUpdates } from './data/UpdatesContext';
@@ -369,6 +370,7 @@ function SubmitWordScreen() {
   const C = useThemedColors();
   const { submitEntry, pendingEntries } = useSubmissions();
   const { user, logOut, loading } = useAuth();
+  const { addPoints } = useUserPoints();
   const [msg, setMsg] = React.useState('');
 
   // Show auth screen if not logged in
@@ -395,7 +397,11 @@ function SubmitWordScreen() {
       ...entry,
       userEmail: user?.email || 'anonymous' 
     });
-    setMsg('Submitted for review.');
+    
+    // Award 5 points for submitting a word
+    await addPoints(5);
+    
+    setMsg('Submitted for review. +5 points! 🎉');
   }
 
   return (
@@ -898,6 +904,7 @@ type RootDrawerParamList = {
   'Check Updates': undefined;
   'Input New Words': undefined;
   Theme: undefined;
+  Profile: undefined;
   About: undefined;
 };
 
@@ -922,7 +929,18 @@ function AppDrawerContent(props: any) {
           borderBottomColor: C.border,
           marginBottom: 8,
         }}>
-          <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 12 }}>
+          <Pressable
+            onPress={() => {
+              props.navigation.navigate('Profile');
+              props.navigation.closeDrawer();
+            }}
+            style={({ pressed }) => ({
+              flexDirection: 'row',
+              alignItems: 'center',
+              marginBottom: 12,
+              opacity: pressed ? 0.7 : 1,
+            })}
+          >
             {/* User Avatar */}
             <View style={{
               width: 56,
@@ -953,7 +971,10 @@ function AppDrawerContent(props: any) {
                 {user.email}
               </Text>
             </View>
-          </View>
+            
+            {/* Arrow Icon */}
+            <Ionicons name="chevron-forward" size={20} color={C.textTertiary} />
+          </Pressable>
           
           {/* Logout Button */}
           <Pressable
@@ -1110,8 +1131,33 @@ function AppNavigator() {
       <Drawer.Screen name="Check Updates" component={CheckUpdatesScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="sync-outline" size={size} color={color} />) }} />
       <Drawer.Screen name="Input New Words" component={SubmitWordScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="add-circle-outline" size={size} color={color} />) }} />
       <Drawer.Screen name="Theme" component={ThemeScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="color-palette-outline" size={size} color={color} />) }} />
+      <Drawer.Screen name="Profile" component={ProfileScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="person-circle-outline" size={size} color={color} />) }} />
       <Drawer.Screen name="About" component={AboutScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="information-circle-outline" size={size} color={color} />) }} />
     </Drawer.Navigator>
+  );
+}
+
+// Wrapper to connect theme from settings
+function ThemedApp() {
+  const { settings } = useSettings();
+  
+  return (
+    <ThemeProvider theme={settings.theme}>
+      <UserPointsProvider>
+        <LibraryProvider>
+          <DictionarySyncProvider>
+            <UpdatesProvider>
+              <SubmissionsProvider>
+                <NavigationContainer>
+                  <AppNavigator />
+                  <NotificationContainer />
+                </NavigationContainer>
+              </SubmissionsProvider>
+            </UpdatesProvider>
+          </DictionarySyncProvider>
+        </LibraryProvider>
+      </UserPointsProvider>
+    </ThemeProvider>
   );
 }
 
@@ -1134,18 +1180,7 @@ export default function App() {
   return (
     <AuthProvider>
       <SettingsProvider>
-        <LibraryProvider>
-          <DictionarySyncProvider>
-            <UpdatesProvider>
-              <SubmissionsProvider>
-                <NavigationContainer>
-                  <AppNavigator />
-                  <NotificationContainer />
-                </NavigationContainer>
-              </SubmissionsProvider>
-            </UpdatesProvider>
-          </DictionarySyncProvider>
-        </LibraryProvider>
+        <ThemedApp />
       </SettingsProvider>
     </AuthProvider>
   );
@@ -1322,6 +1357,175 @@ function CheckUpdatesScreen() {
             • Restart the app to see new words in search results
           </Text>
         </View>
+      </ScrollView>
+    </SafeAreaView>
+  );
+}
+
+function ProfileScreen({ navigation }: { navigation: any }) {
+  const C = useThemedColors();
+  const { settings } = useSettings();
+  const { user, logOut } = useAuth();
+  const { points, totalSubmissions } = useUserPoints();
+  const labels = i18nLabels[settings.uiLanguage];
+  
+  if (!user) {
+    return (
+      <SafeAreaView style={[styles.safeArea, { backgroundColor: C.background }]}>
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 20 }}>
+          <Ionicons name="person-circle-outline" size={80} color={C.textTertiary} />
+          <Text style={[styles.title, { color: C.textPrimary, marginTop: 16 }]}>
+            {settings.uiLanguage === 'myanmar' ? 'အကောင့်မရှိပါ' : settings.uiLanguage === 'korean' ? '로그인 필요' : 'Not Logged In'}
+          </Text>
+          <Text style={{ color: C.textSecondary, textAlign: 'center', marginTop: 8 }}>
+            {settings.uiLanguage === 'myanmar' 
+              ? 'ပရိုဖိုင်ကြည့်ရန် အကောင့်ဝင်ရောက်ပါ'
+              : settings.uiLanguage === 'korean'
+              ? '프로필을 보려면 로그인하세요'
+              : 'Please login to view your profile'}
+          </Text>
+        </View>
+      </SafeAreaView>
+    );
+  }
+  
+  // Calculate level based on points
+  const level = Math.floor(points / 50) + 1;
+  const pointsToNextLevel = (level * 50) - points;
+  const levelProgress = ((points % 50) / 50) * 100;
+  
+  return (
+    <SafeAreaView style={[styles.safeArea, { backgroundColor: C.background }]}>
+      <ScrollView contentContainerStyle={{ padding: 20 }}>
+        {/* Profile Header */}
+        <View style={{ alignItems: 'center', marginBottom: 24 }}>
+          <View style={{
+            width: 100,
+            height: 100,
+            borderRadius: 50,
+            backgroundColor: C.brand,
+            alignItems: 'center',
+            justifyContent: 'center',
+            marginBottom: 16,
+            borderWidth: 4,
+            borderColor: C.surface,
+          }}>
+            <Ionicons name="person" size={50} color="#FFFFFF" />
+          </View>
+          
+          <Text style={[styles.title, { color: C.textPrimary, marginBottom: 4 }]}>
+            {user.displayName || 'User'}
+          </Text>
+          <Text style={{ color: C.textSecondary, fontSize: 14, marginBottom: 8 }}>
+            {user.email}
+          </Text>
+          
+          {/* Level Badge */}
+          <View style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            backgroundColor: C.brandMuted,
+            paddingHorizontal: 16,
+            paddingVertical: 8,
+            borderRadius: 20,
+            gap: 6,
+          }}>
+            <Ionicons name="trophy" size={20} color={C.brand} />
+            <Text style={{ color: C.brand, fontWeight: '700', fontSize: 16 }}>
+              {settings.uiLanguage === 'myanmar' ? `အဆင့် ${level}` : settings.uiLanguage === 'korean' ? `레벨 ${level}` : `Level ${level}`}
+            </Text>
+          </View>
+        </View>
+        
+        {/* Points Card */}
+        <View style={[styles.card, { backgroundColor: C.surface, borderColor: C.border, marginBottom: 16 }]}>
+          <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+              <Ionicons name="star" size={24} color="#F59E0B" />
+              <Text style={{ fontSize: 18, fontWeight: '700', color: C.textPrimary }}>
+                {settings.uiLanguage === 'myanmar' ? 'ရမှတ်များ' : settings.uiLanguage === 'korean' ? '포인트' : 'Points'}
+              </Text>
+            </View>
+            <Text style={{ fontSize: 32, fontWeight: '700', color: C.brand }}>{points}</Text>
+          </View>
+          
+          {/* Progress to Next Level */}
+          <View style={{ marginBottom: 8 }}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 4 }}>
+              <Text style={{ fontSize: 12, color: C.textSecondary }}>
+                {settings.uiLanguage === 'myanmar' ? `နောက်အဆင့်အထိ` : settings.uiLanguage === 'korean' ? `다음 레벨까지` : `To Next Level`}
+              </Text>
+              <Text style={{ fontSize: 12, color: C.textSecondary, fontWeight: '600' }}>
+                {pointsToNextLevel} {settings.uiLanguage === 'myanmar' ? 'ရမှတ်' : settings.uiLanguage === 'korean' ? '포인트' : 'pts'}
+              </Text>
+            </View>
+            <View style={{ height: 8, backgroundColor: C.border, borderRadius: 4, overflow: 'hidden' }}>
+              <View style={{ height: '100%', width: `${levelProgress}%`, backgroundColor: C.brand }} />
+            </View>
+          </View>
+        </View>
+        
+        {/* Stats Grid */}
+        <View style={{ flexDirection: 'row', gap: 12, marginBottom: 16 }}>
+          <View style={[styles.card, { flex: 1, backgroundColor: C.surface, borderColor: C.border, alignItems: 'center' }]}>
+            <Ionicons name="document-text" size={32} color="#10B981" style={{ marginBottom: 8 }} />
+            <Text style={{ fontSize: 24, fontWeight: '700', color: C.textPrimary }}>{totalSubmissions}</Text>
+            <Text style={{ fontSize: 12, color: C.textSecondary, textAlign: 'center' }}>
+              {settings.uiLanguage === 'myanmar' ? 'တင်သွင်းမှုများ' : settings.uiLanguage === 'korean' ? '제출' : 'Submissions'}
+            </Text>
+          </View>
+          
+          <View style={[styles.card, { flex: 1, backgroundColor: C.surface, borderColor: C.border, alignItems: 'center' }]}>
+            <Ionicons name="flame" size={32} color="#EF4444" style={{ marginBottom: 8 }} />
+            <Text style={{ fontSize: 24, fontWeight: '700', color: C.textPrimary }}>{Math.min(totalSubmissions, 30)}</Text>
+            <Text style={{ fontSize: 12, color: C.textSecondary, textAlign: 'center' }}>
+              {settings.uiLanguage === 'myanmar' ? 'ဆက်တိုက်' : settings.uiLanguage === 'korean' ? '연속' : 'Streak'}
+            </Text>
+          </View>
+        </View>
+        
+        {/* How to Earn Points */}
+        <View style={[styles.card, { backgroundColor: C.surface, borderColor: C.border, marginBottom: 16 }]}>
+          <Text style={[styles.sectionTitle, { color: C.textPrimary, marginBottom: 12 }]}>
+            {settings.uiLanguage === 'myanmar' ? 'ရမှတ်ရယူနည်း' : settings.uiLanguage === 'korean' ? '포인트 획득 방법' : 'How to Earn Points'}
+          </Text>
+          
+          <View style={{ gap: 12 }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+              <View style={{ width: 40, height: 40, borderRadius: 20, backgroundColor: C.brandMuted, alignItems: 'center', justifyContent: 'center' }}>
+                <Text style={{ fontSize: 20, fontWeight: '700', color: C.brand }}>+5</Text>
+              </View>
+              <View style={{ flex: 1 }}>
+                <Text style={{ color: C.textPrimary, fontWeight: '600' }}>
+                  {settings.uiLanguage === 'myanmar' ? 'စကားလုံးတင်သွင်းခြင်း' : settings.uiLanguage === 'korean' ? '단어 제출' : 'Submit a Word'}
+                </Text>
+                <Text style={{ color: C.textSecondary, fontSize: 12 }}>
+                  {settings.uiLanguage === 'myanmar' ? 'စကားလုံးအသစ်တစ်ခုကို အောင်မြင်စွာတင်သွင်းပါ' : settings.uiLanguage === 'korean' ? '새 단어를 성공적으로 제출하세요' : 'Successfully submit a new word'}
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+        
+        {/* Logout Button */}
+        <Pressable
+          onPress={async () => {
+            await logOut();
+            navigation.navigate('Home');
+          }}
+          style={({ pressed }) => ([
+            styles.primaryBtn,
+            {
+              backgroundColor: pressed ? '#DC2626' : '#EF4444',
+              marginTop: 8,
+            }
+          ])}
+        >
+          <Ionicons name="log-out-outline" size={20} color="#fff" />
+          <Text style={styles.primaryBtnText}>
+            {settings.uiLanguage === 'myanmar' ? 'ထွက်မည်' : settings.uiLanguage === 'korean' ? '로그아웃' : 'Logout'}
+          </Text>
+        </Pressable>
       </ScrollView>
     </SafeAreaView>
   );

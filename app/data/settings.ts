@@ -4,7 +4,7 @@ export type AppLanguage = 'korean' | 'myanmar' | 'english';
 export type SortPriority = 'korean' | 'myanmar' | 'english';
 export type ThemeMode = 'light' | 'dark' | 'system';
 
-export type FontSize = 'Small' | 'Mefault' | 'Large';
+export type FontSize = 'small' | 'default' | 'large';
 
 export type AppSettings = {
   uiLanguage: AppLanguage;
@@ -46,6 +46,7 @@ export const i18nLabels: Record<AppLanguage, Record<string, string>> = {
     navHistory: '기록',
     navSettings: '설정',
     navTheme: '테마',
+    navProfile: '프로필',
     navCheckUpdates: '업데이트 확인',
     navInputNewWords: '새 단어 추가',
     navAbout: '정보',
@@ -71,7 +72,7 @@ export const i18nLabels: Record<AppLanguage, Record<string, string>> = {
     navFavorites: 'ကြိုက်နှစ်သက်သောစကားလုံးများ',
     navHistory: 'မှတ်တမ်း',
     navSettings: 'ဆက်တင်',
-    navTheme: 'အရောင်',
+    navTheme: 'အရောင်အသွေး',
     navCheckUpdates: 'စကားလုံးအသစ်များ စစ်ဆေးရန်',
     navInputNewWords: 'စကားလုံးအသစ် ထည့်သွင်းရန်',
     navAbout: 'အကြောင်း',
