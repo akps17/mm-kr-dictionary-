@@ -592,7 +592,7 @@
                     <div class="stat-header">
                         <div class="stat-icon dictionary">📚</div>
                         <div>
-                            <p class="stat-title">Admin's Input Dictionary Words</p>
+                            <p class="stat-title">Admin's Input Dictionary Words (FireBase DB)</p>
                         </div>
                     </div>
                     <p class="stat-number" id="dictionary-count">-</p>
@@ -1438,61 +1438,95 @@
             searchDiv.style.display = 'none';
             
             const container = document.getElementById('words-container');
-            container.innerHTML = '<p>Loading submissions...</p>';
+            container.innerHTML = '<p>Loading pending submissions...</p>';
 
             try {
                 const q = query(collection(db, 'pending_words'), orderBy('submittedAt', 'desc'));
                 const snapshot = await getDocs(q);
                 
-                if (snapshot.empty) {
-                    container.innerHTML = '<p>No pending submissions.</p>';
+                // Filter to only show pending words (exclude approved ones)
+                const pendingDocs = [];
+                let totalSubmissions = 0;
+                let approvedCount = 0;
+                
+                snapshot.forEach(doc => {
+                    totalSubmissions++;
+                    const data = doc.data();
+                    const status = data.status || 'pending';
+                    
+                    if (status === 'approved') {
+                        approvedCount++;
+                    } else if (status === 'pending') {
+                        pendingDocs.push({ id: doc.id, data: data });
+                    }
+                });
+                
+                if (pendingDocs.length === 0) {
+                    container.innerHTML = '<p style="text-align: center; color: #6b7280; padding: 40px;">✅ No pending submissions to review. All caught up!</p>';
+                    const dictionaryCount = await loadDictionaryCount();
+                    updateDashboardStats(totalSubmissions, 0, approvedCount, dictionaryCount);
                     return;
                 }
 
-                let html = '<h3>Pending Word Submissions</h3>';
-                snapshot.forEach(doc => {
-                    const data = doc.data();
-                    const status = data.status || 'pending';
-                    const statusClass = status === 'approved' ? 'approved' : 'pending';
+                let html = `<h3>Pending Word Submissions <span style="color: #d97706; font-size: 14px;">(${pendingDocs.length} awaiting review)</span></h3>`;
+                html += '<p style="color: #666; font-size: 12px; margin-bottom: 16px;">💡 Review user-submitted words below. Edit if needed, then approve to add to dictionary or reject to remove.</p>';
+                
+                pendingDocs.forEach(item => {
+                    const docId = item.id;
+                    const data = item.data;
                     
                     html += `
-                        <div class="word-item ${statusClass}" id="${doc.id}">
+                        <div class="word-item pending" id="${docId}">
                             <!-- Display mode -->
-                            <div id="display-${doc.id}">
+                            <div id="display-${docId}">
                                 <h3>${data.korean} → ${data.myanmar}</h3>
                                 <p><strong>English:</strong> ${data.english || 'N/A'}</p>
                                 <p><strong>Part of Speech:</strong> ${data.pos || 'N/A'}</p>
-                                <p><strong>Status:</strong> ${status}</p>
+                                <p><strong>Status:</strong> <span style="color: #d97706; font-weight: 600;">⏳ pending</span></p>
                                 <p><strong>Submitted by:</strong> ${data.submittedBy || 'Anonymous'}</p>
                                 <p><strong>Submitted:</strong> ${data.submittedAt?.toDate?.()?.toLocaleString() || 'Unknown'}</p>
                                 
-                                ${status === 'pending' ? `
-                                    <button class="edit" onclick="editWord('${doc.id}', '${data.korean}', '${data.myanmar}', '${data.english || ''}', '${data.pos || 'noun'}')">Edit</button>
-                                    <button class="approve" onclick="approveWord('${doc.id}')">Approve</button>
-                                    <button class="reject" onclick="rejectWord('${doc.id}')">Reject</button>
-                                ` : ''}
+                                <div class="actions">
+                                    <button class="edit" onclick="editWord('${docId}', '${data.korean}', '${data.myanmar}', '${data.english || ''}', '${data.pos || 'noun'}')">✏️ Edit</button>
+                                    <button class="approve" onclick="approveWord('${docId}')">✅ Approve</button>
+                                    <button class="reject" onclick="rejectWord('${docId}')">❌ Reject</button>
+                                </div>
                             </div>
                             
                             <!-- Edit mode -->
-                            <div id="edit-${doc.id}" style="display: none;" class="edit-form">
-                                <h4>Edit Word</h4>
-                                <input type="text" id="edit-korean-${doc.id}" placeholder="Korean" class="edit-input">
-                                <input type="text" id="edit-myanmar-${doc.id}" placeholder="Myanmar" class="edit-input">
-                                <input type="text" id="edit-english-${doc.id}" placeholder="English (optional)" class="edit-input">
-                                <select id="edit-pos-${doc.id}" class="edit-select">
-                                    <option value="noun">Noun</option>
-                                    <option value="verb">Verb</option>
-                                    <option value="adjective">Adjective</option>
-                                    <option value="adverb">Adverb</option>
-                                    <option value="pronoun">Pronoun</option>
-                                    <option value="preposition">Preposition</option>
-                                    <option value="conjunction">Conjunction</option>
-                                    <option value="interjection">Interjection</option>
-                                    <option value="particle">Particle</option>
-                                    <option value="other">Other</option>
-                                </select>
-                                <button class="save" onclick="saveEdit('${doc.id}')">Save</button>
-                                <button class="cancel" onclick="cancelEdit('${doc.id}')">Cancel</button>
+                            <div id="edit-${docId}" style="display: none;" class="edit-form">
+                                <h4>Edit Word Before Approval</h4>
+                                <div class="form-group">
+                                    <label>Korean:</label>
+                                    <input type="text" id="edit-korean-${docId}" placeholder="Korean" class="edit-input">
+                                </div>
+                                <div class="form-group">
+                                    <label>Myanmar:</label>
+                                    <input type="text" id="edit-myanmar-${docId}" placeholder="Myanmar" class="edit-input">
+                                </div>
+                                <div class="form-group">
+                                    <label>English:</label>
+                                    <input type="text" id="edit-english-${docId}" placeholder="English (optional)" class="edit-input">
+                                </div>
+                                <div class="form-group">
+                                    <label>Part of Speech:</label>
+                                    <select id="edit-pos-${docId}" class="edit-select">
+                                        <option value="noun">Noun</option>
+                                        <option value="verb">Verb</option>
+                                        <option value="adjective">Adjective</option>
+                                        <option value="adverb">Adverb</option>
+                                        <option value="pronoun">Pronoun</option>
+                                        <option value="preposition">Preposition</option>
+                                        <option value="conjunction">Conjunction</option>
+                                        <option value="interjection">Interjection</option>
+                                        <option value="particle">Particle</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="actions">
+                                    <button class="save" onclick="saveEdit('${docId}')">💾 Save Changes</button>
+                                    <button class="cancel" onclick="cancelEdit('${docId}')">❌ Cancel</button>
+                                </div>
                             </div>
                         </div>
                     `;
@@ -1501,11 +1535,8 @@
                 container.innerHTML = html;
                 
                 // Update dashboard stats
-                const totalSubmissions = snapshot.size;
-                const pendingCount = snapshot.docs.filter(doc => (doc.data().status || 'pending') === 'pending').length;
-                const approvedCount = snapshot.docs.filter(doc => doc.data().status === 'approved').length;
                 const dictionaryCount = await loadDictionaryCount();
-                updateDashboardStats(totalSubmissions, pendingCount, approvedCount, dictionaryCount);
+                updateDashboardStats(totalSubmissions, pendingDocs.length, approvedCount, dictionaryCount);
                 
             } catch (error) {
                 container.innerHTML = '<p>Error loading submissions: ' + error.message + '</p>';
