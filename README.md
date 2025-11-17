@@ -2,6 +2,16 @@
 
 Cross-platform Myanmar–Korean–English dictionary built with Expo + React Native.
 
+## 📱 Try the App
+
+### 🌐 Web Version
+Try it now: **[https://mm-krdictionary.vercel.app](https://mm-krdictionary.vercel.app)**
+
+### 📲 Mobile App (Expo Go)
+<img src="app/assets/mm-kr-app.png" alt="QR Code" width="200"/>
+
+Scan the QR code with your camera (iOS) or Expo Go app (Android) to try the mobile app!
+
 ## Scripts
 - yarn install       ## 1st
 - yarn start         ## 2nd
