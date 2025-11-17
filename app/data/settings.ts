@@ -29,8 +29,8 @@ export async function saveSettings(settings: AppSettings): Promise<void> {
 
 export const i18nLabels: Record<AppLanguage, Record<string, string>> = {
   korean: {
-    title: '미얀마–한국어–영어 사전',
-    searchPlaceholder: '단어를 입력하세요?',
+    title: '미얀마–한국 사전',
+    searchPlaceholder: '단어를 입력하세요',
     settings: '설정',
     settingsTitle: '설정',
     sortBy: '정렬 기준',
@@ -56,8 +56,8 @@ export const i18nLabels: Record<AppLanguage, Record<string, string>> = {
     voiceHelp: 'Expo Go에서는 음성 인식이 제한됩니다. 개발 빌드 또는 클라우드 STT 연결이 필요합니다.',
   },
   myanmar: {
-    title: 'မြန်မာ–ကိုရီးယား–အင်္ဂလိပ်ရှာဖွေရန်',
-    searchPlaceholder: 'စကားလုံး ထည့်သွင်းပါ?',
+    title: 'မြန်မာ–ကိုရီးယား အဘိဓာန်',
+    searchPlaceholder: 'စကားလုံး ထည့်သွင်းပါ',
     settings: 'ချိန်ညှိမှု',
     settingsTitle: 'ချိန်ညှိမှု',
     sortBy: 'စီစဉ်ပေးရန်',
@@ -83,8 +83,8 @@ export const i18nLabels: Record<AppLanguage, Record<string, string>> = {
     voiceHelp: 'Expo Go တွင် အသံမှစာတန်းထိုးမှု မပြည့်စုံသေးပါ။ Dev build သို့မဟုတ် Cloud STT API ချိတ်ဆက်ရန်လိုအပ်ပါတယ်။',
   },
   english: {
-    title: 'Myanmar–Korean–English Dictionary',
-    searchPlaceholder: 'Input a word?',
+    title: 'Myanmar–Korean Dictionary',
+    searchPlaceholder: 'Input a word',
     settings: 'Settings',
     settingsTitle: 'Settings',
     sortBy: 'Sort by',
