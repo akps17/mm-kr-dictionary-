@@ -1,13 +1,23 @@
 {
   "version": 2,
-  "buildCommand": "mkdir -p public && cp app/admin.html public/index.html && cp -r app/assets public/",
-  "outputDirectory": "public",
-  "installCommand": "echo 'No dependencies needed'",
-  "framework": null,
-  "rewrites": [
+  "builds": [
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "src": "app/admin.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "app/assets/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/assets/(.*)",
+      "dest": "/app/assets/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/app/admin.html"
     }
   ]
 }
