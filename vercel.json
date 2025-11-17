@@ -1,19 +1,13 @@
 {
   "version": 2,
-  "buildCommand": "cd app && yarn install --frozen-lockfile && yarn build",
-  "outputDirectory": "app/dist",
-  "installCommand": "echo 'Skipping root install'",
-  "ignoreCommand": "git diff --quiet HEAD^ HEAD ./app",
+  "buildCommand": "cp app/admin.html public/index.html && cp -r app/assets public/assets",
+  "outputDirectory": "public",
+  "installCommand": "mkdir -p public",
   "framework": null,
-  "headers": [
+  "routes": [
     {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
+      "src": "/(.*)",
+      "dest": "/index.html"
     }
   ]
 }
