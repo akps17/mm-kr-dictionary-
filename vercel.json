@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "yarn --cwd app install && yarn --cwd app expo export:web",
+  "buildCommand": "yarn --cwd app install && yarn --cwd app build",
   "outputDirectory": "app/dist",
   "installCommand": "echo 'Skipping root install'",
   "framework": null,
