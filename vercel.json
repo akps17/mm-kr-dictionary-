@@ -1,23 +1,13 @@
 {
   "version": 2,
-  "builds": [
+  "buildCommand": "cd app && yarn install && npx expo export:web",
+  "outputDirectory": "app/dist",
+  "installCommand": "echo 'Installing in buildCommand'",
+  "framework": null,
+  "rewrites": [
     {
-      "src": "app/admin.html",
-      "use": "@vercel/static"
-    },
-    {
-      "src": "app/assets/**",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/assets/(.*)",
-      "dest": "/app/assets/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/app/admin.html"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
