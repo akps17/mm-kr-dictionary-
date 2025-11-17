@@ -1,13 +1,13 @@
 {
   "version": 2,
-  "buildCommand": "cp app/admin.html public/index.html && cp -r app/assets public/assets",
+  "buildCommand": "mkdir -p public && cp app/admin.html public/index.html && cp -r app/assets public/",
   "outputDirectory": "public",
-  "installCommand": "mkdir -p public",
+  "installCommand": "echo 'No dependencies needed'",
   "framework": null,
-  "routes": [
+  "rewrites": [
     {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
