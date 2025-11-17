@@ -20,7 +20,7 @@ export async function loadSettings(): Promise<AppSettings> {
     const raw = await AsyncStorage.getItem(SETTINGS_KEY);
     if (raw) return JSON.parse(raw) as AppSettings;
   } catch {}
-  return { uiLanguage: 'myanmar', sortBy: 'korean', fontSize: 'default', theme: 'system' };
+  return { uiLanguage: 'myanmar', sortBy: 'korean', fontSize: 'default', theme: 'light' };
 }
 
 export async function saveSettings(settings: AppSettings): Promise<void> {
