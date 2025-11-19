@@ -1,0 +1,2036 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Myanmar Korean Dictionary - Admin Panel</title>
+    
+    <!-- Google Fonts for Myanmar support -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Myanmar:wght@400;700&display=swap" rel="stylesheet">
+    
+        <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+      body { 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; 
+            background: #f8fafc;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+
+        /* Login Styles */
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        
+        .login-form { 
+            max-width: 420px; 
+            width: 100%;
+            padding: 40px; 
+            background: white; 
+            border-radius: 20px; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        
+        .login-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 16px;
+            margin: 0 auto 20px;
+            display: block;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+        
+        .login-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 8px;
+        }
+        
+        .login-subtitle {
+            font-size: 16px;
+            color: #6b7280;
+            margin-bottom: 32px;
+        }
+        
+        .login-input { 
+            width: 100%; 
+            margin: 12px 0; 
+            padding: 16px 20px; 
+            border: 2px solid #e5e7eb; 
+            border-radius: 12px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .login-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .login-button { 
+            width: 100%; 
+            padding: 16px; 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white; 
+            border: none; 
+            border-radius: 12px; 
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 8px;
+        }
+        
+        .login-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .login-demo {
+            margin-top: 24px;
+            padding: 16px;
+            background: #f8fafc;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .login-demo-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 8px;
+        }
+        
+        .login-demo-creds {
+            font-size: 13px;
+            color: #6b7280;
+            font-family: 'Monaco', monospace;
+            line-height: 1.5;
+        }
+
+        .hidden { 
+            display: none !important; 
+        }
+
+        /* Sidebar Layout */
+        .admin-layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+            color: white;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 1000;
+            box-shadow: 4px 0 10px rgba(0,0,0,0.1);
+        }
+
+        .sidebar-header {
+            padding: 24px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.05);
+        }
+
+        .sidebar-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .sidebar-logo img {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+        }
+
+        .sidebar-logo-text {
+            font-size: 20px;
+            font-weight: 700;
+            color: white;
+        }
+
+        .sidebar-user {
+            font-size: 13px;
+            color: #94a3b8;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 8px;
+        }
+
+        .sidebar-nav {
+            padding: 20px 0;
+        }
+
+        .nav-section {
+            margin-bottom: 24px;
+        }
+
+        .nav-section-title {
+            font-size: 11px;
+            font-weight: 600;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 0 20px;
+            margin-bottom: 8px;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 20px;
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-item:hover {
+            background: rgba(255,255,255,0.05);
+            color: white;
+        }
+
+        .nav-item.active {
+            background: rgba(102, 126, 234, 0.15);
+            color: white;
+            border-left-color: #667eea;
+            font-weight: 600;
+        }
+
+        .nav-item-icon {
+            font-size: 20px;
+            width: 24px;
+            text-align: center;
+        }
+
+        .nav-item-text {
+            flex: 1;
+            font-size: 14px;
+        }
+        
+        .nav-item-badge {
+            background: #ef4444; 
+            color: white; 
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .sidebar-footer {
+            position: absolute;
+            bottom: 0;
+            width: 280px;
+            padding: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            background: rgba(0,0,0,0.2);
+        }
+
+        .logout-btn {
+            width: 100%;
+            padding: 12px;
+            background: rgba(239, 68, 68, 0.2);
+            color: #fca5a5;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 8px; 
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .logout-btn:hover {
+            background: #ef4444;
+            color: white;
+            border-color: #ef4444;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            min-height: 100vh;
+            background: #f8fafc;
+        }
+
+        .content-header {
+            background: white;
+            padding: 24px 32px;
+            border-bottom: 1px solid #e5e7eb;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .content-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 4px;
+        }
+
+        .content-subtitle {
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        .content-body {
+            padding: 32px;
+            max-width: 1400px;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 32px;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 24px;
+            border-radius: 16px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+        
+        .stat-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+        
+        .stat-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+
+        .stat-icon.blue { background: #dbeafe; }
+        .stat-icon.yellow { background: #fef3c7; }
+        .stat-icon.green { background: #d1fae5; }
+        .stat-icon.purple { background: #e0e7ff; }
+
+        .stat-info {
+            flex: 1;
+            margin-left: 16px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            font-weight: 500;
+            color: #6b7280;
+            margin-bottom: 4px;
+        }
+        
+        .stat-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1f2937;
+        }
+        
+        /* Section Card */
+        .section-card {
+            background: white;
+            border-radius: 16px;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 24px;
+            overflow: hidden;
+        }
+
+        .section-card-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid #e5e7eb;
+            background: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .section-card-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1f2937;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-card-body {
+            padding: 24px;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
+        
+        .btn-success {
+            background: #10b981;
+            color: white;
+        }
+        
+        .btn-success:hover {
+            background: #059669;
+        }
+        
+        .btn-warning {
+            background: #f59e0b;
+            color: white;
+        }
+
+        .btn-warning:hover {
+            background: #d97706;
+        }
+
+        .btn-danger {
+            background: #ef4444;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #dc2626;
+        }
+
+        .btn-secondary {
+            background: #6b7280;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #4b5563;
+        }
+
+        /* Form Styles */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .form-input, .form-select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 14px;
+            transition: border-color 0.2s ease;
+        }
+        
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        /* Word Item */
+        .word-item {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            transition: all 0.2s ease;
+        }
+
+        .word-item:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .word-item.pending {
+            border-left: 4px solid #f59e0b;
+        }
+
+        .word-item.approved {
+            border-left: 4px solid #10b981;
+        }
+
+        .word-item h3 {
+            font-size: 20px;
+            color: #1f2937;
+            margin-bottom: 12px;
+            font-family: 'Noto Sans Myanmar', sans-serif;
+        }
+
+        .word-item p {
+            margin: 8px 0;
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        .word-item p strong {
+            color: #374151;
+            font-weight: 600;
+        }
+
+        .actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        }
+        
+        /* User Card */
+        .user-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+
+        .user-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        /* Search */
+        .search-box {
+            width: 100%;
+            padding: 12px 16px 12px 44px;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 14px;
+            background: white url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%236b7280" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>') no-repeat 14px center;
+            transition: border-color 0.2s ease;
+        }
+        
+        .search-box:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        /* Example fields */
+        .example-field {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 12px;
+        }
+
+        .remove-example {
+            float: right;
+            color: #ef4444;
+            background: #fee2e2;
+            border: none;
+            padding: 4px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .remove-example:hover {
+            background: #fecaca;
+        }
+
+        .edit-form {
+            margin-top: 16px;
+            padding: 20px;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            background: #f9fafb;
+        }
+
+        /* Myanmar font */
+        .myanmar-text {
+            font-family: 'Noto Sans Myanmar', 'Myanmar Text', sans-serif;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .sidebar-footer {
+                position: relative;
+                width: 100%;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.3s ease;
+        }
+
+        /* Badge */
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .badge-pro {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            color: white;
+        }
+
+        .badge-pending {
+            background: #fef3c7;
+            color: #d97706;
+        }
+
+        .badge-approved {
+            background: #d1fae5;
+            color: #059669;
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Form -->
+    <div id="login-section" class="login-container">
+        <div class="login-form fade-in">
+            <img src="/assets/dictionary_icon.png" alt="Dictionary Icon" class="login-logo">
+            <h1 class="login-title">Admin Panel</h1>
+            <p class="login-subtitle">Myanmar Korean Dictionary</p>
+            
+            <input type="email" id="admin-email" placeholder="Email address" class="login-input" onkeypress="handleLoginKeyPress(event)">
+            <input type="password" id="admin-password" placeholder="Password" class="login-input" onkeypress="handleLoginKeyPress(event)">
+            <button class="login-button" onclick="adminLogin()">
+                <span id="login-text">Sign In</span>
+                <span id="login-loading" style="display: none;">Signing in...</span>
+            </button>
+            
+            <div class="login-demo">
+                <div class="login-demo-title">🔑 Admin Credentials</div>
+                <div class="login-demo-creds">
+                    edu.mmkr@gmail.com / mmkr2025<br>
+                    admin@mmkr.com / mmkr2025
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Panel -->
+    <div id="admin-panel" class="hidden">
+        <div class="admin-layout">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <div class="sidebar-logo">
+                        <img src="/assets/dictionary_icon.png" alt="Logo">
+                        <div class="sidebar-logo-text">MM-KR Dict</div>
+                </div>
+                    <div class="sidebar-user">
+                        <span>👤</span>
+                        <span id="sidebar-email">Admin</span>
+                    </div>
+                </div>
+
+                <nav class="sidebar-nav">
+                    <div class="nav-section">
+                        <div class="nav-section-title">Main</div>
+                        <div class="nav-item active" onclick="showSection('dashboard')">
+                            <span class="nav-item-icon">📊</span>
+                            <span class="nav-item-text">Dashboard</span>
+                        </div>
+                        <div class="nav-item" onclick="showSection('submissions')">
+                            <span class="nav-item-icon">📝</span>
+                            <span class="nav-item-text">Submissions</span>
+                            <span class="nav-item-badge" id="pending-badge">0</span>
+                        </div>
+                    </div>
+
+                    <div class="nav-section">
+                        <div class="nav-section-title">Management</div>
+                        <div class="nav-item" onclick="showSection('dictionary')">
+                            <span class="nav-item-icon">📚</span>
+                            <span class="nav-item-text">Dictionary</span>
+                        </div>
+                        <div class="nav-item" onclick="showSection('add-word')">
+                            <span class="nav-item-icon">➕</span>
+                            <span class="nav-item-text">Add Word</span>
+                        </div>
+                        <div class="nav-item" onclick="showSection('users')">
+                            <span class="nav-item-icon">👥</span>
+                            <span class="nav-item-text">Users</span>
+                        </div>
+                    </div>
+                </nav>
+
+                <div class="sidebar-footer">
+                <button class="logout-btn" onclick="adminLogout()">
+                        <span>🚪</span>
+                        <span>Logout</span>
+                </button>
+            </div>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="main-content">
+                <!-- Dashboard Section -->
+                <div id="section-dashboard" class="content-section">
+                    <div class="content-header">
+                        <h1 class="content-title">Dashboard</h1>
+                        <p class="content-subtitle">Overview of your dictionary administration</p>
+                    </div>
+                    <div class="content-body">
+                        <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-header">
+                                    <div class="stat-icon blue">📊</div>
+                                    <div class="stat-info">
+                                        <div class="stat-label">Total Submissions</div>
+                                        <div class="stat-value" id="total-submissions">-</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-header">
+                                    <div class="stat-icon yellow">⏳</div>
+                                    <div class="stat-info">
+                                        <div class="stat-label">Pending Review</div>
+                                        <div class="stat-value" id="pending-count">-</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-header">
+                                    <div class="stat-icon green">✅</div>
+                                    <div class="stat-info">
+                                        <div class="stat-label">Approved Words</div>
+                                        <div class="stat-value" id="approved-count">-</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-header">
+                                    <div class="stat-icon purple">📚</div>
+                                    <div class="stat-info">
+                                        <div class="stat-label">Dictionary Total</div>
+                                        <div class="stat-value" id="dictionary-count">-</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+                        <div class="section-card">
+                            <div class="section-card-header">
+                                <div class="section-card-title">
+                                    <span>🎯</span>
+                                    <span>Quick Actions</span>
+                                </div>
+                            </div>
+                            <div class="section-card-body">
+                                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                                    <button class="btn btn-primary" onclick="showSection('submissions')">
+                                        <span>📝</span> Review Submissions
+                                    </button>
+                                    <button class="btn btn-success" onclick="showSection('add-word')">
+                                        <span>➕</span> Add New Word
+                                    </button>
+                                    <button class="btn btn-secondary" onclick="showSection('dictionary')">
+                                        <span>📚</span> Browse Dictionary
+                                    </button>
+                                    <button class="btn btn-warning" onclick="showSection('users')">
+                                        <span>👥</span> Manage Users
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submissions Section -->
+                <div id="section-submissions" class="content-section hidden">
+                    <div class="content-header">
+                        <h1 class="content-title">Word Submissions</h1>
+                        <p class="content-subtitle">Review and approve user-submitted words</p>
+                    </div>
+                    <div class="content-body">
+                        <div id="submissions-container">
+                            <p style="text-align: center; color: #6b7280; padding: 40px;">Loading submissions...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dictionary Section -->
+                <div id="section-dictionary" class="content-section hidden">
+                    <div class="content-header">
+                        <h1 class="content-title">Dictionary Management</h1>
+                        <p class="content-subtitle">Browse and manage dictionary entries</p>
+                    </div>
+                    <div class="content-body">
+                        <div class="section-card">
+                            <div class="section-card-header">
+                                <div class="section-card-title">
+                                    <span>🔍</span>
+                                    <span>Search Dictionary</span>
+                                </div>
+                            </div>
+                            <div class="section-card-body">
+                                <div style="display: flex; gap: 12px;">
+                                    <input type="text" id="dict-search-input" placeholder="Search by Korean, Myanmar, or English..." class="search-box" style="flex: 1;">
+                                    <button class="btn btn-primary" onclick="searchDictionary()">
+                                        <span>🔍</span> Search
+                                    </button>
+                                    <button class="btn btn-secondary" onclick="clearDictionarySearch()">
+                                        Clear
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="dictionary-container">
+                            <p style="text-align: center; color: #6b7280; padding: 40px;">Click search or load all dictionary words</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add Word Section -->
+                <div id="section-add-word" class="content-section hidden">
+                    <div class="content-header">
+                        <h1 class="content-title">Add New Word</h1>
+                        <p class="content-subtitle">Add words directly to the dictionary</p>
+                    </div>
+                    <div class="content-body">
+                        <div class="section-card">
+                            <div class="section-card-header">
+                                <div class="section-card-title">
+                                    <span>✏️</span>
+                                    <span>Word Information</span>
+                                </div>
+                            </div>
+                            <div class="section-card-body">
+                <div class="form-grid">
+                    <div class="form-group">
+                                        <label for="direct-korean">Korean *</label>
+                        <input type="text" id="direct-korean" placeholder="Enter Korean word" class="form-input">
+                    </div>
+                    <div class="form-group">
+                                        <label for="direct-myanmar">Myanmar *</label>
+                                        <input type="text" id="direct-myanmar" placeholder="Enter Myanmar translation" class="form-input myanmar-text">
+                    </div>
+                    <div class="form-group">
+                                        <label for="direct-english">English</label>
+                        <input type="text" id="direct-english" placeholder="Enter English translation" class="form-input">
+                    </div>
+                                </div>
+
+                                <div class="form-grid">
+                    <div class="form-group">
+                                        <label for="direct-pos">Part of Speech</label>
+                <select id="direct-pos" class="form-select">
+                  <option value="noun">Noun</option>
+                  <option value="verb">Verb</option>
+                  <option value="adjective">Adjective</option>
+                  <option value="adverb">Adverb</option>
+                  <option value="pronoun">Pronoun</option>
+                  <option value="preposition">Preposition</option>
+                  <option value="conjunction">Conjunction</option>
+                  <option value="interjection">Interjection</option>
+                  <option value="particle">Particle</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="direct-level">Word Level</label>
+                <select id="direct-level" class="form-select">
+                  <option value="">No Level</option>
+                  <option value="basic">Basic (TOPIK I - Level 1)</option>
+                  <option value="pre-intermediate">Pre-Intermediate (TOPIK I - Level 2)</option>
+                  <option value="intermediate">Intermediate (TOPIK II - Level 3-4)</option>
+                  <option value="advanced">Advanced (TOPIK II - Level 5-6)</option>
+                </select>
+              </div>
+            </div>
+
+                                <div class="form-group" style="margin-top: 20px;">
+                                    <label>Example Sentences</label>
+                                    <p style="font-size: 13px; color: #6b7280; margin-bottom: 12px;">Add example sentences to help users understand usage</p>
+                                    <div id="examples-container"></div>
+                                    <button type="button" class="btn btn-secondary" onclick="addExampleField()" style="margin-top: 8px;">
+                  <span>➕</span> Add Example
+                </button>
+            </div>
+
+                                <div style="margin-top: 24px; text-align: right;">
+                                    <button class="btn btn-success" onclick="addDirectWord()" style="padding: 14px 32px; font-size: 16px;">
+              <span>✅</span> Add to Dictionary
+            </button>
+            </div>
+                </div>
+                    </div>
+                </div>
+            </div>
+            
+                <!-- Users Section -->
+                <div id="section-users" class="content-section hidden">
+                <div class="content-header">
+                        <h1 class="content-title">User Management</h1>
+                        <p class="content-subtitle">Manage users, points, and permissions</p>
+                </div>
+                <div class="content-body">
+                        <div id="users-container">
+                            <p style="text-align: center; color: #6b7280; padding: 40px;">Loading users...</p>
+                    </div>
+                </div>
+            </div>
+            </main>
+    </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.4/firebase-app.js';
+        import { getFirestore, collection, getDocs, doc, updateDoc, deleteDoc, query, orderBy, addDoc, serverTimestamp, getDoc, setDoc, where } from 'https://www.gstatic.com/firebasejs/10.12.4/firebase-firestore.js';
+        import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/10.12.4/firebase-auth.js';
+
+        // Firebase config
+        const firebaseConfig = {
+            apiKey: "AIzaSyDOT1jC27f26f3BIW-yFcgHTLGdEWeiopQ",
+            authDomain: "mm-kr-expo.firebaseapp.com",
+            projectId: "mm-kr-expo",
+            storageBucket: "mm-kr-expo.firebasestorage.app",
+            messagingSenderId: "974504645463",
+            appId: "1:974504645463:web:0cd68a7b52ea2bcddb6412"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+
+        // Admin credentials
+        const ADMIN_CREDENTIALS = {
+            'edu.mmkr@gmail.com': 'mmkr2025',
+            'admin@mmkr.com': 'mmkr2025'
+        };
+
+        // Check authentication
+        onAuthStateChanged(auth, (user) => {
+            if (user && ADMIN_CREDENTIALS[user.email]) {
+                showAdminPanel(user.email);
+            } else if (user) {
+                signOut(auth);
+                alert('Access denied. Admin credentials required.');
+            } else {
+                document.getElementById('login-section').classList.remove('hidden');
+                document.getElementById('admin-panel').classList.add('hidden');
+            }
+        });
+
+        // Login function
+        window.adminLogin = async function() {
+            const email = document.getElementById('admin-email').value.trim();
+            const password = document.getElementById('admin-password').value.trim();
+            
+            if (!email || !password) {
+                showLoginError('Please enter both email and password');
+                return;
+            }
+            
+            if (!ADMIN_CREDENTIALS[email]) {
+                showLoginError('This email is not authorized as an admin.');
+                return;
+            }
+            
+            showLoginLoading(true);
+            
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+            } catch (error) {
+                console.error('Login error:', error);
+                let errorMessage = 'Login failed. Please check your credentials.';
+                
+                if (error.code === 'auth/invalid-credential' || error.code === 'auth/wrong-password') {
+                    errorMessage = 'Invalid email or password.';
+                } else if (error.code === 'auth/user-not-found') {
+                    errorMessage = 'No user found with this email.';
+                } else if (error.code === 'auth/too-many-requests') {
+                    errorMessage = 'Too many failed attempts. Please try again later.';
+                }
+                
+                showLoginError(errorMessage);
+            showLoginLoading(false);
+            }
+        };
+        
+        function showLoginLoading(loading) {
+            const loginText = document.getElementById('login-text');
+            const loginLoading = document.getElementById('login-loading');
+            const loginButton = document.querySelector('.login-button');
+            
+            if (loading) {
+                loginText.style.display = 'none';
+                loginLoading.style.display = 'inline';
+                loginButton.disabled = true;
+                loginButton.style.opacity = '0.7';
+            } else {
+                loginText.style.display = 'inline';
+                loginLoading.style.display = 'none';
+                loginButton.disabled = false;
+                loginButton.style.opacity = '1';
+            }
+        }
+        
+        function showLoginError(message) {
+            const existingError = document.querySelector('.login-error');
+            if (existingError) existingError.remove();
+            
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'login-error';
+            errorDiv.style.cssText = `
+                color: #dc2626;
+                background: #fef2f2;
+                border: 1px solid #fecaca;
+                padding: 12px 16px;
+                border-radius: 8px;
+                margin-top: 16px;
+                font-size: 14px;
+                text-align: center;
+            `;
+            errorDiv.textContent = message;
+            
+            const loginButton = document.querySelector('.login-button');
+            loginButton.parentNode.insertBefore(errorDiv, loginButton.nextSibling);
+            
+            setTimeout(() => {
+                if (errorDiv.parentNode) {
+                    errorDiv.style.opacity = '0';
+                    setTimeout(() => errorDiv.remove(), 300);
+                }
+            }, 5000);
+        }
+        
+        window.handleLoginKeyPress = function(event) {
+            if (event.key === 'Enter') adminLogin();
+        };
+
+        window.adminLogout = async function() {
+            try {
+                await signOut(auth);
+            } catch (error) {
+                console.error('Logout error:', error);
+                alert('Error logging out: ' + error.message);
+            }
+        };
+
+        function showAdminPanel(email) {
+            document.getElementById('login-section').classList.add('hidden');
+            document.getElementById('admin-panel').classList.remove('hidden');
+            document.getElementById('sidebar-email').textContent = email;
+            loadDashboardData();
+        }
+
+        // Navigation
+        window.showSection = function(sectionName) {
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            
+            // Show selected section
+            document.getElementById(`section-${sectionName}`).classList.remove('hidden');
+            
+            // Update nav items
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+            
+            // Load data based on section
+            if (sectionName === 'dashboard') {
+                loadDashboardData();
+            } else if (sectionName === 'submissions') {
+                loadSubmissions();
+            } else if (sectionName === 'dictionary') {
+                loadDictionary();
+            } else if (sectionName === 'users') {
+                loadUsers();
+            }
+        };
+
+        // Load dashboard data
+        async function loadDashboardData() {
+            try {
+                // Load all stats
+                const submissionsQuery = query(collection(db, 'pending_words'), orderBy('submittedAt', 'desc'));
+                const submissionsSnapshot = await getDocs(submissionsQuery);
+                
+                let totalSubmissions = 0;
+                let pendingCount = 0;
+                let approvedCount = 0;
+                
+                submissionsSnapshot.forEach(doc => {
+                    totalSubmissions++;
+                    const status = doc.data().status || 'pending';
+                    if (status === 'pending') pendingCount++;
+                    else if (status === 'approved') approvedCount++;
+                });
+                
+                const dictionarySnapshot = await getDocs(collection(db, 'dictionary'));
+                const dictionaryCount = dictionarySnapshot.size;
+                
+                document.getElementById('total-submissions').textContent = totalSubmissions;
+                document.getElementById('pending-count').textContent = pendingCount;
+                document.getElementById('approved-count').textContent = approvedCount;
+                document.getElementById('dictionary-count').textContent = dictionaryCount;
+                document.getElementById('pending-badge').textContent = pendingCount;
+                
+            } catch (error) {
+                console.error('Error loading dashboard:', error);
+            }
+        }
+
+        // Load submissions
+        async function loadSubmissions() {
+            const container = document.getElementById('submissions-container');
+            container.innerHTML = '<p style="text-align: center; padding: 40px;">Loading submissions...</p>';
+
+            try {
+                const q = query(collection(db, 'pending_words'), orderBy('submittedAt', 'desc'));
+                const snapshot = await getDocs(q);
+                
+                const pendingDocs = [];
+                snapshot.forEach(doc => {
+                    const data = doc.data();
+                    const status = data.status || 'pending';
+                    if (status === 'pending') {
+                        pendingDocs.push({ id: doc.id, data: data });
+                    }
+                });
+                
+                if (pendingDocs.length === 0) {
+                    container.innerHTML = '<p style="text-align: center; color: #6b7280; padding: 40px;">✅ No pending submissions to review. All caught up!</p>';
+                    return;
+                }
+
+                let html = '';
+                pendingDocs.forEach(item => {
+                    const docId = item.id;
+                    const data = item.data;
+                    
+                    html += `
+                        <div class="word-item pending" id="${docId}">
+                            <div id="display-${docId}">
+                                <h3 class="myanmar-text">${data.korean} → ${data.myanmar}</h3>
+                                <p><strong>English:</strong> ${data.english || 'N/A'}</p>
+                                <p><strong>Part of Speech:</strong> ${data.pos || 'N/A'}</p>
+                                <p><strong>Submitted by:</strong> ${data.submittedBy || 'Anonymous'}</p>
+                                <p><strong>Submitted:</strong> ${data.submittedAt?.toDate?.()?.toLocaleString() || 'Unknown'}</p>
+                                
+                                <div class="actions">
+                                    <button class="btn btn-warning" onclick="editWord('${docId}', '${data.korean}', '${data.myanmar}', '${data.english || ''}', '${data.pos || 'noun'}')">
+                                        ✏️ Edit
+                                    </button>
+                                    <button class="btn btn-success" onclick="approveWord('${docId}')">
+                                        ✅ Approve
+                                    </button>
+                                    <button class="btn btn-danger" onclick="rejectWord('${docId}')">
+                                        ❌ Reject
+                                    </button>
+                            </div>
+                            </div>
+                            
+                            <div id="edit-${docId}" style="display: none;" class="edit-form">
+                                <h4>Edit Word Before Approval</h4>
+                                <div class="form-group">
+                                    <label>Korean:</label>
+                                    <input type="text" id="edit-korean-${docId}" class="form-input">
+                                </div>
+                                <div class="form-group">
+                                    <label>Myanmar:</label>
+                                    <input type="text" id="edit-myanmar-${docId}" class="form-input myanmar-text">
+                                </div>
+                                <div class="form-group">
+                                    <label>English:</label>
+                                    <input type="text" id="edit-english-${docId}" class="form-input">
+                                </div>
+                                <div class="form-group">
+                                    <label>Part of Speech:</label>
+                                    <select id="edit-pos-${docId}" class="form-select">
+                                    <option value="noun">Noun</option>
+                                    <option value="verb">Verb</option>
+                                    <option value="adjective">Adjective</option>
+                                    <option value="adverb">Adverb</option>
+                                    <option value="pronoun">Pronoun</option>
+                                    <option value="preposition">Preposition</option>
+                                    <option value="conjunction">Conjunction</option>
+                                    <option value="interjection">Interjection</option>
+                                    <option value="particle">Particle</option>
+                                    <option value="other">Other</option>
+                                </select>
+                                </div>
+                                <div class="actions">
+                                    <button class="btn btn-success" onclick="saveEdit('${docId}')">💾 Save</button>
+                                    <button class="btn btn-secondary" onclick="cancelEdit('${docId}')">❌ Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                container.innerHTML = html;
+                
+            } catch (error) {
+                container.innerHTML = '<p>Error loading submissions: ' + error.message + '</p>';
+                console.error('Error:', error);
+            }
+        }
+
+        window.editWord = function(docId, korean, myanmar, english, pos) {
+            document.getElementById(`display-${docId}`).style.display = 'none';
+            document.getElementById(`edit-${docId}`).style.display = 'block';
+            
+            document.getElementById(`edit-korean-${docId}`).value = korean;
+            document.getElementById(`edit-myanmar-${docId}`).value = myanmar;
+            document.getElementById(`edit-english-${docId}`).value = english;
+            document.getElementById(`edit-pos-${docId}`).value = pos;
+        };
+
+        window.cancelEdit = function(docId) {
+            document.getElementById(`edit-${docId}`).style.display = 'none';
+            document.getElementById(`display-${docId}`).style.display = 'block';
+        };
+
+        window.saveEdit = async function(docId) {
+            try {
+                const korean = document.getElementById(`edit-korean-${docId}`).value.trim();
+                const myanmar = document.getElementById(`edit-myanmar-${docId}`).value.trim();
+                const english = document.getElementById(`edit-english-${docId}`).value.trim();
+                const pos = document.getElementById(`edit-pos-${docId}`).value;
+
+                if (!korean || !myanmar) {
+                    alert('Korean and Myanmar fields are required!');
+                    return;
+                }
+
+                await updateDoc(doc(db, 'pending_words', docId), {
+                    korean: korean,
+                    myanmar: myanmar,
+                    english: english || '',
+                    pos: pos,
+                    editedAt: new Date(),
+                    editedBy: 'admin'
+                });
+
+                loadSubmissions();
+                alert('Word updated successfully!');
+            } catch (error) {
+                alert('Error updating word: ' + error.message);
+            }
+        };
+
+        window.approveWord = async function(docId) {
+            try {
+                const pendingDocRef = doc(db, 'pending_words', docId);
+                const pendingDocSnap = await getDoc(pendingDocRef);
+                if (!pendingDocSnap.exists()) {
+                    alert('Word not found!');
+                    return;
+                }
+                
+                const wordData = pendingDocSnap.data();
+                const cleanMyanmar = (wordData.myanmar || '').normalize('NFC');
+                const cleanKorean = (wordData.korean || '').normalize('NFC');
+                
+                await addDoc(collection(db, 'dictionary'), {
+                    korean: cleanKorean,
+                    myanmar: cleanMyanmar,
+                    english: wordData.english || '',
+                    pos: wordData.pos || 'noun',
+                    level: wordData.level || null,
+                    examples: wordData.examples || [],
+                    addedBy: 'admin',
+                    addedAt: serverTimestamp(),
+                    source: 'user_approved',
+                    originalSubmitter: wordData.submittedBy,
+                    userEmail: wordData.userEmail || wordData.submittedBy || 'anonymous'
+                });
+                
+                await updateDoc(doc(db, 'pending_words', docId), { 
+                    status: 'approved',
+                    approvedAt: new Date(),
+                    approvedBy: 'admin'
+                });
+                
+                loadSubmissions();
+                loadDashboardData();
+                alert('Word approved and added to dictionary!');
+            } catch (error) {
+                alert('Error approving word: ' + error.message);
+            }
+        };
+
+        window.rejectWord = async function(docId) {
+            if (!confirm('Are you sure you want to reject this word?')) return;
+            
+            try {
+                await deleteDoc(doc(db, 'pending_words', docId));
+                loadSubmissions();
+                loadDashboardData();
+                alert('Word rejected!');
+            } catch (error) {
+                alert('Error rejecting word: ' + error.message);
+            }
+        };
+
+        // Dictionary functions
+        async function loadDictionary() {
+            const container = document.getElementById('dictionary-container');
+            container.innerHTML = '<p style="text-align: center; padding: 40px;">Loading dictionary...</p>';
+
+            try {
+                const q = query(collection(db, 'dictionary'), orderBy('korean'));
+                const snapshot = await getDocs(q);
+                
+                if (snapshot.empty) {
+                    container.innerHTML = '<p style="text-align: center; color: #6b7280; padding: 40px;">No dictionary words yet.</p>';
+                    return;
+                }
+
+                let html = '';
+                snapshot.forEach(doc => {
+                    const data = doc.data();
+                    const source = data.source === 'admin_direct' ? '👨‍💼 Admin' : '✅ Approved';
+                    html += `
+                        <div class="word-item approved" id="dict-${doc.id}">
+                            <h3 class="myanmar-text">${data.korean} → ${data.myanmar}</h3>
+                            <p><strong>English:</strong> ${data.english || 'N/A'}</p>
+                            <p><strong>Part of Speech:</strong> ${data.pos || 'N/A'}</p>
+                            <p><strong>Level:</strong> ${data.level || 'N/A'}</p>
+                            <p><strong>Source:</strong> ${source}</p>
+                            <p><strong>Added by:</strong> ${data.addedBy || 'Unknown'}</p>
+                            <p><strong>Added:</strong> ${data.addedAt?.toDate?.()?.toLocaleString() || 'Unknown'}</p>
+                            <div class="actions">
+                                <button class="btn btn-danger" onclick="deleteDictionaryWord('${doc.id}', '${data.korean}', '${data.myanmar}')">
+                                    🗑️ Delete
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                container.innerHTML = html;
+                
+            } catch (error) {
+                container.innerHTML = '<p>Error loading dictionary: ' + error.message + '</p>';
+            }
+        }
+
+        window.searchDictionary = async function() {
+            const searchTerm = document.getElementById('dict-search-input').value.trim().toLowerCase();
+            if (!searchTerm) {
+                loadDictionary();
+                return;
+            }
+            
+            const container = document.getElementById('dictionary-container');
+            container.innerHTML = '<p style="text-align: center; padding: 40px;">Searching...</p>';
+
+            try {
+                const q = query(collection(db, 'dictionary'), orderBy('korean'));
+                const snapshot = await getDocs(q);
+                
+                const filteredDocs = [];
+                snapshot.forEach(doc => {
+                    const data = doc.data();
+                    const korean = (data.korean || '').toLowerCase();
+                    const myanmar = (data.myanmar || '').toLowerCase();
+                    const english = (data.english || '').toLowerCase();
+                    
+                    if (korean.includes(searchTerm) || myanmar.includes(searchTerm) || english.includes(searchTerm)) {
+                        filteredDocs.push({ id: doc.id, data: data });
+                    }
+                });
+
+                if (filteredDocs.length === 0) {
+                    container.innerHTML = `<p style="text-align: center; color: #6b7280; padding: 40px;">No results found for "${searchTerm}"</p>`;
+                    return;
+                }
+
+                let html = '';
+                filteredDocs.forEach(item => {
+                    const data = item.data;
+                    const source = data.source === 'admin_direct' ? '👨‍💼 Admin' : '✅ Approved';
+                    html += `
+                        <div class="word-item approved">
+                            <h3 class="myanmar-text">${data.korean} → ${data.myanmar}</h3>
+                            <p><strong>English:</strong> ${data.english || 'N/A'}</p>
+                            <p><strong>Part of Speech:</strong> ${data.pos || 'N/A'}</p>
+                            <p><strong>Source:</strong> ${source}</p>
+                            <div class="actions">
+                                <button class="btn btn-danger" onclick="deleteDictionaryWord('${item.id}', '${data.korean}', '${data.myanmar}')">
+                                    🗑️ Delete
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                container.innerHTML = html;
+                
+            } catch (error) {
+                container.innerHTML = '<p>Error searching: ' + error.message + '</p>';
+            }
+        };
+
+        window.clearDictionarySearch = function() {
+            document.getElementById('dict-search-input').value = '';
+            loadDictionary();
+        };
+
+        window.deleteDictionaryWord = async function(docId, korean, myanmar) {
+            if (!confirm(`Delete "${korean} → ${myanmar}"?`)) return;
+            
+            try {
+                await deleteDoc(doc(db, 'dictionary', docId));
+                loadDictionary();
+                loadDashboardData();
+                alert('Word deleted successfully!');
+            } catch (error) {
+                alert('Error deleting word: ' + error.message);
+            }
+        };
+
+        // Add word functions
+        window.addExampleField = function() {
+              const container = document.getElementById('examples-container');
+            const exampleId = Date.now();
+              
+              const exampleField = document.createElement('div');
+              exampleField.className = 'example-field';
+              exampleField.id = `example-${exampleId}`;
+              
+              exampleField.innerHTML = `
+                <button type="button" class="remove-example" onclick="removeExample('${exampleId}')">
+                  ✕ Remove
+                </button>
+                <div class="form-group">
+                  <label>Korean Example</label>
+                  <input type="text" class="form-input example-korean" placeholder="Enter example in Korean">
+                </div>
+                <div class="form-group">
+                  <label>Myanmar Translation</label>
+                    <input type="text" class="form-input example-myanmar myanmar-text" placeholder="Enter example in Myanmar">
+                </div>
+                <div class="form-group">
+                    <label>English Translation</label>
+                  <input type="text" class="form-input example-english" placeholder="Enter example in English">
+                </div>
+              `;
+              
+              container.appendChild(exampleField);
+        };
+
+        window.removeExample = function(exampleId) {
+              const exampleField = document.getElementById(`example-${exampleId}`);
+            if (exampleField) exampleField.remove();
+        };
+
+        function getExamples() {
+              const examples = [];
+              const exampleFields = document.querySelectorAll('.example-field');
+              
+              exampleFields.forEach(field => {
+                const korean = field.querySelector('.example-korean').value.trim();
+                const myanmar = field.querySelector('.example-myanmar').value.trim();
+                const english = field.querySelector('.example-english').value.trim();
+                
+                if (korean && myanmar) {
+                  examples.push({
+                    korean: korean.normalize('NFC'),
+                    myanmar: myanmar.normalize('NFC'),
+                    english: english || ''
+                  });
+                }
+              });
+              
+              return examples;
+        }
+
+        window.addDirectWord = async function() {
+            const korean = document.getElementById('direct-korean').value.trim();
+            const myanmar = document.getElementById('direct-myanmar').value.trim();
+            const english = document.getElementById('direct-english').value.trim();
+            const pos = document.getElementById('direct-pos').value;
+            const level = document.getElementById('direct-level').value;
+
+            if (!korean || !myanmar) {
+                alert('Korean and Myanmar fields are required!');
+                return;
+            }
+
+            try {
+                const cleanMyanmar = myanmar.normalize('NFC');
+                const cleanKorean = korean.normalize('NFC');
+                const examples = getExamples();
+                
+                await addDoc(collection(db, 'dictionary'), {
+                    korean: cleanKorean,
+                    myanmar: cleanMyanmar,
+                    english: english || '',
+                    pos: pos,
+                    level: level || null,
+                    examples: examples.length > 0 ? examples : [],
+                    addedBy: 'admin',
+                    addedAt: serverTimestamp(),
+                    source: 'admin_direct'
+                });
+
+                // Clear form
+                document.getElementById('direct-korean').value = '';
+                document.getElementById('direct-myanmar').value = '';
+                document.getElementById('direct-english').value = '';
+                document.getElementById('direct-level').value = '';
+                document.getElementById('examples-container').innerHTML = '';
+                document.getElementById('direct-pos').value = 'noun';
+
+                alert('Word added to dictionary successfully!');
+                loadDashboardData();
+                
+            } catch (error) {
+                alert('Error adding word: ' + error.message);
+            }
+        };
+
+        // Users management
+        async function loadUsers() {
+            const container = document.getElementById('users-container');
+            container.innerHTML = '<p style="text-align: center; padding: 40px;">Loading users...</p>';
+
+            try {
+                const userPointsQuery = query(collection(db, 'user_points'));
+                const userPointsSnapshot = await getDocs(userPointsQuery);
+                
+                const submissionsQuery = query(collection(db, 'pending_words'), orderBy('submittedAt', 'desc'));
+                const submissionsSnapshot = await getDocs(submissionsQuery);
+                
+                const usersMap = {};
+                
+                userPointsSnapshot.forEach(doc => {
+                    const data = doc.data();
+                    const email = doc.id;
+                    usersMap[email] = {
+                        email: email,
+                        points: data.points || 0,
+                        totalSubmissions: data.totalSubmissions || 0,
+                        submissions: 0,
+                        hasPointsRecord: true,
+                        isPro: data.isPro || false,
+                        topikUnlocked: data.topikUnlocked || false
+                    };
+                });
+                
+                submissionsSnapshot.forEach(doc => {
+                    const data = doc.data();
+                    const email = data.userEmail;
+                    if (email && email !== 'anonymous') {
+                        if (!usersMap[email]) {
+                            usersMap[email] = {
+                                email: email,
+                                points: 0,
+                                totalSubmissions: 0,
+                                submissions: 0,
+                                hasPointsRecord: false,
+                                isPro: false,
+                                topikUnlocked: false
+                            };
+                        }
+                        usersMap[email].submissions++;
+                    }
+                });
+
+                const users = Object.values(usersMap);
+                
+                if (users.length === 0) {
+                    container.innerHTML = '<p style="text-align: center; color: #6b7280; padding: 40px;">No users found yet.</p>';
+                    return;
+                }
+
+                users.sort((a, b) => b.points - a.points);
+
+                let html = `
+                    <div class="section-card">
+                        <div class="section-card-header">
+                            <div class="section-card-title">
+                                <span>🔍</span>
+                                <span>Search Users</span>
+                            </div>
+                        </div>
+                        <div class="section-card-body">
+                            <input 
+                                type="text" 
+                                id="user-search-input" 
+                                placeholder="Search by email..."
+                                onkeyup="filterUsers()"
+                                class="search-box"
+                            />
+                        </div>
+                    </div>
+                    
+                    <div class="section-card" style="margin-bottom: 20px;">
+                        <div class="section-card-header">
+                            <div class="section-card-title">
+                                <span>🔽</span>
+                                <span>Filter by User Type</span>
+                            </div>
+                        </div>
+                        <div class="section-card-body">
+                            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                                <button id="filter-all" onclick="setUserFilter('all')" class="btn btn-primary" style="flex: 1; min-width: 120px;">
+                                    👥 All Users
+                                </button>
+                                <button id="filter-pro" onclick="setUserFilter('pro')" class="btn btn-secondary" style="flex: 1; min-width: 120px;">
+                                    ⭐ PRO Users
+                                </button>
+                                <button id="filter-normal" onclick="setUserFilter('normal')" class="btn btn-secondary" style="flex: 1; min-width: 120px;">
+                                    👤 Normal Users
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="padding: 16px; background: linear-gradient(135deg, #dbeafe, #e0e7ff); border-radius: 12px; margin-bottom: 20px;">
+                        <p style="margin: 0; color: #1e40af; font-weight: 600;">
+                            👥 Total Users: <span id="total-users-count">${users.length}</span> | 
+                            ⭐ Pro Users: <span id="pro-users-count">${users.filter(u => u.isPro).length}</span> |
+                            👤 Normal Users: <span id="normal-users-count">${users.filter(u => !u.isPro).length}</span>
+                        </p>
+                    </div>
+                `;
+
+                users.forEach(user => {
+                    const level = Math.floor(user.points / 50) + 1;
+                    const proBadge = user.isPro ? '<span class="badge badge-pro">⭐ PRO</span>' : '';
+                    
+                    html += `
+                        <div class="user-card" data-email="${user.email.toLowerCase()}" data-is-pro="${user.isPro}">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 16px;">
+                                <div style="flex: 1;">
+                                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                                        <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, ${user.isPro ? '#fbbf24, #f59e0b' : '#667eea, #764ba2'}); display: flex; align-items: center; justify-content: center; color: white; font-size: 20px; font-weight: 700;">
+                                            ${user.email.charAt(0).toUpperCase()}
+                                        </div>
+                                        <div>
+                                            <div style="font-size: 16px; font-weight: 600; color: #1f2937; display: flex; align-items: center; gap: 8px;">
+                                                ${user.email}
+                                                ${proBadge}
+                                            </div>
+                                            <div style="font-size: 13px; color: #6b7280;">
+                                                Level ${level} • ${user.points} points
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                                    <button onclick="toggleProStatus('${user.email}', ${!user.isPro})" class="btn ${user.isPro ? 'btn-secondary' : 'btn-warning'}">
+                                        ${user.isPro ? '⭐ Remove Pro' : '⭐ Make Pro'}
+                                    </button>
+                                    <button onclick="adjustUserPoints('${user.email}', 10)" class="btn btn-success">
+                                        +10 pts
+                                    </button>
+                                    <button onclick="adjustUserPoints('${user.email}', -10)" class="btn btn-danger">
+                                        -10 pts
+                                    </button>
+                                    <button onclick="showPointsEditor('${user.email}')" class="btn btn-warning">
+                                        ✏️ Edit
+                                    </button>
+                                 </div>
+                            </div>
+                            
+                            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; padding-top: 12px; border-top: 1px solid #e5e7eb;">
+                                <div style="text-align: center;">
+                                    <div style="font-size: 24px; font-weight: 700; color: #3b82f6;">${user.points}</div>
+                                    <div style="font-size: 12px; color: #6b7280;">Points</div>
+                                </div>
+                                <div style="text-align: center;">
+                                    <div style="font-size: 24px; font-weight: 700; color: #10b981;">${user.submissions}</div>
+                                    <div style="font-size: 12px; color: #6b7280;">Submissions</div>
+                                </div>
+                                <div style="text-align: center;">
+                                    <div style="font-size: 24px; font-weight: 700; color: #f59e0b;">${level}</div>
+                                    <div style="font-size: 12px; color: #6b7280;">Level</div>
+                                </div>
+                                <div style="text-align: center;">
+                                    <div style="font-size: 20px; color: ${user.topikUnlocked ? '#8b5cf6' : '#9ca3af'};">
+                                        ${user.topikUnlocked ? '🎓 ✓' : '🔒'}
+                                </div>
+                                    <div style="font-size: 12px; color: #6b7280;">TOPIK</div>
+                                    <button onclick="toggleTopikStatus('${user.email}', ${!user.topikUnlocked})" class="btn ${user.topikUnlocked ? 'btn-secondary' : 'btn-primary'}" style="padding: 4px 8px; font-size: 11px; margin-top: 4px;">
+                                        ${user.topikUnlocked ? 'Lock' : 'Unlock'}
+                                    </button>
+                                 </div>
+                                 </div>
+                            
+                            <!-- Points Editor Form (Hidden by default) -->
+                            <div id="points-editor-${user.email.replace(/[^a-zA-Z0-9]/g, '_')}" style="display: none; margin-top: 16px; padding: 16px; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px;">
+                                <div style="font-size: 14px; font-weight: 600; color: #1f2937; margin-bottom: 12px;">
+                                    ✏️ Edit Points for ${user.email}
+                                </div>
+                                <div style="display: flex; gap: 12px; align-items: end;">
+                                    <div style="flex: 1;">
+                                        <label style="display: block; font-size: 13px; font-weight: 500; color: #374151; margin-bottom: 6px;">
+                                            New Points Value
+                                        </label>
+                                        <input 
+                                            type="number" 
+                                            id="points-input-${user.email.replace(/[^a-zA-Z0-9]/g, '_')}" 
+                                            value="${user.points}" 
+                                            min="0"
+                                            class="form-input"
+                                            style="width: 100%;"
+                                        />
+                                    </div>
+                                    <button onclick="savePointsEdit('${user.email}')" class="btn btn-success">
+                                        💾 Save
+                                    </button>
+                                    <button onclick="hidePointsEditor('${user.email}')" class="btn btn-secondary">
+                                        ✕ Cancel
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                container.innerHTML = html;
+                
+                // Initialize filter to 'all' and apply it
+                setTimeout(() => {
+                    if (typeof currentUserFilter === 'undefined') {
+                        currentUserFilter = 'all';
+                    }
+                    // Reset filter buttons
+                    const filterAllBtn = document.getElementById('filter-all');
+                    const filterProBtn = document.getElementById('filter-pro');
+                    const filterNormalBtn = document.getElementById('filter-normal');
+                    if (filterAllBtn) filterAllBtn.className = 'btn btn-primary';
+                    if (filterProBtn) filterProBtn.className = 'btn btn-secondary';
+                    if (filterNormalBtn) filterNormalBtn.className = 'btn btn-secondary';
+                    filterUsers();
+                }, 100);
+
+            } catch (error) {
+                console.error('Error loading users:', error);
+                container.innerHTML = `<p style="text-align: center; color: #ef4444; padding: 40px;">Error loading users: ${error.message}</p>`;
+            }
+        }
+
+        // Store current filter state
+        let currentUserFilter = 'all';
+
+        window.setUserFilter = function(filterType) {
+            currentUserFilter = filterType;
+            
+            // Update button styles
+            document.getElementById('filter-all').className = filterType === 'all' ? 'btn btn-primary' : 'btn btn-secondary';
+            document.getElementById('filter-pro').className = filterType === 'pro' ? 'btn btn-primary' : 'btn btn-secondary';
+            document.getElementById('filter-normal').className = filterType === 'normal' ? 'btn btn-primary' : 'btn btn-secondary';
+            
+            // Apply filter
+            filterUsers();
+        };
+
+        window.filterUsers = function() {
+            const searchInput = document.getElementById('user-search-input');
+            const searchFilter = searchInput ? searchInput.value.toLowerCase() : '';
+            const userCards = document.querySelectorAll('.user-card');
+            let visibleCount = 0;
+            let proCount = 0;
+            let normalCount = 0;
+            
+            userCards.forEach(card => {
+                const email = card.getAttribute('data-email');
+                const isPro = card.getAttribute('data-is-pro') === 'true';
+                
+                // Check search filter
+                const matchesSearch = !searchFilter || email.includes(searchFilter);
+                
+                // Check PRO filter
+                let matchesProFilter = true;
+                if (currentUserFilter === 'pro') {
+                    matchesProFilter = isPro;
+                } else if (currentUserFilter === 'normal') {
+                    matchesProFilter = !isPro;
+                }
+                
+                // Show/hide card
+                if (matchesSearch && matchesProFilter) {
+                    card.style.display = '';
+                    visibleCount++;
+                    if (isPro) proCount++;
+                    else normalCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            // Update counts
+            const totalCountElement = document.getElementById('total-users-count');
+            const proCountElement = document.getElementById('pro-users-count');
+            const normalCountElement = document.getElementById('normal-users-count');
+            
+            if (totalCountElement) totalCountElement.textContent = visibleCount;
+            if (proCountElement) proCountElement.textContent = proCount;
+            if (normalCountElement) normalCountElement.textContent = normalCount;
+        };
+
+        window.adjustUserPoints = async function(userEmail, pointsChange) {
+            try {
+                const userDocRef = doc(db, 'user_points', userEmail);
+                const userDoc = await getDoc(userDocRef);
+                
+                let currentPoints = 0;
+                let currentSubmissions = 0;
+                
+                if (userDoc.exists()) {
+                    const data = userDoc.data();
+                    currentPoints = data.points || 0;
+                    currentSubmissions = data.totalSubmissions || 0;
+                }
+                
+                const newPoints = Math.max(0, currentPoints + pointsChange);
+                
+                await setDoc(userDocRef, {
+                    userEmail: userEmail,
+                    points: newPoints,
+                    totalSubmissions: currentSubmissions,
+                    lastUpdated: serverTimestamp()
+                }, { merge: true });
+                
+                loadUsers();
+                alert(`✅ ${pointsChange > 0 ? 'Added' : 'Removed'} ${Math.abs(pointsChange)} points`);
+                
+            } catch (error) {
+                alert('❌ Error: ' + error.message);
+            }
+        };
+
+        window.toggleProStatus = async function(userEmail, makeProStatus) {
+            try {
+                const userDocRef = doc(db, 'user_points', userEmail);
+                const userDoc = await getDoc(userDocRef);
+                
+                let currentData = {
+                    points: 0,
+                    totalSubmissions: 0
+                };
+                
+                if (userDoc.exists()) {
+                    const data = userDoc.data();
+                    currentData.points = data.points || 0;
+                    currentData.totalSubmissions = data.totalSubmissions || 0;
+                }
+                
+                await setDoc(userDocRef, {
+                    userEmail: userEmail,
+                    points: currentData.points,
+                    totalSubmissions: currentData.totalSubmissions,
+                    isPro: makeProStatus,
+                    lastUpdated: serverTimestamp()
+                }, { merge: true });
+                
+                loadUsers();
+                alert(`✅ ${makeProStatus ? 'Upgraded' : 'Removed Pro status'}`);
+                
+            } catch (error) {
+                alert('❌ Error: ' + error.message);
+            }
+        };
+
+        window.toggleTopikStatus = async function(userEmail, unlockTopik) {
+            try {
+                const userDocRef = doc(db, 'user_points', userEmail);
+                const userDoc = await getDoc(userDocRef);
+                
+                let currentData = {
+                    points: 0,
+                    totalSubmissions: 0,
+                    isPro: false
+                };
+                
+                if (userDoc.exists()) {
+                    const data = userDoc.data();
+                    currentData.points = data.points || 0;
+                    currentData.totalSubmissions = data.totalSubmissions || 0;
+                    currentData.isPro = data.isPro || false;
+                }
+                
+                await setDoc(userDocRef, {
+                    userEmail: userEmail,
+                    points: currentData.points,
+                    totalSubmissions: currentData.totalSubmissions,
+                    isPro: currentData.isPro,
+                    topikUnlocked: unlockTopik,
+                    lastUpdated: serverTimestamp()
+                }, { merge: true });
+                
+                loadUsers();
+                alert(`✅ TOPIK ${unlockTopik ? 'unlocked' : 'locked'}`);
+                
+            } catch (error) {
+                alert('❌ Error: ' + error.message);
+            }
+        };
+
+        // Points Editor Functions
+        window.showPointsEditor = function(userEmail) {
+            const editorId = 'points-editor-' + userEmail.replace(/[^a-zA-Z0-9]/g, '_');
+            const editor = document.getElementById(editorId);
+            if (editor) {
+                // Hide all other editors first
+                document.querySelectorAll('[id^="points-editor-"]').forEach(el => {
+                    if (el.id !== editorId) el.style.display = 'none';
+                });
+                editor.style.display = 'block';
+            }
+        };
+
+        window.hidePointsEditor = function(userEmail) {
+            const editorId = 'points-editor-' + userEmail.replace(/[^a-zA-Z0-9]/g, '_');
+            const editor = document.getElementById(editorId);
+            if (editor) {
+                editor.style.display = 'none';
+            }
+        };
+
+        window.savePointsEdit = async function(userEmail) {
+            try {
+                const inputId = 'points-input-' + userEmail.replace(/[^a-zA-Z0-9]/g, '_');
+                const input = document.getElementById(inputId);
+                const newPoints = parseInt(input.value);
+                
+                if (isNaN(newPoints) || newPoints < 0) {
+                    alert('❌ Please enter a valid number (0 or greater)');
+                    return;
+                }
+                
+                const userDocRef = doc(db, 'user_points', userEmail);
+                const userDoc = await getDoc(userDocRef);
+                
+                let currentData = {
+                    totalSubmissions: 0,
+                    isPro: false,
+                    topikUnlocked: false
+                };
+                
+                if (userDoc.exists()) {
+                    const data = userDoc.data();
+                    currentData.totalSubmissions = data.totalSubmissions || 0;
+                    currentData.isPro = data.isPro || false;
+                    currentData.topikUnlocked = data.topikUnlocked || false;
+                }
+                
+                await setDoc(userDocRef, {
+                    userEmail: userEmail,
+                    points: newPoints,
+                    totalSubmissions: currentData.totalSubmissions,
+                    isPro: currentData.isPro,
+                    topikUnlocked: currentData.topikUnlocked,
+                    lastUpdated: serverTimestamp()
+                }, { merge: true });
+                
+                hidePointsEditor(userEmail);
+                loadUsers();
+                alert(`✅ Points updated to ${newPoints}`);
+                
+            } catch (error) {
+                alert('❌ Error: ' + error.message);
+            }
+        };
+    </script>
+</body>
+</html>
