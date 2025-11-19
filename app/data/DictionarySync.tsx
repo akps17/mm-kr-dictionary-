@@ -261,7 +261,20 @@ export function mergeApprovedWords(
   });
   
   // Filter out entries without korean property and sort safely
-  return merged
-    .filter(entry => entry.korean && typeof entry.korean === 'string')
-    .sort((a, b) => (a.korean || '').localeCompare(b.korean || ''));
+  // Also ensure myanmar exists (required field)
+  const validEntries = merged.filter(entry => {
+    if (!entry) return false;
+    if (!entry.korean || typeof entry.korean !== 'string' || entry.korean.trim().length === 0) {
+      console.warn('Entry filtered: missing or invalid korean', entry.id, entry);
+      return false;
+    }
+    if (!entry.myanmar || typeof entry.myanmar !== 'string' || entry.myanmar.trim().length === 0) {
+      console.warn('Entry filtered: missing or invalid myanmar', entry.id, entry.korean);
+      return false;
+    }
+    return true;
+  });
+  
+  console.log(`Merged dictionary: ${merged.length} total, ${validEntries.length} valid after filtering`);
+  return validEntries.sort((a, b) => (a.korean || '').localeCompare(b.korean || ''));
 }

@@ -163,13 +163,20 @@ function HomeSearchScreen({ navigation }: { navigation: any }) {
       ? mergedDictionary
       : mergedDictionary.filter((entry) => {
           // Safely handle potentially undefined properties
-          const korean = entry.korean?.toLowerCase() || '';
-          const myanmar = entry.myanmar?.toLowerCase() || '';
-          const english = (entry.english ?? '').toLowerCase();
+          const korean = (entry.korean || '').trim().toLowerCase();
+          const myanmar = (entry.myanmar || '').trim().toLowerCase();
+          const english = ((entry.english || '').trim()).toLowerCase();
+          
+          // Skip entries without required fields
+          if (!korean || !myanmar) return false;
+          
+          // Normalize the query for better matching (remove extra spaces)
+          const cleanQuery = normalizedQuery.replace(/\s+/g, ' ').trim();
+          
           return (
-            korean.includes(normalizedQuery) ||
-            myanmar.includes(normalizedQuery) ||
-            english.includes(normalizedQuery)
+            korean.includes(cleanQuery) ||
+            myanmar.includes(cleanQuery) ||
+            (english && english.includes(cleanQuery))
           );
         });
 
