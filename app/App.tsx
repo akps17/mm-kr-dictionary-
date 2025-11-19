@@ -34,6 +34,11 @@ import { ProfileScreen } from './screens/ProfileScreen';
 import { LevelSelectionScreen } from './screens/LevelSelectionScreen';
 import { KoreanWritingScreen } from './screens/KoreanWritingScreen';
 import { BurmeseWritingScreen } from './screens/BurmeseWritingScreen';
+import { AIChatScreen } from './screens/AIChatScreen';
+import { TranslateScreen } from './screens/TranslateScreen';
+import { AboutScreen } from './screens/AboutScreen';
+import { ThemeScreen } from './screens/ThemeScreen';
+import { SettingsScreen } from './screens/SettingsScreen';
 import { DictionarySyncProvider, useDictionarySync, mergeApprovedWords } from './data/DictionarySync';
 import { UpdatesProvider, useUpdates } from './data/UpdatesContext';
 import { SearchBox } from './components/SearchBox';
@@ -43,7 +48,7 @@ import { transcribeWithOpenAI } from './data/stt';
 import { generateMCQ, generateTF, generateFlashcards, type DifficultyLevel } from './data/quiz';
 import { WordInputForm } from './components/WordInputForm';
 import { WordDetailScreen } from './screens/WordDetailScreen';
-import { GoogleTranslateProvider, OpenAIChatProvider, type ChatMessage } from './data/ai';
+import { OpenAIChatProvider, type ChatMessage } from './data/ai';
 
 export type DictionaryEntry = SharedDictionaryEntry;
 
@@ -127,11 +132,11 @@ function HomeSearchScreen({ navigation }: { navigation: any }) {
     const getValue = (entry: DictionaryEntry, field: SortPriority): string => {
       switch (field) {
         case 'korean':
-          return entry.korean;
+          return entry.korean || '';
         case 'myanmar':
-          return entry.myanmar;
+          return entry.myanmar || '';
         case 'english':
-          return entry.english ?? '';
+          return entry.english || '';
         default:
           return '';
       }
@@ -265,115 +270,6 @@ function HomeSearchScreen({ navigation }: { navigation: any }) {
               </View>
             </ScrollView>
           )}
-        </View>
-      </View>
-    </SafeAreaView>
-  );
-}
-
-function AIChatScreen() {
-  const C = useThemedColors();
-  const [messages, setMessages] = React.useState<ChatMessage[]>([]);
-  const [input, setInput] = React.useState('');
-  const apiKey = (global as any).expo?.config?.extra?.OPENAI_API_KEY ?? '';
-  const provider = React.useMemo(() => (apiKey ? new OpenAIChatProvider(apiKey) : null), [apiKey]);
-
-  async function send() {
-    if (!input.trim()) return;
-    const next: ChatMessage[] = [...messages, { role: 'user', content: input.trim() }];
-    setMessages(next);
-    setInput('');
-    if (!provider) {
-      setMessages((m) => [...m, { role: 'assistant', content: '(Set OPENAI_API_KEY to enable chat)' }]);
-      return;
-    }
-    try {
-      const reply = await provider.send(next);
-      setMessages((m) => [...m, reply]);
-    } catch (e: any) {
-      setMessages((m) => [...m, { role: 'assistant', content: `Error: ${e?.message ?? 'unknown'}` }]);
-    }
-  }
-
-  return (
-    <SafeAreaView style={[styles.safeArea, { backgroundColor: C.background }]}> 
-      <View style={{ flex: 1, padding: 16 }}>
-        <Text style={[styles.title, { color: C.textPrimary }]}>AI Chat</Text>
-        <View style={[styles.card, { flex: 1, backgroundColor: C.surface, borderColor: C.border }] }>
-          <ScrollView contentContainerStyle={{ paddingBottom: 8 }}>
-            {messages.map((m, idx) => (
-              <View key={idx} style={{ marginBottom: 8 }}>
-                <Text style={{ fontWeight: '700', color: C.textSecondary }}>{m.role === 'user' ? 'You' : 'AI'}</Text>
-                <Text style={{ color: C.textPrimary }}>{m.content}</Text>
-              </View>
-            ))}
-          </ScrollView>
-          <View style={{ flexDirection: 'row', gap: 8 }}>
-            <TextInput
-              value={input}
-              onChangeText={setInput}
-              placeholder="Type a message"
-              style={{ flex: 1, borderWidth: 1, borderColor: C.border, borderRadius: 8, paddingHorizontal: 10, paddingVertical: 8 }}
-            />
-            <Pressable onPress={send} style={[styles.primaryBtn, { backgroundColor: '#2563EB' }] }>
-              <Ionicons name="send" size={16} color="#fff" />
-              <Text style={styles.primaryBtnText}>Send</Text>
-            </Pressable>
-          </View>
-        </View>
-      </View>
-    </SafeAreaView>
-  );
-}
-
-function TranslateScreen() {
-  const C = useThemedColors();
-  const key = (global as any).expo?.config?.extra?.GOOGLE_TRANSLATE_API_KEY ?? '';
-  const provider = React.useMemo(() => new GoogleTranslateProvider(key), [key]);
-  const [text, setText] = React.useState('');
-  const [result, setResult] = React.useState('');
-  const [src, setSrc] = React.useState<'ko' | 'my' | 'en'>('ko');
-  const [dst, setDst] = React.useState<'ko' | 'my' | 'en'>('my');
-  const [busy, setBusy] = React.useState(false);
-
-  async function run() {
-    try {
-      setBusy(true);
-      const translated = await provider.translate(text, src, dst);
-      setResult(translated);
-    } catch (e: any) {
-      setResult(`Error: ${e?.message ?? 'unknown'}`);
-    } finally {
-      setBusy(false);
-    }
-  }
-
-  return (
-    <SafeAreaView style={[styles.safeArea, { backgroundColor: C.background }]}> 
-      <View style={{ flex: 1, padding: 16 }}>
-        <Text style={[styles.title, { color: C.textPrimary }]}>Translate</Text>
-        <View style={[styles.card, { backgroundColor: C.surface, borderColor: C.border, gap: 8 }] }>
-          <View style={{ flexDirection: 'row', gap: 8 }}>
-            <Pressable onPress={() => setSrc('ko')} style={[styles.pill, src === 'ko' && styles.pillActive] as any}><Text>KO</Text></Pressable>
-            <Pressable onPress={() => setSrc('my')} style={[styles.pill, src === 'my' && styles.pillActive] as any}><Text>MM</Text></Pressable>
-            <Pressable onPress={() => setSrc('en')} style={[styles.pill, src === 'en' && styles.pillActive] as any}><Text>EN</Text></Pressable>
-            <Ionicons name="swap-horizontal" size={20} color={C.textSecondary} style={{ marginHorizontal: 4 }} />
-            <Pressable onPress={() => setDst('ko')} style={[styles.pill, dst === 'ko' && styles.pillActive] as any}><Text>KO</Text></Pressable>
-            <Pressable onPress={() => setDst('my')} style={[styles.pill, dst === 'my' && styles.pillActive] as any}><Text>MM</Text></Pressable>
-            <Pressable onPress={() => setDst('en')} style={[styles.pill, dst === 'en' && styles.pillActive] as any}><Text>EN</Text></Pressable>
-          </View>
-          <TextInput
-            value={text}
-            onChangeText={setText}
-            placeholder="Enter text"
-            style={{ borderWidth: 1, borderColor: C.border, borderRadius: 8, padding: 10 }}
-            multiline
-          />
-          <Pressable onPress={run} style={[styles.primaryBtn, { backgroundColor: '#2563EB' }] }>
-            <Ionicons name="flash" size={16} color="#fff" />
-            <Text style={styles.primaryBtnText}>{busy ? 'Translating…' : 'Translate'}</Text>
-          </Pressable>
-          <Text style={{ color: C.textPrimary, marginTop: 4 }}>{result}</Text>
         </View>
       </View>
     </SafeAreaView>
@@ -1736,236 +1632,9 @@ function CheckUpdatesScreen() {
   );
 }
 
-function ThemeScreen() {
-  const C = useThemedColors();
-  const { settings, updateSetting } = useSettings();
-  const labels = i18nLabels[settings.uiLanguage];
-  
-  const Radio = ({ selected }: { selected: boolean }) => (
-    <Ionicons
-      name={selected ? 'radio-button-on' : 'radio-button-off'}
-      size={20}
-      color={selected ? '#2563EB' : C.textTertiary}
-      style={styles.optionIcon}
-    />
-  );
-  
-  return (
-    <SafeAreaView style={[styles.safeArea, { backgroundColor: C.background }]}>
-      <ScrollView contentContainerStyle={{ padding: 16 }}>
-        <View style={{ alignItems: 'center', marginBottom: 24 }}>
-          <View style={{ width: 80, height: 80, borderRadius: 16, marginBottom: 12, alignItems: 'center', justifyContent: 'center', backgroundColor: C.surface }}>
-            <Ionicons name="color-palette-outline" size={40} color={C.brand} />
-          </View>
-          <Text style={[styles.title, { color: C.textPrimary, marginTop: 12 }]}>{labels.navTheme}</Text>
-        </View>
-        
-        <View style={[styles.card, { borderColor: C.border, backgroundColor: C.surface, marginBottom: 12 }]}>
-          <Text style={[styles.sectionHeader, { color: C.textSecondary }]}>{labels.themeLabel}</Text>
-          
-          {/* Light Theme */}
-          <Pressable
-            onPress={() => updateSetting('theme', 'light')}
-            style={[styles.optionRow, settings.theme === 'light' && styles.optionRowSelected]}
-            android_ripple={{ color: '#E5E7EB' }}
-          >
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
-              <Ionicons name="sunny" size={24} color="#F59E0B" />
-              <Text style={[styles.optionLabel, { color: C.textPrimary }]}>
-                {settings.uiLanguage === 'myanmar' ? 'အလင်းရောင်' : settings.uiLanguage === 'korean' ? '라이트' : 'Light'}
-              </Text>
-            </View>
-            <Radio selected={settings.theme === 'light'} />
-          </Pressable>
-          
-          {/* Dark Theme */}
-          <Pressable
-            onPress={() => updateSetting('theme', 'dark')}
-            style={[styles.optionRow, settings.theme === 'dark' && styles.optionRowSelected]}
-            android_ripple={{ color: '#E5E7EB' }}
-          >
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
-              <Ionicons name="moon" size={24} color="#6366F1" />
-              <Text style={[styles.optionLabel, { color: C.textPrimary }]}>
-                {settings.uiLanguage === 'myanmar' ? 'အမှောင်ရောင်' : settings.uiLanguage === 'korean' ? '다크' : 'Dark'}
-              </Text>
-            </View>
-            <Radio selected={settings.theme === 'dark'} />
-          </Pressable>
-          
-          {/* System Default */}
-          <Pressable
-            onPress={() => updateSetting('theme', 'system')}
-            style={[styles.optionRow, settings.theme === 'system' && styles.optionRowSelected]}
-            android_ripple={{ color: '#E5E7EB' }}
-          >
-            <View style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
-              <Ionicons name="phone-portrait-outline" size={24} color="#10B981" />
-              <Text style={[styles.optionLabel, { color: C.textPrimary }]}>
-                {settings.uiLanguage === 'myanmar' ? 'စနစ်အတိုင်း' : settings.uiLanguage === 'korean' ? '시스템' : 'System'}
-              </Text>
-            </View>
-            <Radio selected={settings.theme === 'system'} />
-          </Pressable>
-        </View>
-        
-        {/* Info Card */}
-        <View style={[styles.card, { marginTop: 16, backgroundColor: C.surface, borderColor: C.border }]}>
-          <Text style={[styles.sectionTitle, { color: C.textSecondary }]}>
-            {settings.uiLanguage === 'myanmar' ? 'အချက်အလက်' : settings.uiLanguage === 'korean' ? '정보' : 'Info'}
-          </Text>
-          <Text style={[styles.aboutParagraph, { color: C.textPrimary, fontFamily: 'NotoSansMyanmar_400Regular' }]}>
-            {settings.uiLanguage === 'myanmar' 
-              ? '• အလင်းရောင်: အလင်းပုံစံကို အမြဲတမ်းသုံးမည်\n• အမှောင်ရောင်: အမှောင်ပုံစံကို အမြဲတမ်းသုံးမည်\n• စနစ်အတိုင်း: သင့်ဖုန်း၏ အရောင်အသွေးကို လိုက်နာမည်'
-              : settings.uiLanguage === 'korean'
-              ? '• 라이트: 밝은 테마를 항상 사용\n• 다크: 어두운 테마를 항상 사용\n• 시스템: 기기 설정을 따름'
-              : '• Light: Always use light theme\n• Dark: Always use dark theme\n• System: Follow device settings'}
-          </Text>
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-}
-
-function AboutScreen() {
-  const C = useThemedColors();
-  const intro = 'ကျွန်တော်တို့ရဲ့ Korean-Burmese Dictionary App ကိုအသုံးပြုတဲ့သူတွေကို ကြိုဆိုပါတယ်။';
-  const reason = 'မြန်မာဘာသာစကားနဲ့ ကိုရီးယားဘာသာစကားကြား တိုက်ရိုက် ဘာသာပြန်ရာတွင် ပြည့်စုံကောင်းမွန်တဲ့အဘိဓာန်မရှိသေးတဲ့အတွက် ဒီအက်ပ်ကိုဖန်တီးခဲ့ပါတယ်။';
-  const audience = 'ဒီအက်ပ်ကို ကိုရီးယားနိုင်ငံမှာ နေထိုင်သူ မြန်မာနိုင်ငံသားများ၊ ပညာသင်ကြားနေသူများ နဲ့ ဘာသာစကားလေ့လာသူများအတွက် ရည်ရွယ်ထားပါတယ်။';
-  const featuresTitle = 'အက်ပ်ရဲ့ အဓိက Features များ';
-  const bullets = [
-    'App Interface ကို မြန်မာ/ကိုရီးယား/အင်္ဂလိပ် ဘာသာဖြင့် လွယ်ကူစွာ အသုံးပြုနိုင်ခြင်း',
-    'ကိုရီးယားစကားနှင့် မြန်မာစကားကို တိုက်ရိုက်ရှာဖွေရန်၊ ပြန်ဆိုရန် အလွယ်တကူ အသုံးပြုနိုင်ခြင်း',
-    'လေ့လာသူများအတွက် အသုံးဝင်သော အသံထွက်၊ ဥပမာဝေါဟာရများ ထည့်သွင်းထားခြင်း',
-    'စကားလုံးရှာဖွေမှု အရှိန်မြှင့်တင်ရန် သုံးသပ်ချက်များနှင့် စာရင်းများ ပံ့ပိုးပေးခြင်း',
-    'အသုံးပြုသူများအနေနဲ့ ကျွန်တော်တို့ရဲ့ အဖွဲ့အစည်းကို ပံ့ပိုးနိုင်ခြင်းနှင့် အသစ်သော စကားလုံးများ၊ ဗျည်းများ (slangs) များကို တိုက်ရိုက်ထည့်သွင်းနိုင်ခြင်း',
-    'Quiz များ၊ Practice ဌာနများဖြင့် ဘာသာစကားကျွမ်းကျင်မှု တိုးတက်စေရန် ကူညီပေးခြင်း',
-    'Speaking Test အစီအစဉ်များ ဖြင့် စကားပြောနိုင်စွမ်း တိုးတက်စေရန် အခွင့်အရေးပေးခြင်း',
-    'နေ့စဉ်အသုံးပြုမှုအတွက် လွယ်ကူသော UI နှင့် ပေါ့ပေါ့ပါးပါး ရုပ်သဏ္ဍာန်',
-  ];
-  const contactTitle = 'ဆက်သွယ်ရန်';
-  const contactText = 'မေးမြန်းစရာများ၊ အကြံပြုလိုသောအချက်များရှိပါက ကျွန်တော့်ကို အီးမေးလ်ပို့ပါ - (AUNG KO KO)';
-  const email = 'aungko17101999@gmail.com';
-
-  return (
-    <SafeAreaView style={[styles.safeArea, { backgroundColor: C.background }] }>
-      <ScrollView contentContainerStyle={{ padding: 16 }}>
-        <Text style={[styles.aboutTitle, { color: C.textPrimary, fontFamily: 'NotoSansMyanmar_700Bold' }]}>About</Text>
-        <Image source={require('./assets/dictionary_icon.png')} style={styles.aboutLogo} />
-
-        <View style={[styles.card, { backgroundColor: C.surface, borderColor: C.border }]}>
-          <Text allowFontScaling={false} style={[styles.aboutParagraph, { color: C.textPrimary, fontFamily: 'NotoSansMyanmar_400Regular' }]}>{intro}</Text>
-          <Text allowFontScaling={false} style={[styles.aboutParagraph, { color: C.textPrimary, fontFamily: 'NotoSansMyanmar_400Regular' }]}>{reason}</Text>
-          <Text allowFontScaling={false} style={[styles.aboutParagraph, { color: C.textPrimary, fontFamily: 'NotoSansMyanmar_400Regular' }]}>{audience}</Text>
-
-          <Text style={[styles.sectionTitle, { marginTop: 8, color: C.textSecondary }]}>{featuresTitle}</Text>
-          {bullets.map((b, idx) => (
-            <View key={idx} style={styles.bulletRow}>
-              <Ionicons name="checkmark-circle" size={18} color="#10B981" style={{ marginTop: 2 }} />
-              <Text allowFontScaling={false} style={[styles.bulletText, { color: C.textPrimary, fontFamily: 'NotoSansMyanmar_400Regular' }]}>{b}</Text>
-            </View>
-          ))}
-        </View>
-
-        <View style={[styles.card, { marginTop: 16, backgroundColor: C.surface, borderColor: C.border }]}>
-          <Text style={[styles.sectionTitle, { color: C.textSecondary }]}>{contactTitle}</Text>
-          <Text allowFontScaling={false} style={[styles.aboutParagraph, { color: C.textPrimary, fontFamily: 'NotoSansMyanmar_400Regular' }]}>
-            {contactText} <Text style={{ color: '#2563EB' }} onPress={() => Linking.openURL(`mailto:${email}`)}>{email}</Text>
-          </Text>
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-}
-
-function SettingsScreen() {
-  const { settings, updateSetting } = useSettings();
-  const C = useThemedColors();
-
-  const Radio = ({ selected }: { selected: boolean }) => (
-    <Ionicons
-      name={selected ? 'radio-button-on' : 'radio-button-off'}
-      size={20}
-      color={selected ? '#2563EB' : C.textTertiary}
-      style={styles.optionIcon}
-    />
-  );
-
-  const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
-    <View style={[styles.card, { borderColor: C.border, backgroundColor: C.surface, marginBottom: 12 }] }>
-      <Text style={[styles.sectionHeader, { color: C.textSecondary }]}>{title}</Text>
-      {children}
-    </View>
-  );
-
-  const LanguageOptions = (
-    <Section title="Language">
-      {(['myanmar','korean','english'] as unknown as AppLanguage[]).map((lang, idx) => {
-        const selected = settings.uiLanguage === lang;
-        return (
-          <Pressable
-            key={lang}
-            onPress={() => updateSetting('uiLanguage', lang)}
-            style={[styles.optionRow, selected && styles.optionRowSelected]}
-            android_ripple={{ color: '#E5E7EB' }}
-          >
-            <Text style={[styles.optionLabel, { color: C.textPrimary }]}>{NATIVE_LANGUAGE_NAME[lang]}</Text>
-            <Radio selected={selected} />
-          </Pressable>
-        );
-      })}
-    </Section>
-  );
-
-  const SortOptions = (
-    <Section title="Sort priority">
-      {(['korean','myanmar','english'] as SortPriority[]).map((sort) => {
-        const selected = settings.sortBy === sort;
-        return (
-          <Pressable
-            key={sort}
-            onPress={() => updateSetting('sortBy', sort)}
-            style={[styles.optionRow, selected && styles.optionRowSelected]}
-            android_ripple={{ color: '#E5E7EB' }}
-          >
-            <Text style={[styles.optionLabel, { color: C.textPrimary }]}>{sort}</Text>
-            <Radio selected={selected} />
-          </Pressable>
-        );
-      })}
-    </Section>
-  );
-
-  const FontSizeOptions = (
-    <Section title="Font size">
-      {(['small','default','large'] as FontSize[]).map((size) => {
-        const selected = settings.fontSize === size;
-        return (
-          <Pressable
-            key={size}
-            onPress={() => updateSetting('fontSize', size)}
-            style={[styles.optionRow, selected && styles.optionRowSelected]}
-            android_ripple={{ color: '#E5E7EB' }}
-          >
-            <Text style={[styles.optionLabel, { color: C.textPrimary }]}>{size}</Text>
-            <Radio selected={selected} />
-          </Pressable>
-        );
-      })}
-    </Section>
-  );
-
-  return (
-    <SafeAreaView style={[styles.safeArea, { backgroundColor: C.background }]}>
-      <View style={[styles.container, { paddingHorizontal: 16 }]}>        
-        <Text style={[styles.title, { color: C.textPrimary }]}>Settings</Text>
-        {LanguageOptions}
-        {SortOptions}
-        {FontSizeOptions}
-      </View>
-    </SafeAreaView>
-  );
-}
+// ThemeScreen moved to separate file: app/screens/ThemeScreen.tsx
+// AboutScreen moved to separate file: app/screens/AboutScreen.tsx
+// SettingsScreen moved to separate file: app/screens/SettingsScreen.tsx
 
 function FavoriteButton({ entryId }: { entryId: string }) {
   const { isFavorite, toggleFavorite } = useLibrary();
@@ -2003,7 +1672,7 @@ function FavoritesScreen() {
 
   // Filter favorites from merged dictionary
   const items = mergedDictionary.filter((d) => favoriteIds.has(d.id));
-  const itemsSorted = [...items].sort((a, b) => a.korean.localeCompare(b.korean, 'ko', { sensitivity: 'base' }));
+  const itemsSorted = [...items].sort((a, b) => (a.korean || '').localeCompare(b.korean || '', 'ko', { sensitivity: 'base' }));
 
   // Search functionality
   const [searchQuery, setSearchQuery] = React.useState('');

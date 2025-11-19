@@ -160,7 +160,7 @@ export function UpdatesProvider({ children }: { children: React.ReactNode }) {
       const allEntries = [...dictionaryEntries, ...newEntries];
       
       // Sort by Korean alphabetically
-      allEntries.sort((a, b) => a.korean.localeCompare(b.korean));
+      allEntries.sort((a, b) => (a.korean || '').localeCompare(b.korean || ''));
       
       const fileContent = `import type { DictionaryEntry } from '../App';
 

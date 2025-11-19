@@ -265,5 +265,5 @@ export function mergeApprovedWords(
   // Filter out entries without korean property and sort safely
   return merged
     .filter(entry => entry.korean && typeof entry.korean === 'string')
-    .sort((a, b) => a.korean.localeCompare(b.korean));
+    .sort((a, b) => (a.korean || '').localeCompare(b.korean || ''));
 }

@@ -30,6 +30,40 @@ export class GoogleTranslateProvider implements TranslationProvider {
   }
 }
 
+// Google Gemini AI Chat provider
+export class GoogleGeminiChatProvider implements ChatProvider {
+  constructor(private apiKey: string) {}
+  
+  async send(messages: ChatMessage[], opts?: { model?: string }): Promise<ChatMessage> {
+    const model = opts?.model ?? 'gemini-pro';
+    
+    // Convert messages to Gemini format
+    const contents = messages
+      .filter(m => m.role !== 'system')
+      .map(m => ({
+        role: m.role === 'user' ? 'user' : 'model',
+        parts: [{ text: m.content }]
+      }));
+    
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${this.apiKey}`;
+    
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ contents }),
+    });
+    
+    if (!res.ok) {
+      const t = await res.text();
+      throw new Error(`Gemini API failed: ${res.status} ${t}`);
+    }
+    
+    const json = await res.json();
+    const content = json.candidates?.[0]?.content?.parts?.[0]?.text ?? 'No response';
+    return { role: 'assistant', content };
+  }
+}
+
 // OpenAI Chat provider (placeholder; key provided later)
 export class OpenAIChatProvider implements ChatProvider {
   constructor(private apiKey: string) {}

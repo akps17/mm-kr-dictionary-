@@ -408,7 +408,7 @@ code dictionary.ts
             const combinedEntries = [...activeStaticWords, ...newEntries];
             
             // Sort alphabetically by Korean first
-            combinedEntries.sort((a, b) => a.korean.localeCompare(b.korean));
+            combinedEntries.sort((a, b) => (a.korean || '').localeCompare(b.korean || ''));
             
             // Re-assign sequential IDs after sorting
             const allEntries = combinedEntries.map((entry, index) => ({
