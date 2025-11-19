@@ -13,8 +13,9 @@ Try it now: **[https://mm-krdictionary.vercel.app](https://mm-krdictionary.verce
 Scan the QR code with your camera (iOS) or Expo Go app (Android) to try the mobile app!
 
 ## Scripts
-- yarn install       ## 1st
-- yarn start         ## 2nd
+- cd app             ##1st
+- yarn install       ## 2nd
+- yarn start         ## 3rd
 - npx expo start
 ## Error Occuor , run yarn web directly
 - yarn ios / yarn android / yarn web
