@@ -14,33 +14,33 @@ const MYANMAR_CONSONANTS = [
   { myanmar: 'က', romanization: 'ka', korean: '까', name: 'Ka' },
   { myanmar: 'ခ', romanization: 'kha', korean: '카', name: 'Kha' },
   { myanmar: 'ဂ', romanization: 'ga', korean: '가', name: 'Ga' },
-  { myanmar: 'ဃ', romanization: 'gha', korean: '가', name: 'Gha' },
+  { myanmar: 'ဃ', romanization: 'ga', korean: '가', name: 'Gha' },
   { myanmar: 'င', romanization: 'nga', korean: '응아', name: 'Nga' },
-  { myanmar: 'စ', romanization: 'sa', korean: '싸', name: 'Sa' },
-  { myanmar: 'ဆ', romanization: 'hsa', korean: '싸', name: 'Hsa' },
-  { myanmar: 'ဇ', romanization: 'za', korean: '자', name: 'Za' },
-  { myanmar: 'ဈ', romanization: 'zha', korean: '자', name: 'Zha' },
+  { myanmar: 'စ', romanization: 'ssa', korean: '싸', name: 'Sa' },
+  { myanmar: 'ဆ', romanization: 'ssa', korean: '싸', name: 'Hsa' },
+  { myanmar: 'ဇ', romanization: 'ja', korean: '자', name: 'Za' },
+  { myanmar: 'ဈ', romanization: 'ja', korean: '자', name: 'Zha' },
   { myanmar: 'ည', romanization: 'nya', korean: '냐', name: 'Nya' },
-  { myanmar: 'ဋ', romanization: 'ta', korean: '따', name: 'Ta' },
-  { myanmar: 'ဌ', romanization: 'hta', korean: '타', name: 'Hta' },
+  { myanmar: 'ဋ', romanization: 'tta', korean: '따', name: 'Ta' },
+  { myanmar: 'ဌ', romanization: 'ta', korean: '타', name: 'Hta' },
   { myanmar: 'ဍ', romanization: 'da', korean: '다', name: 'Da' },
-  { myanmar: 'ဎ', romanization: 'dha', korean: '다', name: 'Dha' },
+  { myanmar: 'ဎ', romanization: 'da', korean: '다', name: 'Dha' },
   { myanmar: 'ဏ', romanization: 'na', korean: '나', name: 'Na' },
-  { myanmar: 'တ', romanization: 'ta', korean: '따', name: 'Ta' },
-  { myanmar: 'ထ', romanization: 'hta', korean: '타', name: 'Hta' },
+  { myanmar: 'တ', romanization: 'tta', korean: '따', name: 'Ta' },
+  { myanmar: 'ထ', romanization: 'ta', korean: '타', name: 'Hta' },
   { myanmar: 'ဒ', romanization: 'da', korean: '다', name: 'Da' },
-  { myanmar: 'ဓ', romanization: 'dha', korean: '다', name: 'Dha' },
+  { myanmar: 'ဓ', romanization: 'da', korean: '다', name: 'Dha' },
   { myanmar: 'န', romanization: 'na', korean: '나', name: 'Na' },
-  { myanmar: 'ပ', romanization: 'pa', korean: '빠', name: 'Pa' },
-  { myanmar: 'ဖ', romanization: 'hpa', korean: '파', name: 'Hpa' },
+  { myanmar: 'ပ', romanization: 'ppa', korean: '빠', name: 'Pa' },
+  { myanmar: 'ဖ', romanization: 'pa', korean: '파', name: 'Hpa' },
   { myanmar: 'ဗ', romanization: 'ba', korean: '바', name: 'Ba' },
-  { myanmar: 'ဘ', romanization: 'bha', korean: '바', name: 'Bha' },
+  { myanmar: 'ဘ', romanization: 'ba', korean: '바', name: 'Bha' },
   { myanmar: 'မ', romanization: 'ma', korean: '마', name: 'Ma' },
   { myanmar: 'ယ', romanization: 'ya', korean: '야', name: 'Ya' },
-  { myanmar: 'ရ', romanization: 'ya/ra', korean: '야/라', name: 'Ya/Ra' },
+  { myanmar: 'ရ', romanization: 'ya-ra', korean: '야/라', name: 'Ya/Ra' },
   { myanmar: 'လ', romanization: 'la', korean: '라', name: 'La' },
   { myanmar: 'ဝ', romanization: 'wa', korean: '와', name: 'Wa' },
-  { myanmar: 'သ', romanization: 'tha', korean: '타', name: 'Tha' },
+  { myanmar: 'သ', romanization: 'ta', korean: '타', name: 'Tha' },
   { myanmar: 'ဟ', romanization: 'ha', korean: '하', name: 'Ha' },
   { myanmar: 'ဠ', romanization: 'la', korean: '라', name: 'La' },
   { myanmar: 'အ', romanization: 'a', korean: '아', name: 'A' },
@@ -48,20 +48,20 @@ const MYANMAR_CONSONANTS = [
 
 // Myanmar Vowels (သရ)
 const MYANMAR_VOWELS = [
-  { myanmar: 'အ', romanization: 'a', korean: '아', example: 'က → ka' },
-  { myanmar: 'အာ', romanization: 'a:', korean: '아:', example: 'ကာ → ka:' },
-  { myanmar: 'ိ', romanization: 'i', korean: '이', example: 'ကိ → ki' },
-  { myanmar: 'ီ', romanization: 'i:', korean: '이:', example: 'ကီ → ki:' },
-  { myanmar: 'ု', romanization: 'u', korean: '우', example: 'ကု → ku' },
-  { myanmar: 'ူ', romanization: 'u:', korean: '우:', example: 'ကူ → ku:' },
-  { myanmar: 'ေ', romanization: 'e', korean: '에', example: 'ကေ → ke' },
-  { myanmar: 'ဲ', romanization: 'ai', korean: '아이', example: 'ကဲ → kai' },
-  { myanmar: 'ော', romanization: 'aw', korean: '오', example: 'ကော → kaw' },
-  { myanmar: 'ော်', romanization: 'aw', korean: '오', example: 'ကော် → kaw' },
-  { myanmar: 'ို', romanization: 'o', korean: '오', example: 'ကို → ko' },
-  { myanmar: '်', romanization: 'asat (kill)', korean: '묵음', example: 'က် → k' },
-  { myanmar: 'ံ', romanization: 'anusvara', korean: '응', example: 'ကံ → kan' },
-  { myanmar: 'း', romanization: 'visarga', korean: ':', example: 'ကး → ka:' },
+  { myanmar: 'အ', romanization: 'a', korean: '아', example: 'က → kka' },
+  { myanmar: 'အာ', romanization: 'aa', korean: '아:', example: 'ကာ → kkaa' },
+  { myanmar: 'ိ', romanization: 'i', korean: '이', example: 'ကိ → kki' },
+  { myanmar: 'ီ', romanization: 'ii', korean: '이:', example: 'ကီ → kkii' },
+  { myanmar: 'ု', romanization: 'u', korean: '우', example: 'ကု → kku' },
+  { myanmar: 'ူ', romanization: 'uu', korean: '우:', example: 'ကူ → kkuu' },
+  { myanmar: 'ေ', romanization: 'e', korean: '에', example: 'ကေ → kke' },
+  { myanmar: 'ဲ', romanization: 'ai', korean: '에', example: 'ကဲ → kkai' },
+  { myanmar: 'ော', romanization: 'o', korean: '오', example: 'ကော → kko' },
+  { myanmar: 'ော်', romanization: 'o', korean: '어', example: 'ကော် → kko' },
+  { myanmar: 'ို', romanization: 'o', korean: '오', example: 'ကို → kko' },
+  { myanmar: '်', romanization: 'silent', korean: '묵음', example: 'က် → k' },
+  { myanmar: 'ံ', romanization: 'ng', korean: '응', example: 'ကံ → kkang' },
+  { myanmar: 'း', romanization: 'long', korean: ':', example: 'ကး → kkaa' },
 ];
 
 export function BurmeseWritingScreen({ navigation }: BurmeseWritingScreenProps) {
@@ -101,15 +101,16 @@ export function BurmeseWritingScreen({ navigation }: BurmeseWritingScreenProps) 
 
   const data = activeTab === 'consonants' ? MYANMAR_CONSONANTS : MYANMAR_VOWELS;
 
-  const speakCharacter = (character: string, romanization: string) => {
+  const speakCharacter = async (character: string, romanization: string, korean: string) => {
     // Stop any ongoing speech
     Speech.stop();
     
-    // Speak the Myanmar character with Myanmar locale
-    Speech.speak(character, {
-      language: 'my-MM', // Myanmar language code
+    // Speak the Korean equivalent with Korean voice
+    // This sounds much better than English romanization!
+    Speech.speak(korean, {
+      language: 'ko-KR', // Korean voice
       pitch: 1.0,
-      rate: 0.75, // Slightly slower for learning
+      rate: 0.75,
     });
   };
 
@@ -117,10 +118,24 @@ export function BurmeseWritingScreen({ navigation }: BurmeseWritingScreenProps) 
     <SafeAreaView style={[styles.safeArea, { backgroundColor: C.background }]}>
       {/* Header */}
       <View style={{ padding: 20, paddingBottom: 12 }}>
-        <Text style={[styles.title, { color: C.textPrimary }]}>
-          {getTitle()}
-        </Text>
-        <Text style={{ color: C.textSecondary, marginTop: 4 }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 8 }}>
+          <Pressable
+            onPress={() => navigation.goBack()}
+            style={({ pressed }) => [
+              { 
+                padding: 8, 
+                marginLeft: -8,
+                opacity: pressed ? 0.5 : 1 
+              }
+            ]}
+          >
+            <Ionicons name="arrow-back" size={24} color={C.textPrimary} />
+          </Pressable>
+          <Text style={[styles.title, { color: C.textPrimary, marginLeft: 8 }]}>
+            {getTitle()}
+          </Text>
+        </View>
+        <Text style={{ color: C.textSecondary, marginLeft: 32 }}>
           {getSubtitle()}
         </Text>
       </View>
@@ -206,7 +221,7 @@ export function BurmeseWritingScreen({ navigation }: BurmeseWritingScreenProps) 
           {data.map((item, index) => (
             <Pressable
               key={index}
-              onPress={() => speakCharacter(item.myanmar, item.romanization)}
+              onPress={() => speakCharacter(item.myanmar, item.romanization, item.korean)}
               style={({ pressed }) => [
                 styles.card, 
                 { 
@@ -248,7 +263,7 @@ export function BurmeseWritingScreen({ navigation }: BurmeseWritingScreenProps) 
               ? 'အက္ခရာများကို နှိပ်၍ အသံထွက် နားထောင်ပါ' 
               : settings.uiLanguage === 'korean' 
               ? '문자를 탭하여 발음을 들어보세요' 
-              : 'Tap any character to hear its pronunciation'}
+              : 'Tap any character to hear pronunciation '}
           </Text>
         </View>
       </ScrollView>

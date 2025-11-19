@@ -186,7 +186,7 @@ export function AuthScreen() {
             onPress={handleSubmit}
             disabled={loading}
           >
-            <Text style={[styles.submitButtonText, { color: C.surface }]}>
+            <Text style={[styles.submitButtonText, { color: '#FFFFFF' }]}>
               {loading ? 'Please wait...' : (isLogin ? 'Sign In' : 'Sign Up')}
             </Text>
           </TouchableOpacity>
@@ -248,10 +248,15 @@ const styles = StyleSheet.create({
   inputWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
-    borderWidth: 1,
-    borderRadius: 12,
+    borderWidth: 1.5,
+    borderRadius: 14,
     paddingHorizontal: 16,
-    height: 50,
+    height: 52,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.05,
+    shadowRadius: 4,
+    elevation: 1,
   },
   inputIcon: {
     marginRight: 12,
@@ -264,11 +269,16 @@ const styles = StyleSheet.create({
     padding: 4,
   },
   submitButton: {
-    height: 50,
-    borderRadius: 12,
+    height: 52,
+    borderRadius: 16,
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 20,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 10,
+    elevation: 5,
   },
   submitButtonDisabled: {
     opacity: 0.6,
@@ -276,6 +286,7 @@ const styles = StyleSheet.create({
   submitButtonText: {
     fontSize: 16,
     fontWeight: 'bold',
+    letterSpacing: 0.5,
   },
   toggleContainer: {
     flexDirection: 'row',

@@ -59,8 +59,18 @@ function useResponsiveLayout() {
 }
 
 function HomeStack() {
+  const C = useThemedColors();
+  
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: C.surface,
+        },
+        headerTintColor: C.textPrimary,
+        headerShadowVisible: false,
+      }}
+    >
       <Stack.Screen 
         name="HomeSearch" 
         component={HomeSearchScreen} 
@@ -524,7 +534,7 @@ function getMotivation(score: number, total: number, uiLang: 'english' | 'myanma
   return pick(en);
 }
 
-function MultipleChoiceQuizScreen({ route }: { route: any }) {
+function MultipleChoiceQuizScreen({ route, navigation }: { route: any; navigation: any }) {
   const C = useThemedColors();
   const { approvedWords } = useDictionarySync();
   const selectedLevel: DifficultyLevel = route?.params?.selectedLevel || 'all';
@@ -640,11 +650,26 @@ function MultipleChoiceQuizScreen({ route }: { route: any }) {
   return (
     <SafeAreaView style={[styles.safeArea, { backgroundColor: C.background }]}> 
       <View style={{ padding: 16, position: 'relative', paddingTop: 56 }}>
-        <View style={styles.timerChip}>
-          <Ionicons name="time-outline" size={16} color="#111827" />
-          <Text style={{ color: '#111827', fontWeight: '700' }}>{timeLeft}s</Text>
+        <Pressable
+          onPress={() => navigation.goBack()}
+          style={({ pressed }) => [
+            { 
+              position: 'absolute',
+              top: 16,
+              left: 16,
+              padding: 8,
+              zIndex: 10,
+              opacity: pressed ? 0.5 : 1 
+            }
+          ]}
+        >
+          <Ionicons name="arrow-back" size={24} color={C.textPrimary} />
+        </Pressable>
+        <View style={[styles.timerChip, { backgroundColor: C.surface, borderColor: C.border, borderWidth: 1 }]}>
+          <Ionicons name="time-outline" size={16} color={C.brand} />
+          <Text style={{ color: C.textPrimary, fontWeight: '700' }}>{timeLeft}s</Text>
         </View>
-        <Text style={{ color: C.textTertiary, textAlign: 'center', marginTop: 6, marginBottom: 12, paddingRight: 72 }}>{labels.quizMCQHelp}</Text>
+        <Text style={{ color: C.textTertiary, textAlign: 'center', marginTop: 6, marginBottom: 12, paddingLeft: 40, paddingRight: 72 }}>{labels.quizMCQHelp}</Text>
         <Text
           style={{
             color: C.textPrimary,
@@ -682,7 +707,7 @@ function MultipleChoiceQuizScreen({ route }: { route: any }) {
   );
 }
 
-function TrueFalseQuizScreen({ route }: { route: any }) {
+function TrueFalseQuizScreen({ route, navigation }: { route: any; navigation: any }) {
   const C = useThemedColors();
   const { approvedWords } = useDictionarySync();
   const selectedLevel: DifficultyLevel = route?.params?.selectedLevel || 'all';
@@ -754,11 +779,26 @@ function TrueFalseQuizScreen({ route }: { route: any }) {
   return (
     <SafeAreaView style={[styles.safeArea, { backgroundColor: C.background }]}> 
       <View style={{ flex: 1, padding: 16, paddingTop: 56 }}>
-        <View style={[styles.timerChip, { position: 'absolute', right: 16, top: 16 }]}>
-          <Ionicons name="time-outline" size={16} color="#111827" />
-          <Text style={{ color: '#111827', fontWeight: '700' }}>{timeLeft}s</Text>
+        <Pressable
+          onPress={() => navigation.goBack()}
+          style={({ pressed }) => [
+            { 
+              position: 'absolute',
+              top: 16,
+              left: 16,
+              padding: 8,
+              zIndex: 10,
+              opacity: pressed ? 0.5 : 1 
+            }
+          ]}
+        >
+          <Ionicons name="arrow-back" size={24} color={C.textPrimary} />
+        </Pressable>
+        <View style={[styles.timerChip, { position: 'absolute', right: 16, top: 16, backgroundColor: C.surface, borderColor: C.border, borderWidth: 1 }]}>
+          <Ionicons name="time-outline" size={16} color={C.brand} />
+          <Text style={{ color: C.textPrimary, fontWeight: '700' }}>{timeLeft}s</Text>
         </View>
-        <Text style={{ color: C.textTertiary, textAlign: 'center', marginTop: 6, marginBottom: 12, paddingRight: 72 }}>{labels2.quizTFHelp}</Text>
+        <Text style={{ color: C.textTertiary, textAlign: 'center', marginTop: 6, marginBottom: 12, paddingLeft: 40, paddingRight: 72 }}>{labels2.quizTFHelp}</Text>
         <View style={{ flex: 1, justifyContent: 'center' }}>
           <Text
             style={{
@@ -788,7 +828,7 @@ function TrueFalseQuizScreen({ route }: { route: any }) {
   );
 }
 
-function FlashcardsScreen({ route }: { route: any }) {
+function FlashcardsScreen({ route, navigation }: { route: any; navigation: any }) {
   const C = useThemedColors();
   const { approvedWords } = useDictionarySync();
   const selectedLevel: DifficultyLevel = route?.params?.selectedLevel || 'all';
@@ -834,13 +874,34 @@ function FlashcardsScreen({ route }: { route: any }) {
   const labels3 = i18nLabels[s3.uiLanguage];
   return (
     <SafeAreaView style={[styles.safeArea, { backgroundColor: C.background }]}>
-      <View style={{ flex: 1, padding: 16 }}>
+      <View style={{ flex: 1, padding: 16, paddingTop: 56 }}>
+        <Pressable
+          onPress={() => navigation.goBack()}
+          style={({ pressed }) => [
+            { 
+              position: 'absolute',
+              top: 16,
+              left: 16,
+              padding: 8,
+              zIndex: 10,
+              opacity: pressed ? 0.5 : 1 
+            }
+          ]}
+        >
+          <Ionicons name="arrow-back" size={24} color={C.textPrimary} />
+        </Pressable>
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <Text style={{ color: C.textTertiary, textAlign: 'center', marginBottom: 12 }}>{labels3.flashHelp}</Text>
+          <Text style={{ color: C.textTertiary, textAlign: 'center', marginBottom: 12, paddingHorizontal: 40 }}>{labels3.flashHelp}</Text>
           <Pressable
             onPress={() => setFlipped((f) => !f)}
             hitSlop={8}
-            style={styles.flashcard}
+            style={[
+              styles.flashcard,
+              {
+                backgroundColor: C.surface,
+                borderColor: C.border,
+              }
+            ]}
             accessibilityRole="button"
           >
             <Text
@@ -883,9 +944,19 @@ function PlaceholderScreen({ title }: { title: string }) {
 //practice tabs with level
 const Tab = createBottomTabNavigator();
 function PracticeQuizTabs({ route }: { route: any }) {
+  const C = useThemedColors();
+  
   return (
     <Tab.Navigator 
-      screenOptions={{ headerShown: false }}
+      screenOptions={{ 
+        headerShown: false,
+        tabBarStyle: {
+          backgroundColor: C.surface,
+          borderTopColor: C.border,
+        },
+        tabBarActiveTintColor: C.brand,
+        tabBarInactiveTintColor: C.textSecondary,
+      }}
     >
       <Tab.Screen 
         name="Quiz (MCQ)" 
@@ -933,8 +1004,18 @@ function PracticeQuizTabs({ route }: { route: any }) {
 // Practice Stack Navigator (Level Selection -> Quiz Tabs or Writing Screens)
 const PracticeStack = createNativeStackNavigator();
 function PracticeTabs() {
+  const C = useThemedColors();
+  
   return (
-    <PracticeStack.Navigator screenOptions={{ headerShown: false }}>
+    <PracticeStack.Navigator 
+      screenOptions={{ 
+        headerShown: false,
+        headerStyle: {
+          backgroundColor: C.surface,
+        },
+        headerTintColor: C.textPrimary,
+      }}
+    >
       <PracticeStack.Screen name="LevelSelection" component={LevelSelectionScreen} />
       <PracticeStack.Screen name="PracticeTabs" component={PracticeQuizTabs} />
       <PracticeStack.Screen name="KoreanWriting" component={KoreanWritingScreen} />
@@ -976,15 +1057,19 @@ function AppDrawerContent(props: any) {
   const labels = i18nLabels[settings.uiLanguage];
   
   return (
-    <DrawerContentScrollView {...props} contentContainerStyle={{ flex: 1 }}>
+    <DrawerContentScrollView 
+      {...props} 
+      contentContainerStyle={{ flex: 1 }}
+      style={{ backgroundColor: C.background }}
+    >
       {/* User Profile Header */}
       {isAuthenticated && user && (
         <View style={{
           padding: 20,
-          backgroundColor: C.surface,
-          borderBottomWidth: 1,
-          borderBottomColor: C.border,
-          marginBottom: 8,
+          backgroundColor: 'transparent',
+          borderBottomWidth: 0.5,
+          borderBottomColor: C.border + '60',
+          marginBottom: 12,
         }}>
           <Pressable
             onPress={() => {
@@ -1044,16 +1129,16 @@ function AppDrawerContent(props: any) {
               alignItems: 'center',
               justifyContent: 'center',
               gap: 6,
-              paddingVertical: 8,
+              paddingVertical: 10,
               paddingHorizontal: 12,
               borderRadius: 8,
-              backgroundColor: pressed ? C.border : 'transparent',
+              backgroundColor: pressed ? C.border + '50' : C.surface,
               borderWidth: 1,
               borderColor: C.border,
             })}
           >
-            <Ionicons name="log-out-outline" size={16} color={C.textSecondary} />
-            <Text style={{ color: C.textSecondary, fontSize: 13, fontWeight: '500' }}>
+            <Ionicons name="log-out-outline" size={16} color={C.textPrimary} />
+            <Text style={{ color: C.textPrimary, fontSize: 13, fontWeight: '500' }}>
               {settings.uiLanguage === 'myanmar' ? 'ထွက်မည်' : settings.uiLanguage === 'korean' ? '로그아웃' : 'Logout'}
             </Text>
           </Pressable>
@@ -1062,122 +1147,354 @@ function AppDrawerContent(props: any) {
       
       {/* Menu Items */}
       <View style={{ flex: 1 }}>
-        <DrawerItem label={labels.navHome} onPress={() => props.navigation.navigate('Home')} icon={({color, size}) => (<Ionicons name="home-outline" size={size} color={color} />)} />
-        <DrawerItem label={labels.navPractice} onPress={() => props.navigation.navigate('Practice')} icon={({color, size}) => (<Ionicons name="school-outline" size={size} color={color} />)} />
-        <DrawerItem label={labels.navFavorites} onPress={() => props.navigation.navigate('Favorites')} icon={({color, size}) => (<Ionicons name="heart-outline" size={size} color={color} />)} />
-        <DrawerItem label={labels.navHistory} onPress={() => props.navigation.navigate('History')} icon={({color, size}) => (<Ionicons name="time-outline" size={size} color={color} />)} />
-        <DrawerItem label={labels.navSettings} onPress={() => props.navigation.navigate('Settings')} icon={({color, size}) => (<Ionicons name="settings-outline" size={size} color={color} />)} />
-        <DrawerItem label={'AI Chat'} onPress={() => props.navigation.navigate('AI Chat')} icon={({color, size}) => (<Ionicons name="chatbubble-ellipses-outline" size={size} color={color} />)} />
-        <DrawerItem label={'Translate'} onPress={() => props.navigation.navigate('Translate')} icon={({color, size}) => (<Ionicons name="swap-horizontal-outline" size={size} color={color} />)} />
-        <DrawerItem label={labels.navCheckUpdates} onPress={() => props.navigation.navigate('Check Updates')} icon={({color, size}) => (<Ionicons name="sync-outline" size={size} color={color} />)} />
-        <DrawerItem label={labels.navInputNewWords} onPress={() => props.navigation.navigate('Input New Words')} icon={({color, size}) => (<Ionicons name="add-circle-outline" size={size} color={color} />)} />
-        <DrawerItem label={labels.navTheme} onPress={() => props.navigation.navigate('Theme')} icon={({color, size}) => (<Ionicons name="color-palette-outline" size={size} color={color} />)} />
-        <DrawerItem label={labels.navAbout} onPress={() => props.navigation.navigate('About')} icon={({color, size}) => (<Ionicons name="information-circle-outline" size={size} color={color} />)} />
+        <DrawerItem 
+          label={labels.navHome} 
+          onPress={() => props.navigation.navigate('Home')} 
+          icon={({color, size}) => (<Ionicons name="home-outline" size={size} color={color} />)}
+          activeTintColor={C.brand}
+          inactiveTintColor={C.textPrimary}
+          labelStyle={{ color: C.textPrimary }}
+        />
+        <DrawerItem 
+          label={labels.navPractice} 
+          onPress={() => props.navigation.navigate('Practice')} 
+          icon={({color, size}) => (<Ionicons name="school-outline" size={size} color={color} />)}
+          activeTintColor={C.brand}
+          inactiveTintColor={C.textPrimary}
+          labelStyle={{ color: C.textPrimary }}
+        />
+        <DrawerItem 
+          label={labels.navFavorites} 
+          onPress={() => props.navigation.navigate('Favorites')} 
+          icon={({color, size}) => (<Ionicons name="heart-outline" size={size} color={color} />)}
+          activeTintColor={C.brand}
+          inactiveTintColor={C.textPrimary}
+          labelStyle={{ color: C.textPrimary }}
+        />
+        <DrawerItem 
+          label={labels.navHistory} 
+          onPress={() => props.navigation.navigate('History')} 
+          icon={({color, size}) => (<Ionicons name="time-outline" size={size} color={color} />)}
+          activeTintColor={C.brand}
+          inactiveTintColor={C.textPrimary}
+          labelStyle={{ color: C.textPrimary }}
+        />
+        <DrawerItem 
+          label={labels.navSettings} 
+          onPress={() => props.navigation.navigate('Settings')} 
+          icon={({color, size}) => (<Ionicons name="settings-outline" size={size} color={color} />)}
+          activeTintColor={C.brand}
+          inactiveTintColor={C.textPrimary}
+          labelStyle={{ color: C.textPrimary }}
+        />
+        <DrawerItem 
+          label={'AI Chat'} 
+          onPress={() => props.navigation.navigate('AI Chat')} 
+          icon={({color, size}) => (<Ionicons name="chatbubble-ellipses-outline" size={size} color={color} />)}
+          activeTintColor={C.brand}
+          inactiveTintColor={C.textPrimary}
+          labelStyle={{ color: C.textPrimary }}
+        />
+        <DrawerItem 
+          label={'Translate'} 
+          onPress={() => props.navigation.navigate('Translate')} 
+          icon={({color, size}) => (<Ionicons name="swap-horizontal-outline" size={size} color={color} />)}
+          activeTintColor={C.brand}
+          inactiveTintColor={C.textPrimary}
+          labelStyle={{ color: C.textPrimary }}
+        />
+        <DrawerItem 
+          label={labels.navCheckUpdates} 
+          onPress={() => props.navigation.navigate('Check Updates')} 
+          icon={({color, size}) => (<Ionicons name="sync-outline" size={size} color={color} />)}
+          activeTintColor={C.brand}
+          inactiveTintColor={C.textPrimary}
+          labelStyle={{ color: C.textPrimary }}
+        />
+        <DrawerItem 
+          label={labels.navInputNewWords} 
+          onPress={() => props.navigation.navigate('Input New Words')} 
+          icon={({color, size}) => (<Ionicons name="add-circle-outline" size={size} color={color} />)}
+          activeTintColor={C.brand}
+          inactiveTintColor={C.textPrimary}
+          labelStyle={{ color: C.textPrimary }}
+        />
+        <DrawerItem 
+          label={labels.navTheme} 
+          onPress={() => props.navigation.navigate('Theme')} 
+          icon={({color, size}) => (<Ionicons name="color-palette-outline" size={size} color={color} />)}
+          activeTintColor={C.brand}
+          inactiveTintColor={C.textPrimary}
+          labelStyle={{ color: C.textPrimary }}
+        />
+        <DrawerItem 
+          label={labels.navAbout} 
+          onPress={() => props.navigation.navigate('About')} 
+          icon={({color, size}) => (<Ionicons name="information-circle-outline" size={size} color={color} />)}
+          activeTintColor={C.brand}
+          inactiveTintColor={C.textPrimary}
+          labelStyle={{ color: C.textPrimary }}
+        />
       </View>
     </DrawerContentScrollView>
   );
 }
 
-function VoiceToTextScreen() {
+function VoiceToTextScreen({ navigation }: { navigation: any }) {
   const C = useThemedColors();
-  const [permission, requestPermission] = Audio.usePermissions();
-  const [recording, setRecording] = React.useState<Audio.Recording | null>(null);
-  const [statusText, setStatusText] = React.useState<string>('Tap record to start');
-  const [transcript, setTranscript] = React.useState<string>('');
-  const [busy, setBusy] = React.useState<boolean>(false);
+  const { settings } = useSettings();
+  const { approvedWords } = useDictionarySync();
+  const [isListening, setIsListening] = React.useState(false);
+  const [transcript, setTranscript] = React.useState('');
+  const [foundWord, setFoundWord] = React.useState<DictionaryEntry | null>(null);
+  const [statusText, setStatusText] = React.useState('Tap to start speaking');
 
-  async function startRecording() {
+  // Create merged dictionary for search
+  const mergedDictionary = React.useMemo(() => {
+    return mergeApprovedWords(dictionaryEntries, approvedWords);
+  }, [approvedWords]);
+
+  // Search for word in dictionary
+  const searchInDictionary = React.useCallback((text: string) => {
+    if (!text.trim()) {
+      setFoundWord(null);
+      return;
+    }
+
+    const searchTerm = text.trim().toLowerCase();
+    
+    // Search in Korean, Myanmar, or English
+    const found = mergedDictionary.find(word => 
+      word.korean.toLowerCase() === searchTerm ||
+      word.myanmar.toLowerCase() === searchTerm ||
+      (word.english && word.english.toLowerCase() === searchTerm)
+    );
+
+    if (found) {
+      setFoundWord(found);
+      setStatusText('Word found in dictionary!');
+    } else {
+      setFoundWord(null);
+      setStatusText('Word not found in dictionary');
+    }
+  }, [mergedDictionary]);
+
+  const startListening = async () => {
     try {
-      if (!permission || permission.status !== 'granted') {
-        const res = await requestPermission();
-        if (!res.granted) return;
-      }
-      await Audio.setAudioModeAsync({ allowsRecordingIOS: true, playsInSilentModeIOS: true });
-      const rec = new Audio.Recording();
-      await rec.prepareToRecordAsync(Audio.RecordingOptionsPresets.HIGH_QUALITY);
-      await rec.startAsync();
-      setRecording(rec);
+      setIsListening(true);
       setTranscript('');
-      setStatusText('Recording…');
-    } catch (e) {
-      setStatusText('Failed to start recording');
+      setFoundWord(null);
+      setStatusText('Listening... Speak now!');
+      
+      // Note: This is a placeholder for native speech recognition
+      // In a real implementation with expo-speech-recognition:
+      // await ExpoSpeechRecognition.start({ lang: 'ko-KR' });
+      
+      setTimeout(() => {
+        // Simulated result - replace with actual speech recognition
+        setStatusText('Tap stop when finished');
+      }, 500);
+    } catch (error) {
+      console.error('Speech recognition error:', error);
+      setStatusText('Failed to start listening');
+      setIsListening(false);
     }
-  }
+  };
 
-  async function stopRecording() {
+  const stopListening = async () => {
     try {
-      if (!recording) return;
-      await recording.stopAndUnloadAsync();
-      const uri = recording.getURI();
-      setRecording(null);
-      setStatusText('Processing audio…');
-      if (uri) {
-        try {
-          setBusy(true);
-          // Read API key from runtime env
-          const apiKey = (global as any).expo?.config?.extra?.OPENAI_API_KEY ?? '';
-          if (!apiKey) {
-            setTranscript('(Set OPENAI_API_KEY in app/app.json extra to enable transcription)');
-          } else {
-            const text = await transcribeWithOpenAI(uri, apiKey);
-            setTranscript(text);
-          }
-        } catch (e: any) {
-          setTranscript(`(Transcription failed: ${e?.message ?? 'unknown error'})`);
-        } finally {
-          setBusy(false);
-        }
-      }
-      setStatusText('Ready');
-    } catch (e) {
-      setStatusText('Failed to stop recording');
+      setIsListening(false);
+      setStatusText('Processing...');
+      
+      // Note: This would stop the actual speech recognition
+      // await ExpoSpeechRecognition.stop();
+      
+      // For now, show a message
+      setTimeout(() => {
+        setStatusText('Ready to start speaking');
+      }, 500);
+    } catch (error) {
+      console.error('Stop error:', error);
+      setStatusText('Error stopping');
     }
-  }
+  };
 
+  // Simulated speech recognition result handler
+  const handleSpeechResult = (text: string) => {
+    setTranscript(text);
+    searchInDictionary(text);
+  };
 
-  //text to speeh
+  const labels = i18nLabels[settings.uiLanguage];
+
   return (
-    <SafeAreaView style={[styles.safeArea, { backgroundColor: C.background }] }>
-      <View style={[styles.container, { padding: 16 }]}>        
-        <Text style={[styles.title, { color: C.textPrimary }]}>Voice to Text</Text>
-        <View style={[styles.card, { backgroundColor: C.surface, borderColor: C.border }] }>
-          <Text style={{ color: C.textSecondary, marginBottom: 8 }}>{statusText}</Text>
-          {recording ? (
-            <Pressable onPress={stopRecording} style={[styles.primaryBtn, { backgroundColor: '#DC2626' }] }>
-              <Ionicons name="stop" size={18} color="#fff" />
-              <Text style={styles.primaryBtnText}>Stop</Text>
-            </Pressable>
-          ) : (
-            <Pressable onPress={startRecording} style={[styles.primaryBtn, { backgroundColor: '#2563EB' }] }>
-              <Ionicons name="mic" size={18} color="#fff" />
-              <Text style={styles.primaryBtnText}>Record</Text>
-            </Pressable>
-          )}
-          <View style={{ height: 8 }} />
-          <Text style={{ color: C.textPrimary }}>{busy ? 'Transcribing…' : transcript}</Text>
-          {!!transcript && (
-            <Pressable
-              onPress={() => {
-                try { (global as any).setSearchQuery?.(transcript); } catch {}
-              }}
-              style={[styles.primaryBtn, { backgroundColor: '#10B981', marginTop: 8 }]}
-            >
-              <Ionicons name="search" size={18} color="#fff" />
-              <Text style={styles.primaryBtnText}>Use in Search</Text>
-            </Pressable>
-          )}
-          <Text style={{ color: C.textTertiary, marginTop: 8 }}>
-            Note: On-device transcription isn't available in Expo Go. Use a dev build or connect a cloud STT API.
-          </Text>
+    <SafeAreaView style={[styles.safeArea, { backgroundColor: C.background }]}>
+      <ScrollView 
+        style={{ flex: 1, backgroundColor: C.background }}
+        contentContainerStyle={{ padding: 16 }}
+      >
+        <Text style={[styles.title, { color: C.textPrimary, marginBottom: 8 }]}>
+          {settings.uiLanguage === 'myanmar' ? 'အသံမှ စာသို့' : settings.uiLanguage === 'korean' ? '음성에서 텍스트로' : 'Voice to Text'}
+        </Text>
+        
+        {/* Status Card */}
+        <View style={[styles.card, { backgroundColor: C.surface, borderColor: C.border, marginBottom: 16 }]}>
+          <View style={{ alignItems: 'center', paddingVertical: 16 }}>
+            <View style={{
+              width: 100,
+              height: 100,
+              borderRadius: 50,
+              backgroundColor: isListening ? '#EF4444' : C.brand,
+              alignItems: 'center',
+              justifyContent: 'center',
+              marginBottom: 16,
+            }}>
+              <Ionicons 
+                name={isListening ? "mic" : "mic-outline"} 
+                size={48} 
+                color="#fff" 
+              />
+            </View>
+            
+            <Text style={{ color: C.textSecondary, marginBottom: 12, textAlign: 'center' }}>
+              {statusText}
+            </Text>
+            
+            {isListening ? (
+              <Pressable 
+                onPress={stopListening} 
+                style={[styles.primaryBtn, { backgroundColor: '#DC2626' }]}
+              >
+                <Ionicons name="stop-circle" size={20} color="#fff" />
+                <Text style={styles.primaryBtnText}>
+                  {settings.uiLanguage === 'myanmar' ? 'ရပ်ရန်' : settings.uiLanguage === 'korean' ? '중지' : 'Stop'}
+                </Text>
+              </Pressable>
+            ) : (
+              <Pressable 
+                onPress={startListening} 
+                style={[styles.primaryBtn, { backgroundColor: C.brand }]}
+              >
+                <Ionicons name="mic" size={20} color="#fff" />
+                <Text style={styles.primaryBtnText}>
+                  {settings.uiLanguage === 'myanmar' ? 'စတင်ရန်' : settings.uiLanguage === 'korean' ? '시작' : 'Start Speaking'}
+                </Text>
+              </Pressable>
+            )}
+          </View>
         </View>
-      </View>
+
+        {/* Transcript Card */}
+        {transcript && (
+          <View style={[styles.card, { backgroundColor: C.surface, borderColor: C.border, marginBottom: 16 }]}>
+            <Text style={{ fontSize: 14, color: C.textSecondary, marginBottom: 8, fontWeight: '600' }}>
+              {settings.uiLanguage === 'myanmar' ? 'သင်ပြောသော စကားလုံး:' : settings.uiLanguage === 'korean' ? '인식된 텍스트:' : 'Recognized Text:'}
+            </Text>
+            <Text style={{ fontSize: 20, color: C.textPrimary, fontWeight: '700', marginBottom: 12 }}>
+              {transcript}
+            </Text>
+            
+            <TextInput
+              value={transcript}
+              onChangeText={(text) => {
+                setTranscript(text);
+                searchInDictionary(text);
+              }}
+              style={{
+                borderWidth: 1.5,
+                borderColor: C.border,
+                borderRadius: 10,
+                padding: 12,
+                color: C.textPrimary,
+                backgroundColor: C.background,
+                fontSize: 16,
+              }}
+              placeholder={settings.uiLanguage === 'myanmar' ? 'စာရိုက်၍ ရှာပါ' : settings.uiLanguage === 'korean' ? '텍스트 입력 또는 편집' : 'Type or edit text'}
+              placeholderTextColor={C.textTertiary}
+            />
+          </View>
+        )}
+
+        {/* Dictionary Result Card */}
+        {foundWord && (
+          <View style={[styles.card, { backgroundColor: C.surface, borderColor: '#10B981', borderWidth: 2, marginBottom: 16 }]}>
+            <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 12 }}>
+              <Ionicons name="checkmark-circle" size={28} color="#10B981" />
+              <Text style={{ fontSize: 18, fontWeight: '700', color: '#10B981', marginLeft: 8 }}>
+                {settings.uiLanguage === 'myanmar' ? 'အဘိဓာန်တွင် တွေ့ပါသည်!' : settings.uiLanguage === 'korean' ? '사전에서 찾음!' : 'Found in Dictionary!'}
+              </Text>
+            </View>
+            
+            <View style={{ paddingVertical: 12, borderTopWidth: 1, borderTopColor: C.border }}>
+              <Text style={{ fontSize: 24, fontWeight: '700', color: C.textPrimary, marginBottom: 8 }}>
+                {foundWord.korean}
+              </Text>
+              <Text style={{ fontSize: 18, color: C.textPrimary, marginBottom: 4, fontFamily: 'NotoSansMyanmar_400Regular' }}>
+                {foundWord.myanmar}
+              </Text>
+              {foundWord.english && (
+                <Text style={{ fontSize: 16, color: C.textSecondary, fontStyle: 'italic' }}>
+                  {foundWord.english}
+                </Text>
+              )}
+            </View>
+
+            <Pressable
+              onPress={() => navigation.navigate('Home', { screen: 'WordDetail', params: { word: foundWord } })}
+              style={[styles.primaryBtn, { backgroundColor: '#10B981', marginTop: 12 }]}
+            >
+              <Ionicons name="book-outline" size={18} color="#fff" />
+              <Text style={styles.primaryBtnText}>
+                {settings.uiLanguage === 'myanmar' ? 'အသေးစိတ်ကြည့်ရန်' : settings.uiLanguage === 'korean' ? '자세히 보기' : 'View Details'}
+              </Text>
+            </Pressable>
+          </View>
+        )}
+
+        {/* Info Card */}
+        <View style={[styles.card, { backgroundColor: C.surface, borderColor: C.border }]}>
+          <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
+            <Ionicons name="information-circle" size={24} color={C.brand} style={{ marginRight: 12 }} />
+            <Text style={{ flex: 1, color: C.textSecondary, fontSize: 13, lineHeight: 20 }}>
+              {settings.uiLanguage === 'myanmar' 
+                ? 'မှတ်ချက်: စစ်မှန်သော အသံမှသို့စာသို့ အမှန်တကယ် အသုံးပြုရန် expo-speech-recognition ကို development build တွင် ထည့်သွင်းရန် လိုအပ်ပါသည်။'
+                : settings.uiLanguage === 'korean' 
+                ? '참고: 실제 음성 인식을 사용하려면 development build에서 expo-speech-recognition이 필요합니다.'
+                : 'Note: For real speech recognition, expo-speech-recognition needs to be enabled in a development build. This is a demo version - edit the text box to search dictionary.'}
+            </Text>
+          </View>
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
 
 function AppNavigator() {
+  const C = useThemedColors();
+  
   return (
-    <Drawer.Navigator drawerContent={(props) => <AppDrawerContent {...props} />}>
+    <Drawer.Navigator 
+      drawerContent={(props) => <AppDrawerContent {...props} />}
+      screenOptions={{
+        drawerStyle: {
+          backgroundColor: C.background,
+        },
+        drawerActiveTintColor: C.brand,
+        drawerInactiveTintColor: C.textPrimary,
+        drawerActiveBackgroundColor: C.brand + '15', // 15% opacity
+        drawerItemStyle: {
+          borderRadius: 8,
+        },
+        drawerLabelStyle: {
+          marginLeft: -16,
+          fontWeight: '500',
+        },
+        headerStyle: {
+          backgroundColor: C.surface,
+        },
+        headerTintColor: C.textPrimary,
+      }}
+    >
      <Drawer.Screen name="Home" component={HomeStack} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="home-outline" size={size} color={color} />) }} />
       <Drawer.Screen name="Practice" component={PracticeTabs} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="school-outline" size={size} color={color} />) }} />
       <Drawer.Screen name="Favorites" component={FavoritesScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="heart-outline" size={size} color={color} />) }} />
@@ -2049,12 +2366,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     gap: 8,
-    paddingVertical: 10,
-    borderRadius: 10,
+    paddingVertical: 12,
+    borderRadius: 12,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.15,
+    shadowRadius: 8,
+    elevation: 4,
   },
   primaryBtnText: {
     color: '#fff',
     fontWeight: '700',
+    fontSize: 15,
   },
   pill: {
     paddingHorizontal: 10,
@@ -2103,23 +2426,22 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: 6,
     alignItems: 'center',
-    backgroundColor: '#F3F4F6',
     paddingHorizontal: 10,
     paddingVertical: 6,
     borderRadius: 999,
   },
   optionItem: {
-    paddingVertical: 14,
-    paddingHorizontal: 14,
-    borderRadius: 12,
-    borderWidth: StyleSheet.hairlineWidth,
+    paddingVertical: 16,
+    paddingHorizontal: 16,
+    borderRadius: 14,
+    borderWidth: 1.5,
     borderColor: '#E5E7EB',
     marginBottom: 10,
     shadowColor: '#000',
-    shadowOpacity: 0.05,
-    shadowRadius: 8,
-    shadowOffset: { width: 0, height: 2 },
-    elevation: 1,
+    shadowOpacity: 0.08,
+    shadowRadius: 10,
+    shadowOffset: { width: 0, height: 3 },
+    elevation: 3,
   },
   optionItemCorrect: {
     backgroundColor: '#DCFCE7',
@@ -2132,18 +2454,16 @@ const styles = StyleSheet.create({
   flashcard: {
     width: '100%',
     minHeight: 260,
-    borderRadius: 16,
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: '#D1FAE5',
-    backgroundColor: '#ECFDF5',
+    borderRadius: 20,
+    borderWidth: 1.5,
     alignItems: 'center',
     justifyContent: 'center',
     padding: 24,
     shadowColor: '#000',
-    shadowOpacity: 0.05,
-    shadowRadius: 8,
-    shadowOffset: { width: 0, height: 2 },
-    elevation: 1,
+    shadowOpacity: 0.12,
+    shadowRadius: 12,
+    shadowOffset: { width: 0, height: 6 },
+    elevation: 6,
   },
   // Check Updates Screen Styles
   screenTitle: {

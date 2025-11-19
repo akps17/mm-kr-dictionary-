@@ -72,7 +72,7 @@ export function KoreanWritingScreen({ navigation }: KoreanWritingScreenProps) {
     Speech.speak(character, {
       language: 'ko-KR', // Korean language code
       pitch: 1.0,
-      rate: 0.75, // Slightly slower for learning
+      rate: 0.75,
     });
   };
 
@@ -80,14 +80,28 @@ export function KoreanWritingScreen({ navigation }: KoreanWritingScreenProps) {
     <SafeAreaView style={[styles.safeArea, { backgroundColor: C.background }]}>
       {/* Header */}
       <View style={{ padding: 20, paddingBottom: 12 }}>
-        <Text style={[styles.title, { color: C.textPrimary }]}>
-          {settings.uiLanguage === 'myanmar' 
-            ? 'ကိုရီးယား စာလုံးများ' 
-            : settings.uiLanguage === 'korean' 
-            ? '한글 쓰기' 
-            : 'Korean Writing'}
-        </Text>
-        <Text style={{ color: C.textSecondary, marginTop: 4 }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 8 }}>
+          <Pressable
+            onPress={() => navigation.goBack()}
+            style={({ pressed }) => [
+              { 
+                padding: 8, 
+                marginLeft: -8,
+                opacity: pressed ? 0.5 : 1 
+              }
+            ]}
+          >
+            <Ionicons name="arrow-back" size={24} color={C.textPrimary} />
+          </Pressable>
+          <Text style={[styles.title, { color: C.textPrimary, marginLeft: 8 }]}>
+            {settings.uiLanguage === 'myanmar' 
+              ? 'ကိုရီးယား စာလုံးများ' 
+              : settings.uiLanguage === 'korean' 
+              ? '한글 쓰기' 
+              : 'Korean Writing'}
+          </Text>
+        </View>
+        <Text style={{ color: C.textSecondary, marginLeft: 32 }}>
           {settings.uiLanguage === 'myanmar' 
             ? 'သရများနှင့် ဗျည်းများကို လေ့လာပါ' 
             : settings.uiLanguage === 'korean' 
@@ -110,11 +124,7 @@ export function KoreanWritingScreen({ navigation }: KoreanWritingScreenProps) {
             }
           ])}
         >
-          <Ionicons 
-            name="water-outline" 
-            size={20} 
-            color={activeTab === 'vowels' ? '#fff' : C.textSecondary} 
-          />
+         
           <Text style={{ 
             color: activeTab === 'vowels' ? '#fff' : C.textPrimary,
             fontWeight: '600',
@@ -151,11 +161,7 @@ export function KoreanWritingScreen({ navigation }: KoreanWritingScreenProps) {
             }
           ])}
         >
-          <Ionicons 
-            name="flame-outline" 
-            size={20} 
-            color={activeTab === 'consonants' ? '#fff' : C.textSecondary} 
-          />
+          
           <Text style={{ 
             color: activeTab === 'consonants' ? '#fff' : C.textPrimary,
             fontWeight: '600',

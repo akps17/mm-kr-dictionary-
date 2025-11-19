@@ -103,11 +103,11 @@ export function LevelSelectionScreen({ navigation }: LevelSelectionScreenProps) 
             }
           ])}
         >
-          <View style={{ flexDirection: 'row', alignItems: 'center', flex: 1 }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <View style={[styles.iconCircle, { backgroundColor: '#dbeafe' }]}>
               <Ionicons name="create-outline" size={32} color="#3b82f6" />
             </View>
-            <View style={{ flex: 1, marginLeft: 16 }}>
+            <View style={{ marginLeft: 16 }}>
               <Text style={[styles.levelTitle, { color: C.textPrimary }]}>
                 {settings.uiLanguage === 'myanmar' 
                   ? 'ကိုရီးယား စာလုံးများ' 
@@ -123,7 +123,6 @@ export function LevelSelectionScreen({ navigation }: LevelSelectionScreenProps) 
                   : 'Vowels & Consonants'}
               </Text>
             </View>
-            <Ionicons name="chevron-forward" size={24} color={C.textTertiary} />
           </View>
         </Pressable>
 
@@ -140,11 +139,11 @@ export function LevelSelectionScreen({ navigation }: LevelSelectionScreenProps) 
             }
           ])}
         >
-          <View style={{ flexDirection: 'row', alignItems: 'center', flex: 1 }}>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <View style={[styles.iconCircle, { backgroundColor: '#d1fae5' }]}>
               <Ionicons name="pencil-outline" size={32} color="#10b981" />
             </View>
-            <View style={{ flex: 1, marginLeft: 16 }}>
+            <View style={{ marginLeft: 16 }}>
               <Text style={[styles.levelTitle, { color: C.textPrimary }]}>
                 {settings.uiLanguage === 'myanmar' 
                   ? 'မြန်မာ အက္ခရာများ' 
@@ -160,7 +159,6 @@ export function LevelSelectionScreen({ navigation }: LevelSelectionScreenProps) 
                   : 'Vowels & Consonants'}
               </Text>
             </View>
-            <Ionicons name="chevron-forward" size={24} color={C.textTertiary} />
           </View>
         </Pressable>
 
@@ -189,11 +187,11 @@ export function LevelSelectionScreen({ navigation }: LevelSelectionScreenProps) 
               }
             ])}
           >
-            <View style={{ flexDirection: 'row', alignItems: 'center', flex: 1 }}>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
               <View style={[styles.iconCircle, { backgroundColor: `${item.color}20` }]}>
                 <Ionicons name={item.icon} size={28} color={item.color} />
               </View>
-              <View style={{ flex: 1, marginLeft: 16 }}>
+              <View style={{ marginLeft: 16 }}>
                 <Text style={[styles.levelTitle, { color: C.textPrimary }]}>
                   {item.title}
                 </Text>
@@ -201,7 +199,6 @@ export function LevelSelectionScreen({ navigation }: LevelSelectionScreenProps) 
                   {item.description}
                 </Text>
               </View>
-              <Ionicons name="chevron-forward" size={24} color={C.textTertiary} />
             </View>
           </Pressable>
         ))}
@@ -232,25 +229,25 @@ const styles = StyleSheet.create({
   },
   specialCard: {
     padding: 16,
-    borderRadius: 12,
-    borderWidth: 2,
+    borderRadius: 16,
+    borderWidth: 1.5,
     marginBottom: 16,
     shadowColor: '#3b82f6',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 8,
-    elevation: 3,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 12,
+    elevation: 5,
   },
   levelCard: {
     padding: 16,
-    borderRadius: 12,
+    borderRadius: 16,
     borderWidth: 1,
     marginBottom: 12,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.05,
-    shadowRadius: 4,
-    elevation: 2,
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 4,
   },
   iconCircle: {
     width: 56,
@@ -258,6 +255,11 @@ const styles = StyleSheet.create({
     borderRadius: 28,
     alignItems: 'center',
     justifyContent: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.08,
+    shadowRadius: 4,
+    elevation: 2,
   },
   levelTitle: {
     fontSize: 17,
@@ -266,10 +268,15 @@ const styles = StyleSheet.create({
   infoCard: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: 12,
-    borderRadius: 8,
+    padding: 14,
+    borderRadius: 12,
     borderWidth: 1,
     marginTop: 16,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.05,
+    shadowRadius: 6,
+    elevation: 2,
   },
 });
 

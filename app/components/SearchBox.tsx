@@ -7,6 +7,7 @@ import {
   Platform,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useThemedColors } from './Theme';
 
 type Props = {
   value: string;
@@ -16,34 +17,42 @@ type Props = {
 };
 
 export function SearchBox({ value, placeholder, onChangeText, onClear }: Props) {
+  const C = useThemedColors();
+  
   return (
-    <View style={styles.container}>
+    <View style={[
+      styles.container,
+      {
+        backgroundColor: C.surface,
+        borderColor: C.border,
+      }
+    ]}>
       <Ionicons
         name="search"
         size={18}
-        color="#6B7280"
+        color={C.textSecondary}
         style={styles.leftIcon}
       />
       <TextInput
         value={value}
         onChangeText={onChangeText}
         placeholder={placeholder}
-        placeholderTextColor="#9CA3AF"
+        placeholderTextColor={C.textTertiary}
         autoCapitalize="none"
         autoCorrect={false}
-        style={styles.input}
+        style={[styles.input, { color: C.textPrimary }]}
         clearButtonMode={Platform.OS === 'ios' ? 'while-editing' : 'never'}
       />
       {Platform.OS !== 'ios' && value.length > 0 && (
         <Pressable
           onPress={onClear}
-          android_ripple={{ color: '#E5E7EB', borderless: true }}
+          android_ripple={{ color: C.border, borderless: true }}
           style={styles.clearButton}
           hitSlop={10}
           accessibilityRole="button"
           accessibilityLabel="Clear search"
         >
-          <Ionicons name="close-circle" size={18} color="#9CA3AF" />
+          <Ionicons name="close-circle" size={18} color={C.textTertiary} />
         </Pressable>
       )}
     </View>
@@ -55,13 +64,16 @@ const styles = StyleSheet.create({
     position: 'relative',
     flexDirection: 'row',
     alignItems: 'center',
-    borderWidth: 1,
-    borderColor: '#E5E7EB',
-    backgroundColor: '#FFFFFF',
-    borderRadius: 10,
-    paddingHorizontal: 12,
-    paddingVertical: 10,
+    borderWidth: 1.5,
+    borderRadius: 14,
+    paddingHorizontal: 14,
+    paddingVertical: 12,
     marginBottom: 12,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.08,
+    shadowRadius: 6,
+    elevation: 3,
   },
   leftIcon: {
     marginRight: 8,

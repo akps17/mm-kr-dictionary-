@@ -8,11 +8,10 @@ import {
   Platform,
   Alert,
 } from 'react-native';
-import Constants from 'expo-constants';
 import { Ionicons } from '@expo/vector-icons';
 import { useThemedColors } from '../components/Theme';
 import { useLibrary } from '../data/LibraryContext';
-import { Audio } from 'expo-av';
+import * as Speech from 'expo-speech';
 import { WORD_LEVELS } from '../types/dictionary';
 
 import type { DictionaryEntry, Example } from '../types/dictionary';
@@ -30,67 +29,44 @@ export function WordDetailScreen({ route, navigation }: WordDetailScreenProps) {
   const { word } = route.params;
   const C = useThemedColors();
   const { favoriteIds, toggleFavorite } = useLibrary();
-  const [sound, setSound] = React.useState<Audio.Sound>();
+  const [isSpeaking, setIsSpeaking] = React.useState(false);
 
-  // Handle pronunciation using Google Cloud TTS
+  // Handle pronunciation using expo-speech
   async function playPronunciation() {
+    if (isSpeaking) {
+      // Stop current speech if already speaking
+      await Speech.stop();
+      setIsSpeaking(false);
+      return;
+    }
+
     try {
-      // Show loading state
-      const loadingSound = new Audio.Sound();
-      setSound(loadingSound);
-
-      // Call Google Cloud TTS API
-      const response = await fetch('https://texttospeech.googleapis.com/v1/text:synthesize', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${Constants.expoConfig?.extra?.GOOGLE_TTS_API_KEY}`
-        },
-        body: JSON.stringify({
-          input: { text: word.korean },
-          voice: { 
-            languageCode: 'ko-KR',
-            name: 'ko-KR-Standard-A',
-            ssmlGender: 'FEMALE'
-          },
-          audioConfig: { 
-            audioEncoding: 'MP3',
-            pitch: 0,
-            speakingRate: 1
-          }
-        })
-      });
-
-      if (!response.ok) {
-        throw new Error('TTS API request failed');
-      }
-
-      const data = await response.json();
-      const audioContent = data.audioContent; // Base64 encoded audio
-
-      // Convert base64 to URI
-      const audioUri = `data:audio/mp3;base64,${audioContent}`;
+      setIsSpeaking(true);
       
-      // Load and play the audio
-      await loadingSound.loadAsync({ uri: audioUri });
-      await loadingSound.playAsync();
-
+      // Speak the Korean word with Korean voice
+      await Speech.speak(word.korean, {
+        language: 'ko-KR',
+        pitch: 1.0,
+        rate: 0.85, // Slightly slower for clarity
+        onDone: () => setIsSpeaking(false),
+        onStopped: () => setIsSpeaking(false),
+        onError: () => {
+          setIsSpeaking(false);
+          Alert.alert(
+            'Error',
+            'Korean voice not available on this device.'
+          );
+        }
+      });
     } catch (error) {
       console.error('Error playing pronunciation:', error);
-      // Show error message to user
+      setIsSpeaking(false);
       Alert.alert(
         'Error',
-        'Failed to play pronunciation. Please try again later.'
+        'Failed to play pronunciation. Please try again.'
       );
     }
   }
-
-  // Cleanup sound on unmount
-  React.useEffect(() => {
-    return sound ? () => {
-      sound.unloadAsync();
-    } : undefined;
-  }, [sound]);
 
   return (
     <ScrollView 
@@ -120,18 +96,23 @@ export function WordDetailScreen({ route, navigation }: WordDetailScreenProps) {
           </View>
 
           <View style={styles.pronunciationRow}>
-            <Text style={[styles.phonetic, { color: C.textSecondary }]}>
-              /pronunciation placeholder/
-            </Text>
             <Pressable 
               onPress={playPronunciation}
               style={({ pressed }) => [
                 styles.speakerButton,
+                isSpeaking && { backgroundColor: C.brand + '20' },
                 pressed && { opacity: 0.7 }
               ]}
             >
-              <Ionicons name="volume-high-outline" size={24} color={C.brand} />
+              <Ionicons 
+                name={isSpeaking ? "volume-high" : "volume-high-outline"} 
+                size={24} 
+                color={isSpeaking ? C.brand : C.textSecondary} 
+              />
             </Pressable>
+            <Text style={[styles.phonetic, { color: C.textSecondary }]}>
+              {isSpeaking ? 'Playing...' : 'Tap to hear pronunciation'}
+            </Text>
           </View>
 
           <View style={styles.chipContainer}>
@@ -274,7 +255,8 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
   },
   speakerButton: {
-    padding: 4,
+    padding: 8,
+    borderRadius: 20,
   },
   posChip: {
     alignSelf: 'flex-start',

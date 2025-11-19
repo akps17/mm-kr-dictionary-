@@ -6,7 +6,7 @@ import { useSettings } from '../data/SettingsContext';
 import { useAuth } from '../data/AuthContext';
 import { useUserPoints } from '../data/UserPointsContext';
 import { i18nLabels } from '../data/settings';
-
+  
 export function ProfileScreen({ navigation }: { navigation: any }) {
   const C = useThemedColors();
   const { settings } = useSettings();
@@ -324,9 +324,14 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
   card: {
-    padding: 16,
-    borderRadius: 12,
-    borderWidth: 1,
+    padding: 18,
+    borderRadius: 16,
+    borderWidth: 1.5,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.08,
+    shadowRadius: 10,
+    elevation: 4,
   },
   sectionTitle: {
     fontSize: 16,
@@ -337,14 +342,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     gap: 8,
-    paddingVertical: 12,
+    paddingVertical: 14,
     paddingHorizontal: 24,
-    borderRadius: 8,
+    borderRadius: 14,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.15,
+    shadowRadius: 8,
+    elevation: 4,
   },
   primaryBtnText: {
     color: '#fff',
     fontSize: 16,
     fontWeight: '600',
+    letterSpacing: 0.3,
   },
 });
 
