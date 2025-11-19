@@ -47,6 +47,8 @@ import { MultipleChoiceQuizScreen } from './screens/MultipleChoiceQuizScreen';
 import { TrueFalseQuizScreen } from './screens/TrueFalseQuizScreen';
 import { FlashcardsScreen } from './screens/FlashcardsScreen';
 import { VoiceToTextScreen } from './screens/VoiceToTextScreen';
+import { FavoritesScreen } from './screens/FavoritesScreen';
+import { FavoriteButton } from './components/FavoriteButton';
 import { useFeatureAccess } from './hooks/useFeatureAccess';
 import { DictionarySyncProvider, useDictionarySync, mergeApprovedWords } from './data/DictionarySync';
 import { UpdatesProvider, useUpdates } from './data/UpdatesContext';
@@ -99,6 +101,38 @@ function HomeStack() {
         }}
       />
     </Stack.Navigator>
+  );
+}
+
+// Favorites Stack Navigator
+const FavoritesStackNavigator = createNativeStackNavigator();
+function FavoritesStack() {
+  const C = useThemedColors();
+  
+  return (
+    <FavoritesStackNavigator.Navigator
+      screenOptions={{
+        headerStyle: {
+          backgroundColor: C.surface,
+        },
+        headerTintColor: C.textPrimary,
+        headerShadowVisible: false,
+      }}
+    >
+      <FavoritesStackNavigator.Screen 
+        name="FavoritesList" 
+        component={FavoritesScreen} 
+        options={{ headerShown: false }}
+      />
+      <FavoritesStackNavigator.Screen 
+        name="WordDetail" 
+        component={WordDetailScreen as any}
+        options={{
+          headerTitle: '',
+          headerBackTitle: 'Back',
+        }}
+      />
+    </FavoritesStackNavigator.Navigator>
   );
 }
 
@@ -716,7 +750,7 @@ function AppNavigator() {
     >
               <Drawer.Screen name="Home" component={HomeStack} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="home-outline" size={size} color={color} />) }} />
       <Drawer.Screen name="Practice" component={PracticeTabs} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="school-outline" size={size} color={color} />) }} />
-      <Drawer.Screen name="Favorites" component={FavoritesScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="heart-outline" size={size} color={color} />) }} />
+      <Drawer.Screen name="Favorites" component={FavoritesStack} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="heart-outline" size={size} color={color} />) }} />
       <Drawer.Screen name="History" component={HistoryScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="time-outline" size={size} color={color} />) }} />
       <Drawer.Screen name="Settings" children={() => <SettingsScreen />} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="settings-outline" size={size} color={color} />) }} />
       <Drawer.Screen name="AI Chat" component={ProtectedAIChatScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="chatbubble-ellipses-outline" size={size} color={color} />) }} />
@@ -784,122 +818,7 @@ export default function App() {
 // AboutScreen moved to separate file: app/screens/AboutScreen.tsx
 // SettingsScreen moved to separate file: app/screens/SettingsScreen.tsx
 
-function FavoriteButton({ entryId }: { entryId: string }) {
-  const { isFavorite, toggleFavorite } = useLibrary();
-  const fav = isFavorite(entryId);
-  return (
-    <Text onPress={() => toggleFavorite(entryId)} style={styles.favButton}>
-      <Ionicons name={fav ? 'heart' : 'heart-outline'} size={20} color={fav ? '#DC2626' : '#9CA3AF'} />
-    </Text>
-  );
-}
-
-function FavoritesScreen() {
-  const { settings } = useSettings();
-  const { approvedWords } = useDictionarySync();
-  const C = useThemedColors();
-  const labels = i18nLabels[settings.uiLanguage];
-  
-  const fontScale = React.useMemo(() => {
-    switch (settings.fontSize) {
-      case 'small':
-        return 0.9;
-      case 'large':
-        return 1.1;
-      default:
-        return 1.0;
-    }
-  }, [settings.fontSize]);
-
-  const { favoriteIds } = useLibrary();
-
-  // Merge local dictionary with approved words
-  const mergedDictionary = React.useMemo(() => {
-    return mergeApprovedWords(dictionaryEntries, approvedWords);
-  }, [approvedWords]);
-
-  // Filter favorites from merged dictionary
-  const items = mergedDictionary.filter((d) => favoriteIds.has(d.id));
-  const itemsSorted = [...items].sort((a, b) => (a.korean || '').localeCompare(b.korean || '', 'ko', { sensitivity: 'base' }));
-
-  // Search functionality
-  const [searchQuery, setSearchQuery] = React.useState('');
-
-  // Filter items based on search query
-  const filteredItems = React.useMemo(() => {
-    if (!searchQuery.trim()) return itemsSorted;
-    
-    const query = searchQuery.toLowerCase().trim();
-    return itemsSorted.filter(item => 
-      item.korean.toLowerCase().includes(query) ||
-      item.myanmar.toLowerCase().includes(query) ||
-      (item.english?.toLowerCase() || '').includes(query)
-    );
-  }, [itemsSorted, searchQuery]);
-
-  return (
-    <SafeAreaView style={[styles.safeArea, { backgroundColor: C.background }]}>
-      <View style={{ padding: 16, paddingBottom: 0 }}>
-        <Text style={[styles.title, { color: C.textPrimary, marginBottom: 12 }]}>{labels.navFavorites}</Text>
-        <SearchBox
-          value={searchQuery}
-          placeholder={labels.searchPlaceholder}
-          onChangeText={setSearchQuery}
-          onClear={() => setSearchQuery('')}
-        />
-      </View>
-      <FlatList
-        data={filteredItems}
-        keyExtractor={(item) => item.id}
-        contentContainerStyle={[styles.listContent, { paddingHorizontal: 16 }]}
-        renderItem={({ item }) => (
-          <View style={[styles.row, styles.rowTablet, { backgroundColor: C.surface }]}>
-            <View style={styles.rowTextGroup}>
-              <View style={styles.rowHeader}>
-                <Text style={[styles.korean, { fontSize: styles.korean.fontSize * fontScale, color: C.textPrimary, fontFamily: 'NotoSansMyanmar_700Bold' }]}>
-                  {item.korean}
-                </Text>
-                {item.pos && (
-                  <View style={styles.posChip}>
-                    <Text style={styles.posText}>{item.pos}</Text>
-                  </View>
-                )}
-              </View>
-              <Text 
-                allowFontScaling={false} 
-                style={[
-                  styles.myanmar, 
-                  { 
-                    fontSize: styles.myanmar.fontSize * fontScale,
-                    color: C.textSecondary,
-                    fontFamily: 'NotoSansMyanmar_400Regular'
-                  }
-                ]}
-              >
-                {item.myanmar}
-              </Text>
-              {!!item.english && (
-                <Text style={[styles.englishGloss, { fontSize: styles.englishGloss.fontSize * fontScale, color: C.textTertiary }]}>
-                  {item.english}
-                </Text>
-              )}
-            </View>
-            <FavoriteButton entryId={item.id} />
-          </View>
-        )}
-        ListEmptyComponent={
-          <View style={styles.emptyState}>
-            <Text style={[styles.emptyStateText, { color: C.textTertiary }]}>
-              {searchQuery.trim() 
-                ? `No favorites matching "${searchQuery}"`
-                : "No favorites yet"}
-            </Text>
-          </View>
-        }
-      />
-    </SafeAreaView>
-  );
-}
+// FavoritesScreen moved to separate file: app/screens/FavoritesScreen.tsx
 
 function HistoryScreen() {
   const { settings } = useSettings();

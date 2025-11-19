@@ -135,7 +135,7 @@ export const i18nLabels: Record<AppLanguage, Record<string, string>> = {
     navFavorites: 'ကြိုက်နှစ်သက်သောစကားလုံးများ',
     navHistory: 'မှတ်တမ်း',
     navSettings: 'ဆက်တင်',
-    navTheme: 'အရောင်အသွေး',
+    navTheme: 'App အလင်းအမှောင်',
     navProfile: 'ပရိုဖိုင်',
     navCheckUpdates: 'စကားလုံးအသစ်များ စစ်ဆေးရန်',
     navInputNewWords: 'စကားလုံးအသစ် ထည့်သွင်းရန်',
