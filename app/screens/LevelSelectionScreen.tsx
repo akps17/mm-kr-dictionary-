@@ -4,6 +4,8 @@ import { Ionicons } from '@expo/vector-icons';
 import { useThemedColors } from '../components/Theme';
 import { useSettings } from '../data/SettingsContext';
 import { i18nLabels } from '../data/settings';
+import { useFeatureAccess } from '../hooks/useFeatureAccess';
+import { useAuth } from '../data/AuthContext';
 
 type LevelSelectionScreenProps = {
   navigation: any;
@@ -15,6 +17,8 @@ export function LevelSelectionScreen({ navigation }: LevelSelectionScreenProps) 
   const C = useThemedColors();
   const { settings } = useSettings();
   const labels = i18nLabels[settings.uiLanguage];
+  const { checkAccess } = useFeatureAccess();
+  const { user } = useAuth();
 
   const levels: { level: DifficultyLevel; icon: any; color: string; title: string; description: string }[] = [
     {
@@ -60,6 +64,27 @@ export function LevelSelectionScreen({ navigation }: LevelSelectionScreenProps) 
   const handleBurmeseWriting = () => {
     // Navigate to Burmese Writing Practice
     navigation.navigate('BurmeseWriting');
+  };
+
+  const handleTOPIKTest = () => {
+    // If user is not logged in, navigate directly to Profile/Auth screen
+    if (!user) {
+      navigation.navigate('Profile');
+      return;
+    }
+
+    // If user is logged in, check access (PRO status)
+    checkAccess(
+      'topik',
+      () => {
+        // If access granted (PRO user), navigate to TOPIK Test
+        navigation.navigate('TOPIKTest');
+      },
+      () => {
+        // Fallback - navigate to Profile if something goes wrong
+        navigation.navigate('Profile');
+      }
+    );
   };
 
   return (
@@ -157,6 +182,53 @@ export function LevelSelectionScreen({ navigation }: LevelSelectionScreenProps) 
                   : settings.uiLanguage === 'korean' 
                   ? '자음과 모음 연습' 
                   : 'Vowels & Consonants'}
+              </Text>
+            </View>
+          </View>
+        </Pressable>
+
+        {/* TOPIK Test (PRO) */}
+        <Pressable
+          onPress={handleTOPIKTest}
+          style={({ pressed }) => ([
+            styles.specialCard,
+            { 
+              backgroundColor: C.surface,
+              borderColor: '#8b5cf6',
+              opacity: pressed ? 0.7 : 1,
+              transform: [{ scale: pressed ? 0.98 : 1 }]
+            }
+          ])}
+        >
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <View style={[styles.iconCircle, { backgroundColor: '#ede9fe' }]}>
+              <Ionicons name="school" size={32} color="#8b5cf6" />
+            </View>
+            <View style={{ flex: 1, marginLeft: 16 }}>
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <Text style={[styles.levelTitle, { color: C.textPrimary }]}>
+                  {settings.uiLanguage === 'myanmar' 
+                    ? 'TOPIK စာမေးပွဲ' 
+                    : settings.uiLanguage === 'korean' 
+                    ? 'TOPIK 시험' 
+                    : 'TOPIK Test'}
+                </Text>
+                <View style={{ 
+                  backgroundColor: '#8b5cf6', 
+                  paddingHorizontal: 8, 
+                  paddingVertical: 2, 
+                  borderRadius: 8, 
+                  marginLeft: 8 
+                }}>
+                  <Text style={{ color: '#fff', fontSize: 10, fontWeight: '700' }}>PRO</Text>
+                </View>
+              </View>
+              <Text style={{ color: C.textSecondary, fontSize: 13, marginTop: 2 }}>
+                {settings.uiLanguage === 'myanmar' 
+                  ? 'ကိုရီးယား စာမေးပွဲ အခြေခံ' 
+                  : settings.uiLanguage === 'korean' 
+                  ? '한국어 능력 시험 (기초)' 
+                  : 'Korean Proficiency Test (Basic)'}
               </Text>
             </View>
           </View>

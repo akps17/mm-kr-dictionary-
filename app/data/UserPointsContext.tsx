@@ -10,9 +10,11 @@ type UserPointsContextType = {
   totalSubmissions: number;
   approvedSubmissions: number;
   isPro: boolean;
-  addPoints: (amount: number) => Promise<void>;
+  topikUnlocked: boolean;
+  addPoints: (amount: number, incrementSubmission?: boolean) => Promise<void>;
   resetPoints: () => Promise<void>;
   refreshPoints: () => Promise<void>;
+  unlockTopik: () => Promise<void>;
   loading: boolean;
 };
 
@@ -24,9 +26,11 @@ const UserPointsContext = createContext<UserPointsContextType>({
   totalSubmissions: 0,
   approvedSubmissions: 0,
   isPro: false,
+  topikUnlocked: false,
   addPoints: async () => {},
   resetPoints: async () => {},
   refreshPoints: async () => {},
+  unlockTopik: async () => {},
   loading: true,
 });
 
@@ -35,6 +39,7 @@ export function UserPointsProvider({ children }: { children: React.ReactNode }) 
   const [totalSubmissions, setTotalSubmissions] = useState(0);
   const [approvedSubmissions, setApprovedSubmissions] = useState(0);
   const [isPro, setIsPro] = useState(false);
+  const [topikUnlocked, setTopikUnlocked] = useState(false);
   const [loading, setLoading] = useState(true);
   const { user } = useAuth();
 
@@ -96,6 +101,7 @@ export function UserPointsProvider({ children }: { children: React.ReactNode }) 
             const firestorePoints = data.points || 0;
             const firestoreSubmissions = data.totalSubmissions || 0;
             const firestorePro = data.isPro || false;
+            const firestoreTopikUnlocked = data.topikUnlocked || false;
             
             // Update local storage with Firestore data
             await Promise.all([
@@ -107,6 +113,7 @@ export function UserPointsProvider({ children }: { children: React.ReactNode }) 
             setTotalSubmissions(firestoreSubmissions);
             setApprovedSubmissions(approvedCount);
             setIsPro(firestorePro);
+            setTopikUnlocked(firestoreTopikUnlocked);
             setLoading(false);
             return;
           } else {
@@ -133,12 +140,12 @@ export function UserPointsProvider({ children }: { children: React.ReactNode }) 
     }
   };
 
-  const addPoints = async (amount: number) => {
+  const addPoints = async (amount: number, incrementSubmission: boolean = true) => {
     if (!user) return;
     
     try {
       const newPoints = points + amount;
-      const newSubmissions = totalSubmissions + 1;
+      const newSubmissions = incrementSubmission ? totalSubmissions + 1 : totalSubmissions;
       
       // Save to AsyncStorage
       await Promise.all([
@@ -191,8 +198,40 @@ export function UserPointsProvider({ children }: { children: React.ReactNode }) 
     await loadUserData(user.uid);
   };
 
+  const unlockTopik = async () => {
+    if (!user || points < 1000) return;
+    
+    try {
+      const newPoints = points - 1000;
+      
+      // Update local storage
+      await AsyncStorage.setItem(`${POINTS_KEY_PREFIX}${user.uid}`, newPoints.toString());
+      
+      // Update Firestore
+      if (user.email) {
+        try {
+          const userDocRef = doc(db, 'user_points', user.email);
+          await setDoc(userDocRef, {
+            userEmail: user.email,
+            points: newPoints,
+            topikUnlocked: true,
+            lastUpdated: new Date().toISOString()
+          }, { merge: true });
+        } catch (firestoreError) {
+          console.log('Failed to sync TOPIK unlock to Firestore:', firestoreError);
+        }
+      }
+      
+      setPoints(newPoints);
+      setTopikUnlocked(true);
+      console.log('TOPIK Test unlocked! Points remaining:', newPoints);
+    } catch (error) {
+      console.error('Error unlocking TOPIK:', error);
+    }
+  };
+
   return (
-    <UserPointsContext.Provider value={{ points, totalSubmissions, approvedSubmissions, isPro, addPoints, resetPoints, refreshPoints, loading }}>
+    <UserPointsContext.Provider value={{ points, totalSubmissions, approvedSubmissions, isPro, topikUnlocked, addPoints, resetPoints, refreshPoints, unlockTopik, loading }}>
       {children}
     </UserPointsContext.Provider>
   );

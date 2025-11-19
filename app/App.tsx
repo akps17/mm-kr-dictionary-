@@ -16,6 +16,7 @@ import {
   Pressable,
   Image,
   TextInput,
+  ActivityIndicator,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Audio } from 'expo-av';
@@ -39,6 +40,8 @@ import { TranslateScreen } from './screens/TranslateScreen';
 import { AboutScreen } from './screens/AboutScreen';
 import { ThemeScreen } from './screens/ThemeScreen';
 import { SettingsScreen } from './screens/SettingsScreen';
+import { TOPIKTestScreen } from './screens/TOPIKTestScreen';
+import { useFeatureAccess } from './hooks/useFeatureAccess';
 import { DictionarySyncProvider, useDictionarySync, mergeApprovedWords } from './data/DictionarySync';
 import { UpdatesProvider, useUpdates } from './data/UpdatesContext';
 import { SearchBox } from './components/SearchBox';
@@ -916,6 +919,7 @@ function PracticeTabs() {
       <PracticeStack.Screen name="PracticeTabs" component={PracticeQuizTabs} />
       <PracticeStack.Screen name="KoreanWriting" component={KoreanWritingScreen} />
       <PracticeStack.Screen name="BurmeseWriting" component={BurmeseWritingScreen} />
+      <PracticeStack.Screen name="TOPIKTest" component={TOPIKTestScreen} />
     </PracticeStack.Navigator>
   );
 }
@@ -1265,8 +1269,8 @@ function VoiceToTextScreen({ navigation }: { navigation: any }) {
                 <Text style={styles.primaryBtnText}>
                   {settings.uiLanguage === 'myanmar' ? 'ရပ်ရန်' : settings.uiLanguage === 'korean' ? '중지' : 'Stop'}
                 </Text>
-              </Pressable>
-            ) : (
+            </Pressable>
+          ) : (
               <Pressable 
                 onPress={startListening} 
                 style={[styles.primaryBtn, { backgroundColor: C.brand }]}
@@ -1275,8 +1279,8 @@ function VoiceToTextScreen({ navigation }: { navigation: any }) {
                 <Text style={styles.primaryBtnText}>
                   {settings.uiLanguage === 'myanmar' ? 'စတင်ရန်' : settings.uiLanguage === 'korean' ? '시작' : 'Start Speaking'}
                 </Text>
-              </Pressable>
-            )}
+            </Pressable>
+          )}
           </View>
         </View>
 
@@ -1357,12 +1361,77 @@ function VoiceToTextScreen({ navigation }: { navigation: any }) {
                 : settings.uiLanguage === 'korean' 
                 ? '참고: 실제 음성 인식을 사용하려면 development build에서 expo-speech-recognition이 필요합니다.'
                 : 'Note: For real speech recognition, expo-speech-recognition needs to be enabled in a development build. This is a demo version - edit the text box to search dictionary.'}
-            </Text>
-          </View>
+          </Text>
         </View>
+      </View>
       </ScrollView>
     </SafeAreaView>
   );
+}
+
+// Access-controlled wrapper components
+function ProtectedAIChatScreen({ navigation }: any) {
+  const { checkAccess } = useFeatureAccess();
+  const [hasAccess, setHasAccess] = React.useState(false);
+  const [checked, setChecked] = React.useState(false);
+
+  React.useEffect(() => {
+    if (!checked) {
+      checkAccess(
+        'ai-chat',
+        () => {
+          setHasAccess(true);
+          setChecked(true);
+        },
+        () => {
+          navigation.goBack();
+        }
+      );
+      setChecked(true);
+    }
+  }, [checked]);
+
+  if (!hasAccess) {
+    return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <ActivityIndicator size="large" />
+      </View>
+    );
+  }
+
+  return <AIChatScreen />;
+}
+
+function ProtectedTranslateScreen({ navigation }: any) {
+  const { checkAccess } = useFeatureAccess();
+  const [hasAccess, setHasAccess] = React.useState(false);
+  const [checked, setChecked] = React.useState(false);
+
+  React.useEffect(() => {
+    if (!checked) {
+      checkAccess(
+        'translate',
+        () => {
+          setHasAccess(true);
+          setChecked(true);
+        },
+        () => {
+          navigation.goBack();
+        }
+      );
+      setChecked(true);
+    }
+  }, [checked]);
+
+  if (!hasAccess) {
+    return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <ActivityIndicator size="large" />
+      </View>
+    );
+  }
+
+  return <TranslateScreen />;
 }
 
 function AppNavigator() {
@@ -1391,13 +1460,13 @@ function AppNavigator() {
         headerTintColor: C.textPrimary,
       }}
     >
-     <Drawer.Screen name="Home" component={HomeStack} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="home-outline" size={size} color={color} />) }} />
+              <Drawer.Screen name="Home" component={HomeStack} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="home-outline" size={size} color={color} />) }} />
       <Drawer.Screen name="Practice" component={PracticeTabs} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="school-outline" size={size} color={color} />) }} />
       <Drawer.Screen name="Favorites" component={FavoritesScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="heart-outline" size={size} color={color} />) }} />
       <Drawer.Screen name="History" component={HistoryScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="time-outline" size={size} color={color} />) }} />
       <Drawer.Screen name="Settings" children={() => <SettingsScreen />} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="settings-outline" size={size} color={color} />) }} />
-      <Drawer.Screen name="AI Chat" component={AIChatScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="chatbubble-ellipses-outline" size={size} color={color} />) }} />
-      <Drawer.Screen name="Translate" component={TranslateScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="swap-horizontal-outline" size={size} color={color} />) }} />
+      <Drawer.Screen name="AI Chat" component={ProtectedAIChatScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="chatbubble-ellipses-outline" size={size} color={color} />) }} />
+      <Drawer.Screen name="Translate" component={ProtectedTranslateScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="swap-horizontal-outline" size={size} color={color} />) }} />
       <Drawer.Screen name="Check Updates" component={CheckUpdatesScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="sync-outline" size={size} color={color} />) }} />
       <Drawer.Screen name="Input New Words" component={SubmitWordScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="add-circle-outline" size={size} color={color} />) }} />
       <Drawer.Screen name="Theme" component={ThemeScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="color-palette-outline" size={size} color={color} />) }} />

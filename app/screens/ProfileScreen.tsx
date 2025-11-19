@@ -6,33 +6,19 @@ import { useSettings } from '../data/SettingsContext';
 import { useAuth } from '../data/AuthContext';
 import { useUserPoints } from '../data/UserPointsContext';
 import { i18nLabels } from '../data/settings';
+import { AuthScreen } from './AuthScreen';
   
 export function ProfileScreen({ navigation }: { navigation: any }) {
   const C = useThemedColors();
   const { settings } = useSettings();
   const { user, logOut } = useAuth();
-  const { points, totalSubmissions, approvedSubmissions, isPro, refreshPoints } = useUserPoints();
+  const { points, totalSubmissions, approvedSubmissions, isPro, topikUnlocked, refreshPoints, unlockTopik } = useUserPoints();
   const labels = i18nLabels[settings.uiLanguage];
   const [isRefreshing, setIsRefreshing] = React.useState(false);
   
   if (!user) {
-    return (
-      <SafeAreaView style={[styles.safeArea, { backgroundColor: C.background }]}>
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', padding: 20 }}>
-          <Ionicons name="person-circle-outline" size={80} color={C.textTertiary} />
-          <Text style={[styles.title, { color: C.textPrimary, marginTop: 16 }]}>
-            {settings.uiLanguage === 'myanmar' ? 'အကောင့်မရှိပါ' : settings.uiLanguage === 'korean' ? '로그인 필요' : 'Not Logged In'}
-          </Text>
-          <Text style={{ color: C.textSecondary, textAlign: 'center', marginTop: 8 }}>
-            {settings.uiLanguage === 'myanmar' 
-              ? 'ပရိုဖိုင်ကြည့်ရန် အကောင့်ဝင်ရောက်ပါ'
-              : settings.uiLanguage === 'korean'
-              ? '프로필을 보려면 로그인하세요'
-              : 'Please login to view your profile'}
-          </Text>
-        </View>
-      </SafeAreaView>
-    );
+    // Show AuthScreen (login/signup) when user is not logged in
+    return <AuthScreen />;
   }
   
   // Calculate level based on points
@@ -46,6 +32,58 @@ export function ProfileScreen({ navigation }: { navigation: any }) {
     setTimeout(() => setIsRefreshing(false), 500);
   };
   
+  const handleTOPIKAccess = () => {
+    // If PRO or already unlocked, grant access
+    if (isPro || topikUnlocked) {
+      navigation.navigate('Practice', { screen: 'TOPIKTest' });
+      return;
+    }
+
+    // If not enough points
+    if (points < 1000) {
+      const messages = {
+        myanmar: `TOPIK စာမေးပွဲကို ဖွင့်ရန် ၁၀၀၀ အမှတ် လိုအပ်ပါသည်။\n\nလက်ရှိအမှတ်: ${points}\nလိုအပ်သေးသော အမှတ်: ${1000 - points}`,
+        korean: `TOPIK 시험을 잠금 해제하려면 1000포인트가 필요합니다.\n\n현재 포인트: ${points}\n필요한 포인트: ${1000 - points}`,
+        english: `You need 1000 points to unlock TOPIK Test.\n\nCurrent points: ${points}\nPoints needed: ${1000 - points}`
+      };
+      Alert.alert(
+        settings.uiLanguage === 'myanmar' ? 'အမှတ်မလုံလောက်ပါ' : settings.uiLanguage === 'korean' ? '포인트 부족' : 'Insufficient Points',
+        messages[settings.uiLanguage]
+      );
+      return;
+    }
+
+    // Confirm unlock with 1000 points
+    const titles = {
+      myanmar: 'TOPIK စာမေးပွဲ ဖွင့်မည်',
+      korean: 'TOPIK 시험 잠금 해제',
+      english: 'Unlock TOPIK Test'
+    };
+    const messages = {
+      myanmar: `၁၀၀၀ အမှတ်ဖြင့် TOPIK စာမေးပွဲကို အပြီးတိုင် ဖွင့်လိုပါသလား?\n\n• အမြဲတမ်း ဝင်ရောက်အသုံးပြုနိုင်ပါသည်\n• စာမေးပွဲ ၅ ခု အကြိမ်မရွေး ဖြေဆိုနိုင်ပါသည်`,
+      korean: `1000포인트로 TOPIK 시험을 영구적으로 잠금 해제하시겠습니까?\n\n• 무제한 액세스\n• 5개 문제 무제한 반복`,
+      english: `Unlock TOPIK Test permanently for 1000 points?\n\n• Unlimited access forever\n• Retake 5 questions anytime`
+    };
+
+    Alert.alert(
+      titles[settings.uiLanguage],
+      messages[settings.uiLanguage],
+      [
+        {
+          text: settings.uiLanguage === 'myanmar' ? 'မလုပ်တော့ပါ' : settings.uiLanguage === 'korean' ? '취소' : 'Cancel',
+          style: 'cancel'
+        },
+        {
+          text: settings.uiLanguage === 'myanmar' ? 'ဖွင့်မည်' : settings.uiLanguage === 'korean' ? '잠금 해제' : 'Unlock',
+          onPress: async () => {
+            await unlockTopik();
+            navigation.navigate('Practice', { screen: 'TOPIKTest' });
+          }
+        }
+      ]
+    );
+  };
+
   const handleLogout = () => {
     const titles = {
       myanmar: 'ထွက်မည်လား?',
@@ -294,6 +332,79 @@ export function ProfileScreen({ navigation }: { navigation: any }) {
           </View>
         </View>
         
+        {/* TOPIK Test Card */}
+        <Pressable
+          onPress={handleTOPIKAccess}
+          style={({ pressed }) => ([
+            styles.card,
+            {
+              backgroundColor: C.surface,
+              borderColor: isPro || topikUnlocked ? '#8b5cf6' : C.border,
+              borderWidth: isPro || topikUnlocked ? 2 : 1.5,
+              opacity: pressed ? 0.8 : 1,
+              marginBottom: 16,
+            }
+          ])}
+        >
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            {/* Icon */}
+            <View style={[
+              styles.iconCircle,
+              { backgroundColor: '#ede9fe', borderColor: '#8b5cf6', borderWidth: 1.5 }
+            ]}>
+              <Ionicons name="school" size={32} color="#8b5cf6" />
+            </View>
+
+            {/* Content */}
+            <View style={{ flex: 1, marginLeft: 16 }}>
+              <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 4 }}>
+                <Text style={[styles.cardTitle, { color: C.textPrimary }]}>
+                  {settings.uiLanguage === 'myanmar' ? 'TOPIK စာမေးပွဲ' : settings.uiLanguage === 'korean' ? 'TOPIK 시험' : 'TOPIK Test'}
+                </Text>
+                {isPro && (
+                  <View style={{ 
+                    backgroundColor: '#8b5cf6', 
+                    paddingHorizontal: 8, 
+                    paddingVertical: 2, 
+                    borderRadius: 8, 
+                    marginLeft: 8 
+                  }}>
+                    <Text style={{ color: '#fff', fontSize: 10, fontWeight: '700' }}>PRO</Text>
+                  </View>
+                )}
+              </View>
+              
+              <Text style={{ fontSize: 13, color: C.textSecondary, marginBottom: 8 }}>
+                {settings.uiLanguage === 'myanmar' 
+                  ? 'ကိုရီးယား စာမေးပွဲ အခြေခံ' 
+                  : settings.uiLanguage === 'korean' 
+                  ? '한국어 능력 시험 (기초)' 
+                  : 'Korean Proficiency Test (Basic)'}
+              </Text>
+
+              {/* Status Badge */}
+              {isPro || topikUnlocked ? (
+                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                  <Ionicons name="checkmark-circle" size={18} color="#10B981" />
+                  <Text style={{ fontSize: 13, color: '#10B981', marginLeft: 6, fontWeight: '600' }}>
+                    {settings.uiLanguage === 'myanmar' ? 'ဖွင့်ထားပြီး' : settings.uiLanguage === 'korean' ? '잠금 해제됨' : 'Unlocked'}
+                  </Text>
+                </View>
+              ) : (
+                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                  <Ionicons name="lock-closed" size={16} color="#F59E0B" />
+                  <Text style={{ fontSize: 13, color: '#F59E0B', marginLeft: 6, fontWeight: '600' }}>
+                    {settings.uiLanguage === 'myanmar' ? '၁၀၀၀ အမှတ်' : settings.uiLanguage === 'korean' ? '1000 포인트' : '1000 Points'}
+                  </Text>
+                </View>
+              )}
+            </View>
+
+            {/* Arrow */}
+            <Ionicons name="chevron-forward" size={24} color={C.textTertiary} />
+          </View>
+        </Pressable>
+        
         {/* Logout Button */}
         <Pressable
           onPress={handleLogout}
@@ -332,6 +443,22 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.08,
     shadowRadius: 10,
     elevation: 4,
+  },
+  iconCircle: {
+    width: 56,
+    height: 56,
+    borderRadius: 14,
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.06,
+    shadowRadius: 6,
+    elevation: 3,
+  },
+  cardTitle: {
+    fontSize: 17,
+    fontWeight: '700',
   },
   sectionTitle: {
     fontSize: 16,
