@@ -31,13 +31,16 @@ import { AuthProvider, useAuth } from './data/AuthContext';
 import { UserPointsProvider, useUserPoints } from './data/UserPointsContext';
 import { AuthScreen } from './screens/AuthScreen';
 import { ProfileScreen } from './screens/ProfileScreen';
+import { LevelSelectionScreen } from './screens/LevelSelectionScreen';
+import { KoreanWritingScreen } from './screens/KoreanWritingScreen';
+import { BurmeseWritingScreen } from './screens/BurmeseWritingScreen';
 import { DictionarySyncProvider, useDictionarySync, mergeApprovedWords } from './data/DictionarySync';
 import { UpdatesProvider, useUpdates } from './data/UpdatesContext';
 import { SearchBox } from './components/SearchBox';
 import { NotificationContainer } from './components/NotificationBanner';
 import { db } from './data/firebase';
 import { transcribeWithOpenAI } from './data/stt';
-import { generateMCQ, generateTF, generateFlashcards } from './data/quiz';
+import { generateMCQ, generateTF, generateFlashcards, type DifficultyLevel } from './data/quiz';
 import { WordInputForm } from './components/WordInputForm';
 import { WordDetailScreen } from './screens/WordDetailScreen';
 import { GoogleTranslateProvider, OpenAIChatProvider, type ChatMessage } from './data/ai';
@@ -210,9 +213,9 @@ function HomeSearchScreen({ navigation }: { navigation: any }) {
               
               <Text style={[styles.welcomeSubtitle, { color: C.textSecondary, marginBottom: 32, textAlign: 'center' }]}>
                 {settings.uiLanguage === 'myanmar' 
-                  ? 'စကားလုံးများကို ရှာဖွေရန် အပေါ်မှ search box တွင် ရိုက်ထည့်ပါ'
+                  ? 'စကားလုံးများကို အပေါ်မှ search box တွင် ရိုက်ထည့်ပါ'
                   : settings.uiLanguage === 'korean'
-                  ? '검색하려면 위의 검색창에 입력하세요'
+                  ? '검색어를 위의 검색창에 입력하세요'
                   : 'Type in the search box above to find words'
                 }
               </Text>
@@ -521,9 +524,10 @@ function getMotivation(score: number, total: number, uiLang: 'english' | 'myanma
   return pick(en);
 }
 
-function MultipleChoiceQuizScreen() {
+function MultipleChoiceQuizScreen({ route }: { route: any }) {
   const C = useThemedColors();
   const { approvedWords } = useDictionarySync();
+  const selectedLevel: DifficultyLevel = route?.params?.selectedLevel || 'all';
   
   // Create merged dictionary for quiz generation
     const mergedDictionary = React.useMemo(() => {
@@ -541,15 +545,15 @@ function MultipleChoiceQuizScreen() {
 
   // Generate questions only once initially and when dictionary changes
   const [questions, setQuestions] = React.useState(() => {
-    console.log('Initial MCQ question generation...');
-    return generateMCQ(20, mergedDictionary);
+    console.log('Initial MCQ question generation with level:', selectedLevel);
+    return generateMCQ(20, mergedDictionary, selectedLevel);
   });
 
-  // Update questions when dictionary changes
+  // Update questions when dictionary or level changes
   React.useEffect(() => {
-    console.log('Updating MCQ questions due to dictionary change...');
-    setQuestions(generateMCQ(20, mergedDictionary));
-  }, [mergedDictionary]);
+    console.log('Updating MCQ questions due to dictionary/level change...');
+    setQuestions(generateMCQ(20, mergedDictionary, selectedLevel));
+  }, [mergedDictionary, selectedLevel]);
 
   const [index, setIndex] = React.useState(0);
   const [selected, setSelected] = React.useState<number | null>(null);
@@ -562,13 +566,13 @@ function MultipleChoiceQuizScreen() {
     // First stop the timer by setting it to 0
     setTimeLeft(0);
     // Then generate new questions and reset state
-    setQuestions(generateMCQ(20, mergedDictionary));
+    setQuestions(generateMCQ(20, mergedDictionary, selectedLevel));
     setIndex(0);
     setScore(0);
     setSelected(null);
     // Finally start the new timer
     setTimeout(() => setTimeLeft(60), 0);
-  }, [mergedDictionary]);
+  }, [mergedDictionary, selectedLevel]);
 
   // Update questions when dictionary content actually changes
   React.useEffect(() => {
@@ -678,29 +682,30 @@ function MultipleChoiceQuizScreen() {
   );
 }
 
-function TrueFalseQuizScreen() {
+function TrueFalseQuizScreen({ route }: { route: any }) {
   const C = useThemedColors();
   const { approvedWords } = useDictionarySync();
+  const selectedLevel: DifficultyLevel = route?.params?.selectedLevel || 'all';
   
   // Create merged dictionary for quiz generation
   const mergedDictionary = React.useMemo(() => {
     return mergeApprovedWords(dictionaryEntries, approvedWords);
   }, [approvedWords]);
   
-  const [questions, setQuestions] = React.useState(() => generateTF(20, mergedDictionary));
+  const [questions, setQuestions] = React.useState(() => generateTF(20, mergedDictionary, selectedLevel));
   const [index, setIndex] = React.useState(0);
   const [selected, setSelected] = React.useState<boolean | null>(null);
   const [score, setScore] = React.useState(0);
   const [timeLeft, setTimeLeft] = React.useState(45);
   
-  // Update questions when dictionary changes
+  // Update questions when dictionary or level changes
   React.useEffect(() => {
-    setQuestions(generateTF(20, mergedDictionary));
+    setQuestions(generateTF(20, mergedDictionary, selectedLevel));
     setIndex(0);
     setScore(0);
     setSelected(null);
     setTimeLeft(45);
-  }, [mergedDictionary]);
+  }, [mergedDictionary, selectedLevel]);
   
   const q = questions[index];
   const done = index >= questions.length || timeLeft === 0;
@@ -783,24 +788,25 @@ function TrueFalseQuizScreen() {
   );
 }
 
-function FlashcardsScreen() {
+function FlashcardsScreen({ route }: { route: any }) {
   const C = useThemedColors();
   const { approvedWords } = useDictionarySync();
+  const selectedLevel: DifficultyLevel = route?.params?.selectedLevel || 'all';
   
   // Create merged dictionary for flashcard generation
   const mergedDictionary = React.useMemo(() => {
     return mergeApprovedWords(dictionaryEntries, approvedWords);
   }, [approvedWords]);
   
-  const cards = React.useMemo(() => generateFlashcards(20, mergedDictionary), [mergedDictionary]);
+  const cards = React.useMemo(() => generateFlashcards(20, mergedDictionary, selectedLevel), [mergedDictionary, selectedLevel]);
   const [index, setIndex] = React.useState(0);
   const [flipped, setFlipped] = React.useState(false);
   
-  // Reset flashcards when dictionary changes
+  // Reset flashcards when dictionary or level changes
   React.useEffect(() => {
     setIndex(0);
     setFlipped(false);
-  }, [mergedDictionary]);
+  }, [mergedDictionary, selectedLevel]);
   
   const card = cards[index];
   const done = index >= cards.length;
@@ -874,16 +880,66 @@ function PlaceholderScreen({ title }: { title: string }) {
 }
 
 
-//practice tabs
+//practice tabs with level
 const Tab = createBottomTabNavigator();
+function PracticeQuizTabs({ route }: { route: any }) {
+  return (
+    <Tab.Navigator 
+      screenOptions={{ headerShown: false }}
+    >
+      <Tab.Screen 
+        name="Quiz (MCQ)" 
+        component={MultipleChoiceQuizScreen}
+        initialParams={route.params}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="help-circle-outline" size={size} color={color} />
+          )
+        }}
+      />
+      <Tab.Screen 
+        name="Quiz (True/False)" 
+        component={TrueFalseQuizScreen}
+        initialParams={route.params}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="checkmark-done-outline" size={size} color={color} />
+          )
+        }}
+      />
+      <Tab.Screen 
+        name="Flashcards" 
+        component={FlashcardsScreen}
+        initialParams={route.params}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="albums-outline" size={size} color={color} />
+          )
+        }}
+      />
+      <Tab.Screen 
+        name="Voice to Text" 
+        component={VoiceToTextScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="mic-outline" size={size} color={color} />
+          )
+        }}
+      />
+    </Tab.Navigator>
+  );
+}
+
+// Practice Stack Navigator (Level Selection -> Quiz Tabs or Writing Screens)
+const PracticeStack = createNativeStackNavigator();
 function PracticeTabs() {
   return (
-    <Tab.Navigator screenOptions={{ headerShown: false }}>
-      <Tab.Screen name="Quiz (MCQ)" component={MultipleChoiceQuizScreen} />
-      <Tab.Screen name="Quiz (True/False)" component={TrueFalseQuizScreen} />
-      <Tab.Screen name="Flashcards" component={FlashcardsScreen} />
-      <Tab.Screen name="Voice to Text" component={VoiceToTextScreen} />
-    </Tab.Navigator>
+    <PracticeStack.Navigator screenOptions={{ headerShown: false }}>
+      <PracticeStack.Screen name="LevelSelection" component={LevelSelectionScreen} />
+      <PracticeStack.Screen name="PracticeTabs" component={PracticeQuizTabs} />
+      <PracticeStack.Screen name="KoreanWriting" component={KoreanWritingScreen} />
+      <PracticeStack.Screen name="BurmeseWriting" component={BurmeseWritingScreen} />
+    </PracticeStack.Navigator>
   );
 }
 
@@ -1122,7 +1178,7 @@ function VoiceToTextScreen() {
 function AppNavigator() {
   return (
     <Drawer.Navigator drawerContent={(props) => <AppDrawerContent {...props} />}>
-              <Drawer.Screen name="Home" component={HomeStack} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="home-outline" size={size} color={color} />) }} />
+     <Drawer.Screen name="Home" component={HomeStack} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="home-outline" size={size} color={color} />) }} />
       <Drawer.Screen name="Practice" component={PracticeTabs} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="school-outline" size={size} color={color} />) }} />
       <Drawer.Screen name="Favorites" component={FavoritesScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="heart-outline" size={size} color={color} />) }} />
       <Drawer.Screen name="History" component={HistoryScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="time-outline" size={size} color={color} />) }} />
@@ -1461,7 +1517,7 @@ function AboutScreen() {
   const audience = 'ဒီအက်ပ်ကို ကိုရီးယားနိုင်ငံမှာ နေထိုင်သူ မြန်မာနိုင်ငံသားများ၊ ပညာသင်ကြားနေသူများ နဲ့ ဘာသာစကားလေ့လာသူများအတွက် ရည်ရွယ်ထားပါတယ်။';
   const featuresTitle = 'အက်ပ်ရဲ့ အဓိက Features များ';
   const bullets = [
-    'App Interface ကို မြန်မာလို လွယ်ကူစွာ အသုံးပြုနိုင်ခြင်း',
+    'App Interface ကို မြန်မာ/ကိုရီးယား/အင်္ဂလိပ် ဘာသာဖြင့် လွယ်ကူစွာ အသုံးပြုနိုင်ခြင်း',
     'ကိုရီးယားစကားနှင့် မြန်မာစကားကို တိုက်ရိုက်ရှာဖွေရန်၊ ပြန်ဆိုရန် အလွယ်တကူ အသုံးပြုနိုင်ခြင်း',
     'လေ့လာသူများအတွက် အသုံးဝင်သော အသံထွက်၊ ဥပမာဝေါဟာရများ ထည့်သွင်းထားခြင်း',
     'စကားလုံးရှာဖွေမှု အရှိန်မြှင့်တင်ရန် သုံးသပ်ချက်များနှင့် စာရင်းများ ပံ့ပိုးပေးခြင်း',
@@ -1527,7 +1583,7 @@ function SettingsScreen() {
 
   const LanguageOptions = (
     <Section title="Language">
-      {(['myanmar','korean','english'] as AppLanguage[]).map((lang, idx) => {
+      {(['myanmar','korean','english'] as unknown as AppLanguage[]).map((lang, idx) => {
         const selected = settings.uiLanguage === lang;
         return (
           <Pressable

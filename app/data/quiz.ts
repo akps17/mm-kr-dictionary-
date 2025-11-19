@@ -20,6 +20,8 @@ export type Flashcard = {
   back: string; // Myanmar (and maybe English)
 };
 
+export type DifficultyLevel = 'all' | 'basic' | 'intermediate' | 'advanced';
+
 function sample<T>(arr: T[], count: number): T[] {
   const copy = [...arr];
   const out: T[] = [];
@@ -30,11 +32,31 @@ function sample<T>(arr: T[], count: number): T[] {
   return out;
 }
 
-export function generateMCQ(count = 20, dictionary: DictionaryEntry[] = dictionaryEntries): MCQQuestion[] {
-  const base = sample(dictionary, count);
+/**
+ * Filter dictionary by level
+ */
+export function filterByLevel(dictionary: DictionaryEntry[], level: DifficultyLevel): DictionaryEntry[] {
+  if (level === 'all') {
+    return dictionary;
+  }
+  return dictionary.filter((entry) => entry.level === level);
+}
+
+export function generateMCQ(count = 20, dictionary: DictionaryEntry[] = dictionaryEntries as DictionaryEntry[], level: DifficultyLevel = 'all'): MCQQuestion[] {
+  const filteredDict = filterByLevel(dictionary, level) as DictionaryEntry[];
+  
+  // If not enough words for the selected level, return empty or show a message
+  if (filteredDict.length < 4) {
+    console.warn(`Not enough words for level: ${level}. Need at least 4, have ${filteredDict.length}`);
+    return [];
+  }
+  
+  const actualCount = Math.min(count, filteredDict.length);
+  const base = sample(filteredDict, actualCount);
+  
   return base.map((entry) => {
     const distractors = sample(
-      dictionary.filter((e) => e.id !== entry.id),
+      filteredDict.filter((e) => e.id !== entry.id),
       3
     ).map((e) => e.myanmar);
     const correct = entry.myanmar;
@@ -54,14 +76,23 @@ export function generateMCQ(count = 20, dictionary: DictionaryEntry[] = dictiona
   });
 }
 
-export function generateTF(count = 20, dictionary: DictionaryEntry[] = dictionaryEntries): TFQuestion[] {
-  const base = sample(dictionary, count);
+export function generateTF(count = 20, dictionary: DictionaryEntry[] = dictionaryEntries as DictionaryEntry[], level: DifficultyLevel = 'all'): TFQuestion[] {
+  const filteredDict = filterByLevel(dictionary, level) as DictionaryEntry[];
+  
+  if (filteredDict.length < 2) {
+    console.warn(`Not enough words for level: ${level}. Need at least 2, have ${filteredDict.length}`);
+    return [];
+  }
+  
+  const actualCount = Math.min(count, filteredDict.length);
+  const base = sample(filteredDict, actualCount);
+  
   return base.map((entry, idx) => {
     const truth = Math.random() > 0.5;
     let shown = entry.myanmar;
     if (!truth) {
       const other = sample(
-        dictionary.filter((e) => e.id !== entry.id),
+        filteredDict.filter((e) => e.id !== entry.id),
         1
       )[0];
       shown = other.myanmar;
@@ -74,8 +105,17 @@ export function generateTF(count = 20, dictionary: DictionaryEntry[] = dictionar
   });
 }
 
-export function generateFlashcards(count = 20, dictionary: DictionaryEntry[] = dictionaryEntries): Flashcard[] {
-  const base = sample(dictionary, count);
+export function generateFlashcards(count = 20, dictionary: DictionaryEntry[] = dictionaryEntries as DictionaryEntry[], level: DifficultyLevel = 'all'): Flashcard[] {
+  const filteredDict = filterByLevel(dictionary, level) as DictionaryEntry[];
+  
+  if (filteredDict.length === 0) {
+    console.warn(`No words available for level: ${level}`);
+    return [];
+  }
+  
+  const actualCount = Math.min(count, filteredDict.length);
+  const base = sample(filteredDict, actualCount);
+  
   return base.map((e) => ({ id: e.id, front: e.korean, back: `${e.myanmar}${e.english ? `\n(${e.english})` : ''}` }));
 }
 
