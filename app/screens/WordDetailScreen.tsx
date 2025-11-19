@@ -46,8 +46,8 @@ export function WordDetailScreen({ route, navigation }: WordDetailScreenProps) {
       // Speak the Korean word with Korean voice
       await Speech.speak(word.korean, {
         language: 'ko-KR',
-        pitch: 1.0,
-        rate: 0.85, // Slightly slower for clarity
+        pitch: 0.5,
+        rate: 0.4, // Slower speed for better clarity
         onDone: () => setIsSpeaking(false),
         onStopped: () => setIsSpeaking(false),
         onError: () => {

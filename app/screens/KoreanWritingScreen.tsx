@@ -71,8 +71,8 @@ export function KoreanWritingScreen({ navigation }: KoreanWritingScreenProps) {
     // Speak the Korean character with Korean locale
     Speech.speak(character, {
       language: 'ko-KR', // Korean language code
-      pitch: 1.0,
-      rate: 0.75,
+      pitch: 0.5,
+      rate: 0.4, // Slower speed for better clarity
     });
   };
 

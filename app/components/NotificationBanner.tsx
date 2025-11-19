@@ -6,7 +6,9 @@ import {
   StyleSheet,
   Animated,
   Dimensions,
+  Platform,
 } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { useThemedColors } from './Theme';
 
@@ -19,7 +21,20 @@ type NotificationProps = {
 
 export function NotificationBanner({ message, type, duration = 4000, onDismiss }: NotificationProps) {
   const C = useThemedColors();
+  const insets = useSafeAreaInsets();
   const [slideAnim] = useState(new Animated.Value(-100));
+
+  const dismiss = React.useCallback(() => {
+    Animated.spring(slideAnim, {
+      toValue: -100,
+      useNativeDriver: true,
+      tension: 80,
+      friction: 10,
+      velocity: 1,
+    }).start(() => {
+      onDismiss();
+    });
+  }, [slideAnim, onDismiss]);
 
   useEffect(() => {
     // Slide in
@@ -40,19 +55,8 @@ export function NotificationBanner({ message, type, duration = 4000, onDismiss }
     return () => {
       clearTimeout(timer);
     };
-  }, [duration]); // Added duration to dependencies
-
-  const dismiss = React.useCallback(() => {
-    Animated.spring(slideAnim, {
-      toValue: -100,
-      useNativeDriver: true,
-      tension: 80,
-      friction: 10,
-      velocity: 1,
-    }).start(() => {
-      onDismiss();
-    });
-  }, [slideAnim, onDismiss]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [duration, dismiss]);
 
   const getBackgroundColor = () => {
     switch (type) {
@@ -90,7 +94,8 @@ export function NotificationBanner({ message, type, duration = 4000, onDismiss }
         styles.container,
         { 
           backgroundColor: getBackgroundColor(),
-          transform: [{ translateY: slideAnim }]
+          transform: [{ translateY: slideAnim }],
+          paddingTop: Math.max(insets.top, Platform.OS === 'ios' ? 44 : 24) + 8,
         }
       ]}
     >
@@ -119,7 +124,6 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     zIndex: 1000,
-    paddingTop: 50, // Account for status bar
     paddingBottom: 16,
     paddingHorizontal: 16,
     shadowColor: '#000',

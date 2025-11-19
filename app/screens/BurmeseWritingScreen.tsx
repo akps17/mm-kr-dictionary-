@@ -109,8 +109,8 @@ export function BurmeseWritingScreen({ navigation }: BurmeseWritingScreenProps) 
     // This sounds much better than English romanization!
     Speech.speak(korean, {
       language: 'ko-KR', // Korean voice
-      pitch: 1.0,
-      rate: 0.75,
+      pitch: 0.5,
+      rate: 0.4, // Slower speed for better clarity
     });
   };
 

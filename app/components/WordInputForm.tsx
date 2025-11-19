@@ -7,9 +7,12 @@ import {
   StyleSheet,
   Modal,
   ScrollView,
+  Alert,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useThemedColors } from './Theme';
+import { useSettings } from '../data/SettingsContext';
+import { i18nLabels } from '../data/settings';
 import type { Example, WordLevel } from '../types/dictionary';
 
 type WordInputFormProps = {
@@ -33,6 +36,8 @@ type WordInputFormProps = {
 
 export function WordInputForm({ onSubmit, initialValues }: WordInputFormProps) {
   const C = useThemedColors();
+  const { settings } = useSettings();
+  const labels = i18nLabels[settings.uiLanguage];
   
   // Form state
   const [korean, setKorean] = useState(initialValues?.korean || '');
@@ -86,7 +91,18 @@ export function WordInputForm({ onSubmit, initialValues }: WordInputFormProps) {
     setPos('noun');
     setLevel('');
     setExamples([]);
-  }, [korean, myanmar, english, pos, level, examples, onSubmit]);
+
+    // Show success alert
+    Alert.alert(
+      labels.submittedSuccess || 'Word Submitted!',
+      settings.uiLanguage === 'myanmar'
+        ? 'စကားလုံးကို အောင်မြင်စွာ တင်သွင်းပြီးပါပြီ။ အက်မင်မှ စစ်ဆေးပြီး အတည်ပြုပေးပါမည်။'
+        : settings.uiLanguage === 'korean'
+        ? '단어가 성공적으로 제출되었습니다. 관리자가 검토 후 승인해드리겠습니다.'
+        : 'Word submitted successfully! Admin will review and approve it soon.',
+      [{ text: labels.ok || 'OK', style: 'default' }]
+    );
+  }, [korean, myanmar, english, pos, level, examples, onSubmit, labels, settings.uiLanguage]);
 
   return (
     <View style={[styles.container, { backgroundColor: C.surface, borderColor: C.border }]}>

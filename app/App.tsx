@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useMemo, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -805,11 +806,13 @@ export default function App() {
     return null;
   }
   return (
-    <AuthProvider>
-      <SettingsProvider>
-        <ThemedApp />
-      </SettingsProvider>
-    </AuthProvider>
+    <SafeAreaProvider>
+      <AuthProvider>
+        <SettingsProvider>
+          <ThemedApp />
+        </SettingsProvider>
+      </AuthProvider>
+    </SafeAreaProvider>
   );
 }
 

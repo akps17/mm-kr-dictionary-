@@ -51,6 +51,7 @@ export function DictionarySyncProvider({ children }: { children: React.ReactNode
     // Set up real-time listener for dictionary words
   useEffect(() => {
     let mounted = true;
+    let previousWordIds = new Set<string>();
     console.log('Setting up Firebase dictionary listener...');
 
     const q = query(
@@ -72,6 +73,7 @@ export function DictionarySyncProvider({ children }: { children: React.ReactNode
           console.log('Firebase snapshot received, processing...', snapshot.size, 'documents');
           const newApprovedWords: ApprovedWord[] = [];
           const newlyApprovedWords: ApprovedWord[] = [];
+          const currentWordIds = new Set<string>();
         
         snapshot.forEach((doc) => {
           const data = doc.data();
@@ -90,58 +92,54 @@ export function DictionarySyncProvider({ children }: { children: React.ReactNode
           };
           
           newApprovedWords.push(approvedWord);
+          currentWordIds.add(doc.id);
           
-          // Check if this is a newly added word (not in current list)
-          const wasAlreadyInList = approvedWords.some(existing => existing.id === doc.id);
-          if (!wasAlreadyInList && !isLoading) {
+          // Check if this is a newly added word (not in previous list)
+          if (!previousWordIds.has(doc.id) && previousWordIds.size > 0) {
             newlyApprovedWords.push(approvedWord);
             console.log('New word detected:', approvedWord.korean, '→', approvedWord.myanmar);
           }
         });
 
-        // Show notifications for newly added words
-        if (newlyApprovedWords.length > 0) {
-          newlyApprovedWords.forEach(word => {
-                                  notificationManager.show({
-                        message: `📚 New word added: ${word.korean} → ${word.myanmar}`,
-                        type: 'success',
-                        duration: 5000,
-                      });
-                    });
+        // Show notifications for newly added words (only if not initial load)
+        if (newlyApprovedWords.length > 0 && previousWordIds.size > 0) {
+          // Show individual notifications for first few words
+          newlyApprovedWords.slice(0, 3).forEach(word => {
+            notificationManager.show({
+              message: `📚 New word: ${word.korean} → ${word.myanmar}`,
+              type: 'success',
+              duration: 5000,
+            });
+          });
 
-                    if (newlyApprovedWords.length > 1) {
-                      notificationManager.show({
-                        message: `🎉 ${newlyApprovedWords.length} new words added to dictionary!`,
-                        type: 'info',
-                        duration: 6000,
-                      });
-                    }
+          // Show summary if more than 3 words
+          if (newlyApprovedWords.length > 3) {
+            notificationManager.show({
+              message: `🎉 ${newlyApprovedWords.length} new words added to dictionary!`,
+              type: 'info',
+              duration: 6000,
+            });
+          } else if (newlyApprovedWords.length > 1) {
+            notificationManager.show({
+              message: `🎉 ${newlyApprovedWords.length} new words added!`,
+              type: 'info',
+              duration: 5000,
+            });
+          }
         }
 
+        // Update previous word IDs for next comparison
+        previousWordIds = currentWordIds;
+
+        // Update state
         setApprovedWords(newApprovedWords);
         setSyncCount(newApprovedWords.length);
         setLastSync(new Date());
         setIsLoading(false);
 
         // Cache the approved words
-                    // Only update if words have actually changed
-            const hasChanges = newApprovedWords.length !== approvedWords.length ||
-              newApprovedWords.some((word, idx) => 
-                word.korean !== approvedWords[idx]?.korean ||
-                word.myanmar !== approvedWords[idx]?.myanmar
-              );
-
-            if (hasChanges) {
-              console.log('Dictionary changes detected, updating...');
-              cacheApprovedWords(newApprovedWords);
-              setApprovedWords(newApprovedWords);
-              setSyncCount(newApprovedWords.length);
-              setLastSync(new Date());
-              console.log(`Synced ${newApprovedWords.length} dictionary words from Firebase`);
-              console.log('Dictionary words:', newApprovedWords.map(w => `${w.korean} → ${w.myanmar}`));
-            } else {
-              console.log('No dictionary changes detected, skipping update');
-            }
+        cacheApprovedWords(newApprovedWords);
+        console.log(`Synced ${newApprovedWords.length} dictionary words from Firebase`);
           }, 500); // 500ms debounce
         },
         (error) => {
@@ -166,7 +164,7 @@ export function DictionarySyncProvider({ children }: { children: React.ReactNode
       if (debounceTimeout) clearTimeout(debounceTimeout);
       unsubscribe();
     };
-  }, []); // Empty dependency array since we want this to run only once
+  }, []); // Empty dependency array - listener runs once and tracks changes internally
 
   const loadCachedWords = async () => {
     try {
