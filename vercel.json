@@ -1,7 +1,8 @@
 {
   "version": 2,
-  "buildCommand": "cd app && yarn install && yarn build",
-  "outputDirectory": "app/dist",
-  "installCommand": "cd app && yarn install"
+  "rootDirectory": "app",
+  "buildCommand": "yarn build",
+  "outputDirectory": "dist",
+  "installCommand": "yarn install"
 }
 
