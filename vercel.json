@@ -1,6 +1,5 @@
 {
   "version": 2,
-  "rootDirectory": "app",
   "buildCommand": "yarn build",
   "outputDirectory": "dist",
   "installCommand": "yarn install"
