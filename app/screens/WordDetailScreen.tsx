@@ -11,6 +11,8 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import { useThemedColors } from '../components/Theme';
 import { useLibrary } from '../data/LibraryContext';
+import { useDictionarySync, mergeApprovedWords } from '../data/DictionarySync';
+import { dictionaryEntries } from '../data/dictionary';
 import * as Speech from 'expo-speech';
 import { WORD_LEVELS } from '../types/dictionary';
 
@@ -29,7 +31,36 @@ export function WordDetailScreen({ route, navigation }: WordDetailScreenProps) {
   const { word } = route.params;
   const C = useThemedColors();
   const { favoriteIds, toggleFavorite } = useLibrary();
+  const { approvedWords } = useDictionarySync();
   const [isSpeaking, setIsSpeaking] = React.useState(false);
+
+  // Create merged dictionary for searching
+  const mergedDictionary = React.useMemo(() => {
+    return mergeApprovedWords(dictionaryEntries, approvedWords);
+  }, [approvedWords]);
+
+  // Function to find a word in the dictionary by Korean text
+  const findWordByKorean = React.useCallback((koreanText: string): DictionaryEntry | null => {
+    const normalizedText = koreanText.trim().toLowerCase();
+    return mergedDictionary.find(entry => 
+      entry.korean.trim().toLowerCase() === normalizedText
+    ) || null;
+  }, [mergedDictionary]);
+
+  // Handle synonym/antonym click - navigate only if word exists
+  const handleRelatedWordClick = React.useCallback((relatedWordText: string) => {
+    // Extract Korean word from format like "상충 (conflict)" or just "상충"
+    const koreanWord = relatedWordText.split(' (')[0].trim();
+    
+    // Find the word in dictionary
+    const foundWord = findWordByKorean(koreanWord);
+    
+    if (foundWord) {
+      // Word exists - navigate to its detail screen
+      navigation.navigate('WordDetail', { word: foundWord });
+    }
+    // If word doesn't exist, do nothing - stay on current screen silently
+  }, [findWordByKorean, navigation]);
 
   // Handle pronunciation using expo-speech
   async function playPronunciation() {
@@ -204,12 +235,60 @@ export function WordDetailScreen({ route, navigation }: WordDetailScreenProps) {
         <View style={styles.relatedWordsRow}>
           <View style={styles.relatedWordsColumn}>
             <Text style={[styles.relatedWordsTitle, { color: C.textSecondary }]}>Synonyms</Text>
-            <Text style={[styles.placeholder, { color: C.textTertiary }]}>Coming soon</Text>
+            {word.synonyms ? (
+              <View style={styles.relatedWordsList}>
+                {word.synonyms.split(',').map((syn, index) => {
+                  const trimmed = syn.trim();
+                  if (!trimmed) return null;
+                  return (
+                    <Pressable
+                      key={index}
+                      onPress={() => handleRelatedWordClick(trimmed)}
+                      style={({ pressed }) => [
+                        styles.relatedWordChip,
+                        { backgroundColor: C.border + '40' },
+                        pressed && { opacity: 0.7 }
+                      ]}
+                    >
+                      <Text style={[styles.relatedWordText, { color: C.textPrimary }]}>
+                        {trimmed}
+                      </Text>
+                    </Pressable>
+                  );
+                })}
+              </View>
+            ) : (
+              <Text style={[styles.placeholder, { color: C.textTertiary }]}>Coming soon</Text>
+            )}
           </View>
           <View style={[styles.divider, { backgroundColor: C.border }]} />
           <View style={styles.relatedWordsColumn}>
             <Text style={[styles.relatedWordsTitle, { color: C.textSecondary }]}>Antonyms</Text>
-            <Text style={[styles.placeholder, { color: C.textTertiary }]}>Coming soon</Text>
+            {word.antonyms ? (
+              <View style={styles.relatedWordsList}>
+                {word.antonyms.split(',').map((ant, index) => {
+                  const trimmed = ant.trim();
+                  if (!trimmed) return null;
+                  return (
+                    <Pressable
+                      key={index}
+                      onPress={() => handleRelatedWordClick(trimmed)}
+                      style={({ pressed }) => [
+                        styles.relatedWordChip,
+                        { backgroundColor: C.border + '40' },
+                        pressed && { opacity: 0.7 }
+                      ]}
+                    >
+                      <Text style={[styles.relatedWordText, { color: C.textPrimary }]}>
+                        {trimmed}
+                      </Text>
+                    </Pressable>
+                  );
+                })}
+              </View>
+            ) : (
+              <Text style={[styles.placeholder, { color: C.textTertiary }]}>Coming soon</Text>
+            )}
           </View>
         </View>
       </View>
@@ -355,5 +434,21 @@ const styles = StyleSheet.create({
   exampleEnglish: {
     fontSize: 12,
     fontStyle: 'italic',
+  },
+  relatedWordsList: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
+    marginTop: 8,
+  },
+  relatedWordChip: {
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 16,
+    marginBottom: 4,
+  },
+  relatedWordText: {
+    fontSize: 13,
+    fontWeight: '500',
   },
 });

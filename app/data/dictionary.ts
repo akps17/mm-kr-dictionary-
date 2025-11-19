@@ -14213,6 +14213,7 @@ export const dictionaryEntries: DictionaryEntry[] = [
 
 // ========================================================================
 // ===== ㅂ CONSONANT BASIC WORDS - CATEGORY 1: ACTIONS & VERBS (4700-4799) =====
+// ===== ㅂ CONSONANT BASIC WORDS - CATEGORY 1: ACTIONS & VERBS (4700-4799) =====
 { id: '4700', korean: '보다', myanmar: 'ကြည့်သည်/တွေ့သည်', english: 'To see/look/meet', pos: 'verb', level: 'basic', synonyms: '쳐다보다 (gaze), 만나다 (meet)', antonyms: '감다 (close eyes), 외면하다 (ignore)', examples: [
   { korean: '영화를 봤어요.', myanmar: 'ရုပ်ရှင် ကြည့်ခဲ့တယ်။', english: 'I watched a movie.' }
 ]},
@@ -14316,7 +14317,7 @@ export const dictionaryEntries: DictionaryEntry[] = [
   { korean: '돈을 많이 벌고 싶어요.', myanmar: 'ပိုက်ဆံအများကြီး ရှာချင်တယ်။', english: 'I want to earn a lot of money.' }
 ]},
 { id: '4734', korean: '변하다', myanmar: 'ပြောင်းလဲသည်', english: 'To change/turn into', pos: 'verb', level: 'basic', synonyms: '바뀌다 (change), 달라지다 (become different)', antonyms: '그대로이다 (remain same), 유지하다 (maintain)', examples: [
-  { korean: '계절이 변했어요.', myanmar: 'ရာသီဥတု ပြောင်းလဲသွားပြီ။', english: 'The season has changed.' }
+  { korean: '계획이 변했어요.', myanmar: 'အစီအစဉ်က ပြောင်းလဲသွားတယ်။', english: 'The plan changed.' }
 ]},
 { id: '4735', korean: '부탁하다', myanmar: 'အကူအညီတောင်းသည်', english: 'To request/ask a favor', pos: 'verb', level: 'basic', synonyms: '요청하다 (request), 의뢰하다 (commission)', antonyms: '거절하다 (refuse), 명령하다 (order)', examples: [
   { korean: '도움을 부탁했어요.', myanmar: 'အကူအညီ တောင်းခဲ့တယ်။', english: 'I asked for help.' }
@@ -14818,6 +14819,320 @@ export const dictionaryEntries: DictionaryEntry[] = [
 { id: '4900', korean: '부패', myanmar: 'ပုပ်သိုးခြင်း/အဂတိလိုက်စားမှု', english: 'Corruption/Decay', pos: 'noun', level: 'advanced', synonyms: '타락 (depravity), 변질 (deterioration)', antonyms: '청렴 (integrity), 신선 (freshness)', examples: [
   { korean: '음식 부패를 막아야 해요.', myanmar: 'အစားအစာ ပုပ်သိုးခြင်းကို တားဆီးရမယ်။', english: 'We must prevent food decay.' }
 ]},
+
+
+
+
+
+
+
+
+
+
+
+
+/////ㅂ ㅂㅂ  ㅂ ㅂ ㅂㅂ  100 
+// ===== ㅂ CONSONANT BASIC WORDS - CATEGORY 3: ADJECTIVES & ADVERBS (4901-5000) =====
+{ id: '4901', korean: '부드럽다', myanmar: 'နူးညံ့သည်', english: 'To be soft/smooth/gentle', pos: 'adjective', level: 'basic', synonyms: '연하다 (tender), 매끄럽다 (smooth)', antonyms: '거칠다 (rough), 딱딱하다 (hard)', examples: [
+  { korean: '이 천은 아주 부드러워요.', myanmar: 'ဒီအထည်က အရမ်းနူးညံ့တယ်။', english: 'This fabric is very soft.' }
+]},
+{ id: '4902', korean: '바쁘다', myanmar: 'အလုပ်များသည်', english: 'To be busy', pos: 'adjective', level: 'basic', synonyms: '분주하다 (bustling), 쉴 틈 없다 (no time to rest)', antonyms: '한가하다 (free), 여유롭다 (relaxed)', examples: [
+  { korean: '요즘 너무 바빠요.', myanmar: 'ဒီရက်ပိုင်း အရမ်းအလုပ်များတယ်။', english: 'I am too busy these days.' }
+]},
+{ id: '4903', korean: '밝다', myanmar: 'လင်းသည်/တောက်ပသည်', english: 'To be bright/light/cheerful', pos: 'adjective', level: 'basic', synonyms: '환하다 (bright), 명랑하다 (cheerful)', antonyms: 'အပူ (dark), 침울하다 (gloomy)', examples: [
+  { korean: '아침 해가 밝아요.', myanmar: 'မနက်ခင်းနေက လင်းတယ်။', english: 'The morning sun is bright.' }
+]},
+{ id: '4904', korean: '비슷하다', myanmar: 'ဆင်တူသည်', english: 'To be similar', pos: 'adjective', level: 'basic', synonyms: '유사하다 (similar), 흡사하다 (resemble)', antonyms: '다르다 (different), 상이하다 (dissimilar)', examples: [
+  { korean: '두 개의 디자인이 비슷해요.', myanmar: 'ဒီဇိုင်းနှစ်ခုက ဆင်တူတယ်။', english: 'The two designs are similar.' }
+]},
+{ id: '4905', korean: '부족하다', myanmar: 'မလုံလောက်/လိုသည်', english: 'To be insufficient/lack', pos: 'adjective', level: 'basic', synonyms: '모자라다 (lack), 결핍되다 (be deficient)', antonyms: '충분하다 (sufficient), 풍부하다 (abundant)', examples: [
+  { korean: '설탕이 부족해요.', myanmar: 'သကြား မလုံလောက်ဘူး။', english: 'There is a lack of sugar.' }
+]},
+{ id: '4906', korean: '배고프다', myanmar: 'ဗိုက်ဆာသည်', english: 'To be hungry', pos: 'adjective', level: 'basic', synonyms: '허기지다 (feel hungry), 시장하다 (famished)', antonyms: '배부르다 (full), 만족하다 (satisfied)', examples: [
+  { korean: '지금 너무 배고파요.', myanmar: 'အခု အရမ်းဗိုက်ဆာတယ်။', english: 'I am very hungry now.' }
+]},
+{ id: '4907', korean: '불쌍하다', myanmar: 'သနားစရာကောင်းသည်', english: 'To be pitiable/poor', pos: 'adjective', level: 'basic', synonyms: '측은하다 (pity), 가엾다 (pathetic)', antonyms: '부럽다 (enviable), 행복하다 (happy)', examples: [
+  { korean: '길 잃은 강아지가 불쌍해요.', myanmar: 'လမ်းပျောက်နေတဲ့ ခွေးလေးက သနားစရာကောင်းတယ်။', english: 'The lost puppy is pitiable.' }
+]},
+{ id: '4908', korean: '부끄럽다', myanmar: 'ရှက်သည်', english: 'To be shy/ashamed', pos: 'adjective', level: 'basic', synonyms: '창피하다 (embarrassed), 수줍다 (bashful)', antonyms: '자신감 있다 (confident), 뻔뻔하다 (brazen)', examples: [
+  { korean: '칭찬을 받으니 부끄러웠어요.', myanmar: 'ချီးကျူးခံရတော့ ရှက်ခဲ့တယ်။', english: 'I felt ashamed when I was praised.' }
+]},
+{ id: '4909', korean: '복잡하다', myanmar: 'ရှုပ်ထွေးသည်', english: 'To be complex/complicated', pos: 'adjective', level: 'pre-intermediate', synonyms: '난해하다 (difficult), 뒤얽히다 (entangled)', antonyms: '단순하다 (simple), 간단하다 (easy)', examples: [
+  { korean: '길이 너무 복잡해요.', myanmar: 'လမ်းက အရမ်းရှုပ်ထွေးတယ်။', english: 'The road is too complicated.' }
+]},
+{ id: '4910', korean: '부럽다', myanmar: 'အားကျသည်', english: 'To be envious', pos: 'adjective', level: 'basic', synonyms: '시기심 (jealousy), 선망 (admiration)', antonyms: '불쌍하다 (pitiable), 동정하다 (sympathize)', examples: [
+  { korean: '네 새 가방이 부러워요.', myanmar: 'မင်းရဲ့အိတ်အသစ်ကို အားကျတယ်။', english: 'I am envious of your new bag.' }
+]},
+{ id: '4911', korean: '빠르다', myanmar: 'မြန်သည်', english: 'To be fast/quick', pos: 'adjective', level: 'basic', synonyms: '신속하다 (rapid), 재빠르다 (swift)', antonyms: '느리다 (slow), 더디다 (tardy)', examples: [
+  { korean: '기차가 아주 빨라요.', myanmar: 'ရထားက အရမ်းမြန်တယ်။', english: 'The train is very fast.' }
+]},
+{ id: '4912', korean: '비싸다', myanmar: 'ဈေးကြီးသည်', english: 'To be expensive', pos: 'adjective', level: 'basic', synonyms: '고가이다 (high-priced), 값이 나가다 (costly)', antonyms: '싸다 (cheap), 저렴하다 (inexpensive)', examples: [
+  { korean: '이 시계는 비싸요.', myanmar: 'ဒီနာရီက ဈေးကြီးတယ်။', english: 'This watch is expensive.' }
+]},
+{ id: '4913', korean: '밝다', myanmar: 'လင်းသည်/နားလည်သည်', english: 'To be light/well-informed', pos: 'adjective', level: 'intermediate', synonyms: '훤하다 (clear), 해박하다 (knowledgeable)', antonyms: '어둡다 (dark), 무지하다 (ignorant)', examples: [
+  { korean: '그는 경제에 밝아요.', myanmar: 'သူက စီးပွားရေးကို နားလည်တယ်။', english: 'He is well-informed about economics.' }
+]},
+{ id: '4914', korean: '부지런하다', myanmar: 'ကြိုးစားသည်/ Industrious', english: 'To be diligent/hardworking', pos: 'adjective', level: 'basic', synonyms: '열심이다 (zealous), 근면하다 (assiduous)', antonyms: '게으르다 (lazy), နာရီစက္ကူ (indolent)', examples: [
+  { korean: '그는 부지런한 학생이에요.', myanmar: 'သူက ကြိုးစားတဲ့ ကျောင်းသားဖြစ်တယ်။', english: 'He is a diligent student.' }
+]},
+{ id: '4915', korean: '부럽다', myanmar: 'အားကျသည်', english: 'To be enviable/jealous', pos: 'adjective', level: 'basic', synonyms: '시기심 (jealousy), 선망 (admiration)', antonyms: '동정 (pity), 연민 (sympathy)', examples: [
+  { korean: '그들의 우정이 부러워요.', myanmar: 'သူတို့ရဲ့ ခင်မင်မှုကို အားကျတယ်။', english: 'I am envious of their friendship.' }
+]},
+{ id: '4916', korean: '불안하다', myanmar: 'စိတ်မချမ်းမသာဖြစ်သည်/စိုးရိမ်သည်', english: 'To be uneasy/anxious', pos: 'adjective', level: 'basic', synonyms: '초조하다 (restless), 염려되다 (worried)', antonyms: '안정되다 (stable), 편안하다 (comfortable)', examples: [
+  { korean: '시험 때문에 불안했어요.', myanmar: 'စာမေးပွဲကြောင့် စိတ်မချမ်းမသာ ဖြစ်ခဲ့တယ်။', english: 'I was anxious because of the exam.' }
+]},
+{ id: '4917', korean: '분명하다', myanmar: 'ရှင်းလင်းသည်/ထင်ရှားသည်', english: 'To be clear/obvious', pos: 'adjective', level: 'pre-intermediate', synonyms: '확실하다 (certain), 명백하다 (evident)', antonyms: '모호하다 (vague), 불확실하다 (uncertain)', examples: [
+  { korean: '그 사실은 분명해요.', myanmar: 'အဲဒီအမှန်တရားက ရှင်းလင်းတယ်။', english: 'That fact is obvious.' }
+]},
+{ id: '4918', korean: '부드러운', myanmar: 'နူးညံ့သော', english: 'Soft/Gentle (attributive)', pos: 'adjective', level: 'basic', synonyms: '연한 (tender), 유연한 (flexible)', antonyms: '단단한 (hard), 거친 (rough)', examples: [
+  { korean: '부드러운 목소리로 말했어요.', myanmar: 'နူးညံ့တဲ့ အသံနဲ့ ပြောခဲ့တယ်။', english: 'I spoke in a gentle voice.' }
+]},
+{ id: '4919', korean: '비참하다', myanmar: 'ဝမ်းနည်းစရာ/ဆိုးဝါးသည်', english: 'To be miserable/tragic', pos: 'adjective', level: 'intermediate', synonyms: '처참하다 (horrible), 불행하다 (unhappy)', antonyms: '행복하다 (happy), 즐겁다 (joyful)', examples: [
+  { korean: '결말이 너무 비참했어요.', myanmar: 'ဇာတ်သိမ်းက အရမ်းဝမ်းနည်းစရာ ကောင်းတယ်။', english: 'The ending was too tragic.' }
+]},
+{ id: '4920', korean: '비옥하다', myanmar: 'မြေဩဇာကောင်းသည်', english: 'To be fertile/rich (land)', pos: 'adjective', level: 'advanced', synonyms: '기름지다 (fatty/rich), 풍요롭다 (abundant)', antonyms: 'မေမာရ် (barren), 척박하다 (poor)', examples: [
+  { korean: '이 땅은 비옥해서 농사가 잘돼요.', myanmar: 'ဒီမြေက မြေဩဇာကောင်းလို့ စိုက်ပျိုးရေး အောင်မြင်တယ်။', english: 'This land is fertile, so farming is good.' }
+]},
+{ id: '4921', korean: '빨갛다', myanmar: 'နီရဲသည်', english: 'To be red', pos: 'adjective', level: 'basic', synonyms: '붉다 (red), 선홍색 (crimson)', antonyms: '하얗다 (white), 검다 (black)', examples: [
+  { korean: '빨간 사과를 좋아해요.', myanmar: 'နီရဲတဲ့ ပန်းသီးကို ကြိုက်တယ်။', english: 'I like red apples.' }
+]},
+{ id: '4922', korean: '보통이다', myanmar: 'သာမန်ဖြစ်သည်', english: 'To be ordinary/average', pos: 'adjective', level: 'basic', synonyms: '평범하다 (plain), 흔하다 (common)', antonyms: '특별하다 (special), 희귀하다 (rare)', examples: [
+  { korean: '그의 실력은 보통이에요.', myanmar: 'သူ့ရဲ့ အရည်အချင်းက သာမန်ဖြစ်တယ်။', english: 'His skill level is average.' }
+]},
+{ id: '4923', korean: '부정확하다', myanmar: 'မမှန်ကန်/မတိကျ', english: 'To be inaccurate/incorrect', pos: 'adjective', level: 'intermediate', synonyms: '틀리다 (wrong), 오류가 있다 (have an error)', antonyms: '정확하다 (accurate), 옳다 (right)', examples: [
+  { korean: '정보가 부정확해요.', myanmar: 'အချက်အလက်က မမှန်ကန်ဘူး။', english: 'The information is inaccurate.' }
+]},
+{ id: '4924', korean: '불결하다', myanmar: 'ညစ်ပတ်သည်/မသန့်ရှင်း', english: 'To be dirty/unclean', pos: 'adjective', level: 'intermediate', synonyms: '더럽다 (dirty), 지저분하다 (messy)', antonyms: '깨끗하다 (clean), 청결하다 (hygienic)', examples: [
+  { korean: '손이 불결해요.', myanmar: 'လက်က မသန့်ရှင်းဘူး။', english: 'My hands are dirty.' }
+]},
+{ id: '4925', korean: '불리하다', myanmar: 'အားနည်းချက်ရှိ/မကောင်းသော', english: 'To be disadvantageous/unfavorable', pos: 'adjective', level: 'intermediate', synonyms: '나쁘다 (bad), 해롭다 (harmful)', antonyms: '유리하다 (advantageous), 이롭다 (beneficial)', examples: [
+  { korean: '날씨가 경기에 불리했어요.', myanmar: 'ရာသီဥတုက ပြိုင်ပွဲအတွက် မကောင်းဘူး။', english: 'The weather was unfavorable for the game.' }
+]},
+{ id: '4926', korean: '불확실하다', myanmar: 'မသေချာ/မယုံကြည်ရ', english: 'To be uncertain/unclear', pos: 'adjective', level: 'intermediate', synonyms: '애매하다 (ambiguous), 미지수다 (unknown)', antonyms: '확실하다 (certain), 명백하다 (obvious)', examples: [
+  { korean: '미래는 불확실해요.', myanmar: 'အနာဂတ်က မသေချာဘူး။', english: 'The future is uncertain.' }
+]},
+{ id: '4927', korean: '부실하다', myanmar: 'အားနည်းသည်/ခိုင်မာမှုမရှိ', english: 'To be weak/shoddy/insubstantial', pos: 'adjective', level: 'intermediate', synonyms: '허술하다 (shabby), 취약하다 (vulnerable)', antonyms: '튼튼하다 (sturdy), 견고하다 (firm)', examples: [
+  { korean: '건물이 부실하게 지어졌어요.', myanmar: 'အဆောက်အအုံက ခိုင်မာမှုမရှိဘဲ ဆောက်ခဲ့တယ်။', english: 'The building was built shoddily.' }
+]},
+{ id: '4928', korean: '불길하다', myanmar: 'ကံမကောင်း/နိမိတ်မကောင်း', english: 'To be ominous/inauspicious', pos: 'adjective', level: 'advanced', synonyms: '흉조 (bad omen), 재수 없다 (unlucky)', antonyms: '길하다 (auspicious), 상서롭다 (propitious)', examples: [
+  { korean: '불길한 예감이 들었어요.', myanmar: 'နိမိတ်မကောင်းတဲ့ အတိတ်နိမိတ် ရခဲ့တယ်။', english: 'I had an ominous feeling.' }
+]},
+{ id: '4929', korean: '변덕스럽다', myanmar: 'စိတ်ပြောင်းလဲလွယ်သည်', english: 'To be capricious/fickle', pos: 'adjective', level: 'advanced', synonyms: '변하기 쉽다 (easy to change), 종잡을 수 없다 (unpredictable)', antonyms: '일관되다 (consistent), 한결같다 (unchanging)', examples: [
+  { korean: '날씨가 변덕스러워요.', myanmar: 'ရာသီဥတုက စိတ်ပြောင်းလဲလွယ်တယ်။', english: 'The weather is fickle.' }
+]},
+{ id: '4930', korean: '빈번하다', myanmar: 'မကြာခဏဖြစ်သည်', english: 'To be frequent', pos: 'adjective', level: 'advanced', synonyms: '잦다 (frequent), 흔하다 (common)', antonyms: 'ဒူမား (rare), 희귀하다 (infrequent)', examples: [
+  { korean: '교통사고가 빈번하게 발생해요.', myanmar: 'ယာဉ်တိုက်မှု မကြာခဏ ဖြစ်ပေါ်တယ်။', english: 'Traffic accidents occur frequently.' }
+]},
+{ id: '4931', korean: '보잘것없다', myanmar: 'တန်ဖိုးမရှိ/အရေးမပါ', english: 'To be trivial/insignificant', pos: 'adjective', level: 'advanced', synonyms: '하찮다 (trifling), 사소하다 (minor)', antonyms: '중요하다 (important), 대단하다 (great)', examples: [
+  { korean: '그것은 보잘것없는 실수였어요.', myanmar: 'အဲဒါက အရေးမပါတဲ့ အမှားဖြစ်ခဲ့တယ်။', english: 'That was an insignificant mistake.' }
+]},
+{ id: '4932', korean: '범용적', myanmar: 'ယေဘုယျ/ဘက်စုံသုံး', english: 'Universal/General-purpose', pos: 'adjective', level: 'advanced', synonyms: '보편적 (universal), 일반적 (general)', antonyms: '특수적 (specific), 한정적 (limited)', examples: [
+  { korean: '이 소프트웨어는 범용적이에요.', myanmar: 'ဒီဆော့ဖ်ဝဲက ဘက်စုံသုံး ဖြစ်တယ်။', english: 'This software is general-purpose.' }
+]},
+{ id: '4933', korean: '비현실적', myanmar: 'လက်တွေ့မဆန်', english: 'Unrealistic', pos: 'adjective', level: 'intermediate', synonyms: '공상적 (fantastical), 환상적 (illusory)', antonyms: '현실적 (realistic), 실제적 (practical)', examples: [
+  { korean: '그의 계획은 비현실적이에요.', myanmar: 'သူ့ရဲ့အစီအစဉ်က လက်တွေ့မဆန်ဘူး။', english: 'His plan is unrealistic.' }
+]},
+{ id: '4934', korean: '분주하다', myanmar: 'အလုပ်များ/ရှုပ်ထွေး', english: 'To be busy/bustling', pos: 'adjective', level: 'intermediate', synonyms: '바쁘다 (busy), 북적이다 (crowded)', antonyms: '한산하다 (quiet), 느긋하다 (leisurely)', examples: [
+  { korean: '아침 시장은 분주해요.', myanmar: 'မနက်ဈေးက အလုပ်များတယ်။', english: 'The morning market is bustling.' }
+]},
+{ id: '4935', korean: '복되다', myanmar: 'ကံကောင်းသည်/မင်္ဂလာရှိ', english: 'To be blessed/happy', pos: 'adjective', level: 'advanced', synonyms: '행복하다 (happy), 축복되다 (be blessed)', antonyms: '불행하다 (unhappy), ဆုံးရှုံး (be cursed)', examples: [
+  { korean: '복된 가정을 이루었어요.', myanmar: 'မင်္ဂလာရှိတဲ့ မိသားစုကို တည်ဆောက်ခဲ့တယ်။', english: 'They established a blessed family.' }
+]},
+{ id: '4936', korean: '바삭하다', myanmar: 'ကြွပ်သည်', english: 'To be crispy/crunchy', pos: 'adjective', level: 'basic', synonyms: '부스러지다 (crumble), 딱딱하다 (hard)', antonyms: '눅눅하다 (soggy), နူးညံ့သည် (soft)', examples: [
+  { korean: '과자가 바삭해요.', myanmar: 'ဘီစကွတ်က ကြွပ်တယ်။', english: 'The cookie is crispy.' }
+]},
+{ id: '4937', korean: '보존적', myanmar: 'ထိန်းသိမ်းစောင့်ရှောက်သော', english: 'Conservative/Preservative', pos: 'adjective', level: 'advanced', synonyms: '전통적 (traditional), 수구적 (reactionary)', antonyms: '개혁적 (reformist), 혁신적 (innovative)', examples: [
+  { korean: '그는 보존적인 성향이 있어요.', myanmar: 'သူက ထိန်းသိမ်းစောင့်ရှောက်တဲ့ သဘောထား ရှိတယ်။', english: 'He has a conservative tendency.' }
+]},
+{ id: '4938', korean: '불가능하다', myanmar: 'မဖြစ်နိုင်/မစွမ်းဆောင်နိုင်', english: 'To be impossible', pos: 'adjective', level: 'basic', synonyms: 'အောရ်ယာ (difficult), 난감하다 (awkward)', antonyms: '가능하다 (possible), 쉽다 (easy)', examples: [
+  { korean: '이 일은 불가능해요.', myanmar: 'ဒီအလုပ်က မဖြစ်နိုင်ဘူး။', english: 'This task is impossible.' }
+]},
+{ id: '4939', korean: '비정상적', myanmar: 'ပုံမှန်မဟုတ်/မမှန်', english: 'Abnormal/Irregular', pos: 'adjective', level: 'intermediate', synonyms: '이상하다 (strange), 특이하다 (peculiar)', antonyms: '정상적 (normal), 일반적 (general)', examples: [
+  { korean: '비정상적인 온도를 감지했어요.', myanmar: 'ပုံမှန်မဟုတ်တဲ့ အပူချိန်ကို ထောက်လှမ်းခဲ့တယ်။', english: 'I detected an abnormal temperature.' }
+]},
+{ id: '4940', korean: '불합리하다', myanmar: 'ကျိုးကြောင်းမဆီလျော်/မမျှတ', english: 'To be irrational/unreasonable', pos: 'adjective', level: 'advanced', synonyms: '억지스럽다 (forced), 부당하다 (unjust)', antonyms: '합리적 (rational), 논리적 (logical)', examples: [
+  { korean: '그 결정은 불합리해요.', myanmar: 'အဲဒီဆုံးဖြတ်ချက်က ကျိုးကြောင်းမဆီလျော်ဘူး။', english: 'That decision is irrational.' }
+]},
+{ id: '4941', korean: '비위생적', myanmar: 'ကျန်းမာရေးနှင့်မညီညွတ်', english: 'Unsanitary/Unhealthy', pos: 'adjective', level: 'intermediate', synonyms: '불결하다 (dirty), 더럽다 (unclean)', antonyms: '위생적 (sanitary), 청결하다 (clean)', examples: [
+  { korean: '비위생적인 환경에서 살았어요.', myanmar: 'ကျန်းမာရေးနှင့်မညီညွတ်တဲ့ ပတ်ဝန်းကျင်မှာ နေခဲ့တယ်။', english: 'I lived in an unsanitary environment.' }
+]},
+{ id: '4942', korean: '보잘것있는', myanmar: 'တန်ဖိုးရှိ/အရေးပါသော', english: 'Significant/Worthwhile', pos: 'adjective', level: 'advanced', synonyms: '중요하다 (important), 가치 있다 (valuable)', antonyms: '보잘것없다 (insignificant), 하찮다 (trivial)', examples: [
+  { korean: '보잘것있는 성과를 냈어요.', myanmar: 'အရေးပါသော ရလဒ် ထုတ်ခဲ့တယ်။', english: 'I achieved a significant result.' }
+]},
+{ id: '4943', korean: '범박하다', myanmar: 'ရိုးရှင်း/ရိုးစင်းသော', english: 'To be simple/straightforward', pos: 'adjective', level: 'advanced', synonyms: '간단하다 (simple), 소박하다 (plain)', antonyms: '복잡하다 (complex), 화려하다 (luxurious)', examples: [
+  { korean: '그의 표현은 범박했어요.', myanmar: 'သူ့ရဲ့ ဖော်ပြမှုက ရိုးရှင်းခဲ့တယ်။', english: 'His expression was straightforward.' }
+]},
+{ id: '4944', korean: '비관적', myanmar: 'အဆိုးမြင်', english: 'Pessimistic', pos: 'adjective', level: 'intermediate', synonyms: '절망적 (desperate), 암울한 (gloomy)', antonyms: '낙관적 (optimistic), 긍정적 (positive)', examples: [
+  { korean: '그녀는 비관적인 시각을 가지고 있어요.', myanmar: 'သူမက အဆိုးမြင်တဲ့ အမြင် ရှိတယ်။', english: 'She has a pessimistic outlook.' }
+]},
+{ id: '4945', korean: '버겁다', myanmar: 'ခက်ခဲလွန်းသည်/ပင်ပန်းသည်', english: 'To be overwhelming/too much', pos: 'adjective', level: 'intermediate', synonyms: '감당하기 어렵다 (hard to handle), 벅차다 (too much)', antonyms: '쉽다 (easy), 간단하다 (simple)', examples: [
+  { korean: '그 일은 저에게 너무 버거워요.', myanmar: 'အဲဒီအလုပ်က ကျွန်တော့်အတွက် အရမ်းခက်ခဲလွန်းတယ်။', english: 'That task is too overwhelming for me.' }
+]},
+{ id: '4946', korean: '반가운', myanmar: 'ဝမ်းသာအားရဖွယ်ကောင်းသော', english: 'Glad/Welcome (attributive)', pos: 'adjective', level: 'basic', synonyms: '기쁜 (joyful), 환영하는 (welcoming)', antonyms: '슬픈 (sad), 싫은 (unpleasant)', examples: [
+  { korean: '반가운 소식이에요.', myanmar: 'ဝမ်းသာအားရဖွယ်ကောင်းတဲ့ သတင်းပါ။', english: 'It is welcome news.' }
+]},
+{ id: '4947', korean: '볼품없다', myanmar: 'မလှပ/မကောင်းမွန်သော', english: 'To be unattractive/shabby/poor', pos: 'adjective', level: 'intermediate', synonyms: '초라하다 (shabby), 형편없다 (terrible)', antonyms: '멋지다 (cool), 화려하다 (splendid)', examples: [
+  { korean: '볼품없는 선물을 받았어요.', myanmar: 'မကောင်းမွန်တဲ့ လက်ဆောင် ရရှိခဲ့တယ်။', english: 'I received a shabby gift.' }
+]},
+{ id: '4948', korean: '부정하다', myanmar: 'မဟုတ်/မမှန်', english: 'To be negative/deny', pos: 'adjective', level: 'intermediate', synonyms: '아니다 (not be), 거부하다 (reject)', antonyms: '긍정하다 (affirm), 인정하다 (admit)', examples: [
+  { korean: '그것은 부정할 수 없는 사실이에요.', myanmar: 'အဲဒါက မဟုတ်ဘူးလို့ ငြင်းမရတဲ့ အမှန်တရားပါ။', english: 'That is an undeniable fact.' }
+]},
+{ id: '4949', korean: '불명예스럽다', myanmar: 'ဂုဏ်သိက္ခာကျစေသော', english: 'To be disgraceful/dishonorable', pos: 'adjective', level: 'advanced', synonyms: '수치스러운 (shameful), 모욕적 (insulting)', antonyms: '영예로운 (honorable), 자랑스러운 (proud)', examples: [
+  { korean: '불명예스러운 퇴직을 했어요.', myanmar: 'ဂုဏ်သိက္ခာကျစေတဲ့ အနားယူခြင်း လုပ်ခဲ့တယ်။', english: 'I had a disgraceful retirement.' }
+]},
+{ id: '4950', korean: '부지런히', myanmar: 'ကြိုးစားစွာ', english: 'Diligently/Hardworking (adverb)', pos: 'adverb', level: 'basic', synonyms: '열심히 (hard), 꾸준히 (steadily)', antonyms: 'เกเลอร์รี (lazily), 느리게 (slowly)', examples: [
+  { korean: '부지런히 공부했어요.', myanmar: 'ကြိုးစားစွာ စာကျက်ခဲ့တယ်။', english: 'I studied diligently.' }
+]},
+{ id: '4951', korean: '바로', myanmar: 'ချက်ချင်း/တည့်တည့်', english: 'Immediately/Straight', pos: 'adverb', level: 'basic', synonyms: '곧바로 (straight away), 즉시 (at once)', antonyms: '천천히 (slowly), 나중에 (later)', examples: [
+  { korean: '바로 오세요.', myanmar: 'ချက်ချင်း လာပါ။', english: 'Come right away.' }
+]},
+{ id: '4952', korean: '반드시', myanmar: 'မဖြစ်မနေ', english: 'Certainly/Must', pos: 'adverb', level: 'basic', synonyms: '꼭 (surely), 틀림없이 (unfailingly)', antonyms: '아마 (perhaps), 어쩌면 (maybe)', examples: [
+  { korean: '내일 반드시 갈 거예요.', myanmar: 'မနက်ဖြန် မဖြစ်မနေ သွားမယ်။', english: 'I will certainly go tomorrow.' }
+]},
+{ id: '4953', korean: '별로', myanmar: 'သိပ်မ/မများ', english: 'Not particularly/Not much', pos: 'adverb', level: 'basic', synonyms: '그다지 (not very), 딱히 (specifically)', antonyms: '매우 (very), 대단히 (greatly)', examples: [
+  { korean: '별로 안 좋아해요.', myanmar: 'သိပ်မကြိုက်ဘူး။', english: 'I don\'t particularly like it.' }
+]},
+{ id: '4954', korean: '빨리', myanmar: 'မြန်မြန်', english: 'Quickly/Fast', pos: 'adverb', level: 'basic', synonyms: '신속하게 (rapidly), 서둘러 (hurriedly)', antonyms: '느리게 (slowly), 천천히 (gently)', examples: [
+  { korean: '빨리 걸었어요.', myanmar: 'မြန်မြန် လမ်းလျှောက်ခဲ့တယ်။', english: 'I walked quickly.' }
+]},
+{ id: '4955', korean: '분명히', myanmar: 'ရှင်းရှင်းလင်းလင်း', english: 'Clearly/Obviously', pos: 'adverb', level: 'pre-intermediate', synonyms: '확실하게 (certainly), 명백히 (evidently)', antonyms: '모호하게 (vaguely), 애매하게 (ambiguously)', examples: [
+  { korean: '분명히 말했어요.', myanmar: 'ရှင်းရှင်းလင်းလင်း ပြောခဲ့တယ်။', english: 'I spoke clearly.' }
+]},
+{ id: '4956', korean: '비로소', myanmar: 'စတင်/မှသာ', english: 'Only then/For the first time', pos: 'adverb', level: 'intermediate', synonyms: '이제야 (just now), 처음으로 (for the first time)', antonyms: '이미 (already), 항상 (always)', examples: [
+  { korean: '문제를 풀고 비로소 이해했어요.', myanmar: 'ပြဿနာကို ဖြေရှင်းပြီးမှသာ နားလည်ခဲ့တယ်။', english: 'Only after solving the problem did I understand.' }
+]},
+{ id: '4957', korean: '비슷하게', myanmar: 'ဆင်တူစွာ', english: 'Similarly/Alike', pos: 'adverb', level: 'basic', synonyms: '유사하게 (similarly), 거의 (almost)', antonyms: '다르게 (differently), 전혀 (totally)', examples: [
+  { korean: '비슷하게 만들었어요.', myanmar: 'ဆင်တူစွာ လုပ်ခဲ့တယ်။', english: 'I made it similarly.' }
+]},
+{ id: '4958', korean: '별도로', myanmar: 'သီးခြား', english: 'Separately/Apart', pos: 'adverb', level: 'intermediate', synonyms: '따로 (separately), 개별적으로 (individually)', antonyms: '함께 (together), 공동으로 (jointly)', examples: [
+  { korean: '선물은 별도로 포장했어요.', myanmar: 'လက်ဆောင်ကို သီးခြား ထုပ်ပိုးခဲ့တယ်။', english: 'I wrapped the gift separately.' }
+]},
+{ id: '4959', korean: '불과', myanmar: 'မျှသာ/သာ', english: 'Merely/Only', pos: 'adverb', level: 'intermediate', synonyms: '단지 (simply), 고작 (at most)', antonyms: '많이 (a lot), 충분히 (enough)', examples: [
+  { korean: '그는 불과 5살이에요.', myanmar: 'သူက ၅ နှစ်မျှသာ ရှိသေးတယ်။', english: 'He is merely 5 years old.' }
+]},
+{ id: '4960', korean: '바싹', myanmar: 'တင်းတင်း/ခြောက်သွေ့စွာ', english: 'Tightly/Crisply/Completely dry', pos: 'adverb', level: 'basic', synonyms: '단단히 (firmly), 완전히 (completely)', antonyms: '느슨하게 (loosely), 눅눅하게 (damply)', examples: [
+  { korean: '옷이 바싹 말랐어요.', myanmar: 'အဝတ်အစား ခြောက်သွေ့စွာ ခြောက်ခဲ့တယ်။', english: 'The clothes dried completely.' }
+]},
+{ id: '4961', korean: '버젓이', myanmar: 'ပေါ်ပေါ်ထင်ထင်', english: 'Openly/Blatantly', pos: 'adverb', level: 'advanced', synonyms: '당당하게 (brazenly), 공공연하게 (publicly)', antonyms: 'မော်လော (secretly), 숨어서 (hidden)', examples: [
+  { korean: '그는 버젓이 거짓말했어요.', myanmar: 'သူက ပေါ်ပေါ်ထင်ထင် လိမ်ညာခဲ့တယ်။', english: 'He blatantly lied.' }
+]},
+{ id: '4962', korean: '번번이', myanmar: 'အကြိမ်တိုင်း', english: 'Every time/Repeatedly', pos: 'adverb', level: 'advanced', synonyms: '매번 (each time), 계속 (continuously)', antonyms: 'မကြာခဏ (sometimes), 이따금 (occasionally)', examples: [
+  { korean: '시험에 번번이 떨어졌어요.', myanmar: 'စာမေးပွဲ အကြိမ်တိုင်း ကျခဲ့တယ်။', english: 'I failed the exam repeatedly.' }
+]},
+{ id: '4963', korean: '별반', myanmar: 'သိပ်မ/မထူးခြား', english: 'Not particularly/Especially', pos: 'adverb', level: 'advanced', synonyms: '그다지 (not very), 별로 (not much)', antonyms: '매우 (very), 특별히 (especially)', examples: [
+  { korean: '맛은 별반 다르지 않아요.', myanmar: 'အရသာက သိပ်မထူးခြားဘူး။', english: 'The taste is not particularly different.' }
+]},
+{ id: '4964', korean: '보다시피', myanmar: 'မြင်တဲ့အတိုင်း', english: 'As you can see', pos: 'adverb', level: 'intermediate', synonyms: '알다시피 (as you know), 보다 (see)', antonyms: '숨기다 (hide), 가리다 (cover)', examples: [
+  { korean: '보다시피 저는 괜찮아요.', myanmar: 'မြင်တဲ့အတိုင်း ကျွန်တော် အဆင်ပြေတယ်။', english: 'As you can see, I am fine.' }
+]},
+{ id: '4965', korean: '부디', myanmar: 'ကျေးဇူးပြု၍/အလေးအနက်', english: 'Please/Sincerely', pos: 'adverb', level: 'intermediate', synonyms: '제발 (please), 간절히 (earnestly)', antonyms: '대충 (casually), မုသီ (indifferently)', examples: [
+  { korean: '부디 건강하세요.', myanmar: 'ကျေးဇူးပြု၍ ကျန်းမာပါစေ။', english: 'Please be healthy.' }
+]},
+{ id: '4966', korean: '분명코', myanmar: 'ဧကန်မလွဲ', english: 'Certainly/Undoubtedly', pos: 'adverb', level: 'advanced', synonyms: '틀림없이 (unmistakably), 꼭 (surely)', antonyms: '불확실하게 (uncertainly), 아마 (perhaps)', examples: [
+  { korean: '분명코 성공할 거예요.', myanmar: 'ဧကန်မလွဲ အောင်မြင်မှာပါ။', english: 'You will undoubtedly succeed.' }
+]},
+{ id: '4967', korean: '부쩍', myanmar: 'သိသိသာသာ', english: 'Noticeably/Suddenly', pos: 'adverb', level: 'intermediate', synonyms: '갑자기 (suddenly), 현저히 (remarkably)', antonyms: '서서히 (gradually), 조금씩 (little by little)', examples: [
+  { korean: '키가 부쩍 자랐어요.', myanmar: 'အရပ် သိသိသာသာ ရှည်လာတယ်။', english: 'I grew noticeably taller.' }
+]},
+{ id: '4968', korean: '바람직하다', myanmar: 'ကောင်းမွန်/သင့်တော်', english: 'To be desirable/proper', pos: 'adjective', level: 'intermediate', synonyms: '적절하다 (appropriate), 이상적 (ideal)', antonyms: '부적절하다 (improper), နာဘုဒ် (bad)', examples: [
+  { korean: '바람직한 태도예요.', myanmar: 'ကောင်းမွန်တဲ့ သဘောထားပါ။', english: 'It is a desirable attitude.' }
+]},
+{ id: '4969', korean: '보편적', myanmar: 'ယေဘုယျ/အများအားဖြင့်', english: 'Universal/General', pos: 'adjective', level: 'intermediate', synonyms: '일반적 (general), 대중적 (popular)', antonyms: '특수적 (specific), 개별적 (individual)', examples: [
+  { korean: '이것은 보편적인 현상이에요.', myanmar: 'ဒါက ယေဘုယျ ဖြစ်ရပ်ပါ။', english: 'This is a universal phenomenon.' }
+]},
+{ id: '4970', korean: '본질적', myanmar: 'အနှစ်သာရ', english: 'Essential/Fundamental', pos: 'adjective', level: 'advanced', synonyms: '핵심적 (core), 근본적 (root)', antonyms: '부수적 (secondary), 외형적 (external)', examples: [
+  { korean: '문제의 본질적인 원인을 찾았어요.', myanmar: 'ပြဿနာရဲ့ အနှစ်သာရ အရင်းအမြစ်ကို ရှာတွေ့ခဲ့တယ်။', english: 'I found the essential cause of the problem.' }
+]},
+{ id: '4971', korean: '불필요하다', myanmar: 'မလိုလားအပ်', english: 'To be unnecessary', pos: 'adjective', level: 'basic', synonyms: '필요없다 (not needed), 무익하다 (useless)', antonyms: '필요하다 (necessary), 중요하다 (important)', examples: [
+  { korean: '불필요한 걱정은 하지 마세요.', myanmar: 'မလိုလားအပ်တဲ့ စိုးရိမ်မှု မလုပ်ပါနဲ့။', english: 'Don\'t worry unnecessarily.' }
+]},
+{ id: '4972', korean: '부족한', myanmar: 'မလုံလောက်သော', english: 'Insufficient/Lacking (attributive)', pos: 'adjective', level: 'basic', synonyms: '모자라는 (lacking), 결핍된 (deficient)', antonyms: '충분한 (sufficient), 넉넉한 (ample)', examples: [
+  { korean: '부족한 부분을 채웠어요.', myanmar: 'မလုံလောက်တဲ့ အပိုင်း ဖြည့်ခဲ့တယ်။', english: 'I filled the lacking part.' }
+]},
+{ id: '4973', korean: '분주히', myanmar: 'အလုပ်များစွာ', english: 'Busily/Hustling (adverb)', pos: 'adverb', level: 'intermediate', synonyms: '바쁘게 (busily), 정신없이 (frantically)', antonyms: '한가롭게 (leisurely), 천천히 (slowly)', examples: [
+  { korean: '사람들이 분주히 움직였어요.', myanmar: 'လူတွေ အလုပ်များစွာ လှုပ်ရှားခဲ့တယ်။', english: 'People moved busily.' }
+]},
+{ id: '4974', korean: '번거롭다', myanmar: 'ရှုပ်ထွေးသည်/စိတ်ရှုပ်စရာ', english: 'To be cumbersome/troublesome', pos: 'adjective', level: 'intermediate', synonyms: '복잡하다 (complex), 귀찮다 (annoying)', antonyms: '간단하다 (simple), 편리하다 (convenient)', examples: [
+  { korean: '절차가 번거로워요.', myanmar: 'လုပ်ထုံးလုပ်နည်းက ရှုပ်ထွေးတယ်။', english: 'The procedure is troublesome.' }
+]},
+{ id: '4975', korean: '비관적', myanmar: 'အဆိုးမြင်သော', english: 'Pessimistic (attributive)', pos: 'adjective', level: 'intermediate', synonyms: '절망적 (desperate), 암울한 (gloomy)', antonyms: '낙관적 (optimistic), 긍정적 (positive)', examples: [
+  { korean: '비관적인 견해를 제시했어요.', myanmar: 'အဆိုးမြင်သော အမြင်ကို တင်ပြခဲ့တယ်။', english: 'I presented a pessimistic view.' }
+]},
+{ id: '4976', korean: '비약적', myanmar: 'လျင်မြန်သော', english: 'Leaping/Rapid (progress)', pos: 'adjective', level: 'advanced', synonyms: '급속한 (rapid), 획기적 (epoch-making)', antonyms: '점진적 (gradual), နရီ (slow)', examples: [
+  { korean: '비약적인 성장을 했어요.', myanmar: 'လျင်မြန်သော တိုးတက်မှု လုပ်ခဲ့တယ်။', english: 'I achieved rapid growth.' }
+]},
+{ id: '4977', korean: '불합리한', myanmar: 'ကျိုးကြောင်းမဆီလျော်သော', english: 'Irrational/Unreasonable (attributive)', pos: 'adjective', level: 'advanced', synonyms: '억지스러운 (forced), 부당한 (unjust)', antonyms: '합리적인 (rational), 논리적인 (logical)', examples: [
+  { korean: '불합리한 요구를 거절했어요.', myanmar: 'ကျိုးကြောင်းမဆီလျော်သော တောင်းဆိုမှုကို ငြင်းဆိုခဲ့တယ်။', english: 'I rejected the irrational demand.' }
+]},
+{ id: '4978', korean: '부정적인', myanmar: 'အဆိုး/အဖျက်', english: 'Negative', pos: 'adjective', level: 'basic', synonyms: '소극적 (passive), 비관적 (pessimistic)', antonyms: '긍정적 (positive), 적극적 (active)', examples: [
+  { korean: '부정적인 결과를 얻었어요.', myanmar: 'အဆိုးရလဒ် ရရှိခဲ့တယ်။', english: 'I got a negative result.' }
+]},
+{ id: '4979', korean: '부끄러운', myanmar: 'ရှက်စရာကောင်းသော', english: 'Shameful/Embarrassing (attributive)', pos: 'adjective', level: 'basic', synonyms: '창피한 (embarrassing), 수치스러운 (disgraceful)', antonyms: '자랑스러운 (proud), 영광스러운 (glorious)', examples: [
+  { korean: '부끄러운 행동을 했어요.', myanmar: 'ရှက်စရာကောင်းတဲ့ အပြုအမူ လုပ်ခဲ့တယ်။', english: 'I performed a shameful act.' }
+]},
+{ id: '4980', korean: '배부른', myanmar: 'ဗိုက်ပြည့်သော', english: 'Full/Satiated (attributive)', pos: 'adjective', level: 'basic', synonyms: '포만감 있는 (satiated), 가득한 (full)', antonyms: '배고픈 (hungry), 허기진 (famished)', examples: [
+  { korean: '배부른 상태로 잠들었어요.', myanmar: 'ဗိုက်ပြည့်သော အခြေအနေနဲ့ အိပ်ခဲ့တယ်။', english: 'I fell asleep feeling full.' }
+]},
+{ id: '4981', korean: '불안정한', myanmar: 'မတည်ငြိမ်သော', english: 'Unstable/Insecure', pos: 'adjective', level: 'intermediate', synonyms: '흔들리는 (shaking), 위태로운 (precarious)', antonyms: '안정된 (stable), 견고한 (firm)', examples: [
+  { korean: '불안정한 자세로 서 있었어요.', myanmar: 'မတည်ငြိမ်သော ကိုယ်ဟန်နဲ့ ရပ်နေခဲ့တယ်။', english: 'I was standing in an unstable posture.' }
+]},
+{ id: '4982', korean: '빠르고', myanmar: 'မြန်မြန်ဆန်ဆန်', english: 'Quickly/Fast (linking adverbial)', pos: 'adverb', level: 'basic', synonyms: '신속하게 (rapidly), 재빠르게 (swiftly)', antonyms: '느리게 (slowly), 더디게 (tardily)', examples: [
+  { korean: '빠르고 정확하게 해결했어요.', myanmar: 'မြန်မြန်ဆန်ဆန်နဲ့ မှန်မှန်ကန်ကန် ဖြေရှင်းခဲ့တယ်။', english: 'I solved it quickly and accurately.' }
+]},
+{ id: '4983', korean: '바로잡다', myanmar: 'ပြုပြင်သည်/မှန်အောင်လုပ်သည်', english: 'To correct/rectify', pos: 'verb', level: 'intermediate', synonyms: '교정하다 (correct), 개선하다 (improve)', antonyms: '틀리게 하다 (make wrong), 왜곡하다 (distort)', examples: [
+  { korean: '오해를 바로잡았어요.', myanmar: 'နားလည်မှုလွဲမှားတာကို ပြုပြင်ခဲ့တယ်။', english: 'I rectified the misunderstanding.' }
+]},
+{ id: '4984', korean: '반드시', myanmar: 'မဖြစ်မနေ', english: 'Certainly/Must (adverb)', pos: 'adverb', level: 'basic', synonyms: '꼭 (surely), 필히 (absolutely)', antonyms: '아မာဒို (perhaps), 혹시 (maybe)', examples: [
+  { korean: '이 일은 반드시 해야 해요.', myanmar: 'ဒီအလုပ် မဖြစ်မနေ လုပ်ရမယ်။', english: 'This work must be done.' }
+]},
+{ id: '4985', korean: '배로', myanmar: 'နှစ်ဆ/အဆများစွာ', english: 'By twice/Many times', pos: 'adverb', level: 'intermediate', synonyms: '두 배로 (double), 몇 배로 (many times over)', antonyms: '절반 (half), 조금 (a little)', examples: [
+  { korean: '노력을 배로 했어요.', myanmar: 'ကြိုးစားမှုကို နှစ်ဆ လုပ်ခဲ့တယ်။', english: 'I worked twice as hard.' }
+]},
+{ id: '4986', korean: '보나마나', myanmar: 'မပြောနိုင်/ရှင်းလင်းစွာ', english: 'Obviously/Predictably', pos: 'adverb', level: 'intermediate', synonyms: '뻔하다 (obvious), 틀림없이 (unmistakably)', antonyms: '의외로 (surprisingly), 예측 불가 (unpredictable)', examples: [
+  { korean: '결과는 보나마나예요.', myanmar: 'ရလဒ်က ရှင်းလင်းစွာ သိနိုင်တယ်။', english: 'The result is obvious.' }
+]},
+{ id: '4987', korean: '본래', myanmar: 'မူလ/အရင်က', english: 'Originally/In the first place', pos: 'adverb', level: 'advanced', synonyms: '원래 (originally), 태초에 (in the beginning)', antonyms: 'နားအူဂျဲ (later), 결국 (finally)', examples: [
+  { korean: '본래의 목적을 잊지 마세요.', myanmar: 'မူလ ရည်ရွယ်ချက်ကို မမေ့ပါနဲ့။', english: 'Don\'t forget the original purpose.' }
+]},
+{ id: '4988', korean: '불과', myanmar: 'မျှသာ/သာ', english: 'Merely/Only', pos: 'adverb', level: 'intermediate', synonyms: '단지 (simply), 오직 (only)', antonyms: '많이 (a lot), 충분히 (enough)', examples: [
+  { korean: '그것은 불과 몇 년 전 일이에요.', myanmar: 'အဲဒါက နှစ်အနည်းငယ်မျှသာ ရှိသေးတဲ့ ကိစ္စပါ။', english: 'That was merely a few years ago.' }
+]},
+{ id: '4989', korean: '비로소', myanmar: 'စတင်/မှသာ', english: 'Only then/For the first time', pos: 'adverb', level: 'intermediate', synonyms: '그제야 (only then), 처음 (first)', antonyms: '이미 (already), 항상 (always)', examples: [
+  { korean: '모두가 잠든 후에야 비로소 쉬었어요.', myanmar: 'လူတိုင်း အိပ်ပျော်ပြီးမှသာ အနားယူခဲ့တယ်။', english: 'Only after everyone fell asleep did I finally rest.' }
+]},
+{ id: '4990', korean: '바야흐로', myanmar: 'ဤအချိန်၌/ခါနီးပြီ', english: 'Now/At this moment/Just about to', pos: 'adverb', level: 'advanced', synonyms: '이제 (now), 마침내 (finally)', antonyms: 'ယဲဟန်ဟန် (in the past), 한참 후에 (long after)', examples: [
+  { korean: '바야흐로 봄이 오는구나.', myanmar: 'ဤအချိန်၌ နွေဦး ရောက်လာပြီ။', english: 'Now, spring is finally coming.' }
+]},
+{ id: '4991', korean: '부디', myanmar: 'ကျေးဇူးပြု၍/အလေးအနက်', english: 'Please/Sincerely', pos: 'adverb', level: 'intermediate', synonyms: '제발 (please), 간절히 (earnestly)', antonyms: '대충 (casually), 무심히 (indifferently)', examples: [
+  { korean: '부디 성공하시길 바랍니다.', myanmar: 'ကျေးဇူးပြု၍ အောင်မြင်ပါစေလို့ ဆုတောင်းပါတယ်။', english: 'I sincerely hope you succeed.' }
+]},
+{ id: '4992', korean: '방긋', myanmar: 'ပြုံးပြသည် (ချိုမြိန်စွာ)', english: 'Smiling sweetly (adverb)', pos: 'adverb', level: 'basic', synonyms: '싱긋 (gently smiling), 살짝 (slightly)', antonyms: '울먹 (teary), 찡그림 (frowning)', examples: [
+  { korean: '아기가 방긋 웃었어요.', myanmar: 'ကလေးက ချိုမြိန်စွာ ပြုံးပြခဲ့တယ်။', english: 'The baby smiled sweetly.' }
+]},
+{ id: '4993', korean: '벌써', myanmar: 'ဒီအချိန်/ပြီးပြီ', english: 'Already', pos: 'adverb', level: 'basic', synonyms: '이미 (already), 일찍 (early)', antonyms: '아직 (still), 나중에 (later)', examples: [
+  { korean: '벌써 시간이 이렇게 됐어요.', myanmar: 'ဒီအချိန်အထိ အချိန်ရောက်ခဲ့ပြီ။', english: 'It\'s already this late.' }
+]},
+{ id: '4994', korean: '분명', myanmar: 'ရှင်းရှင်းလင်းလင်း/တကယ်', english: 'Clearly/Certainly (abbreviated)', pos: 'adverb', level: 'basic', synonyms: '확실 (certain), 명확 (clear)', antonyms: '애매 (vague), 불확실 (uncertain)', examples: [
+  { korean: '분명 이유가 있을 거예요.', myanmar: 'တကယ် အကြောင်းပြချက် ရှိမှာပါ။', english: 'There must certainly be a reason.' }
+]},
+{ id: '4995', korean: '비교적', myanmar: 'နှိုင်းယှဉ်ချက်အားဖြင့်', english: 'Comparatively/Relatively', pos: 'adverb', level: 'intermediate', synonyms: '상대적 (relatively), 다른 것보다 (more than others)', antonyms: '절대적 (absolutely), 전적으로 (entirely)', examples: [
+  { korean: '오늘은 비교적 따뜻해요.', myanmar: 'ဒီနေ့ နှိုင်းယှဉ်ချက်အားဖြင့် နွေးတယ်။', english: 'It is relatively warm today.' }
+]},
+{ id: '4996', korean: '빠듯이', myanmar: 'ခက်ခက်ခဲခဲ/နည်းနည်းလေး', english: 'Barely/Just barely', pos: 'adverb', level: 'intermediate', synonyms: '겨우 (barely), 간신히 (with difficulty)', antonyms: '넉넉히 (amply), 충분히 (enough)', examples: [
+  { korean: '약속 시간에 빠듯이 도착했어요.', myanmar: 'ချိန်းထားတဲ့အချိန်ကို ခက်ခက်ခဲခဲ ရောက်ခဲ့တယ်။', english: 'I arrived just barely on time.' }
+]},
+{ id: '4997', korean: '부족하게', myanmar: 'မလုံလောက်စွာ', english: 'Insufficiently/Lacking (adverb)', pos: 'adverb', level: 'basic', synonyms: '모자라게 (lacking), 적게 (little)', antonyms: '충분하게 (sufficiently), 넉넉하게 (amply)', examples: [
+  { korean: '음식을 부족하게 준비했어요.', myanmar: 'အစားအစာကို မလုံလောက်စွာ ပြင်ဆင်ခဲ့တယ်။', english: 'I prepared food insufficiently.' }
+]},
+{ id: '4998', korean: '밝게', myanmar: 'လင်းလင်းချင်းချင်း/ပျော်ရွှင်စွာ', english: 'Brightly/Cheerfully (adverb)', pos: 'adverb', level: 'basic', synonyms: '환하게 (brightly), 명랑하게 (cheerfully)', antonyms: 'အပူ (darkly), 슬프게 (sadly)', examples: [
+  { korean: '아이들이 밝게 웃었어요.', myanmar: 'ကလေးတွေ ပျော်ရွှင်စွာ ရယ်ခဲ့တယ်။', english: 'The children laughed cheerfully.' }
+]},
+{ id: '4999', korean: '바싹', myanmar: 'တင်းတင်း/အနီးကပ်', english: 'Close/Tightly (adverb)', pos: 'adverb', level: 'basic', synonyms: '밀착하여 (closely), 단단히 (firmly)', antonyms: '멀리 (far), 느슨하게 (loosely)', examples: [
+  { korean: '불에 바싹 붙이지 마세요.', myanmar: 'မီးနဲ့ တင်းတင်း ကပ်မထားပါနဲ့။', english: 'Don\'t stick it too close to the fire.' }
+]},
+{ id: '5000', korean: '비상', myanmar: 'အရေးပေါ်', english: 'Emergency (attributive)', pos: 'noun', level: 'basic', synonyms: '위급 (urgent), 사고 (accident)', antonyms: '평상시 (normal time), 안전 (safety)', examples: [
+  { korean: '비상 상황에 대비해야 해요.', myanmar: 'အရေးပေါ်အခြေအနေအတွက် ပြင်ဆင်ရမယ်။', english: 'We must prepare for an emergency situation.' }
+]}
 
   
   

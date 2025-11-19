@@ -17,6 +17,8 @@ export type DictionaryEntry = {
   addedAt?: Date;
   addedBy?: string;
   source?: string;
+  synonyms?: string;
+  antonyms?: string;
 };
 
 export const WORD_LEVELS: { value: WordLevel; label: string; color: string }[] = [
