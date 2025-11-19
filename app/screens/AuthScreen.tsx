@@ -88,7 +88,7 @@ export function AuthScreen() {
             Myanmar Korean Dictionary
           </Text>
           <Text style={[styles.subtitle, { color: C.textSecondary }]}>
-            {isLogin ? 'Sign in to submit new words' : 'Create account to contribute'}
+            {isLogin ? 'Sign in to submit new words or Login to Use Pro Features' : 'Create account to contribute'}
           </Text>
         </View>
 

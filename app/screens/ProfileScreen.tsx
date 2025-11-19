@@ -329,6 +329,32 @@ export function ProfileScreen({ navigation }: { navigation: any }) {
                 </Text>
               </View>
             </View>
+            
+            {/* Submit Word Button */}
+            <Pressable
+              onPress={() => navigation.navigate('Input New Words')}
+              style={({ pressed }) => ({
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: 8,
+                paddingVertical: 14,
+                paddingHorizontal: 20,
+                borderRadius: 12,
+                backgroundColor: pressed ? C.brandMuted : C.brand,
+                marginTop: 8,
+                shadowColor: '#000',
+                shadowOffset: { width: 0, height: 2 },
+                shadowOpacity: 0.1,
+                shadowRadius: 4,
+                elevation: 3,
+              })}
+            >
+              <Ionicons name="add-circle" size={20} color="#FFFFFF" />
+              <Text style={{ color: '#FFFFFF', fontSize: 15, fontWeight: '600' }}>
+                {settings.uiLanguage === 'myanmar' ? 'စကားလုံးတင်သွင်းရန်' : settings.uiLanguage === 'korean' ? '단어 제출하기' : 'Submit Word'}
+              </Text>
+            </Pressable>
           </View>
         </View>
         
