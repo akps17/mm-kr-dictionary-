@@ -19195,7 +19195,681 @@ export const dictionaryEntries: DictionaryEntry[] = [
   { korean: '침대 커버를 바꿨어요.', myanmar: 'ကုတင်အဖုံး လဲခဲ့တယ်။', english: 'I changed the bed cover.' } ] },
 { id: '6800', korean: '커플티', myanmar: 'စုံတွဲအင်္ကျီ', english: 'Couple T-shirt', pos: 'noun', level: 'basic', synonyms: 'None', antonyms: 'None', examples: [
   { korean: '남자친구와 커플티를 입었어요.', myanmar: 'ချစ်သူနဲ့ စုံတွဲအင်္ကျီ ဝတ်ခဲ့တယ်။', english: 'I wore a couple T-shirt with my boyfriend.' } ] },
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  ////
+  ///
+  ///////////// .  ㅌ ㅌㅌ ㅌ ㅌ ㅌㅌ ㅌ   300 consontant
+  // ===== ㅌ CONSONANT WORDS - CATEGORY 1: BASIC VERBS & ACTIONS (6801-6850) =====
+{ id: '6801', korean: '타다', myanmar: 'စီးသည်', english: 'To ride', pos: 'verb', level: 'basic', synonyms: '승차하다 (board)', antonyms: '내리다 (get off)', examples: [
+  { korean: '버스를 타고 학교에 가요.', myanmar: 'ဘတ်စ်ကားစီးပြီး ကျောင်းသွားတယ်။', english: 'I take the bus to school.' } ] },
+{ id: '6802', korean: '타다 (불)', myanmar: 'လောင်ကျွမ်းသည်', english: 'To burn', pos: 'verb', level: 'basic', synonyms: '연소하다 (burn up)', antonyms: '꺼지다 (go out)', examples: [
+  { korean: '나무가 불에 타고 있어요.', myanmar: 'သစ်ပင်က မီးလောင်နေတယ်။', english: 'The wood is burning.' } ] },
+{ id: '6803', korean: '태어나다', myanmar: 'မွေးဖွားသည်', english: 'To be born', pos: 'verb', level: 'basic', synonyms: '출생하다 (be born)', antonyms: '죽다 (die)', examples: [
+  { korean: '저는 서울에서 태어났어요.', myanmar: 'ကျွန်တော်က ဆိုးလ်မှာ မွေးဖွားခဲ့တယ်။', english: 'I was born in Seoul.' } ] },
+{ id: '6804', korean: '태우다', myanmar: 'တင်ပေးသည်/လိုက်ပို့သည်', english: 'To give a ride/pick up', pos: 'verb', level: 'basic', synonyms: '승차시키다 (let board)', antonyms: '내려주다 (drop off)', examples: [
+  { korean: '친구를 차에 태웠어요.', myanmar: 'သူငယ်ချင်းကို ကားပေါ် တင်ပေးခဲ့တယ်။', english: 'I gave my friend a ride in the car.' } ] },
+{ id: '6805', korean: '터지다', myanmar: 'ပေါက်ကွဲသည်', english: 'To burst/explode', pos: 'verb', level: 'basic', synonyms: '폭발하다 (explode)', antonyms: '막히다 (be blocked)', examples: [
+  { korean: '풍선이 터졌어요.', myanmar: 'ပူဖောင်း ပေါက်ကွဲသွားတယ်။', english: 'The balloon burst.' } ] },
+{ id: '6806', korean: '털다', myanmar: 'ခါသည်', english: 'To shake off/dust off', pos: 'verb', level: 'basic', synonyms: '떨다 (shake)', antonyms: '묻히다 (stain)', examples: [
+  { korean: '옷의 먼지를 털었어요.', myanmar: 'အဝတ်အစားက ဖုန်တွေကို ခါလိုက်တယ်။', english: 'I dusted off the clothes.' } ] },
+{ id: '6807', korean: '토하다', myanmar: 'အန်သည်', english: 'To vomit', pos: 'verb', level: 'basic', synonyms: '게우다 (throw up)', antonyms: '삼키다 (swallow)', examples: [
+  { korean: '속이 안 좋아서 토했어요.', myanmar: 'ဗိုက်မကောင်းလို့ အန်ခဲ့တယ်။', english: 'I vomited because my stomach was upset.' } ] },
+{ id: '6808', korean: '통하다', myanmar: 'ဖြတ်သန်းသွားလာသည်/ဆက်သွယ်သည်', english: 'To go through/communicate', pos: 'verb', level: 'basic', synonyms: '지나가다 (pass)', antonyms: '막히다 (be blocked)', examples: [
+  { korean: '이 길은 공원으로 통해요.', myanmar: 'ဒီလမ်းက ပန်းခြံဆီ ဖြတ်သန်းသွားတယ်။', english: 'This road leads to the park.' } ] },
+{ id: '6809', korean: '튀기다', myanmar: 'ကြော်သည် (ဆီများများဖြင့်)', english: 'To deep fry', pos: 'verb', level: 'basic', synonyms: 'None', antonyms: '삶다 (boil)', examples: [
+  { korean: '치킨을 기름에 튀겼어요.', myanmar: 'ကြက်သားကို ဆီထဲမှာ ကြော်ခဲ့တယ်။', english: 'I deep-fried the chicken.' } ] },
+{ id: '6810', korean: '틀다', myanmar: 'ဖွင့်သည် (ရေ/သီချင်း)', english: 'To turn on/twist', pos: 'verb', level: 'basic', synonyms: '켜다 (turn on)', antonyms: '잠그다 (turn off/lock)', examples: [
+  { korean: '수돗물을 틀었어요.', myanmar: 'ရေပိုက်ခေါင်း ဖွင့်ခဲ့တယ်။', english: 'I turned on the tap water.' } ] },
+{ id: '6811', korean: '틀리다', myanmar: 'မှားသည်', english: 'To be wrong/incorrect', pos: 'verb', level: 'basic', synonyms: '잘못되다 (be wrong)', antonyms: '맞다 (be correct)', examples: [
+  { korean: '계산이 틀렸어요.', myanmar: 'တွက်ချက်မှု မှားသွားတယ်။', english: 'The calculation is wrong.' } ] },
+{ id: '6812', korean: '티격태격하다', myanmar: 'အငြင်းပွားသည်', english: 'To bicker/quarrel', pos: 'verb', level: 'intermediate', synonyms: '다투다 (argue)', antonyms: '화합하다 (harmonize)', examples: [
+  { korean: '동생과 티격태격했어요.', myanmar: 'မောင်လေးနဲ့ အငြင်းပွားခဲ့တယ်။', english: 'I bickered with my younger brother.' } ] },
+{ id: '6813', korean: '태우다 (불)', myanmar: 'မီးရှို့သည်', english: 'To burn (something)', pos: 'verb', level: 'basic', synonyms: '연소시키다 (burn)', antonyms: '끄다 (extinguish)', examples: [
+  { korean: '쓰레기를 태웠어요.', myanmar: 'အမှိုက်ကို မီးရှို့ခဲ့တယ်။', english: 'I burned the trash.' } ] },
+{ id: '6814', korean: '퇴근하다', myanmar: 'ရုံးဆင်းသည်', english: 'To leave work', pos: 'verb', level: 'basic', synonyms: 'None', antonyms: '출근하다 (go to work)', examples: [
+  { korean: '6시에 퇴근해요.', myanmar: '၆ နာရီမှာ ရုံးဆင်းတယ်။', english: 'I leave work at 6 o\'clock.' } ] },
+{ id: '6815', korean: '퇴원하다', myanmar: 'ဆေးရုံဆင်းသည်', english: 'To be discharged from hospital', pos: 'verb', level: 'basic', synonyms: 'None', antonyms: '입원하다 (be hospitalized)', examples: [
+  { korean: '건강해져서 퇴원했어요.', myanmar: 'ကျန်းမာလာလို့ ဆေးရုံဆင်းခဲ့တယ်။', english: 'I was discharged because I got healthy.' } ] },
+{ id: '6816', korean: '투표하다', myanmar: 'မဲပေးသည်', english: 'To vote', pos: 'verb', level: 'basic', synonyms: '선거하다 (elect)', antonyms: '기권하다 (abstain)', examples: [
+  { korean: '선거일에 투표했어요.', myanmar: 'ရွေးကောက်ပွဲနေ့မှာ မဲပေးခဲ့တယ်။', english: 'I voted on election day.' } ] },
+{ id: '6817', korean: '투자하다', myanmar: 'ရင်းနှီးမြှုပ်နှံသည်', english: 'To invest', pos: 'verb', level: 'intermediate', synonyms: '출자하다 (finance)', antonyms: '회수하다 (withdraw)', examples: [
+  { korean: '주식에 투자했어요.', myanmar: 'စတော့ရှယ်ယာမှာ ရင်းနှီးမြှုပ်နှံခဲ့တယ်။', english: 'I invested in stocks.' } ] },
+{ id: '6818', korean: '트이다', myanmar: 'ပွင့်လင်းသည်/ကျယ်သည်', english: 'To be open/clear', pos: 'verb', level: 'intermediate', synonyms: '열리다 (open)', antonyms: '막히다 (blocked)', examples: [
+  { korean: '전망이 탁 트였어요.', myanmar: 'ရှုခင်းက ရှင်းလင်းကျယ်ပြန့်တယ်။', english: 'The view is wide open.' } ] },
+{ id: '6819', korean: '튀다', myanmar: 'လွင့်စင်သည်/ခုန်သည်', english: 'To splash/bounce', pos: 'verb', level: 'basic', synonyms: '튕기다 (bounce)', antonyms: 'None', examples: [
+  { korean: '기름이 옷에 튀었어요.', myanmar: 'ဆီက အဝတ်ပေါ် လွင့်စင်သွားတယ်။', english: 'Oil splashed on my clothes.' } ] },
+{ id: '6820', korean: '통화하다', myanmar: 'ဖုန်းပြောသည်', english: 'To talk on the phone', pos: 'verb', level: 'basic', synonyms: '전화하다 (call)', antonyms: '끊다 (hang up)', examples: [
+  { korean: '친구와 통화 중이에요.', myanmar: 'သူငယ်ချင်းနဲ့ ဖုန်းပြောနေတယ်။', english: 'I am on the phone with a friend.' } ] },
+{ id: '6821', korean: '통제하다', myanmar: 'ထိန်းချုပ်သည်', english: 'To control/regulate', pos: 'verb', level: 'intermediate', synonyms: '제어하다 (control)', antonyms: '방치하다 (neglect)', examples: [
+  { korean: '교통을 통제하고 있어요.', myanmar: 'ယာဉ်ကြောကို ထိန်းချုပ်နေတယ်။', english: 'They are controlling the traffic.' } ] },
+{ id: '6822', korean: '통지하다', myanmar: 'အကြောင်းကြားသည်', english: 'To notify/inform', pos: 'verb', level: 'intermediate', synonyms: '알리다 (inform)', antonyms: '숨기다 (hide)', examples: [
+  { korean: '결과를 통지받았어요.', myanmar: 'ရလဒ်ကို အကြောင်းကြားစာ ရခဲ့တယ်။', english: 'I was notified of the result.' } ] },
+{ id: '6823', korean: '통합하다', myanmar: 'ပေါင်းစည်းသည်', english: 'To integrate/unify', pos: 'verb', level: 'advanced', synonyms: '합치다 (combine)', antonyms: '분리하다 (separate)', examples: [
+  { korean: '두 회사가 통합했어요.', myanmar: 'ကုမ္ပဏီနှစ်ခု ပေါင်းစည်းခဲ့တယ်။', english: 'The two companies merged.' } ] },
+{ id: '6824', korean: '퇴직하다', myanmar: 'အလုပ်ထွက်သည်/ပင်စင်ယူသည်', english: 'To retire/resign', pos: 'verb', level: 'intermediate', synonyms: '사직하다 (resign)', antonyms: '취직하다 (get a job)', examples: [
+  { korean: '정년이 되어 퇴직했어요.', myanmar: 'အသက်ပြည့်လို့ ပင်စင်ယူခဲ့တယ်။', english: 'I retired as I reached retirement age.' } ] },
+{ id: '6825', korean: '투입하다', myanmar: 'ထည့်သွင်းသည်', english: 'To input/invest', pos: 'verb', level: 'intermediate', synonyms: '넣다 (put in)', antonyms: '빼다 (take out)', examples: [
+  { korean: '자판기에 동전을 투입했어요.', myanmar: 'အရောင်းစက်ထဲ အကြွေစေ့ ထည့်သွင်းခဲ့တယ်။', english: 'I put coins in the vending machine.' } ] },
+{ id: '6826', korean: '탐구하다', myanmar: 'လေ့လာစူးစမ်းသည်', english: 'To explore/investigate', pos: 'verb', level: 'advanced', synonyms: '연구하다 (research)', antonyms: 'None', examples: [
+  { korean: '진리를 탐구해요.', myanmar: 'အမှန်တရားကို လေ့လာစူးစမ်းတယ်။', english: 'I explore the truth.' } ] },
+{ id: '6827', korean: '타협하다', myanmar: 'ညှိနှိုင်းသည်', english: 'To compromise', pos: 'verb', level: 'advanced', synonyms: '절충하다 (compromise)', antonyms: '고집하다 (insist)', examples: [
+  { korean: '서로 조금씩 타협했어요.', myanmar: 'တစ်ယောက်နဲ့တစ်ယောက် နည်းနည်းစီ ညှိနှိုင်းခဲ့တယ်။', english: 'We compromised a little with each other.' } ] },
+{ id: '6828', korean: '탈출하다', myanmar: 'လွတ်မြောက်သည်', english: 'To escape', pos: 'verb', level: 'intermediate', synonyms: '도망치다 (run away)', antonyms: '갇히다 (be trapped)', examples: [
+  { korean: '위험한 곳에서 탈출했어요.', myanmar: 'အန္တရာယ်ရှိတဲ့နေရာကနေ လွတ်မြောက်ခဲ့တယ်။', english: 'I escaped from a dangerous place.' } ] },
+{ id: '6829', korean: '탑승하다', myanmar: 'စီးနင်းလိုက်ပါသည်', english: 'To board', pos: 'verb', level: 'intermediate', synonyms: '타다 (ride)', antonyms: '하차하다 (get off)', examples: [
+  { korean: '비행기에 탑승했어요.', myanmar: 'လေယာဉ်ပေါ် စီးနင်းလိုက်ပါခဲ့တယ်။', english: 'I boarded the plane.' } ] },
+{ id: '6830', korean: '탓하다', myanmar: 'အပြစ်တင်သည်', english: 'To blame', pos: 'verb', level: 'intermediate', synonyms: '원망하다 (resent)', antonyms: '칭찬하다 (praise)', examples: [
+  { korean: '남을 탓하지 마세요.', myanmar: 'သူများကို အပြစ်မတင်ပါနဲ့။', english: 'Do not blame others.' } ] },
+{ id: '6831', korean: '터뜨리다', myanmar: 'ဖောက်သည်/ပေါက်ကွဲစေသည်', english: 'To burst/pop', pos: 'verb', level: 'basic', synonyms: '터트리다 (pop)', antonyms: 'None', examples: [
+  { korean: '폭죽을 터뜨렸어요.', myanmar: 'မီးရှူးမီးပန်း ဖောက်ခဲ့တယ်။', english: 'I set off fireworks.' } ] },
+{ id: '6832', korean: '통곡하다', myanmar: 'အော်ဟစ်ငိုကြွေးသည်', english: 'To wail/cry aloud', pos: 'verb', level: 'advanced', synonyms: '오열하다 (sob)', antonyms: '웃다 (laugh)', examples: [
+  { korean: '슬퍼서 통곡했어요.', myanmar: 'ဝမ်းနည်းလို့ အော်ဟစ်ငိုကြွေးခဲ့တယ်။', english: 'I wailed in grief.' } ] },
+{ id: '6833', korean: '통과하다', myanmar: 'ဖြတ်သန်းသည်/အောင်မြင်သည်', english: 'To pass (through/exam)', pos: 'verb', level: 'basic', synonyms: '지나다 (pass)', antonyms: '실패하다 (fail)', examples: [
+  { korean: '시험에 통과했어요.', myanmar: 'စာမေးပွဲ အောင်မြင်ခဲ့တယ်။', english: 'I passed the exam.' } ] },
+{ id: '6834', korean: '투덜대다', myanmar: 'ညည်းညူသည်', english: 'To grumble/complain', pos: 'verb', level: 'intermediate', synonyms: '불평하다 (complain)', antonyms: '만족하다 (be satisfied)', examples: [
+  { korean: '그는 계속 투덜댔어요.', myanmar: 'သူက ဆက်တိုက် ညည်းညူနေခဲ့တယ်။', english: 'He kept grumbling.' } ] },
+{ id: '6835', korean: '투쟁하다', myanmar: 'တိုက်ပွဲဝင်သည်', english: 'To struggle/fight', pos: 'verb', level: 'advanced', synonyms: '싸우다 (fight)', antonyms: '항복하다 (surrender)', examples: [
+  { korean: '자유를 위해 투쟁했어요.', myanmar: 'လွတ်လပ်မှုအတွက် တိုက်ပွဲဝင်ခဲ့တယ်။', english: 'I struggled for freedom.' } ] },
+{ id: '6836', korean: '튕기다', myanmar: 'ပုတ်ခတ်သည်/ကန်ထွက်သည်', english: 'To flick/bounce off', pos: 'verb', level: 'intermediate', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '공이 벽에 맞고 튕겼어요.', myanmar: 'ဘောလုံးက နံရံထိပြီး ကန်ထွက်လာတယ်။', english: 'The ball hit the wall and bounced off.' } ] },
+{ id: '6837', korean: '트이다 (길)', myanmar: 'ပွင့်သည် (လမ်း)', english: 'To open up (way)', pos: 'verb', level: 'intermediate', synonyms: '열리다 (open)', antonyms: '막히다 (blocked)', examples: [
+  { korean: '꽉 막힌 도로가 트였어요.', myanmar: 'ပိတ်နေတဲ့လမ်း ပွင့်သွားတယ်။', english: 'The jammed road opened up.' } ] },
+{ id: '6838', korean: '특화하다', myanmar: 'အထူးပြုသည်', english: 'To specialize', pos: 'verb', level: 'advanced', synonyms: '전문화하다 (specialize)', antonyms: '일반화하다 (generalize)', examples: [
+  { korean: '서비스를 특화했어요.', myanmar: 'ဝန်ဆောင်မှုကို အထူးပြုခဲ့တယ်။', english: 'We specialized the service.' } ] },
+{ id: '6839', korean: '탐내다', myanmar: 'လိုချင်တပ်မက်သည်', english: 'To covet', pos: 'verb', level: 'intermediate', synonyms: '욕심내다 (be greedy)', antonyms: '양보하다 (yield)', examples: [
+  { korean: '남의 물건을 탐내지 마세요.', myanmar: 'သူများပစ္စည်းကို လိုချင်တပ်မက်မနေပါနဲ့။', english: 'Do not covet other people\'s things.' } ] },
+{ id: '6840', korean: '터득하다', myanmar: 'တတ်မြောက်သည်', english: 'To master/learn', pos: 'verb', level: 'advanced', synonyms: '익히다 (master)', antonyms: 'None', examples: [
+  { korean: '기술을 터득했어요.', myanmar: 'နည်းပညာကို တတ်မြောက်ခဲ့တယ်။', english: 'I mastered the skill.' } ] },
+{ id: '6841', korean: '토론하다', myanmar: 'ဆွေးနွေးငြင်းခုံသည်', english: 'To debate/discuss', pos: 'verb', level: 'intermediate', synonyms: '논의하다 (discuss)', antonyms: '침묵하다 (stay silent)', examples: [
+  { korean: '주제에 대해 토론했어요.', myanmar: 'ခေါင်းစဉ်နဲ့ပတ်သက်ပြီး ဆွေးနွေးငြင်းခုံခဲ့တယ်။', english: 'We debated the topic.' } ] },
+{ id: '6842', korean: '통일하다', myanmar: 'ပေါင်းစည်းသည်', english: 'To unify', pos: 'verb', level: 'basic', synonyms: '하나로 하다 (make one)', antonyms: '분단하다 (divide)', examples: [
+  { korean: '남북을 통일하고 싶어요.', myanmar: 'တောင်မြောက်ကို ပေါင်းစည်းချင်တယ်။', english: 'I want to unify North and South.' } ] },
+{ id: '6843', korean: '퇴색하다', myanmar: 'အရောင်လွင့်သည်/မှေးမှိန်သည်', english: 'To fade/discolor', pos: 'verb', level: 'advanced', synonyms: '바래다 (fade)', antonyms: '선명하다 (vivid)', examples: [
+  { korean: '사진이 오래되어 퇴색했어요.', myanmar: 'ဓာတ်ပုံက ကြာလို့ အရောင်လွင့်သွားတယ်။', english: 'The photo faded because it\'s old.' } ] },
+{ id: '6844', korean: '투덜거리다', myanmar: 'ပွစိပွစိပြောသည်', english: 'To grumble', pos: 'verb', level: 'intermediate', synonyms: '불평하다 (complain)', antonyms: 'None', examples: [
+  { korean: '혼자서 투덜거렸어요.', myanmar: 'တစ်ယောက်တည်း ပွစိပွစိပြောနေခဲ့တယ်။', english: 'I grumbled to myself.' } ] },
+{ id: '6845', korean: '투시하다', myanmar: 'ဖောက်ထွင်းမြင်သည်', english: 'To see through', pos: 'verb', level: 'advanced', synonyms: '꿰뚫어보다 (see through)', antonyms: 'None', examples: [
+  { korean: '내면을 투시하는 것 같아요.', myanmar: 'အတွင်းစိတ်ကို ဖောက်ထွင်းမြင်နေသလိုပဲ။', english: 'It feels like seeing through the inside.' } ] },
+{ id: '6846', korean: '튀어나오다', myanmar: 'ထွက်လာသည်/ပြူးထွက်သည်', english: 'To pop out/protrude', pos: 'verb', level: 'basic', synonyms: '돌출하다 (protrude)', antonyms: '들어가다 (go in)', examples: [
+  { korean: '갑자기 고양이가 튀어나왔어요.', myanmar: 'ရုတ်တရက် ကြောင်တစ်ကောင် ထွက်လာတယ်။', english: 'Suddenly a cat popped out.' } ] },
+{ id: '6847', korean: '트림하다', myanmar: 'လေတက်သည်', english: 'To burp', pos: 'verb', level: 'basic', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '식사 후에 트림했어요.', myanmar: 'ထမင်းစားပြီးနောက် လေတက်ခဲ့တယ်။', english: 'I burped after the meal.' } ] },
+{ id: '6848', korean: '특화되다', myanmar: 'အထူးပြုဖြစ်သည်', english: 'To be specialized', pos: 'verb', level: 'advanced', synonyms: '전문화되다 (be specialized)', antonyms: '일반화되다 (be generalized)', examples: [
+  { korean: '이 병원은 눈 치료에 특화되어 있어요.', myanmar: 'ဒီဆေးရုံက မျက်စိကုသမှုမှာ အထူးပြုဖြစ်တယ်။', english: 'This hospital is specialized in eye treatment.' } ] },
+{ id: '6849', korean: '티내다', myanmar: 'သိသာအောင်လုပ်သည်', english: 'To show signs/make obvious', pos: 'verb', level: 'intermediate', synonyms: '드러내다 (reveal)', antonyms: '숨기다 (hide)', examples: [
+  { korean: '그는 싫은 티를 냈어요.', myanmar: 'သူက မကြိုက်တဲ့ပုံ သိသာအောင်လုပ်ခဲ့တယ်။', english: 'He showed signs of dislike.' } ] },
+{ id: '6850', korean: '탄생하다', myanmar: 'မွေးဖွားသည်/ပေါ်ပေါက်သည်', english: 'To be born/founded', pos: 'verb', level: 'advanced', synonyms: '태어나다 (be born)', antonyms: '사망하다 (die)', examples: [
+  { korean: '새로운 스타가 탄생했어요.', myanmar: 'ကြယ်ပွင့်အသစ် ပေါ်ပေါက်လာတယ်။', english: 'A new star was born.' } ] },
+
+// ===== ㅌ CONSONANT WORDS - CATEGORY 2: NOUNS (DAILY OBJECTS & FOOD) (6851-6925) =====
+{ id: '6851', korean: '택시', myanmar: 'တက္ကစီ', english: 'Taxi', pos: 'noun', level: 'basic', synonyms: 'None', antonyms: '버스 (bus)', examples: [
+  { korean: '택시를 잡았어요.', myanmar: 'တက္ကစီ တားခဲ့တယ်။', english: 'I caught a taxi.' } ] },
+{ id: '6852', korean: '텔레비전', myanmar: 'ရုပ်မြင်သံကြား', english: 'Television', pos: 'noun', level: 'basic', synonyms: 'TV', antonyms: '라디오 (radio)', examples: [
+  { korean: '저녁에 텔레비전을 봐요.', myanmar: 'ညနေမှာ တီဗီ ကြည့်တယ်။', english: 'I watch TV in the evening.' } ] },
+{ id: '6853', korean: '토마토', myanmar: 'ခရမ်းချဉ်သီး', english: 'Tomato', pos: 'noun', level: 'basic', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '빨간 토마토가 익었어요.', myanmar: 'အနီရောင်ခရမ်းချဉ်သီး မှည့်နေပြီ။', english: 'The red tomato is ripe.' } ] },
+{ id: '6854', korean: '트럭', myanmar: 'ကုန်တင်ကား', english: 'Truck', pos: 'noun', level: 'basic', synonyms: '화물차 (cargo truck)', antonyms: '승용차 (passenger car)', examples: [
+  { korean: '트럭에 짐을 실었어요.', myanmar: 'ကုန်တင်ကားပေါ် ပစ္စည်း တင်ခဲ့တယ်။', english: 'I loaded cargo onto the truck.' } ] },
+{ id: '6855', korean: '티셔츠', myanmar: 'တီရှပ်', english: 'T-shirt', pos: 'noun', level: 'basic', synonyms: '반팔 (short sleeve)', antonyms: '와이셔츠 (dress shirt)', examples: [
+  { korean: '편한 티셔츠를 입었어요.', myanmar: 'သက်တောင့်သက်သာရှိတဲ့ တီရှပ် ဝတ်ခဲ့တယ်။', english: 'I wore a comfortable T-shirt.' } ] },
+{ id: '6856', korean: '테이블', myanmar: 'စားပွဲ', english: 'Table', pos: 'noun', level: 'basic', synonyms: '식탁 (dining table)', antonyms: '의자 (chair)', examples: [
+  { korean: '테이블 위에 꽃이 있어요.', myanmar: 'စားပွဲပေါ်မှာ ပန်း ရှိတယ်။', english: 'There are flowers on the table.' } ] },
+{ id: '6857', korean: '팀', myanmar: 'အသင်း/အဖွဲ့', english: 'Team', pos: 'noun', level: 'basic', synonyms: '조 (group)', antonyms: '개인 (individual)', examples: [
+  { korean: '우리 팀이 이겼어요.', myanmar: 'ကျွန်တော်တို့အသင်း နိုင်ခဲ့တယ်။', english: 'Our team won.' } ] },
+{ id: '6858', korean: '토끼', myanmar: 'ယုန်', english: 'Rabbit', pos: 'noun', level: 'basic', synonyms: 'None', antonyms: '거북이 (turtle)', examples: [
+  { korean: '토끼는 귀가 길어요.', myanmar: 'ယုန်က နားရွက် ရှည်တယ်။', english: 'Rabbits have long ears.' } ] },
+{ id: '6859', korean: '태양', myanmar: 'နေ', english: 'Sun', pos: 'noun', level: 'basic', synonyms: '해 (sun)', antonyms: '달 (moon)', examples: [
+  { korean: '태양이 뜨겁게 비쳐요.', myanmar: 'နေက ပူပူလောင်လောင် တောက်ပနေတယ်။', english: 'The sun is shining hotly.' } ] },
+{ id: '6860', korean: '태풍', myanmar: 'တိုင်ဖွန်းမုန်တိုင်း', english: 'Typhoon', pos: 'noun', level: 'basic', synonyms: '폭풍 (storm)', antonyms: 'None', examples: [
+  { korean: '태풍이 오고 있어요.', myanmar: 'တိုင်ဖွန်းမုန်တိုင်း လာနေတယ်။', english: 'A typhoon is coming.' } ] },
+{ id: '6861', korean: '탈', myanmar: 'မျက်နှာဖုံး', english: 'Mask', pos: 'noun', level: 'intermediate', synonyms: '가면 (mask)', antonyms: '맨얼굴 (bare face)', examples: [
+  { korean: '탈을 쓰고 춤을 췄어요.', myanmar: 'မျက်နှာဖုံးစွပ်ပြီး ကခဲ့တယ်။', english: 'I danced wearing a mask.' } ] },
+{ id: '6862', korean: '탑', myanmar: 'စေတီ/မျှော်စင်', english: 'Tower/Pagoda', pos: 'noun', level: 'basic', synonyms: '타워 (tower)', antonyms: 'None', examples: [
+  { korean: '높은 탑을 쌓았어요.', myanmar: 'မြင့်တဲ့မျှော်စင် တည်ဆောက်ခဲ့တယ်။', english: 'I built a high tower.' } ] },
+{ id: '6863', korean: '터널', myanmar: 'ဥမင်လိုဏ်ခေါင်း', english: 'Tunnel', pos: 'noun', level: 'basic', synonyms: '굴 (cave/tunnel)', antonyms: '다리 (bridge)', examples: [
+  { korean: '기차가 터널을 통과해요.', myanmar: 'ရထားက ဥမင်လိုဏ်ခေါင်းကို ဖြတ်သန်းတယ်။', english: 'The train passes through the tunnel.' } ] },
+{ id: '6864', korean: '테니스', myanmar: 'တင်းနစ်', english: 'Tennis', pos: 'noun', level: 'basic', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '테니스를 칠 줄 알아요.', myanmar: 'တင်းနစ် ရိုက်တတ်တယ်။', english: 'I know how to play tennis.' } ] },
+{ id: '6865', korean: '토요일', myanmar: 'စနေနေ့', english: 'Saturday', pos: 'noun', level: 'basic', synonyms: '주말 (weekend)', antonyms: '평일 (weekday)', examples: [
+  { korean: '토요일은 쉬는 날이에요.', myanmar: 'စနေနေ့က နားရက်ပါ။', english: 'Saturday is a rest day.' } ] },
+{ id: '6866', korean: '통', myanmar: 'ပုံး/ဘူး', english: 'Container/Bucket', pos: 'noun', level: 'basic', synonyms: '상자 (box)', antonyms: 'None', examples: [
+  { korean: '쓰레기 통을 비웠어요.', myanmar: 'အမှိုက်ပုံးကို သွန်ခဲ့တယ်။', english: 'I emptied the trash can.' } ] },
+{ id: '6867', korean: '통장', myanmar: 'ဘဏ်စာအုပ်', english: 'Bankbook', pos: 'noun', level: 'basic', synonyms: '예금주 (depositor)', antonyms: 'None', examples: [
+  { korean: '통장을 만들러 은행에 갔어요.', myanmar: 'ဘဏ်စာအုပ်လုပ်ဖို့ ဘဏ်သွားခဲ့တယ်။', english: 'I went to the bank to make a bankbook.' } ] },
+{ id: '6868', korean: '트리', myanmar: 'သစ်ပင် (အလှဆင်)', english: 'Tree (Christmas)', pos: 'noun', level: 'basic', synonyms: '나무 (tree)', antonyms: 'None', examples: [
+  { korean: '크리스마스 트리를 꾸몄어요.', myanmar: 'ခရစ္စမတ်သစ်ပင် အလှဆင်ခဲ့တယ်။', english: 'I decorated the Christmas tree.' } ] },
+{ id: '6869', korean: '티슈', myanmar: 'တစ်ရှူး', english: 'Tissue', pos: 'noun', level: 'basic', synonyms: '화장지 (toilet paper)', antonyms: '수건 (towel)', examples: [
+  { korean: '티슈로 입을 닦았어요.', myanmar: 'တစ်ရှူးနဲ့ ပါးစပ် သုတ်ခဲ့တယ်။', english: 'I wiped my mouth with a tissue.' } ] },
+{ id: '6870', korean: '티켓', myanmar: 'လက်မှတ်', english: 'Ticket', pos: 'noun', level: 'basic', synonyms: '표 (ticket)', antonyms: 'None', examples: [
+  { korean: '영화 티켓을 예매했어요.', myanmar: 'ရုပ်ရှင်လက်မှတ် ကြိုတင်ဝယ်ခဲ့တယ်။', english: 'I booked a movie ticket.' } ] },
+{ id: '6871', korean: '타이어', myanmar: 'တာယာ', english: 'Tire', pos: 'noun', level: 'basic', synonyms: '바퀴 (wheel)', antonyms: 'None', examples: [
+  { korean: '타이어가 펑크 났어요.', myanmar: 'တာယာ ပေါက်သွားတယ်။', english: 'The tire is flat.' } ] },
+{ id: '6872', korean: '타자기', myanmar: 'လက်နှိပ်စက်', english: 'Typewriter', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: '컴퓨터 (computer)', examples: [
+  { korean: '옛날 타자기를 봤어요.', myanmar: 'ရှေးဟောင်း လက်နှိပ်စက်ကို တွေ့ခဲ့တယ်။', english: 'I saw an old typewriter.' } ] },
+{ id: '6873', korean: '탁자', myanmar: 'စားပွဲ', english: 'Table', pos: 'noun', level: 'basic', synonyms: '테이블 (table)', antonyms: '의자 (chair)', examples: [
+  { korean: '탁자에 책을 놓았어요.', myanmar: 'စားပွဲပေါ် စာအုပ် တင်ခဲ့တယ်။', english: 'I put the book on the table.' } ] },
+{ id: '6874', korean: '탈의실', myanmar: 'အဝတ်လဲခန်း', english: 'Changing room', pos: 'noun', level: 'basic', synonyms: '갱의실 (locker room)', antonyms: 'None', examples: [
+  { korean: '탈의실에서 옷을 갈아입었어요.', myanmar: 'အဝတ်လဲခန်းမှာ အဝတ်လဲခဲ့တယ်။', english: 'I changed clothes in the changing room.' } ] },
+{ id: '6875', korean: '태극기', myanmar: 'ကိုရီးယားအလံ', english: 'Taegeukgi (Korean flag)', pos: 'noun', level: 'basic', synonyms: '국기 (national flag)', antonyms: 'None', examples: [
+  { korean: '국경일에 태극기를 달아요.', myanmar: 'အမျိုးသားနေ့မှာ ကိုရီးယားအလံ လွှင့်ထူတယ်။', english: 'We fly the Taegeukgi on national holidays.' } ] },
+{ id: '6876', korean: '태권도', myanmar: 'တိုက်ကွမ်ဒို', english: 'Taekwondo', pos: 'noun', level: 'basic', synonyms: '무술 (martial arts)', antonyms: 'None', examples: [
+  { korean: '태권도를 배우고 있어요.', myanmar: 'တိုက်ကွမ်ဒို သင်နေတယ်။', english: 'I am learning Taekwondo.' } ] },
+{ id: '6877', korean: '택배', myanmar: 'ပစ္စည်းပို့ဆောင်ရေး', english: 'Delivery service', pos: 'noun', level: 'basic', synonyms: '배달 (delivery)', antonyms: 'None', examples: [
+  { korean: '택배가 도착했어요.', myanmar: 'ပစ္စည်းပို့ဆောင်ရေး ရောက်လာပြီ။', english: 'The delivery has arrived.' } ] },
+{ id: '6878', korean: '터미널', myanmar: 'တာမီနယ်/ဂိတ်', english: 'Terminal', pos: 'noun', level: 'basic', synonyms: '정류장 (station)', antonyms: 'None', examples: [
+  { korean: '고속버스 터미널에 갔어요.', myanmar: 'အဝေးပြေးကားဂိတ်ကို သွားခဲ့တယ်။', english: 'I went to the express bus terminal.' } ] },
+{ id: '6879', korean: '테이프', myanmar: 'တိပ်', english: 'Tape', pos: 'noun', level: 'basic', synonyms: '접착제 (adhesive)', antonyms: '가위 (scissors)', examples: [
+  { korean: '상자를 테이프로 붙였어요.', myanmar: 'သေတ္တာကို တိပ်နဲ့ ကပ်ခဲ့တယ်။', english: 'I taped the box.' } ] },
+{ id: '6880', korean: '토스트', myanmar: 'ပေါင်မုန့်မီးကင်', english: 'Toast', pos: 'noun', level: 'basic', synonyms: '빵 (bread)', antonyms: 'None', examples: [
+  { korean: '아침에 토스트를 먹었어요.', myanmar: 'မနက်ခင်းမှာ ပေါင်မုန့်မီးကင် စားခဲ့တယ်။', english: 'I ate toast in the morning.' } ] },
+{ id: '6881', korean: '통로', myanmar: 'လျှောက်လမ်း', english: 'Aisle/Passageway', pos: 'noun', level: 'intermediate', synonyms: '복도 (hallway)', antonyms: '벽 (wall)', examples: [
+  { korean: '통로가 좁아요.', myanmar: 'လျှောက်လမ်း ကျဉ်းတယ်။', english: 'The aisle is narrow.' } ] },
+{ id: '6882', korean: '통조림', myanmar: 'စည်သွပ်ဘူး', english: 'Canned food', pos: 'noun', level: 'basic', synonyms: '캔 (can)', antonyms: '생식 (raw food)', examples: [
+  { korean: '참치 통조림을 샀어요.', myanmar: 'တူနာစည်သွပ်ဘူး ဝယ်ခဲ့တယ်။', english: 'I bought canned tuna.' } ] },
+{ id: '6883', korean: '퇴근길', myanmar: 'ရုံးဆင်းလမ်း', english: 'Way home from work', pos: 'noun', level: 'basic', synonyms: '귀갓길 (way home)', antonyms: '출근길 (way to work)', examples: [
+  { korean: '퇴근길에 차가 막혀요.', myanmar: 'ရုံးဆင်းလမ်းမှာ ကားပိတ်တယ်။', english: 'Traffic is jammed on the way home from work.' } ] },
+{ id: '6884', korean: '튀김', myanmar: 'အကြော်', english: 'Deep-fried food', pos: 'noun', level: 'basic', synonyms: 'None', antonyms: '찜 (steamed dish)', examples: [
+  { korean: '새우 튀김이 맛있어요.', myanmar: 'ပုစွန်ကြော်က အရသာရှိတယ်။', english: 'Fried shrimp is delicious.' } ] },
+{ id: '6885', korean: '트렁크', myanmar: 'ကားနောက်ဖုံး', english: 'Trunk (car)', pos: 'noun', level: 'basic', synonyms: '짐칸 (luggage compartment)', antonyms: '보닛 (bonnet)', examples: [
+  { korean: '트렁크에 짐을 넣으세요.', myanmar: 'ကားနောက်ဖုံးထဲ ပစ္စည်း ထည့်ပါ။', english: 'Put the luggage in the trunk.' } ] },
+{ id: '6886', korean: '특급', myanmar: 'အထူးတန်း', english: 'Special class', pos: 'noun', level: 'intermediate', synonyms: '최고급 (highest class)', antonyms: '일반 (general)', examples: [
+  { korean: '특급 호텔에서 잤어요.', myanmar: 'အထူးတန်းဟိုတယ်မှာ အိပ်ခဲ့တယ်။', english: 'I slept at a special class hotel.' } ] },
+{ id: '6887', korean: '티비', myanmar: 'တီဗီ', english: 'TV', pos: 'noun', level: 'basic', synonyms: '텔레비전 (television)', antonyms: '라디오 (radio)', examples: [
+  { korean: '거실에 큰 티비가 있어요.', myanmar: 'ဧည့်ခန်းမှာ တီဗီအကြီးကြီး ရှိတယ်။', english: 'There is a big TV in the living room.' } ] },
+{ id: '6888', korean: '팀장', myanmar: 'အဖွဲ့ခေါင်းဆောင်', english: 'Team leader', pos: 'noun', level: 'intermediate', synonyms: '리더 (leader)', antonyms: '팀원 (team member)', examples: [
+  { korean: '팀장님과 회의를 했어요.', myanmar: 'အဖွဲ့ခေါင်းဆောင်နဲ့ အစည်းအဝေး လုပ်ခဲ့တယ်။', english: 'I had a meeting with the team leader.' } ] },
+{ id: '6889', korean: '탑승권', myanmar: 'လေယာဉ်လက်မှတ် (Boarding Pass)', english: 'Boarding pass', pos: 'noun', level: 'intermediate', synonyms: '비행기표 (flight ticket)', antonyms: 'None', examples: [
+  { korean: '탑승권을 보여주세요.', myanmar: 'လေယာဉ်လက်မှတ် ပြပေးပါ။', english: 'Please show your boarding pass.' } ] },
+{ id: '6890', korean: '탈의실', myanmar: 'အဝတ်လဲခန်း', english: 'Dressing room', pos: 'noun', level: 'basic', synonyms: '피팅룸 (fitting room)', antonyms: 'None', examples: [
+  { korean: '탈의실은 저쪽에 있어요.', myanmar: 'အဝတ်လဲခန်းက ဟိုဘက်မှာ ရှိတယ်။', english: 'The dressing room is over there.' } ] },
+{ id: '6891', korean: '태블릿', myanmar: 'တက်ဘလက်', english: 'Tablet PC', pos: 'noun', level: 'basic', synonyms: '탭 (tab)', antonyms: '노트북 (laptop)', examples: [
+  { korean: '태블릿으로 영상을 봐요.', myanmar: 'တက်ဘလက်နဲ့ ရုပ်သံ ကြည့်တယ်။', english: 'I watch videos on a tablet.' } ] },
+{ id: '6892', korean: '테이프', myanmar: 'တိပ်ခွေ/ကော်တိပ်', english: 'Tape', pos: 'noun', level: 'basic', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '박스를 테이프로 포장했어요.', myanmar: 'သေတ္တာကို ကော်တိပ်နဲ့ ထုပ်ပိုးခဲ့တယ်။', english: 'I packed the box with tape.' } ] },
+{ id: '6893', korean: '토스트기', myanmar: 'ပေါင်မုန့်ကင်စက်', english: 'Toaster', pos: 'noun', level: 'basic', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '식빵을 토스트기에 넣었어요.', myanmar: 'ပေါင်မုန့်ကို ပေါင်မုန့်ကင်စက်ထဲ ထည့်ခဲ့တယ်။', english: 'I put the bread in the toaster.' } ] },
+{ id: '6894', korean: '통역', myanmar: 'စကားပြန်', english: 'Interpretation', pos: 'noun', level: 'intermediate', synonyms: '번역 (translation)', antonyms: 'None', examples: [
+  { korean: '통역이 필요해요.', myanmar: 'စကားပြန် လိုတယ်။', english: 'I need interpretation.' } ] },
+{ id: '6895', korean: '통화', myanmar: 'ဖုန်းပြောခြင်း', english: 'Phone call', pos: 'noun', level: 'basic', synonyms: '전화 (phone)', antonyms: '문자 (text)', examples: [
+  { korean: '지금 통화 가능하세요?', myanmar: 'အခု ဖုန်းပြောလို့ရလား။', english: 'Can you talk on the phone right now?' } ] },
+{ id: '6896', korean: '튜브', myanmar: 'ရေကူးကွင်း', english: 'Tube (swimming)', pos: 'noun', level: 'basic', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '수영장에서 튜브를 탔어요.', myanmar: 'ရေကူးကန်မှာ ရေကူးကွင်း စီးခဲ့တယ်။', english: 'I used a tube in the pool.' } ] },
+{ id: '6897', korean: '트럭', myanmar: 'ကုန်တင်ကား', english: 'Lorry/Truck', pos: 'noun', level: 'basic', synonyms: '화물차 (freight car)', antonyms: '승용차 (sedan)', examples: [
+  { korean: '트럭이 짐을 싣고 가요.', myanmar: 'ကုန်တင်ကားက ပစ္စည်းတင်ပြီး သွားတယ်။', english: 'The truck carries the load.' } ] },
+{ id: '6898', korean: '티눈', myanmar: 'အသားမာ (ခြေထောက်)', english: 'Corn (on foot)', pos: 'noun', level: 'advanced', synonyms: '굳은살 (callus)', antonyms: 'None', examples: [
+  { korean: '발에 티눈이 생겼어요.', myanmar: 'ခြေထောက်မှာ အသားမာ ဖြစ်နေတယ်။', english: 'I have a corn on my foot.' } ] },
+{ id: '6899', korean: '팀워크', myanmar: 'အဖွဲ့လိုက်လုပ်ဆောင်မှု', english: 'Teamwork', pos: 'noun', level: 'intermediate', synonyms: '협동 (cooperation)', antonyms: '단독 (solo)', examples: [
+  { korean: '우리 팀은 팀워크가 좋아요.', myanmar: 'ကျွန်တော်တို့အသင်းက အဖွဲ့လိုက်လုပ်ဆောင်မှု ကောင်းတယ်။', english: 'Our team has good teamwork.' } ] },
+{ id: '6900', korean: '팁', myanmar: 'ဘောက်ဆူး/အကြံပြုချက်', english: 'Tip', pos: 'noun', level: 'basic', synonyms: '봉사료 (service charge), 조언 (advice)', antonyms: 'None', examples: [
+  { korean: '웨이터에게 팁을 줬어요.', myanmar: 'စားပွဲထိုးကို ဘောက်ဆူး ပေးခဲ့တယ်။', english: 'I gave the waiter a tip.' } ] },
+
+// ===== ㅌ CONSONANT WORDS - CATEGORY 3: NATURE & ABSTRACT (6901-7000) =====
+{ id: '6901', korean: '태양', myanmar: 'နေမင်း', english: 'The Sun', pos: 'noun', level: 'basic', synonyms: '해 (sun)', antonyms: '달 (moon)', examples: [
+  { korean: '태양이 떠올라요.', myanmar: 'နေမင်း ထွက်ပေါ်လာတယ်။', english: 'The sun is rising.' } ] },
+{ id: '6902', korean: '태도', myanmar: 'သဘောထား', english: 'Attitude', pos: 'noun', level: 'intermediate', synonyms: '자세 (posture/stance)', antonyms: 'None', examples: [
+  { korean: '그의 태도가 마음에 안 들어요.', myanmar: 'သူ့ရဲ့ သဘောထားကို သဘောမကျဘူး။', english: 'I don\'t like his attitude.' } ] },
+{ id: '6903', korean: '통증', myanmar: 'နာကျင်မှု', english: 'Pain/Ache', pos: 'noun', level: 'intermediate', synonyms: '아픔 (pain)', antonyms: '쾌감 (pleasure)', examples: [
+  { korean: '허리에 통증이 있어요.', myanmar: 'ခါးမှာ နာကျင်မှု ရှိတယ်။', english: 'I have pain in my waist.' } ] },
+{ id: '6904', korean: '특징', myanmar: 'ထူးခြားချက်', english: 'Characteristic/Feature', pos: 'noun', level: 'intermediate', synonyms: '특색 (distinctive feature)', antonyms: '평범 (ordinariness)', examples: [
+  { korean: '이 제품의 특징은 무엇입니까?', myanmar: 'ဒီထုတ်ကုန်ရဲ့ ထူးခြားချက်က ဘာလဲ။', english: 'What is the feature of this product?' } ] },
+{ id: '6905', korean: '특별하다', myanmar: 'ထူးခြားသည်', english: 'To be special', pos: 'adjective', level: 'basic', synonyms: '특이하다 (unique)', antonyms: '평범하다 (ordinary)', examples: [
+  { korean: '오늘은 특별한 날이에요.', myanmar: 'ဒီနေ့က ထူးခြားတဲ့နေ့ပါ။', english: 'Today is a special day.' } ] },
+{ id: '6906', korean: '튼튼하다', myanmar: 'ခိုင်ခံ့သည်', english: 'To be strong/sturdy', pos: 'adjective', level: 'basic', synonyms: '건강하다 (healthy), 견고하다 (solid)', antonyms: '약하다 (weak)', examples: [
+  { korean: '이 의자는 아주 튼튼해요.', myanmar: 'ဒီကုလားထိုင်က အရမ်းခိုင်ခံ့တယ်။', english: 'This chair is very sturdy.' } ] },
+{ id: '6907', korean: '틀림없다', myanmar: 'မလွဲဧကန်/သေချာသည်', english: 'To be certain/mistakeless', pos: 'adjective', level: 'intermediate', synonyms: '확실하다 (certain)', antonyms: '불확실하다 (uncertain)', examples: [
+  { korean: '그가 범인임에 틀림없어요.', myanmar: 'သူက တရားခံဖြစ်တာ မလွဲဧကန်ပဲ။', english: 'He must be the criminal.' } ] },
+{ id: '6908', korean: '투명하다', myanmar: 'ကြည်လင်သည်', english: 'To be transparent', pos: 'adjective', level: 'intermediate', synonyms: '맑다 (clear)', antonyms: '불투명하다 (opaque)', examples: [
+  { korean: '물이 투명하고 깨끗해요.', myanmar: 'ရေက ကြည်လင်ပြီး သန့်ရှင်းတယ်။', english: 'The water is transparent and clean.' } ] },
+{ id: '6909', korean: '통통하다', myanmar: 'ဝသည်/ပြည့်ဖြိုးသည်', english: 'To be chubby', pos: 'adjective', level: 'basic', synonyms: '살지다 (fleshy)', antonyms: '날씬하다 (slim)', examples: [
+  { korean: '아기의 볼이 통통해요.', myanmar: 'ကလေးရဲ့ပါးက ပြည့်ဖြိုးတယ်။', english: 'The baby\'s cheeks are chubby.' } ] },
+{ id: '6910', korean: '타인', myanmar: 'သူစိမ်း/အခြားသူ', english: 'Others/Stranger', pos: 'noun', level: 'intermediate', synonyms: '남 (stranger)', antonyms: '자신 (self)', examples: [
+  { korean: '타인을 배려해야 해요.', myanmar: 'အခြားသူကို ငဲ့ညှာရမယ်။', english: 'You should be considerate of others.' } ] },
+{ id: '6911', korean: '탁구', myanmar: 'စားပွဲတင်တင်းနစ်', english: 'Table tennis/Ping pong', pos: 'noun', level: 'basic', synonyms: '핑퐁 (ping pong)', antonyms: 'None', examples: [
+  { korean: '탁구를 칠 줄 알아요?', myanmar: 'စားပွဲတင်တင်းနစ် ကစားတတ်လား။', english: 'Do you know how to play table tennis?' } ] },
+{ id: '6912', korean: '탄생', myanmar: 'မွေးဖွားခြင်း', english: 'Birth', pos: 'noun', level: 'advanced', synonyms: '출생 (birth)', antonyms: '사망 (death)', examples: [
+  { korean: '새 생명의 탄생을 축하해요.', myanmar: 'အသက်သစ် မွေးဖွားခြင်းကို ဂုဏ်ပြုပါတယ်။', english: 'Congratulations on the birth of a new life.' } ] },
+{ id: '6913', korean: '탈출', myanmar: 'လွတ်မြောက်ခြင်း', english: 'Escape', pos: 'noun', level: 'intermediate', synonyms: '도망 (flight)', antonyms: '구속 (imprisonment)', examples: [
+  { korean: '비상구로 탈출했어요.', myanmar: 'အရေးပေါ်ထွက်ပေါက်ကနေ လွတ်မြောက်ခဲ့တယ်။', english: 'I escaped through the emergency exit.' } ] },
+{ id: '6914', korean: '탐험', myanmar: 'စူးစမ်းရှာဖွေခြင်း', english: 'Exploration', pos: 'noun', level: 'intermediate', synonyms: '답사 (investigation)', antonyms: 'None', examples: [
+  { korean: '정글을 탐험하고 싶어요.', myanmar: 'တောနက်ကို စူးစမ်းရှာဖွေချင်တယ်။', english: 'I want to explore the jungle.' } ] },
+{ id: '6915', korean: '태도', myanmar: 'အမူအရာ', english: 'Demeanor', pos: 'noun', level: 'intermediate', synonyms: '행동 (behavior)', antonyms: 'None', examples: [
+  { korean: '학습 태도가 좋아요.', myanmar: 'သင်ယူမှု အမူအရာ ကောင်းတယ်။', english: 'The learning attitude is good.' } ] },
+{ id: '6916', korean: '태평양', myanmar: 'ပစိဖိတ်သမုဒ္ဒရာ', english: 'Pacific Ocean', pos: 'noun', level: 'advanced', synonyms: '대양 (ocean)', antonyms: '대서양 (Atlantic Ocean)', examples: [
+  { korean: '한국은 태평양과 접해 있어요.', myanmar: 'ကိုရီးယားက ပစိဖိတ်သမုဒ္ဒရာနဲ့ ထိစပ်နေတယ်။', english: 'Korea borders the Pacific Ocean.' } ] },
+{ id: '6917', korean: '터', myanmar: 'မြေကွက်/နေရာ', english: 'Site/Lot', pos: 'noun', level: 'advanced', synonyms: '장소 (place)', antonyms: 'None', examples: [
+  { korean: '집을 지을 터를 닦았어요.', myanmar: 'အိမ်ဆောက်မယ့် မြေကွက်ကို ရှင်းလင်းခဲ့တယ်။', english: 'I cleared the site to build a house.' } ] },
+{ id: '6918', korean: '텅', myanmar: 'ဟာလာဟင်းလင်း', english: 'Empty/Hollow (sound/state)', pos: 'adverb', level: 'intermediate', synonyms: '빈 (empty)', antonyms: '꽉 (full)', examples: [
+  { korean: '방이 텅 비었어요.', myanmar: 'အခန်းက ဟာလာဟင်းလင်း ဖြစ်နေတယ်။', english: 'The room is completely empty.' } ] },
+{ id: '6919', korean: '테러', myanmar: 'အကြမ်းဖက်မှု', english: 'Terror/Terrorism', pos: 'noun', level: 'advanced', synonyms: '폭력 (violence)', antonyms: '평화 (peace)', examples: [
+  { korean: '테러를 반대해요.', myanmar: 'အကြမ်းဖက်မှုကို ဆန့်ကျင်တယ်။', english: 'I oppose terrorism.' } ] },
+{ id: '6920', korean: '토론', myanmar: 'ဆွေးနွေးပွဲ', english: 'Discussion/Debate', pos: 'noun', level: 'intermediate', synonyms: '논의 (discussion)', antonyms: '독단 (dogmatism)', examples: [
+  { korean: '주제에 대해 토론했어요.', myanmar: 'ခေါင်းစဉ်နဲ့ပတ်သက်ပြီး ဆွေးနွေးခဲ့တယ်။', english: 'We debated the topic.' } ] },
+{ id: '6921', korean: '통계', myanmar: 'စာရင်းအင်း', english: 'Statistics', pos: 'noun', level: 'advanced', synonyms: '수치 (figures)', antonyms: '추측 (guess)', examples: [
+  { korean: '인구 통계를 조사했어요.', myanmar: 'လူဦးရေ စာရင်းအင်းကို စစ်ဆေးခဲ့တယ်။', english: 'I investigated the population statistics.' } ] },
+{ id: '6922', korean: '통일', myanmar: 'ပေါင်းစည်းရေး', english: 'Unification', pos: 'noun', level: 'basic', synonyms: '통합 (integration)', antonyms: '분단 (division)', examples: [
+  { korean: '남북 통일을 기원해요.', myanmar: 'တောင်မြောက် ပေါင်းစည်းရေးကို ဆုတောင်းတယ်။', english: 'I pray for the unification of North and South.' } ] },
+{ id: '6923', korean: '퇴직금', myanmar: 'ပင်စင်လစာ/အလုပ်ထွက်ကြေး', english: 'Severance pay', pos: 'noun', level: 'advanced', synonyms: '연금 (pension)', antonyms: '입사금 (joining fee - rare)', examples: [
+  { korean: '퇴직금을 받았어요.', myanmar: 'အလုပ်ထွက်ကြေး ရခဲ့တယ်။', english: 'I received severance pay.' } ] },
+{ id: '6924', korean: '투쟁', myanmar: 'တိုက်ပွဲ', english: 'Struggle/Fight', pos: 'noun', level: 'advanced', synonyms: '싸움 (fight)', antonyms: '타협 (compromise)', examples: [
+  { korean: '생존을 위한 투쟁이었어요.', myanmar: 'ရှင်သန်ရပ်တည်ရေးအတွက် တိုက်ပွဲ ဖြစ်ခဲ့တယ်။', english: 'It was a struggle for survival.' } ] },
+{ id: '6925', korean: '특성', myanmar: 'ထူးခြားသောလက္ခဏာ', english: 'Characteristic/Property', pos: 'noun', level: 'intermediate', synonyms: '성질 (nature)', antonyms: '보편성 (universality)', examples: [
+  { korean: '재료의 특성을 잘 알아야 해요.', myanmar: 'ပစ္စည်းရဲ့ ထူးခြားသောလက္ခဏာကို ကောင်းကောင်း သိရမယ်။', english: 'You need to know the properties of the material well.' } ] },
+{ id: '6926', korean: '특정', myanmar: 'တိကျသော/သတ်မှတ်ထားသော', english: 'Specific/Particular', pos: 'noun', level: 'intermediate', synonyms: '지정 (designation)', antonyms: '불특정 (unspecified)', examples: [
+  { korean: '특정 인물을 지칭하지 않았어요.', myanmar: 'တိကျသော ပုဂ္ဂိုလ်ကို မရည်ညွှန်းခဲ့ဘူး။', english: 'I didn\'t refer to a specific person.' } ] },
+{ id: '6927', korean: '튼튼히', myanmar: 'ခိုင်ခံ့စွာ', english: 'Firmly/Strongly', pos: 'adverb', level: 'basic', synonyms: '단단히 (firmly)', antonyms: '약하게 (weakly)', examples: [
+  { korean: '기초를 튼튼히 해야 해요.', myanmar: 'အခြေခံကို ခိုင်ခံ့စွာ လုပ်ရမယ်။', english: 'You must lay a strong foundation.' } ] },
+{ id: '6928', korean: '틀', myanmar: 'ဘောင်', english: 'Frame/Mold', pos: 'noun', level: 'intermediate', synonyms: '액자 (frame)', antonyms: '내용 (content)', examples: [
+  { korean: '사진을 틀에 넣었어요.', myanmar: 'ဓာတ်ပုံကို ဘောင်ထဲ ထည့်ခဲ့တယ်။', english: 'I put the photo in the frame.' } ] },
+{ id: '6929', korean: '틈', myanmar: 'အက်ကွဲကြောင်း/အခွင့်အရေး', english: 'Crack/Gap/Chance', pos: 'noun', level: 'intermediate', synonyms: '사이 (gap)', antonyms: 'None', examples: [
+  { korean: '문 틈으로 바람이 들어와요.', myanmar: 'တံခါး အက်ကွဲကြောင်းကြားက လေဝင်လာတယ်။', english: 'Wind comes in through the door crack.' } ] },
+{ id: '6930', korean: '티', myanmar: 'အပြစ်အနာအဆာ/ပုံစံ', english: 'Flaw/Look', pos: 'noun', level: 'advanced', synonyms: '흠 (blemish)', antonyms: '옥 (jade - perfect)', examples: [
+  { korean: '옥에 티가 있어요.', myanmar: 'ကျောက်စိမ်းမှာ အပြစ်အနာအဆာ ရှိတယ်။ (စကားပုံ)', english: 'There is a flaw in the jade.' } ] },
+{ id: '6931', korean: '티끌', myanmar: 'ဖုန်မှုန့်', english: 'Dust/Mote', pos: 'noun', level: 'advanced', synonyms: '먼지 (dust)', antonyms: '태산 (big mountain)', examples: [
+  { korean: '티끌 모아 태산.', myanmar: 'ဖုန်မှုန့်စုပြီး တောင်ကြီးဖြစ်။ (စကားပုံ)', english: 'Gather dust to make a mountain (Many a little makes a mickle).' } ] },
+{ id: '6932', korean: '타락', myanmar: 'ပျက်စီးခြင်း/လမ်းမှားရောက်ခြင်း', english: 'Corruption/Depravity', pos: 'noun', level: 'advanced', synonyms: '부패 (corruption)', antonyms: '고결 (nobility)', examples: [
+  { korean: '도덕적 타락을 경계해야 해요.', myanmar: 'ကိုယ်ကျင့်တရား ပျက်စီးခြင်းကို သတိပြုရမယ်။', english: 'We must guard against moral corruption.' } ] },
+{ id: '6933', korean: '타협', myanmar: 'ညှိနှိုင်းအဖြေရှာခြင်း', english: 'Compromise', pos: 'noun', level: 'advanced', synonyms: '절충 (compromise)', antonyms: '대립 (confrontation)', examples: [
+  { korean: '타협점을 찾았어요.', myanmar: 'ညှိနှိုင်းအဖြေရှာတဲ့အမှတ်ကို ရှာတွေ့ခဲ့တယ်။', english: 'We found a compromise.' } ] },
+{ id: '6934', korean: '탁', myanmar: 'ဒုန်း (အသံ)/ရုတ်တရက်', english: 'With a tap/Suddenly', pos: 'adverb', level: 'intermediate', synonyms: '갑자기 (suddenly)', antonyms: '살살 (gently)', examples: [
+  { korean: '탁 소리가 났어요.', myanmar: 'ဒုန်း ဆိုတဲ့အသံ ထွက်လာတယ်။', english: 'There was a tap sound.' } ] },
+{ id: '6935', korean: '탄력', myanmar: 'ကျုံ့နိုင်ဆန့်နိုင်စွမ်း', english: 'Elasticity/Flexibility', pos: 'noun', level: 'advanced', synonyms: '유연성 (flexibility)', antonyms: '경직 (rigidity)', examples: [
+  { korean: '피부 탄력을 유지하고 싶어요.', myanmar: 'အသားအရေ ကျုံ့နိုင်ဆန့်နိုင်စွမ်းကို ထိန်းသိမ်းချင်တယ်။', english: 'I want to maintain skin elasticity.' } ] },
+{ id: '6936', korean: '탈', myanmar: 'ပြဿနာ/ရောဂါ', english: 'Trouble/Malady', pos: 'noun', level: 'intermediate', synonyms: '사고 (accident)', antonyms: '무사 (safety)', examples: [
+  { korean: '배탈이 났어요.', myanmar: 'ဗိုက်နာ (ပြဿနာ) ဖြစ်တယ်။', english: 'I have an upset stomach.' } ] },
+{ id: '6937', korean: '탐욕', myanmar: 'လောဘ', english: 'Greed', pos: 'noun', level: 'advanced', synonyms: '욕심 (greed)', antonyms: '무욕 (lack of greed)', examples: [
+  { korean: '탐욕을 버리세요.', myanmar: 'လောဘကို စွန့်ပစ်ပါ။', english: 'Cast away greed.' } ] },
+{ id: '6938', korean: '태반', myanmar: 'အများစု', english: 'The greater part/Majority', pos: 'noun', level: 'advanced', synonyms: '대부분 (most)', antonyms: '소수 (minority)', examples: [
+  { korean: '성공한 사람이 태반이에요.', myanmar: 'အောင်မြင်တဲ့လူက အများစုပါ။', english: 'Most are successful people.' } ] },
+{ id: '6939', korean: '터전', myanmar: 'အခြေခံ/နေရာ', english: 'Base/Site/Grounds', pos: 'noun', level: 'advanced', synonyms: '기반 (foundation)', antonyms: 'None', examples: [
+  { korean: '삶의 터전을 잃었어요.', myanmar: 'ဘဝရဲ့ နေစရာကို ဆုံးရှုံးခဲ့တယ်။', english: 'I lost my livelihood/home.' } ] },
+{ id: '6940', korean: '통곡', myanmar: 'အော်ဟစ်ငိုကြွေးခြင်း', english: 'Wailing', pos: 'noun', level: 'advanced', synonyms: '오열 (sobbing)', antonyms: '폭소 (burst of laughter)', examples: [
+  { korean: '장례식장에서 통곡 소리가 들렸어요.', myanmar: 'ဈာပနအခမ်းအနားမှာ အော်ဟစ်ငိုကြွေးသံ ကြားခဲ့ရတယ်။', english: 'Wailing was heard at the funeral.' } ] },
+{ id: '6941', korean: '통념', myanmar: 'အများလက်ခံထားသော အယူအဆ', english: 'Common idea/Convention', pos: 'noun', level: 'advanced', synonyms: '상식 (common sense)', antonyms: '파격 (breaking rules)', examples: [
+  { korean: '사회적 통념을 깼어요.', myanmar: 'လူမှုရေး အယူအဆကို ချိုးဖျက်ခဲ့တယ်။', english: 'He broke social conventions.' } ] },
+{ id: '6942', korean: '통로', myanmar: 'လမ်းကြောင်း', english: 'Passage/Path', pos: 'noun', level: 'intermediate', synonyms: '길 (way)', antonyms: '막다른 길 (dead end)', examples: [
+  { korean: '비상 통로를 확보하세요.', myanmar: 'အရေးပေါ် လမ်းကြောင်းကို သေချာလုပ်ပါ။', english: 'Secure the emergency passage.' } ] },
+{ id: '6943', korean: '통신', myanmar: 'ဆက်သွယ်ရေး', english: 'Communication', pos: 'noun', level: 'intermediate', synonyms: '연락 (contact)', antonyms: '두절 (interruption)', examples: [
+  { korean: '통신 상태가 나빠요.', myanmar: 'ဆက်သွယ်ရေး အခြေအနေ ဆိုးတယ်။', english: 'The communication connection is bad.' } ] },
+{ id: '6944', korean: '통찰력', myanmar: 'ထိုးထွင်းသိမြင်နိုင်စွမ်း', english: 'Insight', pos: 'noun', level: 'advanced', synonyms: '예리함 (sharpness)', antonyms: '무지 (ignorance)', examples: [
+  { korean: '그는 뛰어난 통찰력을 가졌어요.', myanmar: 'သူက ထူးချွန်တဲ့ ထိုးထွင်းသိမြင်နိုင်စွမ်း ရှိတယ်။', english: 'He has outstanding insight.' } ] },
+{ id: '6945', korean: '투명성', myanmar: 'ပွင့်လင်းမြင်သာမှု', english: 'Transparency', pos: 'noun', level: 'advanced', synonyms: '명확성 (clarity)', antonyms: '불투명성 (opacity)', examples: [
+  { korean: '경영의 투명성을 높여야 해요.', myanmar: 'စီမံခန့်ခွဲမှုရဲ့ ပွင့်လင်းမြင်သာမှုကို မြှင့်တင်ရမယ်။', english: 'Management transparency must be increased.' } ] },
+{ id: '6946', korean: '투자', myanmar: 'ရင်းနှီးမြှုပ်နှံမှု', english: 'Investment', pos: 'noun', level: 'intermediate', synonyms: '출자 (investment)', antonyms: '회수 (withdrawal)', examples: [
+  { korean: '부동산 투자를 계획해요.', myanmar: 'အိမ်ခြံမြေ ရင်းနှီးမြှုပ်နှံမှုကို စီစဉ်တယ်။', english: 'I plan to invest in real estate.' } ] },
+{ id: '6947', korean: '특권', myanmar: 'အခွင့်ထူး', english: 'Privilege', pos: 'noun', level: 'advanced', synonyms: '혜택 (benefit)', antonyms: '의무 (obligation)', examples: [
+  { korean: '특권을 누리지 마세요.', myanmar: 'အခွင့်ထူးကို မခံစားပါနဲ့။', english: 'Do not enjoy privileges.' } ] },
+{ id: '6948', korean: '특색', myanmar: 'ထူးခြားချက်', english: 'Distinct characteristic', pos: 'noun', level: 'intermediate', synonyms: '특징 (feature)', antonyms: '평범 (ordinary)', examples: [
+  { korean: '지역 특색을 살린 축제예요.', myanmar: 'ဒေသထူးခြားချက်ကို ပေါ်လွင်စေတဲ့ ပွဲတော်ပါ။', english: 'It is a festival that highlights local characteristics.' } ] },
+{ id: '6949', korean: '특이하다', myanmar: 'ထူးဆန်းသည်', english: 'To be peculiar/unique', pos: 'adjective', level: 'intermediate', synonyms: '독특하다 (unique)', antonyms: '흔하다 (common)', examples: [
+  { korean: '그의 옷차림은 특이해요.', myanmar: 'သူ့ရဲ့ ဝတ်စားဆင်ယင်မှုက ထူးဆန်းတယ်။', english: 'His outfit is peculiar.' } ] },
+{ id: '6950', korean: '틀림없이', myanmar: 'မလွဲမသွေ', english: 'Certainly/Surely', pos: 'adverb', level: 'intermediate', synonyms: '분명히 (clearly)', antonyms: '아마도 (probably)', examples: [
+  { korean: '그는 틀림없이 성공할 거예요.', myanmar: 'သူက မလွဲမသွေ အောင်မြင်မှာပါ။', english: 'He will certainly succeed.' } ] },
+{ id: '6951', korean: '틈', myanmar: 'ကြား/အက်ကွဲကြောင်း', english: 'Gap/Crack', pos: 'noun', level: 'intermediate', synonyms: '사이 (space between)', antonyms: '밀착 (close contact)', examples: [
+  { korean: '문 틈으로 엿봤어요.', myanmar: 'တံခါးကြားကနေ ချောင်းကြည့်ခဲ့တယ်။', english: 'I peeked through the crack in the door.' } ] },
+{ id: '6952', korean: '티', myanmar: 'တီရှပ်', english: 'Tee/T-shirt', pos: 'noun', level: 'basic', synonyms: '티셔츠 (t-shirt)', antonyms: 'None', examples: [
+  { korean: '흰색 티를 입었어요.', myanmar: 'အဖြူရောင် တီရှပ် ဝတ်ခဲ့တယ်။', english: 'I wore a white tee.' } ] },
+{ id: '6953', korean: '타격', myanmar: 'ရိုက်ခတ်မှု/ထိခိုက်မှု', english: 'Blow/Hit/Impact', pos: 'noun', level: 'advanced', synonyms: '충격 (shock)', antonyms: '도움 (help)', examples: [
+  { korean: '경제에 큰 타격을 주었어요.', myanmar: 'စီးပွားရေးကို ကြီးမားတဲ့ ထိခိုက်မှု ပေးခဲ့တယ်။', english: 'It dealt a huge blow to the economy.' } ] },
+{ id: '6954', korean: '타당하다', myanmar: 'သင့်လျော်သည်', english: 'To be reasonable/valid', pos: 'adjective', level: 'advanced', synonyms: '합리적이다 (rational)', antonyms: '부당하다 (unjust)', examples: [
+  { korean: '타당한 이유를 대세요.', myanmar: 'သင့်လျော်တဲ့ အကြောင်းပြချက် ပေးပါ။', english: 'Give a reasonable reason.' } ] },
+{ id: '6955', korean: '타오르다', myanmar: 'တောက်လောင်သည်', english: 'To blaze/flare up', pos: 'verb', level: 'advanced', synonyms: '불타다 (burn)', antonyms: '꺼지다 (go out)', examples: [
+  { korean: '장작불이 활활 타올라요.', myanmar: 'ထင်းမီးက တဟုန်းဟုန်း တောက်လောင်နေတယ်။', english: 'The firewood fire is blazing.' } ] },
+{ id: '6956', korean: '탁하다', myanmar: 'နောက်ကျိသည်', english: 'To be turbid/murky', pos: 'adjective', level: 'intermediate', synonyms: '흐리다 (cloudy)', antonyms: '맑다 (clear)', examples: [
+  { korean: '공기가 탁해요.', myanmar: 'လေထုက နောက်ကျိနေတယ်။', english: 'The air is murky.' } ] },
+{ id: '6957', korean: '탄탄하다', myanmar: 'ခိုင်မာသည်', english: 'To be solid/robust', pos: 'adjective', level: 'intermediate', synonyms: '튼튼하다 (strong)', antonyms: '부실하다 (weak)', examples: [
+  { korean: '기초가 탄탄해요.', myanmar: 'အခြေခံက ခိုင်မာတယ်။', english: 'The foundation is solid.' } ] },
+{ id: '6958', korean: '탈락하다', myanmar: 'ကျရှုံးသည်/ပြုတ်သည်', english: 'To fail/drop out', pos: 'verb', level: 'intermediate', synonyms: '떨어지다 (fail)', antonyms: '합격하다 (pass)', examples: [
+  { korean: '예선에서 탈락했어요.', myanmar: 'အစမ်းပွဲမှာ ကျရှုံးခဲ့တယ်။', english: 'I dropped out in the preliminaries.' } ] },
+{ id: '6959', korean: '탐스럽다', myanmar: 'လိုချင်စဖွယ်ကောင်းသည်', english: 'To be desirable/attractive', pos: 'adjective', level: 'advanced', synonyms: '먹음직스럽다 (appetizing)', antonyms: '보잘것없다 (worthless)', examples: [
+  { korean: '사과가 탐스럽게 열렸어요.', myanmar: 'ပန်းသီးတွေက လိုချင်စဖွယ် သီးနေတယ်။', english: 'The apples grew attractively.' } ] },
+{ id: '6960', korean: '태연하다', myanmar: 'တည်ငြိမ်သည်', english: 'To be calm/cool', pos: 'adjective', level: 'advanced', synonyms: '담담하다 (calm)', antonyms: '당황하다 (flustered)', examples: [
+  { korean: '그는 거짓말을 하고도 태연했어요.', myanmar: 'သူက လိမ်ပြောပြီးတာတောင် တည်ငြိမ်နေတယ်။', english: 'He was calm even after lying.' } ] },
+{ id: '6961', korean: '터무니없다', myanmar: 'အခြေအမြစ်မရှိ', english: 'To be absurd/groundless', pos: 'adjective', level: 'advanced', synonyms: '황당하다 (absurd)', antonyms: '타당하다 (reasonable)', examples: [
+  { korean: '터무니없는 소문이에요.', myanmar: 'အခြေအမြစ်မရှိတဲ့ ကောလာဟလပါ။', english: 'It is a groundless rumor.' } ] },
+{ id: '6962', korean: '텅 비다', myanmar: 'ဟာလာဟင်းလင်းဖြစ်သည်', english: 'To be completely empty', pos: 'phrase', level: 'intermediate', synonyms: '비다 (empty)', antonyms: '가득 차다 (full)', examples: [
+  { korean: '냉장고가 텅 비었어요.', myanmar: 'ရေခဲသေတ္တာက ဟာလာဟင်းလင်း ဖြစ်နေတယ်။', english: 'The refrigerator is completely empty.' } ] },
+{ id: '6963', korean: '통쾌하다', myanmar: 'ကျေနပ်အားရစရာကောင်းသည်', english: 'To be thrilling/gratifying', pos: 'adjective', level: 'advanced', synonyms: '신나다 (excited)', antonyms: '불쾌하다 (unpleasant)', examples: [
+  { korean: '악당을 물리쳐서 통쾌해요.', myanmar: 'လူဆိုးကို နှိမ်နင်းလိုက်လို့ ကျေနပ်အားရစရာကောင်းတယ်။', english: 'It is gratifying to defeat the villain.' } ] },
+{ id: '6964', korean: '통통', myanmar: 'တဒုန်းဒုန်း (အသံ)', english: 'Bounce/Thump', pos: 'adverb', level: 'intermediate', synonyms: '탕탕 (bang)', antonyms: 'None', examples: [
+  { korean: '공을 통통 튀겼어요.', myanmar: 'ဘောလုံးကို တဒုန်းဒုန်း ပုတ်ခဲ့တယ်။', english: 'I bounced the ball thump thump.' } ] },
+{ id: '6965', korean: '투박하다', myanmar: 'ရိုင်းပျသည်/ကြမ်းတမ်းသည်', english: 'To be rough/crude', pos: 'adjective', level: 'advanced', synonyms: '거칠다 (rough)', antonyms: '세련되다 (refined)', examples: [
+  { korean: '그릇이 투박하지만 정겨워요.', myanmar: 'ပန်းကန်က ကြမ်းတမ်းပေမယ့် သံယောဇဉ်တွယ်စရာကောင်းတယ်။', english: 'The bowl is rough but affectionate.' } ] },
+{ id: '6966', korean: '투정', myanmar: 'ဂျီကျခြင်း', english: 'Complaining/Whining', pos: 'noun', level: 'intermediate', synonyms: '불평 (complaint)', antonyms: '감사 (gratitude)', examples: [
+  { korean: '아이가 밥투정을 해요.', myanmar: 'ကလေးက ထမင်း ဂျီကျနေတယ်။', english: 'The child is whining about food.' } ] },
+{ id: '6967', korean: '튀어나오다', myanmar: 'ပြူးထွက်လာသည်', english: 'To stick out/bulge', pos: 'verb', level: 'intermediate', synonyms: '돌출되다 (protrude)', antonyms: '들어가다 (go in)', examples: [
+  { korean: '못이 튀어나와 있어요.', myanmar: 'သံ ပြူးထွက်နေတယ်။', english: 'A nail is sticking out.' } ] },
+{ id: '6968', korean: '트림', myanmar: 'လေတက်ခြင်း', english: 'Burp/Belch', pos: 'noun', level: 'basic', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '탄산음료를 마시고 트림이 나왔어요.', myanmar: 'ဂက်စ်ပါတဲ့အချိုရည်သောက်ပြီး လေတက်လာတယ်။', english: 'I burped after drinking soda.' } ] },
+{ id: '6969', korean: '특기', myanmar: 'အထူးစွမ်းရည်', english: 'Specialty/Talent', pos: 'noun', level: 'intermediate', synonyms: '재능 (talent)', antonyms: 'None', examples: [
+  { korean: '제 특기는 요리예요.', myanmar: 'ကျွန်တော့် အထူးစွမ်းရည်က ဟင်းချက်တာပါ။', english: 'My specialty is cooking.' } ] },
+{ id: '6970', korean: '틈틈이', myanmar: 'အားလပ်ရက်တိုင်း/ကြားကာလတိုင်း', english: 'In spare time/In between', pos: 'adverb', level: 'intermediate', synonyms: '사이사이 (in between)', antonyms: '내내 (throughout)', examples: [
+  { korean: '틈틈이 책을 읽었어요.', myanmar: 'အားလပ်ရက်တိုင်း စာဖတ်ခဲ့တယ်။', english: 'I read books in my spare time.' } ] },
+{ id: '6971', korean: '티격태격', myanmar: 'ရန်ဖြစ်ငြင်းခုံ', english: 'Quarrelsome/Bickering', pos: 'adverb', level: 'intermediate', synonyms: '아웅다웅 (bickering)', antonyms: '알콩달콩 (lovey-dovey)', examples: [
+  { korean: '형제가 티격태격 싸워요.', myanmar: 'ညီအစ်ကိုတွေ ရန်ဖြစ်ငြင်းခုံနေကြတယ်။', english: 'The brothers are bickering.' } ] },
+{ id: '6972', korean: '탐스럽다', myanmar: 'တပ်မက်ဖွယ်ကောင်းသည်', english: 'Covetable', pos: 'adjective', level: 'advanced', synonyms: '욕심나다 (desirable)', antonyms: '싫다 (hateful)', examples: [
+  { korean: '탐스러운 머릿결이에요.', myanmar: 'တပ်မက်ဖွယ်ကောင်းတဲ့ ဆံသားပါပဲ။', english: 'It is covetable hair.' } ] },
+{ id: '6973', korean: '통째로', myanmar: 'တစ်ခုလုံး/အလုံးလိုက်', english: 'Whole/Intact', pos: 'adverb', level: 'intermediate', synonyms: '전부 (all)', antonyms: '나누어 (divided)', examples: [
+  { korean: '사과를 통째로 먹었어요.', myanmar: 'ပန်းသီးကို အလုံးလိုက် စားခဲ့တယ်။', english: 'I ate the apple whole.' } ] },
+{ id: '6974', korean: '투철하다', myanmar: 'ပြတ်သားသည်/ခိုင်မာသည်', english: 'To be thorough/firm', pos: 'adjective', level: 'advanced', synonyms: '확고하다 (firm)', antonyms: '희미하다 (vague)', examples: [
+  { korean: '그는 책임감이 투철해요.', myanmar: 'သူက တာဝန်သိစိတ် ပြတ်သားတယ်။', english: 'He has a thorough sense of responsibility.' } ] },
+{ id: '6975', korean: '트이다', myanmar: 'ပွင့်လင်းသည်', english: 'To be open', pos: 'verb', level: 'intermediate', synonyms: '열리다 (open)', antonyms: '닫히다 (close)', examples: [
+  { korean: '앞이 트여서 전망이 좋아요.', myanmar: 'အရှေ့က ပွင့်လင်းလို့ ရှုခင်းကောင်းတယ်။', english: 'The view is good because the front is open.' } ] },
+{ id: '6976', korean: '타박상', myanmar: 'ပွန်းပဲ့ဒဏ်ရာ', english: 'Bruise/Contusion', pos: 'noun', level: 'advanced', synonyms: '멍 (bruise)', antonyms: 'None', examples: [
+  { korean: '넘어져서 타박상을 입었어요.', myanmar: 'လဲကျလို့ ပွန်းပဲ့ဒဏ်ရာ ရခဲ့တယ်။', english: 'I got a bruise from falling.' } ] },
+{ id: '6977', korean: '탄성', myanmar: 'အာမေဋိတ်သံ', english: 'Exclamation/Elasticity', pos: 'noun', level: 'advanced', synonyms: '감탄 (admiration)', antonyms: '비명 (scream)', examples: [
+  { korean: '아름다운 경치에 탄성을 질렀어요.', myanmar: 'လှပတဲ့ရှုခင်းကြောင့် အာမေဋိတ်သံ ထွက်ခဲ့တယ်။', english: 'I exclaimed at the beautiful scenery.' } ] },
+{ id: '6978', korean: '탈', myanmar: 'အမှား/ချို့ယွင်းချက်', english: 'Trouble/Defect', pos: 'noun', level: 'intermediate', synonyms: '고장 (breakdown)', antonyms: '완벽 (perfection)', examples: [
+  { korean: '기계에 탈이 났어요.', myanmar: 'စက်မှာ အမှား ဖြစ်သွားတယ်။', english: 'There is trouble with the machine.' } ] },
+{ id: '6979', korean: '탐구', myanmar: 'လေ့လာခြင်း', english: 'Research/Inquiry', pos: 'noun', level: 'advanced', synonyms: '연구 (research)', antonyms: 'None', examples: [
+  { korean: '과학적 탐구가 필요해요.', myanmar: 'သိပ္ပံနည်းကျ လေ့လာခြင်း လိုအပ်တယ်။', english: 'Scientific inquiry is needed.' } ] },
+{ id: '6980', korean: '태연히', myanmar: 'အေးဆေးတည်ငြိမ်စွာ', english: 'Calmly/Coolly', pos: 'adverb', level: 'advanced', synonyms: '침착하게 (calmly)', antonyms: '허둥지둥 (hastily)', examples: [
+  { korean: '그는 태연히 행동했어요.', myanmar: 'သူက အေးဆေးတည်ငြိမ်စွာ ပြုမူခဲ့တယ်။', english: 'He acted calmly.' } ] },
+{ id: '6981', korean: '터득', myanmar: 'နားလည်သဘောပေါက်ခြင်း', english: 'Mastery/Understanding', pos: 'noun', level: 'advanced', synonyms: '이해 (understanding)', antonyms: '무지 (ignorance)', examples: [
+  { korean: '요령을 터득했어요.', myanmar: 'နည်းလမ်းကို နားလည်သဘောပေါက်ခဲ့တယ်။', english: 'I mastered the trick.' } ] },
+{ id: '6982', korean: '테두리', myanmar: 'ဘောင်', english: 'Rim/Border/Frame', pos: 'noun', level: 'intermediate', synonyms: '가장자리 (edge)', antonyms: '중심 (center)', examples: [
+  { korean: '안경 테두리가 검은색이에요.', myanmar: 'မျက်မှန်ဘောင်က အမည်းရောင်ပါ။', english: 'The glasses rim is black.' } ] },
+{ id: '6983', korean: '토론회', myanmar: 'စကားစစ်ထိုးပွဲ', english: 'Debate forum', pos: 'noun', level: 'advanced', synonyms: '공청회 (public hearing)', antonyms: 'None', examples: [
+  { korean: 'TV 토론회를 시청했어요.', myanmar: 'တီဗီ စကားစစ်ထိုးပွဲ ကြည့်ခဲ့တယ်။', english: 'I watched the TV debate forum.' } ] },
+{ id: '6984', korean: '통', myanmar: 'လုံးဝ', english: 'At all/Completely (negative)', pos: 'adverb', level: 'intermediate', synonyms: '전혀 (not at all)', antonyms: '매우 (very)', examples: [
+  { korean: '요즘 통 소식이 없네요.', myanmar: 'ဒီရက်ပိုင်း လုံးဝ သတင်းမရှိဘူးပဲ။', english: 'There is no news at all these days.' } ] },
+{ id: '6985', korean: '통제', myanmar: 'ထိန်းချုပ်မှု', english: 'Control/Regulation', pos: 'noun', level: 'advanced', synonyms: '제어 (control)', antonyms: '자유 (freedom)', examples: [
+  { korean: '출입 통제가 엄격해요.', myanmar: 'ဝင်ထွက်ထိန်းချုပ်မှု တင်းကြပ်တယ်။', english: 'Access control is strict.' } ] },
+{ id: '6986', korean: '투기', myanmar: 'ဈေးကစားခြင်း', english: 'Speculation', pos: 'noun', level: 'advanced', synonyms: '도박 (gambling)', antonyms: '투자 (investment)', examples: [
+  { korean: '부동산 투기를 막아야 해요.', myanmar: 'အိမ်ခြံမြေ ဈေးကစားခြင်းကို တားဆီးရမယ်။', english: 'We must prevent real estate speculation.' } ] },
+{ id: '6987', korean: '투명', myanmar: 'ကြည်လင်ခြင်း', english: 'Transparency/Invisibility', pos: 'noun', level: 'intermediate', synonyms: '맑음 (clearness)', antonyms: '불투명 (opacity)', examples: [
+  { korean: '투명 인간이 되고 싶어요.', myanmar: 'ကိုယ်ပျောက်လူသား ဖြစ်ချင်တယ်။', english: 'I want to become an invisible man.' } ] },
+{ id: '6988', korean: '튀다', myanmar: 'ထင်ရှားသည်', english: 'To stand out', pos: 'verb', level: 'intermediate', synonyms: '눈에 띄다 (catch the eye)', antonyms: '평범하다 (be ordinary)', examples: [
+  { korean: '그 옷은 색깔이 너무 튀어요.', myanmar: 'အဲဒီအဝတ်က အရောင် အရမ်းထင်ရှားတယ်။', english: 'That outfit\'s color stands out too much.' } ] },
+{ id: '6989', korean: '특정하다', myanmar: 'သတ်မှတ်သည်', english: 'To specify', pos: 'verb', level: 'advanced', synonyms: '지정하다 (designate)', antonyms: '모호하다 (be vague)', examples: [
+  { korean: '범인을 특정할 수 없었어요.', myanmar: 'တရားခံကို မသတ်မှတ်နိုင်ခဲ့ဘူး။', english: 'We couldn\'t specify the criminal.' } ] },
+{ id: '6990', korean: '틀림없다', myanmar: 'သေချာသည်', english: 'Must be/No doubt', pos: 'adjective', level: 'intermediate', synonyms: '확실하다 (certain)', antonyms: '의심스럽다 (doubtful)', examples: [
+  { korean: '이건 네가 한 게 틀림없어.', myanmar: 'ဒါ မင်းလုပ်တာ သေချာတယ်။', english: 'This must be your doing.' } ] },
+{ id: '6991', korean: '파다', myanmar: 'တူးသည်', english: 'To dig/excavate', pos: 'verb', level: 'basic', synonyms: '캐다 (dig up)', antonyms: '묻다 (bury)', examples: [
+  { korean: '땅을 깊게 팠어요.', myanmar: 'မြေကြီးကို နက်နက် တူးခဲ့တယ်။', english: 'I dug the ground deep.' } ] },
+{ id: '6992', korean: '파란색', myanmar: 'အပြာရောင်', english: 'Blue color', pos: 'noun', level: 'basic', synonyms: '청색 (blue)', antonyms: '빨간색 (red)', examples: [
+  { korean: '파란색 하늘이 예뻐요.', myanmar: 'အပြာရောင်ကောင်းကင်က လှတယ်။', english: 'The blue sky is pretty.' } ] },
+{ id: '6993', korean: '파티', myanmar: 'ပါတီပွဲ', english: 'Party', pos: 'noun', level: 'basic', synonyms: '잔치 (feast)', antonyms: '장례 (funeral)', examples: [
+  { korean: '친구 생일 파티에 갔어요.', myanmar: 'သူငယ်ချင်းမွေးနေ့ပါတီ သွားခဲ့တယ်။', english: 'I went to a friend\'s birthday party.' } ] },
+{ id: '6994', korean: '팔다', myanmar: 'ရောင်းသည်', english: 'To sell', pos: 'verb', level: 'basic', synonyms: '매매하다 (trade)', antonyms: '사다 (buy)', examples: [
+  { korean: '중고차를 팔았어요.', myanmar: 'တစ်ပတ်ရစ်ကား ရောင်းခဲ့တယ်။', english: 'I sold the used car.' } ] },
+{ id: '6995', korean: '팔찌', myanmar: 'လက်ကောက်', english: 'Bracelet', pos: 'noun', level: 'basic', synonyms: 'None', antonyms: '발찌 (anklet)', examples: [
+  { korean: '금 팔찌를 찼어요.', myanmar: 'ရွှေလက်ကောက် ဝတ်ခဲ့တယ်။', english: 'I wore a gold bracelet.' } ] },
+{ id: '6996', korean: '패션', myanmar: 'ဖက်ရှင်', english: 'Fashion', pos: 'noun', level: 'basic', synonyms: '유행 (trend)', antonyms: 'None', examples: [
+  { korean: '최신 패션에 관심이 많아요.', myanmar: 'နောက်ဆုံးပေါ်ဖက်ရှင်ကို စိတ်ဝင်စားမှုများတယ်။', english: 'I am very interested in the latest fashion.' } ] },
+{ id: '6997', korean: '팬', myanmar: 'ပရိသတ်', english: 'Fan (admirer)', pos: 'noun', level: 'basic', synonyms: '지지자 (supporter)', antonyms: '안티 (anti-fan)', examples: [
+  { korean: '저는 그 가수의 팬이에요.', myanmar: 'ကျွန်တော် အဲဒီအဆိုတော်ရဲ့ ပရိသတ်ပါ။', english: 'I am a fan of that singer.' } ] },
+{ id: '6998', korean: '퍼센트', myanmar: 'ရာခိုင်နှုန်း', english: 'Percent', pos: 'noun', level: 'basic', synonyms: '백분율 (percentage)', antonyms: 'None', examples: [
+  { korean: '50퍼센트 할인 중이에요.', myanmar: '၅၀ ရာခိုင်နှုန်း လျှော့ဈေးပေးနေတယ်။', english: 'It is 50 percent off.' } ] },
+{ id: '6999', korean: '펴다', myanmar: 'ဖြန့်သည်/ဖွင့်သည်', english: 'To unfold/open/spread', pos: 'verb', level: 'basic', synonyms: '펼치다 (spread out)', antonyms: '접다 (fold)', examples: [
+  { korean: '책을 펴세요.', myanmar: 'စာအုပ် ဖွင့်ပါ။', english: 'Open your book.' } ] },
+{ id: '7000', korean: '편지', myanmar: 'ပေးစာ', english: 'Letter', pos: 'noun', level: 'basic', synonyms: '서신 (correspondence)', antonyms: 'None', examples: [
+  { korean: '부모님께 편지를 썼어요.', myanmar: 'မိဘဆီ စာရေးခဲ့တယ်။', english: 'I wrote a letter to my parents.' } ] },
+
+
+
+
+
+
+
+
+
+
+
+
+  ///       countries and languages 
+  // ===== GLOBAL COUNTRIES & LANGUAGES (Sorted by Korean Alphabet ㄱ-ㅎ) =====
+
+// --- ㄱ (G) ---
+{ id: '7201', korean: '가나', myanmar: 'ဂါနာ', english: 'Ghana', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '가나는 초콜릿으로 유명해요.', myanmar: 'ဂါနာက ချောကလက်နဲ့ နာမည်ကြီးတယ်။', english: 'Ghana is famous for chocolate.' } ] },
+{ id: '7202', korean: '그리스', myanmar: 'ဂရိ', english: 'Greece', pos: 'noun', level: 'basic', synonyms: '희랍 (Hellas - archaic)', antonyms: 'None', examples: [
+  { korean: '그리스 로마 신화를 읽었어요.', myanmar: 'ဂရိရောမ ဒဏ္ဍာရီကို ဖတ်ခဲ့တယ်။', english: 'I read Greek and Roman mythology.' } ] },
+{ id: '7203', korean: '과테말라', myanmar: 'ဂွာတီမာလာ', english: 'Guatemala', pos: 'noun', level: 'advanced', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '과테말라 커피를 마셨어요.', myanmar: 'ဂွာတီမာလာ ကော်ဖီကို သောက်ခဲ့တယ်။', english: 'I drank Guatemalan coffee.' } ] },
+
+// --- ㄴ (N) ---
+{ id: '7204', korean: '나이지리아', myanmar: 'နိုင်ဂျီးရီးယား', english: 'Nigeria', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '나이지리아는 아프리카에 있어요.', myanmar: 'နိုင်ဂျီးရီးယားက အာဖရိကမှာ ရှိတယ်။', english: 'Nigeria is in Africa.' } ] },
+{ id: '7205', korean: '남아프리카공화국', myanmar: 'တောင်အာဖရိက', english: 'South Africa', pos: 'noun', level: 'intermediate', synonyms: '남아공 (abbreviation)', antonyms: 'None', examples: [
+  { korean: '남아프리카공화국에 가보고 싶어요.', myanmar: 'တောင်အာဖရိကကို သွားကြည့်ချင်တယ်။', english: 'I want to visit South Africa.' } ] },
+{ id: '7206', korean: '네덜란드', myanmar: 'နယ်သာလန်', english: 'Netherlands', pos: 'noun', level: 'intermediate', synonyms: '화란 (Holland - archaic)', antonyms: 'None', examples: [
+  { korean: '네덜란드는 튤립이 예뻐요.', myanmar: 'နယ်သာလန်က ကျူးလစ်ပန်း လှတယ်။', english: 'The Netherlands has beautiful tulips.' } ] },
+{ id: '7207', korean: '네팔', myanmar: 'နီပေါ', english: 'Nepal', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '네팔에는 에베레스트 산이 있어요.', myanmar: 'နီပေါမှာ ဧဝရက်တောင် ရှိတယ်။', english: 'Mount Everest is in Nepal.' } ] },
+{ id: '7208', korean: '노르웨이', myanmar: 'နော်ဝေ', english: 'Norway', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '노르웨이의 연어가 유명해요.', myanmar: 'နော်ဝေရဲ့ ဆယ်လ်မွန်ငါးက နာမည်ကြီးတယ်။', english: 'Norway\'s salmon is famous.' } ] },
+{ id: '7209', korean: '뉴질랜드', myanmar: 'နယူးဇီလန်', english: 'New Zealand', pos: 'noun', level: 'basic', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '뉴질랜드는 자연이 아름다워요.', myanmar: 'နယူးဇီလန်က သဘာဝတရား လှပတယ်။', english: 'New Zealand has beautiful nature.' } ] },
+
+// --- ㄷ (D) ---
+{ id: '7210', korean: '대만', myanmar: 'ထိုင်ဝမ်', english: 'Taiwan', pos: 'noun', level: 'basic', synonyms: '타이완 (Taiwan)', antonyms: 'None', examples: [
+  { korean: '대만 야시장이 재미있어요.', myanmar: 'ထိုင်ဝမ် ညဈေးက ပျော်စရာကောင်းတယ်။', english: 'Taiwan night markets are fun.' } ] },
+{ id: '7211', korean: '덴마크', myanmar: 'ဒိန်းမတ်', english: 'Denmark', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '덴마크는 행복 지수가 높아요.', myanmar: 'ဒိန်းမတ်က ပျော်ရွှင်မှုညွှန်းကိန်း မြင့်တယ်။', english: 'Denmark has a high happiness index.' } ] },
+{ id: '7212', korean: '독일', myanmar: 'ဂျာမနီ', english: 'Germany', pos: 'noun', level: 'basic', synonyms: '도이칠란드 (Deutschland)', antonyms: 'None', examples: [
+  { korean: '독일 맥주를 마셨어요.', myanmar: 'ဂျာမနီ ဘီယာ သောက်ခဲ့တယ်။', english: 'I drank German beer.' } ] },
+{ id: '7213', korean: '독일어', myanmar: 'ဂျာမန်ဘာသာစကား', english: 'German (language)', pos: 'noun', level: 'basic', synonyms: '독어 (German)', antonyms: 'None', examples: [
+  { korean: '독일어 문법은 어려워요.', myanmar: 'ဂျာမန် သဒ္ဒါက ခက်တယ်။', english: 'German grammar is difficult.' } ] },
+
+// --- ㄹ (R/L) ---
+{ id: '7214', korean: '라오스', myanmar: 'လာအို', english: 'Laos', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '라오스로 배낭여행을 갔어요.', myanmar: 'လာအိုကို ကျောပိုးအိတ်ခရီးထွက်ခဲ့တယ်။', english: 'I went backpacking in Laos.' } ] },
+{ id: '7215', korean: '러시아', myanmar: 'ရုရှား', english: 'Russia', pos: 'noun', level: 'basic', synonyms: '나선 (old term)', antonyms: 'None', examples: [
+  { korean: '러시아는 땅이 넓어요.', myanmar: 'ရုရှားက မြေကျယ်တယ်။', english: 'Russia has vast land.' } ] },
+{ id: '7216', korean: '러시아어', myanmar: 'ရုရှားဘာသာစကား', english: 'Russian (language)', pos: 'noun', level: 'basic', synonyms: '노어 (Russian)', antonyms: 'None', examples: [
+  { korean: '러시아어를 배울 거예요.', myanmar: 'ရုရှားဘာသာစကား သင်ယူမယ်။', english: 'I will learn Russian.' } ] },
+{ id: '7217', korean: '루마니아', myanmar: 'ရိုမေးနီးယား', english: 'Romania', pos: 'noun', level: 'advanced', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '루마니아의 성을 방문했어요.', myanmar: 'ရိုမေးနီးယားရဲ့ ရဲတိုက်ကို လည်ပတ်ခဲ့တယ်။', english: 'I visited a castle in Romania.' } ] },
+
+// --- ㅁ (M) ---
+{ id: '7218', korean: '말레이시아', myanmar: 'မလေးရှား', english: 'Malaysia', pos: 'noun', level: 'basic', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '말레이시아 음식은 맛있어요.', myanmar: 'မလေးရှား အစားအစာက အရသာရှိတယ်။', english: 'Malaysian food is delicious.' } ] },
+{ id: '7219', korean: '말레이어', myanmar: 'မလေးဘာသာစကား', english: 'Malay (language)', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '말레이어는 배우기 쉬워요.', myanmar: 'မလေးဘာသာစကားက သင်ယူရလွယ်တယ်။', english: 'Malay is easy to learn.' } ] },
+{ id: '7220', korean: '멕시코', myanmar: 'မက္ကဆီကို', english: 'Mexico', pos: 'noun', level: 'basic', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '멕시코 타코를 좋아해요.', myanmar: 'မက္ကဆီကို တာကိုးကို ကြိုက်တယ်။', english: 'I like Mexican tacos.' } ] },
+{ id: '7221', korean: '모로코', myanmar: 'မော်ရိုကို', english: 'Morocco', pos: 'noun', level: 'advanced', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '모로코 여행을 계획 중이에요.', myanmar: 'မော်ရိုကို ခရီးစဉ်ကို စီစဉ်နေတယ်။', english: 'I am planning a trip to Morocco.' } ] },
+{ id: '7222', korean: '몽골', myanmar: 'မွန်ဂိုလီးယား', english: 'Mongolia', pos: 'noun', level: 'intermediate', synonyms: '몽고 (old term)', antonyms: 'None', examples: [
+  { korean: '몽골에서 말을 탔어요.', myanmar: 'မွန်ဂိုလီးယားမှာ မြင်းစီးခဲ့တယ်။', english: 'I rode a horse in Mongolia.' } ] },
+{ id: '7223', korean: '미국', myanmar: 'အမေရိကန်', english: 'USA/America', pos: 'noun', level: 'basic', synonyms: '미주 (Americas)', antonyms: 'None', examples: [
+  { korean: '미국에 유학을 가요.', myanmar: 'အမေရိကန်ကို ပညာတော်သင်သွားတယ်။', english: 'I go to study abroad in the USA.' } ] },
+{ id: '7224', korean: '미얀마', myanmar: 'မြန်မာ', english: 'Myanmar', pos: 'noun', level: 'basic', synonyms: '버마 (Burma)', antonyms: 'None', examples: [
+  { korean: '저는 미얀마에서 왔어요.', myanmar: 'ကျွန်တော် မြန်မာက လာပါတယ်။', english: 'I am from Myanmar.' } ] },
+{ id: '7225', korean: '미얀마어', myanmar: 'မြန်မာဘာသာစကား', english: 'Myanmar language/Burmese', pos: 'noun', level: 'basic', synonyms: '버마어 (Burmese)', antonyms: 'None', examples: [
+  { korean: '미얀마어를 가르쳐 주세요.', myanmar: 'မြန်မာစာ သင်ပေးပါ။', english: 'Please teach me Myanmar language.' } ] },
+
+// --- ㅂ (B/V) ---
+{ id: '7226', korean: '방글라데시', myanmar: 'ဘင်္ဂလားဒေ့ရှ်', english: 'Bangladesh', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '방글라데시 친구가 있어요.', myanmar: 'ဘင်္ဂလားဒေ့ရှ် သူငယ်ချင်း ရှိတယ်။', english: 'I have a friend from Bangladesh.' } ] },
+{ id: '7227', korean: '베트남', myanmar: 'ဗီယက်နမ်', english: 'Vietnam', pos: 'noun', level: 'basic', synonyms: '월남 (old term)', antonyms: 'None', examples: [
+  { korean: '베트남 쌀국수를 먹었어요.', myanmar: 'ဗီယက်နမ် ခေါက်ဆွဲပြုတ် စားခဲ့တယ်။', english: 'I ate Vietnamese rice noodles.' } ] },
+{ id: '7228', korean: '베트남어', myanmar: 'ဗီယက်နမ်ဘာသာစကား', english: 'Vietnamese (language)', pos: 'noun', level: 'basic', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '베트남어 성조는 어려워요.', myanmar: 'ဗီယက်နမ်ဘာသာစကား အသံနိမ့်မြင့်က ခက်တယ်။', english: 'Vietnamese tones are difficult.' } ] },
+{ id: '7229', korean: '벨기에', myanmar: 'ဘယ်လ်ဂျီယမ်', english: 'Belgium', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '벨기에 와플이 맛있어요.', myanmar: 'ဘယ်လ်ဂျီယမ် ဝါဖယ်က အရသာရှိတယ်။', english: 'Belgian waffles are delicious.' } ] },
+{ id: '7230', korean: '북한', myanmar: 'မြောက်ကိုရီးယား', english: 'North Korea', pos: 'noun', level: 'basic', synonyms: '조선 (Joseon)', antonyms: '남한 (South Korea)', examples: [
+  { korean: '북한은 갈 수 없어요.', myanmar: 'မြောက်ကိုရီးယားကို သွားလို့မရဘူး။', english: 'I cannot go to North Korea.' } ] },
+{ id: '7231', korean: '브라질', myanmar: 'ဘရာဇီး', english: 'Brazil', pos: 'noun', level: 'basic', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '브라질은 축구를 잘해요.', myanmar: 'ဘရာဇီးက ဘောလုံး ကောင်းကောင်းကစားတယ်။', english: 'Brazil plays soccer well.' } ] },
+
+// --- ㅅ (S) ---
+{ id: '7232', korean: '사우디아라비아', myanmar: 'ဆော်ဒီအာရေဗျ', english: 'Saudi Arabia', pos: 'noun', level: 'intermediate', synonyms: '사우디 (Saudi)', antonyms: 'None', examples: [
+  { korean: '사우디아라비아는 사막이 많아요.', myanmar: 'ဆော်ဒီအာရေဗျက သဲကန္တာရ များတယ်။', english: 'Saudi Arabia has many deserts.' } ] },
+{ id: '7233', korean: '스리랑카', myanmar: 'သီရိလင်္ကာ', english: 'Sri Lanka', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '스리랑카 홍차가 유명해요.', myanmar: 'သီရိလင်္ကာ လက်ဖက်ခြောက်က နာမည်ကြီးတယ်။', english: 'Sri Lankan black tea is famous.' } ] },
+{ id: '7234', korean: '스웨덴', myanmar: 'ဆွီဒင်', english: 'Sweden', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '스웨덴 가구를 샀어요.', myanmar: 'ဆွီဒင် ပရိဘောဂ ဝယ်ခဲ့တယ်။', english: 'I bought Swedish furniture.' } ] },
+{ id: '7235', korean: '스위스', myanmar: 'ဆွစ်ဇာလန်', english: 'Switzerland', pos: 'noun', level: 'basic', synonyms: '서서 (old term)', antonyms: 'None', examples: [
+  { korean: '스위스 시계가 정확해요.', myanmar: 'ဆွစ်ဇာလန်နာရီက တိကျတယ်။', english: 'Swiss watches are accurate.' } ] },
+{ id: '7236', korean: '스페인', myanmar: 'စပိန်', english: 'Spain', pos: 'noun', level: 'basic', synonyms: '서반아 (old term)', antonyms: 'None', examples: [
+  { korean: '스페인 춤을 배웠어요.', myanmar: 'စပိန် အက သင်ယူခဲ့တယ်။', english: 'I learned Spanish dance.' } ] },
+{ id: '7237', korean: '스페인어', myanmar: 'စပိန်ဘာသာစကား', english: 'Spanish (language)', pos: 'noun', level: 'basic', synonyms: '서반아어 (Spanish)', antonyms: 'None', examples: [
+  { korean: '스페인어는 많은 나라에서 써요.', myanmar: 'စပိန်ဘာသာစကားကို နိုင်ငံအများအပြားမှာ သုံးတယ်။', english: 'Spanish is spoken in many countries.' } ] },
+{ id: '7238', korean: '싱가포르', myanmar: 'စင်ကာပူ', english: 'Singapore', pos: 'noun', level: 'basic', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '싱가포르는 깨끗한 도시예요.', myanmar: 'စင်ကာပူက သန့်ရှင်းတဲ့ မြို့ဖြစ်တယ်။', english: 'Singapore is a clean city.' } ] },
+
+// --- ㅇ (A/I/U/E/O) ---
+{ id: '7239', korean: '아랍어', myanmar: 'အာရပ်ဘာသာစကား', english: 'Arabic (language)', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '아랍어 글자는 예뻐요.', myanmar: 'အာရပ်စာလုံးတွေက လှတယ်။', english: 'Arabic characters are beautiful.' } ] },
+{ id: '7240', korean: '아르헨티나', myanmar: 'အာဂျင်တီးနား', english: 'Argentina', pos: 'noun', level: 'basic', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '아르헨티나에서 탱고를 췄어요.', myanmar: 'အာဂျင်တီးနားမှာ တန်ဂို ကခဲ့တယ်။', english: 'I danced the tango in Argentina.' } ] },
+{ id: '7241', korean: '아일랜드', myanmar: 'အိုင်ယာလန်', english: 'Ireland', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '아일랜드는 초록색 섬이에요.', myanmar: 'အိုင်ယာလန်က အစိမ်းရောင်ကျွန်း ဖြစ်တယ်။', english: 'Ireland is a green island.' } ] },
+{ id: '7242', korean: '영국', myanmar: 'ဗြိတိန်/အင်္ဂလန်', english: 'United Kingdom/UK', pos: 'noun', level: 'basic', synonyms: '영국 (England/UK)', antonyms: 'None', examples: [
+  { korean: '영국 런던에 갔어요.', myanmar: 'ဗြိတိန်နိုင်ငံ လန်ဒန်မြို့ကို သွားခဲ့တယ်။', english: 'I went to London, UK.' } ] },
+{ id: '7243', korean: '영어', myanmar: 'အင်္ဂလိပ်စာ', english: 'English (language)', pos: 'noun', level: 'basic', synonyms: '잉글리시 (English)', antonyms: 'None', examples: [
+  { korean: '영어를 공부해요.', myanmar: 'အင်္ဂလိပ်စာ လေ့လာတယ်။', english: 'I study English.' } ] },
+{ id: '7244', korean: '오스트리아', myanmar: 'သြစတြီးယား', english: 'Austria', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '오스트리아는 음악의 나라예요.', myanmar: 'သြစတြီးယားက ဂီတနိုင်ငံ ဖြစ်တယ်။', english: 'Austria is the country of music.' } ] },
+{ id: '7245', korean: '우즈베키스탄', myanmar: 'ဥဇဘက်ကစ္စတန်', english: 'Uzbekistan', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '우즈베키스탄 친구가 있어요.', myanmar: 'ဥဇဘက်ကစ္စတန် သူငယ်ချင်း ရှိတယ်။', english: 'I have an Uzbek friend.' } ] },
+{ id: '7246', korean: '우크라이나', myanmar: 'ယူကရိန်း', english: 'Ukraine', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '우크라이나의 평화를 기원해요.', myanmar: 'ယူကရိန်းရဲ့ ငြိမ်းချမ်းရေးကို ဆုတောင်းတယ်။', english: 'I pray for peace in Ukraine.' } ] },
+{ id: '7247', korean: '이라크', myanmar: 'အီရတ်', english: 'Iraq', pos: 'noun', level: 'advanced', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '이라크의 역사는 오래되었어요.', myanmar: 'အီရတ်ရဲ့သမိုင်းက ရှေးကျတယ်။', english: 'Iraq\'s history is old.' } ] },
+{ id: '7248', korean: '이란', myanmar: 'အီရန်', english: 'Iran', pos: 'noun', level: 'advanced', synonyms: '페르시아 (Persia - historical)', antonyms: 'None', examples: [
+  { korean: '이란 영화를 봤어요.', myanmar: 'အီရန် ရုပ်ရှင် ကြည့်ခဲ့တယ်။', english: 'I watched an Iranian movie.' } ] },
+{ id: '7249', korean: '이스라엘', myanmar: 'အစ္စရေး', english: 'Israel', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '이스라엘을 여행했어요.', myanmar: 'အစ္စရေးကို ခရီးသွားခဲ့တယ်။', english: 'I traveled to Israel.' } ] },
+{ id: '7250', korean: '이집트', myanmar: 'အီဂျစ်', english: 'Egypt', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '이집트 피라미드를 보고 싶어요.', myanmar: 'အီဂျစ် ပိရမစ်ကို ကြည့်ချင်တယ်။', english: 'I want to see the Egyptian pyramids.' } ] },
+{ id: '7251', korean: '이탈리아', myanmar: 'အီတလီ', english: 'Italy', pos: 'noun', level: 'basic', synonyms: '이태리 (old term)', antonyms: 'None', examples: [
+  { korean: '이탈리아 피자가 맛있어요.', myanmar: 'အီတလီပီဇာက အရသာရှိတယ်။', english: 'Italian pizza is delicious.' } ] },
+{ id: '7252', korean: '인도', myanmar: 'အိန္ဒိယ', english: 'India', pos: 'noun', level: 'basic', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '인도 카레를 먹었어요.', myanmar: 'အိန္ဒိယ ကာရီ စားခဲ့တယ်။', english: 'I ate Indian curry.' } ] },
+{ id: '7253', korean: '인도네시아', myanmar: 'အင်ဒိုနီးရှား', english: 'Indonesia', pos: 'noun', level: 'basic', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '발리는 인도네시아에 있어요.', myanmar: 'ဘာလီက အင်ဒိုနီးရှားမှာ ရှိတယ်။', english: 'Bali is in Indonesia.' } ] },
+{ id: '7254', korean: '일본', myanmar: 'ဂျပန်', english: 'Japan', pos: 'noun', level: 'basic', synonyms: '일 (Japan - short)', antonyms: 'None', examples: [
+  { korean: '일본어 공부를 시작했어요.', myanmar: 'ဂျပန်စာ လေ့လာတာ စတင်ခဲ့တယ်။', english: 'I started studying Japanese.' } ] },
+{ id: '7255', korean: '일본어', myanmar: 'ဂျပန်ဘာသာစကား', english: 'Japanese (language)', pos: 'noun', level: 'basic', synonyms: '일어 (Japanese)', antonyms: 'None', examples: [
+  { korean: '일본어를 할 줄 알아요.', myanmar: 'ဂျပန်စကား ပြောတတ်တယ်။', english: 'I know how to speak Japanese.' } ] },
+
+// --- ㅈ (J) ---
+{ id: '7256', korean: '중국', myanmar: 'တရုတ်', english: 'China', pos: 'noun', level: 'basic', synonyms: '중화 (China - cultural)', antonyms: 'None', examples: [
+  { korean: '중국은 인구가 많아요.', myanmar: 'တရုတ်က လူဦးရေ များတယ်။', english: 'China has a large population.' } ] },
+{ id: '7257', korean: '중국어', myanmar: 'တရုတ်ဘာသာစကား', english: 'Chinese (language)', pos: 'noun', level: 'basic', synonyms: '중어 (Chinese)', antonyms: 'None', examples: [
+  { korean: '중국어를 배우기 어려워요.', myanmar: 'တရုတ်စာ သင်ယူရတာ ခက်တယ်။', english: 'Chinese is difficult to learn.' } ] },
+
+// --- ㅋ (K) ---
+{ id: '7258', korean: '캄보디아', myanmar: 'ကမ္ဘောဒီးယား', english: 'Cambodia', pos: 'noun', level: 'basic', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '캄보디아 앙코르와트에 갔어요.', myanmar: 'ကမ္ဘောဒီးယား အန်ကောဝပ်ကို သွားခဲ့တယ်။', english: 'I went to Angkor Wat in Cambodia.' } ] },
+{ id: '7259', korean: '캐나다', myanmar: 'ကနေဒါ', english: 'Canada', pos: 'noun', level: 'basic', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '캐나다 단풍이 유명해요.', myanmar: 'ကနေဒါ မေပယ်ရွက်က နာမည်ကြီးတယ်။', english: 'Canadian maple leaves are famous.' } ] },
+{ id: '7260', korean: '콜롬비아', myanmar: 'ကိုလံဘီယာ', english: 'Colombia', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '콜롬비아 커피가 맛있어요.', myanmar: 'ကိုလံဘီယာကော်ဖီက အရသာရှိတယ်။', english: 'Colombian coffee is delicious.' } ] },
+
+// --- ㅌ (T) ---
+{ id: '7261', korean: '태국', myanmar: 'ထိုင်း', english: 'Thailand', pos: 'noun', level: 'basic', synonyms: '타이 (Thai)', antonyms: 'None', examples: [
+  { korean: '태국 음식을 좋아해요.', myanmar: 'ထိုင်းအစားအစာကို ကြိုက်တယ်။', english: 'I like Thai food.' } ] },
+{ id: '7262', korean: '태국어', myanmar: 'ထိုင်းဘာသာစကား', english: 'Thai (language)', pos: 'noun', level: 'basic', synonyms: '타이어 (Thai)', antonyms: 'None', examples: [
+  { korean: '태국어로 인사했어요.', myanmar: 'ထိုင်းလို နှုတ်ဆက်ခဲ့တယ်။', english: 'I greeted in Thai.' } ] },
+{ id: '7263', korean: '튀르키예', myanmar: 'တူရကီ', english: 'Türkiye (Turkey)', pos: 'noun', level: 'intermediate', synonyms: '터키 (Turkey - old name)', antonyms: 'None', examples: [
+  { korean: '튀르키예 케밥을 먹었어요.', myanmar: 'တူရကီ ကာဘက် စားခဲ့တယ်။', english: 'I ate Turkish kebab.' } ] },
+
+// --- 파 (P) ---
+{ id: '7264', korean: '파키스탄', myanmar: 'ပါကစ္စတန်', english: 'Pakistan', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '파키스탄 친구를 만났어요.', myanmar: 'ပါကစ္စတန်သူငယ်ချင်းကို တွေ့ခဲ့တယ်။', english: 'I met a Pakistani friend.' } ] },
+{ id: '7265', korean: '포르투갈', myanmar: 'ပေါ်တူဂီ', english: 'Portugal', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '포르투갈 리스본에 갔어요.', myanmar: 'ပေါ်တူဂီ လစ္စဘွန်းမြို့ကို သွားခဲ့တယ်။', english: 'I went to Lisbon, Portugal.' } ] },
+{ id: '7266', korean: '폴란드', myanmar: 'ပိုလန်', english: 'Poland', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '폴란드 바르샤바를 여행했어요.', myanmar: 'ပိုလန် ဝါဆောမြို့ကို ခရီးသွားခဲ့တယ်။', english: 'I traveled to Warsaw, Poland.' } ] },
+{ id: '7267', korean: '프랑스', myanmar: 'ပြင်သစ်', english: 'France', pos: 'noun', level: 'basic', synonyms: '불란서 (France - old term)', antonyms: 'None', examples: [
+  { korean: '프랑스 파리는 낭만적이에요.', myanmar: 'ပြင်သစ်နိုင်ငံ ပါရီမြို့က စိတ်ကူးယဉ်ဆန်တယ်။', english: 'Paris, France is romantic.' } ] },
+{ id: '7268', korean: '필리핀', myanmar: 'ဖိလစ်ပိုင်', english: 'Philippines', pos: 'noun', level: 'basic', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '필리핀 망고가 맛있어요.', myanmar: 'ဖိလစ်ပိုင်သရက်သီးက အရသာရှိတယ်။', english: 'Philippine mangoes are delicious.' } ] },
+{ id: '7269', korean: '핀란드', myanmar: 'ဖင်လန်', english: 'Finland', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '핀란드는 산타 마을이 있어요.', myanmar: 'ဖင်လန်မှာ ဆန်တာကလော့ရွာ ရှိတယ်။', english: 'Finland has a Santa Claus village.' } ] },
+
+// --- ㅎ (H) ---
+{ id: '7270', korean: '한국', myanmar: 'ကိုရီးယား', english: 'Korea (South)', pos: 'noun', level: 'basic', synonyms: '대한민국 (Republic of Korea), 남한 (South Korea)', antonyms: '북한 (North Korea)', examples: [
+  { korean: '저는 한국 사람이에요.', myanmar: 'ကျွန်တော်က ကိုရီးယားလူမျိုးပါ။', english: 'I am Korean.' } ] },
+{ id: '7271', korean: '한국어', myanmar: 'ကိုရီးယားဘာသာစကား', english: 'Korean (language)', pos: 'noun', level: 'basic', synonyms: '우리말 (our language), 국어 (national language)', antonyms: '외국어 (foreign language)', examples: [
+  { korean: '한국어를 공부하는 것이 재미있어요.', myanmar: 'ကိုရီးယားစာ လေ့လာရတာ ပျော်စရာကောင်းတယ်။', english: 'Studying Korean is fun.' } ] },
+{ id: '7272', korean: '헝가리', myanmar: 'ဟန်ဂေရီ', english: 'Hungary', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '헝가리 부다페스트 야경이 멋져요.', myanmar: 'ဟန်ဂေရီ ဘူဒါပက်စ် ညရှုခင်းက မိုက်တယ်။', english: 'The night view of Budapest, Hungary is cool.' } ] },
+{ id: '7273', korean: '호주', myanmar: 'သြစတြေးလျ', english: 'Australia', pos: 'noun', level: 'basic', synonyms: '오스트레일리아 (Australia)', antonyms: 'None', examples: [
+  { korean: '호주에서 캥거루를 봤어요.', myanmar: 'သြစတြေးလျမှာ သားပိုက်ကောင် တွေ့ခဲ့တယ်။', english: 'I saw a kangaroo in Australia.' } ] },
+
+// ===== ADDITIONAL LANGUAGES & NATIONALITIES (7274-7300) =====
+{ id: '7274', korean: '영어권', myanmar: 'အင်္ဂလိပ်စကားပြောနိုင်ငံ', english: 'English-speaking world', pos: 'noun', level: 'intermediate', synonyms: '영미권 (Anglo-American)', antonyms: '비영어권 (non-English speaking)', examples: [
+  { korean: '영어권 국가로 유학을 가요.', myanmar: 'အင်္ဂလိပ်စကားပြောနိုင်ငံကို ပညာတော်သင်သွားတယ်။', english: 'I go to study abroad in an English-speaking country.' } ] },
+{ id: '7275', korean: '중국인', myanmar: 'တရုတ်လူမျိုး', english: 'Chinese person', pos: 'noun', level: 'basic', synonyms: '중국 사람 (Chinese person)', antonyms: '외국인 (foreigner)', examples: [
+  { korean: '그는 중국인이에요.', myanmar: 'သူက တရုတ်လူမျိုးပါ။', english: 'He is Chinese.' } ] },
+{ id: '7276', korean: '미국인', myanmar: 'အမေရိကန်လူမျိုး', english: 'American person', pos: 'noun', level: 'basic', synonyms: '미국 사람 (American person)', antonyms: 'None', examples: [
+  { korean: '미국인 선생님께 영어를 배워요.', myanmar: 'အမေရိကန်ဆရာဆီက အင်္ဂလိပ်စာ သင်ယူတယ်။', english: 'I learn English from an American teacher.' } ] },
+{ id: '7277', korean: '일본인', myanmar: 'ဂျပန်လူမျိုး', english: 'Japanese person', pos: 'noun', level: 'basic', synonyms: '일본 사람 (Japanese person)', antonyms: 'None', examples: [
+  { korean: '일본인 관광객이 많아요.', myanmar: 'ဂျပန်ကမ္ဘာလှည့်ခရီးသည် များတယ်။', english: 'There are many Japanese tourists.' } ] },
+{ id: '7278', korean: '한국인', myanmar: 'ကိုရီးယားလူမျိုး', english: 'Korean person', pos: 'noun', level: 'basic', synonyms: '한국 사람 (Korean person)', antonyms: '외국인 (foreigner)', examples: [
+  { korean: '한국인은 매운 음식을 잘 먹어요.', myanmar: 'ကိုရီးယားလူမျိုးတွေက စပ်တဲ့အစားအစာ ကောင်းကောင်းစားတယ်။', english: 'Koreans eat spicy food well.' } ] },
+{ id: '7279', korean: '다문화', myanmar: 'ယဉ်ကျေးမှုပေါင်းစုံ', english: 'Multicultural', pos: 'noun', level: 'intermediate', synonyms: '다양한 문화 (diverse culture)', antonyms: '단일 문화 (monoculture)', examples: [
+  { korean: '다문화 가정이 늘고 있어요.', myanmar: 'ယဉ်ကျေးမှုပေါင်းစုံ မိသားစုတွေ တိုးပွားလာနေတယ်။', english: 'Multicultural families are increasing.' } ] },
+{ id: '7280', korean: '모국어', myanmar: 'မိခင်ဘာသာစကား', english: 'Mother tongue', pos: 'noun', level: 'intermediate', synonyms: '제1언어 (first language)', antonyms: '외국어 (foreign language)', examples: [
+  { korean: '제 모국어는 한국어예요.', myanmar: 'ကျွန်တော့် မိခင်ဘာသာစကားက ကိုရီးယားစကားပါ။', english: 'My mother tongue is Korean.' } ] },
+{ id: '7281', korean: '외국어', myanmar: 'နိုင်ငံခြားဘာသာစကား', english: 'Foreign language', pos: 'noun', level: 'basic', synonyms: '제2언어 (second language)', antonyms: '모국어 (mother tongue)', examples: [
+  { korean: '외국어를 잘하고 싶어요.', myanmar: 'နိုင်ငံခြားဘာသာစကား ကောင်းကောင်းပြောချင်တယ်။', english: 'I want to speak foreign languages well.' } ] },
+{ id: '7282', korean: '유학', myanmar: 'ပညာတော်သင်သွားခြင်း', english: 'Studying abroad', pos: 'noun', level: 'basic', synonyms: '해외 연수 (overseas training)', antonyms: '국내 수학 (domestic study)', examples: [
+  { korean: '미국으로 유학을 갔어요.', myanmar: 'အမေရိကန်ကို ပညာတော်သင်သွားခဲ့တယ်။', english: 'I went to study abroad in the USA.' } ] },
+{ id: '7283', korean: '이민', myanmar: 'ရွှေ့ပြောင်းနေထိုင်ခြင်း', english: 'Immigration', pos: 'noun', level: 'intermediate', synonyms: '이주 (migration)', antonyms: '귀국 (return to home country)', examples: [
+  { korean: '캐나다로 이민을 갔어요.', myanmar: 'ကနေဒါကို ရွှေ့ပြောင်းနေထိုင်ခဲ့တယ်။', english: 'I immigrated to Canada.' } ] },
+{ id: '7284', korean: '비자', myanmar: 'ဗီဇာ', english: 'Visa', pos: 'noun', level: 'basic', synonyms: '입국 사증 (entry visa)', antonyms: 'None', examples: [
+  { korean: '여행 비자를 받았어요.', myanmar: 'ခရီးသွားဗီဇာ ရခဲ့တယ်။', english: 'I got a travel visa.' } ] },
+{ id: '7285', korean: '여권', myanmar: 'နိုင်ငံကူးလက်မှတ်', english: 'Passport', pos: 'noun', level: 'basic', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '공항에서 여권을 보여주세요.', myanmar: 'လေဆိပ်မှာ နိုင်ငံကူးလက်မှတ် ပြပေးပါ။', english: 'Please show your passport at the airport.' } ] },
+{ id: '7286', korean: '국적', myanmar: 'နိုင်ငံသားဖြစ်မှု', english: 'Nationality', pos: 'noun', level: 'basic', synonyms: '나라 (country)', antonyms: 'None', examples: [
+  { korean: '국적이 어디예요?', myanmar: 'နိုင်ငံသားဖြစ်မှုက ဘယ်ကလဲ။ (ဘယ်နိုင်ငံသားလဲ)', english: 'What is your nationality?' } ] },
+{ id: '7287', korean: '고향', myanmar: 'ဇာတိ', english: 'Hometown', pos: 'noun', level: 'basic', synonyms: '본가 (home)', antonyms: '타향 (foreign land)', examples: [
+  { korean: '고향이 그리워요.', myanmar: 'ဇာတိကို လွမ်းတယ်။', english: 'I miss my hometown.' } ] },
+{ id: '7288', korean: '교포', myanmar: 'ပြည်ပရောက်ကိုရီးယားလူမျိုး', english: 'Korean expatriate', pos: 'noun', level: 'intermediate', synonyms: '동포 (compatriot)', antonyms: '현지인 (local)', examples: [
+  { korean: '그는 미국 교포예요.', myanmar: 'သူက အမေရိကန်ရောက် ကိုရီးယားလူမျိုးပါ။', english: 'He is a Korean-American expatriate.' } ] },
+{ id: '7289', korean: '관광객', myanmar: 'ကမ္ဘာလှည့်ခရီးသည်', english: 'Tourist', pos: 'noun', level: 'basic', synonyms: '여행객 (traveler)', antonyms: '주민 (resident)', examples: [
+  { korean: '서울에 관광객이 많아요.', myanmar: 'ဆိုးလ်မှာ ကမ္ဘာလှည့်ခရီးသည် များတယ်။', english: 'There are many tourists in Seoul.' } ] },
+{ id: '7290', korean: '가이드', myanmar: 'ဧည့်လမ်းညွှန်', english: 'Guide', pos: 'noun', level: 'basic', synonyms: '안내원 (guide)', antonyms: '관광객 (tourist)', examples: [
+  { korean: '가이드가 설명을 잘 해줘요.', myanmar: 'ဧည့်လမ်းညွှန်က ရှင်းပြတာ ကောင်းတယ်။', english: 'The guide explains well.' } ] },
+{ id: '7291', korean: '공항', myanmar: 'လေဆိပ်', english: 'Airport', pos: 'noun', level: 'basic', synonyms: '비행장 (airfield)', antonyms: '항구 (port)', examples: [
+  { korean: '인천 공항에 도착했어요.', myanmar: 'အင်ချွန်းလေဆိပ်ကို ရောက်ခဲ့တယ်။', english: 'I arrived at Incheon Airport.' } ] },
+{ id: '7292', korean: '환전', myanmar: 'ငွေလဲလှယ်ခြင်း', english: 'Currency exchange', pos: 'noun', level: 'intermediate', synonyms: '교환 (exchange)', antonyms: 'None', examples: [
+  { korean: '공항에서 환전을 했어요.', myanmar: 'လေဆိပ်မှာ ငွေလဲလှယ်ခဲ့တယ်။', english: 'I exchanged currency at the airport.' } ] },
+{ id: '7293', korean: '시차', myanmar: 'အချိန်ကွာခြားမှု', english: 'Time difference', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: '동시간 (same time)', examples: [
+  { korean: '시차 적응이 힘들어요.', myanmar: 'အချိန်ကွာခြားမှု ညှိယူရတာ ပင်ပန်းတယ်။', english: 'It is hard to adjust to the time difference.' } ] },
+{ id: '7294', korean: '국제선', myanmar: 'နိုင်ငံတကာလေကြောင်းလိုင်း', english: 'International flight', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: '국내선 (domestic flight)', examples: [
+  { korean: '국제선 터미널로 가세요.', myanmar: 'နိုင်ငံတကာလေကြောင်းလိုင်း ဂိတ်ကို သွားပါ။', english: 'Go to the international terminal.' } ] },
+{ id: '7295', korean: '국내선', myanmar: 'ပြည်တွင်းလေကြောင်းလိုင်း', english: 'Domestic flight', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: '국제선 (international flight)', examples: [
+  { korean: '제주도행 국내선을 탔어요.', myanmar: 'ဂျေဂျူကျွန်းသွား ပြည်တွင်းလေကြောင်းလိုင်း စီးခဲ့တယ်။', english: 'I took a domestic flight to Jeju Island.' } ] },
+{ id: '7296', korean: '면세점', myanmar: 'အကောက်ခွန်လွတ်ဆိုင်', english: 'Duty-free shop', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: '일반 상점 (general store)', examples: [
+  { korean: '면세점에서 화장품을 샀어요.', myanmar: 'အကောက်ခွန်လွတ်ဆိုင်မှာ မိတ်ကပ် ဝယ်ခဲ့တယ်။', english: 'I bought cosmetics at the duty-free shop.' } ] },
+{ id: '7297', korean: '출입국', myanmar: 'လဝက (လူဝင်မှုကြီးကြပ်ရေး)', english: 'Immigration (Entry/Exit)', pos: 'noun', level: 'intermediate', synonyms: '이민국 (immigration office)', antonyms: 'None', examples: [
+  { korean: '출입국 심사를 받았어요.', myanmar: 'လဝက စစ်ဆေးမှု ခံယူခဲ့တယ်။', english: 'I went through immigration inspection.' } ] },
+{ id: '7298', korean: '탑승구', myanmar: 'လေယာဉ်တက်ပေါက်', english: 'Boarding gate', pos: 'noun', level: 'intermediate', synonyms: '게이트 (gate)', antonyms: '출구 (exit)', examples: [
+  { korean: '탑승구 번호를 확인하세요.', myanmar: 'လေယာဉ်တက်ပေါက် နံပါတ်ကို စစ်ဆေးပါ။', english: 'Check the boarding gate number.' } ] },
+{ id: '7299', korean: '수하물', myanmar: 'လက်ဆွဲအိတ်/ဝန်စည်စလယ်', english: 'Baggage/Luggage', pos: 'noun', level: 'intermediate', synonyms: '짐 (luggage)', antonyms: 'None', examples: [
+  { korean: '수하물을 찾고 있어요.', myanmar: 'ဝန်စည်စလယ်ကို ရှာနေတယ်။', english: 'I am looking for my baggage.' } ] },
+{ id: '7300', korean: '대사관', myanmar: 'သံရုံး', english: 'Embassy', pos: 'noun', level: 'intermediate', synonyms: '영사관 (consulate)', antonyms: 'None', examples: [
+  { korean: '비자를 받으러 대사관에 갔어요.', myanmar: 'ဗီဇာယူဖို့ သံရုံးကို သွားခဲ့တယ်။', english: 'I went to the embassy to get a visa.' } ] },
+
+
+
+
+
+
+
 
 
 ];
