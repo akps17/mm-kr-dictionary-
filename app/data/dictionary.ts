@@ -21285,8 +21285,426 @@ export const dictionaryEntries: DictionaryEntry[] = [
   { korean: '그는 딸을 끔찍이 사랑해요.', myanmar: 'သူက သမီးကို အလွန်အမင်း ချစ်တယ်။', english: 'He loves his daughter terribly (very much).' } ] },
 { id: '8000', korean: '끝내', myanmar: 'နောက်ဆုံးတော့', english: 'Finally/In the end', pos: 'adverb', level: 'intermediate', synonyms: '마침내 (finally)', antonyms: '시작하자마자 (as soon as started)', examples: [
   { korean: '그는 끝내 오지 않았어요.', myanmar: 'သူက နောက်ဆုံးတော့ ရောက်မလာခဲ့ဘူး။', english: 'He didn\'t come in the end.' } ] },
+// ===== ㄲ CONSONANT WORDS - CATEGORY 5: DESCRIPTIVE & SOUND WORDS (8001-8100) =====
+{ id: '8001', korean: '까무러치다', myanmar: 'မေ့လဲသည်', english: 'To faint/swoon', pos: 'verb', level: 'advanced', synonyms: '기절하다 (faint)', antonyms: '깨어나다 (wake up)', examples: [
+  { korean: '너무 놀라서 까무러칠 뻔했어요.', myanmar: 'အရမ်းလန့်သွားလို့ မေ့လဲမလို ဖြစ်ခဲ့တယ်။', english: 'I almost fainted from shock.' } ] },
+{ id: '8002', korean: '깍듯하다', myanmar: 'ယဉ်ကျေးသိမ်မွေ့သည်', english: 'To be polite/courteous', pos: 'adjective', level: 'advanced', synonyms: '예의 바르다 (polite)', antonyms: '무례하다 (rude)', examples: [
+  { korean: '그는 어른들에게 깍듯해요.', myanmar: 'သူက လူကြီးတွေကို ယဉ်ကျေးသိမ်မွေ့တယ်။', english: 'He is courteous to elders.' } ] },
+{ id: '8003', korean: '깎아내리다', myanmar: 'နှိမ့်ချသည်', english: 'To belittle/disparage', pos: 'verb', level: 'advanced', synonyms: '비하하다 (demean)', antonyms: '칭찬하다 (praise)', examples: [
+  { korean: '남의 노력을 깎아내리지 마세요.', myanmar: 'သူများရဲ့ ကြိုးစားမှုကို မနှိမ့်ချပါနဲ့။', english: 'Don\'t belittle others\' efforts.' } ] },
+{ id: '8004', korean: '깔때기', myanmar: 'ကတော့', english: 'Funnel', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '깔때기를 이용해 기름을 부었어요.', myanmar: 'ကတော့ကို သုံးပြီး ဆီလောင်းထည့်ခဲ့တယ်။', english: 'I poured oil using a funnel.' } ] },
+{ id: '8005', korean: '깔창', myanmar: 'ဖိနပ်အောက်ခံပြား', english: 'Insole', pos: 'noun', level: 'basic', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '키가 커 보이려고 깔창을 깔았어요.', myanmar: 'အရပ်ရှည်တယ်ထင်ရအောင် ဖိနပ်အောက်ခံပြား ခံခဲ့တယ်။', english: 'I used insoles to look taller.' } ] },
+{ id: '8006', korean: '깜빡이', myanmar: 'အချက်ပြမီး (ကား)', english: 'Blinker/Indicator', pos: 'noun', level: 'basic', synonyms: '방향 지시등 (turn signal)', antonyms: 'None', examples: [
+  { korean: '차선을 바꿀 때는 깜빡이를 켜세요.', myanmar: 'လမ်းကြောပြောင်းတဲ့အခါ အချက်ပြမီး ဖွင့်ပါ။', english: 'Turn on the blinker when changing lanes.' } ] },
+{ id: '8007', korean: '깝죽대다', myanmar: 'မြူးတူးသည်/နောက်ပြောင်သည်', english: 'To behave frivolously', pos: 'verb', level: 'advanced', synonyms: '까불다 (act up)', antonyms: '진중하다 (serious)', examples: [
+  { korean: '그는 항상 깝죽대서 혼나요.', myanmar: 'သူက အမြဲတမ်း နောက်ပြောင်နေလို့ အဆူခံရတယ်။', english: 'He always gets scolded for behaving frivolously.' } ] },
+{ id: '8008', korean: '깨알', myanmar: 'နှမ်းစေ့', english: 'Sesame seed (Metaphor for tiny)', pos: 'noun', level: 'intermediate', synonyms: '참깨 (sesame)', antonyms: 'None', examples: [
+  { korean: '깨알 같은 글씨로 썼어요.', myanmar: 'နှမ်းစေ့လောက်သေးတဲ့ စာလုံးနဲ့ ရေးခဲ့တယ်။', english: 'I wrote in tiny letters.' } ] },
+{ id: '8009', korean: '껄끄럽다', myanmar: 'မသက်မသာဖြစ်သည်', english: 'To be uncomfortable/rough', pos: 'adjective', level: 'advanced', synonyms: '불편하다 (uncomfortable)', antonyms: '편안하다 (comfortable)', examples: [
+  { korean: '그와의 관계가 껄끄러워요.', myanmar: 'သူနဲ့ဆက်ဆံရေးက မသက်မသာဖြစ်တယ်။', english: 'My relationship with him is uncomfortable.' } ] },
+{ id: '8010', korean: '꼬깃꼬깃', myanmar: 'တွန့်ကြေနေသော', english: 'Crumpled', pos: 'adverb', level: 'intermediate', synonyms: '구겨진 (wrinkled)', antonyms: '빳빳한 (stiff/smooth)', examples: [
+  { korean: '주머니에서 꼬깃꼬깃한 돈을 꺼냈어요.', myanmar: 'အိတ်ကပ်ထဲကနေ တွန့်ကြေနေတဲ့ ပိုက်ဆံကို ထုတ်ခဲ့တယ်။', english: 'I took out crumpled money from my pocket.' } ] },
+{ id: '8011', korean: '꼬리치다', myanmar: 'အမြီးနန့်သည်/မြှူဆွယ်သည်', english: 'To wag tail/flirt', pos: 'verb', level: 'intermediate', synonyms: '아양 떨다 (flatter)', antonyms: 'None', examples: [
+  { korean: '강아지가 반갑게 꼬리쳐요.', myanmar: 'ခွေးလေးက ဝမ်းသာအားရ အမြီးနန့်နေတယ်။', english: 'The puppy wags its tail happily.' } ] },
+{ id: '8012', korean: '꼬막', myanmar: 'ဂုံး (ပင်လယ်စာ)', english: 'Cockle', pos: 'noun', level: 'advanced', synonyms: '조개 (clam)', antonyms: 'None', examples: [
+  { korean: '꼬막 무침을 만들었어요.', myanmar: 'ဂုံးသုပ် လုပ်ခဲ့တယ်။', english: 'I made seasoned cockles.' } ] },
+{ id: '8013', korean: '꼬맹이', myanmar: 'ကလေးပေါက်စ', english: 'Little kid/Brat', pos: 'noun', level: 'basic', synonyms: '어린아이 (young child)', antonyms: '어른 (adult)', examples: [
+  { korean: '귀여운 꼬맹이가 지나가요.', myanmar: 'ချစ်စရာကောင်းတဲ့ ကလေးပေါက်စ ဖြတ်သွားတယ်။', english: 'A cute little kid is passing by.' } ] },
+{ id: '8014', korean: '꼬불꼬불', myanmar: 'ကွေ့ကောက်သော', english: 'Winding/Meandering', pos: 'adverb', level: 'basic', synonyms: '굽이굽이 (winding)', antonyms: '곧은 (straight)', examples: [
+  { korean: '꼬불꼬불한 산길을 운전했어요.', myanmar: 'ကွေ့ကောက်တဲ့ တောင်လမ်းကို မောင်းခဲ့တယ်။', english: 'I drove on a winding mountain road.' } ] },
+{ id: '8015', korean: '꼬투리', myanmar: 'အပြစ်/သီးတောင့်', english: 'Fault/Pod', pos: 'noun', level: 'advanced', synonyms: '흠 (flaw)', antonyms: 'None', examples: [
+  { korean: '말꼬투리를 잡지 마세요.', myanmar: 'စကားအပြစ် မရှာပါနဲ့။', english: 'Don\'t nitpick my words.' } ] },
+{ id: '8016', korean: '꼭두각시', myanmar: 'ရုပ်သေးရုပ်', english: 'Puppet', pos: 'noun', level: 'advanced', synonyms: '인형 (doll)', antonyms: '주인 (master)', examples: [
+  { korean: '그는 사장의 꼭두각시예요.', myanmar: 'သူက သူဌေးရဲ့ ရုပ်သေးရုပ်ပါ။', english: 'He is the boss\'s puppet.' } ] },
+{ id: '8017', korean: '꼭짓점', myanmar: 'ထိပ်စွန်းမှတ်', english: 'Vertex', pos: 'noun', level: 'intermediate', synonyms: '정점 (peak)', antonyms: 'None', examples: [
+  { korean: '삼각형에는 세 개의 꼭짓점이 있어요.', myanmar: 'တြိဂံမှာ ထိပ်စွန်းမှတ် သုံးခုရှိတယ်။', english: 'A triangle has three vertices.' } ] },
+{ id: '8018', korean: '꼴', myanmar: 'ပုံစံ/အခြေအနေ', english: 'Shape/Plight/Look', pos: 'noun', level: 'intermediate', synonyms: '모양 (shape)', antonyms: 'None', examples: [
+  { korean: '물에 빠진 생쥐 꼴이 되었어요.', myanmar: 'ရေထဲကျတဲ့ ကြွက်ပုံစံ ဖြစ်သွားတယ်။', english: 'I looked like a drowned rat.' } ] },
+{ id: '8019', korean: '꼴불견', myanmar: 'ကြည့်မရသောအရာ/ရုပ်ဆိုးသောအရာ', english: 'Eyesore/Ugly sight', pos: 'noun', level: 'advanced', synonyms: '추태 (disgraceful behavior)', antonyms: '장관 (spectacle)', examples: [
+  { korean: '그들의 싸움은 정말 꼴불견이었어요.', myanmar: 'သူတို့ရဲ့ရန်ပွဲက တကယ် ကြည့်မရအောင်ဆိုးတယ်။', english: 'Their fight was a real eyesore.' } ] },
+{ id: '8020', korean: '꽁지', myanmar: 'အမြီးပိုင်း', english: 'Tail (of bird)', pos: 'noun', level: 'intermediate', synonyms: '꼬리 (tail)', antonyms: '머리 (head)', examples: [
+  { korean: '새가 꽁지를 흔들었어요.', myanmar: 'ငှက်က အမြီးပိုင်းကို ခါယမ်းခဲ့တယ်။', english: 'The bird shook its tail.' } ] },
+{ id: '8021', korean: '꽁초', myanmar: 'ဆေးလိပ်တို', english: 'Cigarette butt', pos: 'noun', level: 'intermediate', synonyms: '담배꽁초 (cigarette butt)', antonyms: 'None', examples: [
+  { korean: '길에 꽁초를 버리지 마세요.', myanmar: 'လမ်းမှာ ဆေးလိပ်တို မပစ်ပါနဲ့။', english: 'Don\'t throw cigarette butts on the street.' } ] },
+{ id: '8022', korean: '꽃꽂이', myanmar: 'ပန်းအလှပြင်ခြင်း', english: 'Flower arrangement', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '취미로 꽃꽂이를 배워요.', myanmar: 'ဝါသနာအဖြစ် ပန်းအလှပြင်ခြင်း သင်ယူတယ်။', english: 'I learn flower arrangement as a hobby.' } ] },
+{ id: '8023', korean: '꽃망울', myanmar: 'ပန်းဖူး', english: 'Flower bud', pos: 'noun', level: 'intermediate', synonyms: '봉오리 (bud)', antonyms: '낙화 (fallen flower)', examples: [
+  { korean: '꽃망울이 터지기 시작했어요.', myanmar: 'ပန်းဖူး စပွင့်လာပြီ။', english: 'The flower buds started to burst open.' } ] },
+{ id: '8024', korean: '꽃샘바람', myanmar: 'နွေဦးလေအေး', english: 'Chilly wind in spring', pos: 'noun', level: 'advanced', synonyms: '봄바람 (spring wind)', antonyms: 'None', examples: [
+  { korean: '꽃샘바람이 불어서 쌀쌀해요.', myanmar: 'နွေဦးလေအေးတိုက်လို့ အေးစိမ့်စိမ့်ဖြစ်နေတယ်။', english: 'It\'s chilly because of the spring cold wind.' } ] },
+{ id: '8025', korean: '꽈르릉', myanmar: 'ဂျိန်း (မိုးခြိမ်းသံ)', english: 'Rumbling/Thunder sound', pos: 'adverb', level: 'intermediate', synonyms: '우르릉 (rumble)', antonyms: 'None', examples: [
+  { korean: '하늘에서 꽈르릉 소리가 났어요.', myanmar: 'ကောင်းကင်ကနေ ဂျိန်းဆိုတဲ့အသံ ကြားရတယ်။', english: 'A rumbling sound came from the sky.' } ] },
+{ id: '8026', korean: '꽉 차다', myanmar: 'ပြည့်ကျပ်နေသည်', english: 'To be full/jam-packed', pos: 'phrase', level: 'basic', synonyms: '가득하다 (full)', antonyms: '비다 (empty)', examples: [
+  { korean: '지하철이 사람으로 꽉 찼어요.', myanmar: 'မြေအောက်ရထားက လူတွေနဲ့ ပြည့်ကျပ်နေတယ်။', english: 'The subway is jam-packed with people.' } ] },
+{ id: '8027', korean: '꾀병', myanmar: 'ရောဂါဟန်ဆောင်ခြင်း', english: 'Feigned illness', pos: 'noun', level: 'intermediate', synonyms: '엄살 (fuss)', antonyms: 'None', examples: [
+  { korean: '학교 가기 싫어서 꾀병을 부렸어요.', myanmar: 'ကျောင်းမသွားချင်လို့ နေမကောင်းချင်ယောင်ဆောင်ခဲ့တယ်။', english: 'I feigned illness because I didn\'t want to go to school.' } ] },
+{ id: '8028', korean: '꾀하다', myanmar: 'ကြံစည်သည်/ကြိုးပမ်းသည်', english: 'To plan/devise', pos: 'verb', level: 'advanced', synonyms: '도모하다 (promote)', antonyms: '포기하다 (give up)', examples: [
+  { korean: '발전을 꾀하고 있어요.', myanmar: 'တိုးတက်မှုကို ကြံစည်နေတယ်။', english: 'We are planning for development.' } ] },
+{ id: '8029', korean: '꾸밈없다', myanmar: 'ရိုးသားသော/ဟန်ဆောင်မှုမရှိသော', english: 'Artless/Plain/Honest', pos: 'adjective', level: 'advanced', synonyms: '솔직하다 (honest)', antonyms: '가식적이다 (pretentious)', examples: [
+  { korean: '그녀의 꾸밈없는 성격이 좋아요.', myanmar: 'သူမရဲ့ ဟန်ဆောင်မှုမရှိတဲ့ စရိုက်ကို ကြိုက်တယ်။', english: 'I like her artless personality.' } ] },
+{ id: '8030', korean: '꾸벅', myanmar: 'ခေါင်းငုံ့ (အရိုအသေပြု)', english: 'Bowing', pos: 'adverb', level: 'basic', synonyms: '굽실 (bowing)', antonyms: '빳빳하게 (stiffly)', examples: [
+  { korean: '선생님께 꾸벅 인사했어요.', myanmar: 'ဆရာကို ခေါင်းငုံ့ အရိုအသေပြုခဲ့တယ်။', english: 'I bowed to the teacher.' } ] },
+{ id: '8031', korean: '꿀꿀', myanmar: 'အွတ်အွတ် (ဝက်အော်သံ)', english: 'Oink oink', pos: 'adverb', level: 'basic', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '돼지가 꿀꿀 소리를 내요.', myanmar: 'ဝက်က အွတ်အွတ်လို့ အသံပြုတယ်။', english: 'The pig goes oink oink.' } ] },
+{ id: '8032', korean: '꿈결', myanmar: 'အိပ်မက်ယောင်', english: 'Dreamlike state', pos: 'noun', level: 'advanced', synonyms: '몽환 (fantasy)', antonyms: '현실 (reality)', examples: [
+  { korean: '그 소리가 꿈결처럼 들렸어요.', myanmar: 'အဲဒီအသံက အိပ်မက်ယောင်လို ကြားရတယ်။', english: 'That sound sounded like a dream.' } ] },
+{ id: '8033', korean: '꿈틀대다', myanmar: 'တွန့်လိမ်သည်', english: 'To wriggle/squirm', pos: 'verb', level: 'intermediate', synonyms: '움직이다 (move)', antonyms: '가만있다 (stay still)', examples: [
+  { korean: '애벌레가 꿈틀대고 있어요.', myanmar: 'ပိုးတုံးလုံးက တွန့်လိမ်နေတယ်။', english: 'The caterpillar is wriggling.' } ] },
+{ id: '8034', korean: '끄떡없다', myanmar: 'ကြံ့ကြံ့ခံနိုင်သည်/မမှုပါ', english: 'Safe/Unaffected', pos: 'adjective', level: 'intermediate', synonyms: '무사하다 (safe)', antonyms: '약하다 (weak)', examples: [
+  { korean: '이 건물은 지진에도 끄떡없어요.', myanmar: 'ဒီအဆောက်အအုံက ငလျင်ဒဏ်ကိုလည်း ကြံ့ကြံ့ခံနိုင်တယ်။', english: 'This building is safe even from earthquakes.' } ] },
+{ id: '8035', korean: '끄르다', myanmar: 'ဖြေသည် (ကြိုး/ကြယ်သီး)', english: 'To untie/unbutton', pos: 'verb', level: 'advanced', synonyms: '풀다 (untie)', antonyms: '묶다 (tie)', examples: [
+  { korean: '매듭을 끌렀어요.', myanmar: 'အထုံးကို ဖြေခဲ့တယ်။', english: 'I untied the knot.' } ] },
+{ id: '8036', korean: '끈적이다', myanmar: 'စေးကပ်သည်', english: 'To be sticky', pos: 'verb', level: 'intermediate', synonyms: '달라붙다 (stick)', antonyms: '미끄럽다 (slippery)', examples: [
+  { korean: '사탕이 녹아서 손이 끈적여요.', myanmar: 'သကြားလုံး အရည်ပျော်လို့ လက်က စေးကပ်နေတယ်။', english: 'The candy melted, so my hands are sticky.' } ] },
+{ id: '8037', korean: '끊임없이', myanmar: 'မပြတ်မလပ်', english: 'Constantly/Endlessly', pos: 'adverb', level: 'intermediate', synonyms: '계속 (continuously)', antonyms: '간헐적으로 (intermittently)', examples: [
+  { korean: '비가 끊임없이 내려요.', myanmar: 'မိုးက မပြတ်မလပ် ရွာနေတယ်။', english: 'It rains constantly.' } ] },
+{ id: '8038', korean: '끌려다니다', myanmar: 'ပါသွားသည်/ဆွဲခေါ်ရာပါသည်', english: 'To be dragged around', pos: 'verb', level: 'intermediate', synonyms: '휘둘리다 (be swayed)', antonyms: '주도하다 (lead)', examples: [
+  { korean: '남의 의견에 끌려다니지 마세요.', myanmar: 'သူများအမြင်နောက် ပါမသွားပါနဲ့။', english: 'Don\'t be dragged around by others\' opinions.' } ] },
+{ id: '8039', korean: '끌어내다', myanmar: 'ဆွဲထုတ်သည်', english: 'To drag out/elicit', pos: 'verb', level: 'intermediate', synonyms: '끄집어내다 (pull out)', antonyms: '넣다 (put in)', examples: [
+  { korean: '잠재력을 끌어내야 해요.', myanmar: 'စွမ်းရည်ကို ဆွဲထုတ်ရမယ်။', english: 'You need to bring out your potential.' } ] },
+{ id: '8040', korean: '끌어올리다', myanmar: 'ဆွဲတင်သည်/မြှင့်တင်သည်', english: 'To pull up/raise', pos: 'verb', level: 'intermediate', synonyms: '인상하다 (raise)', antonyms: '내리다 (lower)', examples: [
+  { korean: '성적을 끌어올렸어요.', myanmar: 'အမှတ်ကို မြှင့်တင်ခဲ့တယ်။', english: 'I raised my grades.' } ] },
+{ id: '8041', korean: '끼', myanmar: 'ပါရမီ/အနုပညာဓာတ်', english: 'Talent/Charm', pos: 'noun', level: 'intermediate', synonyms: '재능 (talent)', antonyms: 'None', examples: [
+  { korean: '그는 연예인의 끼가 있어요.', myanmar: 'သူ့မှာ အနုပညာဓာတ် ရှိတယ်။', english: 'He has the talent of an entertainer.' } ] },
+{ id: '8042', korean: '끼리끼리', myanmar: 'အချင်းချင်း/အုပ်စုလိုက်', english: 'Among themselves/In groups', pos: 'adverb', level: 'intermediate', synonyms: '유유상종 (birds of a feather)', antonyms: '따로따로 (separately)', examples: [
+  { korean: '비슷한 사람들은 끼리끼리 모여요.', myanmar: 'တူညီတဲ့လူတွေက အချင်းချင်း စုကြတယ်။', english: 'Similar people flock together.' } ] },
+{ id: '8043', korean: '끼이다', myanmar: 'ညပ်သည်', english: 'To get jammed/stuck', pos: 'verb', level: 'basic', synonyms: '박히다 (stuck)', antonyms: '빠지다 (come out)', examples: [
+  { korean: '문 틈에 손가락이 끼였어요.', myanmar: 'တံခါးကြားထဲ လက်ချောင်း ညပ်သွားတယ်။', english: 'My finger got stuck in the door crack.' } ] },
+{ id: '8044', korean: '낑낑', myanmar: 'ညည်းသံ (ခက်ခဲမှုကြောင့်)', english: 'Whining/Groaning sound', pos: 'adverb', level: 'intermediate', synonyms: '끙끙 (groaning)', antonyms: 'None', examples: [
+  { korean: '강아지가 낑낑거려요.', myanmar: 'ခွေးလေးက ညည်းနေတယ်။', english: 'The puppy is whining.' } ] },
+{ id: '8045', korean: '꼬르륵', myanmar: 'ဗိုက်မြည်သံ', english: 'Rumble (stomach)', pos: 'adverb', level: 'basic', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '배에서 꼬르륵 소리가 났어요.', myanmar: 'ဗိုက်ထဲက အသံမြည်လာတယ်။', english: 'My stomach rumbled.' } ] },
+{ id: '8046', korean: '껌벅', myanmar: 'ပုတ်ခတ်ပုတ်ခတ် (မျက်တောင်)', english: 'Blinking', pos: 'adverb', level: 'basic', synonyms: '깜빡 (blink)', antonyms: 'None', examples: [
+  { korean: '눈을 껌벅거렸어요.', myanmar: 'မျက်တောင် ပုတ်ခတ်ပုတ်ခတ် လုပ်ခဲ့တယ်။', english: 'I blinked my eyes.' } ] },
+{ id: '8047', korean: '껄껄', myanmar: 'ဟားဟား (ရယ်သံကျယ်)', english: 'Laughing loudly', pos: 'adverb', level: 'intermediate', synonyms: '하하 (haha)', antonyms: '훌쩍 (sniffle)', examples: [
+  { korean: '할아버지가 껄껄 웃으셨어요.', myanmar: 'အဘိုးက ဟားဟားဆိုပြီး ရယ်မောခဲ့တယ်။', english: 'Grandfather laughed loudly.' } ] },
+{ id: '8048', korean: '꽹과리', myanmar: 'ကြေးနိုင်း (ကိုရီးယားတူရိယာ)', english: 'Kkwaenggwari (Small gong)', pos: 'noun', level: 'advanced', synonyms: '악기 (instrument)', antonyms: 'None', examples: [
+  { korean: '농악놀이에서 꽹과리를 쳐요.', myanmar: 'လယ်သမားပွဲတော်မှာ ကြေးနိုင်း တီးတယ်။', english: 'We play the small gong in folk music.' } ] },
+{ id: '8049', korean: '꿰뚫다', myanmar: 'ထိုးဖောက်သည်/သိမြင်သည်', english: 'To penetrate/see through', pos: 'verb', level: 'advanced', synonyms: '관통하다 (penetrate)', antonyms: '막히다 (blocked)', examples: [
+  { korean: '그는 문제의 본질을 꿰뚫고 있어요.', myanmar: 'သူက ပြဿနာရဲ့အနှစ်သာရကို ထိုးဖောက်သိမြင်တယ်။', english: 'He sees through the essence of the problem.' } ] },
+{ id: '8050', korean: '까발리다', myanmar: 'ဖွင့်ချသည်', english: 'To disclose/reveal (secret)', pos: 'verb', level: 'advanced', synonyms: '폭로하다 (expose)', antonyms: '감추다 (hide)', examples: [
+  { korean: '비밀을 다 까발렸어요.', myanmar: 'လျှို့ဝှက်ချက်အားလုံးကို ဖွင့်ချလိုက်တယ်။', english: 'I revealed all the secrets.' } ] },
+{ id: '8051', korean: '꼬드기다', myanmar: 'မြှောက်ပေးသည်/ဆွဲဆောင်သည်', english: 'To cajole/entice', pos: 'verb', level: 'advanced', synonyms: '부추기다 (incite)', antonyms: '말리다 (dissuade)', examples: [
+  { korean: '친구를 꼬드겨서 같이 놀았어요.', myanmar: 'သူငယ်ချင်းကို မြှောက်ပေးပြီး အတူဆော့ခဲ့တယ်။', english: 'I cajoled my friend into playing together.' } ] },
+{ id: '8052', korean: '꾸려나가다', myanmar: 'ဦးစီးသည်/စီမံသည်', english: 'To manage/lead (life/household)', pos: 'verb', level: 'advanced', synonyms: '운영하다 (operate)', antonyms: '포기하다 (give up)', examples: [
+  { korean: '혼자서 가정을 꾸려나갔어요.', myanmar: 'တစ်ယောက်တည်း အိမ်ထောင်ကို ဦးစီးခဲ့တယ်။', english: 'She managed the household alone.' } ] },
+{ id: '8053', korean: '꿀통', myanmar: 'ပျားရည်ပုံး', english: 'Honey container', pos: 'noun', level: 'basic', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '꿀통이 비었어요.', myanmar: 'ပျားရည်ပုံး ဗလာဖြစ်နေတယ်။', english: 'The honey container is empty.' } ] },
+{ id: '8054', korean: '끈질기다', myanmar: 'ဇွဲကောင်းသည်/အလျော့မပေးသော', english: 'To be persistent/tenacious', pos: 'adjective', level: 'advanced', synonyms: '집요하다 (persistent)', antonyms: '쉽게 포기하다 (give up easily)', examples: [
+  { korean: '그는 승부욕이 끈질겨요.', myanmar: 'သူက အနိုင်လိုစိတ် ဇွဲကောင်းတယ်။', english: 'He is tenacious about winning.' } ] },
+{ id: '8055', korean: '꼿꼿하다', myanmar: 'မတ်မတ်နေသည်/ခိုင်မာသည်', english: 'To be upright/stiff', pos: 'adjective', level: 'intermediate', synonyms: '바르다 (straight)', antonyms: '구부정하다 (stooped)', examples: [
+  { korean: '허리를 꼿꼿하게 펴세요.', myanmar: 'ခါးကို မတ်မတ် ဆန့်ပါ။', english: 'Straighten your back upright.' } ] },
+{ id: '8056', korean: '꿋꿋하다', myanmar: 'ကြံ့ခိုင်သည်', english: 'To be firm/strong-willed', pos: 'adjective', level: 'advanced', synonyms: '강하다 (strong)', antonyms: '나약하다 (weak)', examples: [
+  { korean: '어려움 속에서도 꿋꿋하게 살았어요.', myanmar: 'အခက်အခဲကြားမှာလည်း ကြံ့ခိုင်စွာ နေထိုင်ခဲ့တယ်။', english: 'I lived firmly even amidst difficulties.' } ] },
+{ id: '8057', korean: '깜찍하다', myanmar: 'ချစ်စရာကောင်းသည်', english: 'To be cute/clever', pos: 'adjective', level: 'basic', synonyms: '귀엽다 (cute)', antonyms: '징그럽다 (gross)', examples: [
+  { korean: '깜찍한 인형을 샀어요.', myanmar: 'ချစ်စရာကောင်းတဲ့ အရုပ် ဝယ်ခဲ့တယ်။', english: 'I bought a cute doll.' } ] },
+{ id: '8058', korean: '꾀죄죄하다', myanmar: 'ညစ်ပတ်ပေရေနေသည်', english: 'To be shabby/messy', pos: 'adjective', level: 'advanced', synonyms: '지저분하다 (dirty)', antonyms: '깔끔하다 (neat)', examples: [
+  { korean: '며칠 안 씻어서 꾀죄죄해요.', myanmar: 'ရက်အနည်းငယ် မရေချိုးလို့ ညစ်ပတ်ပေရေနေတယ်။', english: 'I look shabby because I haven\'t washed for days.' } ] },
+{ id: '8059', korean: '끈적거리다', myanmar: 'စေးကပ်နေသည်', english: 'To be sticky', pos: 'verb', level: 'intermediate', synonyms: '달라붙다 (stick)', antonyms: '보송하다 (dry)', examples: [
+  { korean: '풀이 묻어서 손이 끈적거려요.', myanmar: 'ကော်ပေလို့ လက်က စေးကပ်နေတယ်။', english: 'My hands are sticky with glue.' } ] },
+{ id: '8060', korean: '꼴사납다', myanmar: 'ကြည့်ရဆိုးသည်', english: 'To be unsightly/ugly', pos: 'adjective', level: 'advanced', synonyms: '보기 싫다 (ugly to see)', antonyms: '아름답다 (beautiful)', examples: [
+  { korean: '술 취한 모습이 꼴사나워요.', myanmar: 'အရက်မူးနေတဲ့ပုံစံက ကြည့်ရဆိုးတယ်။', english: 'The drunken appearance is unsightly.' } ] },
+{ id: '8061', korean: '까닥', myanmar: 'ခေါင်းညိတ်', english: 'Nod/Budge', pos: 'adverb', level: 'advanced', synonyms: '끄덕 (nod)', antonyms: 'None', examples: [
+  { korean: '고개를 까닥했어요.', myanmar: 'ခေါင်း ညိတ်လိုက်တယ်။', english: 'I nodded my head.' } ] },
+{ id: '8062', korean: '까딱없다', myanmar: 'မမှုသည်/ခိုင်မာသည်', english: 'To be safe/sound/unaffected', pos: 'adjective', level: 'advanced', synonyms: '무사하다 (safe)', antonyms: '위태롭다 (perilous)', examples: [
+  { korean: '아무리 힘들어도 끄떡없어요.', myanmar: 'ဘယ်လောက်ပင်ပန်းပါစေ မမှုပါဘူး။', english: 'No matter how hard it is, I am unaffected.' } ] },
+{ id: '8063', korean: '깔끔', myanmar: 'သပ်ရပ်မှု', english: 'Neatness', pos: 'noun', level: 'intermediate', synonyms: '청결 (cleanliness)', antonyms: '지저분함 (messiness)', examples: [
+  { korean: '그는 깔끔을 떨어요.', myanmar: 'သူက သပ်ရပ်မှုကို အလေးထားတယ်။', english: 'He is fussy about neatness.' } ] },
+{ id: '8064', korean: '깔개', myanmar: 'အခင်း', english: 'Rug/Mat/Pad', pos: 'noun', level: 'basic', synonyms: '매트 (mat)', antonyms: 'None', examples: [
+  { korean: '바닥에 깔개를 깔았어요.', myanmar: 'ကြမ်းပြင်ပေါ် အခင်း ခင်းခဲ့တယ်။', english: 'I laid a rug on the floor.' } ] },
+{ id: '8065', korean: '깜깜무소식', myanmar: 'သတင်းအစအနမရခြင်း', english: 'No news at all', pos: 'noun', level: 'advanced', synonyms: '무소식 (no news)', antonyms: '희소식 (good news)', examples: [
+  { korean: '연락을 기다리는데 깜깜무소식이에요.', myanmar: 'အဆက်အသွယ်စောင့်နေပေမယ့် သတင်းအစအနမရဘူး။', english: 'I\'m waiting for contact, but there\'s no news at all.' } ] },
+{ id: '8066', korean: '깜빡이다', myanmar: 'မှိတ်တုတ်မှိတ်တုတ်ဖြစ်သည်', english: 'To blink/flicker', pos: 'verb', level: 'basic', synonyms: '눈을 감다 (close eyes)', antonyms: '뜨다 (open)', examples: [
+  { korean: '눈을 깜빡였어요.', myanmar: 'မျက်လုံး မှိတ်တုတ်မှိတ်တုတ်လုပ်ခဲ့တယ်။', english: 'I blinked my eyes.' } ] },
+{ id: '8067', korean: '깨금발', myanmar: 'ခြေတစ်ဖက်ထောက်ခုန်ခြင်း', english: 'Hopping on one foot', pos: 'noun', level: 'advanced', synonyms: '외발 (one foot)', antonyms: '두 발 (two feet)', examples: [
+  { korean: '깨금발로 뛰었어요.', myanmar: 'ခြေတစ်ဖက်ထောက်ပြီး ခုန်ခဲ့တယ်။', english: 'I hopped on one foot.' } ] },
+{ id: '8068', korean: '껍질 벗기다', myanmar: 'အခွံခွာသည်', english: 'To peel skin', pos: 'phrase', level: 'basic', synonyms: '까다 (peel)', antonyms: '입히다 (coat)', examples: [
+  { korean: '바나나 껍질을 벗겼어요.', myanmar: 'ငှက်ပျောသီးအခွံ ခွာခဲ့တယ်။', english: 'I peeled the banana skin.' } ] },
+{ id: '8069', korean: '꼬리잡기', myanmar: 'အမြီးလိုက်ဆွဲတမ်း (ကစားနည်း)', english: 'Tail catching game', pos: 'noun', level: 'intermediate', synonyms: '술래잡기 (tag)', antonyms: 'None', examples: [
+  { korean: '운동회에서 꼬리잡기를 했어요.', myanmar: 'အားကစားပွဲမှာ အမြီးလိုက်ဆွဲတမ်း ကစားခဲ့တယ်။', english: 'We played the tail catching game at the sports day.' } ] },
+{ id: '8070', korean: '꼬치꼬치', myanmar: 'စေ့စေ့စပ်စပ်', english: 'Inquisitively/Minutely', pos: 'adverb', level: 'advanced', synonyms: '자세히 (in detail)', antonyms: '대강 (roughly)', examples: [
+  { korean: '그는 꼬치꼬치 캐물었어요.', myanmar: 'သူက စေ့စေ့စပ်စပ် မေးမြန်းခဲ့တယ်။', english: 'He asked inquisitively.' } ] },
+{ id: '8071', korean: '꼬투리 잡다', myanmar: 'အပြစ်ရှာသည်', english: 'To find fault/nitpick', pos: 'phrase', level: 'advanced', synonyms: '트집 잡다 (find fault)', antonyms: '칭찬하다 (praise)', examples: [
+  { korean: '말실수를 꼬투리 잡았어요.', myanmar: 'စကားမှားတာကို အပြစ်ရှာခဲ့တယ်။', english: 'He nitpicked my slip of the tongue.' } ] },
+{ id: '8072', korean: '꼭두새벽', myanmar: 'မနက်အစောကြီး', english: 'Very early morning/Dawn', pos: 'noun', level: 'advanced', synonyms: '새벽 (dawn)', antonyms: '한밤중 (midnight)', examples: [
+  { korean: '꼭두새벽부터 일어났어요.', myanmar: 'မနက်အစောကြီးကတည်းက ထခဲ့တယ်။', english: 'I got up at the very crack of dawn.' } ] },
+{ id: '8073', korean: '꽃내음', myanmar: 'ပန်းရနံ့', english: 'Flower scent', pos: 'noun', level: 'intermediate', synonyms: '꽃향기 (flower fragrance)', antonyms: '악취 (stench)', examples: [
+  { korean: '봄바람에 꽃내음이 실려 와요.', myanmar: 'နွေဦးလေပြေမှာ ပန်းရနံ့တွေ ပါလာတယ်။', english: 'The flower scent is carried on the spring breeze.' } ] },
+{ id: '8074', korean: '꽃봉오리', myanmar: 'ပန်းငုံ', english: 'Flower bud', pos: 'noun', level: 'intermediate', synonyms: '망울 (bud)', antonyms: '낙화 (fallen flower)', examples: [
+  { korean: '꽃봉오리가 맺혔어요.', myanmar: 'ပန်းငုံတွေ ထွက်လာတယ်။', english: 'Flower buds have formed.' } ] },
+{ id: '8075', korean: '꽃가게', myanmar: 'ပန်းဆိုင်', english: 'Flower shop', pos: 'noun', level: 'basic', synonyms: '화원 (flower garden)', antonyms: 'None', examples: [
+  { korean: '꽃가게에서 장미를 샀어요.', myanmar: 'ပန်းဆိုင်မှာ နှင်းဆီပန်း ဝယ်ခဲ့တယ်။', english: 'I bought roses at the flower shop.' } ] },
+{ id: '8076', korean: '꽈당', myanmar: 'ဘုန်း (လဲကျသံ)', english: 'Thud/Bang (falling)', pos: 'adverb', level: 'basic', synonyms: '쿵 (thud)', antonyms: 'None', examples: [
+  { korean: '길에서 꽈당 넘어졌어요.', myanmar: 'လမ်းမှာ ဘုန်းခနဲ လဲကျခဲ့တယ်။', english: 'I fell with a thud on the street.' } ] },
+{ id: '8077', korean: '꾀꼬리', myanmar: 'တေးသီငှက်', english: 'Nightingale/Oriole', pos: 'noun', level: 'advanced', synonyms: '새 (bird)', antonyms: 'None', examples: [
+  { korean: '그녀는 목소리가 꾀꼬리 같아요.', myanmar: 'သူမရဲ့အသံက တေးသီငှက်လိုပဲ။', english: 'Her voice is like a nightingale.' } ] },
+{ id: '8078', korean: '꾸러기', myanmar: 'မွှေစိန်/သောင်းကျန်းသူ', english: 'Mischievous child', pos: 'noun', level: 'intermediate', synonyms: '장난꾸러기 (prankster)', antonyms: '모범생 (model student)', examples: [
+  { korean: '우리 아들은 장난꾸러기예요.', myanmar: 'ကျွန်တော့်သားက မွှေစိန်ပါ။', english: 'My son is a mischievous child.' } ] },
+{ id: '8079', korean: '꾸지람', myanmar: 'ဆူပူမှု', english: 'Scolding/Rebuke', pos: 'noun', level: 'intermediate', synonyms: '질책 (reprimand)', antonyms: '칭찬 (praise)', examples: [
+  { korean: '부모님께 꾸지람을 들었어요.', myanmar: 'မိဘဆီက ဆူပူမှု ခံခဲ့ရတယ်။', english: 'I got a scolding from my parents.' } ] },
+{ id: '8080', korean: '꿀바른', myanmar: 'ပျားရည်သုတ်ထားသော', english: 'Honey-coated', pos: 'adjective', level: 'basic', synonyms: '달콤한 (sweet)', antonyms: '쓴 (bitter)', examples: [
+  { korean: '꿀바른 빵을 먹었어요.', myanmar: 'ပျားရည်သုတ်ထားတဲ့ ပေါင်မုန့် စားခဲ့တယ်။', english: 'I ate honey-coated bread.' } ] },
+{ id: '8081', korean: '꿈자리가 사납다', myanmar: 'အိပ်မက်မကောင်းဖြစ်သည်', english: 'To have a bad/ominous dream', pos: 'phrase', level: 'advanced', synonyms: '악몽을 꾸다 (have a nightmare)', antonyms: '길몽을 꾸다 (have a lucky dream)', examples: [
+  { korean: '어젯밤 꿈자리가 사나웠어요.', myanmar: 'မနေ့ညက အိပ်မက်မကောင်းခဲ့ဘူး။', english: 'I had an ominous dream last night.' } ] },
+{ id: '8082', korean: '끄떡하다', myanmar: 'ခေါင်းညိတ်သည်', english: 'To nod', pos: 'verb', level: 'intermediate', synonyms: '끄덕이다 (nod)', antonyms: '젓다 (shake)', examples: [
+  { korean: '알겠다는 듯이 고개를 끄떡했어요.', myanmar: 'သိပြီဆိုတဲ့ပုံစံနဲ့ ခေါင်းညိတ်ခဲ့တယ်။', english: 'I nodded as if to say I understood.' } ] },
+{ id: '8083', korean: '끊기', myanmar: 'ဇွဲ', english: 'Perseverance/Patience', pos: 'noun', level: 'advanced', synonyms: '인내 (patience)', antonyms: '포기 (giving up)', examples: [
+  { korean: '그는 끊기가 부족해요.', myanmar: 'သူက ဇွဲ မရှိဘူး။', english: 'He lacks perseverance.' } ] },
+{ id: '8084', korean: '끌차', myanmar: 'လက်တွန်းလှည်း', english: 'Handcart/Trolley', pos: 'noun', level: 'basic', synonyms: '수레 (cart)', antonyms: 'None', examples: [
+  { korean: '짐을 끌차로 옮겼어요.', myanmar: 'ပစ္စည်းကို လက်တွန်းလှည်းနဲ့ ရွှေ့ခဲ့တယ်။', english: 'I moved the luggage with a handcart.' } ] },
+{ id: '8085', korean: '끼적이다', myanmar: 'ကောက်ခြစ်ရေးသည်', english: 'To scribble/jot down', pos: 'verb', level: 'advanced', synonyms: '적다 (write)', antonyms: '지우다 (erase)', examples: [
+  { korean: '공책에 낙서를 끼적였어요.', myanmar: 'ဗလာစာအုပ်မှာ အရုပ် ကောက်ခြစ်ရေးခဲ့တယ်။', english: 'I scribbled doodles in the notebook.' } ] },
+{ id: '8086', korean: '까슬까슬하다', myanmar: 'ကြမ်းတမ်းသည် (အထိအတွေ့)', english: 'To be prickly/rough', pos: 'adjective', level: 'advanced', synonyms: '거칠다 (rough)', antonyms: '부드럽다 (soft)', examples: [
+  { korean: '이 옷감은 까슬까슬해요.', myanmar: 'ဒီအထည်သားက ကြမ်းတမ်းတယ်။', english: 'This fabric feels prickly.' } ] },
+{ id: '8087', korean: '꼬불꼬불하다', myanmar: 'ကွေ့ကောက်သည်', english: 'To be winding/tortuous', pos: 'adjective', level: 'intermediate', synonyms: '구불구불하다 (winding)', antonyms: '곧다 (straight)', examples: [
+  { korean: '길이 꼬불꼬불해요.', myanmar: 'လမ်းက ကွေ့ကောက်တယ်။', english: 'The road is winding.' } ] },
+{ id: '8088', korean: '꾸깃꾸깃하다', myanmar: 'တွန့်ကြေနေသည်', english: 'To be crumpled', pos: 'adjective', level: 'intermediate', synonyms: '구겨지다 (wrinkled)', antonyms: '펴지다 (smoothed)', examples: [
+  { korean: '종이가 꾸깃꾸깃해요.', myanmar: 'စာရွက်က တွန့်ကြေနေတယ်။', english: 'The paper is crumpled.' } ] },
+{ id: '8089', korean: '끈적끈적하다', myanmar: 'စေးကပ်ကပ်ဖြစ်သည်', english: 'To be sticky', pos: 'adjective', level: 'intermediate', synonyms: '달라붙다 (sticky)', antonyms: '산뜻하다 (fresh)', examples: [
+  { korean: '바닥이 끈적끈적해요.', myanmar: 'ကြမ်းပြင်က စေးကပ်ကပ်ဖြစ်နေတယ်။', english: 'The floor is sticky.' } ] },
+{ id: '8090', korean: '끔뻑', myanmar: 'ပုတ်ခတ် (မျက်လုံး)', english: 'Blinking', pos: 'adverb', level: 'intermediate', synonyms: '깜빡 (blink)', antonyms: 'None', examples: [
+  { korean: '졸려서 눈을 끔뻑거렸어요.', myanmar: 'အိပ်ချင်လို့ မျက်လုံး ပုတ်ခတ်ပုတ်ခတ်လုပ်ခဲ့တယ်။', english: 'I blinked my eyes because I was sleepy.' } ] },
+{ id: '8091', korean: '깡충깡충', myanmar: 'ဆွတ်ခနဲဆွတ်ခနဲ (ခုန်)', english: 'Hopping', pos: 'adverb', level: 'basic', synonyms: '펄쩍 (jump)', antonyms: 'None', examples: [
+  { korean: '토끼가 깡충깡충 뛰어요.', myanmar: 'ယုန်က ဆွတ်ခနဲဆွတ်ခနဲ ခုန်တယ်။', english: 'The rabbit is hopping.' } ] },
+{ id: '8092', korean: '꼬끼오', myanmar: 'ကွတ်ကီးအို (ကြက်တွန်သံ)', english: 'Cock-a-doodle-doo', pos: 'adverb', level: 'basic', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '수탉이 꼬끼오 하고 울어요.', myanmar: 'ကြက်ဖက ကွတ်ကီးအိုလို့ တွန်တယ်။', english: 'The rooster crows cock-a-doodle-doo.' } ] },
+{ id: '8093', korean: '꿀꿀', myanmar: 'အွတ်အွတ် (ဝက်)', english: 'Oink', pos: 'adverb', level: 'basic', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '돼지는 꿀꿀거려요.', myanmar: 'ဝက်က အွတ်အွတ်အော်တယ်။', english: 'Pigs go oink.' } ] },
+{ id: '8094', korean: '꽈르릉', myanmar: 'ဂျိန်း (မိုးခြိမ်းသံ)', english: 'Rumble/Thunder', pos: 'adverb', level: 'intermediate', synonyms: '우르릉 (rumble)', antonyms: 'None', examples: [
+  { korean: '천둥이 꽈르릉 쳤어요.', myanmar: 'မိုးခြိမ်းသံ ဂျိန်းခနဲ မြည်ခဲ့တယ်။', english: 'Thunder rumbled.' } ] },
+{ id: '8095', korean: '낄낄', myanmar: 'ခွိခွိ (ရယ်သံ)', english: 'Giggling', pos: 'adverb', level: 'intermediate', synonyms: '킥킥 (snicker)', antonyms: '엉엉 (cry)', examples: [
+  { korean: '그들은 뒤에서 낄낄거렸어요.', myanmar: 'သူတို့က အနောက်မှာ ခွိခွိ ရယ်နေကြတယ်။', english: 'They giggled in the back.' } ] },
+{ id: '8096', korean: '끙끙', myanmar: 'ညည်းသံ', english: 'Groaning', pos: 'adverb', level: 'intermediate', synonyms: '신음 (moan)', antonyms: 'None', examples: [
+  { korean: '무거운 짐을 들고 끙끙거렸어요.', myanmar: 'လေးတဲ့ပစ္စည်းကို သယ်ပြီး ညည်းနေခဲ့တယ်။', english: 'I groaned while carrying the heavy load.' } ] },
+{ id: '8097', korean: '꼬질꼬질하다', myanmar: 'ညစ်ပေသည်', english: 'To be filthy/dingy', pos: 'adjective', level: 'advanced', synonyms: '더럽다 (dirty)', antonyms: '깨끗하다 (clean)', examples: [
+  { korean: '옷이 꼬질꼬질해요.', myanmar: 'အဝတ်အစားက ညစ်ပေနေတယ်။', english: 'The clothes are filthy.' } ] },
+{ id: '8098', korean: '꽥', myanmar: 'ကွပ် (အော်သံ)', english: 'Scream/Quack', pos: 'adverb', level: 'intermediate', synonyms: '비명 (scream)', antonyms: 'None', examples: [
+  { korean: '오리가 꽥 소리를 질렀어요.', myanmar: 'ဘဲက ကွပ်လို့ အော်လိုက်တယ်။', english: 'The duck quacked.' } ] },
+{ id: '8099', korean: '꾹꾹', myanmar: 'ဖိဖိစီးစီး', english: 'Firmly/Repeatedly', pos: 'adverb', level: 'intermediate', synonyms: '단단히 (firmly)', antonyms: '살살 (gently)', examples: [
+  { korean: '도장을 꾹꾹 눌러 찍었어요.', myanmar: 'တံဆိပ်တုံးကို ဖိဖိစီးစီး နှိပ်လိုက်တယ်။', english: 'I stamped the seal firmly.' } ] },
+{ id: '8100', korean: '끝자락', myanmar: 'အစွန်း/အဖျား', english: 'Edge/End/Hem', pos: 'noun', level: 'advanced', synonyms: '가장자리 (edge)', antonyms: '중심 (center)', examples: [
+  { korean: '치마 끝자락을 잡았어요.', myanmar: 'စကတ်အနားစွန်းကို ကိုင်လိုက်တယ်။', english: 'I held the hem of the skirt.' } ] },
 
 
+
+
+
+
+
+  /////////
+  ////
+  ////
+  ////
+  // University majors, and education terms
+// ===== EDUCATION WORDS - CATEGORY 1: UNIVERSITY LIFE & PLACES (8201-8230) =====
+{ id: '8201', korean: '대학교', myanmar: 'တက္ကသိုလ်', english: 'University', pos: 'noun', level: 'basic', synonyms: '대학 (college)', antonyms: 'None', examples: [
+  { korean: '서울에는 대학교가 많아요.', myanmar: 'ဆိုးလ်မှာ တက္ကသိုလ်တွေ များတယ်။', english: 'There are many universities in Seoul.' } ] },
+{ id: '8202', korean: '대학원', myanmar: 'ဘွဲ့လွန်သင်တန်းကျောင်း', english: 'Graduate school', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: '학부 (undergraduate)', examples: [
+  { korean: '대학원에 진학해서 연구하고 싶어요.', myanmar: 'ဘွဲ့လွန်တက်ပြီး သုတေသနလုပ်ချင်တယ်။', english: 'I want to go to graduate school and do research.' } ] },
+{ id: '8203', korean: '강의실', myanmar: 'စာသင်ခန်း (တက္ကသိုလ်)', english: 'Lecture room', pos: 'noun', level: 'basic', synonyms: '교실 (classroom)', antonyms: 'None', examples: [
+  { korean: '강의실이 3층에 있어요.', myanmar: 'စာသင်ခန်းက ၃ ထပ်မှာ ရှိတယ်။', english: 'The lecture room is on the 3rd floor.' } ] },
+{ id: '8204', korean: '기숙사', myanmar: 'အဆောင်', english: 'Dormitory', pos: 'noun', level: 'basic', synonyms: '생활관 (residence hall)', antonyms: '자취방 (rented room)', examples: [
+  { korean: '기숙사 생활은 재미있어요.', myanmar: 'အဆောင်နေရတာ ပျော်စရာကောင်းတယ်။', english: 'Dormitory life is fun.' } ] },
+{ id: '8205', korean: '동아리', myanmar: 'ကျောင်းသားအသင်းအဖွဲ့', english: 'Student club', pos: 'noun', level: 'basic', synonyms: '서클 (circle)', antonyms: 'None', examples: [
+  { korean: '댄스 동아리에 가입했어요.', myanmar: 'အကအသင်းမှာ ဝင်ခဲ့တယ်။', english: 'I joined the dance club.' } ] },
+{ id: '8206', korean: '학식', myanmar: 'ကျောင်းကန်တင်းအစားအစာ', english: 'School cafeteria food', pos: 'noun', level: 'basic', synonyms: '학생 식당 밥 (student cafeteria meal)', antonyms: '외식 (eating out)', examples: [
+  { korean: '학식은 싸고 맛있어요.', myanmar: 'ကျောင်းကန်တင်းအစားအစာက ဈေးပေါပြီး အရသာရှိတယ်။', english: 'School cafeteria food is cheap and delicious.' } ] },
+{ id: '8207', korean: '도서관', myanmar: 'စာကြည့်တိုက်', english: 'Library', pos: 'noun', level: 'basic', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '시험 기간에는 도서관에 자리가 없어요.', myanmar: 'စာမေးပွဲကာလမှာ စာကြည့်တိုက်မှာ နေရာမရှိဘူး။', english: 'There are no seats in the library during exam periods.' } ] },
+{ id: '8208', korean: '입학', myanmar: 'ကျောင်းဝင်ခွင့်ရခြင်း', english: 'Admission/Entrance', pos: 'noun', level: 'basic', synonyms: '입교 (entry)', antonyms: '졸업 (graduation)', examples: [
+  { korean: '대학교 입학을 축하해요.', myanmar: 'တက္ကသိုလ်ဝင်ခွင့်ရတာ ဂုဏ်ပြုပါတယ်။', english: 'Congratulations on your university admission.' } ] },
+{ id: '8209', korean: '졸업', myanmar: 'ဘွဲ့ရခြင်း/ကျောင်းပြီးခြင်း', english: 'Graduation', pos: 'noun', level: 'basic', synonyms: '마침 (completion)', antonyms: '입학 (admission)', examples: [
+  { korean: '졸업 후에 취직할 거예요.', myanmar: 'ဘွဲ့ရပြီးရင် အလုပ်ဝင်မယ်။', english: 'I will get a job after graduation.' } ] },
+{ id: '8210', korean: '오리엔테이션', myanmar: 'မိတ်ဆက်ပွဲ (Orientation)', english: 'Orientation', pos: 'noun', level: 'intermediate', synonyms: '오티 (OT)', antonyms: 'None', examples: [
+  { korean: '신입생 오리엔테이션에 갔어요.', myanmar: 'ကျောင်းသားသစ် မိတ်ဆက်ပွဲ သွားခဲ့တယ်။', english: 'I went to the freshman orientation.' } ] },
+{ id: '8211', korean: '축제', myanmar: 'ကျောင်းပွဲတော်', english: 'Festival (School)', pos: 'noun', level: 'basic', synonyms: '대동제 (university festival)', antonyms: 'None', examples: [
+  { korean: '대학 축제에 가수가 왔어요.', myanmar: 'တက္ကသိုလ်ပွဲတော်မှာ အဆိုတော် လာခဲ့တယ်။', english: 'A singer came to the university festival.' } ] },
+{ id: '8212', korean: '엠티', myanmar: 'အပျော်ခရီး (MT)', english: 'Membership Training (MT)', pos: 'noun', level: 'intermediate', synonyms: '수련회 (retreat)', antonyms: 'None', examples: [
+  { korean: '동기들과 엠티를 갔어요.', myanmar: 'အတန်းဖော်တွေနဲ့ MT သွားခဲ့တယ်။', english: 'I went on an MT with my classmates.' } ] },
+{ id: '8213', korean: '과잠', myanmar: 'မေဂျာဂျာကင်', english: 'Department jacket', pos: 'noun', level: 'intermediate', synonyms: '학과 점퍼 (department jumper)', antonyms: 'None', examples: [
+  { korean: '학생들이 과잠을 입고 다녀요.', myanmar: 'ကျောင်းသားတွေ မေဂျာဂျာကင် ဝတ်ပြီးသွားလာကြတယ်။', english: 'Students walk around wearing department jackets.' } ] },
+{ id: '8214', korean: '세미나', myanmar: 'ဆွေးနွေးပွဲ', english: 'Seminar', pos: 'noun', level: 'advanced', synonyms: '연구회 (study group)', antonyms: 'None', examples: [
+  { korean: '논문 발표 세미나를 열었어요.', myanmar: 'စာတမ်းဖတ်ပွဲ ဆွေးနွေးပွဲ ကျင်းပခဲ့တယ်။', english: 'We held a thesis presentation seminar.' } ] },
+{ id: '8215', korean: '게시판', myanmar: 'ကြော်ငြာသင်ပုန်း', english: 'Bulletin board', pos: 'noun', level: 'basic', synonyms: '공고란 (notice board)', antonyms: 'None', examples: [
+  { korean: '게시판에서 공지사항을 확인하세요.', myanmar: 'ကြော်ငြာသင်ပုန်းမှာ ကြေညာချက်ကို စစ်ဆေးပါ။', english: 'Check the announcements on the bulletin board.' } ] },
+{ id: '8216', korean: '학과 사무실', myanmar: 'ဌာနရုံးခန်း', english: 'Department office', pos: 'noun', level: 'basic', synonyms: '과사 (dept office - slang)', antonyms: 'None', examples: [
+  { korean: '학과 사무실에 서류를 냈어요.', myanmar: 'ဌာနရုံးခန်းမှာ စာရွက်စာတမ်း တင်ခဲ့တယ်။', english: 'I submitted documents to the department office.' } ] },
+{ id: '8217', korean: '본관', myanmar: 'ပင်မဆောင်', english: 'Main building', pos: 'noun', level: 'intermediate', synonyms: '대학 본부 (university headquarters)', antonyms: '별관 (annex)', examples: [
+  { korean: '총장실은 본관에 있어요.', myanmar: 'ပါမောက္ခချုပ်ရုံးခန်းက ပင်မဆောင်မှာ ရှိတယ်။', english: 'The president\'s office is in the main building.' } ] },
+{ id: '8218', korean: '학생회관', myanmar: 'ကျောင်းသားသမဂ္ဂအဆောက်အအုံ', english: 'Student union building', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '학생회관에 서점이 있어요.', myanmar: 'ကျောင်းသားသမဂ္ဂအဆောက်အအုံမှာ စာအုပ်ဆိုင် ရှိတယ်။', english: 'There is a bookstore in the student union building.' } ] },
+{ id: '8219', korean: '셔틀버스', myanmar: 'ကြိုပို့ယာဉ်', english: 'Shuttle bus', pos: 'noun', level: 'basic', synonyms: '통학 버스 (school bus)', antonyms: 'None', examples: [
+  { korean: '학교 셔틀버스를 타고 등교해요.', myanmar: 'ကျောင်းကြိုပို့ယာဉ်စီးပြီး ကျောင်းတက်တယ်။', english: 'I go to school by shuttle bus.' } ] },
+{ id: '8220', korean: '교환 학생', myanmar: 'ဖလှယ်ရေးကျောင်းသား', english: 'Exchange student', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '저는 한국으로 교환 학생을 왔어요.', myanmar: 'ကျွန်တော် ကိုရီးယားကို ဖလှယ်ရေးကျောင်းသားအဖြစ် လာခဲ့တယ်။', english: 'I came to Korea as an exchange student.' } ] },
+{ id: '8221', korean: '어학당', myanmar: 'ဘာသာစကားသင်တန်းကျောင်း', english: 'Language institute', pos: 'noun', level: 'intermediate', synonyms: '어학원 (language center)', antonyms: 'None', examples: [
+  { korean: '어학당에서 한국어를 배워요.', myanmar: 'ဘာသာစကားသင်တန်းကျောင်းမှာ ကိုရီးယားစာ သင်တယ်။', english: 'I learn Korean at the language institute.' } ] },
+{ id: '8222', korean: '입학식', myanmar: 'ကျောင်းဝင်ခွင့်အခမ်းအနား', english: 'Entrance ceremony', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: '졸업식 (graduation ceremony)', examples: [
+  { korean: '입학식에 부모님이 오셨어요.', myanmar: 'ကျောင်းဝင်ခွင့်အခမ်းအနားကို မိဘတွေ လာခဲ့ကြတယ်။', english: 'My parents came to the entrance ceremony.' } ] },
+{ id: '8223', korean: '졸업식', myanmar: 'ဘွဲ့နှင်းသဘင်', english: 'Graduation ceremony', pos: 'noun', level: 'intermediate', synonyms: '학위 수여식 (conferment of degrees)', antonyms: '입학식 (entrance ceremony)', examples: [
+  { korean: '졸업식에서 학사모를 썼어요.', myanmar: 'ဘွဲ့နှင်းသဘင်မှာ ဘွဲ့ဦးထုပ် ဆောင်းခဲ့တယ်။', english: 'I wore a mortarboard at the graduation ceremony.' } ] },
+{ id: '8224', korean: '졸업장', myanmar: 'ဘွဲ့လက်မှတ်', english: 'Diploma', pos: 'noun', level: 'basic', synonyms: '학위증 (degree certificate)', antonyms: 'None', examples: [
+  { korean: '자랑스러운 졸업장을 받았어요.', myanmar: 'ဂုဏ်ယူစရာကောင်းတဲ့ ဘွဲ့လက်မှတ် ရရှိခဲ့တယ်။', english: 'I received a proud diploma.' } ] },
+{ id: '8225', korean: '동문', myanmar: 'ကျောင်းဆင်းဖော်/ကျောင်းသားဟောင်း', english: 'Alumni', pos: 'noun', level: 'advanced', synonyms: '졸업생 (graduate)', antonyms: '재학생 (current student)', examples: [
+  { korean: '동문회에 참석했어요.', myanmar: 'ကျောင်းသားဟောင်းတွေ့ဆုံပွဲ တက်ရောက်ခဲ့တယ်။', english: 'I attended the alumni association meeting.' } ] },
+{ id: '8226', korean: '재학생', myanmar: 'လက်ရှိကျောင်းသား', english: 'Current student', pos: 'noun', level: 'basic', synonyms: 'None', antonyms: '졸업생 (graduate)', examples: [
+  { korean: '도서관은 재학생만 이용 가능해요.', myanmar: 'စာကြည့်တိုက်က လက်ရှိကျောင်းသားပဲ သုံးလို့ရတယ်။', english: 'Only current students can use the library.' } ] },
+{ id: '8227', korean: '복학생', myanmar: 'ကျောင်းပြန်တက်သူ', english: 'Returning student', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: '휴학생 (student on leave)', examples: [
+  { korean: '군대 다녀와서 복학생이 되었어요.', myanmar: 'စစ်တပ်ကပြန်လာပြီး ကျောင်းပြန်တက်သူ ဖြစ်လာတယ်။', english: 'I became a returning student after the army.' } ] },
+{ id: '8228', korean: '휴학생', myanmar: 'ကျောင်းနားထားသူ', english: 'Student on leave', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: '재학생 (enrolled student)', examples: [
+  { korean: '지금은 휴학생 신분이에요.', myanmar: 'အခုက ကျောင်းနားထားသူအဆင့်အတန်းပါ။', english: 'I am currently a student on leave.' } ] },
+{ id: '8229', korean: '장학생', myanmar: 'ပညာတော်သင်ဆုရကျောင်းသား', english: 'Scholarship student', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '성적이 좋아서 장학생이 되었어요.', myanmar: 'အမှတ်ကောင်းလို့ ပညာတော်သင်ဆုရကျောင်းသား ဖြစ်လာတယ်။', english: 'I became a scholarship student because of good grades.' } ] },
+{ id: '8230', korean: '학번', myanmar: 'ကျောင်းဝင်နှစ်နံပါတ်', english: 'Class of (Year)', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '저는 24학번이에요.', myanmar: 'ကျွန်တော်က ၂၄ ခုနှစ်ဝင် ကျောင်းသားပါ။', english: 'I am class of \'24.' } ] },
+
+// ===== EDUCATION WORDS - CATEGORY 2: MAJORS & SUBJECTS (8231-8270) =====
+{ id: '8231', korean: '전공', myanmar: 'မေဂျာ/အထူးပြုဘာသာ', english: 'Major', pos: 'noun', level: 'basic', synonyms: '주전공 (primary major)', antonyms: '교양 (liberal arts)', examples: [
+  { korean: '제 전공은 경영학이에요.', myanmar: 'ကျွန်တော့်မေဂျာက စီးပွားရေးစီမံခန့်ခွဲမှုပါ။', english: 'My major is Business Administration.' } ] },
+{ id: '8232', korean: '부전공', myanmar: 'မေဂျာခွဲ', english: 'Minor', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: '주전공 (major)', examples: [
+  { korean: '부전공으로 심리학을 공부해요.', myanmar: 'မေဂျာခွဲအနေနဲ့ စိတ်ပညာကို လေ့လာတယ်။', english: 'I study Psychology as a minor.' } ] },
+{ id: '8233', korean: '복수전공', myanmar: 'ဒါဘယ်မေဂျာ (နှစ်ခုယူခြင်း)', english: 'Double major', pos: 'noun', level: 'advanced', synonyms: '이중전공 (dual major)', antonyms: '단일전공 (single major)', examples: [
+  { korean: '영문학과 경영학을 복수전공해요.', myanmar: 'အင်္ဂလိပ်စာနဲ့ စီးပွားရေးကို ဒါဘယ်မေဂျာ ယူတယ်။', english: 'I double major in English Literature and Business.' } ] },
+{ id: '8234', korean: '경영학', myanmar: 'စီးပွားရေးစီမံခန့်ခွဲမှုပညာ', english: 'Business Administration', pos: 'noun', level: 'basic', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '경영학은 인기 있는 전공이에요.', myanmar: 'စီးပွားရေးပညာက လူကြိုက်များတဲ့ မေဂျာပါ။', english: 'Business Administration is a popular major.' } ] },
+{ id: '8235', korean: '경제학', myanmar: 'ဘောဂဗေဒ', english: 'Economics', pos: 'noun', level: 'basic', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '경제학 수업이 어려워요.', myanmar: 'ဘောဂဗေဒအတန်းက ခက်တယ်။', english: 'Economics class is difficult.' } ] },
+{ id: '8236', korean: '국문학', myanmar: 'ကိုရီးယားစာပေ', english: 'Korean Literature', pos: 'noun', level: 'intermediate', synonyms: '한국문학 (Korean lit)', antonyms: '영문학 (English lit)', examples: [
+  { korean: '국문학을 전공하고 있어요.', myanmar: 'ကိုရီးယားစာပေကို အထူးပြုလေ့လာနေတယ်။', english: 'I am majoring in Korean Literature.' } ] },
+{ id: '8237', korean: '영문학', myanmar: 'အင်္ဂလိပ်စာပေ', english: 'English Literature', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: '국문학 (Korean lit)', examples: [
+  { korean: '셰익스피어는 영문학에서 중요해요.', myanmar: 'ရှိတ်စပီးယားက အင်္ဂလိပ်စာပေမှာ အရေးကြီးတယ်။', english: 'Shakespeare is important in English Literature.' } ] },
+{ id: '8238', korean: '교육학', myanmar: 'ပညာရေးတက္ကသိုလ်ပညာ', english: 'Education (field)', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '선생님이 되려고 교육학을 배워요.', myanmar: 'ဆရာဖြစ်ချင်လို့ ပညာရေးပညာကို သင်ယူတယ်။', english: 'I learn Education to become a teacher.' } ] },
+{ id: '8239', korean: '심리학', myanmar: 'စိတ်ပညာ', english: 'Psychology', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '사람의 마음을 연구하는 심리학.', myanmar: 'လူ့စိတ်ကို လေ့လာတဲ့ စိတ်ပညာ။', english: 'Psychology studies the human mind.' } ] },
+{ id: '8240', korean: '사회학', myanmar: 'လူမှုဗေဒ', english: 'Sociology', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '사회학은 사회 문제를 다뤄요.', myanmar: 'လူမှုဗေဒက လူမှုရေးပြဿနာတွေကို ကိုင်တွယ်တယ်။', english: 'Sociology deals with social issues.' } ] },
+{ id: '8241', korean: '정치외교학', myanmar: 'နိုင်ငံရေးနှင့်သံတမန်ရေးရာ', english: 'Political Science & Diplomacy', pos: 'noun', level: 'advanced', synonyms: '정외과 (abbrev.)', antonyms: 'None', examples: [
+  { korean: '외교관이 되려고 정치외교학을 전공해요.', myanmar: 'သံတမန်ဖြစ်ချင်လို့ နိုင်ငံရေးမေဂျာ ယူတယ်။', english: 'I major in Political Science to become a diplomat.' } ] },
+{ id: '8242', korean: '신문방송학', myanmar: 'သတင်းစာနှင့်မီဒီယာပညာ', english: 'Journalism & Broadcasting', pos: 'noun', level: 'advanced', synonyms: '미디어학 (Media studies)', antonyms: 'None', examples: [
+  { korean: '기자가 꿈이라서 신문방송학을 선택했어요.', myanmar: 'သတင်းထောက်ဖြစ်ချင်လို့ သတင်းစာမေဂျာ ရွေးခဲ့တယ်။', english: 'I chose Journalism because my dream is to be a reporter.' } ] },
+{ id: '8243', korean: '컴퓨터공학', myanmar: 'ကွန်ပျူတာအင်ဂျင်နီယာ', english: 'Computer Engineering', pos: 'noun', level: 'basic', synonyms: '컴공 (abbrev.)', antonyms: 'None', examples: [
+  { korean: '컴퓨터공학은 취업이 잘 돼요.', myanmar: 'ကွန်ပျူတာအင်ဂျင်နီယာက အလုပ်ရလွယ်တယ်။', english: 'Computer Engineering is good for employment.' } ] },
+{ id: '8244', korean: '기계공학', myanmar: 'စက်မှုအင်ဂျင်နီယာ', english: 'Mechanical Engineering', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '로봇을 만들고 싶어서 기계공학을 공부해요.', myanmar: 'စက်ရုပ်ဖန်တီးချင်လို့ စက်မှုအင်ဂျင်နီယာ လေ့လာတယ်။', english: 'I study Mechanical Engineering because I want to make robots.' } ] },
+{ id: '8245', korean: '전자공학', myanmar: 'အီလက်ထရောနစ်အင်ဂျင်နီယာ', english: 'Electronic Engineering', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '반도체는 전자공학 분야예요.', myanmar: 'ဆီမီးကွန်ဒတ်တာက အီလက်ထရောနစ်နယ်ပယ်ပါ။', english: 'Semiconductors are in the field of Electronic Engineering.' } ] },
+{ id: '8246', korean: '건축학', myanmar: 'ဗိသုကာပညာ', english: 'Architecture', pos: 'noun', level: 'basic', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '아름다운 건물을 짓는 건축학.', myanmar: 'လှပတဲ့အဆောက်အအုံ ဆောက်လုပ်တဲ့ ဗိသုကာပညာ။', english: 'Architecture builds beautiful buildings.' } ] },
+{ id: '8247', korean: '의학', myanmar: 'ဆေးပညာ', english: 'Medicine', pos: 'noun', level: 'basic', synonyms: '의술 (medical art)', antonyms: 'None', examples: [
+  { korean: '의대에 가서 의학을 배워요.', myanmar: 'ဆေးတက္ကသိုလ်သွားပြီး ဆေးပညာ သင်ယူတယ်။', english: 'I go to medical school and learn medicine.' } ] },
+{ id: '8248', korean: '간호학', myanmar: 'သူနာပြုပညာ', english: 'Nursing', pos: 'noun', level: 'basic', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '간호학 실습을 나갔어요.', myanmar: 'သူနာပြုလက်တွေ့ဆင်းခဲ့တယ်။', english: 'I went out for nursing practice.' } ] },
+{ id: '8249', korean: '약학', myanmar: 'ဆေးဝါးပညာ', english: 'Pharmacy', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '약학 대학에 입학했어요.', myanmar: 'ဆေးဝါးတက္ကသိုလ် ဝင်ခွင့်ရခဲ့တယ်။', english: 'I entered the College of Pharmacy.' } ] },
+{ id: '8250', korean: '미술', myanmar: 'ပန်းချီ/အနုပညာ', english: 'Fine Arts', pos: 'noun', level: 'basic', synonyms: '예술 (art)', antonyms: '체육 (physical education)', examples: [
+  { korean: '미대에서 미술을 전공해요.', myanmar: 'အနုပညာတက္ကသိုလ်မှာ ပန်းချီမေဂျာ ယူတယ်။', english: 'I major in Fine Arts at art school.' } ] },
+{ id: '8251', korean: '음악', myanmar: 'ဂီတ', english: 'Music', pos: 'noun', level: 'basic', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '음대생들은 음악을 사랑해요.', myanmar: 'ဂီတကျောင်းသားတွေက ဂီတကို ချစ်တယ်။', english: 'Music students love music.' } ] },
+{ id: '8252', korean: '체육학', myanmar: 'ကာယပညာ', english: 'Physical Education', pos: 'noun', level: 'basic', synonyms: '스포츠학 (sports studies)', antonyms: 'None', examples: [
+  { korean: '체육학과는 운동을 많이 해요.', myanmar: 'ကာယပညာဌာနက လေ့ကျင့်ခန်း အများကြီးလုပ်တယ်။', english: 'The PE department exercises a lot.' } ] },
+{ id: '8253', korean: '법학', myanmar: 'ဥပဒေပညာ', english: 'Law', pos: 'noun', level: 'basic', synonyms: '법률 (law)', antonyms: 'None', examples: [
+  { korean: '변호사가 되려면 법학을 공부해야 해요.', myanmar: 'ရှေ့နေဖြစ်ချင်ရင် ဥပဒေပညာ လေ့လာရမယ်။', english: 'You must study Law to become a lawyer.' } ] },
+{ id: '8254', korean: '역사학', myanmar: 'သမိုင်းပညာ', english: 'History', pos: 'noun', level: 'intermediate', synonyms: '사학 (history)', antonyms: 'None', examples: [
+  { korean: '과거를 배우는 역사학.', myanmar: 'အတိတ်ကို လေ့လာတဲ့ သမိုင်းပညာ။', english: 'History learns from the past.' } ] },
+{ id: '8255', korean: '철학', myanmar: 'ဒဿနိကဗေဒ', english: 'Philosophy', pos: 'noun', level: 'advanced', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '철학 수업은 생각이 깊어져요.', myanmar: 'ဒဿနိကအတန်းက အတွေး နက်ရှိုင်းစေတယ်။', english: 'Philosophy classes deepen your thinking.' } ] },
+{ id: '8256', korean: '수학', myanmar: 'သင်္ချာ', english: 'Mathematics', pos: 'noun', level: 'basic', synonyms: '수리 (mathematical logic)', antonyms: 'None', examples: [
+  { korean: '수학과 과학은 관련이 있어요.', myanmar: 'သင်္ချာနဲ့ သိပ္ပံက ဆက်စပ်မှုရှိတယ်။', english: 'Math and Science are related.' } ] },
+{ id: '8257', korean: '물리학', myanmar: 'ရူပဗေဒ', english: 'Physics', pos: 'noun', level: 'intermediate', synonyms: '물리 (physics)', antonyms: '화학 (chemistry)', examples: [
+  { korean: '물리학 실험을 했어요.', myanmar: 'ရူပဗေဒ စမ်းသပ်မှု လုပ်ခဲ့တယ်။', english: 'I did a physics experiment.' } ] },
+{ id: '8258', korean: '화학', myanmar: 'ဓာတုဗေဒ', english: 'Chemistry', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: '생물학 (biology)', examples: [
+  { korean: '화학 반응을 관찰했어요.', myanmar: 'ဓာတုဓာတ်ပြုမှုကို လေ့လာခဲ့တယ်။', english: 'I observed the chemical reaction.' } ] },
+{ id: '8259', korean: '생물학', myanmar: 'ဇီဝဗေဒ', english: 'Biology', pos: 'noun', level: 'intermediate', synonyms: '생명과학 (life science)', antonyms: '무생물 (inanimate object)', examples: [
+  { korean: '생물학 시간에 세포를 봤어요.', myanmar: 'ဇီဝဗေဒချိန်မှာ ဆဲလ်ကို ကြည့်ခဲ့တယ်။', english: 'I saw cells in biology class.' } ] },
+{ id: '8260', korean: '디자인', myanmar: 'ဒီဇိုင်း', english: 'Design', pos: 'noun', level: 'basic', synonyms: '도안 (draft)', antonyms: 'None', examples: [
+  { korean: '시각 디자인을 전공해요.', myanmar: 'အမြင်ဒီဇိုင်း (Visual Design) မေဂျာယူတယ်။', english: 'I major in Visual Design.' } ] },
+{ id: '8261', korean: '연극영화과', myanmar: 'ရုပ်ရှင်နှင့်ပြဇာတ်မေဂျာ', english: 'Theater and Film', pos: 'noun', level: 'intermediate', synonyms: '영연과 (abbrev.)', antonyms: 'None', examples: [
+  { korean: '배우가 되려고 연극영화과에 갔어요.', myanmar: 'မင်းသားဖြစ်ချင်လို့ ရုပ်ရှင်မေဂျာ တက်ခဲ့တယ်။', english: 'I went to Theater and Film school to become an actor.' } ] },
+{ id: '8262', korean: '관광학', myanmar: 'ခရီးသွားလာရေးပညာ', english: 'Tourism', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '호텔리어가 되기 위해 관광학을 배워요.', myanmar: 'ဟိုတယ်ဝန်ထမ်းဖြစ်ဖို့ ခရီးသွားလာရေးပညာ သင်တယ်။', english: 'I study Tourism to become a hotelier.' } ] },
+{ id: '8263', korean: '교양 과목', myanmar: 'အထွေထွေဘာသာရပ် (မေဂျာမဟုတ်)', english: 'Elective/Liberal arts course', pos: 'noun', level: 'intermediate', synonyms: '일반 선택 (general elective)', antonyms: '전공 과목 (major subject)', examples: [
+  { korean: '교양 과목으로 심리학을 들었어요.', myanmar: 'အထွေထွေဘာသာရပ်အနေနဲ့ စိတ်ပညာ တက်ခဲ့တယ်။', english: 'I took Psychology as an elective course.' } ] },
+{ id: '8264', korean: '전공 필수', myanmar: 'မေဂျာမဖြစ်မနေဘာသာရပ်', english: 'Major required course', pos: 'noun', level: 'advanced', synonyms: '전필 (abbrev.)', antonyms: '전공 선택 (major elective)', examples: [
+  { korean: '이 수업은 전공 필수예요.', myanmar: 'ဒီအတန်းက မေဂျာမဖြစ်မနေအတန်းပါ။', english: 'This class is a major requirement.' } ] },
+{ id: '8265', korean: '학점', myanmar: 'ခရက်ဒစ် (အမှတ်)', english: 'Credit/Grade point', pos: 'noun', level: 'basic', synonyms: '성적 (grade)', antonyms: 'None', examples: [
+  { korean: '졸업하려면 학점을 채워야 해요.', myanmar: 'ဘွဲ့ရဖို့ ခရက်ဒစ် ဖြည့်ရမယ်။', english: 'You need to fill your credits to graduate.' } ] },
+{ id: '8266', korean: '강의', myanmar: 'ဟောပြောပို့ချချက်', english: 'Lecture', pos: 'noun', level: 'basic', synonyms: '수업 (class)', antonyms: '실습 (practice)', examples: [
+  { korean: '교수님의 강의가 재미있어요.', myanmar: 'ပါမောက္ခရဲ့ ဟောပြောပို့ချချက်က စိတ်ဝင်စားစရာကောင်းတယ်။', english: 'The professor\'s lecture is interesting.' } ] },
+{ id: '8267', korean: '수강 신청', myanmar: 'ဘာသာရပ်မှတ်ပုံတင်ခြင်း', english: 'Course registration', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: '수강 철회 (course withdrawal)', examples: [
+  { korean: '수강 신청에 성공했어요.', myanmar: 'ဘာသာရပ်မှတ်ပုံတင်ခြင်း အောင်မြင်ခဲ့တယ်။', english: 'I succeeded in course registration.' } ] },
+{ id: '8268', korean: '휴학', myanmar: 'ကျောင်းခဏနားခြင်း', english: 'Leave of absence', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: '복학 (returning to school)', examples: [
+  { korean: '일 년 동안 휴학할 거예요.', myanmar: 'တစ်နှစ်လောက် ကျောင်းနားမယ်။', english: 'I will take a leave of absence for one year.' } ] },
+{ id: '8269', korean: '복학', myanmar: 'ကျောင်းပြန်တက်ခြင်း', english: 'Returning to school', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: '휴학 (leave of absence)', examples: [
+  { korean: '군대 제대 후 복학했어요.', myanmar: 'စစ်တပ်ကထွက်ပြီး ကျောင်းပြန်တက်ခဲ့တယ်။', english: 'I returned to school after discharge from the army.' } ] },
+{ id: '8270', korean: '자퇴', myanmar: 'ကျောင်းထွက်ခြင်း', english: 'Dropping out', pos: 'noun', level: 'intermediate', synonyms: '중퇴 (dropping out)', antonyms: '입학 (admission)', examples: [
+  { korean: '그는 학교를 자퇴했어요.', myanmar: 'သူ ကျောင်းထွက်လိုက်တယ်။', english: 'He dropped out of school.' } ] },
+
+// ===== EDUCATION WORDS - CATEGORY 3: ACADEMIC TERMS & PEOPLE (8271-8300) =====
+{ id: '8271', korean: '교수', myanmar: 'ပါမောက္ခ', english: 'Professor', pos: 'noun', level: 'basic', synonyms: '선생님 (teacher)', antonyms: '학생 (student)', examples: [
+  { korean: '교수님께 이메일을 보냈어요.', myanmar: 'ပါမောက္ခဆီ အီးမေးလ်ပို့ခဲ့တယ်။', english: 'I sent an email to the professor.' } ] },
+{ id: '8272', korean: '조교', myanmar: 'လက်ထောက်ဆရာ/နည်းပြ', english: 'Teaching assistant', pos: 'noun', level: 'intermediate', synonyms: '보조 (assistant)', antonyms: '교수 (professor)', examples: [
+  { korean: '조교님이 숙제를 걷었어요.', myanmar: 'လက်ထောက်ဆရာက အိမ်စာတွေ သိမ်းခဲ့တယ်။', english: 'The teaching assistant collected the homework.' } ] },
+{ id: '8273', korean: '선배', myanmar: 'စီနီယာ (အကြီးတန်း)', english: 'Senior', pos: 'noun', level: 'basic', synonyms: '상급생 (upperclassman)', antonyms: '후배 (junior)', examples: [
+  { korean: '선배가 밥을 사줬어요.', myanmar: 'စီနီယာက ထမင်းဝယ်ကျွေးခဲ့တယ်။', english: 'My senior bought me a meal.' } ] },
+{ id: '8274', korean: '후배', myanmar: 'ဂျူနီယာ (အငယ်တန်း)', english: 'Junior', pos: 'noun', level: 'basic', synonyms: '하급생 (lowerclassman)', antonyms: '선배 (senior)', examples: [
+  { korean: '후배들을 잘 챙겨줘요.', myanmar: 'ဂျူနီယာတွေကို ကောင်းကောင်း ဂရုစိုက်ပေးတယ်။', english: 'I take good care of my juniors.' } ] },
+{ id: '8275', korean: '동기', myanmar: 'အတန်းဖော် (နှစ်တူ)', english: 'Classmate/Peer (same year)', pos: 'noun', level: 'intermediate', synonyms: '동창 (alumni)', antonyms: 'None', examples: [
+  { korean: '대학 동기들과 모임이 있어요.', myanmar: 'တက္ကသိုလ်အတန်းဖော်တွေနဲ့ တွေ့ဆုံပွဲရှိတယ်။', english: 'I have a meeting with my university peers.' } ] },
+{ id: '8276', korean: '장학금', myanmar: 'ပညာတော်သင်ဆု', english: 'Scholarship', pos: 'noun', level: 'basic', synonyms: 'None', antonyms: '등록금 (tuition fee)', examples: [
+  { korean: '성적 우수 장학금을 받았어요.', myanmar: 'အမှတ်ကောင်းလို့ ပညာတော်သင်ဆု ရခဲ့တယ်။', english: 'I received a merit-based scholarship.' } ] },
+{ id: '8277', korean: '등록금', myanmar: 'ကျောင်းလခ/သွင်းငွေ', english: 'Tuition fee', pos: 'noun', level: 'intermediate', synonyms: '학비 (school fee)', antonyms: '장학금 (scholarship)', examples: [
+  { korean: '등록금이 너무 비싸요.', myanmar: 'ကျောင်းလခ အရမ်းဈေးကြီးတယ်။', english: 'Tuition is too expensive.' } ] },
+{ id: '8278', korean: '학기말', myanmar: 'စာသင်နှစ်ကုန်', english: 'End of semester', pos: 'noun', level: 'intermediate', synonyms: '종강 (end of course)', antonyms: '학기초 (beginning of semester)', examples: [
+  { korean: '학기말 시험 준비로 바빠요.', myanmar: 'စာသင်နှစ်ကုန်စာမေးပွဲပြင်ဆင်느라 အလုပ်များတယ်။', english: 'I am busy preparing for final exams.' } ] },
+{ id: '8279', korean: '중간고사', myanmar: 'နှစ်ဝက်စာမေးပွဲ', english: 'Midterm exam', pos: 'noun', level: 'basic', synonyms: '중간 시험 (midterm)', antonyms: '기말고사 (final exam)', examples: [
+  { korean: '다음 주가 중간고사예요.', myanmar: 'နောက်အပတ်က နှစ်ဝက်စာမေးပွဲပါ။', english: 'Next week is the midterm exam.' } ] },
+{ id: '8280', korean: '기말고사', myanmar: 'အတန်းတင်စာမေးပွဲ', english: 'Final exam', pos: 'noun', level: 'basic', synonyms: '기말 시험 (final)', antonyms: '중간고사 (midterm)', examples: [
+  { korean: '기말고사가 끝나면 방학이에요.', myanmar: 'အတန်းတင်စာမေးပွဲပြီးရင် ကျောင်းပိတ်ပြီ။', english: 'It\'s vacation after finals.' } ] },
+{ id: '8281', korean: '과제', myanmar: 'အိမ်စာ/ပရောဂျက်', english: 'Assignment/Task', pos: 'noun', level: 'basic', synonyms: '숙제 (homework)', antonyms: 'None', examples: [
+  { korean: '과제 제출 마감일이 오늘이에요.', myanmar: 'အိမ်စာတင်ရမယ့် နောက်ဆုံးရက်က ဒီနေ့ပါ။', english: 'The assignment deadline is today.' } ] },
+{ id: '8282', korean: '논문', myanmar: 'စာတမ်း (ဘွဲ့ယူ)', english: 'Thesis/Dissertation', pos: 'noun', level: 'advanced', synonyms: '학위 논문 (degree thesis)', antonyms: 'None', examples: [
+  { korean: '졸업 논문을 쓰고 있어요.', myanmar: 'ဘွဲ့ယူစာတမ်း ရေးနေတယ်။', english: 'I am writing my graduation thesis.' } ] },
+{ id: '8283', korean: '학위', myanmar: 'ဘွဲ့', english: 'Degree', pos: 'noun', level: 'advanced', synonyms: '학사/석사/박사 (bachelor/master/doctor)', antonyms: 'None', examples: [
+  { korean: '박사 학위를 받았어요.', myanmar: 'ပါရဂူဘွဲ့ ရခဲ့တယ်။', english: 'I received a doctoral degree.' } ] },
+{ id: '8284', korean: '성적표', myanmar: 'အမှတ်စာရင်း', english: 'Report card/Transcript', pos: 'noun', level: 'basic', synonyms: '성적 증명서 (transcript)', antonyms: 'None', examples: [
+  { korean: '성적표를 부모님께 보여드렸어요.', myanmar: 'အမှတ်စာရင်းကို မိဘတွေကို ပြခဲ့တယ်။', english: 'I showed my report card to my parents.' } ] },
+{ id: '8285', korean: '학점', myanmar: 'အမှတ် (GPA)', english: 'Grade Point', pos: 'noun', level: 'basic', synonyms: '점수 (score)', antonyms: 'None', examples: [
+  { korean: '이번 학기 학점이 잘 나왔어요.', myanmar: 'ဒီနှစ်ဝက် အမှတ်ကောင်းကောင်း ထွက်တယ်။', english: 'I got good grades this semester.' } ] },
+{ id: '8286', korean: '출석', myanmar: 'ကျောင်းခေါ်ချိန်', english: 'Attendance', pos: 'noun', level: 'basic', synonyms: '참석 (presence)', antonyms: '결석 (absence)', examples: [
+  { korean: '출석 점수가 중요해요.', myanmar: 'ကျောင်းခေါ်ချိန်အမှတ်က အရေးကြီးတယ်။', english: 'Attendance points are important.' } ] },
+{ id: '8287', korean: '결석', myanmar: 'ကျောင်းပျက်ခြင်း', english: 'Absence', pos: 'noun', level: 'basic', synonyms: '불참 (non-attendance)', antonyms: '출석 (attendance)', examples: [
+  { korean: '아파서 결석했어요.', myanmar: 'နေမကောင်းလို့ ကျောင်းပျက်ခဲ့တယ်။', english: 'I was absent because I was sick.' } ] },
+{ id: '8288', korean: '지각', myanmar: 'နောက်ကျခြင်း', english: 'Tardiness/Late', pos: 'noun', level: 'basic', synonyms: '늦음 (lateness)', antonyms: '정시 도착 (on time)', examples: [
+  { korean: '수업에 지각하지 마세요.', myanmar: 'အတန်းနောက်မကျပါနဲ့။', english: 'Don\'t be late for class.' } ] },
+{ id: '8289', korean: '발표', myanmar: 'တင်ပြခြင်း (Presentation)', english: 'Presentation', pos: 'noun', level: 'basic', synonyms: '프레젠테이션 (presentation)', antonyms: 'None', examples: [
+  { korean: '앞에 나가서 발표를 했어요.', myanmar: 'ရှေ့ထွက်ပြီး တင်ပြခြင်း လုပ်ခဲ့တယ်။', english: 'I went up front and gave a presentation.' } ] },
+{ id: '8290', korean: '토론', myanmar: 'ဆွေးနွေးပွဲ', english: 'Discussion/Debate', pos: 'noun', level: 'intermediate', synonyms: '토의 (discussion)', antonyms: 'None', examples: [
+  { korean: '조별 토론을 했어요.', myanmar: 'အဖွဲ့လိုက် ဆွေးနွေးပွဲ လုပ်ခဲ့တယ်။', english: 'We had a group discussion.' } ] },
+{ id: '8291', korean: '팀플', myanmar: 'အဖွဲ့လိုက်ပရောဂျက်', english: 'Team project (Slang)', pos: 'noun', level: 'intermediate', synonyms: '조별 과제 (group assignment)', antonyms: '개인 과제 (individual assignment)', examples: [
+  { korean: '팀플 때문에 바빠요.', myanmar: 'အဖွဲ့လိုက်ပရောဂျက်ကြောင့် အလုပ်များတယ်။', english: 'I am busy because of the team project.' } ] },
+{ id: '8292', korean: '공강', myanmar: 'အတန်းလွတ်ချိန်', english: 'Free period (between classes)', pos: 'noun', level: 'intermediate', synonyms: '비는 시간 (empty time)', antonyms: '연강 (consecutive classes)', examples: [
+  { korean: '공강 시간에 점심을 먹어요.', myanmar: 'အတန်းလွတ်ချိန်မှာ နေ့လယ်စာ စားတယ်။', english: 'I eat lunch during the free period.' } ] },
+{ id: '8293', korean: '연강', myanmar: 'ဆက်တိုက်အတန်း', english: 'Consecutive classes', pos: 'noun', level: 'advanced', synonyms: '연속 강의 (continuous lecture)', antonyms: '공강 (free period)', examples: [
+  { korean: '오늘 연강이라서 힘들어요.', myanmar: 'ဒီနေ့ ဆက်တိုက်အတန်းမို့လို့ ပင်ပန်းတယ်။', english: 'It\'s hard because I have consecutive classes today.' } ] },
+{ id: '8294', korean: '종강', myanmar: 'အတန်းသိမ်းခြင်း', english: 'End of semester/course', pos: 'noun', level: 'intermediate', synonyms: '학기 말 (end of term)', antonyms: '개강 (start of semester)', examples: [
+  { korean: '드디어 종강 파티를 해요.', myanmar: 'နောက်ဆုံးတော့ အတန်းသိမ်းပါတီ လုပ်ပြီ။', english: 'Finally, we are having an end-of-semester party.' } ] },
+{ id: '8295', korean: '개강', myanmar: 'ကျောင်းဖွင့်ခြင်း', english: 'Start of semester', pos: 'noun', level: 'intermediate', synonyms: '학기 시작 (start of term)', antonyms: '종강 (end of semester)', examples: [
+  { korean: '3월에 개강해요.', myanmar: '၃ လပိုင်းမှာ ကျောင်းဖွင့်တယ်။', english: 'School starts in March.' } ] },
+{ id: '8296', korean: '방학', myanmar: 'ကျောင်းပိတ်ရက်ရှည်', english: 'Vacation (School)', pos: 'noun', level: 'basic', synonyms: '휴가 (vacation)', antonyms: '학기 중 (during semester)', examples: [
+  { korean: '여름 방학에 여행 갈 거예요.', myanmar: 'နွေရာသီကျောင်းပိတ်ရက်မှာ ခရီးသွားမယ်။', english: 'I will go on a trip during summer vacation.' } ] },
+{ id: '8297', korean: '계절학기', myanmar: 'နွေရာသီ/ဆောင်းရာသီအတန်း', english: 'Summer/Winter session', pos: 'noun', level: 'advanced', synonyms: 'None', antonyms: '정규 학기 (regular semester)', examples: [
+  { korean: '학점을 채우려고 계절학기를 들어요.', myanmar: 'ခရက်ဒစ်ပြည့်ဖို့ နွေရာသီအတန်း တက်တယ်။', english: 'I take the summer session to fill my credits.' } ] },
+{ id: '8298', korean: '학사', myanmar: 'ဝိဇ္ဇာ/သိပ္ပံဘွဲ့', english: 'Bachelor\'s degree', pos: 'noun', level: 'advanced', synonyms: '대졸 (university graduate)', antonyms: '석사 (master)', examples: [
+  { korean: '학사 학위를 취득했어요.', myanmar: 'ဘွဲ့ ရရှိခဲ့တယ်။', english: 'I obtained a bachelor\'s degree.' } ] },
+{ id: '8299', korean: '석사', myanmar: 'မဟာဘွဲ့', english: 'Master\'s degree', pos: 'noun', level: 'advanced', synonyms: 'None', antonyms: '학사 (bachelor)', examples: [
+  { korean: '석사 과정을 밟고 있어요.', myanmar: 'မဟာဘွဲ့သင်တန်း တက်နေတယ်။', english: 'I am pursuing a master\'s degree.' } ] },
+{ id: '8300', korean: '박사', myanmar: 'ပါရဂူဘွဲ့', english: 'Doctorate/Ph.D.', pos: 'noun', level: 'advanced', synonyms: '닥터 (doctor)', antonyms: '석사 (master)', examples: [
+  { korean: '그는 박사님이에요.', myanmar: 'သူက ပါရဂူ (ဒေါက်တာ) ပါ။', english: 'He is a Ph.D.' } ] },
+  
+  
 
 
 
