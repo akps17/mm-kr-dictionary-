@@ -159,45 +159,148 @@ function HomeSearchScreen({ navigation }: { navigation: any }) {
     console.log('Merged dictionary total:', mergedDictionary.length);
     
     const normalizedQuery = queryText.trim().toLowerCase();
-    const filtered = normalizedQuery.length === 0
-      ? mergedDictionary
-      : mergedDictionary.filter((entry) => {
-          // Safely handle potentially undefined properties
-          const korean = (entry.korean || '').trim().toLowerCase();
-          const myanmar = (entry.myanmar || '').trim().toLowerCase();
-          const english = ((entry.english || '').trim()).toLowerCase();
-          
-          // Skip entries without required fields
-          if (!korean || !myanmar) return false;
-          
-          // Normalize the query for better matching (remove extra spaces)
-          const cleanQuery = normalizedQuery.replace(/\s+/g, ' ').trim();
-          
-          return (
-            korean.includes(cleanQuery) ||
-            myanmar.includes(cleanQuery) ||
-            (english && english.includes(cleanQuery))
-          );
-        });
-
-    const getValue = (entry: DictionaryEntry, field: SortPriority): string => {
-      switch (field) {
-        case 'korean':
-          return entry.korean || '';
-        case 'myanmar':
-          return entry.myanmar || '';
-        case 'english':
-          return entry.english || '';
-        default:
-          return '';
+    
+    if (normalizedQuery.length === 0) {
+      // No search query - return all entries sorted normally
+      const getValue = (entry: DictionaryEntry, field: SortPriority): string => {
+        switch (field) {
+          case 'korean':
+            return entry.korean || '';
+          case 'myanmar':
+            return entry.myanmar || '';
+          case 'english':
+            return entry.english || '';
+          default:
+            return '';
+        }
+      };
+      return [...mergedDictionary].sort((a, b) => {
+        const key: SortPriority = settings.sortBy;
+        const locale = key === 'korean' ? 'ko' : undefined;
+        return getValue(a, key).localeCompare(getValue(b, key), locale, { sensitivity: 'base' });
+      });
+    }
+    
+    // Enhanced search with relevance scoring
+    const cleanQuery = normalizedQuery.replace(/\s+/g, ' ').trim();
+    
+    // Score each entry based on match quality
+    const scoredEntries: Array<{ entry: DictionaryEntry; score: number }> = [];
+    
+    mergedDictionary.forEach((entry) => {
+      // Safely handle potentially undefined properties
+      const korean = (entry.korean || '').trim().toLowerCase();
+      const myanmar = (entry.myanmar || '').trim().toLowerCase();
+      const english = (entry.english || '').trim().toLowerCase();
+      
+      // Skip entries without required fields
+      if (!korean || !myanmar) return;
+      
+      let score = 0;
+      let matched = false;
+      
+      // Check Korean
+      if (korean === cleanQuery) {
+        score += 100; // Exact match
+        matched = true;
+      } else if (korean.startsWith(cleanQuery)) {
+        score += 50; // Starts with query
+        matched = true;
+      } else if (korean.includes(cleanQuery)) {
+        score += 10; // Contains query anywhere
+        matched = true;
       }
-    };
-    const sorted = [...filtered].sort((a, b) => {
+      
+      // Check Myanmar
+      if (myanmar === cleanQuery) {
+        score += 100;
+        matched = true;
+      } else if (myanmar.startsWith(cleanQuery)) {
+        score += 50;
+        matched = true;
+      } else if (myanmar.includes(cleanQuery)) {
+        score += 10;
+        matched = true;
+      }
+      
+      // Check English with better word boundary matching
+      if (english) {
+        // Exact match
+        if (english === cleanQuery) {
+          score += 100;
+          matched = true;
+        }
+        // Handle plurals for English (e.g., "elephants" matches "elephant")
+        else {
+          const englishWords = english.split(/[\/,;\s]+/).map((w: string) => w.trim().toLowerCase());
+          const queryWord = cleanQuery.trim().toLowerCase();
+          
+          // Check if any English word matches exactly or starts with query
+          for (const word of englishWords) {
+            if (word === queryWord) {
+              score += 100;
+              matched = true;
+              break;
+            } else if (word.startsWith(queryWord)) {
+              score += 50;
+              matched = true;
+              break;
+            } else if (queryWord.startsWith(word)) {
+              // Handle plurals: "elephants" starts with "elephant"
+              score += 50;
+              matched = true;
+              break;
+            } else if (word.includes(queryWord)) {
+              // Only match if it's at word boundary (not middle of another word)
+              // e.g., "eleph" should NOT match "telephone"
+              const index = word.indexOf(queryWord);
+              const beforeChar = index > 0 ? word[index - 1] : '';
+              const afterChar = index + queryWord.length < word.length ? word[index + queryWord.length] : '';
+              const isWordBoundary = !/[a-zA-Z\u1000-\u109F\u1100-\u11FF\uAC00-\uD7AF]/.test(beforeChar) && 
+                                     !/[a-zA-Z\u1000-\u109F\u1100-\u11FF\uAC00-\uD7AF]/.test(afterChar);
+              
+              if (isWordBoundary || index === 0) {
+                score += 10;
+                matched = true;
+                break;
+              }
+            }
+          }
+        }
+      }
+      
+      // Only include entries that matched
+      if (matched) {
+        scoredEntries.push({ entry, score });
+      }
+    });
+    
+    // Sort by score (highest first), then by user's preferred sort order
+    scoredEntries.sort((a, b) => {
+      // First sort by relevance score (descending)
+      if (b.score !== a.score) {
+        return b.score - a.score;
+      }
+      // If scores are equal, sort by user's preferred field
+      const getValue = (entry: DictionaryEntry, field: SortPriority): string => {
+        switch (field) {
+          case 'korean':
+            return entry.korean || '';
+          case 'myanmar':
+            return entry.myanmar || '';
+          case 'english':
+            return entry.english || '';
+          default:
+            return '';
+        }
+      };
       const key: SortPriority = settings.sortBy;
       const locale = key === 'korean' ? 'ko' : undefined;
-      return getValue(a, key).localeCompare(getValue(b, key), locale, { sensitivity: 'base' });
+      return getValue(a.entry, key).localeCompare(getValue(b.entry, key), locale, { sensitivity: 'base' });
     });
-    return sorted;
+    
+    // Return just the entries
+    return scoredEntries.map(item => item.entry);
   }, [queryText, settings.sortBy, approvedWords]);
 
   const fontScale = React.useMemo(() => {
