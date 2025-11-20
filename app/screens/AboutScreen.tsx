@@ -31,7 +31,7 @@ const aboutContent: Record<AppLanguage, AboutContent> = {
   myanmar: {
     title: 'အက်ပ်အကြောင်း',
     intro: 'ကျွန်တော်ရဲ့ Korean-Myanmar Dictionary App ကိုအသုံးပြုတဲ့သူတွေကို ကြိုဆိုပါတယ်။',
-    reason: 'ကျွန်တော်ကတော့ ရန်ကုန်နိုင်ငံခြားဘာသာ တက္ကသိုလ် (ကိုရီးယားမေဂျာ စတုတ္ထနှစ်), လက်ရှိ SunMoon University (Information Technology Major) မှ ကျောင်းသားတစ်ဦးဖြစ်ပြီး ဤအက်ပ်ကို ကျောင်းပရောဂျက် (School Project) အဖြစ် ရေးသားထားခြင်းဖြစ်ပါတယ်။ မြန်မာဘာသာစကားနဲ့ ကိုရီးယားဘာသာစကားကြား တိုက်ရိုက် ဘာသာပြန်ရာတွင် ပြည့်စုံကောင်းမွန်တဲ့အဘိဓာန်မရှိသေးတဲ့အတွက် ဒီအက်ပ်ကို လုပ်ဖြစ်ခဲ့တာပါ။ အသုံးပြုသူများ၏ တောင်းဆိုမှုများကို အမြဲစစ်ဆေးပြီး လိုအပ်ချက် ေပါ် မူတည်၍ အက်ပ်ကို တိုးတက်အောင် လုပ်ဆောင်သွားပါမယ်ခင်ဗျာ။',
+    reason: 'ကျွန်တော်ကတော့ ရန်ကုန်နိုင်ငံခြားဘာသာ တက္ကသိုလ် (ကိုရီးယားမေဂျာ စတုတ္ထနှစ်), လက်ရှိ SunMoon University (Information Technology Major) မှ ကျောင်းသားတစ်ဦးဖြစ်ပြီး ဤအက်ပ်ကို ကျောင်းပရောဂျက် (School Project) အဖြစ် ရေးသားထားခြင်းဖြစ်ပါတယ်။ မြန်မာဘာသာစကားနဲ့ ကိုရီးယားဘာသာစကားကြား တိုက်ရိုက် ဘာသာပြန်ရာတွင် ပြည့်စုံကောင်းမွန်တဲ့ အဘိဓာန် မရှိသေးတဲ့အတွက် ဒီအက်ပ်ကို လုပ်ဖြစ်ခဲ့တာပါ။ အသုံးပြုသူများ၏ တောင်းဆိုမှုများကို အမြဲစစ်ဆေးပြီး လိုအပ်ချက်အလိုက် အက်ပ်ကို တိုးတက်အောင် လုပ်ဆောင်သွားပါမယ်ခင်ဗျာ။',
     audience: 'ဒီအက်ပ်ကို ကိုရီးယားနိုင်ငံမှာ နေထိုင်သူ မြန်မာနိုင်ငံသားများ၊ ပညာသင်ကြားနေသူများ နဲ့ ဘာသာစကားလေ့လာသူများအတွက် ရည်ရွယ်ထားပါတယ်။',
     featuresTitle: 'အက်ပ်ရဲ့ အဓိက Features များ',
     features: [
@@ -52,7 +52,7 @@ const aboutContent: Record<AppLanguage, AboutContent> = {
     contactTitle: 'ဆက်သွယ်ရန်',
     contactText: 'မေးမြန်းစရာများ၊ အကြံပြုလိုသောအချက်များရှိပါက ကျွန်တော့်ကို အီးမေးလ်ပို့ပါ',
     developerName: 'AUNG KO KO',
-    version: 'ဗားရှင်း (BETA)',
+    version: 'ဗားရှင်း',
   },
   korean: {
     title: '앱 소개',
@@ -78,7 +78,7 @@ const aboutContent: Record<AppLanguage, AboutContent> = {
     contactTitle: '연락처',
     contactText: '질문이나 제안이 있으시면 이메일로 연락주세요',
     developerName: '아웅코코 (AUNG KO KO)',
-    version: '버전 (BETA)',
+    version: '버전',
   },
   english: {
     title: 'About',
@@ -113,8 +113,8 @@ export function AboutScreen() {
   const { settings } = useSettings();
   
   const content = aboutContent[settings.uiLanguage];
-  const email = 'aungko17101999@gmail.com';
-  const appVersion = '1.0.0';
+  const email = 'edu.mmkr@gmail.com';
+  const appVersion = '(BETA) 1.0.0';
 
   return (
     <SafeAreaView style={[styles.safeArea, { backgroundColor: C.background }]}>
@@ -262,7 +262,7 @@ export function AboutScreen() {
         <View style={{ alignItems: 'center', marginTop: 24, paddingHorizontal: 20 }}>
           <Text style={{ fontSize: 13, color: C.textTertiary, textAlign: 'center', lineHeight: 20 }}>
             {settings.uiLanguage === 'myanmar' 
-              ? 'အက်ပ်ကို အသုံးပြုသူများအတွက် အကောင်းဆုံး အတွေ့အကြုံ ဖန်တီးပေးရန် ကြိုးစားနေပါသည်။'
+              ? 'အက်ပ်ကို အသုံးပြုသူများအတွက် အကောင်းဆုံး ဖန်တီးပေးရန် ကြိုးစားနေပါသည်။'
               : settings.uiLanguage === 'korean'
               ? '사용자를 위한 최상의 경험을 만들기 위해 노력하고 있습니다.'
               : 'We strive to create the best experience for our users.'}
