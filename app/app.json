@@ -28,12 +28,24 @@
       "edgeToEdgeEnabled": true
     },
     "web": {
-      "favicon": "./assets/favicon.png",
+      "favicon": "./assets/dictionary_icon.png",
       "bundler": "metro",
+      "name": "Myanmar Korean Dictionary",
+      "shortName": "MM-KR Dict",
+      "lang": "en",
+      "scope": "/",
+      "startUrl": "/",
+      "display": "standalone",
+      "orientation": "portrait",
+      "backgroundColor": "#ffffff",
+      "themeColor": "#2563EB",
       "meta": {
         "description": "Myanmar Korean English Dictionary - Search and learn Korean words with Myanmar and English translations",
         "keywords": "Myanmar, Korean, English, Dictionary, Translation, Language Learning, မြန်မာ, 한국어, 영어, 사전",
-        "theme-color": "#ffffff"
+        "theme-color": "#2563EB",
+        "apple-mobile-web-app-capable": "yes",
+        "apple-mobile-web-app-status-bar-style": "default",
+        "apple-mobile-web-app-title": "MM-KR Dictionary"
       }
     },
     "plugins": [
