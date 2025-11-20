@@ -78,6 +78,12 @@ function useResponsiveLayout() {
 
 function HomeStack() {
   const C = useThemedColors();
+  const { settings } = useSettings();
+  
+  // For web, explicitly set header button color based on theme for Home tab
+  const headerButtonColor = Platform.OS === 'web'
+    ? (settings.theme === 'light' ? '#111827' : '#F3F4F6') // Black for light, white for dark
+    : C.textPrimary; // For mobile, use theme color
   
   return (
     <Stack.Navigator
@@ -85,7 +91,7 @@ function HomeStack() {
         headerStyle: {
           backgroundColor: C.surface,
         },
-        headerTintColor: C.textPrimary,
+        headerTintColor: headerButtonColor,
         headerShadowVisible: false,
       }}
     >
@@ -838,10 +844,11 @@ function AppNavigator() {
   const C = useThemedColors();
   const { settings } = useSettings();
   
-  // For web in light mode, use black for drawer button; otherwise use theme color
-  const drawerButtonColor = Platform.OS === 'web' && settings.theme === 'light' 
-    ? '#111827' // Black for web light mode
-    : C.textPrimary;
+  // For web, explicitly set drawer button color based on theme
+  // Light mode: black, Dark mode: white
+  const drawerButtonColor = Platform.OS === 'web'
+    ? (settings.theme === 'light' ? '#111827' : '#F3F4F6') // Black for light, white for dark
+    : C.textPrimary; // For mobile, use theme color
   
   return (
     <Drawer.Navigator 
@@ -866,7 +873,14 @@ function AppNavigator() {
         headerTintColor: drawerButtonColor,
       }}
     >
-              <Drawer.Screen name="Home" component={HomeStack} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="home-outline" size={size} color={color} />) }} />
+              <Drawer.Screen 
+                name="Home" 
+                component={HomeStack} 
+                options={{ 
+                  drawerIcon: ({ color, size }) => (<Ionicons name="home-outline" size={size} color={color} />),
+                  headerTintColor: drawerButtonColor, // Explicitly set for Home tab
+                }} 
+              />
       <Drawer.Screen name="Practice" component={PracticeTabs} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="school-outline" size={size} color={color} />) }} />
       <Drawer.Screen name="Favorites" component={FavoritesStack} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="heart-outline" size={size} color={color} />) }} />
       <Drawer.Screen name="History" component={HistoryScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="time-outline" size={size} color={color} />) }} />
