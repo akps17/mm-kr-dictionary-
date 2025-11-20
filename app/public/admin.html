@@ -875,7 +875,7 @@
                         </div>
 
                         <div id="dictionary-container">
-                            <p style="text-align: center; color: #6b7280; padding: 40px;">Click search or load all dictionary words</p>
+                            <p style="text-align: center; color: #6b7280; padding: 40px;">Loading dictionary...</p>
                         </div>
                     </div>
                 </div>
@@ -1385,19 +1385,70 @@
                 snapshot.forEach(doc => {
                     const data = doc.data();
                     const source = data.source === 'admin_direct' ? '👨‍💼 Admin' : '✅ Approved';
+                    const docId = doc.id;
                     html += `
-                        <div class="word-item approved" id="dict-${doc.id}">
-                            <h3 class="myanmar-text">${data.korean} → ${data.myanmar}</h3>
-                            <p><strong>English:</strong> ${data.english || 'N/A'}</p>
-                            <p><strong>Part of Speech:</strong> ${data.pos || 'N/A'}</p>
-                            <p><strong>Level:</strong> ${data.level || 'N/A'}</p>
-                            <p><strong>Source:</strong> ${source}</p>
-                            <p><strong>Added by:</strong> ${data.addedBy || 'Unknown'}</p>
-                            <p><strong>Added:</strong> ${data.addedAt?.toDate?.()?.toLocaleString() || 'Unknown'}</p>
-                            <div class="actions">
-                                <button class="btn btn-danger" onclick="deleteDictionaryWord('${doc.id}', '${data.korean}', '${data.myanmar}')">
-                                    🗑️ Delete
-                                </button>
+                        <div class="word-item approved" id="dict-${docId}">
+                            <div id="dict-display-${docId}">
+                                <h3 class="myanmar-text">${data.korean} → ${data.myanmar}</h3>
+                                <p><strong>English:</strong> ${data.english || 'N/A'}</p>
+                                <p><strong>Part of Speech:</strong> ${data.pos || 'N/A'}</p>
+                                <p><strong>Level:</strong> ${data.level || 'N/A'}</p>
+                                <p><strong>Source:</strong> ${source}</p>
+                                <p><strong>Added by:</strong> ${data.addedBy || 'Unknown'}</p>
+                                <p><strong>Added:</strong> ${data.addedAt?.toDate?.()?.toLocaleString() || 'Unknown'}</p>
+                                <div class="actions">
+                                    <button class="btn btn-warning" onclick="editDictionaryWord('${docId}', '${data.korean}', '${data.myanmar}', '${data.english || ''}', '${data.pos || 'noun'}', '${data.level || ''}')">
+                                        ✏️ Edit
+                                    </button>
+                                    <button class="btn btn-danger" onclick="deleteDictionaryWord('${docId}', '${data.korean}', '${data.myanmar}')">
+                                        🗑️ Delete
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div id="dict-edit-${docId}" style="display: none;" class="edit-form">
+                                <h4>Edit Dictionary Word</h4>
+                                <div class="form-group">
+                                    <label>Korean:</label>
+                                    <input type="text" id="dict-edit-korean-${docId}" class="form-input">
+                                </div>
+                                <div class="form-group">
+                                    <label>Myanmar:</label>
+                                    <input type="text" id="dict-edit-myanmar-${docId}" class="form-input myanmar-text">
+                                </div>
+                                <div class="form-group">
+                                    <label>English:</label>
+                                    <input type="text" id="dict-edit-english-${docId}" class="form-input">
+                                </div>
+                                <div class="form-group">
+                                    <label>Part of Speech:</label>
+                                    <select id="dict-edit-pos-${docId}" class="form-select">
+                                        <option value="noun">Noun</option>
+                                        <option value="verb">Verb</option>
+                                        <option value="adjective">Adjective</option>
+                                        <option value="adverb">Adverb</option>
+                                        <option value="pronoun">Pronoun</option>
+                                        <option value="preposition">Preposition</option>
+                                        <option value="conjunction">Conjunction</option>
+                                        <option value="interjection">Interjection</option>
+                                        <option value="particle">Particle</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Word Level:</label>
+                                    <select id="dict-edit-level-${docId}" class="form-select">
+                                        <option value="">No Level</option>
+                                        <option value="basic">Basic (TOPIK I - Level 1)</option>
+                                        <option value="pre-intermediate">Pre-Intermediate (TOPIK I - Level 2)</option>
+                                        <option value="intermediate">Intermediate (TOPIK II - Level 3-4)</option>
+                                        <option value="advanced">Advanced (TOPIK II - Level 5-6)</option>
+                                    </select>
+                                </div>
+                                <div class="actions">
+                                    <button class="btn btn-success" onclick="saveDictionaryEdit('${docId}')">💾 Save</button>
+                                    <button class="btn btn-secondary" onclick="cancelDictionaryEdit('${docId}')">❌ Cancel</button>
+                                </div>
                             </div>
                         </div>
                     `;
@@ -1445,16 +1496,68 @@
                 filteredDocs.forEach(item => {
                     const data = item.data;
                     const source = data.source === 'admin_direct' ? '👨‍💼 Admin' : '✅ Approved';
+                    const docId = item.id;
                     html += `
-                        <div class="word-item approved">
-                            <h3 class="myanmar-text">${data.korean} → ${data.myanmar}</h3>
-                            <p><strong>English:</strong> ${data.english || 'N/A'}</p>
-                            <p><strong>Part of Speech:</strong> ${data.pos || 'N/A'}</p>
-                            <p><strong>Source:</strong> ${source}</p>
-                            <div class="actions">
-                                <button class="btn btn-danger" onclick="deleteDictionaryWord('${item.id}', '${data.korean}', '${data.myanmar}')">
-                                    🗑️ Delete
-                                </button>
+                        <div class="word-item approved" id="dict-${docId}">
+                            <div id="dict-display-${docId}">
+                                <h3 class="myanmar-text">${data.korean} → ${data.myanmar}</h3>
+                                <p><strong>English:</strong> ${data.english || 'N/A'}</p>
+                                <p><strong>Part of Speech:</strong> ${data.pos || 'N/A'}</p>
+                                <p><strong>Level:</strong> ${data.level || 'N/A'}</p>
+                                <p><strong>Source:</strong> ${source}</p>
+                                <div class="actions">
+                                    <button class="btn btn-warning" onclick="editDictionaryWord('${docId}', '${data.korean}', '${data.myanmar}', '${data.english || ''}', '${data.pos || 'noun'}', '${data.level || ''}')">
+                                        ✏️ Edit
+                                    </button>
+                                    <button class="btn btn-danger" onclick="deleteDictionaryWord('${docId}', '${data.korean}', '${data.myanmar}')">
+                                        🗑️ Delete
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div id="dict-edit-${docId}" style="display: none;" class="edit-form">
+                                <h4>Edit Dictionary Word</h4>
+                                <div class="form-group">
+                                    <label>Korean:</label>
+                                    <input type="text" id="dict-edit-korean-${docId}" class="form-input">
+                                </div>
+                                <div class="form-group">
+                                    <label>Myanmar:</label>
+                                    <input type="text" id="dict-edit-myanmar-${docId}" class="form-input myanmar-text">
+                                </div>
+                                <div class="form-group">
+                                    <label>English:</label>
+                                    <input type="text" id="dict-edit-english-${docId}" class="form-input">
+                                </div>
+                                <div class="form-group">
+                                    <label>Part of Speech:</label>
+                                    <select id="dict-edit-pos-${docId}" class="form-select">
+                                        <option value="noun">Noun</option>
+                                        <option value="verb">Verb</option>
+                                        <option value="adjective">Adjective</option>
+                                        <option value="adverb">Adverb</option>
+                                        <option value="pronoun">Pronoun</option>
+                                        <option value="preposition">Preposition</option>
+                                        <option value="conjunction">Conjunction</option>
+                                        <option value="interjection">Interjection</option>
+                                        <option value="particle">Particle</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Word Level:</label>
+                                    <select id="dict-edit-level-${docId}" class="form-select">
+                                        <option value="">No Level</option>
+                                        <option value="basic">Basic (TOPIK I - Level 1)</option>
+                                        <option value="pre-intermediate">Pre-Intermediate (TOPIK I - Level 2)</option>
+                                        <option value="intermediate">Intermediate (TOPIK II - Level 3-4)</option>
+                                        <option value="advanced">Advanced (TOPIK II - Level 5-6)</option>
+                                    </select>
+                                </div>
+                                <div class="actions">
+                                    <button class="btn btn-success" onclick="saveDictionaryEdit('${docId}')">💾 Save</button>
+                                    <button class="btn btn-secondary" onclick="cancelDictionaryEdit('${docId}')">❌ Cancel</button>
+                                </div>
                             </div>
                         </div>
                     `;
@@ -1470,6 +1573,56 @@
         window.clearDictionarySearch = function() {
             document.getElementById('dict-search-input').value = '';
             loadDictionary();
+        };
+
+        window.editDictionaryWord = function(docId, korean, myanmar, english, pos, level) {
+            document.getElementById(`dict-display-${docId}`).style.display = 'none';
+            document.getElementById(`dict-edit-${docId}`).style.display = 'block';
+            
+            document.getElementById(`dict-edit-korean-${docId}`).value = korean;
+            document.getElementById(`dict-edit-myanmar-${docId}`).value = myanmar;
+            document.getElementById(`dict-edit-english-${docId}`).value = english;
+            document.getElementById(`dict-edit-pos-${docId}`).value = pos;
+            document.getElementById(`dict-edit-level-${docId}`).value = level || '';
+        };
+
+        window.cancelDictionaryEdit = function(docId) {
+            document.getElementById(`dict-edit-${docId}`).style.display = 'none';
+            document.getElementById(`dict-display-${docId}`).style.display = 'block';
+        };
+
+        window.saveDictionaryEdit = async function(docId) {
+            try {
+                const korean = document.getElementById(`dict-edit-korean-${docId}`).value.trim();
+                const myanmar = document.getElementById(`dict-edit-myanmar-${docId}`).value.trim();
+                const english = document.getElementById(`dict-edit-english-${docId}`).value.trim();
+                const pos = document.getElementById(`dict-edit-pos-${docId}`).value;
+                const level = document.getElementById(`dict-edit-level-${docId}`).value;
+
+                if (!korean || !myanmar) {
+                    alert('Korean and Myanmar fields are required!');
+                    return;
+                }
+
+                const cleanMyanmar = myanmar.normalize('NFC');
+                const cleanKorean = korean.normalize('NFC');
+
+                await updateDoc(doc(db, 'dictionary', docId), {
+                    korean: cleanKorean,
+                    myanmar: cleanMyanmar,
+                    english: english || '',
+                    pos: pos,
+                    level: level || null,
+                    editedAt: serverTimestamp(),
+                    editedBy: 'admin'
+                });
+
+                loadDictionary();
+                loadDashboardData();
+                alert('Dictionary word updated successfully!');
+            } catch (error) {
+                alert('Error updating word: ' + error.message);
+            }
         };
 
         window.deleteDictionaryWord = async function(docId, korean, myanmar) {

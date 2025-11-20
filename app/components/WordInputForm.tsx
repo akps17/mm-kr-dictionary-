@@ -110,8 +110,9 @@ export function WordInputForm({ onSubmit, initialValues }: WordInputFormProps) {
       <View style={styles.section}>
         <Text style={[styles.label, { color: C.textSecondary }]}>Korean Word *</Text>
         <TextInput
-          style={[styles.input, { backgroundColor: C.background, borderColor: C.border }]}
+          style={[styles.input, { backgroundColor: C.background, borderColor: C.border, color: C.textPrimary }]}
           placeholder="Enter Korean word"
+          placeholderTextColor={C.textTertiary}
           value={korean}
           onChangeText={setKorean}
         />
@@ -121,8 +122,9 @@ export function WordInputForm({ onSubmit, initialValues }: WordInputFormProps) {
       <View style={styles.section}>
         <Text style={[styles.label, { color: C.textSecondary }]}>Myanmar Translation *</Text>
         <TextInput
-          style={[styles.input, { backgroundColor: C.background, borderColor: C.border }]}
+          style={[styles.input, { backgroundColor: C.background, borderColor: C.border, color: C.textPrimary }]}
           placeholder="Enter Myanmar translation"
+          placeholderTextColor={C.textTertiary}
           value={myanmar}
           onChangeText={setMyanmar}
         />
@@ -132,8 +134,9 @@ export function WordInputForm({ onSubmit, initialValues }: WordInputFormProps) {
       <View style={styles.section}>
         <Text style={[styles.label, { color: C.textSecondary }]}>English Translation *</Text>
         <TextInput
-          style={[styles.input, { backgroundColor: C.background, borderColor: C.border }]}
+          style={[styles.input, { backgroundColor: C.background, borderColor: C.border, color: C.textPrimary }]}
           placeholder="Enter English translation"
+          placeholderTextColor={C.textTertiary}
           value={english}
           onChangeText={setEnglish}
         />
@@ -265,22 +268,25 @@ export function WordInputForm({ onSubmit, initialValues }: WordInputFormProps) {
             </Pressable>
             <Text style={[styles.label, { color: C.textSecondary, marginBottom: 6 }]}>Korean Example</Text>
             <TextInput
-              style={[styles.input, styles.exampleInput, { borderColor: C.border }]}
+              style={[styles.input, styles.exampleInput, { borderColor: C.border, backgroundColor: C.surface, color: C.textPrimary }]}
               placeholder="Enter example in Korean"
+              placeholderTextColor={C.textTertiary}
               value={example.korean}
               onChangeText={(text) => updateExample(index, 'korean', text)}
             />
             <Text style={[styles.label, { color: C.textSecondary, marginBottom: 6, marginTop: 10 }]}>Myanmar Translation</Text>
             <TextInput
-              style={[styles.input, styles.exampleInput, { borderColor: C.border }]}
+              style={[styles.input, styles.exampleInput, { borderColor: C.border, backgroundColor: C.surface, color: C.textPrimary }]}
               placeholder="Enter example in Myanmar"
+              placeholderTextColor={C.textTertiary}
               value={example.myanmar || ''}
               onChangeText={(text) => updateExample(index, 'myanmar', text)}
             />
             <Text style={[styles.label, { color: C.textSecondary, marginBottom: 6, marginTop: 10 }]}>English Translation (Optional)</Text>
             <TextInput
-              style={[styles.input, styles.exampleInput, { borderColor: C.border }]}
+              style={[styles.input, styles.exampleInput, { borderColor: C.border, backgroundColor: C.surface, color: C.textPrimary }]}
               placeholder="Enter example in English (optional)"
+              placeholderTextColor={C.textTertiary}
               value={example.english || ''}
               onChangeText={(text) => updateExample(index, 'english', text)}
             />
