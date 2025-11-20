@@ -20293,6 +20293,219 @@ export const dictionaryEntries: DictionaryEntry[] = [
 
 
 
+ /////
+ /////
+ //// .      ㅎㅎㅎㅎ ㅎ ㅎㅎㅎ ㅎ ㅎ ㅎ ㅎ ㅎ  300 consontats word 
+ // ===== ㅎ CONSONANT WORDS - CATEGORY 1: BASIC VERBS & ACTIONS (7501-7550) =====
+{ id: '7501', korean: '하다', myanmar: 'လုပ်သည်', english: 'To do', pos: 'verb', level: 'basic', synonyms: '실행하다 (execute)', antonyms: '안 하다 (not do)', examples: [
+  { korean: '숙제를 해요.', myanmar: 'အိမ်စာ လုပ်တယ်။', english: 'I do my homework.' } ] },
+{ id: '7502', korean: '가다 (학교에)', myanmar: 'ကျောင်းသွားသည် (Note: 하교하다)', english: 'To go to school (Note: 下校 is leaving school, this entry represents 하교하다 - leaving school)', pos: 'verb', level: 'basic', synonyms: '집에 가다 (go home)', antonyms: '등교하다 (go to school)', examples: [
+  { korean: '수업이 끝나고 하교했어요.', myanmar: 'စာသင်ချိန်ပြီးလို့ ကျောင်းဆင်းခဲ့တယ်။', english: 'I left school after class ended.' } ] },
+{ id: '7503', korean: '하루', myanmar: 'တစ်ရက်', english: 'One day', pos: 'noun', level: 'basic', synonyms: '일일 (one day)', antonyms: '평생 (lifetime)', examples: [
+  { korean: '하루 종일 잤어요.', myanmar: 'တစ်ရက်လုံး အိပ်ခဲ့တယ်။', english: 'I slept all day.' } ] },
+{ id: '7504', korean: '학교', myanmar: 'ကျောင်း', english: 'School', pos: 'noun', level: 'basic', synonyms: '학원 (academy - related)', antonyms: 'None', examples: [
+  { korean: '학교에 다녀요.', myanmar: 'ကျောင်းတက်တယ်။', english: 'I go to school.' } ] },
+{ id: '7505', korean: '학생', myanmar: 'ကျောင်းသား', english: 'Student', pos: 'noun', level: 'basic', synonyms: '제자 (pupil)', antonyms: '선생님 (teacher)', examples: [
+  { korean: '저는 한국어 학생이에요.', myanmar: 'ကျွန်တော်က ကိုရီးယားစာကျောင်းသားပါ။', english: 'I am a Korean language student.' } ] },
+{ id: '7506', korean: '학기', myanmar: 'စာသင်နှစ်ဝက်', english: 'Semester/Term', pos: 'noun', level: 'basic', synonyms: '학사 일정 (academic schedule)', antonyms: '방학 (vacation)', examples: [
+  { korean: '새 학기가 시작되었어요.', myanmar: 'စာသင်နှစ်ဝက်အသစ် စတင်ခဲ့ပြီ။', english: 'The new semester has started.' } ] },
+{ id: '7507', korean: '학년', myanmar: 'အတန်း (Grade)', english: 'School year/Grade', pos: 'noun', level: 'basic', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '저는 2학년이에요.', myanmar: 'ကျွန်တော်က ဒုတိယနှစ် (Grade 2) ပါ။', english: 'I am in the second grade.' } ] },
+{ id: '7508', korean: '한글', myanmar: 'ဟန်ဂုလ် (ကိုရီးယားစာ)', english: 'Hangeul (Korean alphabet)', pos: 'noun', level: 'basic', synonyms: '우리말 (our language)', antonyms: '한자 (Chinese characters)', examples: [
+  { korean: '한글을 읽을 수 있어요.', myanmar: 'ဟန်ဂုလ်ကို ဖတ်တတ်တယ်။', english: 'I can read Hangeul.' } ] },
+{ id: '7509', korean: '할머니', myanmar: 'အဘွား', english: 'Grandmother', pos: 'noun', level: 'basic', synonyms: '조모 (grandmother - formal)', antonyms: '할아버지 (grandfather)', examples: [
+  { korean: '할머니가 보고 싶어요.', myanmar: 'အဘွားကို သတိရတယ်။', english: 'I miss my grandmother.' } ] },
+{ id: '7510', korean: '할아버지', myanmar: 'အဘိုး', english: 'Grandfather', pos: 'noun', level: 'basic', synonyms: '조부 (grandfather - formal)', antonyms: '할머니 (grandmother)', examples: [
+  { korean: '할아버지께 전화를 드렸어요.', myanmar: 'အဘိုးဆီ ဖုန်းဆက်ခဲ့တယ်။', english: 'I called my grandfather.' } ] },
+{ id: '7511', korean: '한복', myanmar: 'ဟန်ဘို့ (ကိုရီးယားရိုးရာဝတ်စုံ)', english: 'Hanbok', pos: 'noun', level: 'basic', synonyms: '전통 의상 (traditional clothes)', antonyms: '양복 (suit)', examples: [
+  { korean: '명절에 한복을 입어요.', myanmar: 'ပွဲတော်ရက်မှာ ဟန်ဘို့ ဝတ်တယ်။', english: 'I wear Hanbok on holidays.' } ] },
+{ id: '7512', korean: '항상', myanmar: 'အမြဲတမ်း', english: 'Always', pos: 'adverb', level: 'basic', synonyms: '늘 (always), 언제나 (all the time)', antonyms: '가끔 (sometimes), 절대 (never)', examples: [
+  { korean: '그는 항상 웃어요.', myanmar: 'သူက အမြဲတမ်း ပြုံးနေတယ်။', english: 'He always smiles.' } ] },
+{ id: '7513', korean: '해', myanmar: 'နေ/နှစ်', english: 'Sun/Year', pos: 'noun', level: 'basic', synonyms: '태양 (sun), 년 (year)', antonyms: '달 (moon)', examples: [
+  { korean: '해가 떴어요.', myanmar: 'နေထွက်လာပြီ။', english: 'The sun has risen.' } ] },
+{ id: '7514', korean: '해결하다', myanmar: 'ဖြေရှင်းသည်', english: 'To solve/resolve', pos: 'verb', level: 'intermediate', synonyms: '풀다 (solve)', antonyms: '망치다 (ruin)', examples: [
+  { korean: '문제를 해결했어요.', myanmar: 'ပြဿနာကို ဖြေရှင်းခဲ့တယ်။', english: 'I solved the problem.' } ] },
+{ id: '7515', korean: '행복하다', myanmar: 'ပျော်ရွှင်သည်', english: 'To be happy', pos: 'adjective', level: 'basic', synonyms: '기쁘다 (glad), 즐겁다 (joyful)', antonyms: '불행하다 (unhappy), 슬프다 (sad)', examples: [
+  { korean: '가족과 함께라서 행복해요.', myanmar: 'မိသားစုနဲ့အတူရှိလို့ ပျော်ရွှင်တယ်။', english: 'I am happy to be with my family.' } ] },
+{ id: '7516', korean: '허리', myanmar: 'ခါး', english: 'Waist/Lower back', pos: 'noun', level: 'basic', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '허리가 아파요.', myanmar: 'ခါးနာတယ်။', english: 'My lower back hurts.' } ] },
+{ id: '7517', korean: '현재', myanmar: 'လက်ရှိ', english: 'Present/Current', pos: 'noun', level: 'basic', synonyms: '지금 (now)', antonyms: '과거 (past), 미래 (future)', examples: [
+  { korean: '현재 시간을 알려주세요.', myanmar: 'လက်ရှိအချိန်ကို ပြောပြပေးပါ။', english: 'Please tell me the current time.' } ] },
+{ id: '7518', korean: '형', myanmar: 'အစ်ကို (ယောက်ျားလေးကခေါ်)', english: 'Older brother (for males)', pos: 'noun', level: 'basic', synonyms: '형님 (older brother - formal)', antonyms: '동생 (younger sibling)', examples: [
+  { korean: '형과 농구를 했어요.', myanmar: 'အစ်ကိုနဲ့ ဘတ်စကက်ဘော ကစားခဲ့တယ်။', english: 'I played basketball with my older brother.' } ] },
+{ id: '7519', korean: '형제', myanmar: 'ညီအစ်ကို', english: 'Brothers/Siblings', pos: 'noun', level: 'basic', synonyms: '동기 (siblings)', antonyms: '자매 (sisters)', examples: [
+  { korean: '우리는 형제예요.', myanmar: 'ကျွန်တော်တို့က ညီအစ်ကိုတွေပါ။', english: 'We are brothers.' } ] },
+{ id: '7520', korean: '호수', myanmar: 'ရေကန်', english: 'Lake', pos: 'noun', level: 'basic', synonyms: '연못 (pond)', antonyms: '바다 (sea)', examples: [
+  { korean: '호수에서 배를 탔어요.', myanmar: 'ရေကန်မှာ လှေစီးခဲ့တယ်။', english: 'I rode a boat on the lake.' } ] },
+{ id: '7521', korean: '혼자', myanmar: 'တစ်ယောက်တည်း', english: 'Alone', pos: 'adverb', level: 'basic', synonyms: '홀로 (alone), 단독 (solo)', antonyms: '함께 (together), 같이 (with)', examples: [
+  { korean: '혼자 밥을 먹었어요.', myanmar: 'တစ်ယောက်တည်း ထမင်းစားခဲ့တယ်။', english: 'I ate alone.' } ] },
+{ id: '7522', korean: '화', myanmar: 'ဒေါသ', english: 'Anger', pos: 'noun', level: 'basic', synonyms: '분노 (rage), 성 (temper)', antonyms: '기쁨 (joy)', examples: [
+  { korean: '화가 났어요.', myanmar: 'ဒေါသထွက်တယ်။', english: 'I am angry.' } ] },
+{ id: '7523', korean: '화장실', myanmar: 'အိမ်သာ', english: 'Toilet/Restroom', pos: 'noun', level: 'basic', synonyms: '변소 (toilet - old)', antonyms: 'None', examples: [
+  { korean: '화장실이 어디예요?', myanmar: 'အိမ်သာ ဘယ်မှာလဲ။', english: 'Where is the restroom?' } ] },
+{ id: '7524', korean: '화장하다', myanmar: 'မိတ်ကပ်လိမ်းသည်', english: 'To put on makeup', pos: 'verb', level: 'basic', synonyms: '메이크업하다 (do makeup)', antonyms: '지우다 (remove makeup)', examples: [
+  { korean: '외출 전에 화장해요.', myanmar: 'အပြင်မထွက်ခင် မိတ်ကပ်လိမ်းတယ်။', english: 'I put on makeup before going out.' } ] },
+{ id: '7525', korean: '확인하다', myanmar: 'စစ်ဆေးသည်', english: 'To check/confirm', pos: 'verb', level: 'basic', synonyms: '검사하다 (inspect), 점검하다 (check)', antonyms: '무시하다 (ignore)', examples: [
+  { korean: '예약을 확인했어요.', myanmar: 'ကြိုတင်စာရင်းသွင်းမှုကို စစ်ဆေးခဲ့တယ်။', english: 'I confirmed the reservation.' } ] },
+{ id: '7526', korean: '회사', myanmar: 'ကုမ္ပဏီ', english: 'Company/Office', pos: 'noun', level: 'basic', synonyms: '기업 (enterprise)', antonyms: '학교 (school)', examples: [
+  { korean: '회사에 출근해요.', myanmar: 'ကုမ္ပဏီကို အလုပ်ဆင်းတယ်။', english: 'I go to work at the company.' } ] },
+{ id: '7527', korean: '회의', myanmar: 'အစည်းအဝေး', english: 'Meeting/Conference', pos: 'noun', level: 'basic', synonyms: '미팅 (meeting)', antonyms: 'None', examples: [
+  { korean: '오후에 회의가 있어요.', myanmar: 'နေ့လယ်မှာ အစည်းအဝေး ရှိတယ်။', english: 'I have a meeting in the afternoon.' } ] },
+{ id: '7528', korean: '후', myanmar: 'နောက်', english: 'After/Later', pos: 'noun', level: 'basic', synonyms: '뒤 (back/after), 나중 (later)', antonyms: '전 (before)', examples: [
+  { korean: '식사 후에 약을 드세요.', myanmar: 'ထမင်းစားပြီးနောက် ဆေးသောက်ပါ။', english: 'Take medicine after the meal.' } ] },
+{ id: '7529', korean: '휴가', myanmar: 'အားလပ်ရက်ခရီး', english: 'Vacation/Leave', pos: 'noun', level: 'basic', synonyms: '방학 (school vacation)', antonyms: '근무 (work)', examples: [
+  { korean: '여름 휴가를 떠나요.', myanmar: 'နွေရာသီ အားလပ်ရက်ခရီး ထွက်တယ်။', english: 'I am going on summer vacation.' } ] },
+{ id: '7530', korean: '휴일', myanmar: 'ပိတ်ရက်', english: 'Holiday/Day off', pos: 'noun', level: 'basic', synonyms: '공휴일 (public holiday), 쉬는 날 (rest day)', antonyms: '평일 (weekday)', examples: [
+  { korean: '내일은 휴일이에요.', myanmar: 'မနက်ဖြန်က ပိတ်ရက်ပါ။', english: 'Tomorrow is a holiday.' } ] },
+{ id: '7531', korean: '힘', myanmar: 'အား/ခွန်အား', english: 'Strength/Power', pos: 'noun', level: 'basic', synonyms: '기운 (energy), 파워 (power)', antonyms: '약함 (weakness)', examples: [
+  { korean: '힘이 세요.', myanmar: 'အား သန်တယ်။', english: 'He is strong.' } ] },
+{ id: '7532', korean: '힘들다', myanmar: 'ပင်ပန်းသည်/ခက်ခဲသည်', english: 'To be hard/difficult', pos: 'adjective', level: 'basic', synonyms: '어렵다 (difficult), 고되다 (strenuous)', antonyms: '쉽다 (easy), 편하다 (comfortable)', examples: [
+  { korean: '공부가 힘들어요.', myanmar: 'စာလေ့လာရတာ ပင်ပန်းတယ်။', english: 'Studying is hard.' } ] },
+{ id: '7533', korean: '하늘', myanmar: 'ကောင်းကင်', english: 'Sky', pos: 'noun', level: 'basic', synonyms: '공중 (air)', antonyms: '땅 (ground)', examples: [
+  { korean: '하늘이 파래요.', myanmar: 'ကောင်းကင်က ပြာတယ်။', english: 'The sky is blue.' } ] },
+{ id: '7534', korean: '하얀색', myanmar: 'အဖြူရောင်', english: 'White color', pos: 'noun', level: 'basic', synonyms: '흰색 (white)', antonyms: '검은색 (black)', examples: [
+  { korean: '하얀색 셔츠를 입었어요.', myanmar: 'အဖြူရောင်ရှပ်အင်္ကျီ ဝတ်ခဲ့တယ်။', english: 'I wore a white shirt.' } ] },
+{ id: '7535', korean: '하지만', myanmar: 'ဒါပေမယ့်', english: 'But/However', pos: 'conjunction', level: 'basic', synonyms: '그러나 (however), 그렇지만 (but)', antonyms: '그리고 (and)', examples: [
+  { korean: '비가 와요. 하지만 갈 거예요.', myanmar: 'မိုးရွာတယ်။ ဒါပေမယ့် သွားမယ်။', english: 'It\'s raining. However, I will go.' } ] },
+{ id: '7536', korean: '학생증', myanmar: 'ကျောင်းသားကတ်', english: 'Student ID card', pos: 'noun', level: 'basic', synonyms: '신분증 (ID card)', antonyms: 'None', examples: [
+  { korean: '도서관에서 학생증을 보여줬어요.', myanmar: 'စာကြည့်တိုက်မှာ ကျောင်းသားကတ် ပြခဲ့တယ်။', english: 'I showed my student ID at the library.' } ] },
+{ id: '7537', korean: '학원', myanmar: 'ကျူရှင်ကျောင်း', english: 'Academy/Cram school', pos: 'noun', level: 'basic', synonyms: '교습소 (training center)', antonyms: '학교 (school - regular)', examples: [
+  { korean: '피아노 학원에 다녀요.', myanmar: 'စန္ဒရားကျူရှင်ကျောင်း တက်တယ်။', english: 'I attend a piano academy.' } ] },
+{ id: '7538', korean: '한', myanmar: 'တစ်', english: 'One (native number)', pos: 'determiner', level: 'basic', synonyms: '하나 (one)', antonyms: '여러 (many)', examples: [
+  { korean: '사과 한 개 주세요.', myanmar: 'ပန်းသီး တစ်လုံး ပေးပါ။', english: 'Give me one apple.' } ] },
+{ id: '7539', korean: '한글날', myanmar: 'ဟန်ဂုလ်နေ့', english: 'Hangeul Day', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '10월 9일은 한글날이에요.', myanmar: '၁၀ လပိုင်း ၉ ရက်နေ့က ဟန်ဂုလ်နေ့ ဖြစ်တယ်။', english: 'October 9th is Hangeul Day.' } ] },
+{ id: '7540', korean: '한 번', myanmar: 'တစ်ခါ/တစ်ကြိမ်', english: 'Once', pos: 'adverb', level: 'basic', synonyms: '일회 (one time)', antonyms: '여러 번 (many times)', examples: [
+  { korean: '한 번 더 말해 주세요.', myanmar: 'တစ်ခါလောက် ထပ်ပြောပေးပါ။', english: 'Please say it one more time.' } ] },
+{ id: '7541', korean: '한국', myanmar: 'ကိုရီးယား', english: 'Korea', pos: 'noun', level: 'basic', synonyms: '대한민국 (South Korea)', antonyms: '외국 (foreign country)', examples: [
+  { korean: '한국에 가고 싶어요.', myanmar: 'ကိုရီးယားကို သွားချင်တယ်။', english: 'I want to go to Korea.' } ] },
+{ id: '7542', korean: '한국어', myanmar: 'ကိုရီးယားဘာသာစကား', english: 'Korean language', pos: 'noun', level: 'basic', synonyms: '한국말 (Korean speech)', antonyms: '외국어 (foreign language)', examples: [
+  { korean: '한국어를 공부해요.', myanmar: 'ကိုရီးယားဘာသာစကား လေ့လာတယ်။', english: 'I study Korean.' } ] },
+{ id: '7543', korean: '한식', myanmar: 'ကိုရီးယားအစားအစာ', english: 'Korean food', pos: 'noun', level: 'basic', synonyms: '한국 요리 (Korean cooking)', antonyms: '양식 (Western food), 중식 (Chinese food)', examples: [
+  { korean: '저는 한식을 좋아해요.', myanmar: 'ကျွန်တော်က ကိုရီးယားအစားအစာ ကြိုက်တယ်။', english: 'I like Korean food.' } ] },
+{ id: '7544', korean: '한테', myanmar: 'ဆီသို့/အား', english: 'To (person)', pos: 'particle', level: 'basic', synonyms: '에게 (to)', antonyms: '한테서 (from)', examples: [
+  { korean: '친구한테 편지를 썼어요.', myanmar: 'သူငယ်ချင်းဆီ စာရေးခဲ့တယ်။', english: 'I wrote a letter to my friend.' } ] },
+{ id: '7545', korean: '할인', myanmar: 'လျှော့ဈေး', english: 'Discount', pos: 'noun', level: 'basic', synonyms: '세일 (sale), 감가 (price reduction)', antonyms: '정가 (regular price)', examples: [
+  { korean: '할인 기간에 샀어요.', myanmar: 'လျှော့ဈေးကာလမှာ ဝယ်ခဲ့တယ်။', english: 'I bought it during the discount period.' } ] },
+{ id: '7546', korean: '함께', myanmar: 'အတူတူ', english: 'Together', pos: 'adverb', level: 'basic', synonyms: '같이 (together)', antonyms: '혼자 (alone)', examples: [
+  { korean: '가족과 함께 식사해요.', myanmar: 'မိသားစုနဲ့ အတူတူ ထမင်းစားတယ်။', english: 'I eat with my family.' } ] },
+{ id: '7547', korean: '합격하다', myanmar: 'အောင်မြင်သည် (စာမေးပွဲ)', english: 'To pass (exam)', pos: 'verb', level: 'intermediate', synonyms: '통과하다 (pass)', antonyms: '불합격하다 (fail)', examples: [
+  { korean: '시험에 합격했어요.', myanmar: 'စာမေးပွဲ အောင်မြင်ခဲ့တယ်။', english: 'I passed the exam.' } ] },
+{ id: '7548', korean: '해외', myanmar: 'ပြည်ပ', english: 'Overseas', pos: 'noun', level: 'intermediate', synonyms: '외국 (foreign country)', antonyms: '국내 (domestic)', examples: [
+  { korean: '해외 여행을 가요.', myanmar: 'ပြည်ပခရီး ထွက်တယ်။', english: 'I go on an overseas trip.' } ] },
+{ id: '7549', korean: '핸드폰', myanmar: 'လက်ကိုင်ဖုန်း', english: 'Mobile phone', pos: 'noun', level: 'basic', synonyms: '휴대전화 (cell phone), 스마트폰 (smartphone)', antonyms: '유선전화 (landline)', examples: [
+  { korean: '핸드폰 번호가 뭐예요?', myanmar: 'လက်ကိုင်ဖုန်းနံပါတ်က ဘာလဲ။', english: 'What is your mobile phone number?' } ] },
+{ id: '7550', korean: '행동', myanmar: 'အပြုအမူ', english: 'Action/Behavior', pos: 'noun', level: 'intermediate', synonyms: '동작 (movement), 행위 (act)', antonyms: '생각 (thought)', examples: [
+  { korean: '바른 행동을 하세요.', myanmar: 'မှန်ကန်တဲ့ အပြုအမူ လုပ်ပါ။', english: 'Behave correctly.' } ] },
+
+// ===== ㅎ CONSONANT WORDS - CATEGORY 2: NOUNS & DAILY OBJECTS (7551-7600) =====
+{ id: '7551', korean: '향수', myanmar: 'ရေမွှေး', english: 'Perfume', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: '악취 (bad smell)', examples: [
+  { korean: '향수를 뿌렸어요.', myanmar: 'ရေမွှေး ဆွတ်ခဲ့တယ်။', english: 'I sprayed perfume.' } ] },
+{ id: '7552', korean: '허락', myanmar: 'ခွင့်ပြုချက်', english: 'Permission', pos: 'noun', level: 'intermediate', synonyms: '승낙 (consent), 허가 (approval)', antonyms: '거절 (refusal), 금지 (prohibition)', examples: [
+  { korean: '부모님의 허락을 받았어요.', myanmar: 'မိဘရဲ့ ခွင့်ပြုချက် ရခဲ့တယ်။', english: 'I received my parents\' permission.' } ] },
+{ id: '7553', korean: '현금', myanmar: 'ငွေသား', english: 'Cash', pos: 'noun', level: 'basic', synonyms: '돈 (money)', antonyms: '카드 (card), 수표 (check)', examples: [
+  { korean: '현금으로 계산했어요.', myanmar: 'ငွေသားနဲ့ ရှင်းခဲ့တယ်။', english: 'I paid in cash.' } ] },
+{ id: '7554', korean: '형', myanmar: 'အစ်ကို', english: 'Older brother', pos: 'noun', level: 'basic', synonyms: '형님 (older brother - polite)', antonyms: '동생 (younger brother)', examples: [
+  { korean: '형이 도와줬어요.', myanmar: 'အစ်ကိုက ကူညီပေးခဲ့တယ်။', english: 'My older brother helped me.' } ] },
+{ id: '7555', korean: '호랑이', myanmar: 'ကျား', english: 'Tiger', pos: 'noun', level: 'basic', synonyms: '범 (tiger)', antonyms: 'None', examples: [
+  { korean: '동물원에서 호랑이를 봤어요.', myanmar: 'တိရစ္ဆာန်ရုံမှာ ကျားကို တွေ့ခဲ့တယ်။', english: 'I saw a tiger at the zoo.' } ] },
+{ id: '7556', korean: '호텔', myanmar: 'ဟိုတယ်', english: 'Hotel', pos: 'noun', level: 'basic', synonyms: '숙소 (lodging)', antonyms: 'None', examples: [
+  { korean: '호텔을 예약했어요.', myanmar: 'ဟိုတယ် ကြိုတင်မှာယူခဲ့တယ်။', english: 'I booked a hotel.' } ] },
+{ id: '7557', korean: '혼자', myanmar: 'တစ်ယောက်တည်း', english: 'Alone', pos: 'noun', level: 'basic', synonyms: '단독 (solo)', antonyms: '같이 (together)', examples: [
+  { korean: '집에 혼자 있어요.', myanmar: 'အိမ်မှာ တစ်ယောက်တည်း ရှိတယ်။', english: 'I am home alone.' } ] },
+{ id: '7558', korean: '홈페이지', myanmar: 'ဝက်ဘ်ဆိုက်စာမျက်နှာ', english: 'Homepage', pos: 'noun', level: 'basic', synonyms: '웹사이트 (website)', antonyms: 'None', examples: [
+  { korean: '회사 홈페이지를 확인하세요.', myanmar: 'ကုမ္ပဏီ ဝက်ဘ်ဆိုက်စာမျက်နှာကို စစ်ဆေးပါ။', english: 'Check the company homepage.' } ] },
+{ id: '7559', korean: '홍차', myanmar: 'လက်ဖက်ရည် (အနီ)', english: 'Black tea', pos: 'noun', level: 'basic', synonyms: 'None', antonyms: '녹차 (green tea)', examples: [
+  { korean: '따뜻한 홍차를 마셔요.', myanmar: 'နွေးတဲ့ လက်ဖက်ရည်အနီ သောက်တယ်။', english: 'I drink warm black tea.' } ] },
+{ id: '7560', korean: '화가', myanmar: 'ပန်းချီဆရာ', english: 'Painter/Artist', pos: 'noun', level: 'intermediate', synonyms: '미술가 (artist)', antonyms: 'None', examples: [
+  { korean: '그는 유명한 화가예요.', myanmar: 'သူက နာမည်ကြီး ပန်းချီဆရာပါ။', english: 'He is a famous painter.' } ] },
+{ id: '7561', korean: '화면', myanmar: 'မျက်နှာပြင်', english: 'Screen', pos: 'noun', level: 'basic', synonyms: '스크린 (screen), 모니터 (monitor)', antonyms: 'None', examples: [
+  { korean: '컴퓨터 화면이 안 나와요.', myanmar: 'ကွန်ပျူတာမျက်နှာပြင် မပေါ်ဘူး။', english: 'The computer screen is not working.' } ] },
+{ id: '7562', korean: '화분', myanmar: 'ပန်းအိုး', english: 'Flowerpot', pos: 'noun', level: 'basic', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '베란다에 화분이 많아요.', myanmar: 'ဝရန်တာမှာ ပန်းအိုးတွေ များတယ်။', english: 'There are many flowerpots on the veranda.' } ] },
+{ id: '7563', korean: '화요일', myanmar: 'အင်္ဂါနေ့', english: 'Tuesday', pos: 'noun', level: 'basic', synonyms: '화 (Tue)', antonyms: 'None', examples: [
+  { korean: '화요일마다 회의가 있어요.', myanmar: 'အင်္ဂါနေ့တိုင်း အစည်းအဝေး ရှိတယ်။', english: 'There is a meeting every Tuesday.' } ] },
+{ id: '7564', korean: '화장품', myanmar: 'မိတ်ကပ်ပစ္စည်း', english: 'Cosmetics', pos: 'noun', level: 'basic', synonyms: '메이크업 제품 (makeup products)', antonyms: 'None', examples: [
+  { korean: '화장품 가게에 갔어요.', myanmar: 'မိတ်ကပ်ပစ္စည်းဆိုင် သွားခဲ့တယ်။', english: 'I went to the cosmetics store.' } ] },
+{ id: '7565', korean: '환경', myanmar: 'ပတ်ဝန်းကျင်', english: 'Environment', pos: 'noun', level: 'intermediate', synonyms: '주변 (surroundings)', antonyms: 'None', examples: [
+  { korean: '환경 보호가 중요해요.', myanmar: 'ပတ်ဝန်းကျင် ထိန်းသိမ်းရေးက အရေးကြီးတယ်။', english: 'Environmental protection is important.' } ] },
+{ id: '7566', korean: '환자', myanmar: 'လူနာ', english: 'Patient', pos: 'noun', level: 'basic', synonyms: '병자 (sick person)', antonyms: '의사 (doctor), 간호사 (nurse)', examples: [
+  { korean: '의사가 환자를 치료해요.', myanmar: 'ဆရာဝန်က လူနာကို ကုသတယ်။', english: 'The doctor treats the patient.' } ] },
+{ id: '7567', korean: '활동', myanmar: 'လှုပ်ရှားမှု', english: 'Activity', pos: 'noun', level: 'intermediate', synonyms: '움직임 (movement)', antonyms: '휴식 (rest), 정지 (stop)', examples: [
+  { korean: '동아리 활동을 해요.', myanmar: 'ကလပ်အသင်း လှုပ်ရှားမှု လုပ်တယ်။', english: 'I do club activities.' } ] },
+{ id: '7568', korean: '회사원', myanmar: 'ကုမ္ပဏီဝန်ထမ်း', english: 'Office worker/Company employee', pos: 'noun', level: 'basic', synonyms: '직장인 (office worker)', antonyms: '백수 (unemployed)', examples: [
+  { korean: '아버지는 회사원이세요.', myanmar: 'အဖေက ကုမ္ပဏီဝန်ထမ်း ဖြစ်ပါတယ်။', english: 'My father is an office worker.' } ] },
+{ id: '7569', korean: '회의실', myanmar: 'အစည်းအဝေးခန်း', english: 'Conference room', pos: 'noun', level: 'basic', synonyms: '미팅룸 (meeting room)', antonyms: 'None', examples: [
+  { korean: '회의실에서 기다리세요.', myanmar: 'အစည်းအဝေးခန်းမှာ စောင့်ပါ။', english: 'Please wait in the conference room.' } ] },
+{ id: '7570', korean: '회장', myanmar: 'ဥက္ကဋ္ဌ', english: 'Chairman/President', pos: 'noun', level: 'intermediate', synonyms: '대표 (representative)', antonyms: '회원 (member)', examples: [
+  { korean: '학생회장 선거가 있어요.', myanmar: 'ကျောင်းသားဥက္ကဋ္ဌ ရွေးကောက်ပွဲ ရှိတယ်။', english: 'There is a student council president election.' } ] },
+{ id: '7571', korean: '후배', myanmar: 'ဂျူနီယာ/နောက်လိုက်', english: 'Junior', pos: 'noun', level: 'basic', synonyms: '아랫사람 (subordinate)', antonyms: '선배 (senior)', examples: [
+  { korean: '후배에게 밥을 사줬어요.', myanmar: 'ဂျူနီယာကို ထမင်းဝယ်ကျွေးခဲ့တယ်။', english: 'I bought a meal for my junior.' } ] },
+{ id: '7572', korean: '휴대전화', myanmar: 'မိုဘိုင်းဖုန်း', english: 'Cell phone', pos: 'noun', level: 'basic', synonyms: '핸드폰 (handphone), 스마트폰 (smartphone)', antonyms: '유선전화 (landline)', examples: [
+  { korean: '휴대전화를 잃어버렸어요.', myanmar: 'မိုဘိုင်းဖုန်း ပျောက်သွားတယ်။', english: 'I lost my cell phone.' } ] },
+{ id: '7573', korean: '휴지', myanmar: 'တစ်ရှူး/စက္ကူ', english: 'Tissue/Toilet paper', pos: 'noun', level: 'basic', synonyms: '티슈 (tissue)', antonyms: 'None', examples: [
+  { korean: '휴지로 손을 닦으세요.', myanmar: 'တစ်ရှူးနဲ့ လက်သုတ်ပါ။', english: 'Wipe your hands with tissue.' } ] },
+{ id: '7574', korean: '휴지통', myanmar: 'အမှိုက်ပုံး', english: 'Trash can/Wastebasket', pos: 'noun', level: 'basic', synonyms: '쓰레기통 (garbage can)', antonyms: 'None', examples: [
+  { korean: '쓰레기는 휴지통에 버리세요.', myanmar: 'အမှိုက်ကို အမှိုက်ပုံးထဲ ပစ်ပါ။', english: 'Throw trash in the wastebasket.' } ] },
+{ id: '7575', korean: '희망', myanmar: 'မျှော်လင့်ချက်', english: 'Hope', pos: 'noun', level: 'intermediate', synonyms: '소망 (wish), 기대 (expectation)', antonyms: '절망 (despair)', examples: [
+  { korean: '희망을 잃지 마세요.', myanmar: 'မျှော်လင့်ချက် မဆုံးရှုံးပါနဲ့။', english: 'Do not lose hope.' } ] },
+{ id: '7576', korean: '흰색', myanmar: 'အဖြူရောင်', english: 'White color', pos: 'noun', level: 'basic', synonyms: '하얀색 (white)', antonyms: '검은색 (black)', examples: [
+  { korean: '저는 흰색을 좋아해요.', myanmar: 'ကျွန်တော် အဖြူရောင်ကို ကြိုက်တယ်။', english: 'I like white color.' } ] },
+{ id: '7577', korean: '힘', myanmar: 'အား/ခွန်အား', english: 'Strength/Power', pos: 'noun', level: 'basic', synonyms: '파워 (power), 기운 (energy)', antonyms: '약함 (weakness)', examples: [
+  { korean: '그는 힘이 세요.', myanmar: 'သူက အားသန်တယ်။', english: 'He is strong.' } ] },
+{ id: '7578', korean: '하마', myanmar: 'ရေမြင်း', english: 'Hippo', pos: 'noun', level: 'basic', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '동물원에서 하마를 봤어요.', myanmar: 'တိရစ္ဆာန်ရုံမှာ ရေမြင်းကို တွေ့ခဲ့တယ်။', english: 'I saw a hippo at the zoo.' } ] },
+{ id: '7579', korean: '학비', myanmar: 'ကျောင်းလခ', english: 'Tuition fee', pos: 'noun', level: 'intermediate', synonyms: '등록금 (registration fee)', antonyms: '장학금 (scholarship - opposite concept)', examples: [
+  { korean: '학비를 벌기 위해 아르바이트를 해요.', myanmar: 'ကျောင်းလခရှာဖို့ အချိန်ပိုင်းအလုပ် လုပ်တယ်။', english: 'I do a part-time job to earn tuition fees.' } ] },
+{ id: '7580', korean: '학용품', myanmar: 'ကျောင်းသုံးပစ္စည်း', english: 'School supplies', pos: 'noun', level: 'basic', synonyms: '문구 (stationery)', antonyms: 'None', examples: [
+  { korean: '문방구에서 학용품을 샀어요.', myanmar: 'စာရေးကိရိယာဆိုင်မှာ ကျောင်းသုံးပစ္စည်း ဝယ်ခဲ့တယ်။', english: 'I bought school supplies at the stationery store.' } ] },
+{ id: '7581', korean: '한문', myanmar: 'တရုတ်စာလုံး (ကိုရီးယားသုံး)', english: 'Chinese characters/writing', pos: 'noun', level: 'intermediate', synonyms: '한자 (Chinese character)', antonyms: '한글 (Hangeul)', examples: [
+  { korean: '학교에서 한문을 배워요.', myanmar: 'ကျောင်းမှာ တရုတ်စာလုံး သင်တယ်။', english: 'I learn Chinese characters at school.' } ] },
+{ id: '7582', korean: '한숨', myanmar: 'သက်ပြင်း', english: 'Sigh', pos: 'noun', level: 'intermediate', synonyms: '탄식 (groan)', antonyms: '웃음 (laugh)', examples: [
+  { korean: '걱정이 되어서 한숨을 쉬었어요.', myanmar: 'စိတ်ပူလို့ သက်ပြင်းချခဲ့တယ်။', english: 'I sighed because I was worried.' } ] },
+{ id: '7583', korean: '한자', myanmar: 'တရုတ်စာလုံး', english: 'Chinese character', pos: 'noun', level: 'intermediate', synonyms: '한문 (Chinese writing)', antonyms: '한글 (Korean alphabet)', examples: [
+  { korean: '이름을 한자로 쓸 수 있어요.', myanmar: 'နာမည်ကို တရုတ်စာလုံးနဲ့ ရေးနိုင်တယ်။', english: 'I can write my name in Chinese characters.' } ] },
+{ id: '7584', korean: '할인점', myanmar: 'လျှော့ဈေးဆိုင်/ကုန်တိုက်', english: 'Discount store/Mart', pos: 'noun', level: 'intermediate', synonyms: '마트 (mart)', antonyms: '백화점 (department store)', examples: [
+  { korean: '할인점에서 장을 봤어요.', myanmar: 'လျှော့ဈေးဆိုင်မှာ ဈေးဝယ်ခဲ့တယ်။', english: 'I shopped at the discount store.' } ] },
+{ id: '7585', korean: '함', myanmar: 'သေတ္တာ', english: 'Box/Case', pos: 'noun', level: 'intermediate', synonyms: '상자 (box)', antonyms: 'None', examples: [
+  { korean: '보석함에 반지를 넣었어요.', myanmar: 'ရတနာသေတ္တာထဲ လက်စွပ် ထည့်ခဲ့တယ်။', english: 'I put the ring in the jewelry box.' } ] },
+{ id: '7586', korean: '합계', myanmar: 'စုစုပေါင်း', english: 'Total/Sum', pos: 'noun', level: 'intermediate', synonyms: '총합 (grand total)', antonyms: '부분 (part)', examples: [
+  { korean: '비용의 합계를 냈어요.', myanmar: 'ကုန်ကျစရိတ် စုစုပေါင်း တွက်ခဲ့တယ်။', english: 'I calculated the total cost.' } ] },
+{ id: '7587', korean: '항구', myanmar: 'ဆိပ်ကမ်း', english: 'Harbor/Port', pos: 'noun', level: 'intermediate', synonyms: '포구 (port)', antonyms: '공항 (airport)', examples: [
+  { korean: '배가 항구에 도착했어요.', myanmar: 'သင်္ဘော ဆိပ်ကမ်းကို ရောက်ခဲ့တယ်။', english: 'The ship arrived at the harbor.' } ] },
+{ id: '7588', korean: '해결', myanmar: 'ဖြေရှင်းခြင်း', english: 'Solution/Resolution', pos: 'noun', level: 'intermediate', synonyms: '해소 (settlement)', antonyms: '문제 (problem)', examples: [
+  { korean: '문제 해결을 위해 노력해요.', myanmar: 'ပြဿနာဖြေရှင်းဖို့ ကြိုးစားတယ်။', english: 'I try to solve the problem.' } ] },
+{ id: '7589', korean: '해돋이', myanmar: 'နေထွက်ခြင်း', english: 'Sunrise', pos: 'noun', level: 'intermediate', synonyms: '일출 (sunrise)', antonyms: '해넘이 (sunset)', examples: [
+  { korean: '새해 첫날 해돋이를 봤어요.', myanmar: 'နှစ်သစ်ကူးပထမနေ့မှာ နေထွက်တာ ကြည့်ခဲ့တယ်။', english: 'I saw the sunrise on New Year\'s Day.' } ] },
+{ id: '7590', korean: '해물', myanmar: 'ပင်လယ်စာ', english: 'Seafood', pos: 'noun', level: 'basic', synonyms: '해산물 (seafood)', antonyms: '육류 (meat)', examples: [
+  { korean: '해물 파전을 먹었어요.', myanmar: 'ပင်လယ်စာပါဂျုံ (ပင်လယ်စာကြက်သွန်မြိတ်မုန့်) စားခဲ့တယ်။', english: 'I ate seafood pajeon.' } ] },
+{ id: '7591', korean: '해수욕장', myanmar: 'ကမ်းခြေအပန်းဖြေစခန်း', english: 'Beach', pos: 'noun', level: 'basic', synonyms: '해변 (beach)', antonyms: '산 (mountain)', examples: [
+  { korean: '여름에 해수욕장에 가요.', myanmar: 'နွေရာသီမှာ ကမ်းခြေအပန်းဖြေစခန်း သွားတယ်။', english: 'I go to the beach in summer.' } ] },
+{ id: '7592', korean: '핸드백', myanmar: 'လက်ဆွဲအိတ်', english: 'Handbag', pos: 'noun', level: 'basic', synonyms: '가방 (bag)', antonyms: '배낭 (backpack)', examples: [
+  { korean: '새 핸드백을 샀어요.', myanmar: 'လက်ဆွဲအိတ်အသစ် ဝယ်ခဲ့တယ်။', english: 'I bought a new handbag.' } ] },
+{ id: '7593', korean: '행동', myanmar: 'အပြုအမူ', english: 'Behavior/Action', pos: 'noun', level: 'basic', synonyms: '태도 (attitude)', antonyms: '생각 (thought)', examples: [
+  { korean: '그의 행동은 예의 발라요.', myanmar: 'သူ့ရဲ့အပြုအမူက ယဉ်ကျေးတယ်။', english: 'His behavior is polite.' } ] },
+{ id: '7594', korean: '행사', myanmar: 'ပွဲလမ်းသဘင်/အခမ်းအနား', english: 'Event/Function', pos: 'noun', level: 'intermediate', synonyms: '이벤트 (event)', antonyms: 'None', examples: [
+  { korean: '학교 행사에 참여했어요.', myanmar: 'ကျောင်းအခမ်းအနားမှာ ပါဝင်ခဲ့တယ်။', english: 'I participated in the school event.' } ] },
+{ id: '7595', korean: '행운', myanmar: 'ကံကောင်းခြင်း', english: 'Good luck/Fortune', pos: 'noun', level: 'basic', synonyms: '운 (luck)', antonyms: '불운 (bad luck)', examples: [
+  { korean: '행운을 빌어요.', myanmar: 'ကံကောင်းပါစေ။', english: 'Good luck.' } ] },
+{ id: '7596', korean: '허리띠', myanmar: 'ခါးပတ်', english: 'Belt', pos: 'noun', level: 'basic', synonyms: '벨트 (belt)', antonyms: 'None', examples: [
+  { korean: '허리띠를 맸어요.', myanmar: 'ခါးပတ် ပတ်ခဲ့တယ်။', english: 'I fastened my belt.' } ] },
+{ id: '7597', korean: '현관', myanmar: 'အိမ်ရှေ့ဝင်ပေါက်', english: 'Entrance/Porch', pos: 'noun', level: 'basic', synonyms: '입구 (entrance)', antonyms: '출구 (exit)', examples: [
+  { korean: '현관에서 신발을 벗으세요.', myanmar: 'အိမ်ရှေ့ဝင်ပေါက်မှာ ဖိနပ်ချွတ်ပါ။', english: 'Please take off your shoes at the entrance.' } ] },
+{ id: '7598', korean: '형광등', myanmar: 'မီးချောင်း', english: 'Fluorescent light', pos: 'noun', level: 'intermediate', synonyms: '조명 (lighting)', antonyms: '백열등 (incandescent lamp)', examples: [
+  { korean: '형광등을 갈았어요.', myanmar: 'မီးချောင်း လဲခဲ့တယ်။', english: 'I changed the fluorescent light.' } ] },
+{ id: '7599', korean: '형식', myanmar: 'ပုံစံ/နည်းစနစ်', english: 'Form/Format', pos: 'noun', level: 'intermediate', synonyms: '양식 (style)', antonyms: '내용 (content)', examples: [
+  { korean: '편지 쓰는 형식이 있어요.', myanmar: 'စာရေးတဲ့ပုံစံ ရှိတယ်။', english: 'There is a format for writing letters.' } ] },
+{ id: '7600', korean: '혜택', myanmar: 'အကျိုးခံစားခွင့်', english: 'Benefit', pos: 'noun', level: 'intermediate', synonyms: '이익 (profit)', antonyms: '손해 (loss)', examples: [
+  { korean: '회원 가입 혜택이 많아요.', myanmar: 'အသင်းဝင် အကျိုးခံစားခွင့် များတယ်။', english: 'There are many benefits to joining the membership.' } ] },
+
+
+
+
+
+
+
 
 
 
