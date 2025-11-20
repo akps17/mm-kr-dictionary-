@@ -47,23 +47,19 @@ const THEME_OPTIONS: ThemeOption[] = [
     descKo: '어두운 테마를 항상 사용',
     descMy: 'အမှောင်ပုံစံကို အမြဲတမ်းသုံးမည်',
   },
-  {
-    value: 'system',
-    icon: 'phone-portrait-outline',
-    color: '#10B981',
-    nameEn: 'System Default',
-    nameKo: '시스템 설정',
-    nameMy: 'စနစ်အတိုင်း',
-    descEn: 'Follow device settings',
-    descKo: '기기 설정을 따름',
-    descMy: 'သင့်ဖုန်း၏ အရောင်အသွေးကို လိုက်နာမည်',
-  },
 ];
 
 export function ThemeScreen() {
   const C = useThemedColors();
   const { settings, updateSetting } = useSettings();
   const labels = i18nLabels[settings.uiLanguage];
+
+  // Migrate 'system' theme to 'light' if user has it saved
+  React.useEffect(() => {
+    if (settings.theme === 'system') {
+      updateSetting('theme', 'light');
+    }
+  }, [settings.theme, updateSetting]);
 
   const getThemeName = (option: ThemeOption) => {
     if (settings.uiLanguage === 'korean') return option.nameKo;
@@ -200,12 +196,6 @@ export function ThemeScreen() {
                   {settings.uiLanguage === 'myanmar' ? 'အမှောင်' : settings.uiLanguage === 'korean' ? '다크' : 'Dark'}
                 </Text>
               </View>
-              <View style={[styles.previewItem, { backgroundColor: C.surface, borderColor: C.border }]}>
-                <Ionicons name="contrast" size={18} color={C.brand} />
-                <Text numberOfLines={1} style={{ fontSize: 10, color: C.textSecondary, marginTop: 6, fontWeight: '500' }}>
-                  {settings.uiLanguage === 'myanmar' ? 'စနစ်' : settings.uiLanguage === 'korean' ? '시스템' : 'Auto'}
-                </Text>
-              </View>
             </View>
             
             <Text style={{ fontSize: 13, color: C.textSecondary, textAlign: 'center', lineHeight: 22, paddingHorizontal: 8 }}>
@@ -221,27 +211,6 @@ export function ThemeScreen() {
           </View>
         </View>
 
-        {/* Info Card */}
-        <View style={[styles.infoCard, { backgroundColor: C.surface, borderColor: C.border }]}>
-          <View style={{ flexDirection: 'row', alignItems: 'flex-start' }}>
-            <Ionicons name="information-circle" size={20} color={C.brand} style={{ marginRight: 10, marginTop: 2 }} />
-            <View style={{ flex: 1 }}>
-              <Text style={[
-                styles.infoText,
-                { 
-                  color: C.textSecondary,
-                  fontFamily: settings.uiLanguage === 'myanmar' ? 'NotoSansMyanmar_400Regular' : undefined,
-                }
-              ]}>
-                {settings.uiLanguage === 'myanmar' 
-                  ? 'စနစ်အတိုင်း ရွေးချယ်ပါက သင့်ဖုန်း၏ Dark Mode ဆက်တင်ကို အလိုအလျောက် လိုက်နာမည်ဖြစ်သည်။'
-                  : settings.uiLanguage === 'korean'
-                  ? '시스템 설정을 선택하면 기기의 다크 모드 설정을 자동으로 따릅니다.'
-                  : 'System setting will automatically adapt to your device\'s dark mode preference.'}
-              </Text>
-            </View>
-          </View>
-        </View>
       </ScrollView>
     </SafeAreaView>
   );

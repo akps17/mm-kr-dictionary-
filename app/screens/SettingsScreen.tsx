@@ -124,7 +124,7 @@ export function SettingsScreen() {
           </Text>
           <Text style={{ fontSize: 13, color: C.textSecondary, marginTop: 4, textAlign: 'center' }}>
             {settings.uiLanguage === 'myanmar' 
-              ? 'အက်ပ်ကို သင့်အလိုက် ပြင်ဆင်ပါ'
+              ? 'အက်ပ်ကို သင့်စိတ်ကြိုက် ပြင်ဆင်ပါ'
               : settings.uiLanguage === 'korean'
               ? '앱을 원하는 대로 설정하세요'
               : 'Customize your app experience'}
@@ -133,7 +133,7 @@ export function SettingsScreen() {
 
         {/* Language Section */}
         <Section 
-          title={settings.uiLanguage === 'myanmar' ? 'ဘာသာစကား' : settings.uiLanguage === 'korean' ? '언어' : 'Language'}
+          title={settings.uiLanguage === 'myanmar' ? 'App ဘာသာစကား ရွေးချယ်ပါ' : settings.uiLanguage === 'korean' ? '언어' : 'Language'}
           icon="language"
         >
           {(['myanmar', 'korean', 'english'] as AppLanguage[]).map((lang) => (
