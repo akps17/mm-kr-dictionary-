@@ -31,7 +31,7 @@
       "favicon": "./assets/dictionary_icon.png",
       "bundler": "metro",
       "name": "Myanmar Korean Dictionary",
-      "shortName": "MM-KR Dict",
+      "shortName": "MM-KR Dictionary",
       "lang": "en",
       "scope": "/",
       "startUrl": "/",

@@ -100,7 +100,10 @@ function HomeStack() {
       <Stack.Screen 
         name="HomeSearch" 
         component={HomeSearchScreen} 
-        options={{ headerShown: false }}
+        options={{ 
+          headerShown: false,
+          title: 'Myanmar Korean Dictionary',
+        }}
       />
       <Stack.Screen 
         name="WordDetail" 
@@ -151,6 +154,14 @@ function HomeSearchScreen({ navigation }: { navigation: any }) {
   const [queryText, setQueryText] = useState<string>('');
   const { settings } = useSettings();
   const { approvedWords } = useDictionarySync();
+  
+  // Set document title for web (appears in dock/home screen)
+  React.useEffect(() => {
+    if (Platform.OS === 'web' && typeof document !== 'undefined') {
+      document.title = 'Myanmar Korean Dictionary';
+    }
+  }, []);
+  
   // Allow external screens (VoiceToText) to populate query via a temp global
   React.useEffect(() => {
     (global as any).setSearchQuery = (text: string) => setQueryText(text);
