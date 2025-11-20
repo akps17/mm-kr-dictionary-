@@ -18,6 +18,7 @@ import {
   Image,
   TextInput,
   ActivityIndicator,
+  Platform,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Audio } from 'expo-av';
@@ -835,6 +836,12 @@ function ProtectedTranslateScreen({ navigation }: any) {
 
 function AppNavigator() {
   const C = useThemedColors();
+  const { settings } = useSettings();
+  
+  // For web in light mode, use black for drawer button; otherwise use theme color
+  const drawerButtonColor = Platform.OS === 'web' && settings.theme === 'light' 
+    ? '#111827' // Black for web light mode
+    : C.textPrimary;
   
   return (
     <Drawer.Navigator 
@@ -856,7 +863,7 @@ function AppNavigator() {
         headerStyle: {
           backgroundColor: C.surface,
         },
-        headerTintColor: C.textPrimary,
+        headerTintColor: drawerButtonColor,
       }}
     >
               <Drawer.Screen name="Home" component={HomeStack} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="home-outline" size={size} color={color} />) }} />
