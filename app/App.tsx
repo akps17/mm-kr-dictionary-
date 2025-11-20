@@ -81,8 +81,10 @@ function HomeStack() {
   const { settings } = useSettings();
   
   // For web, explicitly set header button color based on theme for Home tab
+  // Handle 'system' theme as fallback (should be migrated, but just in case)
+  const effectiveTheme = settings.theme === 'system' ? 'light' : settings.theme;
   const headerButtonColor = Platform.OS === 'web'
-    ? (settings.theme === 'light' ? '#111827' : '#F3F4F6') // Black for light, white for dark
+    ? (effectiveTheme === 'light' ? '#111827' : '#F3F4F6') // Black for light, white for dark
     : C.textPrimary; // For mobile, use theme color
   
   return (
@@ -846,8 +848,10 @@ function AppNavigator() {
   
   // For web, explicitly set drawer button color based on theme
   // Light mode: black, Dark mode: white
+  // Handle 'system' theme as fallback (should be migrated, but just in case)
+  const effectiveTheme = settings.theme === 'system' ? 'light' : settings.theme;
   const drawerButtonColor = Platform.OS === 'web'
-    ? (settings.theme === 'light' ? '#111827' : '#F3F4F6') // Black for light, white for dark
+    ? (effectiveTheme === 'light' ? '#111827' : '#F3F4F6') // Black for light, white for dark
     : C.textPrimary; // For mobile, use theme color
   
   return (

@@ -8,7 +8,7 @@ type SettingsContextType = {
   updateSetting: <K extends keyof AppSettings>(key: K, value: AppSettings[K]) => void;
 };
 
-const defaultSettings: AppSettings = { uiLanguage: 'myanmar', sortBy: 'korean', fontSize: 'default', theme: 'system' };
+const defaultSettings: AppSettings = { uiLanguage: 'myanmar', sortBy: 'korean', fontSize: 'default', theme: 'light' };
 
 const SettingsContext = React.createContext<SettingsContextType>({
   settings: defaultSettings,
@@ -22,7 +22,14 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
 
   React.useEffect(() => {
     loadSettings()
-      .then((s) => setSettings(s))
+      .then((s) => {
+        // Migrate 'system' theme to 'light' if present
+        if (s.theme === 'system') {
+          s.theme = 'light';
+          saveSettings(s).catch(() => undefined);
+        }
+        setSettings(s);
+      })
       .finally(() => setReady(true));
   }, []);
 
