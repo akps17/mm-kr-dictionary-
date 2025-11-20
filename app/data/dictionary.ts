@@ -21067,7 +21067,224 @@ export const dictionaryEntries: DictionaryEntry[] = [
 { id: '7899', korean: '화초', myanmar: 'ပန်းပင်', english: 'Flowering plant', pos: 'noun', level: 'basic', synonyms: '꽃 (flower)', antonyms: '잡초 (weed)', examples: [
   { korean: '베란다에서 화초를 키워요.', myanmar: 'ဝရန်တာမှာ ပန်းပင် စိုက်ပျိုးတယ်။', english: 'I grow flowering plants on the veranda.' } ] },
 { id: '7900', korean: '화학', myanmar: 'ဓာတုဗေဒ', english: 'Chemistry', pos: 'noun', level: 'intermediate', synonyms: '과학 (science)', antonyms: '물리학 (physics)', examples: [
-  { korean: '학교에서 화학을 배워요.', myanmar: 'ကျောင်းမှာ ဓာတုဗေဒ သင်ယူတယ်။', english: 'I learn chemistry at school.' } ] }
+  { korean: '학교에서 화학을 배워요.', myanmar: 'ကျောင်းမှာ ဓာတုဗေဒ သင်ယူတယ်။', english: 'I learn chemistry at school.' } ] },
+
+
+
+
+
+
+
+
+
+  //////////
+/////////
+ ///////
+ ///////
+ // .       ㄲㄲㄲㄲ ㄲ   ㄲ   ㄲ ㄲㄲ  300 consontant words (pre-intermediate) ////////
+ // ===== ㄲ CONSONANT WORDS - CATEGORY 3: ESSENTIAL VERBS & ADJECTIVES (7901-7970) =====
+{ id: '7901', korean: '깨끗하다', myanmar: 'သန့်ရှင်းသည်', english: 'To be clean', pos: 'adjective', level: 'basic', synonyms: '청결하다 (clean)', antonyms: '더럽다 (dirty)', examples: [
+  { korean: '방이 아주 깨끗해요.', myanmar: 'အခန်းက အရမ်းသန့်ရှင်းတယ်။', english: 'The room is very clean.' } ] },
+{ id: '7902', korean: '끝나다', myanmar: 'ပြီးဆုံးသည်', english: 'To finish/end (intransitive)', pos: 'verb', level: 'basic', synonyms: '마치다 (finish)', antonyms: '시작하다 (start)', examples: [
+  { korean: '수업이 곧 끝나요.', myanmar: 'စာသင်ချိန် မကြာမီ ပြီးဆုံးမယ်။', english: 'The class will finish soon.' } ] },
+{ id: '7903', korean: '끝내다', myanmar: 'အဆုံးသတ်သည်', english: 'To finish/complete (transitive)', pos: 'verb', level: 'basic', synonyms: '완료하다 (complete)', antonyms: '시작하다 (start)', examples: [
+  { korean: '숙제를 빨리 끝냈어요.', myanmar: 'အိမ်စာကို မြန်မြန် အဆုံးသတ်ခဲ့တယ်။', english: 'I finished my homework quickly.' } ] },
+{ id: '7904', korean: '까맣다', myanmar: 'မည်းနက်သည်', english: 'To be black/jet-black', pos: 'adjective', level: 'basic', synonyms: '검다 (black)', antonyms: '하얗다 (white)', examples: [
+  { korean: '밤하늘이 까매요.', myanmar: 'ညကောင်းကင်က မည်းနက်နေတယ်။', english: 'The night sky is jet-black.' } ] },
+{ id: '7905', korean: '깜깜하다', myanmar: 'မှောင်မိုက်သည်', english: 'To be very dark', pos: 'adjective', level: 'basic', synonyms: '어둡다 (dark)', antonyms: '환하다 (bright)', examples: [
+  { korean: '밖이 깜깜해서 아무것도 안 보여요.', myanmar: 'အပြင်က မှောင်မိုက်လို့ ဘာမှမမြင်ရဘူး။', english: 'It\'s so dark outside I can\'t see anything.' } ] },
+{ id: '7906', korean: '꼼꼼하다', myanmar: 'စေ့စပ်သေချာသည်', english: 'To be meticulous', pos: 'adjective', level: 'intermediate', synonyms: '세심하다 (careful)', antonyms: '덜렁대다 (clumsy)', examples: [
+  { korean: '그는 성격이 꼼꼼해요.', myanmar: 'သူက စရိုက် စေ့စပ်သေချာတယ်။', english: 'He has a meticulous personality.' } ] },
+{ id: '7907', korean: '깔끔하다', myanmar: 'သပ်ရပ်သည်', english: 'To be neat/tidy', pos: 'adjective', level: 'intermediate', synonyms: '단정하다 (neat)', antonyms: '지저분하다 (messy)', examples: [
+  { korean: '옷차림이 깔끔해요.', myanmar: 'ဝတ်စားဆင်ယင်မှုက သပ်ရပ်တယ်။', english: 'His outfit is neat.' } ] },
+{ id: '7908', korean: '깜빡하다', myanmar: 'မေ့လျော့သည်', english: 'To forget momentarily/slip one\'s mind', pos: 'verb', level: 'intermediate', synonyms: '잊다 (forget)', antonyms: '기억하다 (remember)', examples: [
+  { korean: '지갑 가져오는 것을 깜빡했어요.', myanmar: 'ပိုက်ဆံအိတ်ယူလာဖို့ မေ့လျော့သွားတယ်။', english: 'I forgot to bring my wallet.' } ] },
+{ id: '7909', korean: '깨뜨리다', myanmar: 'ခွဲသည်/ဖျက်ဆီးသည်', english: 'To break/shatter', pos: 'verb', level: 'intermediate', synonyms: '부수다 (break)', antonyms: '만들다 (make)', examples: [
+  { korean: '그릇을 깨뜨렸어요.', myanmar: 'ပန်းကန်ကို ခွဲလိုက်တယ်။', english: 'I broke the bowl.' } ] },
+{ id: '7910', korean: '깨어지다', myanmar: 'ကွဲသွားသည်', english: 'To be broken/smashed', pos: 'verb', level: 'intermediate', synonyms: '부서지다 (be broken)', antonyms: '온전하다 (intact)', examples: [
+  { korean: '유리창이 산산조각으로 깨어졌어요.', myanmar: 'မှန်ပြတင်းက တစ်စစီ ကွဲသွားတယ်။', english: 'The glass window shattered into pieces.' } ] },
+{ id: '7911', korean: '꺼지다', myanmar: 'မီးငြိမ်းသည်/ပိတ်သည်', english: 'To go out (fire/light)', pos: 'verb', level: 'basic', synonyms: '소등되다 (lights out)', antonyms: '켜지다 (turn on)', examples: [
+  { korean: '가로등이 꺼졌어요.', myanmar: 'လမ်းမီး ငြိမ်းသွားတယ်။', english: 'The streetlight went out.' } ] },
+{ id: '7912', korean: '꺾다', myanmar: 'ချိုးသည်/ကွေ့သည်', english: 'To break/snap/turn', pos: 'verb', level: 'intermediate', synonyms: '부러뜨리다 (break)', antonyms: '펴다 (straighten)', examples: [
+  { korean: '꽃을 꺾지 마세요.', myanmar: 'ပန်းကို မချိုးပါနဲ့။', english: 'Do not pick the flowers.' } ] },
+{ id: '7913', korean: '꺾이다', myanmar: 'ကျိုးသည်/စိတ်ဓာတ်ကျသည်', english: 'To be broken/dampened', pos: 'verb', level: 'intermediate', synonyms: '부러지다 (break)', antonyms: '곧다 (straight)', examples: [
+  { korean: '나뭇가지가 바람에 꺾였어요.', myanmar: 'သစ်ကိုင်းက လေကြောင့် ကျိုးသွားတယ်။', english: 'The tree branch broke in the wind.' } ] },
+{ id: '7914', korean: '꼬다', myanmar: 'လိမ်သည်/ကျစ်သည်', english: 'To twist/cross (legs)', pos: 'verb', level: 'intermediate', synonyms: '비틀다 (twist)', antonyms: '풀다 (untwist)', examples: [
+  { korean: '다리를 꼬고 앉았어요.', myanmar: 'ခြေထောက်ချိတ်ပြီး (လိမ်ပြီး) ထိုင်ခဲ့တယ်။', english: 'I sat with my legs crossed.' } ] },
+{ id: '7915', korean: '꽂히다', myanmar: 'စိုက်ဝင်သည်/စွဲလမ်းသည်', english: 'To be stuck in/be hooked on', pos: 'verb', level: 'intermediate', synonyms: '박히다 (be embedded)', antonyms: '빠지다 (fall out)', examples: [
+  { korean: '그 노래에 꽂혔어요.', myanmar: 'အဲဒီသီချင်းကို စွဲလမ်းသွားတယ်။', english: 'I got hooked on that song.' } ] },
+{ id: '7916', korean: '꾸리다', myanmar: 'ထုပ်ပိုးသည်/စီမံသည်', english: 'To pack/manage', pos: 'verb', level: 'advanced', synonyms: '싸다 (pack)', antonyms: '풀다 (unpack)', examples: [
+  { korean: '여행 짐을 꾸렸어요.', myanmar: 'ခရီးသွားပစ္စည်း ထုပ်ပိုးခဲ့တယ်။', english: 'I packed my travel luggage.' } ] },
+{ id: '7917', korean: '꿈쩍하다', myanmar: 'လှုပ်ရှားသည် (အနည်းငယ်)', english: 'To budge/move slightly', pos: 'verb', level: 'advanced', synonyms: '움직하다 (move)', antonyms: '요지부동이다 (immovable)', examples: [
+  { korean: '바위가 꿈쩍도 안 해요.', myanmar: 'ကျောက်တုံးက နည်းနည်းလေးမှ မလှုပ်ဘူး။', english: 'The rock won\'t budge at all.' } ] },
+{ id: '7918', korean: '끄집어내다', myanmar: 'ဆွဲထုတ်သည်', english: 'To pull out/bring up', pos: 'verb', level: 'advanced', synonyms: '꺼내다 (take out)', antonyms: '감추다 (hide)', examples: [
+  { korean: '옛날 이야기를 끄집어냈어요.', myanmar: 'ရှေးဟောင်းအကြောင်းအရာကို ဆွဲထုတ်ပြောခဲ့တယ်။', english: 'I brought up an old story.' } ] },
+{ id: '7919', korean: '끊어지다', myanmar: 'ပြတ်တောက်သည်', english: 'To be cut/broken off', pos: 'verb', level: 'basic', synonyms: '단절되다 (be severed)', antonyms: '이어지다 (be connected)', examples: [
+  { korean: '줄이 끊어졌어요.', myanmar: 'ကြိုး ပြတ်သွားတယ်။', english: 'The string broke.' } ] },
+{ id: '7920', korean: '끌려가다', myanmar: 'ဆွဲခေါ်ခြင်းခံရသည်', english: 'To be dragged', pos: 'verb', level: 'intermediate', synonyms: '이끌리다 (be led)', antonyms: '주도하다 (lead)', examples: [
+  { korean: '억지로 끌려갔어요.', myanmar: 'အတင်းအကြပ် ဆွဲခေါ်ခြင်းခံခဲ့ရတယ်။', english: 'I was dragged away against my will.' } ] },
+{ id: '7921', korean: '끓어오르다', myanmar: 'ဆူပွက်လာသည်/စိတ်လှုပ်ရှားသည်', english: 'To boil over/well up', pos: 'verb', level: 'advanced', synonyms: '비등하다 (boil)', antonyms: '식다 (cool)', examples: [
+  { korean: '분노가 끓어올랐어요.', myanmar: 'ဒေါသ ဆူပွက်လာခဲ့တယ်။', english: 'Anger welled up.' } ] },
+{ id: '7922', korean: '끼치다', myanmar: 'ဖြစ်စေသည် (အနှောင့်အယှက်)', english: 'To cause (harm/trouble)', pos: 'verb', level: 'advanced', synonyms: '주다 (give - negative)', antonyms: '돕다 (help)', examples: [
+  { korean: '폐를 끼쳐서 죄송해요.', myanmar: 'အနှောင့်အယှက်ဖြစ်စေလို့ တောင်းပန်ပါတယ်။', english: 'I am sorry for causing trouble.' } ] },
+{ id: '7923', korean: '까다', myanmar: 'လျော့သည်/နှိမ်သည်', english: 'To deduct/criticize (slang)', pos: 'verb', level: 'advanced', synonyms: '깎다 (cut)', antonyms: '더하다 (add)', examples: [
+  { korean: '월급에서 세금을 깠어요.', myanmar: 'လစာထဲက အခွန် လျော့လိုက်တယ်။', english: 'Tax was deducted from the salary.' } ] },
+{ id: '7924', korean: '깔리다', myanmar: 'ဖိမိနေသည်/ပြန့်နှံ့နေသည်', english: 'To be buried under/spread', pos: 'verb', level: 'intermediate', synonyms: '덮이다 (covered)', antonyms: '드러나다 (revealed)', examples: [
+  { korean: '배경 음악이 깔려 있어요.', myanmar: 'နောက်ခံတေးဂီတ ပြန့်နှံ့နေတယ်။', english: 'Background music is playing.' } ] },
+{ id: '7925', korean: '깨우치다', myanmar: 'သဘောပေါက်စေသည်', english: 'To enlighten/bring to realization', pos: 'verb', level: 'advanced', synonyms: '가르치다 (teach)', antonyms: '속이다 (deceive)', examples: [
+  { korean: '잘못을 깨우쳐 주었어요.', myanmar: 'အမှားကို သဘောပေါက်စေခဲ့တယ်။', english: 'I made him realize his mistake.' } ] },
+{ id: '7926', korean: '꾸다', myanmar: 'ငှားသည်', english: 'To borrow', pos: 'verb', level: 'basic', synonyms: '빌리다 (borrow)', antonyms: '갚다 (repay)', examples: [
+  { korean: '친구에게 돈을 꿨어요.', myanmar: 'သူငယ်ချင်းဆီက ပိုက်ဆံ ငှားခဲ့တယ်။', english: 'I borrowed money from a friend.' } ] },
+{ id: '7927', korean: '꾸다 (꿈)', myanmar: 'မက်သည်', english: 'To dream', pos: 'verb', level: 'basic', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '악몽을 꿨어요.', myanmar: 'အိပ်မက်ဆိုး မက်ခဲ့တယ်။', english: 'I had a nightmare.' } ] },
+{ id: '7928', korean: '꿰매다', myanmar: 'ချုပ်သည်', english: 'To sew/stitch', pos: 'verb', level: 'intermediate', synonyms: '바느질하다 (sew)', antonyms: '찢다 (tear)', examples: [
+  { korean: '찢어진 옷을 꿰맸어요.', myanmar: 'ပြဲသွားတဲ့အဝတ်ကို ချုပ်ခဲ့တယ်။', english: 'I sewed the torn clothes.' } ] },
+{ id: '7929', korean: '끄다 (소리)', myanmar: 'ပိတ်သည် (အသံ)', english: 'To turn off/mute', pos: 'verb', level: 'basic', synonyms: '멈추다 (stop)', antonyms: '켜다 (turn on)', examples: [
+  { korean: '음악을 꺼 주세요.', myanmar: 'သီချင်း ပိတ်ပေးပါ။', english: 'Please turn off the music.' } ] },
+{ id: '7930', korean: '끊이다', myanmar: 'ပြတ်သည်', english: 'To cease/cut off', pos: 'verb', level: 'advanced', synonyms: '멈추다 (stop)', antonyms: '계속되다 (continue)', examples: [
+  { korean: '웃음이 끊이지 않았어요.', myanmar: 'ရယ်သံ မပြတ်ခဲ့ဘူး။', english: 'The laughter did not cease.' } ] },
+{ id: '7931', korean: '끌어당기다', myanmar: 'ဆွဲယူသည်', english: 'To pull/draw', pos: 'verb', level: 'intermediate', synonyms: '당기다 (pull)', antonyms: '밀어내다 (push away)', examples: [
+  { korean: '의자를 가까이 끌어당겼어요.', myanmar: 'ကုလားထိုင်ကို အနားသို့ ဆွဲယူခဲ့တယ်။', english: 'I pulled the chair closer.' } ] },
+{ id: '7932', korean: '끼어입다', myanmar: 'ထပ်ဝတ်သည်', english: 'To wear layers', pos: 'verb', level: 'intermediate', synonyms: '겹쳐 입다 (layer clothes)', antonyms: '벗다 (take off)', examples: [
+  { korean: '추워서 옷을 껴입었어요.', myanmar: 'အေးလို့ အဝတ် ထပ်ဝတ်ခဲ့တယ်။', english: 'I wore layers because it was cold.' } ] },
+{ id: '7933', korean: '까딱하다', myanmar: 'ခေါင်းညိတ်သည်/လှုပ်သည်', english: 'To nod/budge', pos: 'verb', level: 'advanced', synonyms: '움직이다 (move)', antonyms: '고정하다 (fix)', examples: [
+  { korean: '손가락 하나 까딱하기 싫어요.', myanmar: 'လက်ချောင်းလေးတစ်ခုတောင် မလှုပ်ချင်ဘူး။', english: 'I don\'t want to lift a finger.' } ] },
+{ id: '7934', korean: '깨물어주다', myanmar: 'ကိုက်ချင်စရာကောင်းသည်', english: 'To want to bite (cute)', pos: 'verb', level: 'advanced', synonyms: '귀여워하다 (adore)', antonyms: '미워하다 (hate)', examples: [
+  { korean: '아기가 너무 귀여워서 깨물어주고 싶어요.', myanmar: 'ကလေးက အရမ်းချစ်ဖို့ကောင်းလို့ ကိုက်ချင်စရာကောင်းတယ်။', english: 'The baby is so cute I want to bite him.' } ] },
+{ id: '7935', korean: '꺼리다', myanmar: 'ဝန်လေးသည်/ရှောင်သည်', english: 'To be reluctant/avoid', pos: 'verb', level: 'advanced', synonyms: '피하다 (avoid)', antonyms: '즐기다 (enjoy)', examples: [
+  { korean: '그는 남 앞에 나서기를 꺼려요.', myanmar: 'သူက လူရှေ့ထွက်ရမှာကို ဝန်လေးတယ်။', english: 'He is reluctant to stand in front of others.' } ] },
+{ id: '7936', korean: '꼬이다 (사람)', myanmar: 'စုဝေးသည်/လာသည်', english: 'To gather/flock', pos: 'verb', level: 'intermediate', synonyms: '모이다 (gather)', antonyms: '흩어지다 (scatter)', examples: [
+  { korean: '사탕 주변에 개미가 꼬였어요.', myanmar: 'သကြားလုံးနားမှာ ပုရွက်ဆိတ်တွေ စုဝေးနေတယ်။', english: 'Ants gathered around the candy.' } ] },
+{ id: '7937', korean: '꾸미다 (외모)', myanmar: 'ပြင်ဆင်သည်', english: 'To dress up/groom', pos: 'verb', level: 'basic', synonyms: '치장하다 (adorn)', antonyms: '망치다 (mess up)', examples: [
+  { korean: '외모를 가꾸고 꾸며요.', myanmar: 'ရုပ်ရည်ကို ပြုစုပြီး ပြင်ဆင်တယ်။', english: 'I groom and dress up my appearance.' } ] },
+{ id: '7938', korean: '꿈틀하다', myanmar: 'တွန့်သည်', english: 'To flinch/wriggle', pos: 'verb', level: 'intermediate', synonyms: '움직이다 (move)', antonyms: '가만있다 (stay still)', examples: [
+  { korean: '눈썹이 꿈틀했어요.', myanmar: 'မျက်ခုံး တွန့်သွားတယ်။', english: 'My eyebrow twitched.' } ] },
+{ id: '7939', korean: '끓이다 (물)', myanmar: 'ကျိုသည်', english: 'To boil (water)', pos: 'verb', level: 'basic', synonyms: '데우다 (heat)', antonyms: '얼리다 (freeze)', examples: [
+  { korean: '물을 팔팔 끓이세요.', myanmar: 'ရေကို ပွက်ပွက် ကျိုပါ။', english: 'Boil the water vigorously.' } ] },
+{ id: '7940', korean: '끼워넣다', myanmar: 'ကြားညှပ်ထည့်သည်', english: 'To insert/squeeze in', pos: 'verb', level: 'intermediate', synonyms: '삽입하다 (insert)', antonyms: '빼내다 (pull out)', examples: [
+  { korean: '책갈피를 책 사이에 끼워넣었어요.', myanmar: 'စာညှပ်ကို စာအုပ်ကြားထဲ ကြားညှပ်ထည့်ခဲ့တယ်။', english: 'I inserted a bookmark between the pages.' } ] },
+{ id: '7941', korean: '깐깐하다', myanmar: 'စေ့စပ်လွန်းသည်', english: 'To be strict/fastidious', pos: 'adjective', level: 'advanced', synonyms: '까다롭다 (picky)', antonyms: '너그럽다 (generous)', examples: [
+  { korean: '그 선생님은 점수에 깐깐해요.', myanmar: 'အဲဒီဆရာက အမှတ်ပေးတာ စေ့စပ်လွန်းတယ်။', english: 'That teacher is strict with grades.' } ] },
+{ id: '7942', korean: '까칠하다', myanmar: 'ကြမ်းတမ်းသည်/စိတ်ဆတ်သည်', english: 'To be rough/cranky', pos: 'adjective', level: 'advanced', synonyms: '거칠다 (rough)', antonyms: '부드럽다 (soft)', examples: [
+  { korean: '피부가 까칠해졌어요.', myanmar: 'အသားအရေ ကြမ်းတမ်းလာတယ်။', english: 'My skin became rough.' } ] },
+{ id: '7943', korean: '끔찍하다', myanmar: 'ကြောက်မက်ဖွယ်ကောင်းသည်', english: 'To be terrible/awful', pos: 'adjective', level: 'intermediate', synonyms: '무섭다 (scary)', antonyms: '황홀하다 (wonderful)', examples: [
+  { korean: '끔찍한 사고를 목격했어요.', myanmar: 'ကြောက်မက်ဖွယ်ကောင်းတဲ့ မတော်တဆမှု မြင်ခဲ့ရတယ်။', english: 'I witnessed a terrible accident.' } ] },
+{ id: '7944', korean: '끈끈하다', myanmar: 'စေးကပ်သည်/သံယောဇဉ်ရှိသည်', english: 'To be sticky/close-knit', pos: 'adjective', level: 'intermediate', synonyms: '끈적하다 (sticky)', antonyms: '매끄럽다 (smooth)', examples: [
+  { korean: '가족 간의 정이 끈끈해요.', myanmar: 'မိသားစုကြားက သံယောဇဉ် ရှိတယ်။', english: 'The family bond is close-knit.' } ] },
+{ id: '7945', korean: '끈적하다', myanmar: 'စေးကပ်သည်', english: 'To be sticky', pos: 'adjective', level: 'basic', synonyms: '달라붙다 (stick)', antonyms: '보송하다 (dry and soft)', examples: [
+  { korean: '땀 때문에 몸이 끈적해요.', myanmar: 'ချွေးကြောင့် ကိုယ်ခန္ဓာ စေးကပ်နေတယ်။', english: 'My body is sticky due to sweat.' } ] },
+{ id: '7946', korean: '꾸준하다', myanmar: 'မှန်မှန်လုပ်သည်', english: 'To be steady/constant', pos: 'adjective', level: 'intermediate', synonyms: '한결같다 (consistent)', antonyms: '변덕스럽다 (fickle)', examples: [
+  { korean: '꾸준한 노력이 필요해요.', myanmar: 'မှန်မှန်လုပ်တဲ့ ကြိုးစားမှု လိုအပ်တယ်။', english: 'Steady effort is needed.' } ] },
+{ id: '7947', korean: '깨알같다', myanmar: 'သေးငယ်သည် (နှမ်းစေ့ကဲ့သို့)', english: 'To be tiny (like sesame seeds)', pos: 'adjective', level: 'advanced', synonyms: '작다 (small)', antonyms: '크다 (big)', examples: [
+  { korean: '글씨가 깨알같아서 안 보여요.', myanmar: 'စာလုံးက သေးငယ်လွန်းလို့ မမြင်ရဘူး။', english: 'The writing is so tiny I can\'t see it.' } ] },
+{ id: '7948', korean: '깜깜하다 (소식)', myanmar: 'သတင်းအစအနမရှိ', english: 'To be in the dark/ignorant', pos: 'adjective', level: 'advanced', synonyms: '모르다 (not know)', antonyms: '밝다 (knowledgeable)', examples: [
+  { korean: '소식이 깜깜해요.', myanmar: 'သတင်းအစအန မရှိဘူး။', english: 'There is no news at all.' } ] },
+{ id: '7949', korean: '께름칙하다', myanmar: 'စိတ်မသန့်သည်', english: 'To feel uneasy/guilty', pos: 'adjective', level: 'advanced', synonyms: '찝찝하다 (uncomfortable)', antonyms: '개운하다 (refreshed)', examples: [
+  { korean: '거짓말을 해서 마음이 께름칙해요.', myanmar: 'လိမ်ပြောလိုက်လို့ စိတ်မသန့်ဘူး။', english: 'I feel uneasy because I lied.' } ] },
+{ id: '7950', korean: '깔끔히', myanmar: 'သပ်သပ်ရပ်ရပ်', english: 'Neatly', pos: 'adverb', level: 'intermediate', synonyms: '단정히 (tidily)', antonyms: '지저분하게 (messily)', examples: [
+  { korean: '방을 깔끔히 치웠어요.', myanmar: 'အခန်းကို သပ်သပ်ရပ်ရပ် ရှင်းလင်းခဲ့တယ်။', english: 'I cleaned the room neatly.' } ] },
+{ id: '7951', korean: '꼼꼼히', myanmar: 'စေ့စေ့စပ်စပ်', english: 'Meticulously/Carefully', pos: 'adverb', level: 'intermediate', synonyms: '자세히 (in detail)', antonyms: '대충 (roughly)', examples: [
+  { korean: '서류를 꼼꼼히 확인하세요.', myanmar: 'စာရွက်စာတမ်းကို စေ့စေ့စပ်စပ် စစ်ဆေးပါ။', english: 'Please check the documents meticulously.' } ] },
+{ id: '7952', korean: '꼬박', myanmar: 'တစ်ောက်လုံး/မပျက်မကွက်', english: 'The whole time/Without fail', pos: 'adverb', level: 'intermediate', synonyms: '내내 (throughout)', antonyms: '가끔 (sometimes)', examples: [
+  { korean: '밤을 꼬박 새웠어요.', myanmar: 'တစ်ညလုံး အိပ်ရေးပျက်ခဲ့တယ်။', english: 'I stayed up the whole night.' } ] },
+{ id: '7953', korean: '꼬박꼬박', myanmar: 'မှန်မှန်', english: 'Regularly/Without fail', pos: 'adverb', level: 'intermediate', synonyms: '규칙적으로 (regularly)', antonyms: '드문드문 (sparse)', examples: [
+  { korean: '저축을 꼬박꼬박 하고 있어요.', myanmar: 'ငွေစုတာကို မှန်မှန် လုပ်နေတယ်။', english: 'I am saving money regularly.' } ] },
+{ id: '7954', korean: '꾸준히', myanmar: 'မပျတ်မကွက်', english: 'Steadily/Consistently', pos: 'adverb', level: 'basic', synonyms: '지속적으로 (continuously)', antonyms: '중단하다 (stop)', examples: [
+  { korean: '운동을 꾸준히 하세요.', myanmar: 'လေ့ကျင့်ခန်း မပျတ်မကွက် လုပ်ပါ။', english: 'Exercise consistently.' } ] },
+{ id: '7955', korean: '꽉', myanmar: 'တင်းတင်း/ပြည့်', english: 'Tightly/Fully', pos: 'adverb', level: 'basic', synonyms: '단단히 (firmly)', antonyms: '느슨하게 (loosely)', examples: [
+  { korean: '손을 꽉 잡으세요.', myanmar: 'လက်ကို တင်းတင်း ကိုင်ပါ။', english: 'Hold my hand tightly.' } ] },
+{ id: '7956', korean: '꼭', myanmar: 'မဖြစ်မနေ/အတိအကျ', english: 'Surely/Exactly', pos: 'adverb', level: 'basic', synonyms: '반드시 (certainly)', antonyms: '아마 (maybe)', examples: [
+  { korean: '약속을 꼭 지키세요.', myanmar: 'ကတိကို မဖြစ်မနေ တည်ပါ။', english: 'Make sure to keep your promise.' } ] },
+{ id: '7957', korean: '꼭꼭', myanmar: 'ဖိဖိစီးစီး/လုံလုံ', english: 'Firmly/Tightly', pos: 'adverb', level: 'basic', synonyms: '단단히 (firmly)', antonyms: '대충 (roughly)', examples: [
+  { korean: '음식을 꼭꼭 씹어 드세요.', myanmar: 'အစားအစာကို ဖိဖိစီးစီး (ညက်ညက်) ဝါးစားပါ။', english: 'Chew your food thoroughly.' } ] },
+{ id: '7958', korean: '꽁꽁', myanmar: 'ခဲနေအောင်', english: 'Frozen hard/Tightly bound', pos: 'adverb', level: 'intermediate', synonyms: '단단히 (solidly)', antonyms: '녹다 (melt)', examples: [
+  { korean: '강물이 꽁꽁 얼었어요.', myanmar: 'မြစ်ရေ ခဲနေအောင် အေးခဲသွားတယ်။', english: 'The river is frozen solid.' } ] },
+{ id: '7959', korean: '꽤', myanmar: 'တော်တော်', english: 'Quite/Fairly', pos: 'adverb', level: 'basic', synonyms: '상당히 (considerably)', antonyms: '조금 (a little)', examples: [
+  { korean: '거리가 꽤 멀어요.', myanmar: 'အကွာအဝေး တော်တော် ဝေးတယ်။', english: 'The distance is quite far.' } ] },
+{ id: '7960', korean: '꾸벅꾸벅', myanmar: 'ငိုက်မျဉ်း', english: 'Dozing off', pos: 'adverb', level: 'intermediate', synonyms: '졸다 (doze)', antonyms: '또랑또랑 (alert)', examples: [
+  { korean: '수업 시간에 꾸벅꾸벅 졸았어요.', myanmar: 'စာသင်ချိန်မှာ ငိုက်မျဉ်းနေခဲ့တယ်။', english: 'I was dozing off during class.' } ] },
+{ id: '7961', korean: '꿀꺽', myanmar: 'ဂလု (မြိုချသံ)', english: 'Gulping', pos: 'adverb', level: 'basic', synonyms: '삼키다 (swallow)', antonyms: '뱉다 (spit)', examples: [
+  { korean: '물을 꿀꺽 마셨어요.', myanmar: 'ရေကို ဂလုခနဲ သောက်ခဲ့တယ်။', english: 'I gulped down the water.' } ] },
+{ id: '7962', korean: '꿈틀', myanmar: 'တွန့်', english: 'Wriggle/Flinch', pos: 'adverb', level: 'intermediate', synonyms: '움찔 (flinch)', antonyms: 'None', examples: [
+  { korean: '지렁이가 꿈틀 움직여요.', myanmar: 'တီကောင်က တွန့်ခနဲ လှုပ်ရှားတယ်။', english: 'The earthworm wriggles.' } ] },
+{ id: '7963', korean: '꾹', myanmar: 'အောင့်အီး/ဖိ', english: 'Firmly/Patiently', pos: 'adverb', level: 'intermediate', synonyms: '참고 (enduring)', antonyms: '터뜨리다 (burst)', examples: [
+  { korean: '화가 났지만 꾹 참았어요.', myanmar: 'ဒေါသထွက်ပေမယ့် အောင့်အီး သည်းခံခဲ့တယ်။', english: 'I was angry but I held it in firmly.' } ] },
+{ id: '7964', korean: '끈적끈적', myanmar: 'စေးကပ်ကပ်', english: 'Sticky/Slimy', pos: 'adverb', level: 'basic', synonyms: '달라붙다 (stick)', antonyms: '매끈매끈 (smooth)', examples: [
+  { korean: '날씨가 습해서 끈적끈적해요.', myanmar: 'ရာသီဥတု စိုထိုင်းလို့ စေးကပ်ကပ်ဖြစ်နေတယ်။', english: 'It is sticky because of the humidity.' } ] },
+{ id: '7965', korean: '깜빡', myanmar: 'မှိတ်တုတ်မှိတ်တုတ်/မေ့ခနဲ', english: 'Blinking/Forgetting', pos: 'adverb', level: 'basic', synonyms: '깜박 (blink)', antonyms: 'None', examples: [
+  { korean: '신호등이 깜빡거려요.', myanmar: 'မီးပွိုင့်က မှိတ်တုတ်မှိတ်တုတ် ဖြစ်နေတယ်။', english: 'The traffic light is blinking.' } ] },
+{ id: '7966', korean: '까마득하다', myanmar: 'ဝေးကွာသည်/မြင့်မားသည်', english: 'To be distant/far off', pos: 'adjective', level: 'advanced', synonyms: '멀다 (far)', antonyms: '가깝다 (close)', examples: [
+  { korean: '옛날 일이 까마득해요.', myanmar: 'ရှေးကကိစ္စတွေက ဝေးကွာသွားပြီ (မေ့တေ့တေ့ဖြစ်နေပြီ)။', english: 'The old days seem far off.' } ] },
+{ id: '7967', korean: '깨닫다', myanmar: 'ဉာဏ်အလင်းရသည်', english: 'To achieve enlightenment', pos: 'verb', level: 'advanced', synonyms: '알다 (know)', antonyms: '모르다 (not know)', examples: [
+  { korean: '스님이 진리를 깨달았어요.', myanmar: 'ဘုန်းကြီးက တရားအမှန်ကို ဉာဏ်အလင်းရခဲ့တယ်။', english: 'The monk achieved enlightenment.' } ] },
+{ id: '7968', korean: '깔끔떨다', myanmar: 'သန့်ရှင်းရေးကြေးသည်', english: 'To be overly fussy about cleanliness', pos: 'verb', level: 'advanced', synonyms: '유난떨다 (make a fuss)', antonyms: '털털하다 (easygoing)', examples: [
+  { korean: '그는 너무 깔끔떨어서 피곤해요.', myanmar: 'သူက သန့်ရှင်းရေး အရမ်းကြေးလို့ ပင်ပန်းတယ်။', english: 'He is too fussy about cleanliness, so it\'s tiring.' } ] },
+{ id: '7969', korean: '꼬박 새우다', myanmar: 'တစ်ညလုံး မအိပ်ဘဲနေသည်', english: 'To stay up all night', pos: 'phrase', level: 'intermediate', synonyms: '밤새우다 (stay up all night)', antonyms: '숙면하다 (sleep well)', examples: [
+  { korean: '시험 공부하느라 밤을 꼬박 새웠어요.', myanmar: 'စာမေးပွဲစာကျက်ရင်း တစ်ညလုံး မအိပ်ဘဲနေခဲ့တယ်။', english: 'I stayed up all night studying for the exam.' } ] },
+{ id: '7970', korean: '꿈쩍도 안 하다', myanmar: 'တုပ်တုပ်မျှ မလှုပ်', english: 'Not to budge an inch', pos: 'phrase', level: 'advanced', synonyms: '요지부동이다 (immovable)', antonyms: '움직이다 (move)', examples: [
+  { korean: '아무리 밀어도 꿈쩍도 안 해요.', myanmar: 'ဘယ်လောက်တွန်းတွန်း တုပ်တုပ်မျှ မလှုပ်ဘူး။', english: 'No matter how much I push, it doesn\'t budge.' } ] },
+
+// ===== ㄲ CONSONANT WORDS - CATEGORY 4: NOUNS & OBJECTS (7971-8050) =====
+{ id: '7971', korean: '깨달음', myanmar: 'အသိတရား/သဘောပေါက်မှု', english: 'Realization/Enlightenment', pos: 'noun', level: 'advanced', synonyms: '이해 (understanding)', antonyms: '무지 (ignorance)', examples: [
+  { korean: '큰 깨달음을 얻었어요.', myanmar: 'ကြီးမားတဲ့ အသိတရား ရခဲ့တယ်။', english: 'I gained a great realization.' } ] },
+{ id: '7972', korean: '꽃사슴', myanmar: 'သမင်', english: 'Spotted deer', pos: 'noun', level: 'basic', synonyms: '사슴 (deer)', antonyms: 'None', examples: [
+  { korean: '눈이 예쁜 꽃사슴을 봤어요.', myanmar: 'မျက်လုံးလှတဲ့ သမင်ကို တွေ့ခဲ့တယ်။', english: 'I saw a spotted deer with pretty eyes.' } ] },
+{ id: '7973', korean: '꿀밤', myanmar: 'ခေါင်းခေါက်ခြင်း', english: 'Knuckle rap/Flick', pos: 'noun', level: 'intermediate', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '장난치다가 꿀밤을 맞았어요.', myanmar: 'စနောက်ရင်း ခေါင်းခေါက်ခံရတယ်။', english: 'I got a knuckle rap while joking around.' } ] },
+{ id: '7974', korean: '끝장', myanmar: 'နိဂုံး/အဆုံးသတ်', english: 'The end/Conclusion', pos: 'noun', level: 'advanced', synonyms: '파국 (catastrophe)', antonyms: '시작 (start)', examples: [
+  { korean: '이번 일로 끝장을 봅시다.', myanmar: 'ဒီကိစ္စနဲ့ အဆုံးသတ်ကြစို့။', english: 'Let\'s see this through to the end.' } ] },
+{ id: '7975', korean: '끼니', myanmar: 'ထမင်းတစ်နပ်', english: 'Meal', pos: 'noun', level: 'intermediate', synonyms: '식사 (meal)', antonyms: '굶주림 (starvation)', examples: [
+  { korean: '끼니를 거르지 마세요.', myanmar: 'ထမင်းတစ်နပ် မလွတ်စေနဲ့။', english: 'Don\'t skip a meal.' } ] },
+{ id: '7976', korean: '까망', myanmar: 'အနက်ရောင်', english: 'Black (noun)', pos: 'noun', level: 'basic', synonyms: '검정 (black)', antonyms: '하양 (white)', examples: [
+  { korean: '까망 색연필을 주세요.', myanmar: 'အနက်ရောင် ရောင်စုံခဲတံ ပေးပါ။', english: 'Please give me the black colored pencil.' } ] },
+{ id: '7977', korean: '꼬락서니', myanmar: 'ပုံပန်းသဏ္ဌာန် (အပျက်သဘော)', english: 'Messy sight/Plight', pos: 'noun', level: 'advanced', synonyms: '꼴 (shape/sight)', antonyms: 'None', examples: [
+  { korean: '방 꼬락서니가 이게 뭐니?', myanmar: 'အခန်းပုံစံက ဘာဖြစ်နေတာလဲ။', english: 'What is this messy sight of a room?' } ] },
+{ id: '7978', korean: '꼬치', myanmar: 'အသားကင်တံ', english: 'Skewer (food)', pos: 'noun', level: 'basic', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '닭꼬치를 사 먹었어요.', myanmar: 'ကြက်သားကင်တံ ဝယ်စားခဲ့တယ်။', english: 'I bought and ate a chicken skewer.' } ] },
+{ id: '7979', korean: '꼼수', myanmar: 'ဉာဏ်ဆင်ခြင်း/လှည့်ကွက်', english: 'Petty trick', pos: 'noun', level: 'advanced', synonyms: '속임수 (trick)', antonyms: '정공법 (frontal attack/honest method)', examples: [
+  { korean: '꼼수를 쓰지 말고 정정당당하게 해.', myanmar: 'လှည့်ကွက်မသုံးဘဲ တရားသဖြင့်လုပ်ပါ။', english: 'Don\'t use tricks, play fair.' } ] },
+{ id: '7980', korean: '꽁치', myanmar: 'ငါးတစ်မျိုး (Saury)', english: 'Saury (fish)', pos: 'noun', level: 'intermediate', synonyms: '생선 (fish)', antonyms: 'None', examples: [
+  { korean: '가을에는 꽁치가 맛있어요.', myanmar: 'ဆောင်းဦးမှာ 꽁치ငါးက အရသာရှိတယ်။', english: 'Saury is delicious in autumn.' } ] },
+{ id: '7981', korean: '꽃가마', myanmar: 'ပန်းပုခက် (မင်္ဂလာဆောင်သုံး)', english: 'Flower palanquin', pos: 'noun', level: 'advanced', synonyms: '가마 (palanquin)', antonyms: 'None', examples: [
+  { korean: '신부가 꽃가마를 타고 가요.', myanmar: 'သတို့သမီးက ပန်းပုခက်စီးပြီး သွားတယ်။', english: 'The bride rides in a flower palanquin.' } ] },
+{ id: '7982', korean: '꽃구경', myanmar: 'ပန်းကြည့်ပွဲ', english: 'Flower viewing', pos: 'noun', level: 'basic', synonyms: '상춘 (enjoying spring)', antonyms: 'None', examples: [
+  { korean: '벚꽃구경을 갔어요.', myanmar: 'ချယ်ရီပန်းကြည့်ပွဲ သွားခဲ့တယ်။', english: 'I went flower viewing.' } ] },
+{ id: '7983', korean: '꽃미남', myanmar: 'ပန်းလိုလှသောလူငယ်', english: 'Flower boy (Handsome man)', pos: 'noun', level: 'intermediate', synonyms: '미남 (handsome man)', antonyms: '추남 (ugly man)', examples: [
+  { korean: '그 아이돌은 꽃미남이에요.', myanmar: 'အဲဒီအိုင်ဒေါက ပန်းလိုလှတဲ့လူငယ်ပါ။', english: 'That idol is a flower boy.' } ] },
+{ id: '7984', korean: '꽃송이', myanmar: 'ပန်းပွင့်', english: 'Flower blossom/Bunch', pos: 'noun', level: 'intermediate', synonyms: '꽃 (flower)', antonyms: 'None', examples: [
+  { korean: '꽃송이가 탐스럽게 피었어요.', myanmar: 'ပန်းပွင့်က လှပစွာ ပွင့်နေတယ်။', english: 'The flower blossom bloomed beautifully.' } ] },
+{ id: '7985', korean: '꿀떡', myanmar: 'ပျားရည်မုန့်', english: 'Honey rice cake', pos: 'noun', level: 'basic', synonyms: '떡 (rice cake)', antonyms: 'None', examples: [
+  { korean: '꿀떡이 달콤해요.', myanmar: 'ပျားရည်မုန့်က ချိုတယ်။', english: 'The honey rice cake is sweet.' } ] },
+{ id: '7986', korean: '꿈나라', myanmar: 'အိပ်မက်ကမ္ဘာ', english: 'Dreamland', pos: 'noun', level: 'basic', synonyms: '꿈 (dream)', antonyms: '현실 (reality)', examples: [
+  { korean: '아기가 꿈나라로 갔어요.', myanmar: 'ကလေးက အိပ်မက်ကမ္ဘာဆီ ရောက်သွားပြီ (အိပ်ပျော်သွားပြီ)။', english: 'The baby went to dreamland.' } ] },
+{ id: '7987', korean: '끄트머리', myanmar: 'အစွန်/အဖျား', english: 'End/Tip/Edge', pos: 'noun', level: 'intermediate', synonyms: '끝 (end)', antonyms: '중심 (center)', examples: [
+  { korean: '책상 끄트머리에 놓으세요.', myanmar: 'စားပွဲ အစွန်မှာ တင်ထားပါ။', english: 'Place it on the edge of the desk.' } ] },
+{ id: '7988', korean: '끝부분', myanmar: 'အဆုံးအပိုင်း', english: 'End part', pos: 'noun', level: 'basic', synonyms: '마지막 (last)', antonyms: '시작 부분 (beginning part)', examples: [
+  { korean: '영화의 끝부분을 놓쳤어요.', myanmar: 'ရုပ်ရှင်ရဲ့ အဆုံးအပိုင်းကို လွတ်သွားတယ်။', english: 'I missed the end part of the movie.' } ] },
+{ id: '7989', korean: '끼어들기', myanmar: 'ကြားဖြတ်မောင်းနှင်ခြင်း', english: 'Cutting in (driving)', pos: 'noun', level: 'intermediate', synonyms: '새치기 (cutting in line)', antonyms: '양보 (yielding)', examples: [
+  { korean: '운전 중 끼어들기는 위험해요.', myanmar: 'ကားမောင်းနေစဉ် ကြားဖြတ်မောင်းတာ အန္တရာယ်ရှိတယ်။', english: 'Cutting in while driving is dangerous.' } ] },
+{ id: '7990', korean: '깻묵', myanmar: 'နှမ်းဖတ်', english: 'Sesame dregs', pos: 'noun', level: 'advanced', synonyms: '찌꺼기 (dregs)', antonyms: 'None', examples: [
+  { korean: '깻묵을 비료로 썼어요.', myanmar: 'နှမ်းဖတ်ကို မြေဩဇာအဖြစ် သုံးခဲ့တယ်။', english: 'I used sesame dregs as fertilizer.' } ] },
+{ id: '7991', korean: '꽁무니', myanmar: 'အမြီးပိုင်း/နောက်ပိုင်း', english: 'Rear/Buttocks', pos: 'noun', level: 'intermediate', synonyms: '뒤 (back)', antonyms: '앞 (front)', examples: [
+  { korean: '강아지가 꽁무니를 따라다녀요.', myanmar: 'ခွေးလေးက နောက်ကနေ တကောက်ကောက်လိုက်နေတယ်။', english: 'The puppy follows my rear.' } ] },
+{ id: '7992', korean: '꽃등심', myanmar: 'အကောင်းစားအမဲသား', english: 'Rib eye (Beef)', pos: 'noun', level: 'advanced', synonyms: '소고기 (beef)', antonyms: 'None', examples: [
+  { korean: '저녁에 꽃등심을 구워 먹었어요.', myanmar: 'ညစာမှာ အကောင်းစားအမဲသား ကင်စားခဲ့တယ်။', english: 'I grilled rib eye for dinner.' } ] },
+{ id: '7993', korean: '꿀꿀이', myanmar: 'ဝက် (ချစ်စနိုးခေါ်)', english: 'Piggy', pos: 'noun', level: 'basic', synonyms: '돼지 (pig)', antonyms: 'None', examples: [
+  { korean: '꿀꿀이 저금통에 돈을 넣어요.', myanmar: 'ဝက်ရုပ်စုဘူးထဲ ပိုက်ဆံ ထည့်တယ်။', english: 'I put money in the piggy bank.' } ] },
+{ id: '7994', korean: '꽈리', myanmar: '꽈리အသီး', english: 'Ground cherry', pos: 'noun', level: 'advanced', synonyms: 'None', antonyms: 'None', examples: [
+  { korean: '빨간 꽈리가 예뻐요.', myanmar: 'အနီရောင် 꽈리သီးက လှတယ်။', english: 'The red ground cherry is pretty.' } ] },
+{ id: '7995', korean: '꽝', myanmar: 'ဗလာ/မပေါက်မဲ', english: 'Blank/Dud', pos: 'noun', level: 'intermediate', synonyms: '실패 (failure)', antonyms: '당첨 (winning)', examples: [
+  { korean: '복권을 긁었는데 꽝이에요.', myanmar: 'ထီခြစ်တာ မပေါက်ဘူး (ဗလာပဲ)။', english: 'I scratched the lottery ticket but it was a dud.' } ] },
+{ id: '7996', korean: '꽤나', myanmar: 'တော်တော်လေး', english: 'Fairly/Quite', pos: 'adverb', level: 'intermediate', synonyms: '상당히 (considerably)', antonyms: '조금 (a little)', examples: [
+  { korean: '그 일은 꽤나 힘들었어요.', myanmar: 'အဲဒီအလုပ်က တော်တော်လေး ပင်ပန်းခဲ့တယ်။', english: 'That job was quite hard.' } ] },
+{ id: '7997', korean: '꾸중', myanmar: 'ဆူပူခြင်း', english: 'Scolding/Rebuke', pos: 'noun', level: 'intermediate', synonyms: '야단 (scolding)', antonyms: '칭찬 (praise)', examples: [
+  { korean: '선생님께 꾸중을 들었어요.', myanmar: 'ဆရာဆီက ဆူပူတာ ခံခဲ့ရတယ်။', english: 'I got a scolding from the teacher.' } ] },
+{ id: '7998', korean: '끌', myanmar: 'ဆောက်', english: 'Chisel', pos: 'noun', level: 'advanced', synonyms: '도구 (tool)', antonyms: '망치 (hammer)', examples: [
+  { korean: '끌로 나무를 조각했어요.', myanmar: 'ဆောက်နဲ့ သစ်သားကို ထွင်းခဲ့တယ်။', english: 'I carved wood with a chisel.' } ] },
+{ id: '7999', korean: '끔찍이', myanmar: 'အလွန်အမင်း', english: 'Terribly/Awfully', pos: 'adverb', level: 'advanced', synonyms: '매우 (very)', antonyms: '약간 (slightly)', examples: [
+  { korean: '그는 딸을 끔찍이 사랑해요.', myanmar: 'သူက သမီးကို အလွန်အမင်း ချစ်တယ်။', english: 'He loves his daughter terribly (very much).' } ] },
+{ id: '8000', korean: '끝내', myanmar: 'နောက်ဆုံးတော့', english: 'Finally/In the end', pos: 'adverb', level: 'intermediate', synonyms: '마침내 (finally)', antonyms: '시작하자마자 (as soon as started)', examples: [
+  { korean: '그는 끝내 오지 않았어요.', myanmar: 'သူက နောက်ဆုံးတော့ ရောက်မလာခဲ့ဘူး။', english: 'He didn\'t come in the end.' } ] },
 
 
 

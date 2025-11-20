@@ -1393,11 +1393,22 @@
                                 <p><strong>English:</strong> ${data.english || 'N/A'}</p>
                                 <p><strong>Part of Speech:</strong> ${data.pos || 'N/A'}</p>
                                 <p><strong>Level:</strong> ${data.level || 'N/A'}</p>
+                                ${data.examples && data.examples.length > 0 ? `
+                                    <p><strong>Examples:</strong></p>
+                                    <ul style="margin-left: 20px; margin-top: 8px;">
+                                        ${data.examples.map(ex => `
+                                            <li style="margin-bottom: 8px;">
+                                                <span class="myanmar-text"><strong>${ex.korean}</strong> → ${ex.myanmar || ''}</span>
+                                                ${ex.english ? `<br><span style="color: #6b7280; font-size: 13px;">${ex.english}</span>` : ''}
+                                            </li>
+                                        `).join('')}
+                                    </ul>
+                                ` : ''}
                                 <p><strong>Source:</strong> ${source}</p>
                                 <p><strong>Added by:</strong> ${data.addedBy || 'Unknown'}</p>
                                 <p><strong>Added:</strong> ${data.addedAt?.toDate?.()?.toLocaleString() || 'Unknown'}</p>
                                 <div class="actions">
-                                    <button class="btn btn-warning" onclick="editDictionaryWord('${docId}', '${data.korean}', '${data.myanmar}', '${data.english || ''}', '${data.pos || 'noun'}', '${data.level || ''}')">
+                                    <button class="btn btn-warning" onclick="editDictionaryWord('${docId}')" data-examples='${JSON.stringify(data.examples || [])}'>
                                         ✏️ Edit
                                     </button>
                                     <button class="btn btn-danger" onclick="deleteDictionaryWord('${docId}', '${data.korean}', '${data.myanmar}')">
@@ -1444,6 +1455,14 @@
                                         <option value="intermediate">Intermediate (TOPIK II - Level 3-4)</option>
                                         <option value="advanced">Advanced (TOPIK II - Level 5-6)</option>
                                     </select>
+                                </div>
+                                <div class="form-group" style="margin-top: 20px;">
+                                    <label>Example Sentences</label>
+                                    <p style="font-size: 13px; color: #6b7280; margin-bottom: 12px;">Add example sentences to help users understand usage</p>
+                                    <div id="dict-examples-container-${docId}"></div>
+                                    <button type="button" class="btn btn-secondary" onclick="addDictExampleField('${docId}')" style="margin-top: 8px;">
+                                        <span>➕</span> Add Example
+                                    </button>
                                 </div>
                                 <div class="actions">
                                     <button class="btn btn-success" onclick="saveDictionaryEdit('${docId}')">💾 Save</button>
@@ -1504,9 +1523,20 @@
                                 <p><strong>English:</strong> ${data.english || 'N/A'}</p>
                                 <p><strong>Part of Speech:</strong> ${data.pos || 'N/A'}</p>
                                 <p><strong>Level:</strong> ${data.level || 'N/A'}</p>
+                                ${data.examples && data.examples.length > 0 ? `
+                                    <p><strong>Examples:</strong></p>
+                                    <ul style="margin-left: 20px; margin-top: 8px;">
+                                        ${data.examples.map(ex => `
+                                            <li style="margin-bottom: 8px;">
+                                                <span class="myanmar-text"><strong>${ex.korean}</strong> → ${ex.myanmar || ''}</span>
+                                                ${ex.english ? `<br><span style="color: #6b7280; font-size: 13px;">${ex.english}</span>` : ''}
+                                            </li>
+                                        `).join('')}
+                                    </ul>
+                                ` : ''}
                                 <p><strong>Source:</strong> ${source}</p>
                                 <div class="actions">
-                                    <button class="btn btn-warning" onclick="editDictionaryWord('${docId}', '${data.korean}', '${data.myanmar}', '${data.english || ''}', '${data.pos || 'noun'}', '${data.level || ''}')">
+                                    <button class="btn btn-warning" onclick="editDictionaryWord('${docId}')" data-examples='${JSON.stringify(data.examples || [])}'>
                                         ✏️ Edit
                                     </button>
                                     <button class="btn btn-danger" onclick="deleteDictionaryWord('${docId}', '${data.korean}', '${data.myanmar}')">
@@ -1554,6 +1584,14 @@
                                         <option value="advanced">Advanced (TOPIK II - Level 5-6)</option>
                                     </select>
                                 </div>
+                                <div class="form-group" style="margin-top: 20px;">
+                                    <label>Example Sentences</label>
+                                    <p style="font-size: 13px; color: #6b7280; margin-bottom: 12px;">Add example sentences to help users understand usage</p>
+                                    <div id="dict-examples-container-${docId}"></div>
+                                    <button type="button" class="btn btn-secondary" onclick="addDictExampleField('${docId}')" style="margin-top: 8px;">
+                                        <span>➕</span> Add Example
+                                    </button>
+                                </div>
                                 <div class="actions">
                                     <button class="btn btn-success" onclick="saveDictionaryEdit('${docId}')">💾 Save</button>
                                     <button class="btn btn-secondary" onclick="cancelDictionaryEdit('${docId}')">❌ Cancel</button>
@@ -1575,21 +1613,120 @@
             loadDictionary();
         };
 
-        window.editDictionaryWord = function(docId, korean, myanmar, english, pos, level) {
+        window.editDictionaryWord = function(docId) {
+            // Get the word data from the display section
+            const displayDiv = document.getElementById(`dict-display-${docId}`);
+            const korean = displayDiv.querySelector('h3').textContent.split(' → ')[0].trim();
+            const myanmar = displayDiv.querySelector('h3').textContent.split(' → ')[1].trim();
+            const englishPara = Array.from(displayDiv.querySelectorAll('p')).find(p => p.textContent.includes('English:'));
+            const english = englishPara ? englishPara.textContent.replace('English:', '').trim() : '';
+            const posPara = Array.from(displayDiv.querySelectorAll('p')).find(p => p.textContent.includes('Part of Speech:'));
+            const pos = posPara ? posPara.textContent.replace('Part of Speech:', '').trim() : 'noun';
+            const levelPara = Array.from(displayDiv.querySelectorAll('p')).find(p => p.textContent.includes('Level:'));
+            const level = levelPara ? levelPara.textContent.replace('Level:', '').trim() : '';
+            
+            // Get examples from the button's data attribute
+            const editButton = displayDiv.querySelector('button.btn-warning');
+            let examples = [];
+            if (editButton && editButton.getAttribute('data-examples')) {
+                try {
+                    examples = JSON.parse(editButton.getAttribute('data-examples'));
+                } catch (e) {
+                    console.error('Error parsing examples:', e);
+                    examples = [];
+                }
+            }
+            
+            // Show edit form
             document.getElementById(`dict-display-${docId}`).style.display = 'none';
             document.getElementById(`dict-edit-${docId}`).style.display = 'block';
             
+            // Populate form fields
             document.getElementById(`dict-edit-korean-${docId}`).value = korean;
             document.getElementById(`dict-edit-myanmar-${docId}`).value = myanmar;
-            document.getElementById(`dict-edit-english-${docId}`).value = english;
-            document.getElementById(`dict-edit-pos-${docId}`).value = pos;
-            document.getElementById(`dict-edit-level-${docId}`).value = level || '';
+            document.getElementById(`dict-edit-english-${docId}`).value = english === 'N/A' ? '' : english;
+            document.getElementById(`dict-edit-pos-${docId}`).value = pos === 'N/A' ? 'noun' : pos;
+            document.getElementById(`dict-edit-level-${docId}`).value = level === 'N/A' ? '' : level;
+            
+            // Clear existing examples
+            const container = document.getElementById(`dict-examples-container-${docId}`);
+            if (container) {
+                container.innerHTML = '';
+                
+                // Load existing examples
+                if (examples && Array.isArray(examples) && examples.length > 0) {
+                    examples.forEach((example) => {
+                        addDictExampleField(docId, example.korean || '', example.myanmar || '', example.english || '');
+                    });
+                }
+            }
         };
 
         window.cancelDictionaryEdit = function(docId) {
             document.getElementById(`dict-edit-${docId}`).style.display = 'none';
             document.getElementById(`dict-display-${docId}`).style.display = 'block';
+            // Clear examples container
+            const container = document.getElementById(`dict-examples-container-${docId}`);
+            if (container) container.innerHTML = '';
         };
+
+        window.addDictExampleField = function(docId, korean = '', myanmar = '', english = '') {
+            const container = document.getElementById(`dict-examples-container-${docId}`);
+            const exampleId = Date.now() + Math.random();
+            
+            const exampleField = document.createElement('div');
+            exampleField.className = 'example-field';
+            exampleField.id = `dict-example-${docId}-${exampleId}`;
+            
+            exampleField.innerHTML = `
+                <button type="button" class="remove-example" onclick="removeDictExample('${docId}', '${exampleId}')">
+                    ✕ Remove
+                </button>
+                <div class="form-group">
+                    <label>Korean Example</label>
+                    <input type="text" class="form-input dict-example-korean" placeholder="Enter example in Korean" value="${korean.replace(/"/g, '&quot;')}">
+                </div>
+                <div class="form-group">
+                    <label>Myanmar Translation</label>
+                    <input type="text" class="form-input dict-example-myanmar myanmar-text" placeholder="Enter example in Myanmar" value="${myanmar.replace(/"/g, '&quot;')}">
+                </div>
+                <div class="form-group">
+                    <label>English Translation</label>
+                    <input type="text" class="form-input dict-example-english" placeholder="Enter example in English" value="${english.replace(/"/g, '&quot;')}">
+                </div>
+            `;
+            
+            container.appendChild(exampleField);
+        };
+
+        window.removeDictExample = function(docId, exampleId) {
+            const exampleField = document.getElementById(`dict-example-${docId}-${exampleId}`);
+            if (exampleField) exampleField.remove();
+        };
+
+        function getDictExamples(docId) {
+            const examples = [];
+            const container = document.getElementById(`dict-examples-container-${docId}`);
+            if (!container) return examples;
+            
+            const exampleFields = container.querySelectorAll('.example-field');
+            
+            exampleFields.forEach(field => {
+                const korean = field.querySelector('.dict-example-korean')?.value.trim() || '';
+                const myanmar = field.querySelector('.dict-example-myanmar')?.value.trim() || '';
+                const english = field.querySelector('.dict-example-english')?.value.trim() || '';
+                
+                if (korean && myanmar) {
+                    examples.push({
+                        korean: korean.normalize('NFC'),
+                        myanmar: myanmar.normalize('NFC'),
+                        english: english || ''
+                    });
+                }
+            });
+            
+            return examples;
+        }
 
         window.saveDictionaryEdit = async function(docId) {
             try {
@@ -1598,6 +1735,7 @@
                 const english = document.getElementById(`dict-edit-english-${docId}`).value.trim();
                 const pos = document.getElementById(`dict-edit-pos-${docId}`).value;
                 const level = document.getElementById(`dict-edit-level-${docId}`).value;
+                const examples = getDictExamples(docId);
 
                 if (!korean || !myanmar) {
                     alert('Korean and Myanmar fields are required!');
@@ -1613,6 +1751,7 @@
                     english: english || '',
                     pos: pos,
                     level: level || null,
+                    examples: examples,
                     editedAt: serverTimestamp(),
                     editedBy: 'admin'
                 });
