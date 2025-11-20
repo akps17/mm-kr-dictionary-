@@ -194,6 +194,8 @@ const styles = StyleSheet.create({
     width: 80,
     height: 80,
     borderRadius: 16,
+    borderWidth: 0,
+    outlineWidth: 0,
   },
   pill: {
     flexDirection: 'row',

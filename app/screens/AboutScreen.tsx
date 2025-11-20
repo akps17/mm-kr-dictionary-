@@ -278,6 +278,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 8,
     elevation: 4,
+    borderWidth: 0,
+    outlineWidth: 0,
   },
   title: {
     fontSize: 28,

@@ -560,6 +560,7 @@ function PracticeTabs() {
           backgroundColor: C.surface,
         },
         headerTintColor: C.textPrimary,
+        headerShadowVisible: false,
       }}
     >
       <PracticeStack.Screen name="LevelSelection" component={LevelSelectionScreen} />
@@ -886,6 +887,7 @@ function AppNavigator() {
           backgroundColor: C.surface,
         },
         headerTintColor: drawerButtonColor,
+        headerShadowVisible: false,
       }}
     >
               <Drawer.Screen 
@@ -945,6 +947,23 @@ export default function App() {
       console.log('Ready to test word submissions!');
     } catch (error) {
       console.error('Firebase initialization error:', error);
+    }
+  }, []);
+
+  // Remove image borders on web
+  React.useEffect(() => {
+    if (Platform.OS === 'web' && typeof document !== 'undefined') {
+      const style = document.createElement('style');
+      style.textContent = `
+        img {
+          border: none !important;
+          outline: none !important;
+        }
+      `;
+      document.head.appendChild(style);
+      return () => {
+        document.head.removeChild(style);
+      };
     }
   }, []);
   
@@ -1287,6 +1306,8 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     alignSelf: 'center',
     marginBottom: 12,
+    borderWidth: 0,
+    outlineWidth: 0,
   },
   aboutParagraph: {
     fontSize: 15,
