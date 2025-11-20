@@ -28,7 +28,7 @@
       "edgeToEdgeEnabled": true
     },
     "web": {
-      "favicon": "./assets/dictionary_icon.png",
+      "favicon": "/dictionary_icon.png",
       "bundler": "metro",
       "name": "Myanmar Korean Dictionary",
       "shortName": "MM-KR Dictionary",
@@ -41,13 +41,13 @@
       "themeColor": "#2563EB",
       "icons": [
         {
-          "src": "./assets/dictionary_icon.png",
+          "src": "/dictionary_icon.png",
           "sizes": "192x192",
           "type": "image/png",
           "purpose": "any maskable"
         },
         {
-          "src": "./assets/dictionary_icon.png",
+          "src": "/dictionary_icon.png",
           "sizes": "512x512",
           "type": "image/png",
           "purpose": "any maskable"
@@ -60,7 +60,7 @@
         "apple-mobile-web-app-capable": "yes",
         "apple-mobile-web-app-status-bar-style": "default",
         "apple-mobile-web-app-title": "MM-KR Dictionary",
-        "apple-touch-icon": "./assets/dictionary_icon.png"
+        "apple-touch-icon": "/dictionary_icon.png"
       }
     },
     "plugins": [
