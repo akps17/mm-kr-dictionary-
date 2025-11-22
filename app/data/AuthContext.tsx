@@ -20,7 +20,7 @@ const AUTH_USER_KEY = '@auth_user_persisted';
 type AuthContextType = {
   user: User | null;
   loading: boolean;
-  signUp: (email: string, password: string, name: string) => Promise<void>;
+  signUp: (email: string, password: string, name: string, nationality: string, birthdate: string, koreanLevel: string, position: string) => Promise<void>;
   signIn: (email: string, password: string) => Promise<void>;
   signInWithGoogle: () => Promise<void>;
   logOut: () => Promise<void>;
@@ -112,7 +112,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return unsubscribe;
   }, []);
 
-  const signUp = async (email: string, password: string, name: string) => {
+  const signUp = async (email: string, password: string, name: string, nationality: string, birthdate: string, koreanLevel: string, position: string) => {
     try {
       const result = await createUserWithEmailAndPassword(auth, email, password);
       // Update the user's profile with their name
@@ -136,6 +136,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             await setDoc(userDocRef, {
               userEmail: normalizedEmail,
               displayName: name,
+              nationality: nationality,
+              birthdate: birthdate,
+              koreanLevel: parseInt(koreanLevel) || 1,
+              position: position,
               points: 0,
               totalSubmissions: 0,
               isPro: false,
@@ -146,10 +150,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             });
             console.log('✅ Created user_points record for new user:', normalizedEmail);
           } else {
-            // Update last sign-in time
+            // Update last sign-in time and user info
             await setDoc(userDocRef, {
               lastUpdated: serverTimestamp(),
-              displayName: name
+              displayName: name,
+              nationality: nationality,
+              birthdate: birthdate,
+              koreanLevel: parseInt(koreanLevel) || 1,
+              position: position
             }, { merge: true });
             console.log('✅ Updated user_points record for existing user:', normalizedEmail);
           }
