@@ -1943,6 +1943,10 @@
                 
                 const usersMap = {};
                 
+                console.log('📊 Loading users from collections...');
+                console.log('  - user_points:', userPointsSnapshot.size);
+                console.log('  - pending_words:', submissionsSnapshot.size);
+                
                 // First, add users from Firebase Authentication (if we got them)
                 Object.keys(authUsersMap).forEach(email => {
                     const authUser = authUsersMap[email];
@@ -1963,7 +1967,9 @@
                 // Then, load users from user_points collection and merge
                 userPointsSnapshot.forEach(doc => {
                     const data = doc.data();
-                    const email = doc.id;
+                    const email = (doc.id || '').trim().toLowerCase();
+                    if (!email || email === 'anonymous') return;
+                    
                     if (usersMap[email]) {
                         // Merge with existing auth user data
                         usersMap[email].points = data.points || 0;
@@ -1990,11 +1996,14 @@
                     }
                 });
                 
+                console.log('  - Users from user_points:', Object.keys(usersMap).length);
+                
                 // Then, add users from submissions
+                let submissionsCount = 0;
                 submissionsSnapshot.forEach(doc => {
                     const data = doc.data();
-                    const email = data.userEmail || data.submittedBy;
-                    if (email && email !== 'anonymous') {
+                    const email = (data.userEmail || data.submittedBy || data.email || '').trim().toLowerCase();
+                    if (email && email !== 'anonymous' && email !== '') {
                         if (!usersMap[email]) {
                             usersMap[email] = {
                                 email: email,
@@ -2006,18 +2015,21 @@
                                 topikUnlocked: false,
                                 createdAt: data.submittedAt?.toDate?.() || null
                             };
+                            submissionsCount++;
                         }
                         usersMap[email].submissions++;
                     }
                 });
+                console.log('  - New users from pending_words:', submissionsCount);
 
                 // Also check dictionary collection for users who added words
+                let dictCount = 0;
                 try {
                     const dictionarySnapshot = await getDocs(collection(db, 'dictionary'));
                     dictionarySnapshot.forEach(doc => {
                         const data = doc.data();
-                        const email = data.userEmail || data.originalSubmitter;
-                        if (email && email !== 'anonymous') {
+                        const email = (data.userEmail || data.originalSubmitter || data.submittedBy || data.email || '').trim().toLowerCase();
+                        if (email && email !== 'anonymous' && email !== '') {
                             if (!usersMap[email]) {
                                 usersMap[email] = {
                                     email: email,
@@ -2027,16 +2039,20 @@
                                     hasPointsRecord: false,
                                     isPro: false,
                                     topikUnlocked: false,
-                                    createdAt: data.addedAt?.toDate?.() || null
+                                    createdAt: data.addedAt?.toDate?.() || data.createdAt?.toDate?.() || null
                                 };
+                                dictCount++;
                             }
                         }
                     });
+                    console.log('  - New users from dictionary:', dictCount);
                 } catch (dictError) {
                     console.log('Error loading from dictionary:', dictError);
                 }
 
                 const users = Object.values(usersMap);
+                console.log('✅ Total users found:', users.length);
+                console.log('   User emails:', users.map(u => u.email).join(', '));
                 
                 if (users.length === 0) {
                     container.innerHTML = '<p style="text-align: center; color: #6b7280; padding: 40px;">No users found yet.</p>';
@@ -2162,9 +2178,6 @@
                                     </button>
                                     <button onclick="showPointsEditor('${user.email}')" class="btn btn-warning">
                                         ✏️ Edit
-                                    </button>
-                                    <button onclick="deleteUser('${user.email}')" class="btn btn-danger" style="background: #ef4444;">
-                                        🗑️ Delete
                                     </button>
                                  </div>
                             </div>
@@ -2525,54 +2538,68 @@
                 // From user_points
                 const userPointsSnapshot = await getDocs(collection(db, 'user_points'));
                 userPointsSnapshot.forEach(doc => {
-                    if (doc.id && doc.id !== 'anonymous') allEmails.add(doc.id);
+                    const email = (doc.id || '').trim().toLowerCase();
+                    if (email && email !== 'anonymous') allEmails.add(email);
                 });
                 
                 // From pending_words
                 const submissionsSnapshot = await getDocs(query(collection(db, 'pending_words'), orderBy('submittedAt', 'desc')));
                 submissionsSnapshot.forEach(doc => {
                     const data = doc.data();
-                    const email = data.userEmail || data.submittedBy;
-                    if (email && email !== 'anonymous') allEmails.add(email);
+                    const email = data.userEmail || data.submittedBy || data.email;
+                    if (email && email !== 'anonymous' && email.trim() !== '') {
+                        allEmails.add(email.trim().toLowerCase());
+                    }
                 });
                 
                 // From dictionary
                 const dictionarySnapshot = await getDocs(collection(db, 'dictionary'));
                 dictionarySnapshot.forEach(doc => {
                     const data = doc.data();
-                    const email = data.userEmail || data.originalSubmitter;
-                    if (email && email !== 'anonymous') allEmails.add(email);
+                    const email = data.userEmail || data.originalSubmitter || data.submittedBy || data.email;
+                    if (email && email !== 'anonymous' && email.trim() !== '') {
+                        allEmails.add(email.trim().toLowerCase());
+                    }
                 });
+                
+                console.log('🔄 Sync found', allEmails.size, 'unique user emails:', Array.from(allEmails).join(', '));
                 
                 // Create user_points records for users who don't have them
                 let created = 0;
                 let updated = 0;
-                for (const email of allEmails) {
-                    const userDocRef = doc(db, 'user_points', email);
-                    const userDoc = await getDoc(userDocRef);
-                    
-                    if (!userDoc.exists()) {
-                        await setDoc(userDocRef, {
-                            userEmail: email,
-                            points: 0,
-                            totalSubmissions: 0,
-                            isPro: false,
-                            topikUnlocked: false,
-                            createdAt: serverTimestamp(),
-                            lastUpdated: serverTimestamp(),
-                            syncedFromAuth: true
-                        });
-                        created++;
-                    } else {
-                        // Update lastUpdated timestamp
-                        await updateDoc(userDocRef, {
-                            lastUpdated: serverTimestamp()
-                        });
-                        updated++;
+                const emailArray = Array.from(allEmails);
+                
+                for (const email of emailArray) {
+                    try {
+                        const userDocRef = doc(db, 'user_points', email);
+                        const userDoc = await getDoc(userDocRef);
+                        
+                        if (!userDoc.exists()) {
+                            await setDoc(userDocRef, {
+                                userEmail: email,
+                                points: 0,
+                                totalSubmissions: 0,
+                                isPro: false,
+                                topikUnlocked: false,
+                                createdAt: serverTimestamp(),
+                                lastUpdated: serverTimestamp(),
+                                syncedFromAuth: true
+                            });
+                            created++;
+                            console.log('  ✅ Created user_points for:', email);
+                        } else {
+                            // Update lastUpdated timestamp
+                            await updateDoc(userDocRef, {
+                                lastUpdated: serverTimestamp()
+                            });
+                            updated++;
+                        }
+                    } catch (error) {
+                        console.error('  ❌ Error processing user', email, ':', error);
                     }
                 }
                 
-                alert(`✅ Sync complete! Found ${allEmails.size} total users. Created ${created} new records, updated ${updated} existing records.`);
+                alert(`✅ Sync complete!\n\nFound: ${allEmails.size} total users\nCreated: ${created} new records\nUpdated: ${updated} existing records\n\nUser emails:\n${emailArray.slice(0, 10).join(', ')}${emailArray.length > 10 ? '\n... and ' + (emailArray.length - 10) + ' more' : ''}`);
                 loadUsers();
                 
             } catch (error) {
@@ -2637,93 +2664,6 @@
             } catch (error) {
                 alert('❌ Error adding user: ' + error.message);
                 console.error('Add user error:', error);
-            }
-        };
-
-        window.deleteUser = async function(userEmail) {
-            if (!userEmail) {
-                alert('❌ No user email provided');
-                return;
-            }
-
-            // Confirmation dialog
-            const confirmMessage = `⚠️ Are you sure you want to delete user "${userEmail}"?\n\nThis will:\n- Delete user from user_points collection\n- Delete all their submissions from pending_words\n- Delete all their dictionary entries\n\nThis action cannot be undone!`;
-            
-            if (!confirm(confirmMessage)) {
-                return;
-            }
-
-            try {
-                // 1. Delete from user_points collection
-                const userPointsRef = doc(db, 'user_points', userEmail);
-                const userPointsDoc = await getDoc(userPointsRef);
-                if (userPointsDoc.exists()) {
-                    await deleteDoc(userPointsRef);
-                    console.log(`✅ Deleted user_points for ${userEmail}`);
-                }
-
-                // 2. Delete all submissions from pending_words
-                const pendingWordsQuery = query(
-                    collection(db, 'pending_words'),
-                    where('userEmail', '==', userEmail)
-                );
-                const pendingWordsSnapshot = await getDocs(pendingWordsQuery);
-                let deletedSubmissions = 0;
-                for (const docSnap of pendingWordsSnapshot.docs) {
-                    await deleteDoc(doc(db, 'pending_words', docSnap.id));
-                    deletedSubmissions++;
-                }
-                console.log(`✅ Deleted ${deletedSubmissions} submissions for ${userEmail}`);
-
-                // Also check for 'submittedBy' field
-                const pendingWordsQuery2 = query(
-                    collection(db, 'pending_words'),
-                    where('submittedBy', '==', userEmail)
-                );
-                const pendingWordsSnapshot2 = await getDocs(pendingWordsQuery2);
-                for (const docSnap of pendingWordsSnapshot2.docs) {
-                    await deleteDoc(doc(db, 'pending_words', docSnap.id));
-                    deletedSubmissions++;
-                }
-                if (deletedSubmissions > 0) {
-                    console.log(`✅ Deleted ${deletedSubmissions} total submissions for ${userEmail}`);
-                }
-
-                // 3. Delete all dictionary entries created by this user
-                const dictionaryQuery = query(
-                    collection(db, 'dictionary'),
-                    where('userEmail', '==', userEmail)
-                );
-                const dictionarySnapshot = await getDocs(dictionaryQuery);
-                let deletedDictionaryEntries = 0;
-                for (const docSnap of dictionarySnapshot.docs) {
-                    await deleteDoc(doc(db, 'dictionary', docSnap.id));
-                    deletedDictionaryEntries++;
-                }
-                console.log(`✅ Deleted ${deletedDictionaryEntries} dictionary entries for ${userEmail}`);
-
-                // Also check for 'originalSubmitter' field
-                const dictionaryQuery2 = query(
-                    collection(db, 'dictionary'),
-                    where('originalSubmitter', '==', userEmail)
-                );
-                const dictionarySnapshot2 = await getDocs(dictionaryQuery2);
-                for (const docSnap of dictionarySnapshot2.docs) {
-                    await deleteDoc(doc(db, 'dictionary', docSnap.id));
-                    deletedDictionaryEntries++;
-                }
-                if (deletedDictionaryEntries > 0) {
-                    console.log(`✅ Deleted ${deletedDictionaryEntries} total dictionary entries for ${userEmail}`);
-                }
-
-                alert(`✅ User "${userEmail}" deleted successfully!\n\nDeleted:\n- User points record\n- ${deletedSubmissions} submission(s)\n- ${deletedDictionaryEntries} dictionary entry/entries`);
-                
-                // Reload users list
-                loadUsers();
-                
-            } catch (error) {
-                console.error('Error deleting user:', error);
-                alert('❌ Error deleting user: ' + error.message);
             }
         };
     </script>

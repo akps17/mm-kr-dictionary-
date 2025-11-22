@@ -66,6 +66,35 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         try {
           await AsyncStorage.setItem(AUTH_USER_KEY, firebaseUser.email || '');
           console.log('✅ Auth state changed: Logged in as', firebaseUser.email, '(persisted to AsyncStorage)');
+          
+          // Ensure user_points record exists (for admin panel visibility)
+          // This catches users who signed up before the user_points creation was added
+          if (firebaseUser.email) {
+            try {
+              const { db } = await import('./firebase');
+              const { doc, setDoc, getDoc, serverTimestamp } = await import('firebase/firestore');
+              const normalizedEmail = firebaseUser.email.trim().toLowerCase();
+              const userDocRef = doc(db, 'user_points', normalizedEmail);
+              const userDoc = await getDoc(userDocRef);
+              
+              if (!userDoc.exists()) {
+                await setDoc(userDocRef, {
+                  userEmail: normalizedEmail,
+                  displayName: firebaseUser.displayName || '',
+                  points: 0,
+                  totalSubmissions: 0,
+                  isPro: false,
+                  topikUnlocked: false,
+                  createdAt: serverTimestamp(),
+                  lastUpdated: serverTimestamp(),
+                  signInMethod: 'auto-created'
+                });
+                console.log('✅ Auto-created user_points record for existing user:', normalizedEmail);
+              }
+            } catch (firestoreError) {
+              console.log('Note: Could not auto-create user_points record (non-critical):', firestoreError);
+            }
+          }
         } catch (error) {
           console.error('Failed to persist auth:', error);
         }
@@ -95,22 +124,37 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         setUser({ ...result.user });
         
         // Create user_points record for admin panel visibility
+        // Use normalized email (lowercase) as document ID
         try {
           const { db } = await import('./firebase');
-          const { doc, setDoc, serverTimestamp } = await import('firebase/firestore');
-          const userDocRef = doc(db, 'user_points', email);
-          await setDoc(userDocRef, {
-            userEmail: email,
-            points: 0,
-            totalSubmissions: 0,
-            isPro: false,
-            topikUnlocked: false,
-            createdAt: serverTimestamp(),
-            lastUpdated: serverTimestamp()
-          });
-          console.log('✅ Created user_points record for new user');
+          const { doc, setDoc, getDoc, serverTimestamp } = await import('firebase/firestore');
+          const normalizedEmail = email.trim().toLowerCase();
+          const userDocRef = doc(db, 'user_points', normalizedEmail);
+          const userDoc = await getDoc(userDocRef);
+          
+          if (!userDoc.exists()) {
+            await setDoc(userDocRef, {
+              userEmail: normalizedEmail,
+              displayName: name,
+              points: 0,
+              totalSubmissions: 0,
+              isPro: false,
+              topikUnlocked: false,
+              createdAt: serverTimestamp(),
+              lastUpdated: serverTimestamp(),
+              signInMethod: 'email'
+            });
+            console.log('✅ Created user_points record for new user:', normalizedEmail);
+          } else {
+            // Update last sign-in time
+            await setDoc(userDocRef, {
+              lastUpdated: serverTimestamp(),
+              displayName: name
+            }, { merge: true });
+            console.log('✅ Updated user_points record for existing user:', normalizedEmail);
+          }
         } catch (firestoreError) {
-          console.log('Note: Could not create user_points record (non-critical):', firestoreError);
+          console.error('❌ Could not create user_points record:', firestoreError);
           // Non-critical error, continue
         }
       }
@@ -123,7 +167,42 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const signIn = async (email: string, password: string) => {
     try {
-      await signInWithEmailAndPassword(auth, email, password);
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      
+      // Ensure user_points record exists (for admin panel visibility)
+      if (userCredential.user && userCredential.user.email) {
+        try {
+          const { db } = await import('./firebase');
+          const { doc, setDoc, getDoc, serverTimestamp } = await import('firebase/firestore');
+          const normalizedEmail = userCredential.user.email.trim().toLowerCase();
+          const userDocRef = doc(db, 'user_points', normalizedEmail);
+          const userDoc = await getDoc(userDocRef);
+          
+          if (!userDoc.exists()) {
+            await setDoc(userDocRef, {
+              userEmail: normalizedEmail,
+              displayName: userCredential.user.displayName || '',
+              points: 0,
+              totalSubmissions: 0,
+              isPro: false,
+              topikUnlocked: false,
+              createdAt: serverTimestamp(),
+              lastUpdated: serverTimestamp(),
+              signInMethod: 'email'
+            });
+            console.log('✅ Created user_points record for existing user on sign-in:', normalizedEmail);
+          } else {
+            // Update last sign-in time
+            await setDoc(userDocRef, {
+              lastUpdated: serverTimestamp(),
+              displayName: userCredential.user.displayName || ''
+            }, { merge: true });
+          }
+        } catch (firestoreError) {
+          console.log('Note: Could not update user_points record (non-critical):', firestoreError);
+        }
+      }
+      
       console.log('User signed in successfully');
     } catch (error: any) {
       console.error('Sign in error:', error.message);
@@ -194,17 +273,19 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         // Sign in to Firebase with Google credential
         const userCredential = await signInWithCredential(auth, credential);
         
-        // Create user_points record if new user
+        // Create user_points record if new user (or update if exists)
         if (userCredential.user && userCredential.user.email) {
           try {
             const { db } = await import('./firebase');
             const { doc, setDoc, getDoc, serverTimestamp } = await import('firebase/firestore');
-            const userDocRef = doc(db, 'user_points', userCredential.user.email);
+            const normalizedEmail = userCredential.user.email.trim().toLowerCase();
+            const userDocRef = doc(db, 'user_points', normalizedEmail);
             const userDoc = await getDoc(userDocRef);
             
             if (!userDoc.exists()) {
               await setDoc(userDocRef, {
-                userEmail: userCredential.user.email,
+                userEmail: normalizedEmail,
+                displayName: userCredential.user.displayName || '',
                 points: 0,
                 totalSubmissions: 0,
                 isPro: false,
@@ -213,10 +294,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                 lastUpdated: serverTimestamp(),
                 signInMethod: 'google'
               });
-              console.log('✅ Created user_points record for new Google user');
+              console.log('✅ Created user_points record for new Google user:', normalizedEmail);
+            } else {
+              // Update last sign-in time
+              await setDoc(userDocRef, {
+                lastUpdated: serverTimestamp(),
+                displayName: userCredential.user.displayName || ''
+              }, { merge: true });
+              console.log('✅ Updated user_points record for existing Google user:', normalizedEmail);
             }
           } catch (firestoreError) {
-            console.log('Note: Could not create user_points record (non-critical):', firestoreError);
+            console.error('❌ Could not create/update user_points record:', firestoreError);
           }
         }
         
