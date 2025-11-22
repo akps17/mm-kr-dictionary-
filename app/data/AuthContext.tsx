@@ -1,14 +1,19 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { Platform } from 'react-native';
 import { 
   createUserWithEmailAndPassword, 
   signInWithEmailAndPassword, 
   signOut, 
   onAuthStateChanged,
   updateProfile,
+  signInWithCredential,
+  GoogleAuthProvider,
   User 
 } from 'firebase/auth';
 import { auth } from './firebase';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as AuthSession from 'expo-auth-session';
+import * as Crypto from 'expo-crypto';
 
 const AUTH_USER_KEY = '@auth_user_persisted';
 
@@ -17,6 +22,7 @@ type AuthContextType = {
   loading: boolean;
   signUp: (email: string, password: string, name: string) => Promise<void>;
   signIn: (email: string, password: string) => Promise<void>;
+  signInWithGoogle: () => Promise<void>;
   logOut: () => Promise<void>;
   isAuthenticated: boolean;
 };
@@ -26,6 +32,7 @@ const AuthContext = createContext<AuthContextType>({
   loading: true,
   signUp: async () => {},
   signIn: async () => {},
+  signInWithGoogle: async () => {},
   logOut: async () => {},
   isAuthenticated: false,
 });
@@ -86,6 +93,26 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         });
         // Force refresh the user object to get the updated profile
         setUser({ ...result.user });
+        
+        // Create user_points record for admin panel visibility
+        try {
+          const { db } = await import('./firebase');
+          const { doc, setDoc, serverTimestamp } = await import('firebase/firestore');
+          const userDocRef = doc(db, 'user_points', email);
+          await setDoc(userDocRef, {
+            userEmail: email,
+            points: 0,
+            totalSubmissions: 0,
+            isPro: false,
+            topikUnlocked: false,
+            createdAt: serverTimestamp(),
+            lastUpdated: serverTimestamp()
+          });
+          console.log('✅ Created user_points record for new user');
+        } catch (firestoreError) {
+          console.log('Note: Could not create user_points record (non-critical):', firestoreError);
+          // Non-critical error, continue
+        }
       }
       console.log('User signed up successfully with name:', name);
     } catch (error: any) {
@@ -100,6 +127,105 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       console.log('User signed in successfully');
     } catch (error: any) {
       console.error('Sign in error:', error.message);
+      throw error;
+    }
+  };
+
+  const signInWithGoogle = async () => {
+    try {
+      // Use different client IDs based on platform
+      // iOS needs an iOS OAuth client ID (not web client)
+      // Web/Android can use the web client ID
+      const webClientId = '974504645463-9vcp2gp4qpug7di56fqfp3fgtgt0onmt.apps.googleusercontent.com';
+      // iOS Client ID - TODO: Replace with your iOS OAuth Client ID from Google Cloud Console
+      // Create iOS OAuth client at: https://console.cloud.google.com/apis/credentials
+      // Application type: iOS, Bundle ID: com.aksp17.app
+      const iosClientId = '974504645463-u6jqjmks8h24bucsb5b9hkma493utcto.apps.googleusercontent.com';
+      
+      // Select client ID based on platform
+      const clientId = Platform.OS === 'ios' ? iosClientId : webClientId;
+      
+      console.log('📱 Platform:', Platform.OS);
+      console.log('🔑 Using Client ID:', clientId);
+      
+      // Create a random state for security
+      const state = await Crypto.digestStringAsync(
+        Crypto.CryptoDigestAlgorithm.SHA256,
+        Math.random().toString()
+      );
+
+      // Request Google OAuth
+      // For iOS, use custom scheme
+      // For Android/Web, also use custom scheme (Android supports it, web will use expo proxy)
+      const redirectUri = AuthSession.makeRedirectUri({
+        scheme: 'com.aksp17.app',
+      });
+      
+      console.log('🔗 Redirect URI:', redirectUri);
+      
+      const request = new AuthSession.AuthRequest({
+        clientId: clientId,
+        scopes: ['openid', 'profile', 'email'],
+        responseType: AuthSession.ResponseType.IdToken,
+        redirectUri: redirectUri,
+        state: state,
+        // Remove code challenge for IdToken response type
+        usePKCE: false,
+      });
+
+      const discovery = {
+        authorizationEndpoint: 'https://accounts.google.com/o/oauth2/v2/auth',
+        tokenEndpoint: 'https://oauth2.googleapis.com/token',
+        revocationEndpoint: 'https://oauth2.googleapis.com/revoke',
+      };
+
+      const result = await request.promptAsync(discovery);
+
+      if (result.type === 'success') {
+        const { id_token } = result.params;
+        
+        if (!id_token) {
+          throw new Error('No ID token received from Google');
+        }
+
+        // Create Firebase credential from Google ID token
+        const credential = GoogleAuthProvider.credential(id_token);
+        
+        // Sign in to Firebase with Google credential
+        const userCredential = await signInWithCredential(auth, credential);
+        
+        // Create user_points record if new user
+        if (userCredential.user && userCredential.user.email) {
+          try {
+            const { db } = await import('./firebase');
+            const { doc, setDoc, getDoc, serverTimestamp } = await import('firebase/firestore');
+            const userDocRef = doc(db, 'user_points', userCredential.user.email);
+            const userDoc = await getDoc(userDocRef);
+            
+            if (!userDoc.exists()) {
+              await setDoc(userDocRef, {
+                userEmail: userCredential.user.email,
+                points: 0,
+                totalSubmissions: 0,
+                isPro: false,
+                topikUnlocked: false,
+                createdAt: serverTimestamp(),
+                lastUpdated: serverTimestamp(),
+                signInMethod: 'google'
+              });
+              console.log('✅ Created user_points record for new Google user');
+            }
+          } catch (firestoreError) {
+            console.log('Note: Could not create user_points record (non-critical):', firestoreError);
+          }
+        }
+        
+        console.log('User signed in with Google successfully');
+      } else {
+        throw new Error('Google sign-in was cancelled or failed');
+      }
+    } catch (error: any) {
+      console.error('Google sign-in error:', error.message);
       throw error;
     }
   };
@@ -119,6 +245,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     loading,
     signUp,
     signIn,
+    signInWithGoogle,
     logOut,
     isAuthenticated: !!user,
   };

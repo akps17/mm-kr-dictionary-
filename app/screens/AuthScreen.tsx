@@ -25,7 +25,7 @@ export function AuthScreen() {
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
-  const { signIn, signUp } = useAuth();
+  const { signIn, signUp, signInWithGoogle } = useAuth();
   const C = useThemedColors();
   const { settings } = useSettings();
   const labels = i18nLabels[settings.uiLanguage];
@@ -68,6 +68,23 @@ export function AuthScreen() {
         message = 'Invalid email address';
       } else if (error.code === 'auth/weak-password') {
         message = 'Password is too weak';
+      }
+      Alert.alert('Error', message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
+    setLoading(true);
+    try {
+      await signInWithGoogle();
+    } catch (error: any) {
+      let message = 'Google sign-in failed';
+      if (error.message.includes('cancelled')) {
+        message = 'Google sign-in was cancelled';
+      } else if (error.message) {
+        message = error.message;
       }
       Alert.alert('Error', message);
     } finally {
@@ -191,6 +208,38 @@ export function AuthScreen() {
             </Text>
           </TouchableOpacity>
 
+          {/* Divider */}
+          <View style={styles.dividerContainer}>
+            <View style={[styles.dividerLine, { backgroundColor: C.border }]} />
+            <Text style={[styles.dividerText, { color: C.textSecondary }]}>
+              {settings.uiLanguage === 'myanmar' ? 'သို့မဟုတ်' : settings.uiLanguage === 'korean' ? '또는' : 'OR'}
+            </Text>
+            <View style={[styles.dividerLine, { backgroundColor: C.border }]} />
+          </View>
+
+          {/* Google Sign-In Button */}
+          <TouchableOpacity
+            style={[
+              styles.googleButton,
+              { 
+                backgroundColor: C.surface,
+                borderColor: C.border,
+              },
+              loading && styles.submitButtonDisabled
+            ]}
+            onPress={handleGoogleSignIn}
+            disabled={loading}
+          >
+            <Ionicons name="logo-google" size={20} color="#4285F4" />
+            <Text style={[styles.googleButtonText, { color: C.textPrimary }]}>
+              {settings.uiLanguage === 'myanmar' 
+                ? 'Google ဖြင့် ဝင်ရောက်ရန်'
+                : settings.uiLanguage === 'korean'
+                ? 'Google로 로그인'
+                : 'Continue with Google'}
+            </Text>
+          </TouchableOpacity>
+
           {/* Toggle Mode */}
           <View style={styles.toggleContainer}>
             <Text style={[styles.toggleText, { color: C.textSecondary }]}>
@@ -301,5 +350,39 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '600',
     marginLeft: 4,
+  },
+  dividerContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginVertical: 20,
+  },
+  dividerLine: {
+    flex: 1,
+    height: 1,
+  },
+  dividerText: {
+    marginHorizontal: 12,
+    fontSize: 14,
+    fontWeight: '500',
+  },
+  googleButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 14,
+    paddingHorizontal: 20,
+    borderRadius: 14,
+    borderWidth: 1.5,
+    marginBottom: 20,
+    gap: 12,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.05,
+    shadowRadius: 4,
+    elevation: 1,
+  },
+  googleButtonText: {
+    fontSize: 16,
+    fontWeight: '600',
   },
 });

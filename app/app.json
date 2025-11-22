@@ -19,6 +19,7 @@
         "ITSAppUsesNonExemptEncryption": false
       }
     },
+    "scheme": "com.aksp17.app",
     "android": {
       "package": "com.aksp17.app",
       "adaptiveIcon": {

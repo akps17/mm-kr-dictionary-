@@ -8,25 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
-		160DA328ECA6A3124DB06999 /* libPods-MyanmarKoreanDictionary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7036F9A17BCA28A6ACF8C70C /* libPods-MyanmarKoreanDictionary.a */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
-		826928228FA5DFAE9D7F299F /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 7217F38FE73B7DB8D061610E /* PrivacyInfo.xcprivacy */; };
-		B1C9C7DAA72CECAE836BFA50 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8DE188A8A3207004568DEE /* ExpoModulesProvider.swift */; };
+		3FE5B3F662121C152A7C31C9 /* libPods-MyanmarKoreanDictionary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AC53CF55608CDEB9B16F2B4 /* libPods-MyanmarKoreanDictionary.a */; };
+		4858D9190B62F5AC2DC85D60 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = B63C1610A7E6D60F539CD251 /* PrivacyInfo.xcprivacy */; };
+		6D1F004382BE649A154B6B12 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C38FCD5212AFDC211278A9DE /* ExpoModulesProvider.swift */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
 		F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11748412D0307B40044C1D9 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0A8DE188A8A3207004568DEE /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-MyanmarKoreanDictionary/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* MyanmarKoreanDictionary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyanmarKoreanDictionary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = MyanmarKoreanDictionary/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = MyanmarKoreanDictionary/Info.plist; sourceTree = "<group>"; };
-		2F83188DA4B75FE88F6C422C /* Pods-MyanmarKoreanDictionary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyanmarKoreanDictionary.debug.xcconfig"; path = "Target Support Files/Pods-MyanmarKoreanDictionary/Pods-MyanmarKoreanDictionary.debug.xcconfig"; sourceTree = "<group>"; };
-		7036F9A17BCA28A6ACF8C70C /* libPods-MyanmarKoreanDictionary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyanmarKoreanDictionary.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7217F38FE73B7DB8D061610E /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = MyanmarKoreanDictionary/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		A8D4230324DE119393F0A4A9 /* Pods-MyanmarKoreanDictionary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyanmarKoreanDictionary.release.xcconfig"; path = "Target Support Files/Pods-MyanmarKoreanDictionary/Pods-MyanmarKoreanDictionary.release.xcconfig"; sourceTree = "<group>"; };
+		3BC58C970DB43FFE07EC61F2 /* Pods-MyanmarKoreanDictionary.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyanmarKoreanDictionary.release.xcconfig"; path = "Target Support Files/Pods-MyanmarKoreanDictionary/Pods-MyanmarKoreanDictionary.release.xcconfig"; sourceTree = "<group>"; };
+		9AC53CF55608CDEB9B16F2B4 /* libPods-MyanmarKoreanDictionary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MyanmarKoreanDictionary.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = MyanmarKoreanDictionary/SplashScreen.storyboard; sourceTree = "<group>"; };
+		B63C1610A7E6D60F539CD251 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = MyanmarKoreanDictionary/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
+		C38FCD5212AFDC211278A9DE /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-MyanmarKoreanDictionary/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		C4B691A456D072D4FC538BF4 /* Pods-MyanmarKoreanDictionary.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyanmarKoreanDictionary.debug.xcconfig"; path = "Target Support Files/Pods-MyanmarKoreanDictionary/Pods-MyanmarKoreanDictionary.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F11748412D0307B40044C1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = MyanmarKoreanDictionary/AppDelegate.swift; sourceTree = "<group>"; };
 		F11748442D0722820044C1D9 /* MyanmarKoreanDictionary-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "MyanmarKoreanDictionary-Bridging-Header.h"; path = "MyanmarKoreanDictionary/MyanmarKoreanDictionary-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -37,23 +37,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				160DA328ECA6A3124DB06999 /* libPods-MyanmarKoreanDictionary.a in Frameworks */,
+				3FE5B3F662121C152A7C31C9 /* libPods-MyanmarKoreanDictionary.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1389161596B5933E015F0AE3 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				2F83188DA4B75FE88F6C422C /* Pods-MyanmarKoreanDictionary.debug.xcconfig */,
-				A8D4230324DE119393F0A4A9 /* Pods-MyanmarKoreanDictionary.release.xcconfig */,
-			);
-			name = Pods;
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		13B07FAE1A68108700A75B9A /* MyanmarKoreanDictionary */ = {
 			isa = PBXGroup;
 			children = (
@@ -63,15 +53,7 @@
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				7217F38FE73B7DB8D061610E /* PrivacyInfo.xcprivacy */,
-			);
-			name = MyanmarKoreanDictionary;
-			sourceTree = "<group>";
-		};
-		2ACEC6DBED59CF0D6DC174B6 /* MyanmarKoreanDictionary */ = {
-			isa = PBXGroup;
-			children = (
-				0A8DE188A8A3207004568DEE /* ExpoModulesProvider.swift */,
+				B63C1610A7E6D60F539CD251 /* PrivacyInfo.xcprivacy */,
 			);
 			name = MyanmarKoreanDictionary;
 			sourceTree = "<group>";
@@ -80,17 +62,27 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				7036F9A17BCA28A6ACF8C70C /* libPods-MyanmarKoreanDictionary.a */,
+				9AC53CF55608CDEB9B16F2B4 /* libPods-MyanmarKoreanDictionary.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		5AF996B29C52C09BA729D8E9 /* ExpoModulesProviders */ = {
+		662DF05E91DB353A7F964A41 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				2ACEC6DBED59CF0D6DC174B6 /* MyanmarKoreanDictionary */,
+				C4B691A456D072D4FC538BF4 /* Pods-MyanmarKoreanDictionary.debug.xcconfig */,
+				3BC58C970DB43FFE07EC61F2 /* Pods-MyanmarKoreanDictionary.release.xcconfig */,
 			);
-			name = ExpoModulesProviders;
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		66F06C29BB269243DAF54054 /* MyanmarKoreanDictionary */ = {
+			isa = PBXGroup;
+			children = (
+				C38FCD5212AFDC211278A9DE /* ExpoModulesProvider.swift */,
+			);
+			name = MyanmarKoreanDictionary;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -107,8 +99,8 @@
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				1389161596B5933E015F0AE3 /* Pods */,
-				5AF996B29C52C09BA729D8E9 /* ExpoModulesProviders */,
+				662DF05E91DB353A7F964A41 /* Pods */,
+				9CC03B3BC42C09C8B656D0FF /* ExpoModulesProviders */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -121,6 +113,14 @@
 				13B07F961A680F5B00A75B9A /* MyanmarKoreanDictionary.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		9CC03B3BC42C09C8B656D0FF /* ExpoModulesProviders */ = {
+			isa = PBXGroup;
+			children = (
+				66F06C29BB269243DAF54054 /* MyanmarKoreanDictionary */,
+			);
+			name = ExpoModulesProviders;
 			sourceTree = "<group>";
 		};
 		BB2F792B24A3F905000567C9 /* Supporting */ = {
@@ -140,13 +140,13 @@
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "MyanmarKoreanDictionary" */;
 			buildPhases = (
 				08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */,
-				A563406E18F9941DBDFBFD6F /* [Expo] Configure project */,
+				E00C3EEC705391CD8AB03D39 /* [Expo] Configure project */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
-				5F452F819092A2389B36200A /* [CP] Embed Pods Frameworks */,
+				B13B28619D5DC48D2BC4E414 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -196,7 +196,7 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				826928228FA5DFAE9D7F299F /* PrivacyInfo.xcprivacy in Resources */,
+				4858D9190B62F5AC2DC85D60 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,7 +242,41 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5F452F819092A2389B36200A /* [CP] Embed Pods Frameworks */ = {
+		800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyanmarKoreanDictionary/Pods-MyanmarKoreanDictionary-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/EXApplication/ExpoApplication_privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/EXConstants.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/ExpoConstants_privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/ExpoFileSystem/ExpoFileSystem_privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/RNCAsyncStorage/RNCAsyncStorage_resources.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/React-Core_privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/React-cxxreact/React-cxxreact_privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/expo-dev-launcher/EXDevLauncher.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/expo-dev-menu/EXDevMenu.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoApplication_privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXConstants.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoConstants_privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoFileSystem_privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RNCAsyncStorage_resources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/React-Core_privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/React-cxxreact_privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXDevLauncher.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXDevMenu.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyanmarKoreanDictionary/Pods-MyanmarKoreanDictionary-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B13B28619D5DC48D2BC4E414 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -264,39 +298,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyanmarKoreanDictionary/Pods-MyanmarKoreanDictionary-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MyanmarKoreanDictionary/Pods-MyanmarKoreanDictionary-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/EXConstants.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/ExpoConstants_privacy.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/ExpoFileSystem/ExpoFileSystem_privacy.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/RNCAsyncStorage/RNCAsyncStorage_resources.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/React-Core_privacy.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/React-cxxreact/React-cxxreact_privacy.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/expo-dev-launcher/EXDevLauncher.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/expo-dev-menu/EXDevMenu.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXConstants.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoConstants_privacy.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoFileSystem_privacy.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RNCAsyncStorage_resources.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/React-Core_privacy.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/React-cxxreact_privacy.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXDevLauncher.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXDevMenu.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyanmarKoreanDictionary/Pods-MyanmarKoreanDictionary-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A563406E18F9941DBDFBFD6F /* [Expo] Configure project */ = {
+		E00C3EEC705391CD8AB03D39 /* [Expo] Configure project */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -328,7 +330,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */,
-				B1C9C7DAA72CECAE836BFA50 /* ExpoModulesProvider.swift in Sources */,
+				6D1F004382BE649A154B6B12 /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,7 +339,7 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2F83188DA4B75FE88F6C422C /* Pods-MyanmarKoreanDictionary.debug.xcconfig */;
+			baseConfigurationReference = C4B691A456D072D4FC538BF4 /* Pods-MyanmarKoreanDictionary.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -373,7 +375,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A8D4230324DE119393F0A4A9 /* Pods-MyanmarKoreanDictionary.release.xcconfig */;
+			baseConfigurationReference = 3BC58C970DB43FFE07EC61F2 /* Pods-MyanmarKoreanDictionary.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
