@@ -27,6 +27,7 @@ export function AuthScreen() {
   const [birthdate, setBirthdate] = useState('');
   const [koreanLevel, setKoreanLevel] = useState('');
   const [position, setPosition] = useState('');
+  const [gender, setGender] = useState('');
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showCountryModal, setShowCountryModal] = useState(false);
@@ -63,6 +64,10 @@ export function AuthScreen() {
         Alert.alert('Error', 'Please select your position');
         return;
       }
+      if (!gender) {
+        Alert.alert('Error', 'Please select your gender');
+        return;
+      }
       if (password !== confirmPassword) {
         Alert.alert('Error', 'Passwords do not match');
         return;
@@ -85,7 +90,8 @@ export function AuthScreen() {
           nationality.trim(),
           birthdate.trim(),
           koreanLevel,
-          position
+          position,
+          gender
         );
       }
     } catch (error: any) {
@@ -341,6 +347,36 @@ export function AuthScreen() {
                         { color: position === pos ? '#FFFFFF' : C.textPrimary }
                       ]}>
                         {pos}
+                      </Text>
+                    </TouchableOpacity>
+                  ))}
+                </View>
+              </View>
+            </View>
+          )}
+
+          {/* Gender (Sign Up only) */}
+          {!isLogin && (
+            <View style={styles.inputContainer}>
+              <Text style={[styles.label, { color: C.textPrimary }]}>Gender</Text>
+              <View style={[styles.pickerWrapper, { borderColor: C.border, backgroundColor: C.surface }]}>
+                <Ionicons name="person-outline" size={20} color={C.textSecondary} style={styles.inputIcon} />
+                <View style={styles.pickerContainer}>
+                  {['Male', 'Female'].map((gen) => (
+                    <TouchableOpacity
+                      key={gen}
+                      style={[
+                        styles.pickerOption,
+                        gender === gen && { backgroundColor: C.brand, borderColor: C.brand },
+                        gender !== gen && { borderColor: C.border }
+                      ]}
+                      onPress={() => setGender(gen)}
+                    >
+                      <Text style={[
+                        styles.pickerOptionText,
+                        { color: gender === gen ? '#FFFFFF' : C.textPrimary }
+                      ]}>
+                        {gen}
                       </Text>
                     </TouchableOpacity>
                   ))}

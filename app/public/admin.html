@@ -753,6 +753,14 @@
                             <span class="nav-item-text">Analytics</span>
                         </div>
                     </div>
+
+                    <div class="nav-section">
+                        <div class="nav-section-title">Developer</div>
+                        <div class="nav-item" onclick="showSection('developer')" style="border-left-color: #ef4444;">
+                            <span class="nav-item-icon">⚠️</span>
+                            <span class="nav-item-text">Developer Mode</span>
+                        </div>
+                    </div>
                 </nav>
 
                 <div class="sidebar-footer">
@@ -989,6 +997,155 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Developer Mode Section -->
+                <div id="section-developer" class="content-section hidden">
+                    <div class="content-header">
+                        <h1 class="content-title" style="color: #ef4444;">⚠️ Developer Mode</h1>
+                        <p class="content-subtitle" style="color: #dc2626;">Dangerous operations - Use with extreme caution</p>
+                    </div>
+                    <div class="content-body">
+                        <div id="developer-container">
+                            <!-- Developer Login Form -->
+                            <div id="developer-login-form" class="section-card">
+                                <div class="section-card-header" style="background: #fef2f2; border-bottom-color: #fecaca;">
+                                    <div class="section-card-title" style="color: #dc2626;">
+                                        <span>🔒</span>
+                                        <span>Developer Authentication Required</span>
+                                    </div>
+                                </div>
+                                <div class="section-card-body">
+                                    <p style="color: #991b1b; margin-bottom: 20px; font-weight: 600;">
+                                        ⚠️ This section allows permanent deletion of all data. Access is restricted to developers only.
+                                    </p>
+                                    <div class="form-group">
+                                        <label style="color: #1f2937;">Developer Email:</label>
+                                        <input type="email" id="dev-email" class="form-input" placeholder="developer@example.com" onkeypress="if(event.key === 'Enter') developerLogin();">
+                                    </div>
+                                    <div class="form-group">
+                                        <label style="color: #1f2937;">Developer Password:</label>
+                                        <input type="password" id="dev-password" class="form-input" placeholder="Enter developer password" onkeypress="if(event.key === 'Enter') developerLogin();">
+                                    </div>
+                                    <button class="btn btn-danger" onclick="developerLogin()" style="width: 100%; margin-top: 12px;">
+                                        🔓 Unlock Developer Mode
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Developer Tools (Hidden until authenticated) -->
+                            <div id="developer-tools" style="display: none;">
+                                <div class="section-card" style="border: 2px solid #ef4444; margin-bottom: 24px;">
+                                    <div class="section-card-header" style="background: #fef2f2;">
+                                        <div class="section-card-title" style="color: #dc2626;">
+                                            <span>🔍</span>
+                                            <span>Delete User Data by Email</span>
+                                        </div>
+                                    </div>
+                                    <div class="section-card-body">
+                                        <p style="color: #991b1b; margin-bottom: 20px; font-weight: 600;">
+                                            ⚠️ Search for a user by email and delete all their data (user_points, submissions, dictionary entries, and Firebase Auth account).
+                                        </p>
+                                        <div style="display: flex; gap: 12px; margin-bottom: 16px;">
+                                            <input 
+                                                type="email" 
+                                                id="delete-user-email" 
+                                                class="form-input" 
+                                                placeholder="Enter user email to search and delete..."
+                                                style="flex: 1;"
+                                                onkeypress="if(event.key === 'Enter') searchUserForDeletion();"
+                                            />
+                                            <button class="btn btn-danger" onclick="searchUserForDeletion()">
+                                                🔍 Search & Delete
+                                            </button>
+                                        </div>
+                                        <div id="user-deletion-results" style="display: none; margin-top: 20px; padding: 16px; background: #fee2e2; border-radius: 8px; border: 1px solid #ef4444;">
+                                            <h4 style="margin: 0 0 12px 0; color: #991b1b;">User Data Found:</h4>
+                                            <div id="user-deletion-stats" style="margin-bottom: 16px;"></div>
+                                            <button class="btn btn-danger" onclick="deleteUserData()" style="width: 100%; padding: 14px; font-size: 16px; font-weight: 700;">
+                                                🗑️ Delete All Data for This User
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="section-card" style="border: 2px solid #ef4444; margin-bottom: 24px;">
+                                    <div class="section-card-header" style="background: #fef2f2;">
+                                        <div class="section-card-title" style="color: #dc2626;">
+                                            <span>🗑️</span>
+                                            <span>Delete All Data</span>
+                                        </div>
+                                    </div>
+                                    <div class="section-card-body">
+                                        <p style="color: #991b1b; margin-bottom: 20px; font-weight: 600;">
+                                            ⚠️ WARNING: These operations are IRREVERSIBLE. All deleted data cannot be recovered.
+                                        </p>
+                                        
+                                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px;">
+                                            <div style="padding: 20px; background: #f9fafb; border-radius: 12px; border: 1px solid #e5e7eb;">
+                                                <h4 style="margin: 0 0 8px 0; color: #1f2937;">User Points</h4>
+                                                <p style="font-size: 13px; color: #6b7280; margin: 0 0 12px 0;">Delete all user_points records</p>
+                                                <button class="btn btn-danger" onclick="deleteAllUserPoints()" style="width: 100%;">
+                                                    🗑️ Delete All User Points
+                                                </button>
+                                            </div>
+
+                                            <div style="padding: 20px; background: #f9fafb; border-radius: 12px; border: 1px solid #e5e7eb;">
+                                                <h4 style="margin: 0 0 8px 0; color: #1f2937;">Submissions</h4>
+                                                <p style="font-size: 13px; color: #6b7280; margin: 0 0 12px 0;">Delete all pending_words</p>
+                                                <button class="btn btn-danger" onclick="deleteAllSubmissions()" style="width: 100%;">
+                                                    🗑️ Delete All Submissions
+                                                </button>
+                                            </div>
+
+                                            <div style="padding: 20px; background: #f9fafb; border-radius: 12px; border: 1px solid #e5e7eb;">
+                                                <h4 style="margin: 0 0 8px 0; color: #1f2937;">Dictionary</h4>
+                                                <p style="font-size: 13px; color: #6b7280; margin: 0 0 12px 0;">Delete all dictionary entries</p>
+                                                <button class="btn btn-danger" onclick="deleteAllDictionary()" style="width: 100%;">
+                                                    🗑️ Delete All Dictionary
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <div style="margin-top: 24px; padding: 20px; background: #fee2e2; border-radius: 12px; border: 2px solid #ef4444;">
+                                            <h4 style="margin: 0 0 12px 0; color: #991b1b;">⚠️ NUCLEAR OPTION</h4>
+                                            <p style="color: #991b1b; margin: 0 0 16px 0; font-weight: 600;">
+                                                Delete ALL data from ALL collections. This will completely wipe the database.
+                                            </p>
+                                            <button class="btn btn-danger" onclick="deleteAllData()" style="width: 100%; padding: 16px; font-size: 16px; font-weight: 700;">
+                                                💣 DELETE EVERYTHING
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="section-card">
+                                    <div class="section-card-header">
+                                        <div class="section-card-title">
+                                            <span>📊</span>
+                                            <span>Data Statistics</span>
+                                        </div>
+                                    </div>
+                                    <div class="section-card-body">
+                                        <div id="developer-stats" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+                                            <div style="text-align: center; padding: 16px; background: #f9fafb; border-radius: 8px;">
+                                                <div style="font-size: 32px; font-weight: 700; color: #667eea;" id="dev-user-points-count">-</div>
+                                                <div style="font-size: 14px; color: #6b7280;">User Points Records</div>
+                                            </div>
+                                            <div style="text-align: center; padding: 16px; background: #f9fafb; border-radius: 8px;">
+                                                <div style="font-size: 32px; font-weight: 700; color: #f59e0b;" id="dev-submissions-count">-</div>
+                                                <div style="font-size: 14px; color: #6b7280;">Submissions</div>
+                                            </div>
+                                            <div style="text-align: center; padding: 16px; background: #f9fafb; border-radius: 8px;">
+                                                <div style="font-size: 32px; font-weight: 700; color: #10b981;" id="dev-dictionary-count">-</div>
+                                                <div style="font-size: 14px; color: #6b7280;">Dictionary Entries</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </main>
     </div>
     </div>
@@ -1161,6 +1318,8 @@
                 loadUsers();
             } else if (sectionName === 'analytics') {
                 loadAnalytics();
+            } else if (sectionName === 'developer') {
+                loadDeveloperMode();
             }
         };
 
@@ -2716,6 +2875,7 @@
                         birthdate: data.birthdate || null,
                         koreanLevel: data.koreanLevel || 0,
                         position: data.position || 'Unknown',
+                        gender: data.gender || 'Unknown',
                         createdAt: data.createdAt,
                         signInMethod: data.signInMethod || 'email',
                         isPro: data.isPro || false
@@ -2731,6 +2891,7 @@
                 const nationalityCount = {};
                 const koreanLevelCount = {};
                 const positionCount = {};
+                const genderCount = {};
                 const signUpMethodCount = {};
                 const monthlySignUps = {};
                 const ageGroups = { 'Under 18': 0, '18-25': 0, '26-35': 0, '36-45': 0, '46-55': 0, 'Over 55': 0 };
@@ -2747,6 +2908,10 @@
                     // Position
                     const position = user.position || 'Unknown';
                     positionCount[position] = (positionCount[position] || 0) + 1;
+                    
+                    // Gender
+                    const gender = user.gender || 'Unknown';
+                    genderCount[gender] = (genderCount[gender] || 0) + 1;
 
                     // Sign-up method
                     const method = user.signInMethod || 'email';
@@ -2855,6 +3020,18 @@
                                 <canvas id="positionChart" style="max-height: 300px;"></canvas>
                             </div>
                         </div>
+
+                        <div class="section-card">
+                            <div class="section-card-header">
+                                <div class="section-card-title">
+                                    <span>👥</span>
+                                    <span>Gender Distribution</span>
+                                </div>
+                            </div>
+                            <div class="section-card-body">
+                                <canvas id="genderChart" style="max-height: 300px;"></canvas>
+                            </div>
+                        </div>
                     </div>
 
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 24px; margin-bottom: 24px;">
@@ -2902,6 +3079,7 @@
                 createNationalityChart(nationalityCount);
                 createKoreanLevelChart(koreanLevelCount);
                 createPositionChart(positionCount);
+                createGenderChart(genderCount);
                 createSignUpMethodChart(signUpMethodCount);
                 createAgeGroupChart(ageGroups);
                 createMonthlySignUpsChart(monthlySignUps);
@@ -2996,6 +3174,53 @@
                         y: {
                             beginAtZero: true,
                             ticks: { stepSize: 1 }
+                        }
+                    }
+                }
+            });
+        }
+
+        function createGenderChart(data) {
+            const ctx = document.getElementById('genderChart').getContext('2d');
+            const labels = Object.keys(data);
+            const values = Object.values(data);
+            
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: values,
+                        backgroundColor: [
+                            '#667eea',
+                            '#f59e0b',
+                            '#10b981',
+                            '#ef4444',
+                            '#8b5cf6'
+                        ],
+                        borderWidth: 2,
+                        borderColor: '#ffffff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'bottom',
+                            labels: { font: { size: 12 } }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const label = context.label || '';
+                                    const value = context.parsed || 0;
+                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const percentage = ((value / total) * 100).toFixed(1);
+                                    return `${label}: ${value} (${percentage}%)`;
+                                }
+                            }
                         }
                     }
                 }
@@ -3186,6 +3411,551 @@
                 }
             });
         }
+
+        // Developer Mode Functions
+        const DEVELOPER_CREDENTIALS = {
+            email: 'aungko17101999@gmail.com',
+            password: 'aungko000'
+        };
+
+        let developerAuthenticated = false;
+        let currentDeleteUserEmail = null;
+        let userDeletionData = {
+            userPoints: 0,
+            submissions: 0,
+            dictionary: 0,
+            authAccount: false
+        };
+
+        window.developerLogin = function() {
+            const email = document.getElementById('dev-email').value.trim();
+            const password = document.getElementById('dev-password').value.trim();
+
+            if (email === DEVELOPER_CREDENTIALS.email && password === DEVELOPER_CREDENTIALS.password) {
+                developerAuthenticated = true;
+                const loginForm = document.getElementById('developer-login-form');
+                const toolsDiv = document.getElementById('developer-tools');
+                
+                if (loginForm) loginForm.style.display = 'none';
+                if (toolsDiv) {
+                    toolsDiv.style.display = 'block';
+                    // Ensure elements are accessible
+                    setTimeout(() => {
+                        loadDeveloperStats();
+                    }, 100);
+                }
+                alert('✅ Developer mode unlocked');
+            } else {
+                alert('❌ Invalid developer credentials');
+                const passwordInput = document.getElementById('dev-password');
+                if (passwordInput) passwordInput.value = '';
+            }
+        };
+
+        async function loadDeveloperMode() {
+            developerAuthenticated = false;
+            document.getElementById('developer-login-form').style.display = 'block';
+            document.getElementById('developer-tools').style.display = 'none';
+            document.getElementById('dev-email').value = '';
+            document.getElementById('dev-password').value = '';
+        }
+
+        async function loadDeveloperStats() {
+            try {
+                const userPointsSnapshot = await getDocs(collection(db, 'user_points'));
+                const submissionsSnapshot = await getDocs(collection(db, 'pending_words'));
+                const dictionarySnapshot = await getDocs(collection(db, 'dictionary'));
+
+                document.getElementById('dev-user-points-count').textContent = userPointsSnapshot.size;
+                document.getElementById('dev-submissions-count').textContent = submissionsSnapshot.size;
+                document.getElementById('dev-dictionary-count').textContent = dictionarySnapshot.size;
+            } catch (error) {
+                console.error('Error loading developer stats:', error);
+            }
+        }
+
+        window.searchUserForDeletion = async function() {
+            if (!developerAuthenticated) {
+                alert('❌ Developer authentication required');
+                return;
+            }
+
+            // Check if developer tools are visible
+            const developerTools = document.getElementById('developer-tools');
+            if (!developerTools || developerTools.style.display === 'none') {
+                alert('❌ Developer tools not available. Please unlock developer mode first.');
+                return;
+            }
+
+            const emailInput = document.getElementById('delete-user-email');
+            if (!emailInput) {
+                alert('❌ Error: Email input field not found. Please refresh the page.');
+                console.error('delete-user-email element not found');
+                return;
+            }
+
+            const email = emailInput.value.trim().toLowerCase();
+            
+            if (!email) {
+                alert('❌ Please enter a user email');
+                return;
+            }
+
+            // Basic email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('❌ Please enter a valid email address');
+                return;
+            }
+
+            try {
+                // Wait a bit to ensure DOM is ready
+                await new Promise(resolve => setTimeout(resolve, 100));
+                
+                const resultsDiv = document.getElementById('user-deletion-results');
+                const statsDiv = document.getElementById('user-deletion-stats');
+                
+                if (!resultsDiv) {
+                    alert('❌ Error: Results container not found. Please refresh the page.');
+                    console.error('user-deletion-results element not found');
+                    return;
+                }
+                
+                if (!statsDiv) {
+                    alert('❌ Error: Stats container not found. Please refresh the page.');
+                    console.error('user-deletion-stats element not found');
+                    return;
+                }
+                
+                resultsDiv.style.display = 'block';
+                statsDiv.innerHTML = '<p style="color: #991b1b;">Searching...</p>';
+
+                // Count user_points
+                let userPointsCount = 0;
+                try {
+                    const userDoc = await getDoc(doc(db, 'user_points', email));
+                    if (userDoc.exists()) {
+                        userPointsCount = 1;
+                    }
+                } catch (e) {
+                    console.log('Error checking user_points:', e);
+                }
+
+                // Count submissions
+                let submissionsCount = 0;
+                const submissionsSnapshot = await getDocs(collection(db, 'pending_words'));
+                submissionsSnapshot.forEach(doc => {
+                    const data = doc.data();
+                    const docEmail = (data.userEmail || data.submittedBy || data.email || '').trim().toLowerCase();
+                    if (docEmail === email) {
+                        submissionsCount++;
+                    }
+                });
+
+                // Count dictionary entries
+                let dictionaryCount = 0;
+                const dictionarySnapshot = await getDocs(collection(db, 'dictionary'));
+                dictionarySnapshot.forEach(doc => {
+                    const data = doc.data();
+                    const docEmail = (data.userEmail || data.originalSubmitter || data.submittedBy || data.email || '').trim().toLowerCase();
+                    if (docEmail === email) {
+                        dictionaryCount++;
+                    }
+                });
+
+                // Check if auth user exists (note: this requires Admin SDK, so we'll note it)
+                let authUserExists = false;
+                try {
+                    // Note: Client SDK can't directly check if user exists by email
+                    // This would require Firebase Admin SDK on server-side
+                    // We'll attempt to verify through other means or note it
+                    authUserExists = true; // Assume exists - actual deletion will require Admin SDK
+                } catch (e) {
+                    console.log('Note: Auth user verification requires Admin SDK');
+                }
+
+                userDeletionData = {
+                    userPoints: userPointsCount,
+                    submissions: submissionsCount,
+                    dictionary: dictionaryCount,
+                    authAccount: authUserExists
+                };
+                currentDeleteUserEmail = email;
+
+                const total = userPointsCount + submissionsCount + dictionaryCount;
+
+                // Double-check elements still exist before updating
+                if (!resultsDiv || !statsDiv) {
+                    alert('❌ Error: Elements not found. Please refresh and try again.');
+                    return;
+                }
+
+                if (total === 0) {
+                    statsDiv.innerHTML = `
+                        <p style="color: #6b7280; margin: 0;">
+                            ℹ️ No data found for user: <strong>${email}</strong>
+                        </p>
+                    `;
+                    const deleteButton = resultsDiv.querySelector('button');
+                    if (deleteButton) deleteButton.style.display = 'none';
+                } else {
+                    statsDiv.innerHTML = `
+                        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 12px;">
+                            <div style="text-align: center; padding: 12px; background: white; border-radius: 8px;">
+                                <div style="font-size: 24px; font-weight: 700; color: #667eea;">${userPointsCount}</div>
+                                <div style="font-size: 12px; color: #6b7280;">User Points</div>
+                            </div>
+                            <div style="text-align: center; padding: 12px; background: white; border-radius: 8px;">
+                                <div style="font-size: 24px; font-weight: 700; color: #f59e0b;">${submissionsCount}</div>
+                                <div style="font-size: 12px; color: #6b7280;">Submissions</div>
+                            </div>
+                            <div style="text-align: center; padding: 12px; background: white; border-radius: 8px;">
+                                <div style="font-size: 24px; font-weight: 700; color: #10b981;">${dictionaryCount}</div>
+                                <div style="font-size: 12px; color: #6b7280;">Dictionary</div>
+                            </div>
+                            <div style="text-align: center; padding: 12px; background: white; border-radius: 8px;">
+                                <div style="font-size: 24px; font-weight: 700; color: #ef4444;">🔐</div>
+                                <div style="font-size: 12px; color: #6b7280;">Auth Account</div>
+                            </div>
+                        </div>
+                        <p style="color: #991b1b; margin: 0; font-weight: 600;">
+                            Total records found: <strong>${total}</strong> for user: <strong>${email}</strong>
+                        </p>
+                        <p style="color: #6b7280; margin: 8px 0 0 0; font-size: 13px;">
+                            ℹ️ Auth account deletion instructions will be shown after deletion.
+                        </p>
+                    `;
+                    const deleteButton = resultsDiv.querySelector('button');
+                    if (deleteButton) deleteButton.style.display = 'block';
+                }
+
+            } catch (error) {
+                alert('❌ Error searching user: ' + error.message);
+                console.error('Search error:', error);
+            }
+        };
+
+        window.deleteUserData = async function() {
+            if (!developerAuthenticated) {
+                alert('❌ Developer authentication required');
+                return;
+            }
+
+            if (!currentDeleteUserEmail) {
+                alert('❌ Please search for a user first');
+                return;
+            }
+
+            const confirm1 = confirm(`⚠️ WARNING: This will delete ALL data for user:\n\n${currentDeleteUserEmail}\n\n- ${userDeletionData.userPoints} user_points record(s)\n- ${userDeletionData.submissions} submission(s)\n- ${userDeletionData.dictionary} dictionary entry/entries\n- Firebase Auth account (if exists)\n\nThis action is IRREVERSIBLE!\n\nAre you absolutely sure?`);
+            if (!confirm1) return;
+
+            const confirm2 = confirm(`⚠️ FINAL WARNING: This will permanently delete all data for ${currentDeleteUserEmail}.\n\nType "DELETE" in the next prompt to confirm.`);
+            if (!confirm2) return;
+
+            const confirm3 = prompt(`Type "DELETE" to confirm deletion of all data for ${currentDeleteUserEmail}:`);
+            if (confirm3 !== 'DELETE') {
+                alert('❌ Deletion cancelled');
+                return;
+            }
+
+            try {
+                const resultsDiv = document.getElementById('user-deletion-results');
+                if (!resultsDiv) {
+                    alert('❌ Error: Results container not found');
+                    return;
+                }
+                resultsDiv.innerHTML = '<p style="text-align: center; padding: 40px; color: #ef4444; font-weight: 700;">Deleting user data...</p>';
+
+                let deleted = 0;
+                let errors = 0;
+
+                // Delete user_points
+                try {
+                    const userDocRef = doc(db, 'user_points', currentDeleteUserEmail);
+                    const userDoc = await getDoc(userDocRef);
+                    if (userDoc.exists()) {
+                        await deleteDoc(userDocRef);
+                        deleted++;
+                    }
+                } catch (error) {
+                    console.error('Error deleting user_points:', error);
+                    errors++;
+                }
+
+                // Delete submissions
+                const submissionsSnapshot = await getDocs(collection(db, 'pending_words'));
+                for (const docSnap of submissionsSnapshot.docs) {
+                    try {
+                        const data = docSnap.data();
+                        const docEmail = (data.userEmail || data.submittedBy || data.email || '').trim().toLowerCase();
+                        if (docEmail === currentDeleteUserEmail) {
+                            await deleteDoc(doc(db, 'pending_words', docSnap.id));
+                            deleted++;
+                        }
+                    } catch (error) {
+                        console.error('Error deleting submission:', error);
+                        errors++;
+                    }
+                }
+
+                // Delete dictionary entries
+                const dictionarySnapshot = await getDocs(collection(db, 'dictionary'));
+                for (const docSnap of dictionarySnapshot.docs) {
+                    try {
+                        const data = docSnap.data();
+                        const docEmail = (data.userEmail || data.originalSubmitter || data.submittedBy || data.email || '').trim().toLowerCase();
+                        if (docEmail === currentDeleteUserEmail) {
+                            await deleteDoc(doc(db, 'dictionary', docSnap.id));
+                            deleted++;
+                        }
+                    } catch (error) {
+                        console.error('Error deleting dictionary entry:', error);
+                        errors++;
+                    }
+                }
+
+                // Attempt to delete Firebase Auth user
+                // Note: Client SDK can't delete users by email - requires Admin SDK
+                // We'll provide instructions for manual deletion
+                let authMessage = `\n\n📝 Firebase Auth Account:\n` +
+                    `⚠️ Auth account deletion requires Firebase Admin SDK (server-side) or manual deletion.\n\n` +
+                    `To delete manually:\n` +
+                    `1. Go to: https://console.firebase.google.com/project/mm-kr-expo/authentication/users\n` +
+                    `2. Search for: ${currentDeleteUserEmail}\n` +
+                    `3. Click the user > Delete button\n\n` +
+                    `Or implement server-side Admin SDK function for programmatic deletion.`;
+
+                let resultMessage = `✅ User data deletion complete!\n\nUser: ${currentDeleteUserEmail}\nDeleted: ${deleted} records\nErrors: ${errors}${authMessage}`;
+
+                alert(resultMessage);
+
+                // Reset
+                currentDeleteUserEmail = null;
+                userDeletionData = { userPoints: 0, submissions: 0, dictionary: 0, authAccount: false };
+                document.getElementById('delete-user-email').value = '';
+                document.getElementById('user-deletion-results').style.display = 'none';
+                
+                loadDeveloperStats();
+                loadDashboardData();
+
+            } catch (error) {
+                alert('❌ Error deleting user data: ' + error.message);
+                console.error('Delete error:', error);
+            }
+        };
+
+        window.deleteAllUserPoints = async function() {
+            if (!developerAuthenticated) {
+                alert('❌ Developer authentication required');
+                return;
+            }
+
+            const confirm1 = confirm('⚠️ WARNING: This will delete ALL user_points records.\n\nThis action is IRREVERSIBLE!\n\nAre you absolutely sure?');
+            if (!confirm1) return;
+
+            const confirm2 = confirm('⚠️ FINAL WARNING: This will permanently delete all user points data.\n\nType "DELETE" in the next prompt to confirm.');
+            if (!confirm2) return;
+
+            const confirm3 = prompt('Type "DELETE" to confirm deletion of all user points:');
+            if (confirm3 !== 'DELETE') {
+                alert('❌ Deletion cancelled');
+                return;
+            }
+
+            try {
+                const container = document.getElementById('developer-tools');
+                container.innerHTML = '<p style="text-align: center; padding: 40px; color: #ef4444;">Deleting all user points...</p>';
+
+                const userPointsSnapshot = await getDocs(collection(db, 'user_points'));
+                let deleted = 0;
+                let errors = 0;
+
+                for (const docSnap of userPointsSnapshot.docs) {
+                    try {
+                        await deleteDoc(doc(db, 'user_points', docSnap.id));
+                        deleted++;
+                    } catch (error) {
+                        console.error('Error deleting:', docSnap.id, error);
+                        errors++;
+                    }
+                }
+
+                alert(`✅ Deletion complete!\n\nDeleted: ${deleted} records\nErrors: ${errors}`);
+                loadDeveloperMode();
+                loadDeveloperStats();
+
+            } catch (error) {
+                alert('❌ Error deleting user points: ' + error.message);
+                console.error('Delete error:', error);
+                loadDeveloperMode();
+            }
+        };
+
+        window.deleteAllSubmissions = async function() {
+            if (!developerAuthenticated) {
+                alert('❌ Developer authentication required');
+                return;
+            }
+
+            const confirm1 = confirm('⚠️ WARNING: This will delete ALL pending_words submissions.\n\nThis action is IRREVERSIBLE!\n\nAre you absolutely sure?');
+            if (!confirm1) return;
+
+            const confirm2 = confirm('⚠️ FINAL WARNING: This will permanently delete all submission data.\n\nType "DELETE" in the next prompt to confirm.');
+            if (!confirm2) return;
+
+            const confirm3 = prompt('Type "DELETE" to confirm deletion of all submissions:');
+            if (confirm3 !== 'DELETE') {
+                alert('❌ Deletion cancelled');
+                return;
+            }
+
+            try {
+                const container = document.getElementById('developer-tools');
+                container.innerHTML = '<p style="text-align: center; padding: 40px; color: #ef4444;">Deleting all submissions...</p>';
+
+                const submissionsSnapshot = await getDocs(collection(db, 'pending_words'));
+                let deleted = 0;
+                let errors = 0;
+
+                for (const docSnap of submissionsSnapshot.docs) {
+                    try {
+                        await deleteDoc(doc(db, 'pending_words', docSnap.id));
+                        deleted++;
+                    } catch (error) {
+                        console.error('Error deleting:', docSnap.id, error);
+                        errors++;
+                    }
+                }
+
+                alert(`✅ Deletion complete!\n\nDeleted: ${deleted} records\nErrors: ${errors}`);
+                loadDeveloperMode();
+                loadDeveloperStats();
+                loadDashboardData();
+
+            } catch (error) {
+                alert('❌ Error deleting submissions: ' + error.message);
+                console.error('Delete error:', error);
+                loadDeveloperMode();
+            }
+        };
+
+        window.deleteAllDictionary = async function() {
+            if (!developerAuthenticated) {
+                alert('❌ Developer authentication required');
+                return;
+            }
+
+            const confirm1 = confirm('⚠️ WARNING: This will delete ALL dictionary entries.\n\nThis action is IRREVERSIBLE!\n\nAre you absolutely sure?');
+            if (!confirm1) return;
+
+            const confirm2 = confirm('⚠️ FINAL WARNING: This will permanently delete all dictionary data.\n\nType "DELETE" in the next prompt to confirm.');
+            if (!confirm2) return;
+
+            const confirm3 = prompt('Type "DELETE" to confirm deletion of all dictionary entries:');
+            if (confirm3 !== 'DELETE') {
+                alert('❌ Deletion cancelled');
+                return;
+            }
+
+            try {
+                const container = document.getElementById('developer-tools');
+                container.innerHTML = '<p style="text-align: center; padding: 40px; color: #ef4444;">Deleting all dictionary entries...</p>';
+
+                const dictionarySnapshot = await getDocs(collection(db, 'dictionary'));
+                let deleted = 0;
+                let errors = 0;
+
+                for (const docSnap of dictionarySnapshot.docs) {
+                    try {
+                        await deleteDoc(doc(db, 'dictionary', docSnap.id));
+                        deleted++;
+                    } catch (error) {
+                        console.error('Error deleting:', docSnap.id, error);
+                        errors++;
+                    }
+                }
+
+                alert(`✅ Deletion complete!\n\nDeleted: ${deleted} records\nErrors: ${errors}`);
+                loadDeveloperMode();
+                loadDeveloperStats();
+                loadDashboardData();
+
+            } catch (error) {
+                alert('❌ Error deleting dictionary: ' + error.message);
+                console.error('Delete error:', error);
+                loadDeveloperMode();
+            }
+        };
+
+        window.deleteAllData = async function() {
+            if (!developerAuthenticated) {
+                alert('❌ Developer authentication required');
+                return;
+            }
+
+            const confirm1 = confirm('⚠️⚠️⚠️ EXTREME WARNING ⚠️⚠️⚠️\n\nThis will DELETE EVERYTHING:\n- All user points\n- All submissions\n- All dictionary entries\n\nThis action is COMPLETELY IRREVERSIBLE!\n\nAre you absolutely certain?');
+            if (!confirm1) return;
+
+            const confirm2 = confirm('⚠️ This is your LAST chance to cancel!\n\nAll data will be permanently lost.\n\nContinue?');
+            if (!confirm2) return;
+
+            const confirm3 = prompt('Type "DELETE EVERYTHING" (exactly) to confirm:');
+            if (confirm3 !== 'DELETE EVERYTHING') {
+                alert('❌ Deletion cancelled');
+                return;
+            }
+
+            try {
+                const container = document.getElementById('developer-tools');
+                container.innerHTML = '<p style="text-align: center; padding: 40px; color: #ef4444; font-size: 18px; font-weight: 700;">💣 DELETING ALL DATA...</p>';
+
+                let totalDeleted = 0;
+                let totalErrors = 0;
+
+                // Delete user_points
+                const userPointsSnapshot = await getDocs(collection(db, 'user_points'));
+                for (const docSnap of userPointsSnapshot.docs) {
+                    try {
+                        await deleteDoc(doc(db, 'user_points', docSnap.id));
+                        totalDeleted++;
+                    } catch (error) {
+                        totalErrors++;
+                    }
+                }
+
+                // Delete pending_words
+                const submissionsSnapshot = await getDocs(collection(db, 'pending_words'));
+                for (const docSnap of submissionsSnapshot.docs) {
+                    try {
+                        await deleteDoc(doc(db, 'pending_words', docSnap.id));
+                        totalDeleted++;
+                    } catch (error) {
+                        totalErrors++;
+                    }
+                }
+
+                // Delete dictionary
+                const dictionarySnapshot = await getDocs(collection(db, 'dictionary'));
+                for (const docSnap of dictionarySnapshot.docs) {
+                    try {
+                        await deleteDoc(doc(db, 'dictionary', docSnap.id));
+                        totalDeleted++;
+                    } catch (error) {
+                        totalErrors++;
+                    }
+                }
+
+                alert(`💣 NUCLEAR DELETION COMPLETE!\n\nTotal Deleted: ${totalDeleted} records\nErrors: ${totalErrors}\n\n⚠️ All data has been permanently removed.`);
+                loadDeveloperMode();
+                loadDeveloperStats();
+                loadDashboardData();
+
+            } catch (error) {
+                alert('❌ Error during deletion: ' + error.message);
+                console.error('Delete error:', error);
+                loadDeveloperMode();
+            }
+        };
     </script>
 </body>
 </html>

@@ -20,7 +20,7 @@ const AUTH_USER_KEY = '@auth_user_persisted';
 type AuthContextType = {
   user: User | null;
   loading: boolean;
-  signUp: (email: string, password: string, name: string, nationality: string, birthdate: string, koreanLevel: string, position: string) => Promise<void>;
+  signUp: (email: string, password: string, name: string, nationality: string, birthdate: string, koreanLevel: string, position: string, gender: string) => Promise<void>;
   signIn: (email: string, password: string) => Promise<void>;
   signInWithGoogle: () => Promise<void>;
   logOut: () => Promise<void>;
@@ -35,7 +35,7 @@ const AuthContext = createContext<AuthContextType>({
   signInWithGoogle: async () => {},
   logOut: async () => {},
   isAuthenticated: false,
-});
+} as AuthContextType);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
@@ -112,7 +112,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return unsubscribe;
   }, []);
 
-  const signUp = async (email: string, password: string, name: string, nationality: string, birthdate: string, koreanLevel: string, position: string) => {
+  const signUp = async (email: string, password: string, name: string, nationality: string, birthdate: string, koreanLevel: string, position: string, gender: string) => {
     try {
       const result = await createUserWithEmailAndPassword(auth, email, password);
       // Update the user's profile with their name
@@ -140,6 +140,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
               birthdate: birthdate,
               koreanLevel: parseInt(koreanLevel) || 1,
               position: position,
+              gender: gender,
               points: 0,
               totalSubmissions: 0,
               isPro: false,
@@ -157,7 +158,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
               nationality: nationality,
               birthdate: birthdate,
               koreanLevel: parseInt(koreanLevel) || 1,
-              position: position
+              position: position,
+              gender: gender
             }, { merge: true });
             console.log('✅ Updated user_points record for existing user:', normalizedEmail);
           }
