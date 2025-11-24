@@ -173,10 +173,107 @@ function HomeSearchScreen({ navigation }: { navigation: any }) {
     // Merge static dictionary with approved words
     const mergedDictionary = mergeApprovedWords(dictionaryEntries, approvedWords);
     
+    // Deduplicate entries: keep the best entry for each Korean word
+    // Group by Korean word only (not korean+myanmar) to avoid showing multiple entries for the same word
+    // Priority: entries with synonyms/antonyms > entries with more examples > better English translation > first occurrence
+    const deduplicatedMap = new Map<string, DictionaryEntry>();
+    
+    mergedDictionary.forEach((entry) => {
+      // Use only Korean word as the key to group all variations
+      const key = entry.korean.trim().toLowerCase();
+      const existing = deduplicatedMap.get(key);
+      
+      if (!existing) {
+        deduplicatedMap.set(key, entry);
+      } else {
+        // Determine which entry is better
+        const existingHasSynonyms = !!(existing.synonyms && existing.synonyms !== 'None' && existing.synonyms.trim().length > 0);
+        const existingHasAntonyms = !!(existing.antonyms && existing.antonyms !== 'None' && existing.antonyms.trim().length > 0);
+        const currentHasSynonyms = !!(entry.synonyms && entry.synonyms !== 'None' && entry.synonyms.trim().length > 0);
+        const currentHasAntonyms = !!(entry.antonyms && entry.antonyms !== 'None' && entry.antonyms.trim().length > 0);
+        
+        const existingHasBoth = existingHasSynonyms && existingHasAntonyms;
+        const currentHasBoth = currentHasSynonyms && currentHasAntonyms;
+        const existingHasEither = existingHasSynonyms || existingHasAntonyms;
+        const currentHasEither = currentHasSynonyms || currentHasAntonyms;
+        
+        // Priority ranking:
+        // 1. Both synonyms and antonyms (highest priority)
+        // 2. Either synonyms or antonyms
+        // 3. More examples
+        // 4. Better English translation (more descriptive/longer)
+        // 5. Keep existing (first occurrence)
+        
+        if (currentHasBoth && !existingHasBoth) {
+          // Current has both, existing doesn't - keep current
+          deduplicatedMap.set(key, entry);
+        } else if (currentHasBoth === existingHasBoth) {
+          // Both have same "both" status
+          if (currentHasBoth) {
+            // Both have synonyms and antonyms - compare examples, then level, then English
+            const currentExamples = (entry.examples || []).length;
+            const existingExamples = (existing.examples || []).length;
+            if (currentExamples > existingExamples) {
+              deduplicatedMap.set(key, entry);
+            } else if (currentExamples === existingExamples) {
+              // Same number of examples - prefer entry with level specified
+              const currentHasLevel = !!entry.level;
+              const existingHasLevel = !!existing.level;
+              if (currentHasLevel && !existingHasLevel) {
+                deduplicatedMap.set(key, entry);
+              } else if (currentHasLevel === existingHasLevel) {
+                // Same level status - prefer better English translation (more descriptive)
+                const currentEnglish = (entry.english || '').trim();
+                const existingEnglish = (existing.english || '').trim();
+                // Prefer longer/more descriptive English translation
+                if (currentEnglish.length > existingEnglish.length) {
+                  deduplicatedMap.set(key, entry);
+                } else if (currentEnglish.length === existingEnglish.length && currentEnglish > existingEnglish) {
+                  deduplicatedMap.set(key, entry);
+                }
+              }
+            }
+          } else {
+            // Neither has both - check if one has either
+            if (currentHasEither && !existingHasEither) {
+              deduplicatedMap.set(key, entry);
+            } else if (currentHasEither === existingHasEither) {
+              // Both have same "either" status - compare examples, then level, then English
+              const currentExamples = (entry.examples || []).length;
+              const existingExamples = (existing.examples || []).length;
+              if (currentExamples > existingExamples) {
+                deduplicatedMap.set(key, entry);
+              } else if (currentExamples === existingExamples) {
+                // Same number of examples - prefer entry with level specified
+                const currentHasLevel = !!entry.level;
+                const existingHasLevel = !!existing.level;
+                if (currentHasLevel && !existingHasLevel) {
+                  deduplicatedMap.set(key, entry);
+                } else if (currentHasLevel === existingHasLevel) {
+                  // Same level status - prefer better English translation (more descriptive)
+                  const currentEnglish = (entry.english || '').trim();
+                  const existingEnglish = (existing.english || '').trim();
+                  // Prefer longer/more descriptive English translation
+                  if (currentEnglish.length > existingEnglish.length) {
+                    deduplicatedMap.set(key, entry);
+                  } else if (currentEnglish.length === existingEnglish.length && currentEnglish > existingEnglish) {
+                    deduplicatedMap.set(key, entry);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    });
+    
+    const deduplicatedDictionary = Array.from(deduplicatedMap.values());
+    
     // Debug logging
     console.log('Static dictionary entries:', dictionaryEntries.length);
     console.log('Firebase approved words:', approvedWords.length);
     console.log('Merged dictionary total:', mergedDictionary.length);
+    console.log('Deduplicated dictionary total:', deduplicatedDictionary.length);
     
     const normalizedQuery = queryText.trim().toLowerCase();
     
@@ -194,7 +291,7 @@ function HomeSearchScreen({ navigation }: { navigation: any }) {
             return '';
         }
       };
-      return [...mergedDictionary].sort((a, b) => {
+      return [...deduplicatedDictionary].sort((a, b) => {
         const key: SortPriority = settings.sortBy;
         const locale = key === 'korean' ? 'ko' : undefined;
         return getValue(a, key).localeCompare(getValue(b, key), locale, { sensitivity: 'base' });
@@ -207,7 +304,7 @@ function HomeSearchScreen({ navigation }: { navigation: any }) {
     // Score each entry based on match quality
     const scoredEntries: Array<{ entry: DictionaryEntry; score: number }> = [];
     
-    mergedDictionary.forEach((entry) => {
+    deduplicatedDictionary.forEach((entry) => {
       // Safely handle potentially undefined properties
       const korean = (entry.korean || '').trim().toLowerCase();
       const myanmar = (entry.myanmar || '').trim().toLowerCase();
@@ -218,28 +315,85 @@ function HomeSearchScreen({ navigation }: { navigation: any }) {
       
       let score = 0;
       let matched = false;
+      let exactMatchField: 'korean' | 'myanmar' | 'english' | null = null;
       
-      // Check Korean
+      // Check Korean with word boundary awareness
       if (korean === cleanQuery) {
-        score += 100; // Exact match
+        score += 100; // Exact match - highest priority
+        exactMatchField = 'korean';
         matched = true;
       } else if (korean.startsWith(cleanQuery)) {
-        score += 50; // Starts with query
+        // For Korean, check if the match is at a complete syllable boundary
+        // Korean characters (Hangul) are complete syllables, so we need to ensure
+        // the match ends at a complete character boundary
+        const afterQuery = korean.substring(cleanQuery.length);
+        // Check if it's at word boundary (followed by space, punctuation, or end of string)
+        // Also ensure the query itself is a complete Korean word (not a partial match)
+        const isWordBoundary = afterQuery.length === 0 || /[\s\u200B-\u200D\uFEFF\.,;:!?]/.test(afterQuery[0]);
+        // Additional check: ensure the query is not just a partial match within a longer word
+        // For Korean, if the entry is longer and doesn't have a boundary, it's likely a different word
+        if (isWordBoundary) {
+          score += 80; // Word boundary match at start
+        } else {
+          // If it starts with the query but no boundary, it might be a different word
+          // Only give lower score if the query is a complete Korean syllable
+          // Korean syllables are in range \uAC00-\uD7AF
+          const isCompleteKoreanSyllable = /^[\uAC00-\uD7AF]+$/.test(cleanQuery);
+          if (isCompleteKoreanSyllable && korean.length > cleanQuery.length) {
+            // This is likely a different word that happens to start with the same characters
+            // Give it a very low score to prioritize exact matches
+            score += 5; // Very low score for partial matches
+          } else {
+            score += 50; // Starts with but not word boundary
+          }
+        }
         matched = true;
       } else if (korean.includes(cleanQuery)) {
-        score += 10; // Contains query anywhere
+        // Check for word boundary matches (not just substring)
+        const index = korean.indexOf(cleanQuery);
+        const beforeChar = index > 0 ? korean[index - 1] : '';
+        const afterChar = index + cleanQuery.length < korean.length ? korean[index + cleanQuery.length] : '';
+        // Korean word boundary: space, zero-width characters, or start/end of string
+        const isWordBoundary = (index === 0 || /[\s\u200B-\u200D\uFEFF]/.test(beforeChar)) &&
+                               (index + cleanQuery.length === korean.length || /[\s\u200B-\u200D\uFEFF]/.test(afterChar));
+        
+        if (isWordBoundary) {
+          score += 60; // Word boundary match in middle/end
+        } else {
+          score += 10; // Contains but not word boundary (lowest priority)
+        }
         matched = true;
       }
       
-      // Check Myanmar
+      // Check Myanmar with word boundary awareness
       if (myanmar === cleanQuery) {
-        score += 100;
+        score += 100; // Exact match - highest priority
+        exactMatchField = 'myanmar';
         matched = true;
       } else if (myanmar.startsWith(cleanQuery)) {
-        score += 50;
+        // Check if it's at word boundary (followed by space or end of string)
+        const afterQuery = myanmar.substring(cleanQuery.length);
+        const isWordBoundary = afterQuery.length === 0 || /[\s\u200B-\u200D\uFEFF]/.test(afterQuery[0]);
+        if (isWordBoundary) {
+          score += 80; // Word boundary match at start
+        } else {
+          score += 50; // Starts with but not word boundary
+        }
         matched = true;
       } else if (myanmar.includes(cleanQuery)) {
-        score += 10;
+        // Check for word boundary matches (not just substring)
+        const index = myanmar.indexOf(cleanQuery);
+        const beforeChar = index > 0 ? myanmar[index - 1] : '';
+        const afterChar = index + cleanQuery.length < myanmar.length ? myanmar[index + cleanQuery.length] : '';
+        // Myanmar word boundary: space, zero-width characters, or start/end of string
+        const isWordBoundary = (index === 0 || /[\s\u200B-\u200D\uFEFF]/.test(beforeChar)) &&
+                               (index + cleanQuery.length === myanmar.length || /[\s\u200B-\u200D\uFEFF]/.test(afterChar));
+        
+        if (isWordBoundary) {
+          score += 60; // Word boundary match in middle/end
+        } else {
+          score += 10; // Contains but not word boundary (lowest priority)
+        }
         matched = true;
       }
       
@@ -248,6 +402,7 @@ function HomeSearchScreen({ navigation }: { navigation: any }) {
         // Exact match
         if (english === cleanQuery) {
           score += 100;
+          exactMatchField = 'english';
           matched = true;
         }
         // Handle plurals for English (e.g., "elephants" matches "elephant")
@@ -259,6 +414,7 @@ function HomeSearchScreen({ navigation }: { navigation: any }) {
           for (const word of englishWords) {
             if (word === queryWord) {
               score += 100;
+              exactMatchField = 'english';
               matched = true;
               break;
             } else if (word.startsWith(queryWord)) {
@@ -291,6 +447,22 @@ function HomeSearchScreen({ navigation }: { navigation: any }) {
       
       // Only include entries that matched
       if (matched) {
+        // Add bonus for exact matches in the primary field (detected by query type)
+        // If query contains Myanmar characters, prioritize Myanmar exact matches
+        // If query contains Korean characters, prioritize Korean exact matches
+        // If query contains only English/Latin, prioritize English exact matches
+        const hasMyanmarChars = /[\u1000-\u109F]/.test(cleanQuery);
+        const hasKoreanChars = /[\uAC00-\uD7AF]/.test(cleanQuery);
+        const isEnglishQuery = !hasMyanmarChars && !hasKoreanChars;
+        
+        if (exactMatchField) {
+          if ((hasMyanmarChars && exactMatchField === 'myanmar') ||
+              (hasKoreanChars && exactMatchField === 'korean') ||
+              (isEnglishQuery && exactMatchField === 'english')) {
+            score += 1000; // Large bonus for exact match in primary search field to ensure it's always first
+          }
+        }
+        
         scoredEntries.push({ entry, score });
       }
     });
