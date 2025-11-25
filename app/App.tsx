@@ -301,6 +301,11 @@ function HomeSearchScreen({ navigation }: { navigation: any }) {
     // Enhanced search with relevance scoring
     const cleanQuery = normalizedQuery.replace(/\s+/g, ' ').trim();
     
+    // Detect query language to optimize search
+    const hasMyanmarChars = /[\u1000-\u109F]/.test(cleanQuery);
+    const hasKoreanChars = /[\uAC00-\uD7AF]/.test(cleanQuery);
+    const isEnglishQuery = !hasMyanmarChars && !hasKoreanChars;
+    
     // Score each entry based on match quality
     const scoredEntries: Array<{ entry: DictionaryEntry; score: number }> = [];
     
@@ -318,11 +323,13 @@ function HomeSearchScreen({ navigation }: { navigation: any }) {
       let exactMatchField: 'korean' | 'myanmar' | 'english' | null = null;
       
       // Check Korean with word boundary awareness
-      if (korean === cleanQuery) {
-        score += 100; // Exact match - highest priority
-        exactMatchField = 'korean';
-        matched = true;
-      } else if (korean.startsWith(cleanQuery)) {
+      // For English queries, skip Korean matching to avoid false positives
+      if (!isEnglishQuery) {
+        if (korean === cleanQuery) {
+          score += 100; // Exact match - highest priority
+          exactMatchField = 'korean';
+          matched = true;
+        } else if (korean.startsWith(cleanQuery)) {
         // For Korean, check if the match is at a complete syllable boundary
         // Korean characters (Hangul) are complete syllables, so we need to ensure
         // the match ends at a complete character boundary
@@ -363,10 +370,13 @@ function HomeSearchScreen({ navigation }: { navigation: any }) {
           score += 10; // Contains but not word boundary (lowest priority)
         }
         matched = true;
+        }
       }
       
       // Check Myanmar with word boundary awareness
-      if (myanmar === cleanQuery) {
+      // For English queries, skip Myanmar matching to avoid false positives
+      if (!isEnglishQuery) {
+        if (myanmar === cleanQuery) {
         score += 100; // Exact match - highest priority
         exactMatchField = 'myanmar';
         matched = true;
@@ -395,6 +405,7 @@ function HomeSearchScreen({ navigation }: { navigation: any }) {
           score += 10; // Contains but not word boundary (lowest priority)
         }
         matched = true;
+        }
       }
       
       // Check English with better word boundary matching
@@ -410,58 +421,68 @@ function HomeSearchScreen({ navigation }: { navigation: any }) {
         }
         // Check individual words in the English field
         else {
-          const englishWords = english.split(/[\/,;\s]+/).map((w: string) => w.trim().toLowerCase()).filter(w => w.length > 0);
-          
-          // Check if any English word matches exactly or starts with query
-          for (const word of englishWords) {
-            // Exact word match (e.g., "life" in "Life/Living" or "Life expectancy")
-            if (word === queryWord) {
-              // If it's the first word and the only word, give it high score
-              // If it's part of a phrase, give it medium-high score
-              if (englishWords.length === 1) {
-                score += 500; // Single word exact match
-              } else if (englishWords.indexOf(word) === 0) {
-                score += 200; // First word exact match in phrase
-              } else {
-                score += 150; // Other word exact match
-              }
-              exactMatchField = 'english';
-              matched = true;
-              break;
-            } 
-            // Word starts with query (e.g., "life" matches "lifespan")
-            else if (word.startsWith(queryWord)) {
-              const isWordBoundary = word.length === queryWord.length || 
-                                     /[\s\-_.,;:!?]/.test(word[queryWord.length]);
-              if (isWordBoundary) {
-                score += 80; // Word boundary match at start
-              } else {
-                score += 30; // Starts with but not word boundary
-              }
-              matched = true;
-              break;
-            } 
-            // Query starts with word (e.g., "lifespan" matches "life")
-            else if (queryWord.startsWith(word)) {
-              score += 60; // Handle plurals/compound words
-              matched = true;
-              break;
-            } 
-            // Word contains query (e.g., "life" in "wildlife")
-            else if (word.includes(queryWord)) {
-              // Only match if it's at word boundary (not middle of another word)
-              // e.g., "eleph" should NOT match "telephone"
-              const index = word.indexOf(queryWord);
-              const beforeChar = index > 0 ? word[index - 1] : '';
-              const afterChar = index + queryWord.length < word.length ? word[index + queryWord.length] : '';
-              const isWordBoundary = !/[a-zA-Z\u1000-\u109F\u1100-\u11FF\uAC00-\uD7AF]/.test(beforeChar) && 
-                                     !/[a-zA-Z\u1000-\u109F\u1100-\u11FF\uAC00-\uD7AF]/.test(afterChar);
+          // First, check if the query matches the main part (before parentheses)
+          // This handles cases like "DMZ (Demilitarized Zone)" where "DMZ" is the main term
+          const mainPart = englishLower.split(/\(/)[0].trim();
+          if (mainPart === queryWord) {
+            score += 500; // Exact match with main part (before parentheses)
+            exactMatchField = 'english';
+            matched = true;
+          } else {
+            // Split by common separators and filter out empty strings
+            // Handle formats like "Promise/Appointment" or "DMZ (Demilitarized Zone)"
+            const englishWords = english
+              .split(/[\/,;\s()]+/)  // Split on /, comma, semicolon, space, or parentheses
+              .map((w: string) => w.trim().toLowerCase())
+              .filter(w => w.length > 0);
+            
+            // Check if any English word matches exactly or starts with query
+            for (const word of englishWords) {
+              // Remove any trailing/leading punctuation for better matching
+              const cleanWord = word.replace(/^[.,;:!?()]+|[.,;:!?()]+$/g, '');
               
-              if (isWordBoundary || index === 0) {
-                score += 20; // Contains at word boundary
+              // Skip empty words after cleaning
+              if (!cleanWord) continue;
+              
+              // Exact word match (e.g., "appointment" in "Promise/Appointment" or "DMZ" in "DMZ (Demilitarized Zone)")
+              if (cleanWord === queryWord) {
+                // If it's the first word and the only word, give it high score
+                // If it's part of a phrase, give it medium-high score
+                if (englishWords.length === 1) {
+                  score += 500; // Single word exact match
+                } else if (englishWords.indexOf(word) === 0) {
+                  score += 200; // First word exact match in phrase
+                } else {
+                  score += 150; // Other word exact match
+                }
+                exactMatchField = 'english';
                 matched = true;
                 break;
+              } 
+              // Word starts with query - only for longer words (e.g., "appointment" matches "appointments")
+              else if (cleanWord.startsWith(queryWord) && cleanWord.length > queryWord.length) {
+                // Only match if it's a complete word boundary (likely a plural or variant)
+                const remaining = cleanWord.substring(queryWord.length);
+                // Check if remaining part looks like a suffix (s, ed, ing, etc.)
+                const isLikelySuffix = /^[s]?$|^ed$|^ing$|^ment$|^s$/.test(remaining);
+                if (isLikelySuffix) {
+                  score += 100; // Likely plural/variant match
+                  matched = true;
+                  break;
+                }
+              } 
+              // Query starts with word - only for short words (e.g., "appointments" matches "appointment")
+              else if (queryWord.startsWith(cleanWord) && queryWord.length > cleanWord.length) {
+                const remaining = queryWord.substring(cleanWord.length);
+                // Check if remaining part looks like a suffix
+                const isLikelySuffix = /^[s]?$|^ed$|^ing$|^ment$|^s$/.test(remaining);
+                if (isLikelySuffix) {
+                  score += 100; // Handle plurals/compound words
+                  matched = true;
+                  break;
+                }
               }
+              // Don't match substrings - only exact words or clear variants
             }
           }
         }
@@ -473,10 +494,6 @@ function HomeSearchScreen({ navigation }: { navigation: any }) {
         // If query contains Myanmar characters, prioritize Myanmar exact matches
         // If query contains Korean characters, prioritize Korean exact matches
         // If query contains only English/Latin, prioritize English exact matches
-        const hasMyanmarChars = /[\u1000-\u109F]/.test(cleanQuery);
-        const hasKoreanChars = /[\uAC00-\uD7AF]/.test(cleanQuery);
-        const isEnglishQuery = !hasMyanmarChars && !hasKoreanChars;
-        
         if (exactMatchField) {
           if ((hasMyanmarChars && exactMatchField === 'myanmar') ||
               (hasKoreanChars && exactMatchField === 'korean') ||
@@ -485,7 +502,12 @@ function HomeSearchScreen({ navigation }: { navigation: any }) {
           }
         }
         
-        scoredEntries.push({ entry, score });
+        // Only include entries with meaningful scores
+        // For English queries, require minimum score to filter out weak matches
+        const minScore = isEnglishQuery ? 50 : 10;
+        if (score >= minScore) {
+          scoredEntries.push({ entry, score });
+        }
       }
     });
     
