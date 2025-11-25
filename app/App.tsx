@@ -612,10 +612,6 @@ function HomeSearchScreen({ navigation }: { navigation: any }) {
                 style={[styles.aboutLogo, { marginBottom: 24 }]} 
               />
               
-              <Text style={[styles.welcomeTitle, { color: C.textPrimary, marginBottom: 8 }]}>
-                {labels.title}
-              </Text>
-              
               <Text style={[styles.welcomeSubtitle, { color: C.textSecondary, marginBottom: 32, textAlign: 'center' }]}>
                 {settings.uiLanguage === 'myanmar' 
                   ? 'စကားလုံးများကို အပေါ်မှ search box တွင် ရိုက်ထည့်ပါ'
