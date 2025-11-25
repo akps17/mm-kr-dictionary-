@@ -557,7 +557,7 @@ function HomeSearchScreen({ navigation }: { navigation: any }) {
       <StatusBar style="auto" />
       <View style={[styles.container, { paddingHorizontal: horizontalPadding }]}>
         <View style={[styles.content, { maxWidth: contentMaxWidth }]}>
-          <Text style={[styles.title, isTabletLike && styles.titleTablet, { color: C.textPrimary, fontFamily: 'NotoSansMyanmar_700Bold' }]}>{labels.title}</Text>
+          <Text style={[styles.title, isTabletLike && styles.titleTablet, { color: C.textPrimary, fontFamily: 'NotoSansMyanmar_400Regular' }]}>{labels.title}</Text>
           <SearchBox
             value={queryText}
             placeholder={labels.searchPlaceholder}
@@ -1307,7 +1307,7 @@ function HistoryScreen() {
 const styles = StyleSheet.create({
   welcomeTitle: {
     fontSize: 24,
-    fontWeight: '700',
+    fontWeight: '500',
     textAlign: 'center',
   },
   welcomeSubtitle: {
@@ -1356,7 +1356,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 20,
-    fontWeight: '700',
+    fontWeight: '500',
     marginTop: 8,
     marginBottom: 12,
   },
