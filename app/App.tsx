@@ -399,34 +399,56 @@ function HomeSearchScreen({ navigation }: { navigation: any }) {
       
       // Check English with better word boundary matching
       if (english) {
-        // Exact match
-        if (english === cleanQuery) {
-          score += 100;
+        const englishLower = english.toLowerCase().trim();
+        const queryWord = cleanQuery.trim().toLowerCase();
+        
+        // Exact full-field match (highest priority)
+        if (englishLower === queryWord) {
+          score += 1000; // Very high score for exact full match
           exactMatchField = 'english';
           matched = true;
         }
-        // Handle plurals for English (e.g., "elephants" matches "elephant")
+        // Check individual words in the English field
         else {
-          const englishWords = english.split(/[\/,;\s]+/).map((w: string) => w.trim().toLowerCase());
-          const queryWord = cleanQuery.trim().toLowerCase();
+          const englishWords = english.split(/[\/,;\s]+/).map((w: string) => w.trim().toLowerCase()).filter(w => w.length > 0);
           
           // Check if any English word matches exactly or starts with query
           for (const word of englishWords) {
+            // Exact word match (e.g., "life" in "Life/Living" or "Life expectancy")
             if (word === queryWord) {
-              score += 100;
+              // If it's the first word and the only word, give it high score
+              // If it's part of a phrase, give it medium-high score
+              if (englishWords.length === 1) {
+                score += 500; // Single word exact match
+              } else if (englishWords.indexOf(word) === 0) {
+                score += 200; // First word exact match in phrase
+              } else {
+                score += 150; // Other word exact match
+              }
               exactMatchField = 'english';
               matched = true;
               break;
-            } else if (word.startsWith(queryWord)) {
-              score += 50;
+            } 
+            // Word starts with query (e.g., "life" matches "lifespan")
+            else if (word.startsWith(queryWord)) {
+              const isWordBoundary = word.length === queryWord.length || 
+                                     /[\s\-_.,;:!?]/.test(word[queryWord.length]);
+              if (isWordBoundary) {
+                score += 80; // Word boundary match at start
+              } else {
+                score += 30; // Starts with but not word boundary
+              }
               matched = true;
               break;
-            } else if (queryWord.startsWith(word)) {
-              // Handle plurals: "elephants" starts with "elephant"
-              score += 50;
+            } 
+            // Query starts with word (e.g., "lifespan" matches "life")
+            else if (queryWord.startsWith(word)) {
+              score += 60; // Handle plurals/compound words
               matched = true;
               break;
-            } else if (word.includes(queryWord)) {
+            } 
+            // Word contains query (e.g., "life" in "wildlife")
+            else if (word.includes(queryWord)) {
               // Only match if it's at word boundary (not middle of another word)
               // e.g., "eleph" should NOT match "telephone"
               const index = word.indexOf(queryWord);
@@ -436,7 +458,7 @@ function HomeSearchScreen({ navigation }: { navigation: any }) {
                                      !/[a-zA-Z\u1000-\u109F\u1100-\u11FF\uAC00-\uD7AF]/.test(afterChar);
               
               if (isWordBoundary || index === 0) {
-                score += 10;
+                score += 20; // Contains at word boundary
                 matched = true;
                 break;
               }
