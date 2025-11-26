@@ -137,7 +137,7 @@ export const i18nLabels: Record<AppLanguage, Record<string, string>> = {
     navPractice: 'လေ့ကျင့်ခန်း',
     navFavorites: 'ကြိုက်နှစ်သက်သောစကားလုံးများ',
     navHistory: 'မှတ်တမ်း',
-    navConversation: 'စကားပြောဆိုမှု',
+    navConversation: 'စကားပြော',
     navSettings: 'ဆက်တင်',
     navTheme: 'App အလင်းအမှောင်',
     navProfile: 'ပရိုဖိုင်',
@@ -321,11 +321,11 @@ export const NATIVE_LANGUAGE_NAME: Record<AppLanguage, string> = {
 export function getVoiceSpeedRate(speed: VoiceSpeed): number {
   switch (speed) {
     case 'slow':
-      return 0.3;
+      return 0.2;
     case 'default':
       return 0.4;
     case 'fast':
-      return 0.6;
+      return 0.7;
     default:
       return 0.4;
   }
