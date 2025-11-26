@@ -14,6 +14,7 @@ import { useLibrary } from '../data/LibraryContext';
 import { useDictionarySync, mergeApprovedWords } from '../data/DictionarySync';
 import { dictionaryEntries } from '../data/dictionary';
 import * as Speech from 'expo-speech';
+import * as Clipboard from 'expo-clipboard';
 import { WORD_LEVELS } from '../types/dictionary';
 import { useSettings } from '../data/SettingsContext';
 import { getVoiceSpeedRate } from '../data/settings';
@@ -37,6 +38,7 @@ export function WordDetailScreen({ route, navigation }: WordDetailScreenProps) {
   const { approvedWords } = useDictionarySync();
   const [isSpeaking, setIsSpeaking] = React.useState(false);
   const [speakingExampleIndex, setSpeakingExampleIndex] = React.useState<number | null>(null);
+  const [isCopied, setIsCopied] = React.useState(false);
 
   // Create merged dictionary for searching
   const mergedDictionary = React.useMemo(() => {
@@ -104,6 +106,24 @@ export function WordDetailScreen({ route, navigation }: WordDetailScreenProps) {
     }
   }
 
+  // Handle copying Korean word to clipboard
+  const copyKoreanWord = async () => {
+    try {
+      await Clipboard.setStringAsync(word.korean);
+      setIsCopied(true);
+      // Reset the copied state after 2 seconds
+      setTimeout(() => {
+        setIsCopied(false);
+      }, 2000);
+    } catch (error) {
+      console.error('Error copying to clipboard:', error);
+      Alert.alert(
+        'Error',
+        'Failed to copy to clipboard. Please try again.'
+      );
+    }
+  };
+
   // Handle example sentence pronunciation
   async function playExampleSentence(example: Example, index: number) {
     const koreanSentence = (example.korean || '').trim();
@@ -162,19 +182,34 @@ export function WordDetailScreen({ route, navigation }: WordDetailScreenProps) {
             <Text style={[styles.korean, { color: C.textPrimary }]}>
               {word.korean}
             </Text>
-            <Pressable 
-              onPress={() => toggleFavorite(word.id)}
-              style={({ pressed }) => [
-                styles.favoriteButton,
-                pressed && { opacity: 0.7 }
-              ]}
-            >
-              <Ionicons 
-                name={favoriteIds.has(word.id) ? "heart" : "heart-outline"}
-                size={24}
-                color={favoriteIds.has(word.id) ? "#ef4444" : C.textSecondary}
-              />
-            </Pressable>
+            <View style={styles.actionButtons}>
+              <Pressable 
+                onPress={copyKoreanWord}
+                style={({ pressed }) => [
+                  styles.copyButton,
+                  pressed && { opacity: 0.7 }
+                ]}
+              >
+                <Ionicons 
+                  name={isCopied ? "checkmark-circle" : "copy-outline"}
+                  size={24}
+                  color={isCopied ? C.brand : C.textSecondary}
+                />
+              </Pressable>
+              <Pressable 
+                onPress={() => toggleFavorite(word.id)}
+                style={({ pressed }) => [
+                  styles.favoriteButton,
+                  pressed && { opacity: 0.7 }
+                ]}
+              >
+                <Ionicons 
+                  name={favoriteIds.has(word.id) ? "heart" : "heart-outline"}
+                  size={24}
+                  color={favoriteIds.has(word.id) ? "#ef4444" : C.textSecondary}
+                />
+              </Pressable>
+            </View>
           </View>
 
           <View style={styles.pronunciationRow}>
@@ -387,6 +422,14 @@ const styles = StyleSheet.create({
   korean: {
     fontSize: 32,
     fontWeight: '700',
+  },
+  actionButtons: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  copyButton: {
+    padding: 8,
   },
   favoriteButton: {
     padding: 8,
