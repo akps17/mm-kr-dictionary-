@@ -42,6 +42,8 @@ import { TranslateScreen } from './screens/TranslateScreen';
 import { AboutScreen } from './screens/AboutScreen';
 import { ThemeScreen } from './screens/ThemeScreen';
 import { SettingsScreen } from './screens/SettingsScreen';
+import { ConversationCategoriesScreen } from './screens/ConversationCategoriesScreen';
+import { ConversationDetailScreen } from './screens/ConversationDetailScreen';
 import { TOPIKTestScreen } from './screens/TOPIKTestScreen';
 import { SubmitWordScreen } from './screens/SubmitWordScreen';
 import { CheckUpdatesScreen } from './screens/CheckUpdatesScreen';
@@ -816,6 +818,8 @@ type RootDrawerParamList = {
   Practice: undefined;
   Favorites: undefined;
   History: undefined;
+  Conversation: undefined;
+  'ConversationDetail': { categoryId: string; categoryTitle: string };
   Settings: undefined;
   'AI Chat': undefined;
   Translate: undefined;
@@ -952,9 +956,9 @@ function AppDrawerContent(props: any) {
           labelStyle={{ color: C.textPrimary }}
         />
         <DrawerItem 
-          label={labels.navHistory} 
-          onPress={() => props.navigation.navigate('History')} 
-          icon={({color, size}) => (<Ionicons name="time-outline" size={size} color={color} />)}
+          label={labels.navConversation} 
+          onPress={() => props.navigation.navigate('Conversation')} 
+          icon={({color, size}) => (<Ionicons name="chatbubbles-outline" size={size} color={color} />)}
           activeTintColor={C.brand}
           inactiveTintColor={C.textPrimary}
           labelStyle={{ color: C.textPrimary }}
@@ -1132,7 +1136,15 @@ function AppNavigator() {
               />
       <Drawer.Screen name="Practice" component={PracticeTabs} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="school-outline" size={size} color={color} />) }} />
       <Drawer.Screen name="Favorites" component={FavoritesStack} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="heart-outline" size={size} color={color} />) }} />
-      <Drawer.Screen name="History" component={HistoryScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="time-outline" size={size} color={color} />) }} />
+      <Drawer.Screen name="Conversation" component={ConversationCategoriesScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="chatbubbles-outline" size={size} color={color} />) }} />
+      <Drawer.Screen 
+        name="ConversationDetail" 
+        component={ConversationDetailScreen} 
+        options={{ 
+          drawerItemStyle: { display: 'none' }, // Hide from drawer, only accessible via navigation
+          headerShown: true,
+        }} 
+      />
       <Drawer.Screen name="Settings" children={() => <SettingsScreen />} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="settings-outline" size={size} color={color} />) }} />
       <Drawer.Screen name="AI Chat" component={ProtectedAIChatScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="chatbubble-ellipses-outline" size={size} color={color} />) }} />
       <Drawer.Screen name="Translate" component={ProtectedTranslateScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="swap-horizontal-outline" size={size} color={color} />) }} />
