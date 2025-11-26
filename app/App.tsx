@@ -418,71 +418,91 @@ function HomeSearchScreen({ navigation }: { navigation: any }) {
           score += 1000; // Very high score for exact full match
           exactMatchField = 'english';
           matched = true;
-        }
-        // Check individual words in the English field
-        else {
-          // First, check if the query matches the main part (before parentheses)
-          // This handles cases like "DMZ (Demilitarized Zone)" where "DMZ" is the main term
-          const mainPart = englishLower.split(/\(/)[0].trim();
-          if (mainPart === queryWord) {
-            score += 500; // Exact match with main part (before parentheses)
+        } else {
+          // Check if query without spaces matches English without spaces
+          // This handles cases like "block chain" matching "blockchain"
+          const queryWithoutSpaces = queryWord.replace(/\s+/g, '');
+          const englishWithoutSpaces = englishLower.replace(/\s+/g, '');
+          
+          if (englishWithoutSpaces === queryWithoutSpaces) {
+            score += 800; // High score for space-normalized match
+            exactMatchField = 'english';
+            matched = true;
+          } else if (englishWithoutSpaces.startsWith(queryWithoutSpaces)) {
+            // Query without spaces starts the English word without spaces
+            score += 400; // Medium-high score for space-normalized prefix match
+            exactMatchField = 'english';
+            matched = true;
+          } else if (queryWithoutSpaces.startsWith(englishWithoutSpaces)) {
+            // English word without spaces starts the query without spaces
+            score += 400; // Medium-high score for space-normalized prefix match
             exactMatchField = 'english';
             matched = true;
           } else {
-            // Split by common separators and filter out empty strings
-            // Handle formats like "Promise/Appointment" or "DMZ (Demilitarized Zone)"
-            const englishWords = english
-              .split(/[\/,;\s()]+/)  // Split on /, comma, semicolon, space, or parentheses
-              .map((w: string) => w.trim().toLowerCase())
-              .filter(w => w.length > 0);
-            
-            // Check if any English word matches exactly or starts with query
-            for (const word of englishWords) {
-              // Remove any trailing/leading punctuation for better matching
-              const cleanWord = word.replace(/^[.,;:!?()]+|[.,;:!?()]+$/g, '');
+            // Check individual words in the English field
+            // First, check if the query matches the main part (before parentheses)
+            // This handles cases like "DMZ (Demilitarized Zone)" where "DMZ" is the main term
+            const mainPart = englishLower.split(/\(/)[0].trim();
+            if (mainPart === queryWord) {
+              score += 500; // Exact match with main part (before parentheses)
+              exactMatchField = 'english';
+              matched = true;
+            } else {
+              // Split by common separators and filter out empty strings
+              // Handle formats like "Promise/Appointment" or "DMZ (Demilitarized Zone)"
+              const englishWords = english
+                .split(/[\/,;\s()]+/)  // Split on /, comma, semicolon, space, or parentheses
+                .map((w: string) => w.trim().toLowerCase())
+                .filter(w => w.length > 0);
               
-              // Skip empty words after cleaning
-              if (!cleanWord) continue;
-              
-              // Exact word match (e.g., "appointment" in "Promise/Appointment" or "DMZ" in "DMZ (Demilitarized Zone)")
-              if (cleanWord === queryWord) {
-                // If it's the first word and the only word, give it high score
-                // If it's part of a phrase, give it medium-high score
-                if (englishWords.length === 1) {
-                  score += 500; // Single word exact match
-                } else if (englishWords.indexOf(word) === 0) {
-                  score += 200; // First word exact match in phrase
-                } else {
-                  score += 150; // Other word exact match
-                }
-                exactMatchField = 'english';
-                matched = true;
-                break;
-              } 
-              // Word starts with query - only for longer words (e.g., "appointment" matches "appointments")
-              else if (cleanWord.startsWith(queryWord) && cleanWord.length > queryWord.length) {
-                // Only match if it's a complete word boundary (likely a plural or variant)
-                const remaining = cleanWord.substring(queryWord.length);
-                // Check if remaining part looks like a suffix (s, ed, ing, etc.)
-                const isLikelySuffix = /^[s]?$|^ed$|^ing$|^ment$|^s$/.test(remaining);
-                if (isLikelySuffix) {
-                  score += 100; // Likely plural/variant match
+              // Check if any English word matches exactly or starts with query
+              for (const word of englishWords) {
+                // Remove any trailing/leading punctuation for better matching
+                const cleanWord = word.replace(/^[.,;:!?()]+|[.,;:!?()]+$/g, '');
+                
+                // Skip empty words after cleaning
+                if (!cleanWord) continue;
+                
+                // Exact word match (e.g., "appointment" in "Promise/Appointment" or "DMZ" in "DMZ (Demilitarized Zone)")
+                if (cleanWord === queryWord) {
+                  // If it's the first word and the only word, give it high score
+                  // If it's part of a phrase, give it medium-high score
+                  if (englishWords.length === 1) {
+                    score += 500; // Single word exact match
+                  } else if (englishWords.indexOf(word) === 0) {
+                    score += 200; // First word exact match in phrase
+                  } else {
+                    score += 150; // Other word exact match
+                  }
+                  exactMatchField = 'english';
                   matched = true;
                   break;
+                } 
+                // Word starts with query - only for longer words (e.g., "appointment" matches "appointments")
+                else if (cleanWord.startsWith(queryWord) && cleanWord.length > queryWord.length) {
+                  // Only match if it's a complete word boundary (likely a plural or variant)
+                  const remaining = cleanWord.substring(queryWord.length);
+                  // Check if remaining part looks like a suffix (s, ed, ing, etc.)
+                  const isLikelySuffix = /^[s]?$|^ed$|^ing$|^ment$|^s$/.test(remaining);
+                  if (isLikelySuffix) {
+                    score += 100; // Likely plural/variant match
+                    matched = true;
+                    break;
+                  }
+                } 
+                // Query starts with word - only for short words (e.g., "appointments" matches "appointment")
+                else if (queryWord.startsWith(cleanWord) && queryWord.length > cleanWord.length) {
+                  const remaining = queryWord.substring(cleanWord.length);
+                  // Check if remaining part looks like a suffix
+                  const isLikelySuffix = /^[s]?$|^ed$|^ing$|^ment$|^s$/.test(remaining);
+                  if (isLikelySuffix) {
+                    score += 100; // Handle plurals/compound words
+                    matched = true;
+                    break;
+                  }
                 }
-              } 
-              // Query starts with word - only for short words (e.g., "appointments" matches "appointment")
-              else if (queryWord.startsWith(cleanWord) && queryWord.length > cleanWord.length) {
-                const remaining = queryWord.substring(cleanWord.length);
-                // Check if remaining part looks like a suffix
-                const isLikelySuffix = /^[s]?$|^ed$|^ing$|^ment$|^s$/.test(remaining);
-                if (isLikelySuffix) {
-                  score += 100; // Handle plurals/compound words
-                  matched = true;
-                  break;
-                }
+                // Don't match substrings - only exact words or clear variants
               }
-              // Don't match substrings - only exact words or clear variants
             }
           }
         }
