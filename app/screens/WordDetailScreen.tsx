@@ -15,6 +15,8 @@ import { useDictionarySync, mergeApprovedWords } from '../data/DictionarySync';
 import { dictionaryEntries } from '../data/dictionary';
 import * as Speech from 'expo-speech';
 import { WORD_LEVELS } from '../types/dictionary';
+import { useSettings } from '../data/SettingsContext';
+import { getVoiceSpeedRate } from '../data/settings';
 
 import type { DictionaryEntry, Example } from '../types/dictionary';
 
@@ -30,9 +32,11 @@ type WordDetailScreenProps = {
 export function WordDetailScreen({ route, navigation }: WordDetailScreenProps) {
   const { word } = route.params;
   const C = useThemedColors();
+  const { settings } = useSettings();
   const { favoriteIds, toggleFavorite } = useLibrary();
   const { approvedWords } = useDictionarySync();
   const [isSpeaking, setIsSpeaking] = React.useState(false);
+  const [speakingExampleIndex, setSpeakingExampleIndex] = React.useState<number | null>(null);
 
   // Create merged dictionary for searching
   const mergedDictionary = React.useMemo(() => {
@@ -64,10 +68,11 @@ export function WordDetailScreen({ route, navigation }: WordDetailScreenProps) {
 
   // Handle pronunciation using expo-speech
   async function playPronunciation() {
-    if (isSpeaking) {
+    if (isSpeaking || speakingExampleIndex !== null) {
       // Stop current speech if already speaking
       await Speech.stop();
       setIsSpeaking(false);
+      setSpeakingExampleIndex(null);
       return;
     }
 
@@ -78,7 +83,7 @@ export function WordDetailScreen({ route, navigation }: WordDetailScreenProps) {
       await Speech.speak(word.korean, {
         language: 'ko-KR',
         pitch: 0.5,
-        rate: 0.4, // Slower speed for better clarity
+        rate: getVoiceSpeedRate(settings.voiceSpeed),
         onDone: () => setIsSpeaking(false),
         onStopped: () => setIsSpeaking(false),
         onError: () => {
@@ -95,6 +100,52 @@ export function WordDetailScreen({ route, navigation }: WordDetailScreenProps) {
       Alert.alert(
         'Error',
         'Failed to play pronunciation. Please try again.'
+      );
+    }
+  }
+
+  // Handle example sentence pronunciation
+  async function playExampleSentence(example: Example, index: number) {
+    const koreanSentence = (example.korean || '').trim();
+    if (!koreanSentence) return;
+
+    // If this example is already speaking, stop it
+    if (speakingExampleIndex === index) {
+      await Speech.stop();
+      setSpeakingExampleIndex(null);
+      return;
+    }
+
+    // Stop any other speech
+    if (isSpeaking || speakingExampleIndex !== null) {
+      await Speech.stop();
+      setIsSpeaking(false);
+    }
+
+    try {
+      setSpeakingExampleIndex(index);
+      
+      // Speak the Korean example sentence with Korean voice
+      await Speech.speak(koreanSentence, {
+        language: 'ko-KR',
+        pitch: 0.5,
+        rate: getVoiceSpeedRate(settings.voiceSpeed),
+        onDone: () => setSpeakingExampleIndex(null),
+        onStopped: () => setSpeakingExampleIndex(null),
+        onError: () => {
+          setSpeakingExampleIndex(null);
+          Alert.alert(
+            'Error',
+            'Korean voice not available on this device.'
+          );
+        }
+      });
+    } catch (error) {
+      console.error('Error playing example sentence:', error);
+      setSpeakingExampleIndex(null);
+      Alert.alert(
+        'Error',
+        'Failed to play example sentence. Please try again.'
       );
     }
   }
@@ -203,12 +254,29 @@ export function WordDetailScreen({ route, navigation }: WordDetailScreenProps) {
             const showK = !!k;
             const showM = !!m && m !== k;
             const showE = !!e && e !== k && e !== m;
+            const isExampleSpeaking = speakingExampleIndex === index;
             return (
               <View key={index} style={styles.exampleItem}>
                 {showK && (
-                  <Text style={[styles.exampleKorean, { color: C.textPrimary }]}>
-                    {k}
-                  </Text>
+                  <View style={styles.exampleKoreanRow}>
+                    <Text style={[styles.exampleKorean, { color: C.textPrimary }]}>
+                      {k}
+                    </Text>
+                    <Pressable 
+                      onPress={() => playExampleSentence(example, index)}
+                      style={({ pressed }) => [
+                        styles.exampleSpeakerButton,
+                        isExampleSpeaking && { backgroundColor: C.brand + '20' },
+                        pressed && { opacity: 0.7 }
+                      ]}
+                    >
+                      <Ionicons 
+                        name={isExampleSpeaking ? "volume-high" : "volume-high-outline"} 
+                        size={18} 
+                        color={isExampleSpeaking ? C.brand : C.textSecondary} 
+                      />
+                    </Pressable>
+                  </View>
                 )}
                 {showM && (
                   <Text
@@ -420,10 +488,21 @@ const styles = StyleSheet.create({
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderBottomColor: '#e5e7eb',
   },
+  exampleKoreanRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 4,
+  },
   exampleKorean: {
     fontSize: 16,
     fontWeight: '500',
-    marginBottom: 4,
+    flex: 1,
+    marginRight: 8,
+  },
+  exampleSpeakerButton: {
+    padding: 6,
+    borderRadius: 16,
   },
   exampleMyanmar: {
     fontSize: 14,

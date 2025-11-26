@@ -5,12 +5,14 @@ export type SortPriority = 'korean' | 'myanmar' | 'english';
 export type ThemeMode = 'light' | 'dark' | 'system';
 
 export type FontSize = 'small' | 'default' | 'large';
+export type VoiceSpeed = 'slow' | 'default' | 'fast';
 
 export type AppSettings = {
   uiLanguage: AppLanguage;
   sortBy: SortPriority;
   fontSize: FontSize;
   theme: ThemeMode;
+  voiceSpeed: VoiceSpeed;
 };
 
 const SETTINGS_KEY = 'mmkr.settings.v1';
@@ -20,7 +22,7 @@ export async function loadSettings(): Promise<AppSettings> {
     const raw = await AsyncStorage.getItem(SETTINGS_KEY);
     if (raw) return JSON.parse(raw) as AppSettings;
   } catch {}
-  return { uiLanguage: 'myanmar', sortBy: 'korean', fontSize: 'default', theme: 'light' };
+  return { uiLanguage: 'myanmar', sortBy: 'korean', fontSize: 'default', theme: 'light', voiceSpeed: 'default' };
 }
 
 export async function saveSettings(settings: AppSettings): Promise<void> {
@@ -305,4 +307,24 @@ export const NATIVE_LANGUAGE_NAME: Record<AppLanguage, string> = {
   korean: '한국어',
   english: 'English',
 };
+
+/**
+ * Convert voice speed setting to speech rate value
+ * Rate values: 0.0 to 1.0 (iOS) or 0.0 to 2.0 (Android)
+ * - slow: 0.3 (slower)
+ * - default: 0.4 (normal)
+ * - fast: 0.6 (faster)
+ */
+export function getVoiceSpeedRate(speed: VoiceSpeed): number {
+  switch (speed) {
+    case 'slow':
+      return 0.3;
+    case 'default':
+      return 0.4;
+    case 'fast':
+      return 0.6;
+    default:
+      return 0.4;
+  }
+}
 

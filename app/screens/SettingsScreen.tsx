@@ -10,7 +10,7 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import { useThemedColors } from '../components/Theme';
 import { useSettings } from '../data/SettingsContext';
-import { AppLanguage, SortPriority, FontSize, NATIVE_LANGUAGE_NAME } from '../data/settings';
+import { AppLanguage, SortPriority, FontSize, VoiceSpeed, NATIVE_LANGUAGE_NAME } from '../data/settings';
 
 export function SettingsScreen() {
   const { settings, updateSetting } = useSettings();
@@ -108,6 +108,15 @@ export function SettingsScreen() {
     return labels[size];
   };
 
+  const getVoiceSpeedLabel = (speed: VoiceSpeed) => {
+    const labels: Record<VoiceSpeed, string> = {
+      slow: settings.uiLanguage === 'myanmar' ? 'အနှေး' : settings.uiLanguage === 'korean' ? '느리게' : 'Slow',
+      default: settings.uiLanguage === 'myanmar' ? 'ပုံမှန်' : settings.uiLanguage === 'korean' ? '보통' : 'Default',
+      fast: settings.uiLanguage === 'myanmar' ? 'အမြန်' : settings.uiLanguage === 'korean' ? '빠르게' : 'Fast',
+    };
+    return labels[speed];
+  };
+
   return (
     <SafeAreaView style={[styles.safeArea, { backgroundColor: C.background }]}>
       <ScrollView 
@@ -175,6 +184,22 @@ export function SettingsScreen() {
               selected={settings.fontSize === size}
               onPress={() => updateSetting('fontSize', size)}
               icon={size === 'small' ? 'remove' : size === 'large' ? 'add' : 'remove-circle-outline'}
+            />
+          ))}
+        </Section>
+
+        {/* Voice Speed Section */}
+        <Section 
+          title={settings.uiLanguage === 'myanmar' ? 'အသံအမြန်နှုန်း' : settings.uiLanguage === 'korean' ? '음성 속도' : 'Voice Speed'}
+          icon="volume-high"
+        >
+          {(['slow', 'default', 'fast'] as VoiceSpeed[]).map((speed) => (
+            <OptionRow
+              key={speed}
+              label={getVoiceSpeedLabel(speed)}
+              selected={settings.voiceSpeed === speed}
+              onPress={() => updateSetting('voiceSpeed', speed)}
+              icon={speed === 'slow' ? 'hourglass-outline' : speed === 'fast' ? 'flash-outline' : 'speedometer-outline'}
             />
           ))}
         </Section>

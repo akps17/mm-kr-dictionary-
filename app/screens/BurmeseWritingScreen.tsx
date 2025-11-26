@@ -4,6 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import * as Speech from 'expo-speech';
 import { useThemedColors } from '../components/Theme';
 import { useSettings } from '../data/SettingsContext';
+import { getVoiceSpeedRate } from '../data/settings';
 
 type BurmeseWritingScreenProps = {
   navigation: any;
@@ -17,7 +18,7 @@ const MYANMAR_CONSONANTS = [
   { myanmar: 'ဃ', romanization: 'ga', korean: '가', name: 'Gha' },
   { myanmar: 'င', romanization: 'nga', korean: '응아', name: 'Nga' },
   { myanmar: 'စ', romanization: 'ssa', korean: '싸', name: 'Sa' },
-  { myanmar: 'ဆ', romanization: 'ssa', korean: '싸', name: 'Hsa' },
+  { myanmar: 'ဆ', romanization: 'ssa', korean: '사', name: 'Hsa' },
   { myanmar: 'ဇ', romanization: 'ja', korean: '자', name: 'Za' },
   { myanmar: 'ဈ', romanization: 'ja', korean: '자', name: 'Zha' },
   { myanmar: 'ည', romanization: 'nya', korean: '냐', name: 'Nya' },
@@ -33,12 +34,12 @@ const MYANMAR_CONSONANTS = [
   { myanmar: 'န', romanization: 'na', korean: '나', name: 'Na' },
   { myanmar: 'ပ', romanization: 'ppa', korean: '빠', name: 'Pa' },
   { myanmar: 'ဖ', romanization: 'pa', korean: '파', name: 'Hpa' },
-  { myanmar: 'ဗ', romanization: 'ba', korean: '바', name: 'Ba' },
-  { myanmar: 'ဘ', romanization: 'ba', korean: '바', name: 'Bha' },
-  { myanmar: 'မ', romanization: 'ma', korean: '마', name: 'Ma' },
-  { myanmar: 'ယ', romanization: 'ya', korean: '야', name: 'Ya' },
-  { myanmar: 'ရ', romanization: 'ya-ra', korean: '야/라', name: 'Ya/Ra' },
-  { myanmar: 'လ', romanization: 'la', korean: '라', name: 'La' },
+  { myanmar: 'ဗ', romanization: 'ba', korean: '밧', name: 'Ba' },
+  { myanmar: 'ဘ', romanization: 'ba', korean: '밧', name: 'Bha' },
+  { myanmar: 'မ', romanization: 'ma', korean: '맛', name: 'Ma' },
+  { myanmar: 'ယ', romanization: 'ya', korean: '얏', name: 'Ya' },
+  { myanmar: 'ရ', romanization: 'ya-ra', korean: '라', name: 'Ya/Ra' },
+  { myanmar: 'လ', romanization: 'la', korean: '랏', name: 'La' },
   { myanmar: 'ဝ', romanization: 'wa', korean: '와', name: 'Wa' },
   { myanmar: 'သ', romanization: 'ta', korean: '타', name: 'Tha' },
   { myanmar: 'ဟ', romanization: 'ha', korean: '하', name: 'Ha' },
@@ -48,20 +49,20 @@ const MYANMAR_CONSONANTS = [
 
 // Myanmar Vowels (သရ)
 const MYANMAR_VOWELS = [
-  { myanmar: 'အ', romanization: 'a', korean: '아', example: 'က → kka' },
-  { myanmar: 'အာ', romanization: 'aa', korean: '아:', example: 'ကာ → kkaa' },
-  { myanmar: 'ိ', romanization: 'i', korean: '이', example: 'ကိ → kki' },
-  { myanmar: 'ီ', romanization: 'ii', korean: '이:', example: 'ကီ → kkii' },
-  { myanmar: 'ု', romanization: 'u', korean: '우', example: 'ကု → kku' },
-  { myanmar: 'ူ', romanization: 'uu', korean: '우:', example: 'ကူ → kkuu' },
-  { myanmar: 'ေ', romanization: 'e', korean: '에', example: 'ကေ → kke' },
-  { myanmar: 'ဲ', romanization: 'ai', korean: '에', example: 'ကဲ → kkai' },
-  { myanmar: 'ော', romanization: 'o', korean: '오', example: 'ကော → kko' },
-  { myanmar: 'ော်', romanization: 'o', korean: '어', example: 'ကော် → kko' },
-  { myanmar: 'ို', romanization: 'o', korean: '오', example: 'ကို → kko' },
-  { myanmar: '်', romanization: 'silent', korean: '묵음', example: 'က် → k' },
-  { myanmar: 'ံ', romanization: 'ng', korean: '응', example: 'ကံ → kkang' },
-  { myanmar: 'း', romanization: 'long', korean: ':', example: 'ကး → kkaa' },
+  { myanmar: 'အ', romanization: 'a', korean: '앗', example: 'အ → a' },
+  { myanmar: 'အာ', romanization: 'aa', korean: '아:', example: 'အာ → ar' },
+  { myanmar: 'ိ', romanization: 'i', korean: '잇', example: 'အိ → ai' },
+  { myanmar: 'ီ', romanization: 'ii', korean: '이:', example: 'အီ → aei' },
+  { myanmar: 'ု', romanization: 'u', korean: '웃', example: 'အု → ou' },
+  { myanmar: 'ူ', romanization: 'uu', korean: '우:', example: 'အူ → ouu' },
+  { myanmar: 'ေ', romanization: 'e', korean: '에이', example: 'အေ → ayy' },
+  { myanmar: 'ဲ', romanization: 'ai', korean: '에', example: 'အဲ → aie' },
+  { myanmar: 'ော', romanization: 'o', korean: '엇', example: 'အော → aw' },
+  { myanmar: 'ော်', romanization: 'o', korean: '어', example: 'အ → aww' },
+  { myanmar: 'ို', romanization: 'o', korean: '오', example: 'အ → o' },
+  { myanmar: '်', romanization: 'silent', korean: '앗', example: 'အတ် → aat' },
+  { myanmar: 'ံ', romanization: 'ng', korean: '앙', example: 'အံ → ann' },
+  { myanmar: 'း', romanization: 'al', korean: '알', example: 'အား → arr' },
 ];
 
 export function BurmeseWritingScreen({ navigation }: BurmeseWritingScreenProps) {
@@ -110,7 +111,7 @@ export function BurmeseWritingScreen({ navigation }: BurmeseWritingScreenProps) 
     Speech.speak(korean, {
       language: 'ko-KR', // Korean voice
       pitch: 0.5,
-      rate: 0.4, // Slower speed for better clarity
+      rate: getVoiceSpeedRate(settings.voiceSpeed),
     });
   };
 

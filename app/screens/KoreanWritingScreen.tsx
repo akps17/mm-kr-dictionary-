@@ -4,6 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import * as Speech from 'expo-speech';
 import { useThemedColors } from '../components/Theme';
 import { useSettings } from '../data/SettingsContext';
+import { getVoiceSpeedRate } from '../data/settings';
 
 type KoreanWritingScreenProps = {
   navigation: any;
@@ -13,25 +14,25 @@ type KoreanWritingScreenProps = {
 const VOWELS = [
   { korean: 'ㅏ', romanization: 'a', myanmar: 'အာ' },
   { korean: 'ㅑ', romanization: 'ya', myanmar: 'ယာ' },
-  { korean: 'ㅓ', romanization: 'eo', myanmar: 'အို' },
-  { korean: 'ㅕ', romanization: 'yeo', myanmar: 'ယို' },
+  { korean: 'ㅓ', romanization: 'eo', myanmar: 'အော' },
+  { korean: 'ㅕ', romanization: 'yeo', myanmar: 'ယော' },
   { korean: 'ㅗ', romanization: 'o', myanmar: 'အို' },
   { korean: 'ㅛ', romanization: 'yo', myanmar: 'ယို' },
-  { korean: 'ㅜ', romanization: 'u', myanmar: 'ဦး' },
+  { korean: 'ㅜ', romanization: 'u', myanmar: 'အူ' },
   { korean: 'ㅠ', romanization: 'yu', myanmar: 'ယူ' },
   { korean: 'ㅡ', romanization: 'eu', myanmar: 'အု' },
   { korean: 'ㅣ', romanization: 'i', myanmar: 'အီ' },
-  { korean: 'ㅐ', romanization: 'ae', myanmar: 'အဲ' },
-  { korean: 'ㅒ', romanization: 'yae', myanmar: 'ယဲ' },
-  { korean: 'ㅔ', romanization: 'e', myanmar: 'အေ' },
-  { korean: 'ㅖ', romanization: 'ye', myanmar: 'ယေ' },
+  { korean: 'ㅐ', romanization: 'ae', myanmar: 'အယ်' },
+  { korean: 'ㅒ', romanization: 'yae', myanmar: 'ယယ်' },
+  { korean: 'ㅔ', romanization: 'e', myanmar: 'အဲ' },
+  { korean: 'ㅖ', romanization: 'ye', myanmar: 'ယဲ' },
   { korean: 'ㅘ', romanization: 'wa', myanmar: 'ဝါ' },
-  { korean: 'ㅙ', romanization: 'wae', myanmar: 'ဝဲ' },
-  { korean: 'ㅚ', romanization: 'oe', myanmar: 'ဝေ' },
-  { korean: 'ㅝ', romanization: 'wo', myanmar: 'ဝို' },
-  { korean: 'ㅞ', romanization: 'we', myanmar: 'ဝေ' },
-  { korean: 'ㅟ', romanization: 'wi', myanmar: 'ဝီ' },
-  { korean: 'ㅢ', romanization: 'ui', myanmar: 'အွီ' },
+  { korean: 'ㅙ', romanization: 'wae', myanmar: 'ဝွယ်' },
+  { korean: 'ㅚ', romanization: 'oe', myanmar: 'ဝဲ' },
+  { korean: 'ㅝ', romanization: 'wo', myanmar: 'ဝေါ' },
+  { korean: 'ㅞ', romanization: 'we', myanmar: 'ဝွဲ' },
+  { korean: 'ㅟ', romanization: 'wi', myanmar: 'ဝွီ' },
+  { korean: 'ㅢ', romanization: 'ui', myanmar: 'အဲ/အွီ' },
 ];
 
 // Korean Consonants (자음)
@@ -39,17 +40,17 @@ const CONSONANTS = [
   { korean: 'ㄱ', romanization: 'g', myanmar: 'ဂ' },
   { korean: 'ㄲ', romanization: 'kk', myanmar: 'က' },
   { korean: 'ㄴ', romanization: 'n', myanmar: 'န' },
-  { korean: 'ㄷ', romanization: 'd/t', myanmar: 'ဒ/တ' },
+  { korean: 'ㄷ', romanization: 'd/t', myanmar: 'ဒ' },
   { korean: 'ㄸ', romanization: 'tt', myanmar: 'တ' },
-  { korean: 'ㄹ', romanization: 'r/l', myanmar: 'ရ/လ' },
+  { korean: 'ㄹ', romanization: 'r/l', myanmar: 'ရ' },
   { korean: 'ㅁ', romanization: 'm', myanmar: 'မ' },
-  { korean: 'ㅂ', romanization: 'b/p', myanmar: 'ဗ/ပ' },
+  { korean: 'ㅂ', romanization: 'b/p', myanmar: 'ဗ' },
   { korean: 'ㅃ', romanization: 'pp', myanmar: 'ပ' },
-  { korean: 'ㅅ', romanization: 's', myanmar: 'စ' },
+  { korean: 'ㅅ', romanization: 's', myanmar: 'ဆ' },
   { korean: 'ㅆ', romanization: 'ss', myanmar: 'စ' },
-  { korean: 'ㅇ', romanization: 'ng/-', myanmar: 'င်/အ' },
+  { korean: 'ㅇ', romanization: 'ng/-', myanmar: 'အ' },
   { korean: 'ㅈ', romanization: 'j', myanmar: 'ဂျ' },
-  { korean: 'ㅉ', romanization: 'jj', myanmar: 'ဂျ' },
+  { korean: 'ㅉ', romanization: 'jj', myanmar: 'ကျ' },
   { korean: 'ㅊ', romanization: 'ch', myanmar: 'ချ' },
   { korean: 'ㅋ', romanization: 'k', myanmar: 'ခ' },
   { korean: 'ㅌ', romanization: 't', myanmar: 'ထ' },
@@ -72,7 +73,7 @@ export function KoreanWritingScreen({ navigation }: KoreanWritingScreenProps) {
     Speech.speak(character, {
       language: 'ko-KR', // Korean language code
       pitch: 0.5,
-      rate: 0.4, // Slower speed for better clarity
+      rate: getVoiceSpeedRate(settings.voiceSpeed),
     });
   };
 
