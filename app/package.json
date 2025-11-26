@@ -6,7 +6,7 @@
     "start": "expo start",
     "android": "expo start --android --go",
     "ios": "expo run:ios",
-    "web": "expo start --web",
+    "web": "BROWSER=safari expo start --web",
     "build": "expo export --platform web && (if [ -d dist ]; then cp public/admin.html dist/ && cp public/sitemap.xml dist/ 2>/dev/null || true && cp public/robots.txt dist/ 2>/dev/null || true && cp public/google78ca1c3ab4f9db42.html dist/ 2>/dev/null || true && (cp public/dictionary_icon.png dist/ || cp assets/dictionary_icon.png dist/); elif [ -d .expo/web ]; then cp public/admin.html .expo/web/ && cp public/sitemap.xml .expo/web/ 2>/dev/null || true && cp public/robots.txt .expo/web/ 2>/dev/null || true && cp public/google78ca1c3ab4f9db42.html .expo/web/ 2>/dev/null || true && (cp public/dictionary_icon.png .expo/web/ || cp assets/dictionary_icon.png .expo/web/); fi) || echo 'Build completed with warnings'"
   },
   "dependencies": {
