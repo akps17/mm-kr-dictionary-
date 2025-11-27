@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Myanmar Korean Dictionary",
-    "slug": "Myanmar Korean Dictionary",
+    "slug": "app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/dictionary_icon.png",
@@ -17,7 +17,14 @@
       "bundleIdentifier": "com.aksp17.app",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
-      }
+      },
+      "privacyManifests": {
+        "NSPrivacyAccessedAPITypes": []
+      },
+      "config": {
+        "usesNonExemptEncryption": false
+      },
+      "privacyPolicy": "https://mm-krdictionary.vercel.app/privacy-policy"
     },
     "scheme": "com.aksp17.app",
     "android": {
@@ -26,7 +33,17 @@
         "foregroundImage": "./assets/dictionary_icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "permissions": [
+        "INTERNET",
+        "MODIFY_AUDIO_SETTINGS",
+        "READ_EXTERNAL_STORAGE",
+        "RECORD_AUDIO",
+        "SYSTEM_ALERT_WINDOW",
+        "VIBRATE",
+        "WRITE_EXTERNAL_STORAGE"
+      ],
+      "privacyPolicy": "https://mm-krdictionary.vercel.app/privacy-policy"
     },
     "web": {
       "favicon": "./assets/dictionary_icon.png",
@@ -97,7 +114,9 @@
       },
       "eas": {
         "projectId": "9184fd51-6a68-43a4-a43f-8665d8c37adf"
-      }
-    }
+      },
+      "privacyPolicy": "https://mm-krdictionary.vercel.app/privacy-policy"
+    },
+    "privacy": "public"
   }
 }
