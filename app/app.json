@@ -68,7 +68,8 @@
         "apple-mobile-web-app-status-bar-style": "default",
         "apple-mobile-web-app-title": "MM-KR Dictionary",
         "apple-touch-icon": "./assets/dictionary_icon.png",
-        "google-site-verification": "f6JfrZ84PeZaJZ4_RmsotoebwuvAF4q-IfJybsly26Q"
+        "google-site-verification": "f6JfrZ84PeZaJZ4_RmsotoebwuvAF4q-IfJybsly26Q",
+        "Cross-Origin-Opener-Policy": "same-origin-allow-popups"
       }
     },
     "plugins": [

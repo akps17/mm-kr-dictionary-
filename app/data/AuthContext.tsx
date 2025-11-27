@@ -47,26 +47,54 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const androidClientId = '974504645463-9vcp2gp4qpug7di56fqfp3fgtgt0onmt.apps.googleusercontent.com'; // Can use web client for Android
 
   // Log the redirect URI for web development (only once)
+  // These logs will appear in both browser console AND terminal when running expo start --web
   React.useEffect(() => {
-    // For web, this will use the Expo proxy
-    const redirectUri = AuthSession.makeRedirectUri({ 
-      scheme: 'com.aksp17.app',
-    });
-    console.log('🔗 Redirect URI:', redirectUri);
-    // Also log what would be used with proxy (for web development)
     if (Platform.OS === 'web') {
-      console.log('⚠️ For web development, add this to Web client redirect URIs:', redirectUri);
-      console.log('⚠️ Also add: http://localhost:8081 (Expo dev server)');
+      // For web, get the actual redirect URI that will be used
+      const redirectUri = AuthSession.makeRedirectUri({ 
+        scheme: 'com.aksp17.app',
+      });
+      const currentOrigin = typeof window !== 'undefined' ? window.location.origin : '';
+      const currentUrl = typeof window !== 'undefined' ? window.location.href.split('?')[0] : '';
+      
+      // Use console.log - these will appear in terminal when running expo start --web
+      console.log('═══════════════════════════════════════════════════════');
+      console.log('🌐 WEB PLATFORM DETECTED - GOOGLE SIGN-IN CONFIG');
+      console.log('═══════════════════════════════════════════════════════');
+      console.log('🔗 Redirect URI (custom scheme):', redirectUri);
+      console.log('🔗 Current Origin:', currentOrigin);
+      console.log('🔗 Current URL:', currentUrl);
+      console.log('');
+      console.log('⚠️  IMPORTANT: Add these to Web client redirect URIs in Google Cloud Console:');
+      console.log('   1. ' + redirectUri);
+      if (currentOrigin && currentOrigin !== redirectUri) {
+        console.log('   2. ' + currentOrigin);
+      }
+      console.log('   3. http://localhost:8081 (Expo dev server)');
+      console.log('   4. http://localhost:19006 (Expo web default)');
+      console.log('   5. ' + currentUrl + ' (current page URL)');
+      console.log('═══════════════════════════════════════════════════════');
+    } else {
+      const redirectUri = AuthSession.makeRedirectUri({ 
+        scheme: 'com.aksp17.app',
+      });
+      console.log('🔗 Redirect URI:', redirectUri);
     }
   }, []);
 
   // Use Google provider from expo-auth-session
   // Note: The provider will automatically use the correct client ID based on platform
+  // For web, expo-auth-session should use redirect flow automatically
+  const redirectUri = AuthSession.makeRedirectUri({
+    scheme: 'com.aksp17.app',
+  });
+  
   const [request, response, promptAsync] = Google.useAuthRequest({
     clientId: expoClientId, // Web/Expo client ID (used as default)
     iosClientId: iosClientId, // iOS-specific client ID
     androidClientId: androidClientId, // Android-specific client ID (can use web client)
     scopes: ['openid', 'profile', 'email'],
+    redirectUri: redirectUri, // Explicitly set redirect URI for all platforms
   });
 
   // Load persisted auth state on app start
@@ -295,7 +323,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           }
         }
         
+      console.log('');
+      console.log('═══════════════════════════════════════════════════════');
+      console.log('✅ GOOGLE SIGN-IN SUCCESSFUL!');
+      console.log('═══════════════════════════════════════════════════════');
       console.log('User signed in with Google successfully');
+      console.log('Email:', userCredential.user.email);
+      console.log('Display Name:', userCredential.user.displayName);
+      console.log('═══════════════════════════════════════════════════════');
+      console.log('');
     } catch (error: any) {
       console.error('Google sign-in error:', error.message);
       throw error;
@@ -303,31 +339,212 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   // Handle Google OAuth response
+  // These logs will appear in terminal when running expo start --web
   useEffect(() => {
-    if (response?.type === 'success') {
-      const idToken = response.params.id_token || response.params.idToken;
+    if (!response) {
+      // On web, also check URL parameters in case response wasn't captured
+      if (Platform.OS === 'web' && typeof window !== 'undefined') {
+        const urlParams = new URLSearchParams(window.location.search);
+        const idToken = urlParams.get('id_token');
+        const error = urlParams.get('error');
+        
+        if (idToken) {
+          console.log('');
+          console.log('═══════════════════════════════════════════════════════');
+          console.log('📋 OAUTH RESPONSE FOUND IN URL PARAMETERS');
+          console.log('═══════════════════════════════════════════════════════');
+          console.log('✅ ID token found in URL, signing in to Firebase...');
+          handleGoogleSignIn(idToken);
+          // Clean up URL
+          window.history.replaceState({}, document.title, window.location.pathname);
+        } else if (error) {
+          console.error('❌ OAuth error in URL:', error);
+          console.error('Error description:', urlParams.get('error_description'));
+        }
+      }
+      return;
+    }
+    
+    console.log('');
+    console.log('═══════════════════════════════════════════════════════');
+    console.log('📋 OAUTH RESPONSE RECEIVED');
+    console.log('═══════════════════════════════════════════════════════');
+    console.log('Response type:', response.type);
+    console.log('Platform:', Platform.OS);
+    console.log('Full response object:', JSON.stringify(response, null, 2));
+    
+    if (response.type === 'success') {
+      const params = (response as any).params;
+      const idToken = params?.id_token || params?.idToken;
       if (idToken) {
+        console.log('✅ ID token received!');
+        console.log('🔐 Signing in to Firebase...');
         handleGoogleSignIn(idToken);
       } else {
-        console.error('❌ No ID token in response params:', response.params);
+        console.error('❌ No ID token in response params');
+        console.error('Response params:', params);
+        console.error('Full response:', JSON.stringify(response, null, 2));
       }
-    } else if (response?.type === 'error') {
-      console.error('❌ Google OAuth error:', response.error);
+    } else if (response.type === 'error') {
+      const errorResponse = response as any;
+      console.error('❌ Google OAuth error occurred');
+      console.error('Error:', errorResponse.error);
+      console.error('Error code:', errorResponse.errorCode);
+      console.error('Full error response:', JSON.stringify(response, null, 2));
+    } else if (response.type === 'dismiss' || response.type === 'cancel') {
+      console.log('ℹ️  User dismissed/cancelled the OAuth flow');
     }
+    console.log('═══════════════════════════════════════════════════════');
+    console.log('');
   }, [response, handleGoogleSignIn]);
+
+  // Check URL parameters on page load for OAuth response (web redirect flow)
+  // This handles the case when Google redirects back with the token in the URL
+  // Google OAuth can return tokens in either query params (?id_token=...) or hash fragment (#id_token=...)
+  useEffect(() => {
+    if (Platform.OS === 'web' && typeof window !== 'undefined' && handleGoogleSignIn) {
+      // Check both query parameters and hash fragment
+      const queryParams = new URLSearchParams(window.location.search);
+      const hashParams = new URLSearchParams(window.location.hash.substring(1)); // Remove the # symbol
+      
+      // Try query params first, then hash fragment
+      const idToken = queryParams.get('id_token') || hashParams.get('id_token');
+      const error = queryParams.get('error') || hashParams.get('error');
+      const state = queryParams.get('state') || hashParams.get('state');
+      
+      if (idToken || error) {
+        console.log('');
+        console.log('═══════════════════════════════════════════════════════');
+        console.log('🔍 CHECKING URL FOR OAUTH RESPONSE (PAGE LOAD)');
+        console.log('═══════════════════════════════════════════════════════');
+        console.log('Current URL:', window.location.href);
+        console.log('Query params:', window.location.search);
+        console.log('Hash fragment:', window.location.hash);
+        console.log('URL params found:', { idToken: !!idToken, error, state });
+        
+        // Verify state parameter for security (if we stored it)
+        if (idToken && state) {
+          const storedState = sessionStorage.getItem('oauth_state');
+          if (storedState && storedState !== state) {
+            console.error('❌ State parameter mismatch! Possible CSRF attack.');
+            console.error('Expected state:', storedState);
+            console.error('Received state:', state);
+            const cleanUrl = window.location.pathname;
+            window.history.replaceState({}, document.title, cleanUrl);
+            return;
+          }
+          // Clean up stored state
+          sessionStorage.removeItem('oauth_state');
+          sessionStorage.removeItem('oauth_nonce');
+        }
+        
+        if (idToken) {
+          console.log('✅ ID token found in URL! Processing sign-in...');
+          console.log('🔐 Token length:', idToken.length);
+          handleGoogleSignIn(idToken);
+          // Clean up URL to remove OAuth parameters (both query and hash)
+          const cleanUrl = window.location.pathname;
+          window.history.replaceState({}, document.title, cleanUrl);
+          console.log('🧹 Cleaned up URL parameters');
+        } else if (error) {
+          console.error('❌ OAuth error in URL:', error);
+          const errorDesc = queryParams.get('error_description') || hashParams.get('error_description');
+          console.error('Error description:', errorDesc);
+          // Clean up stored state
+          sessionStorage.removeItem('oauth_state');
+          sessionStorage.removeItem('oauth_nonce');
+          // Clean up URL
+          const cleanUrl = window.location.pathname;
+          window.history.replaceState({}, document.title, cleanUrl);
+        }
+        console.log('═══════════════════════════════════════════════════════');
+        console.log('');
+      }
+    }
+  }, [handleGoogleSignIn]);
 
   const signInWithGoogle = async () => {
     try {
+      console.log('');
+      console.log('═══════════════════════════════════════════════════════');
+      console.log('🚀 STARTING GOOGLE OAUTH FLOW');
+      console.log('═══════════════════════════════════════════════════════');
       console.log('📱 Platform:', Platform.OS);
-      console.log('🚀 Starting Google OAuth flow...');
       
       if (!request) {
         throw new Error('Google OAuth request not initialized');
       }
       
+      if (Platform.OS === 'web') {
+        console.log('🌐 Web platform detected');
+        const redirectUri = AuthSession.makeRedirectUri({ 
+          scheme: 'com.aksp17.app',
+        });
+        console.log('🔗 Using redirect URI:', redirectUri);
+        console.log('⚠️  Make sure this redirect URI is added to Google Cloud Console!');
+        
+        // For web, manually construct OAuth URL and redirect to avoid popup issues
+        // This will do a full page redirect instead of opening a popup
+        if (request && typeof window !== 'undefined') {
+          try {
+            // Generate a random state and nonce for security
+            const state = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+            const nonce = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+            
+            // Store state in sessionStorage to verify on return
+            sessionStorage.setItem('oauth_state', state);
+            sessionStorage.setItem('oauth_nonce', nonce);
+            
+            // Manually construct Google OAuth URL
+            const params = new URLSearchParams({
+              client_id: expoClientId,
+              redirect_uri: redirectUri,
+              response_type: 'id_token',
+              scope: 'openid profile email',
+              nonce: nonce,
+              state: state,
+            });
+            
+            const authUrl = `https://accounts.google.com/o/oauth2/v2/auth?${params.toString()}`;
+            console.log('🔗 Generated OAuth URL');
+            console.log('🔄 Redirecting to Google OAuth (full page redirect, not popup)...');
+            console.log('📝 After Google sign-in, you will be redirected back to:', redirectUri);
+            console.log('📝 The response will be processed automatically when you return');
+            console.log('═══════════════════════════════════════════════════════');
+            console.log('');
+            
+            // Use window.location.href to redirect (full page redirect, not popup)
+            window.location.href = authUrl;
+            return; // Don't continue, the page will redirect
+          } catch (urlError) {
+            console.error('❌ Error generating auth URL:', urlError);
+            // Fall back to promptAsync if URL generation fails
+          }
+        }
+      }
+      
+      // For mobile (iOS/Android), use normal popup flow
+      console.log('⏳ Calling promptAsync()...');
       await promptAsync();
+      
+      console.log('✅ promptAsync() completed');
+      // Note: For web redirect flow, we won't reach here because window.location.href redirects
+      // The response will be handled by the URL parameter check useEffect when the page loads back
     } catch (error: any) {
-      console.error('Google sign-in error:', error.message);
+      console.error('');
+      console.error('═══════════════════════════════════════════════════════');
+      console.error('❌ GOOGLE SIGN-IN ERROR');
+      console.error('═══════════════════════════════════════════════════════');
+      console.error('Error message:', error.message);
+      if (Platform.OS === 'web') {
+        console.error('🌐 Web-specific error details:', error);
+        // If it's a COOP error, suggest using redirect flow
+        if (error.message?.includes('Cross-Origin-Opener-Policy')) {
+          console.error('💡 This error is due to browser security policy.');
+          console.error('💡 The redirect flow should work if redirect URI is configured in Google Cloud Console.');
+        }
+      }
+      console.error('═══════════════════════════════════════════════════════');
       throw error;
     }
   };
