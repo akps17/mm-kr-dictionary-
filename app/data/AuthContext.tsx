@@ -17,9 +17,20 @@ import * as Google from 'expo-auth-session/providers/google';
 
 const AUTH_USER_KEY = '@auth_user_persisted';
 
+type UserProfileData = {
+  nationality?: string;
+  birthdate?: string;
+  koreanLevel?: string;
+  position?: string;
+  gender?: string;
+};
+
 type AuthContextType = {
   user: User | null;
   loading: boolean;
+  profileComplete: boolean;
+  checkProfileComplete: () => Promise<boolean>;
+  updateUserProfile: (profileData: UserProfileData) => Promise<void>;
   signUp: (email: string, password: string, name: string, nationality: string, birthdate: string, koreanLevel: string, position: string, gender: string) => Promise<void>;
   signIn: (email: string, password: string) => Promise<void>;
   signInWithGoogle: () => Promise<void>;
@@ -30,6 +41,9 @@ type AuthContextType = {
 const AuthContext = createContext<AuthContextType>({
   user: null,
   loading: true,
+  profileComplete: false,
+  checkProfileComplete: async () => false,
+  updateUserProfile: async () => {},
   signUp: async () => {},
   signIn: async () => {},
   signInWithGoogle: async () => {},
@@ -40,6 +54,7 @@ const AuthContext = createContext<AuthContextType>({
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+  const [profileComplete, setProfileComplete] = useState(false);
 
   // Client IDs for different platforms
   const expoClientId = '974504645463-9vcp2gp4qpug7di56fqfp3fgtgt0onmt.apps.googleusercontent.com'; // Web client ID
@@ -550,9 +565,73 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
+  const checkProfileComplete = useCallback(async (): Promise<boolean> => {
+    if (!user?.email) return false;
+    
+    try {
+      const { db } = await import('./firebase');
+      const { doc, getDoc } = await import('firebase/firestore');
+      const normalizedEmail = user.email.trim().toLowerCase();
+      const userDocRef = doc(db, 'user_points', normalizedEmail);
+      const userDoc = await getDoc(userDocRef);
+      
+      if (!userDoc.exists()) return false;
+      
+      const data = userDoc.data();
+      const hasAllFields = !!(
+        data.nationality &&
+        data.birthdate &&
+        data.koreanLevel &&
+        data.position &&
+        data.gender
+      );
+      
+      setProfileComplete(hasAllFields);
+      return hasAllFields;
+    } catch (error) {
+      console.error('Error checking profile completeness:', error);
+      return false;
+    }
+  }, [user]);
+
+  const updateUserProfile = useCallback(async (profileData: UserProfileData) => {
+    if (!user?.email) {
+      throw new Error('User must be logged in to update profile');
+    }
+
+    try {
+      const { db } = await import('./firebase');
+      const { doc, setDoc, serverTimestamp } = await import('firebase/firestore');
+      const normalizedEmail = user.email.trim().toLowerCase();
+      const userDocRef = doc(db, 'user_points', normalizedEmail);
+      
+      await setDoc(userDocRef, {
+        ...profileData,
+        koreanLevel: profileData.koreanLevel ? parseInt(profileData.koreanLevel) : undefined,
+        lastUpdated: serverTimestamp(),
+      }, { merge: true });
+      
+      // Recheck profile completeness
+      await checkProfileComplete();
+      
+      console.log('✅ User profile updated successfully');
+    } catch (error: any) {
+      console.error('❌ Error updating user profile:', error);
+      throw error;
+    }
+  }, [user, checkProfileComplete]);
+
+  // Check profile completeness when user changes
+  useEffect(() => {
+    if (user && !loading) {
+      checkProfileComplete();
+    }
+  }, [user, loading, checkProfileComplete]);
+
   const logOut = async () => {
     try {
       await signOut(auth);
+      setProfileComplete(false);
       console.log('User logged out');
     } catch (error: any) {
       console.error('Logout error:', error.message);
@@ -563,6 +642,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const value: AuthContextType = {
     user,
     loading,
+    profileComplete,
+    checkProfileComplete,
+    updateUserProfile,
     signUp,
     signIn,
     signInWithGoogle,

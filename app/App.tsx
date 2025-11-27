@@ -48,6 +48,7 @@ import { TOPIKTestScreen } from './screens/TOPIKTestScreen';
 import { SubmitWordScreen } from './screens/SubmitWordScreen';
 import { ReportFormScreen } from './screens/ReportFormScreen';
 import { CheckUpdatesScreen } from './screens/CheckUpdatesScreen';
+import { ProfileCompletionScreen } from './screens/ProfileCompletionScreen';
 import { MultipleChoiceQuizScreen } from './screens/MultipleChoiceQuizScreen';
 import { TrueFalseQuizScreen } from './screens/TrueFalseQuizScreen';
 import { FlashcardsScreen } from './screens/FlashcardsScreen';
@@ -1171,6 +1172,21 @@ function AppNavigator() {
 // Wrapper to connect theme from settings
 function ThemedApp() {
   const { settings } = useSettings();
+  const { user, loading, profileComplete } = useAuth();
+  const [showProfileCompletion, setShowProfileCompletion] = React.useState(false);
+  
+  // Check if profile needs completion after user logs in
+  React.useEffect(() => {
+    if (user && !loading && !profileComplete) {
+      // Show profile completion screen after a short delay
+      const timer = setTimeout(() => {
+        setShowProfileCompletion(true);
+      }, 1000);
+      return () => clearTimeout(timer);
+    } else if (profileComplete) {
+      setShowProfileCompletion(false);
+    }
+  }, [user, loading, profileComplete]);
   
   return (
     <ThemeProvider theme={settings.theme}>
@@ -1179,10 +1195,16 @@ function ThemedApp() {
           <DictionarySyncProvider>
             <UpdatesProvider>
               <SubmissionsProvider>
-                <NavigationContainer>
-                  <AppNavigator />
-                  <NotificationContainer />
-                </NavigationContainer>
+                {showProfileCompletion && user ? (
+                  <ProfileCompletionScreen 
+                    onComplete={() => setShowProfileCompletion(false)} 
+                  />
+                ) : (
+                  <NavigationContainer>
+                    <AppNavigator />
+                    <NotificationContainer />
+                  </NavigationContainer>
+                )}
               </SubmissionsProvider>
             </UpdatesProvider>
           </DictionarySyncProvider>
