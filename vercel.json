@@ -35,12 +35,25 @@
           "value": "text/html; charset=utf-8"
         }
       ]
+    },
+    {
+      "source": "/home.html",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/html; charset=utf-8"
+        }
+      ]
     }
   ],
   "rewrites": [
     {
       "source": "/privacy-policy",
       "destination": "/privacy-policy.html"
+    },
+    {
+      "source": "/home",
+      "destination": "/home.html"
     },
     {
       "source": "/(.*)",
