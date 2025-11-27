@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { Platform } from 'react-native';
 import { 
   createUserWithEmailAndPassword, 
@@ -13,7 +13,7 @@ import {
 import { auth } from './firebase';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as AuthSession from 'expo-auth-session';
-import * as Crypto from 'expo-crypto';
+import * as Google from 'expo-auth-session/providers/google';
 
 const AUTH_USER_KEY = '@auth_user_persisted';
 
@@ -40,6 +40,34 @@ const AuthContext = createContext<AuthContextType>({
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+
+  // Client IDs for different platforms
+  const expoClientId = '974504645463-9vcp2gp4qpug7di56fqfp3fgtgt0onmt.apps.googleusercontent.com'; // Web client ID
+  const iosClientId = '974504645463-u6jqjmks8h24bucsb5b9hkma493utcto.apps.googleusercontent.com'; // iOS client ID
+  const androidClientId = '974504645463-9vcp2gp4qpug7di56fqfp3fgtgt0onmt.apps.googleusercontent.com'; // Can use web client for Android
+
+  // Log the redirect URI for web development (only once)
+  React.useEffect(() => {
+    // For web, this will use the Expo proxy
+    const redirectUri = AuthSession.makeRedirectUri({ 
+      scheme: 'com.aksp17.app',
+    });
+    console.log('🔗 Redirect URI:', redirectUri);
+    // Also log what would be used with proxy (for web development)
+    if (Platform.OS === 'web') {
+      console.log('⚠️ For web development, add this to Web client redirect URIs:', redirectUri);
+      console.log('⚠️ Also add: http://localhost:8081 (Expo dev server)');
+    }
+  }, []);
+
+  // Use Google provider from expo-auth-session
+  // Note: The provider will automatically use the correct client ID based on platform
+  const [request, response, promptAsync] = Google.useAuthRequest({
+    clientId: expoClientId, // Web/Expo client ID (used as default)
+    iosClientId: iosClientId, // iOS-specific client ID
+    androidClientId: androidClientId, // Android-specific client ID (can use web client)
+    scopes: ['openid', 'profile', 'email'],
+  });
 
   // Load persisted auth state on app start
   useEffect(() => {
@@ -220,70 +248,19 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     }
   };
 
-  const signInWithGoogle = async () => {
+  const handleGoogleSignIn = useCallback(async (idToken: string) => {
     try {
-      // Use different client IDs based on platform
-      // iOS needs an iOS OAuth client ID (not web client)
-      // Web/Android can use the web client ID
-      const webClientId = '974504645463-9vcp2gp4qpug7di56fqfp3fgtgt0onmt.apps.googleusercontent.com';
-      // iOS Client ID - TODO: Replace with your iOS OAuth Client ID from Google Cloud Console
-      // Create iOS OAuth client at: https://console.cloud.google.com/apis/credentials
-      // Application type: iOS, Bundle ID: com.aksp17.app
-      const iosClientId = '974504645463-u6jqjmks8h24bucsb5b9hkma493utcto.apps.googleusercontent.com';
-      
-      // Select client ID based on platform
-      const clientId = Platform.OS === 'ios' ? iosClientId : webClientId;
-      
-      console.log('📱 Platform:', Platform.OS);
-      console.log('🔑 Using Client ID:', clientId);
-      
-      // Create a random state for security
-      const state = await Crypto.digestStringAsync(
-        Crypto.CryptoDigestAlgorithm.SHA256,
-        Math.random().toString()
-      );
+      if (!idToken) {
+        throw new Error('No ID token received from Google');
+      }
 
-      // Request Google OAuth
-      // For iOS, use custom scheme
-      // For Android/Web, also use custom scheme (Android supports it, web will use expo proxy)
-      const redirectUri = AuthSession.makeRedirectUri({
-        scheme: 'com.aksp17.app',
-      });
+      // Create Firebase credential from Google ID token
+      const credential = GoogleAuthProvider.credential(idToken);
       
-      console.log('🔗 Redirect URI:', redirectUri);
-      
-      const request = new AuthSession.AuthRequest({
-        clientId: clientId,
-        scopes: ['openid', 'profile', 'email'],
-        responseType: AuthSession.ResponseType.IdToken,
-        redirectUri: redirectUri,
-        state: state,
-        // Remove code challenge for IdToken response type
-        usePKCE: false,
-      });
-
-      const discovery = {
-        authorizationEndpoint: 'https://accounts.google.com/o/oauth2/v2/auth',
-        tokenEndpoint: 'https://oauth2.googleapis.com/token',
-        revocationEndpoint: 'https://oauth2.googleapis.com/revoke',
-      };
-
-      const result = await request.promptAsync(discovery);
-
-      if (result.type === 'success') {
-        const { id_token } = result.params;
+      // Sign in to Firebase with Google credential
+      const userCredential = await signInWithCredential(auth, credential);
         
-        if (!id_token) {
-          throw new Error('No ID token received from Google');
-        }
-
-        // Create Firebase credential from Google ID token
-        const credential = GoogleAuthProvider.credential(id_token);
-        
-        // Sign in to Firebase with Google credential
-        const userCredential = await signInWithCredential(auth, credential);
-        
-        // Create user_points record if new user (or update if exists)
+      // Create user_points record if new user (or update if exists)
         if (userCredential.user && userCredential.user.email) {
           try {
             const { db } = await import('./firebase');
@@ -318,10 +295,37 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           }
         }
         
-        console.log('User signed in with Google successfully');
+      console.log('User signed in with Google successfully');
+    } catch (error: any) {
+      console.error('Google sign-in error:', error.message);
+      throw error;
+    }
+  }, []);
+
+  // Handle Google OAuth response
+  useEffect(() => {
+    if (response?.type === 'success') {
+      const idToken = response.params.id_token || response.params.idToken;
+      if (idToken) {
+        handleGoogleSignIn(idToken);
       } else {
-        throw new Error('Google sign-in was cancelled or failed');
+        console.error('❌ No ID token in response params:', response.params);
       }
+    } else if (response?.type === 'error') {
+      console.error('❌ Google OAuth error:', response.error);
+    }
+  }, [response, handleGoogleSignIn]);
+
+  const signInWithGoogle = async () => {
+    try {
+      console.log('📱 Platform:', Platform.OS);
+      console.log('🚀 Starting Google OAuth flow...');
+      
+      if (!request) {
+        throw new Error('Google OAuth request not initialized');
+      }
+      
+      await promptAsync();
     } catch (error: any) {
       console.error('Google sign-in error:', error.message);
       throw error;
