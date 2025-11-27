@@ -732,6 +732,11 @@
                             <span class="nav-item-text">Submissions</span>
                             <span class="nav-item-badge" id="pending-badge">0</span>
                         </div>
+                        <div class="nav-item" onclick="showSection('reports')">
+                            <span class="nav-item-icon">📋</span>
+                            <span class="nav-item-text">User Reports</span>
+                            <span class="nav-item-badge" id="reports-badge">0</span>
+                        </div>
                     </div>
 
                     <div class="nav-section">
@@ -858,6 +863,49 @@
                     <div class="content-body">
                         <div id="submissions-container">
                             <p style="text-align: center; color: #6b7280; padding: 40px;">Loading submissions...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- User Reports Section -->
+                <div id="section-reports" class="content-section hidden">
+                    <div class="content-header">
+                        <h1 class="content-title">User Reports</h1>
+                        <p class="content-subtitle">View and manage user reports and requests</p>
+                    </div>
+                    <div class="content-body">
+                        <div class="section-card" style="margin-bottom: 20px;">
+                            <div class="section-card-header">
+                                <div class="section-card-title">
+                                    <span>🔽</span>
+                                    <span>Filter by Status</span>
+                                </div>
+                            </div>
+                            <div class="section-card-body">
+                                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                                    <button id="reports-filter-all" onclick="setReportsFilter('all')" class="btn btn-primary" style="flex: 1; min-width: 120px;">
+                                        📋 All Reports
+                                    </button>
+                                    <button id="reports-filter-pending" onclick="setReportsFilter('pending')" class="btn btn-secondary" style="flex: 1; min-width: 120px;">
+                                        ⏳ Pending
+                                    </button>
+                                    <button id="reports-filter-resolved" onclick="setReportsFilter('resolved')" class="btn btn-secondary" style="flex: 1; min-width: 120px;">
+                                        ✅ Resolved
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div style="padding: 16px; background: linear-gradient(135deg, #dbeafe, #e0e7ff); border-radius: 12px; margin-bottom: 20px;">
+                            <p style="margin: 0; color: #1e40af; font-weight: 600;">
+                                📋 Total Reports: <span id="total-reports-count">0</span> | 
+                                ⏳ Pending: <span id="pending-reports-count">0</span> |
+                                ✅ Resolved: <span id="resolved-reports-count">0</span>
+                            </p>
+                        </div>
+                        
+                        <div id="reports-container">
+                            <p style="text-align: center; color: #6b7280; padding: 40px;">Loading reports...</p>
                         </div>
                     </div>
                 </div>
@@ -1312,6 +1360,8 @@
                 loadDashboardData();
             } else if (sectionName === 'submissions') {
                 loadSubmissions();
+            } else if (sectionName === 'reports') {
+                loadReports();
             } else if (sectionName === 'dictionary') {
                 loadDictionary();
             } else if (sectionName === 'users') {
@@ -1344,11 +1394,20 @@
                 const dictionarySnapshot = await getDocs(collection(db, 'dictionary'));
                 const dictionaryCount = dictionarySnapshot.size;
                 
+                // Count pending reports
+                const reportsSnapshot = await getDocs(collection(db, 'user_reports'));
+                let pendingReportsCount = 0;
+                reportsSnapshot.forEach(doc => {
+                    const status = doc.data().status || 'pending';
+                    if (status === 'pending') pendingReportsCount++;
+                });
+                
                 document.getElementById('total-submissions').textContent = totalSubmissions;
                 document.getElementById('pending-count').textContent = pendingCount;
                 document.getElementById('approved-count').textContent = approvedCount;
                 document.getElementById('dictionary-count').textContent = dictionaryCount;
                 document.getElementById('pending-badge').textContent = pendingCount;
+                document.getElementById('reports-badge').textContent = pendingReportsCount;
                 
             } catch (error) {
                 console.error('Error loading dashboard:', error);
@@ -1450,6 +1509,233 @@
                 console.error('Error:', error);
             }
         }
+
+        // Store current reports filter state
+        let currentReportsFilter = 'all';
+
+        // Load reports
+        async function loadReports() {
+            const container = document.getElementById('reports-container');
+            container.innerHTML = '<p style="text-align: center; padding: 40px;">Loading reports...</p>';
+
+            try {
+                const q = query(collection(db, 'user_reports'), orderBy('submittedAt', 'desc'));
+                const snapshot = await getDocs(q);
+                
+                if (snapshot.empty) {
+                    container.innerHTML = '<p style="text-align: center; color: #6b7280; padding: 40px;">✅ No reports to review. All caught up!</p>';
+                    document.getElementById('total-reports-count').textContent = '0';
+                    document.getElementById('pending-reports-count').textContent = '0';
+                    document.getElementById('resolved-reports-count').textContent = '0';
+                    return;
+                }
+
+                let allReports = [];
+                let pendingCount = 0;
+                let resolvedCount = 0;
+
+                snapshot.forEach(doc => {
+                    const data = doc.data();
+                    const docId = doc.id;
+                    const status = data.status || 'pending';
+                    
+                    if (status === 'pending') pendingCount++;
+                    else if (status === 'resolved') resolvedCount++;
+                    
+                    allReports.push({ id: docId, data: data, status: status });
+                });
+
+                // Update counts
+                document.getElementById('total-reports-count').textContent = allReports.length;
+                document.getElementById('pending-reports-count').textContent = pendingCount;
+                document.getElementById('resolved-reports-count').textContent = resolvedCount;
+
+                // Render all reports with data attributes for filtering
+                let html = '';
+                allReports.forEach(item => {
+                    const data = item.data;
+                    const docId = item.id;
+                    const status = item.status;
+                    const reportType = data.reportType || 'new_word';
+                    let reportTypeLabel = 'New Word Request';
+                    let reportTypeIcon = '📝';
+                    if (reportType === 'new_category') {
+                        reportTypeLabel = 'New Category Request';
+                        reportTypeIcon = '📁';
+                    } else if (reportType === 'fix_translation') {
+                        reportTypeLabel = 'Fix Translation Error';
+                        reportTypeIcon = '🔧';
+                    }
+                    const statusColor = status === 'pending' ? '#f59e0b' : status === 'resolved' ? '#10b981' : '#6b7280';
+                    const statusBg = status === 'pending' ? '#fef3c7' : status === 'resolved' ? '#d1fae5' : '#f3f4f6';
+                    
+                    html += `
+                        <div class="word-item ${status}" id="report-${docId}" data-status="${status}" style="border-left-color: ${statusColor};">
+                            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 16px;">
+                                <div style="flex: 1;">
+                                    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                                        <span style="padding: 6px 14px; background: ${statusBg}; color: ${statusColor}; border-radius: 12px; font-size: 13px; font-weight: 600;">
+                                            ${status.charAt(0).toUpperCase() + status.slice(1)}
+                                        </span>
+                                        <span style="padding: 6px 14px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 12px; font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 6px;">
+                                            ${reportTypeIcon} ${reportTypeLabel}
+                                        </span>
+                                    </div>
+                                    <h3 style="font-size: 18px; color: #1f2937; margin-bottom: 8px;">
+                                        ${data.displayName || 'User'} (${data.userEmail || 'anonymous'})
+                                    </h3>
+                                    <p style="color: #6b7280; font-size: 13px; margin-bottom: 12px;">
+                                        Submitted: ${data.submittedAt?.toDate?.()?.toLocaleString() || data.createdAt || 'Unknown'}
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div style="background: linear-gradient(135deg, #f0f9ff 0%, #e0e7ff 100%); padding: 20px; border-radius: 12px; border-left: 4px solid #667eea; margin-bottom: 16px;">
+                                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                                    <span style="font-size: 18px;">${reportTypeIcon}</span>
+                                    <h4 style="font-size: 16px; font-weight: 700; color: #1f2937; margin: 0;">
+                                        ${reportType === 'new_category' ? 'Category Request Details' : 
+                                          reportType === 'fix_translation' ? 'Translation Error Details' : 
+                                          'Word Request Details'}
+                                    </h4>
+                                </div>
+                                <p style="color: #374151; font-size: 15px; line-height: 1.7; white-space: pre-wrap; margin: 0; font-weight: 500;">
+                                    ${data.message || 'No message provided'}
+                                </p>
+                            </div>
+                            
+                            <div class="actions">
+                                ${status === 'pending' ? `
+                                    <button class="btn btn-success" onclick="resolveReport('${docId}')">
+                                        ✅ Mark as Resolved
+                                    </button>
+                                ` : ''}
+                                <button class="btn btn-danger" onclick="deleteReport('${docId}')">
+                                    🗑️ Delete
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                container.innerHTML = html;
+                
+                // Initialize filter
+                setTimeout(() => {
+                    if (typeof currentReportsFilter === 'undefined') {
+                        currentReportsFilter = 'all';
+                    }
+                    // Reset filter buttons
+                    const filterAllBtn = document.getElementById('reports-filter-all');
+                    const filterPendingBtn = document.getElementById('reports-filter-pending');
+                    const filterResolvedBtn = document.getElementById('reports-filter-resolved');
+                    if (filterAllBtn) filterAllBtn.className = 'btn btn-primary';
+                    if (filterPendingBtn) filterPendingBtn.className = 'btn btn-secondary';
+                    if (filterResolvedBtn) filterResolvedBtn.className = 'btn btn-secondary';
+                    filterReports();
+                }, 100);
+                
+            } catch (error) {
+                container.innerHTML = '<p>Error loading reports: ' + error.message + '</p>';
+                console.error('Error:', error);
+            }
+        }
+
+        window.setReportsFilter = function(filterType) {
+            currentReportsFilter = filterType;
+            
+            // Update button styles
+            document.getElementById('reports-filter-all').className = filterType === 'all' ? 'btn btn-primary' : 'btn btn-secondary';
+            document.getElementById('reports-filter-pending').className = filterType === 'pending' ? 'btn btn-primary' : 'btn btn-secondary';
+            document.getElementById('reports-filter-resolved').className = filterType === 'resolved' ? 'btn btn-primary' : 'btn btn-secondary';
+            
+            // Apply filter
+            filterReports();
+        };
+
+        window.filterReports = function() {
+            const reportCards = document.querySelectorAll('[id^="report-"]');
+            let visibleCount = 0;
+            let pendingCount = 0;
+            let resolvedCount = 0;
+            
+            reportCards.forEach(card => {
+                const status = card.getAttribute('data-status') || 'pending';
+                
+                // Check status filter
+                let matchesFilter = true;
+                if (currentReportsFilter === 'pending') {
+                    matchesFilter = status === 'pending';
+                } else if (currentReportsFilter === 'resolved') {
+                    matchesFilter = status === 'resolved';
+                }
+                
+                // Show/hide card
+                if (matchesFilter) {
+                    card.style.display = '';
+                    visibleCount++;
+                    if (status === 'pending') pendingCount++;
+                    else if (status === 'resolved') resolvedCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            // Update counts (only visible ones)
+            const totalCountElement = document.getElementById('total-reports-count');
+            const pendingCountElement = document.getElementById('pending-reports-count');
+            const resolvedCountElement = document.getElementById('resolved-reports-count');
+            
+            if (currentReportsFilter === 'all') {
+                // Show all counts when "All" is selected
+                if (totalCountElement) totalCountElement.textContent = reportCards.length;
+                if (pendingCountElement) pendingCountElement.textContent = Array.from(reportCards).filter(c => c.getAttribute('data-status') === 'pending').length;
+                if (resolvedCountElement) resolvedCountElement.textContent = Array.from(reportCards).filter(c => c.getAttribute('data-status') === 'resolved').length;
+            } else {
+                // Show filtered counts
+                if (totalCountElement) totalCountElement.textContent = visibleCount;
+                if (pendingCountElement) pendingCountElement.textContent = pendingCount;
+                if (resolvedCountElement) resolvedCountElement.textContent = resolvedCount;
+            }
+        };
+
+        window.resolveReport = async function(docId) {
+            if (!confirm('Mark this report as resolved?')) return;
+            
+            try {
+                await updateDoc(doc(db, 'user_reports', docId), { 
+                    status: 'resolved',
+                    resolvedAt: serverTimestamp(),
+                    resolvedBy: 'admin'
+                });
+                
+                // Update the card's data-status attribute and reapply filter
+                const reportCard = document.getElementById(`report-${docId}`);
+                if (reportCard) {
+                    reportCard.setAttribute('data-status', 'resolved');
+                    filterReports();
+                }
+                
+                loadReports();
+                loadDashboardData();
+                alert('Report marked as resolved!');
+            } catch (error) {
+                alert('Error resolving report: ' + error.message);
+            }
+        };
+
+        window.deleteReport = async function(docId) {
+            if (!confirm('Are you sure you want to delete this report?')) return;
+            
+            try {
+                await deleteDoc(doc(db, 'user_reports', docId));
+                loadReports();
+                loadDashboardData();
+                alert('Report deleted!');
+            } catch (error) {
+                alert('Error deleting report: ' + error.message);
+            }
+        };
 
         window.editWord = function(docId, korean, myanmar, english, pos) {
             document.getElementById(`display-${docId}`).style.display = 'none';

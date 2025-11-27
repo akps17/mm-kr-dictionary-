@@ -46,6 +46,7 @@ import { ConversationCategoriesScreen } from './screens/ConversationCategoriesSc
 import { ConversationDetailScreen } from './screens/ConversationDetailScreen';
 import { TOPIKTestScreen } from './screens/TOPIKTestScreen';
 import { SubmitWordScreen } from './screens/SubmitWordScreen';
+import { ReportFormScreen } from './screens/ReportFormScreen';
 import { CheckUpdatesScreen } from './screens/CheckUpdatesScreen';
 import { MultipleChoiceQuizScreen } from './screens/MultipleChoiceQuizScreen';
 import { TrueFalseQuizScreen } from './screens/TrueFalseQuizScreen';
@@ -825,6 +826,7 @@ type RootDrawerParamList = {
   Translate: undefined;
   'Check Updates': undefined;
   'Input New Words': undefined;
+  'Report Form': undefined;
   Theme: undefined;
   Profile: undefined;
   About: undefined;
@@ -1004,6 +1006,14 @@ function AppDrawerContent(props: any) {
           labelStyle={{ color: C.textPrimary }}
         />
         <DrawerItem 
+          label={labels.navReportForm} 
+          onPress={() => props.navigation.navigate('Report Form')} 
+          icon={({color, size}) => (<Ionicons name="document-text-outline" size={size} color={color} />)}
+          activeTintColor={C.brand}
+          inactiveTintColor={C.textPrimary}
+          labelStyle={{ color: C.textPrimary }}
+        />
+        <DrawerItem 
           label={labels.navTheme} 
           onPress={() => props.navigation.navigate('Theme')} 
           icon={({color, size}) => (<Ionicons name="color-palette-outline" size={size} color={color} />)}
@@ -1150,6 +1160,7 @@ function AppNavigator() {
       <Drawer.Screen name="Translate" component={ProtectedTranslateScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="swap-horizontal-outline" size={size} color={color} />) }} />
       <Drawer.Screen name="Check Updates" component={CheckUpdatesScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="sync-outline" size={size} color={color} />) }} />
       <Drawer.Screen name="Input New Words" component={SubmitWordScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="add-circle-outline" size={size} color={color} />) }} />
+      <Drawer.Screen name="Report Form" component={ReportFormScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="document-text-outline" size={size} color={color} />) }} />
       <Drawer.Screen name="Theme" component={ThemeScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="color-palette-outline" size={size} color={color} />) }} />
       <Drawer.Screen name="Profile" component={ProfileScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="person-circle-outline" size={size} color={color} />) }} />
       <Drawer.Screen name="About" component={AboutScreen} options={{ drawerIcon: ({ color, size }) => (<Ionicons name="information-circle-outline" size={size} color={color} />) }} />
