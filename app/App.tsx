@@ -647,11 +647,11 @@ function HomeSearchScreen({ navigation }: { navigation: any }) {
 
               <View style={styles.quickActions}>
                 <Pressable
-                  onPress={() => navigation.navigate('Practice')}
+                  onPress={() => navigation.navigate('Conversation')}
                   style={[styles.quickActionCard, { backgroundColor: C.surface }]}
                 >
-                  <Ionicons name="school-outline" size={24} color={C.brand} />
-                  <Text style={[styles.quickActionTitle, { color: C.textPrimary }]}>{labels.navPractice}</Text>
+                  <Ionicons name="chatbubbles-outline" size={24} color={C.brand} />
+                  <Text style={[styles.quickActionTitle, { color: C.textPrimary }]}>{labels.navConversation}</Text>
                 </Pressable>
 
                 <Pressable

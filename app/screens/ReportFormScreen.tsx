@@ -145,6 +145,17 @@ export function ReportFormScreen({ navigation }: { navigation: any }) {
         <View style={{ alignItems: 'center', marginBottom: 24 }}>
           <Image source={require('../assets/dictionary_icon.png')} style={styles.aboutLogo} />
           <Text style={[styles.title, { color: C.textPrimary, marginTop: 12 }]}>{labels.reportFormTitle}</Text>
+          <Text 
+            style={[
+              styles.description, 
+              { 
+                color: C.textSecondary,
+                fontFamily: settings.uiLanguage === 'myanmar' ? 'NotoSansMyanmar_400Regular' : undefined,
+              }
+            ]}
+          >
+            {labels.reportFormDescription}
+          </Text>
         </View>
 
         {/* User Info */}
@@ -311,6 +322,13 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: '700',
+  },
+  description: {
+    fontSize: 14,
+    lineHeight: 20,
+    textAlign: 'center',
+    marginTop: 8,
+    paddingHorizontal: 20,
   },
   card: {
     padding: 18,
