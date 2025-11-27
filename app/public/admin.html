@@ -3152,11 +3152,22 @@
                 // Load all user data from user_points collection
                 const userPointsSnapshot = await getDocs(collection(db, 'user_points'));
                 
-                const users = [];
+                // Also get users from other collections to ensure we capture all users
+                const [pendingWordsSnapshot, userReportsSnapshot, dictionarySnapshot] = await Promise.all([
+                    getDocs(collection(db, 'pending_words')),
+                    getDocs(collection(db, 'user_reports')),
+                    getDocs(collection(db, 'dictionary'))
+                ]);
+                
+                // Create a map to track all unique users
+                const usersMap = new Map();
+                
+                // First, add all users from user_points (most complete data)
                 userPointsSnapshot.forEach(doc => {
                     const data = doc.data();
-                    users.push({
-                        email: doc.id,
+                    const email = doc.id.toLowerCase().trim();
+                    usersMap.set(email, {
+                        email: email,
                         nationality: data.nationality || 'Unknown',
                         birthdate: data.birthdate || null,
                         koreanLevel: data.koreanLevel || 0,
@@ -3164,9 +3175,87 @@
                         gender: data.gender || 'Unknown',
                         createdAt: data.createdAt,
                         signInMethod: data.signInMethod || 'email',
-                        isPro: data.isPro || false
+                        isPro: data.isPro || false,
+                        displayName: data.displayName || ''
                     });
                 });
+                
+                // Add users from pending_words who might not be in user_points
+                pendingWordsSnapshot.forEach(doc => {
+                    const data = doc.data();
+                    const email = (data.userEmail || '').toLowerCase().trim();
+                    if (email && email !== 'anonymous' && !usersMap.has(email)) {
+                        let createdAt = new Date();
+                        if (data.submittedAt) {
+                            createdAt = data.submittedAt.toDate ? data.submittedAt.toDate() : new Date(data.submittedAt);
+                        }
+                        usersMap.set(email, {
+                            email: email,
+                            nationality: 'Unknown',
+                            birthdate: null,
+                            koreanLevel: 0,
+                            position: 'Unknown',
+                            gender: 'Unknown',
+                            createdAt: createdAt,
+                            signInMethod: 'unknown',
+                            isPro: false,
+                            displayName: data.displayName || ''
+                        });
+                    }
+                });
+                
+                // Add users from user_reports who might not be in user_points
+                userReportsSnapshot.forEach(doc => {
+                    const data = doc.data();
+                    const email = (data.userEmail || '').toLowerCase().trim();
+                    if (email && email !== 'anonymous' && !usersMap.has(email)) {
+                        let createdAt = new Date();
+                        if (data.submittedAt) {
+                            createdAt = data.submittedAt.toDate ? data.submittedAt.toDate() : new Date(data.submittedAt);
+                        } else if (data.createdAt) {
+                            createdAt = data.createdAt.toDate ? data.createdAt.toDate() : new Date(data.createdAt);
+                        }
+                        usersMap.set(email, {
+                            email: email,
+                            nationality: 'Unknown',
+                            birthdate: null,
+                            koreanLevel: 0,
+                            position: 'Unknown',
+                            gender: 'Unknown',
+                            createdAt: createdAt,
+                            signInMethod: 'unknown',
+                            isPro: false,
+                            displayName: data.displayName || ''
+                        });
+                    }
+                });
+                
+                // Add users from dictionary who might not be in user_points
+                dictionarySnapshot.forEach(doc => {
+                    const data = doc.data();
+                    const email = (data.userEmail || '').toLowerCase().trim();
+                    if (email && email !== 'anonymous' && !usersMap.has(email)) {
+                        let createdAt = new Date();
+                        if (data.createdAt) {
+                            createdAt = data.createdAt.toDate ? data.createdAt.toDate() : new Date(data.createdAt);
+                        }
+                        usersMap.set(email, {
+                            email: email,
+                            nationality: 'Unknown',
+                            birthdate: null,
+                            koreanLevel: 0,
+                            position: 'Unknown',
+                            gender: 'Unknown',
+                            createdAt: createdAt,
+                            signInMethod: 'unknown',
+                            isPro: false,
+                            displayName: data.addedBy || ''
+                        });
+                    }
+                });
+                
+                // Convert map to array
+                const users = Array.from(usersMap.values());
 
                 if (users.length === 0) {
                     container.innerHTML = '<p style="text-align: center; color: #6b7280; padding: 40px;">No user data available for analysis.</p>';

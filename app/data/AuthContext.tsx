@@ -311,10 +311,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
               });
               console.log('✅ Created user_points record for new Google user:', normalizedEmail);
             } else {
-              // Update last sign-in time
+              // Update last sign-in time and ensure signInMethod is set
               await setDoc(userDocRef, {
                 lastUpdated: serverTimestamp(),
-                displayName: userCredential.user.displayName || ''
+                displayName: userCredential.user.displayName || '',
+                signInMethod: 'google' // Ensure signInMethod is set for Google users
               }, { merge: true });
               console.log('✅ Updated user_points record for existing Google user:', normalizedEmail);
             }
