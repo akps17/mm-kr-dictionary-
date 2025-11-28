@@ -84,7 +84,7 @@ export function WordDetailScreen({ route, navigation }: WordDetailScreenProps) {
       // Speak the Korean word with Korean voice
       await Speech.speak(word.korean, {
         language: 'ko-KR',
-        pitch: 0.5,
+        pitch: 1.0, // More natural pitch (1.0 = normal, was 0.5 which sounds robotic)
         rate: getVoiceSpeedRate(settings.voiceSpeed),
         onDone: () => setIsSpeaking(false),
         onStopped: () => setIsSpeaking(false),
@@ -148,7 +148,7 @@ export function WordDetailScreen({ route, navigation }: WordDetailScreenProps) {
       // Speak the Korean example sentence with Korean voice
       await Speech.speak(koreanSentence, {
         language: 'ko-KR',
-        pitch: 0.5,
+        pitch: 1.0, // More natural pitch (1.0 = normal, was 0.5 which sounds robotic)
         rate: getVoiceSpeedRate(settings.voiceSpeed),
         onDone: () => setSpeakingExampleIndex(null),
         onStopped: () => setSpeakingExampleIndex(null),

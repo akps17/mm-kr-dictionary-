@@ -1076,7 +1076,7 @@ export function ConversationDetailScreen({ route, navigation }: { route: any; na
       setSpeakingIndex(index);
       await Speech.speak(phrase.korean, {
         language: 'ko-KR',
-        pitch: 0.5,
+        pitch: 1.0, // More natural pitch (1.0 = normal, was 0.5 which sounds robotic)
         rate: getVoiceSpeedRate(settings.voiceSpeed),
         onDone: () => setSpeakingIndex(null),
         onStopped: () => setSpeakingIndex(null),

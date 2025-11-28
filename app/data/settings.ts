@@ -367,7 +367,7 @@ export function getVoiceSpeedRate(speed: VoiceSpeed): number {
     case 'default':
       return 0.4;
     case 'fast':
-      return 0.7;
+      return 0.8;
     default:
       return 0.4;
   }

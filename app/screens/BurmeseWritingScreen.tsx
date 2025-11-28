@@ -110,7 +110,7 @@ export function BurmeseWritingScreen({ navigation }: BurmeseWritingScreenProps) 
     // This sounds much better than English romanization!
     Speech.speak(korean, {
       language: 'ko-KR', // Korean voice
-      pitch: 0.5,
+      pitch: 1.0, // More natural pitch (1.0 = normal, was 0.5 which sounds robotic)
       rate: getVoiceSpeedRate(settings.voiceSpeed),
     });
   };
