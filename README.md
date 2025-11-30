@@ -5,7 +5,7 @@ Cross-platform Myanmar–Korean–English dictionary built with Expo + React Nat
 ## 📱 Try the App
 
 ### 🌐 Web Version
-Try it now: **[https://mm-krdictionary.vercel.app](https://mm-krdictionary.vercel.app)**
+Try it now: **[https://mm-krdictionary.com](https://mm-krdictionary.com)**
 
 ### 📲 Mobile App (Expo Go)
 <img src="app/assets/mm-kr-app.png" alt="QR Code" width="200"/>
