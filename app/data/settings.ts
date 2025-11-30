@@ -363,13 +363,13 @@ export const NATIVE_LANGUAGE_NAME: Record<AppLanguage, string> = {
 export function getVoiceSpeedRate(speed: VoiceSpeed): number {
   switch (speed) {
     case 'slow':
-      return 0.2;
+      return 0.3;
     case 'default':
-      return 0.4;
+      return 0.6;
     case 'fast':
-      return 0.8;
+      return 1.0;
     default:
-      return 0.4;
+      return 0.6;
   }
 }
 
