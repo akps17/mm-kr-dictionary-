@@ -23,7 +23,10 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import { Audio } from 'expo-av';
 import { useFonts as useMyanmarFonts, NotoSansMyanmar_400Regular, NotoSansMyanmar_700Bold } from '@expo-google-fonts/noto-sans-myanmar';
-import { dictionaryEntries } from './data/dictionary';
+// Lazy load dictionary to improve initial load time
+let dictionaryEntries: DictionaryEntry[] = [];
+let dictionaryLoaded = false;
+let dictionaryLoading = false;
 import type { DictionaryEntry as SharedDictionaryEntry } from './types/dictionary';
 import { useThemedColors, ThemeProvider } from './components/Theme';
 import { AppLanguage, SortPriority, AppSettings, i18nLabels, NATIVE_LANGUAGE_NAME, FontSize } from './data/settings';
@@ -156,8 +159,30 @@ function FavoritesStack() {
 function HomeSearchScreen({ navigation }: { navigation: any }) {
   const C = useThemedColors();
   const [queryText, setQueryText] = useState<string>('');
+  const [isDictionaryLoading, setIsDictionaryLoading] = useState(!dictionaryLoaded);
   const { settings } = useSettings();
   const { approvedWords } = useDictionarySync();
+  
+  // Lazy load dictionary on first render (only once)
+  React.useEffect(() => {
+    if (!dictionaryLoaded && !dictionaryLoading) {
+      dictionaryLoading = true;
+      console.log('📚 Loading dictionary...');
+      import('./data/dictionary').then((module) => {
+        dictionaryEntries = module.dictionaryEntries;
+        dictionaryLoaded = true;
+        dictionaryLoading = false;
+        setIsDictionaryLoading(false);
+        console.log('✅ Dictionary loaded:', dictionaryEntries.length, 'entries');
+      }).catch((error) => {
+        console.error('❌ Failed to load dictionary:', error);
+        dictionaryLoading = false;
+        setIsDictionaryLoading(false);
+      });
+    } else if (dictionaryLoaded) {
+      setIsDictionaryLoading(false);
+    }
+  }, []);
   
   // Set document title for web (appears in dock/home screen)
   React.useEffect(() => {
@@ -174,6 +199,11 @@ function HomeSearchScreen({ navigation }: { navigation: any }) {
   const { isTabletLike, horizontalPadding, contentMaxWidth } = useResponsiveLayout();
 
   const filteredAndSortedEntries = useMemo<DictionaryEntry[]>(() => {
+    // Show empty array while dictionary is loading
+    if (isDictionaryLoading || !dictionaryLoaded) {
+      return [];
+    }
+    
     // Merge static dictionary with approved words
     const mergedDictionary = mergeApprovedWords(dictionaryEntries, approvedWords);
     
@@ -273,11 +303,7 @@ function HomeSearchScreen({ navigation }: { navigation: any }) {
     
     const deduplicatedDictionary = Array.from(deduplicatedMap.values());
     
-    // Debug logging
-    console.log('Static dictionary entries:', dictionaryEntries.length);
-    console.log('Firebase approved words:', approvedWords.length);
-    console.log('Merged dictionary total:', mergedDictionary.length);
-    console.log('Deduplicated dictionary total:', deduplicatedDictionary.length);
+    // Removed verbose logging for better performance on Android
     
     const normalizedQuery = queryText.trim().toLowerCase();
     
@@ -561,7 +587,7 @@ function HomeSearchScreen({ navigation }: { navigation: any }) {
     
     // Return just the entries
     return scoredEntries.map(item => item.entry);
-  }, [queryText, settings.sortBy, approvedWords]);
+  }, [queryText, settings.sortBy, approvedWords, isDictionaryLoading, dictionaryLoaded]);
 
   const fontScale = React.useMemo(() => {
     switch (settings.fontSize) {
@@ -588,7 +614,18 @@ function HomeSearchScreen({ navigation }: { navigation: any }) {
             onChangeText={setQueryText}
             onClear={() => setQueryText('')}
           />
-          {queryText.trim() ? (
+          {isDictionaryLoading ? (
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingVertical: 40 }}>
+              <ActivityIndicator size="large" color={C.brand} />
+              <Text style={{ marginTop: 16, color: C.textSecondary, fontSize: 14 }}>
+                {settings.uiLanguage === 'myanmar' 
+                  ? 'အဘိဓာန် ဖွင့်နေသည်...' 
+                  : settings.uiLanguage === 'korean'
+                  ? '사전을 불러오는 중...'
+                  : 'Loading dictionary...'}
+              </Text>
+            </View>
+          ) : queryText.trim() ? (
             <FlatList
               data={filteredAndSortedEntries}
               keyExtractor={(item) => item.id}
@@ -1217,14 +1254,18 @@ function ThemedApp() {
 export default function App() {
   const [fontsLoaded] = useMyanmarFonts({ NotoSansMyanmar_400Regular, NotoSansMyanmar_700Bold });
   
-  // Test Firebase connection on app start
+  // Defer Firebase connection test to improve initial load
   React.useEffect(() => {
-    try {
-      console.log('Firebase initialized successfully:', db.app.name);
-      console.log('Ready to test word submissions!');
-    } catch (error) {
-      console.error('Firebase initialization error:', error);
-    }
+    // Delay Firebase check to allow app to render first
+    const timer = setTimeout(() => {
+      try {
+        // Removed verbose logging for better performance
+      } catch (error) {
+        console.error('Firebase initialization error:', error);
+      }
+    }, 3000); // Wait 3 seconds after app start
+    
+    return () => clearTimeout(timer);
   }, []);
 
   // Remove image borders on web

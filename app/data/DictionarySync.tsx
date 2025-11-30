@@ -48,8 +48,19 @@ export function DictionarySyncProvider({ children }: { children: React.ReactNode
     loadCachedWords();
   }, []);
 
-    // Set up real-time listener for dictionary words
+    // Set up real-time listener for dictionary words (defer for better initial load performance)
   useEffect(() => {
+    // Defer Firebase listener setup to improve initial load time on Android
+    const setupTimeout = setTimeout(() => {
+      setupFirebaseListener();
+    }, 2000); // Wait 2 seconds after app start to allow dictionary to load first
+    
+    return () => {
+      clearTimeout(setupTimeout);
+    };
+  }, []);
+
+  const setupFirebaseListener = () => {
     let mounted = true;
     let previousWordIds = new Set<string>();
     console.log('Setting up Firebase dictionary listener...');
@@ -70,14 +81,14 @@ export function DictionarySyncProvider({ children }: { children: React.ReactNode
         debounceTimeout = setTimeout(() => {
           if (!mounted) return;
           
-          console.log('Firebase snapshot received, processing...', snapshot.size, 'documents');
+          // Removed verbose logging for better performance
           const newApprovedWords: ApprovedWord[] = [];
           const newlyApprovedWords: ApprovedWord[] = [];
           const currentWordIds = new Set<string>();
         
         snapshot.forEach((doc) => {
           const data = doc.data();
-          console.log('Processing document:', doc.id, data);
+          // Removed verbose logging for better performance
           
           const approvedWord: ApprovedWord = {
             id: doc.id,
@@ -139,7 +150,7 @@ export function DictionarySyncProvider({ children }: { children: React.ReactNode
 
         // Cache the approved words
         cacheApprovedWords(newApprovedWords);
-        console.log(`Synced ${newApprovedWords.length} dictionary words from Firebase`);
+        // Removed verbose logging for better performance
           }, 500); // 500ms debounce
         },
         (error) => {
@@ -164,7 +175,7 @@ export function DictionarySyncProvider({ children }: { children: React.ReactNode
       if (debounceTimeout) clearTimeout(debounceTimeout);
       unsubscribe();
     };
-  }, []); // Empty dependency array - listener runs once and tracks changes internally
+  };
 
   const loadCachedWords = async () => {
     try {

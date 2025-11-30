@@ -59,7 +59,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   // Client IDs for different platforms
   const expoClientId = '974504645463-9vcp2gp4qpug7di56fqfp3fgtgt0onmt.apps.googleusercontent.com'; // Web client ID
   const iosClientId = '974504645463-u6jqjmks8h24bucsb5b9hkma493utcto.apps.googleusercontent.com'; // iOS client ID
-  const androidClientId = '974504645463-9vcp2gp4qpug7di56fqfp3fgtgt0onmt.apps.googleusercontent.com'; // Can use web client for Android
+  const androidClientId = '974504645463-q7kte26c5r42h1v1h7k6ikq3gr8vbn14.apps.googleusercontent.com'; // Android client ID
 
   // Log the redirect URI for web development (only once)
   // These logs will appear in both browser console AND terminal when running expo start --web
@@ -294,16 +294,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const handleGoogleSignIn = useCallback(async (idToken: string) => {
     try {
       if (!idToken) {
-        throw new Error('No ID token received from Google');
-      }
+          throw new Error('No ID token received from Google');
+        }
 
-      // Create Firebase credential from Google ID token
+        // Create Firebase credential from Google ID token
       const credential = GoogleAuthProvider.credential(idToken);
-      
-      // Sign in to Firebase with Google credential
-      const userCredential = await signInWithCredential(auth, credential);
         
-      // Create user_points record if new user (or update if exists)
+        // Sign in to Firebase with Google credential
+        const userCredential = await signInWithCredential(auth, credential);
+        
+        // Create user_points record if new user (or update if exists)
         if (userCredential.user && userCredential.user.email) {
           try {
             const { db } = await import('./firebase');
@@ -343,7 +343,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       console.log('═══════════════════════════════════════════════════════');
       console.log('✅ GOOGLE SIGN-IN SUCCESSFUL!');
       console.log('═══════════════════════════════════════════════════════');
-      console.log('User signed in with Google successfully');
+        console.log('User signed in with Google successfully');
       console.log('Email:', userCredential.user.email);
       console.log('Display Name:', userCredential.user.displayName);
       console.log('═══════════════════════════════════════════════════════');
@@ -540,6 +540,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       }
       
       // For mobile (iOS/Android), use normal popup flow
+      if (Platform.OS === 'android') {
+        const androidRedirectUri = AuthSession.makeRedirectUri({
+          scheme: 'com.aksp17.app',
+        });
+        console.log('🤖 Android platform detected');
+        console.log('🔗 Android redirect URI:', androidRedirectUri);
+        console.log('⚠️  IMPORTANT: You need to create an Android OAuth client ID in Google Cloud Console');
+        console.log('⚠️  The Android client must use package name: com.aksp17.app');
+        console.log('⚠️  The Android client will automatically use custom scheme: com.aksp17.app://oauth');
+        console.log('⚠️  DO NOT use the WEB client ID for Android - it does not allow custom schemes');
+      }
       console.log('⏳ Calling promptAsync()...');
       await promptAsync();
       
